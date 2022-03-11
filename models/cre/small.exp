@@ -1,0 +1,16 @@
+
+SCHEMA small;
+
+
+  ENTITY relationship
+    ABSTRACT SUPERTYPE OF (ONEOF (r1, r2))
+    SUBTYPE OF (abstract_object);
+  END_ENTITY; -- relationship
+
+  ENTITY r1; END_ENTITY;
+  ENTITY r2; END_ENTITY;
+  ENTITY abstract_object;
+  END_ENTITY;
+
+
+END_SCHEMA; 

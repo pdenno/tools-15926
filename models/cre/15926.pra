@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<project xmlns='http://www.nist.gov/mel/msid/expresso' name='ISO-15926-2, from an EXPRESS version 1 schema'>
+
+<!--  This is an Expresso project file.                                                 -->
+<!--  Note: You can use absolute pathnames in modelFile elements .                      -->
+<!--  compiled-from is a string of form filename.filetype where                         -->
+<!--  filename and filetype name those path components of another file in this project  -->
+<!--  Thus if path='/home/pdenno/ap233.exp' I'd use compiled-from='ap233.exp'           -->
+
+<LastModificationDate>2012-04-10 14:57:44</LastModificationDate>
+<ExpressoVersion>Expresso 4.0.0 (compiled 2007-Mar-08 09:10)</ExpressoVersion>
+<ProjectAuthor />
+
+<model-files><express-file path='/local/lisp/pod-utils/uml-utils/models/cre/15926-2.exp' version='2' target-type='XMI' /></model-files></project>

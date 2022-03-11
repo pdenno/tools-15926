@@ -1,0 +1,4906 @@
+
+;;; Purpose: A subset of SUMO/MILO.
+
+;; The SUMO is freely available, subject to the following IEEE license.  
+;; The Chair notes that prior permission from the Manager has already been granted 
+;; for third parties to download and use the SUMO.
+
+;; Copyright © 2004 by the Institute of Electrical and Electronics Engineers, Inc.
+;; Three Park Avenue
+;; New York, NY 10016-5997, USA
+;; All rights reserved.
+
+;; This document is an unapproved draft of a proposed IEEE Standard Working Group 
+;; procedure. As such, this document is subject to change. USE AT YOUR OWN RISK! 
+;; Because this is an unapproved draft, this document must not be utilized for any 
+;; conformance/compliance purposes. Permission is hereby granted for IEEE Standards 
+;; Committee participants to reproduce this document for purposes of IEEE standardization
+;; activities only. Prior to submitting this document to another standards development 
+;; organization for standardization activities, permission must first be obtained from 
+;; the Manager, Standards Licensing and Contracts, IEEE Standards Activities Department.
+;; Other entities seeking permission to reproduce this document, in whole or in part, 
+;; must obtain permission from the Manager, Standards Licensing and Contracts, 
+;; IEEE Standards Activities Department
+
+;; IEEE Standards Activities Department
+;; Standards Licensing and Contracts
+;; 445 Hoes Lane, P.O. Box 1331
+;; Piscataway, NJ 08855-1331, USA
+
+;; The SUMO was initially developed at Teknowledge Corp.
+
+;; Any questions or comments about this ontology can be directed to the
+;; Technical editor, Adam Pease, adampease@earthlink.net  
+;; Version date: December, 2004
+;; Version number: 1.72
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;   STRUCTURAL ONTOLOGY   ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; INCLUDES 'BASE ONTOLOGY'
+
+;; The Structural Ontology consists of definitions of certain syntactic 
+;; abbreviations that can be both heuristically useful and computationally 
+;; advantageous.
+
+(instance instance BinaryPredicate)
+(domain instance 1 Entity)
+(domain instance 2 SetOrClass)
+(documentation instance "An object is an &%instance of a &%SetOrClass if 
+it is included in that &%SetOrClass.  An individual may be an instance of many 
+classes, some of which may be subclasses of others.  Thus, there is no 
+assumption in the meaning of &%instance about specificity or uniqueness.")
+
+(subrelation immediateInstance instance)
+(instance immediateInstance AsymmetricRelation)
+(instance immediateInstance IntransitiveRelation)
+(documentation immediateInstance "An object is an &%immediateInstance of 
+a &%SetOrClass if it is an instance of the &%SetOrClass and there does not exist a 
+subclass of &%SetOrClass such that it is an instance of the subclass.")
+
+(=>
+   (immediateInstance ?ENTITY ?CLASS)
+   (not (exists (?SUBCLASS)
+      (and
+         (subclass ?SUBCLASS ?CLASS)
+         (instance ?ENTITY ?SUBCLASS)))))
+                 
+(instance inverse BinaryPredicate)
+(instance inverse IrreflexiveRelation)
+(instance inverse IntransitiveRelation)
+(instance inverse SymmetricRelation)
+(domain inverse 1 BinaryRelation)
+(domain inverse 2 BinaryRelation)
+(documentation inverse "The inverse of a &%BinaryRelation is a relation 
+in which all the tuples of the original relation are reversed.  In 
+other words, one &%BinaryRelation is the inverse of another if they are 
+equivalent when their arguments are swapped.")
+
+(=>
+   (inverse ?REL1 ?REL2)
+   (forall (?INST1 ?INST2)
+      (<=>
+         (holds ?REL1 ?INST1 ?INST2)
+         (holds ?REL2 ?INST2 ?INST1))))
+
+(instance subclass BinaryPredicate)
+(instance subclass PartialOrderingRelation)
+(domain subclass 1 SetOrClass)
+(domain subclass 2 SetOrClass)
+(documentation subclass "(&%subclass ?CLASS1 ?CLASS2) means that ?CLASS1 is 
+a subclass of ?CLASS2, i.e. every instance of ?CLASS1 is also an instance of 
+?CLASS2.  A class may have multiple superclasses and subclasses.")
+
+(<=> 
+   (subclass ?SUBCLASS ?CLASS)
+   (and
+      (instance ?SUBCLASS SetOrClass)
+      (instance ?CLASS SetOrClass)
+      (forall (?INST)
+         (=> 
+            (instance ?INST ?SUBCLASS)
+            (instance ?INST ?CLASS)))))
+
+(subrelation immediateSubclass subclass)
+(instance immediateSubclass AsymmetricRelation)
+(instance immediateSubclass IntransitiveRelation)
+(documentation immediateSubclass "A &%SetOrClass ?CLASS1 is an &%immediateSubclass 
+of another &%SetOrClass ?CLASS2 just in case ?CLASS1 is a subclass of ?CLASS2 and 
+there is no other subclass of ?CLASS2 such that ?CLASS1 is also a subclass of it.")
+
+(=>
+   (immediateSubclass ?CLASS1 ?CLASS2)
+   (not (exists (?CLASS3)
+      (and
+         (subclass ?CLASS3 ?CLASS2)
+         (subclass ?CLASS1 ?CLASS3)
+         (not (equal ?CLASS2 ?CLASS3))
+         (not (equal ?CLASS1 ?CLASS3)))))) 
+
+(instance subrelation BinaryPredicate)
+(instance subrelation PartialOrderingRelation)
+(domain subrelation 1 Relation)
+(domain subrelation 2 Relation)
+(documentation subrelation "(&%subrelation ?REL1 ?REL2) means that 
+every tuple of ?REL1 is also a tuple of ?REL2.  In other words, if 
+the &%Relation ?REL1 holds for some arguments arg_1, arg_2, ... arg_n, 
+then the &%Relation ?REL2 holds for the same arguments.  A consequence 
+of this is that a &%Relation and its subrelations must have the same 
+&%valence. In CycL, &%subrelation is called #$genlPreds.")
+
+(=>
+   (and
+      (subrelation ?PRED1 ?PRED2)
+      (valence ?PRED1 ?NUMBER))
+   (valence ?PRED2 ?NUMBER))
+   
+(=>
+   (and
+      (subrelation ?PRED1 ?PRED2)
+      (domain ?PRED2 ?NUMBER ?CLASS1))
+   (domain ?PRED1 ?NUMBER ?CLASS1))
+
+(=>
+   (and
+      (subrelation ?REL1 ?REL2)
+      (holds ?REL1 @ROW))
+   (holds ?REL2 @ROW))
+
+(=>
+   (and
+      (subrelation ?PRED1 ?PRED2)
+      (instance ?PRED2 ?CLASS)
+      (instance ?CLASS InheritableRelation))
+   (instance ?PRED1 ?CLASS))
+
+(instance domain TernaryPredicate)
+(domain domain 1 Relation)
+(domain domain 2 PositiveInteger)
+(domain domain 3 SetOrClass)
+(documentation domain "Provides a computationally and heuristically
+convenient mechanism for declaring the argument types of a given relation.  
+The formula (&%domain ?REL ?INT ?CLASS) means that the ?INT'th element of each 
+tuple in the relation ?REL must be an instance of ?CLASS.  Specifying argument
+types is very helpful in maintaining ontologies.  Representation systems can 
+use these specifications to classify terms and check integrity constraints.  
+If the restriction on the argument type of a &%Relation is not captured by a 
+&%SetOrClass already defined in the ontology, one can specify a &%SetOrClass 
+compositionally with the functions &%UnionFn, &%IntersectionFn, etc.")
+
+(=>
+   (and
+      (domain ?REL ?NUMBER ?CLASS1)
+      (domain ?REL ?NUMBER ?CLASS2))
+   (or
+      (subclass ?CLASS1 ?CLASS2)
+      (subclass ?CLASS2 ?CLASS1)))
+
+(instance domainSubclass TernaryPredicate)
+(domain domainSubclass 1 Relation)
+(domain domainSubclass 2 PositiveInteger)
+(domain domainSubclass 3 SetOrClass)
+(documentation domainSubclass "&%Predicate used to specify argument 
+type restrictions of &%Predicates.  The formula (&%domainSubclass 
+?REL ?INT ?CLASS) means that the ?INT'th element of each tuple in the 
+relation ?REL must be a subclass of ?CLASS.")
+
+(=>
+   (and
+      (subrelation ?REL1 ?REL2)
+      (domainSubclass ?REL2 ?NUMBER ?CLASS1))
+   (domainSubclass ?REL1 ?NUMBER ?CLASS1))
+
+(=>
+   (and
+      (domainSubclass ?REL ?NUMBER ?CLASS1)
+      (domainSubclass ?REL ?NUMBER ?CLASS2))
+   (or
+      (subclass ?CLASS1 ?CLASS2)
+      (subclass ?CLASS2 ?CLASS1)))
+
+(instance equal BinaryPredicate)
+(instance equal EquivalenceRelation)
+(instance equal RelationExtendedToQuantities)
+(domain equal 1 Entity)
+(domain equal 2 Entity)
+(documentation equal "(equal ?ENTITY1 ?ENTITY2) is true just in case 
+?ENTITY1 is identical with ?ENTITY2.")
+
+(=>
+   (equal ?THING1 ?THING2)
+   (forall (?ATTR)
+      (<=>
+         (property ?THING1 ?ATTR)
+         (property ?THING2 ?ATTR))))
+
+(=>
+   (equal ?ATTR1 ?ATTR2)
+   (forall (?THING)
+      (<=>
+         (property ?THING ?ATTR1)
+         (property ?THING ?ATTR2))))
+
+(=>
+   (equal ?THING1 ?THING2)
+   (forall (?CLASS)
+      (<=>
+         (instance ?THING1 ?CLASS)
+         (instance ?THING2 ?CLASS))))
+
+(=>
+   (equal ?CLASS1 ?CLASS2)
+   (forall (?THING)
+      (<=>
+         (instance ?THING ?CLASS1)
+         (instance ?THING ?CLASS2))))
+
+(=>
+   (equal ?REL1 ?REL2)
+   (forall (@ROW)
+      (<=>
+         (holds ?REL1 @ROW)
+         (holds ?REL2 @ROW))))
+
+(=>
+   (equal (ListFn @ROW1) (ListFn @ROW2))
+      (<=>
+         (holds @ROW1)
+         (holds @ROW2)))
+
+(=>
+   (equal ?LIST1 ?LIST2)
+      (=>
+         (and
+            (equal ?LIST1 (ListFn @ROW1))
+            (equal ?LIST2 (ListFn @ROW2)))
+         (forall (?NUMBER)
+            (equal (ListOrderFn (ListFn @ROW1) ?NUMBER) (ListOrderFn (ListFn @ROW2) ?NUMBER)))))
+    
+(instance range BinaryPredicate)
+(instance range AsymmetricRelation)
+(domain range 1 Function)
+(domain range 2 SetOrClass)
+(documentation range "Gives the range of a function.  In other words, 
+(&%range ?FUNCTION ?CLASS) means that all of the values assigned by 
+?FUNCTION are &%instances of ?CLASS.") 
+
+(=>
+   (and
+      (range ?FUNCTION ?CLASS)
+      (equal (AssignmentFn ?FUNCTION @ROW) ?VALUE))
+   (instance ?VALUE ?CLASS))
+
+(=>
+   (and
+      (subrelation ?REL1 ?REL2)
+      (range ?REL2 ?CLASS1))
+   (range ?REL1 ?CLASS1))
+
+(=>
+   (and
+      (range ?REL ?CLASS1)
+      (range ?REL ?CLASS2))
+   (or
+      (subclass ?CLASS1 ?CLASS2)
+      (subclass ?CLASS2 ?CLASS1)))
+
+(instance rangeSubclass BinaryPredicate)
+(instance rangeSubclass AsymmetricRelation)
+(domain rangeSubclass 1 Function)
+(domainSubclass rangeSubclass 2 SetOrClass)
+(documentation rangeSubclass "(&%rangeSubclass ?FUNCTION ?CLASS) means that 
+all of the values assigned by ?FUNCTION are &%subclasses of ?CLASS.")
+
+(=>
+   (and
+      (rangeSubclass ?FUNCTION ?CLASS)
+      (equal (AssignmentFn ?FUNCTION @ROW) ?VALUE))
+   (subclass ?VALUE ?CLASS))
+
+(=>
+   (and
+      (subrelation ?REL1 ?REL2)
+      (rangeSubclass ?REL2 ?CLASS1))
+   (rangeSubclass ?REL1 ?CLASS1))
+
+(=>
+   (and
+      (rangeSubclass ?REL ?CLASS1)
+      (rangeSubclass ?REL ?CLASS2))
+   (or
+      (subclass ?CLASS1 ?CLASS2)
+      (subclass ?CLASS2 ?CLASS1)))
+
+(instance valence BinaryPredicate)
+(instance valence AsymmetricRelation)
+(instance valence SingleValuedRelation)
+(domain valence 1 Relation)
+(domain valence 2 PositiveInteger)
+(documentation valence "Specifies the number of arguments that a 
+relation can take.  If a relation does not have a fixed number of 
+arguments, it does not have a valence and it is an instance of 
+&%VariableArityRelation.  For example, &%holds is a 
+&%VariableArityRelation.")
+
+(instance documentation BinaryPredicate)
+(instance documentation AsymmetricRelation)
+(domain documentation 1 Entity)
+(domain documentation 2 SymbolicString)
+(documentation documentation "A relation between objects in the domain 
+of discourse and strings of natural language text.  The domain of 
+&%documentation is not constants (names), but the objects themselves.  
+This means that one does not quote the names when associating them with 
+their documentation.")
+
+(instance disjoint BinaryPredicate)
+(instance disjoint SymmetricRelation)
+(domain disjoint 1 SetOrClass)
+(domain disjoint 2 SetOrClass)
+(documentation disjoint "&%Classes are &%disjoint only if they share no 
+instances, i.e. just in case the result of applying &%IntersectionFn to
+them is empty.")
+
+(<=>
+   (disjoint ?CLASS1 ?CLASS2)
+   (and
+      (instance ?CLASS1 NonNullSet)
+      (instance ?CLASS2 NonNullSet)
+      (forall (?INST)
+         (not
+            (and 
+	         (instance ?INST ?CLASS1)
+               (instance ?INST ?CLASS2))))))
+
+(instance disjointRelation Predicate)
+(instance disjointRelation VariableArityRelation)
+(relatedInternalConcept disjointRelation disjoint)
+(documentation disjointRelation "This predicate relates any number of &%Relations.  
+(&%disjointRelation @ROW) means that any two relations in @ROW have no tuples in 
+common.  As a consequence, the intersection of all of the relations in @ROW is the 
+null set.")
+
+(=>
+   (and
+      (disjointRelation @ROW)
+      (inList ?REL (ListFn @ROW)))
+   (instance ?REL Relation))
+
+(=>
+   (and
+      (disjointRelation @ROW)
+      (inList ?REL1 (ListFn @ROW))
+      (inList ?REL2 (ListFn @ROW))
+      (valence ?REL1 ?NUMBER))
+   (valence ?REL2 ?NUMBER))
+
+(=>
+   (and
+      (domain ?REL1 ?NUMBER ?CLASS1)
+      (domain ?REL2 ?NUMBER ?CLASS2)
+      (disjoint ?CLASS1 ?CLASS2))
+   (disjointRelation ?REL1 ?REL2))
+
+(=>
+   (and
+      (domainSubclass ?REL1 ?NUMBER ?CLASS1)
+      (domainSubclass ?REL2 ?NUMBER ?CLASS2)
+      (disjoint ?CLASS1 ?CLASS2))
+   (disjointRelation ?REL1 ?REL2))
+
+(=>
+   (and
+      (range ?REL1 ?CLASS1)
+      (range ?REL2 ?CLASS2)
+      (disjoint ?CLASS1 ?CLASS2))
+   (disjointRelation ?REL1 ?REL2))
+
+(=>
+   (and
+      (rangeSubclass ?REL1 ?CLASS1)
+      (rangeSubclass ?REL2 ?CLASS2)
+      (disjoint ?CLASS1 ?CLASS2))
+   (disjointRelation ?REL1 ?REL2))
+
+(=>
+   (and
+      (disjointRelation @ROW1)
+      (inList ?REL1 (ListFn @ROW1))
+      (inList ?REL2 (ListFn @ROW1))
+      (not (equal ?REL1 ?REL2))
+      (holds ?REL1 @ROW2))
+   (not (holds ?REL2 @ROW2)))
+
+(instance contraryAttribute Predicate)
+(instance contraryAttribute VariableArityRelation)
+(documentation contraryAttribute "A &%contraryAttribute is a set of &%Attributes 
+such that something can not simultaneously have more than one of these &%Attributes.  
+For example, (&%contraryAttribute &%Pliable &%Rigid) means that nothing can be both 
+&%Pliable and &%Rigid.")
+
+(=>
+   (contraryAttribute @ROW)
+   (=>
+      (inList ?ELEMENT (ListFn @ROW))
+      (instance ?ELEMENT Attribute)))
+
+(=>
+   (contraryAttribute @ROW)
+   (forall (?ATTR1 ?ATTR2)
+      (=>
+         (and
+            (equal ?ATTR1 (ListOrderFn (ListFn @ROW) ?NUMBER1))
+            (equal ?ATTR2 (ListOrderFn (ListFn @ROW) ?NUMBER2))
+            (not (equal ?NUMBER1 ?NUMBER2)))
+         (=>
+            (property ?OBJ ?ATTR1)
+            (not (property ?OBJ ?ATTR2))))))
+
+(instance exhaustiveAttribute Predicate)
+(instance exhaustiveAttribute VariableArityRelation)
+(domainSubclass exhaustiveAttribute 1 Attribute)
+(documentation exhaustiveAttribute "This predicate relates a &%Class to a 
+set of &%Attributes, and it means that the elements of this set exhaust the 
+instances of the &%Class.  For example, (&%exhaustiveAttribute &%PhysicalState 
+&%Solid &%Liquid &%Gas) means that there are only three instances of the class 
+&%PhysicalState, viz. &%Solid, &%Liquid, and &%Gas.")
+
+(=>
+   (exhaustiveAttribute ?CLASS @ROW)
+   (=>
+      (inList ?ATTR (ListFn @ROW))
+      (instance ?ATTR Attribute))) 
+
+(=>
+   (exhaustiveAttribute ?CLASS @ROW)
+   (forall (?OBJ)
+      (=>
+         (instance ?ATTR1 ?CLASS)
+         (exists (?ATTR2)
+            (and
+               (inList ?ATTR2 (ListFn @ROW))
+               (equal ?ATTR1 ?ATTR2))))))
+
+(instance exhaustiveDecomposition Predicate)
+(instance exhaustiveDecomposition VariableArityRelation)
+(domain exhaustiveDecomposition 1 Class)
+(relatedInternalConcept exhaustiveDecomposition partition)
+(documentation exhaustiveDecomposition "An &%exhaustiveDecomposition of a 
+&%Class C is a set of subclasses of C such that every subclass of C either 
+is an element of the set or is a subclass of an element of the set.  Note: 
+this does not necessarily mean that the elements of the set are disjoint 
+(see &%partition - a &%partition is a disjoint exhaustive decomposition.)")
+
+(=>
+   (exhaustiveDecomposition @ROW)
+   (=>
+      (inList ?ELEMENT (ListFn @ROW))
+      (instance ?ELEMENT Class)))
+
+(instance disjointDecomposition Predicate)
+(instance disjointDecomposition VariableArityRelation)
+(domain disjointDecomposition 1 Class)
+(relatedInternalConcept disjointDecomposition exhaustiveDecomposition)
+(relatedInternalConcept disjointDecomposition disjoint)
+(documentation disjointDecomposition "A &%disjointDecomposition of a &%Class 
+C is a set of subclasses of C that are mutually &%disjoint.")
+
+(=>
+   (disjointDecomposition @ROW)
+   (=>
+      (inList ?ELEMENT (ListFn @ROW))
+      (instance ?ELEMENT Class)))
+
+(instance partition Predicate)
+(instance partition VariableArityRelation)
+(domain partition 1 Class)
+(documentation partition "A &%partition of a class C is a set of 
+mutually &%disjoint classes (a subclass partition) which covers C.  
+Every instance of C is an instance of exactly one of the subclasses 
+in the partition.")
+
+(<=>
+   (partition @ROW)
+   (and
+      (exhaustiveDecomposition @ROW)
+      (disjointDecomposition @ROW)))
+
+(instance relatedInternalConcept BinaryPredicate)
+(instance relatedInternalConcept EquivalenceRelation)
+(domain relatedInternalConcept 1 Entity)
+(domain relatedInternalConcept 2 Entity)
+(documentation relatedInternalConcept "Means that the two arguments are 
+related concepts within the SUMO, i.e. there is a significant similarity 
+of meaning between them.  To indicate a meaning relation between a SUMO 
+concept and a concept from another source, use the Predicate 
+&%relatedExternalConcept.")
+
+(instance relatedExternalConcept TernaryPredicate)
+(domain relatedExternalConcept 1 SymbolicString)
+(domain relatedExternalConcept 2 Entity)
+(domain relatedExternalConcept 3 Language)
+(relatedInternalConcept relatedExternalConcept relatedInternalConcept)
+(documentation relatedExternalConcept "Used to signify a three-place 
+relation between a concept in an external knowledge source, a concept 
+in the SUMO, and the name of the other knowledge source.")
+
+(subrelation synonymousExternalConcept relatedExternalConcept)
+(disjointRelation synonymousExternalConcept subsumedExternalConcept subsumingExternalConcept)
+(documentation synonymousExternalConcept "(&%synonymousExternalConcept 
+?STRING ?THING ?LANGUAGE) means that the SUMO concept ?THING has the 
+same meaning as ?STRING in ?LANGUAGE.")
+
+(subrelation subsumingExternalConcept relatedExternalConcept)
+(documentation subsumingExternalConcept "(&%subsumingExternalConcept 
+?STRING ?THING ?LANGUAGE) means that the SUMO concept ?THING subsumes 
+the meaning of ?STRING in ?LANGUAGE, i.e. the concept ?THING is broader 
+in meaning than ?STRING.")
+
+(subrelation subsumedExternalConcept relatedExternalConcept)
+(documentation subsumedExternalConcept "(&%subsumedExternalConcept 
+?STRING ?THING ?LANGUAGE) means that the SUMO concept ?THING is subsumed 
+by the meaning of ?STRING in ?LANGUAGE, i.e. the concept ?THING is narrower 
+in meaning than ?STRING.")
+
+(instance subAttribute BinaryPredicate)
+(instance subAttribute PartialOrderingRelation)
+(domain subAttribute 1 Attribute)
+(domain subAttribute 2 Attribute)
+(disjointRelation subAttribute successorAttribute)
+(documentation subAttribute "Means that the second argument can be 
+ascribed to everything which has the first argument ascribed to it.")
+
+(=>
+   (subAttribute ?ATTR1 ?ATTR2)
+   (forall (?OBJ)
+      (=>
+         (property ?OBJ ?ATTR1)
+         (property ?OBJ ?ATTR2))))
+
+(=>
+   (and
+      (subAttribute ?ATTR1 ?ATTR2)
+      (instance ?ATTR2 ?CLASS))
+   (instance ?ATTR1 ?CLASS))
+
+(instance successorAttribute BinaryPredicate)
+(instance successorAttribute AsymmetricRelation)
+(domain successorAttribute 1 Attribute)
+(domain successorAttribute 2 Attribute)
+(documentation successorAttribute "(&%successorAttribute ?ATTR1 ?ATTR2) 
+means that ?ATTR2 is the &%Attribute that comes immediately after ?ATTR1 
+on the scale that they share.")
+
+(=>
+   (and
+      (successorAttribute ?ATTR1 ?ATTR2)
+      (holdsDuring ?TIME1 (property ?ENTITY ?ATTR2)))
+   (exists (?TIME2)
+      (and
+         (temporalPart ?TIME2 (PastFn ?TIME1))
+         (holdsDuring ?TIME2 (property ?ENTITY ?ATTR1)))))
+
+(instance successorAttributeClosure BinaryPredicate)
+(instance successorAttributeClosure TransitiveRelation)
+(instance successorAttributeClosure IrreflexiveRelation)
+(domain successorAttributeClosure 1 Attribute)
+(domain successorAttributeClosure 2 Attribute)
+(relatedInternalConcept successorAttributeClosure successorAttribute)
+(documentation successorAttributeClosure "The transitive closure of 
+&%successorAttribute.  (&%successorAttributeClosure ?ATTR1 ?ATTR2) means 
+that there is a chain of &%successorAttribute assertions connecting 
+?ATTR1 and ?ATTR2.") 
+
+(=>
+   (successorAttribute ?ATTR1 ?ATTR2)
+   (successorAttributeClosure ?ATTR1 ?ATTR2))
+
+(instance and VariableArityRelation)
+(instance and LogicalOperator)
+(domain and 1 Formula)
+(domain and 2 Formula)
+(documentation and "The truth-functional connective of conjunction.")
+
+(instance or VariableArityRelation)
+(instance or LogicalOperator)
+(domain or 1 Formula)
+(domain or 2 Formula)
+(documentation or "The truth-functional connective of disjunction.")
+
+(instance => BinaryPredicate)
+(instance => LogicalOperator)
+(domain => 1 Formula)
+(domain => 2 Formula)
+(documentation => "The truth-functional connective of implication.")
+
+(instance <=> BinaryPredicate)
+(instance <=> LogicalOperator)
+(domain <=> 1 Formula)
+(domain <=> 2 Formula)
+(documentation <=> "The truth-functional connective of bi-implication.")
+
+(instance not LogicalOperator)
+(domain not 1 Formula)
+(documentation not "The truth-functional connective of negation.")
+
+(instance forall BinaryPredicate)
+(instance forall LogicalOperator)
+(domain forall 1 List)
+(domain forall 2 Formula)
+(documentation forall "The universal quantifier of predicate logic.")
+
+(instance exists BinaryPredicate)
+(instance exists LogicalOperator)
+(domain exists 1 List)
+(domain exists 2 Formula)
+(documentation exists "The existential quantifier of predicate logic.")
+
+(instance entails BinaryPredicate)
+(instance entails LogicalOperator)
+(domain entails 1 Formula)
+(domain entails 2 Formula)
+(documentation entails "The operator of logical entailment.  (&%entails 
+?FORMULA1 ?FORMULA2) means that ?FORMULA2 can be derived from ?FORMULA1 
+by means of the proof theory of SUO-KIF.")
+
+;; The following axiom is commented out, because it is rejected by the 
+;; inference engine's parser.
+
+;;(=>
+;;   (entails ?FORMULA1 ?FORMULA2)
+;;   (=> ?FORMULA1 ?FORMULA2))
+
+(instance AssignmentFn Function)
+(instance AssignmentFn VariableArityRelation)
+(domain AssignmentFn 1 Function)
+(range AssignmentFn Entity)
+(documentation AssignmentFn "If F is a function with a value for the 
+objects denoted by N1,..., NK, then the term (AssignmentFn F N1 ... NK) 
+denotes the value of applying F to the objects denoted by N1,..., NK.  
+Otherwise, the value is undefined.")
+
+(instance holds Predicate)
+(instance holds VariableArityRelation)
+(domain holds 1 Relation)
+(documentation holds "(holds P N1 ... NK) is true just in case 
+the tuple of objects denoted by N1,..., NK is an element of 
+the &%Relation P.")
+
+(=>
+	(instance ?REL Function)
+	(<=>
+		(equal (AssignmentFn ?REL @ROW) ?INST)
+		(holds ?REL @ROW ?INST)))
+
+(instance PowerSetFn UnaryFunction)
+(instance PowerSetFn TotalValuedRelation)
+(domain PowerSetFn 1 SetOrClass)
+(rangeSubclass PowerSetFn SetOrClass)
+(documentation PowerSetFn "(&%PowerSetFn ?CLASS) maps the &%SetOrClass 
+?CLASS to the &%SetOrClass of all &%subclasses of ?CLASS.")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;   Parts of Base Ontology Leading to Abstract ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; The following hierarchy incorporates content from Sowa, Russell & Norvig, 
+;; and the top-level ontology from ITBM-CNR. 
+
+(partition Entity Physical Abstract)
+(documentation Entity "The universal class of individuals.  This is the root 
+node of the ontology.")
+
+(instance ?THING Entity)
+
+(exists (?THING) (instance ?THING Entity))
+
+(<=> 
+	(instance ?CLASS Class)
+      (subclass ?CLASS Entity))
+
+(subclass Physical Entity)
+
+(subclass Abstract Entity)
+;;; POD I remove SetOrClass from the disjointDecomposition of SetOrClass, as per discussion
+;;; with Adam Pease. 
+(disjointDecomposition Abstract Quantity Attribute Relation Proposition Graph GraphElement)
+(documentation Abstract "Properties or qualities as distinguished from any 
+particular embodiment of the properties/qualities in a physical medium.  
+Instances of Abstract can be said to exist in the same sense as mathematical 
+objects such as sets and relations, but they cannot exist at a particular 
+place and time without some physical encoding or embodiment.")
+
+;; Something is Abstract just in case it has neither a spatial nor temporal 
+;; location.
+
+(<=> 
+   (instance ?ABS Abstract)
+   (not 
+      (exists (?POINT) 
+         (or 
+	      (located ?ABS ?POINT)
+            (time ?ABS ?POINT)))))
+
+(subclass Quantity Abstract)
+(documentation Quantity "Any specification of how many or how much of 
+something there is.  Accordingly, there are two subclasses of &%Quantity:  
+&%Number (how many) and &%PhysicalQuantity (how much).")
+
+(subclass Attribute Abstract)
+(partition Attribute InternalAttribute RelationalAttribute)
+(documentation Attribute "Qualities which we cannot or choose not to 
+reify into subclasses of &%Object.")
+
+(instance property BinaryPredicate)
+(domain property 1 Entity)
+(domain property 2 Attribute)
+(documentation property "This &%Predicate holds between an instance of 
+&%Entity and an instance of &%Attribute.  (property ?ENTITY ?ATTR) 
+means that ?ENTITY has the &%Attribute ?ATTR.")
+
+(instance attribute AsymmetricRelation)
+(instance attribute IrreflexiveRelation)
+(subrelation attribute property)
+(domain attribute 1 Object)
+(documentation attribute "(&%attribute ?OBJECT ?PROPERTY) means that 
+?PROPERTY is a &%Attribute of ?OBJECT.  For example, 
+(&%attribute &%MyLittleRedWagon &%Red).")
+
+
+(instance AbstractionFn UnaryFunction)
+(instance AbstractionFn PartialValuedRelation)
+(domain AbstractionFn 1 Class)
+(range AbstractionFn Attribute)
+(documentation AbstractionFn "A &%UnaryFunction that maps a &%Class into 
+the instance of &%Attribute that specifies the condition(s) for membership 
+in the &%Class.")
+
+(<=>
+   (equal (AbstractionFn ?CLASS) ?ATTR)
+   (forall (?INST)
+      (<=>
+         (instance ?INST ?CLASS)
+         (property ?INST ?ATTR))))
+
+(instance ExtensionFn UnaryFunction)
+(instance ExtensionFn PartialValuedRelation)
+(domain ExtensionFn 1 Attribute)
+(range ExtensionFn Class)
+(documentation ExtensionFn "A &%UnaryFunction that maps an &%Attribute 
+into the &%Class whose condition for membership is the &%Attribute.")
+
+(<=>
+   (equal (ExtensionFn ?ATTRIBUTE) ?CLASS)
+   (equal (AbstractionFn ?CLASS) ?ATTRIBUTE))
+
+(subclass InternalAttribute Attribute)
+(documentation InternalAttribute "Any &%Attribute of an &%Entity that is an 
+internal property of the &%Entity, e.g. its shape, its color, its fragility, 
+etc.")
+
+(subclass RelationalAttribute Attribute)
+(documentation RelationalAttribute "Any &%Attribute that an &%Entity has by 
+virtue of a relationship that it bears to another &%Entity or set of &%Entities, 
+e.g. &%SocialRoles and &%PositionalAttributes.") 
+
+;; The following formulas incorporate the Number hierarchy from the 
+;; ontology 'kif-numbers' on the Ontolingua server.
+
+(subclass Number Quantity)
+(partition Number RealNumber ImaginaryNumber ComplexNumber)
+(documentation Number "A measure of how many things there are, or how
+much there is, of a certain kind.  &%Numbers are subclassed into 
+&%RealNumber, &%ComplexNumber, and &%ImaginaryNumber.")
+
+(instance lessThan BinaryPredicate)
+(instance lessThan TransitiveRelation)
+(instance lessThan IrreflexiveRelation)
+(instance lessThan RelationExtendedToQuantities)
+(trichotomizingOn lessThan RealNumber)
+(domain lessThan 1 Quantity)
+(domain lessThan 2 Quantity)
+(documentation lessThan "(&%lessThan ?NUMBER1 ?NUMBER2) is true just 
+in case the &%Quantity ?NUMBER1 is less than the &%Quantity ?NUMBER2.")
+
+(instance greaterThan BinaryPredicate)
+(instance greaterThan TransitiveRelation)
+(instance greaterThan IrreflexiveRelation)
+(instance greaterThan RelationExtendedToQuantities)
+(trichotomizingOn greaterThan RealNumber)
+(domain greaterThan 1 Quantity)
+(domain greaterThan 2 Quantity)
+(inverse greaterThan lessThan)
+(documentation greaterThan "(&%greaterThan ?NUMBER1 ?NUMBER2) is true 
+just in case the &%Quantity ?NUMBER1 is greater than the &%Quantity 
+?NUMBER2.")
+
+(instance lessThanOrEqualTo BinaryPredicate)
+(instance lessThanOrEqualTo PartialOrderingRelation)
+(instance lessThanOrEqualTo RelationExtendedToQuantities)
+(trichotomizingOn lessThanOrEqualTo RealNumber)
+(domain lessThanOrEqualTo 1 Quantity)
+(domain lessThanOrEqualTo 2 Quantity)
+(documentation lessThanOrEqualTo "(&%lessThanOrEqualTo ?NUMBER1 ?NUMBER2) 
+is true just in case the &%Quantity ?NUMBER1 is less than or equal to 
+the &%Quantity ?NUMBER2.")
+
+(<=>
+	(lessThanOrEqualTo ?NUMBER1 ?NUMBER2)
+	(or
+		(equal ?NUMBER1 ?NUMBER2)
+		(lessThan ?NUMBER1 ?NUMBER2)))
+
+(instance greaterThanOrEqualTo BinaryPredicate)
+(instance greaterThanOrEqualTo PartialOrderingRelation)
+(instance greaterThanOrEqualTo RelationExtendedToQuantities)
+(trichotomizingOn greaterThanOrEqualTo RealNumber)
+(domain greaterThanOrEqualTo 1 Quantity)
+(domain greaterThanOrEqualTo 2 Quantity)
+(inverse greaterThanOrEqualTo lessThanOrEqualTo)
+(documentation greaterThanOrEqualTo "(&%greaterThanOrEqualTo ?NUMBER1 
+?NUMBER2) is true just in case the &%Quantity ?NUMBER1 is greater 
+than the &%Quantity ?NUMBER2.")
+
+(<=>
+	(greaterThanOrEqualTo ?NUMBER1 ?NUMBER2)
+	(or
+		(equal ?NUMBER1 ?NUMBER2)
+		(greaterThan ?NUMBER1 ?NUMBER2)))
+
+(subclass RealNumber Number)
+(partition RealNumber NegativeRealNumber NonnegativeRealNumber)
+(partition RealNumber RationalNumber IrrationalNumber)
+(documentation RealNumber "Any &%Number that can be expressed as a 
+(possibly infinite) decimal, i.e. any &%Number that has a position 
+on the number line.")
+
+(subclass ImaginaryNumber Number) 
+(documentation ImaginaryNumber "Any &%Number that is the result of 
+multiplying a &%RealNumber by the square root of -1.")
+
+(=>
+   (instance ?NUMBER ImaginaryNumber)
+   (exists (?REAL)
+      (and
+         (instance ?REAL RealNumber)
+         (equal ?NUMBER (MultiplicationFn ?REAL (SquareRootFn -1))))))
+
+(subclass RationalNumber RealNumber)
+(documentation RationalNumber "Any &%RealNumber that is the product of 
+dividing two &%Integers.")
+
+(subclass IrrationalNumber RealNumber)
+(documentation IrrationalNumber "Any &%RealNumber that is not also a 
+&%RationalNumber.")
+
+(subclass NonnegativeRealNumber RealNumber)
+(documentation NonnegativeRealNumber "A &%RealNumber that is greater than 
+or equal to zero.")
+
+(<=>
+   (instance ?NUMBER NonnegativeRealNumber)
+   (and
+      (greaterThanOrEqualTo ?NUMBER 0)
+      (instance ?NUMBER RealNumber)))
+
+(subclass PositiveRealNumber NonnegativeRealNumber)
+(documentation PositiveRealNumber "A &%RealNumber that is greater than 
+zero.")
+
+(<=>
+   (instance ?NUMBER PositiveRealNumber)
+   (and
+      (greaterThan ?NUMBER 0)
+      (instance ?NUMBER RealNumber)))
+
+(subclass NegativeRealNumber RealNumber)
+(documentation NegativeRealNumber "A &%RealNumber that is less than 
+zero.")
+
+(<=>
+   (instance ?NUMBER NegativeRealNumber)
+   (and
+      (lessThan ?NUMBER 0)
+      (instance ?NUMBER RealNumber)))
+
+(subclass Integer RationalNumber)
+(partition Integer OddInteger EvenInteger)
+(partition Integer NegativeInteger NonnegativeInteger)
+(documentation Integer "A negative or nonnegative whole number.")
+
+(subclass EvenInteger Integer)
+(documentation EvenInteger "An &%Integer that is evenly divisible 
+by 2.")
+
+(subclass OddInteger Integer)
+(documentation OddInteger "An &%Integer that is not evenly divisible 
+by 2.")
+
+(subclass PrimeNumber Integer)
+(documentation PrimeNumber "An &%Integer that is evenly divisible only 
+by itself and 1.")
+
+(subclass NonnegativeInteger Integer)
+(subclass NonnegativeInteger NonnegativeRealNumber)
+(documentation NonnegativeInteger "An &%Integer that is greater than 
+or equal to zero.")
+
+(subclass NegativeInteger Integer)
+(subclass NegativeInteger NegativeRealNumber)
+(documentation NegativeInteger "An &%Integer that is less than zero.")
+
+(subclass PositiveInteger NonnegativeInteger)
+(subclass PositiveInteger PositiveRealNumber)
+(documentation PositiveInteger "An &%Integer that is greater than zero.")
+
+(subclass BinaryNumber RealNumber)
+(documentation BinaryNumber "Elements from the number system with base 2.  
+Every &%BinaryNumber is expressed as a sequence of the digits 1 and 0.")
+
+(subclass ComplexNumber Number)
+(disjoint ComplexNumber RealNumber)
+(documentation ComplexNumber "A &%Number that has the form: x + yi, where x 
+and y are &%RealNumbers and i is the square root of -1.")
+
+(=>
+   (instance ?NUMBER ComplexNumber)
+   (exists (?REAL1 ?REAL2)
+      (and
+         (instance ?REAL1 RealNumber)
+         (instance ?REAL2 RealNumber)
+         (equal ?NUMBER (AdditionFn ?REAL1 (MultiplicationFn ?REAL2 (SquareRootFn -1)))))))
+
+(subclass PhysicalQuantity Quantity)
+(partition PhysicalQuantity ConstantQuantity FunctionQuantity)
+(documentation PhysicalQuantity "&%A PhysicalQuantity is a measure of 
+some quantifiable aspect of the modeled world, such as 'the earth's 
+diameter' (a constant length) and 'the stress in a loaded deformable 
+solid' (a measure of stress, which is a function of three spatial 
+coordinates).  All &%PhysicalQuantities are either &%ConstantQuantities 
+or &%FunctionQuantities.  Instances of &%ConstantQuantity are dependent 
+on a &%UnitOfMeasure, while instances of &%FunctionQuantity are 
+&%Functions that map instances of &%ConstantQuantity to other instances 
+of &%ConstantQuantity (e.g., &%TimeDependentQuantities are 
+&%FunctionQuantities).  Although the name and definition of 
+&%PhysicalQuantity is borrowed from physics, &%PhysicalQuantities need 
+not be material.  Aside from the dimensions of length, time, velocity, 
+etc., nonphysical dimensions such as currency are also possible.  
+Accordingly, amounts of money would be instances of &%PhysicalQuantity.  
+&%PhysicalQuantities are distinguished from &%Numbers by the fact that 
+the former are associated with a dimension of measurement.")
+
+(subclass ConstantQuantity PhysicalQuantity)
+(documentation ConstantQuantity "A &%ConstantQuantity is a 
+&%PhysicalQuantity which has a constant value, e.g. 3 meters and 5 hours.  
+The magnitude (see &%MagnitudeFn) of every &%ConstantQuantity is a 
+&%RealNumber.  &%ConstantQuantities are distinguished from 
+&%FunctionQuantities, which map &%ConstantQuantities to other 
+&%ConstantQuantities.  All &%ConstantQuantites are expressed with the 
+&%BinaryFunction &%MeasureFn, which takes a &%Number and a &%UnitOfMeasure 
+as arguments.  For example, 3 &%Meters can be expressed as (&%MeasureFn 3 
+&%Meter).  &%ConstantQuantities form a partial order (see 
+&%PartialOrderingRelation) with the &%lessThan relation, since &%lessThan 
+is a &%RelationExtendedToQuantities and &%lessThan is defined over the 
+&%RealNumbers.  The &%lessThan relation is not a total order (see 
+&%TotalOrderingRelation) over the class &%ConstantQuantity since elements 
+of some subclasses of &%ConstantQuantity (such as length quantities) 
+are incomparable to elements of other subclasses of &%ConstantQuantity 
+(such as mass quantities).")
+
+(subclass TimeMeasure ConstantQuantity)
+(documentation TimeMeasure "The class of temporal durations (instances 
+of &%TimeDuration) and positions of &%TimePoints and &%TimeIntervals along 
+the universal timeline (instances of &%TimePosition).")
+
+(subclass TimeDuration TimeMeasure)
+(documentation TimeDuration "Any measure of length of time, 
+with or without respect to the universal timeline.")
+
+(subclass TimePosition TimeMeasure)
+(partition TimePosition TimeInterval TimePoint)
+(documentation TimePosition "Any &%TimePoint or &%TimeInterval 
+along the universal timeline from &%NegativeInfinity to 
+&%PositiveInfinity.")
+
+(subclass TimeInterval TimePosition)
+(documentation TimeInterval "An interval of time.  Note that a 
+&%TimeInterval has both an extent and a location on the universal 
+timeline.  Note too that a &%TimeInterval has no gaps, i.e. this 
+class contains only convex time intervals.")
+
+(subclass TimePoint TimePosition)
+(documentation TimePoint "An extensionless point on the universal timeline. 
+The &%TimePoints at which &%Processes occur can be known with various 
+degrees of precision and approximation, but conceptually &%TimePoints are 
+point-like and not interval-like.  That is, it doesn't make sense to talk 
+about how long a &%TimePoint lasts.")
+
+(subclass FunctionQuantity PhysicalQuantity)
+(subclass FunctionQuantity Function)
+(documentation FunctionQuantity "A &%FunctionQuantity is a &%Function that 
+maps from one or more instances of &%ConstantQuantity to another instance 
+of &%ConstantQuantity.  For example, the velocity of a particle would be 
+represented by a &%FunctionQuantity mapping values of time (which are 
+&%ConstantQuantities) to values of distance (also &%ConstantQuantities).  
+Note that all instances of &%FunctionQuantity are &%Functions with a fixed 
+arity.  Note too that all elements of the range of a &%FunctionQuantity 
+have the same physical dimension as the &%FunctionQuantity itself.")
+
+(subclass UnaryConstantFunctionQuantity FunctionQuantity)
+(subclass UnaryConstantFunctionQuantity UnaryFunction)
+(documentation UnaryConstantFunctionQuantity "The class of &%UnaryFunctions 
+that map from the &%Class &%ConstantQuantity to the &%Class 
+&%ConstantQuantity.")
+
+(=>
+   (instance ?FUNCTION UnaryConstantFunctionQuantity)
+   (and
+      (domain ?FUNCTION 1 ConstantQuantity)
+      (range ?FUNCTION ConstantQuantity)))
+
+(subclass TimeDependentQuantity UnaryConstantFunctionQuantity)
+(subclass TimeDependentQuantity ContinuousFunction)
+(documentation TimeDependentQuantity "A &%UnaryConstantFunction of continuous 
+time.  All instances of this &%Class map a time quantity into another 
+&%ConstantQuantity such as temperature.  For example, 'the temperature at 
+the top of the Empire State Building' is a &%TimeDependentQuantity since 
+its value depends on the time.")
+
+(=>
+   (instance ?FUNCTION TimeDependentQuantity)
+   (domain ?FUNCTION 1 TimeMeasure))
+
+(subclass SetOrClass Abstract)
+(partition SetOrClass Set Class)
+(documentation SetOrClass "The &%SetOrClass of &%Sets and &%Classes, i.e. any instance 
+of &%Abstract that has &%elements or &%instances.")
+
+(subclass Class SetOrClass)
+(documentation Class "&%Classes differ from &%Sets in three important respects.  
+First, &%Classes are not assumed to be extensional.  That is, distinct 
+&%Classes might well have exactly the same instances.  Second, &%Classes typically 
+have an associated `condition' that determines the instances of the &%Class.  So, 
+for example, the condition `human' determines the &%Class of &%Humans.  Note that 
+some &%Classes might satisfy their own condition (e.g., the &%Class of &%Abstract 
+things is &%Abstract) and hence be instances of themselves.  Third, the instances 
+of a class may occur only once within the class, i.e. a class cannot contain 
+duplicate instances.")
+
+(subclass Set SetOrClass)
+(documentation Set "A &%SetOrClass that satisfies extensionality as well as
+other constraints specified by some choice of set theory.  &%Sets differ 
+from &%Classes in two important respects.  First, &%Sets are extensional - 
+two &%Sets with the same &%elements are identical.  Second, a &%Set can be 
+an arbitrary stock of objects.  That is, there is no requirement that &%Sets 
+have an associated condition that determines their membership.  Note that &%Sets 
+are not assumed to be unique sets, i.e. &%elements of a &%Set may occur more 
+than once in the &%Set.")
+
+(subclass Relation Abstract)
+(disjointDecomposition Relation BinaryRelation TernaryRelation QuaternaryRelation QuintaryRelation VariableArityRelation)
+(partition Relation Predicate Function List)
+(partition Relation TotalValuedRelation PartialValuedRelation)
+(documentation Relation "The &%Class of relations.  There are three kinds 
+of &%Relation:  &%Predicate, &%Function, and &%List.  &%Predicates and 
+&%Functions both denote sets of ordered n-tuples.  The difference between 
+these two &%Classes is that &%Predicates cover formula-forming operators, while 
+&%Functions cover term-forming operators.  A &%List, on the other hand, is a 
+particular ordered n-tuple.")
+
+(=>
+   (instance ?REL Relation)
+   (<=> 
+        (holds ?REL @ROW)
+        (?REL @ROW)))
+
+;; The following part of the ontology covers the various classes under 
+;; 'Relation'.  Most of the content here is taken from frame-ontology, 
+;; abstract-algebra, kif-relations, and kif-extensions (ontologies 
+;; available on the Ontolingua server).
+
+(subclass SingleValuedRelation Relation)
+(instance SingleValuedRelation InheritableRelation)
+(documentation SingleValuedRelation "A &%Relation is a &%SingleValuedRelation 
+just in case an assignment of values to every argument position except the last 
+one determines at most one assignment for the last argument position.  Note 
+that not all &%SingleValuedRelations are &%TotalValuedRelations.")
+
+(=>
+   (instance ?REL SingleValuedRelation)
+   (forall (@ROW ?ITEM1 ?ITEM2)
+      (=>
+         (and
+            (holds ?REL @ROW ?ITEM1)
+            (holds ?REL @ROW ?ITEM2))
+         (equal ?ITEM1 ?ITEM2))))
+
+(subclass TotalValuedRelation Relation)
+(instance TotalValuedRelation InheritableRelation)
+(documentation TotalValuedRelation "A &%Relation is a &%TotalValuedRelation 
+just in case there exists an assignment for the last argument position of the 
+&%Relation given any assignment of values to every argument position except 
+the last one.  Note that declaring a &%Relation to be both a &%TotalValuedRelation 
+and a &%SingleValuedRelation means that it is a total function.")
+
+(<=>
+   (instance ?REL TotalValuedRelation)
+   (exists (?VALENCE)
+      (and
+         (instance ?REL Relation)
+         (valence ?REL ?VALENCE)
+         (=>
+            (forall (?NUMBER ?ELEMENT ?CLASS)
+               (=>
+                  (and
+                     (lessThan ?NUMBER ?VALENCE)
+                     (domain ?REL ?NUMBER ?CLASS)
+                     (equal ?ELEMENT (ListOrderFn (ListFn @ROW) ?NUMBER)))
+                  (instance ?ELEMENT ?CLASS)))
+            (exists (?ITEM)
+               (holds ?REL @ROW ?ITEM))))))
+
+(subclass PartialValuedRelation Relation)
+(documentation PartialValuedRelation "A &%Relation is a &%PartialValuedRelation 
+just in case it is not a &%TotalValuedRelation, i.e. just in case assigning values 
+to every argument position except the last one does not necessarily mean that there 
+is a value assignment for the last argument position.  Note that, if a &%Relation 
+is both a &%PartialValuedRelation and a &%SingleValuedRelation, then it is a partial 
+function.")
+
+(subclass BinaryRelation Relation)
+(instance BinaryRelation InheritableRelation)
+(documentation BinaryRelation "&%BinaryRelations are relations that are 
+true only of pairs of things.  &%BinaryRelations are represented as slots 
+in frame systems.")
+
+(=>
+   (instance ?REL BinaryRelation)
+   (not
+      (exists (?ITEM1 ?ITEM2 ?ITEM3 @ROW)
+         (holds ?REL ?ITEM1 ?ITEM2 ?ITEM3 @ROW))))
+
+(subclass ReflexiveRelation BinaryRelation)
+(documentation ReflexiveRelation "&%Relation ?REL is reflexive if 
+(?REL ?INST ?INST) for all ?INST.")
+
+(=>
+   (instance ?REL ReflexiveRelation)
+   (=>
+      (or
+         (holds ?REL ?INST1 ?INST2)
+         (holds ?REL ?INST2 ?INST1))
+      (holds ?REL ?INST1 ?INST1)))
+
+(subclass IrreflexiveRelation BinaryRelation)
+(documentation IrreflexiveRelation "&%Relation ?REL is irreflexive 
+if (?REL ?INST ?INST) holds for no value of ?INST.")
+
+(=>
+   (instance ?REL IrreflexiveRelation)
+   (forall (?INST)
+      (not 
+         (holds ?REL ?INST ?INST))))
+
+(subclass SymmetricRelation BinaryRelation)
+(documentation SymmetricRelation "A &%BinaryRelation ?REL is
+symmetric just in case (?REL ?INST1 ?INST2) imples (?REL 
+?INST2 ?INST1), for all ?INST1 and ?INST2.")
+
+
+(=>
+   (instance ?REL SymmetricRelation)
+   (forall (?INST1 ?INST2)
+      (=>
+         (holds ?REL ?INST1 ?INST2)
+         (holds ?REL ?INST2 ?INST1))))
+
+(subclass AsymmetricRelation IrreflexiveRelation)
+(subclass AsymmetricRelation AntisymmetricRelation)
+(documentation AsymmetricRelation "A &%BinaryRelation is asymmetric only 
+if it is both an &%AntisymmetricRelation and an &%IrreflexiveRelation.")
+
+(=>
+   (and
+      (instance ?REL BinaryRelation)
+      (or
+         (domain ?REL 1 ?CLASS1)
+         (domainSubclass ?REL 1 ?CLASS1))
+      (or
+         (domain ?REL 2 ?CLASS2)
+         (domainSubclass ?REL 2 ?CLASS2)
+         (range ?REL ?CLASS2)
+         (rangeSubclass ?REL ?CLASS2))
+      (disjoint ?CLASS1 ?CLASS2))
+   (instance ?REL AsymmetricRelation))
+
+(subclass AntisymmetricRelation BinaryRelation)
+(documentation AntisymmetricRelation "&%BinaryRelation ?REL is an 
+&%AntisymmetricRelation if for distinct ?INST1 and ?INST2, (?REL ?INST1 
+?INST2) implies not (?REL ?INST2 ?INST1).  In other words, for all ?INST1 
+and ?INST2, (?REL ?INST1 ?INST2) and (?REL ?INST2 ?INST1) imply that ?INST1 
+and ?INST2 are identical.  Note that it is possible for an 
+&%AntisymmetricRelation to be a &%ReflexiveRelation.")
+
+(=>
+   (instance ?REL AntisymmetricRelation)
+   (forall (?INST1 ?INST2)
+      (=>
+         (and
+            (holds ?REL ?INST1 ?INST2)
+            (holds ?REL ?INST2 ?INST1))
+         (equal ?INST1 ?INST2))))
+
+(subclass TrichotomizingRelation BinaryRelation)
+(documentation TrichotomizingRelation "A &%BinaryRelation ?REL is a 
+&%TrichotomizingRelation just in case all ordered pairs consisting of 
+distinct individuals are elements of ?REL.") 
+
+(=>
+   (instance ?REL TrichotomizingRelation)
+   (forall (?INST1 ?INST2)
+      (or
+         (holds ?REL ?INST1 ?INST2) 
+         (equal ?INST1 ?INST2) 
+         (holds ?REL ?INST2 ?INST1))))
+
+(subclass TransitiveRelation BinaryRelation)
+(documentation TransitiveRelation "A &%BinaryRelation ?REL is transitive 
+if (?REL ?INST1 ?INST2) and (?REL ?INST2 ?INST3) imply (?REL ?INST1 ?INST3), 
+for all ?INST1, ?INST2, and ?INST3.")
+
+(=>
+   (instance ?REL TransitiveRelation)
+   (forall (?INST1 ?INST2 ?INST3)
+      (=>
+         (and
+            (holds ?REL ?INST1 ?INST2)
+            (holds ?REL ?INST2 ?INST3))
+         (holds ?REL ?INST1 ?INST3))))
+
+(subclass IntransitiveRelation BinaryRelation)
+(documentation IntransitiveRelation "A &%BinaryRelation ?REL is 
+intransitive only if (?REL ?INST1 ?INST2) and (?REL ?INST2 ?INST3) imply not 
+(?REL ?INST1 ?INST3), for all ?INST1, ?INST2, and ?INST3.")
+
+(=> 
+   (instance ?REL IntransitiveRelation)
+   (forall (?INST1 ?INST2 ?INST3)
+      (=> 
+         (and 
+            (holds ?REL ?INST1 ?INST2)
+            (holds ?REL ?INST2 ?INST3))
+         (not 
+            (holds ?REL ?INST1 ?INST3)))))
+
+(subclass PartialOrderingRelation TransitiveRelation)
+(subclass PartialOrderingRelation AntisymmetricRelation)
+(subclass PartialOrderingRelation ReflexiveRelation)
+(documentation PartialOrderingRelation "A &%BinaryRelation is a partial 
+ordering if it is a &%ReflexiveRelation, an &%AntisymmetricRelation, and 
+a &%TransitiveRelation.")
+
+(subclass TotalOrderingRelation PartialOrderingRelation)
+(subclass TotalOrderingRelation TrichotomizingRelation)
+(documentation TotalOrderingRelation  "A &%BinaryRelation is a 
+&%TotalOrderingRelation if it is a &%PartialOrderingRelation 
+and a &%TrichotomizingRelation.")
+
+(=>
+   (instance ?REL TotalOrderingRelation)
+   (forall (?INST1 ?INST2)
+      (or
+         (holds ?REL ?INST1 ?INST2)
+         (holds ?REL ?INST2 ?INST1))))
+
+(subclass EquivalenceRelation TransitiveRelation)
+(subclass EquivalenceRelation SymmetricRelation)
+(subclass EquivalenceRelation ReflexiveRelation)
+(documentation EquivalenceRelation "A &%BinaryRelation is an equivalence 
+relation if it is a &%ReflexiveRelation, a &%SymmetricRelation, and a 
+&%TransitiveRelation.")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; SUMO Refers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(instance refers BinaryPredicate)
+(domain refers 1 Physical)
+(domain refers 2 Entity)
+(documentation refers "(&%refers ?OBJ1 ?OBJ2) means that ?OBJ1 
+mentions or includes a reference to ?OBJ2. Note that &%refers is 
+more general in meaning than &%represents, because presumably something 
+can represent something else only if it refers to this other thing.  
+For example, an article whose topic is a recent change in the price of 
+oil may refer to many other things, e.g. the general state of the economy, 
+the weather in California, the prospect of global warming, the options 
+for alternative energy sources, the stock prices of various oil companies, 
+etc.")
+
+(subrelation names refers)
+(domain names 1 SymbolicString)
+(documentation names "(&%names ?STRING ?ENTITY) means that the thing ?ENTITY 
+has the &%SymbolicString ?STRING as its name.  Note that &%names and &%represents 
+are the two immediate &%subrelations of &%refers.  The predicate &%names is used 
+when the referring item is merely a tag without connotative content, while the 
+predicate &%represents is used for referring items that have such content.")
+
+(subrelation uniqueIdentifier names)
+(instance uniqueIdentifier SingleValuedRelation)
+(documentation uniqueIdentifier "The class of &%names that uniquely identify 
+an instance of &%Entity.  Some examples of &%uniqueIdentifiers are the keys 
+of tables in database applications and the ISBN (International Standard Book 
+Number).")
+
+(subrelation represents refers)
+(documentation represents "A very general semiotics &%Predicate.  
+(&%represents ?THING ?ENTITY) means that ?THING in some way indicates, 
+expresses, connotes, pictures, describes, etc. ?ENTITY.  The &%Predicates 
+&%containsInformation and &%realization are subrelations of &%represents.  
+Note that &%represents is a subrelation of &%refers, since something can 
+represent something else only if it refers to this other thing.  See the 
+documentation string for &%names.") 
+
+(instance representsForAgent TernaryPredicate)
+(domain representsForAgent 1 Physical)
+(domain representsForAgent 2 Entity)
+(domain representsForAgent 3 Agent)
+(documentation representsForAgent "A very general predicate.  
+(&%representsForAgent ?THING ?ENTITY ?AGENT) means that the ?AGENT 
+chooses to use the &%instance of &%Physical ?THING to 'stand for' 
+?ENTITY.")
+
+(=>
+   (representsForAgent ?REP ?ENTITY ?AGENT)
+   (represents ?REP ?ENTITY))
+
+(instance representsInLanguage TernaryPredicate)
+(domain representsInLanguage 1 LinguisticExpression)
+(domain representsInLanguage 2 Entity)
+(domain representsInLanguage 3 Language)
+(documentation representsInLanguage "A very general predicate.  
+(&%representsInLanguage ?THING ?ENTITY ?LANGUAGE) means that the 
+&%LinguisticExpression ?THING stands for ?ENTITY in the &%Language 
+?LANGUAGE.")
+
+(=>
+   (representsInLanguage ?REP ?ENTITY ?LANGUAGE)
+   (exists (?AGENT)
+      (representsForAgent ?REP ?ENTITY ?AGENT)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; SUMO Language
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(subclass Object Physical)  ;;; POD FIX ME!
+(documentation Object "Corresponds roughly to the class of ordinary 
+objects.  Examples include normal physical objects, geographical regions, 
+and locations of &%Processes, the complement of &%Objects in the &%Physical 
+class.  In a 4D ontology, an &%Object is something whose spatiotemporal 
+extent is thought of as dividing into spatial parts roughly parallel to the 
+time-axis.")
+
+(subclass SelfConnectedObject Object)
+(documentation SelfConnectedObject "A &%SelfConnectedObject is any 
+&%Object that does not consist of two or more disconnected parts.")
+
+(subclass CorpuscularObject SelfConnectedObject)
+(disjoint CorpuscularObject Substance)
+(documentation CorpuscularObject "A &%SelfConnectedObject whose parts have 
+properties that are not shared by the whole.")
+
+(=>
+   (instance ?OBJ CorpuscularObject)
+   (exists (?SUBSTANCE1 ?SUBSTANCE2)
+      (and
+         (subclass ?SUBSTANCE1 Substance)
+         (subclass ?SUBSTANCE2 Substance)
+         (material ?SUBSTANCE1 ?OBJ)
+         (material ?SUBSTANCE2 ?OBJ)
+         (not (equal ?SUBSTANCE1 ?SUBSTANCE2)))))
+
+
+(subclass LinguisticExpression ContentBearingObject)
+(disjoint LinguisticExpression Icon)
+(documentation LinguisticExpression "This is the subclass of 
+&%ContentBearingObjects which are language-related.  Note that this &%Class 
+encompasses both &%Language and the the elements of &%Languages, 
+e.g. &%Words.")
+
+(subclass Language LinguisticExpression)
+(disjointDecomposition Language AnimalLanguage HumanLanguage ComputerLanguage)
+(documentation Language "A system of signs for expressing thought.  The 
+system can be either natural or artificial, i.e. something that emerges 
+gradually as a cultural artifact or something that is intentionally created 
+by a person or group of people.")
+
+(subclass ContentBearingObject CorpuscularObject)
+(relatedInternalConcept ContentBearingObject containsInformation)
+(documentation ContentBearingObject "Any &%SelfConnectedObject that expresses 
+information.")
+
+(subclass Procedure Proposition)
+(documentation Procedure "A sequence-dependent specification.  Some 
+examples are &%ComputerPrograms, finite-state machines, cooking recipes, 
+musical scores, conference schedules, driving directions, and the scripts 
+of plays and movies.")
+
+(subclass IntentionalPsychologicalProcess IntentionalProcess)
+(subclass IntentionalPsychologicalProcess PsychologicalProcess)
+(documentation IntentionalPsychologicalProcess "An &%IntentionalProcess that 
+can be realized entirely within the mind or brain of an &%Organism.  Thus, 
+for example, &%Reasoning is a subclass of &%IntentionalPsychologicalProcess, 
+because one can reason simply by exercising one's mind/brain.  On the other 
+hand, &%RecreationOrExercise is not a subclass of &%IntentionalPsychologicalProcess,
+because many instances of &%RecreationOrExercise necessarily have &%subProcesses 
+of &%BodyMotion.")
+
+
+(subclass Planning IntentionalPsychologicalProcess)
+(documentation Planning "Specifying a set of actions in order to meet a 
+set of goals or objectives.")
+
+(subclass Plan Procedure)
+(documentation Plan "A specification of a sequence of &%Processes which 
+is intended to satisfy a specified purpose at some future time.")
+
+(=>
+    (and
+       (instance ?PLAN Plan)
+       (instance ?OBJ ContentBearingObject)
+       (containsInformation ?OBJ ?PLAN))
+    (exists (?PLANNING)
+       (and
+          (instance ?PLANNING Planning)
+          (result ?PLANNING ?OBJ))))
+
+(=>
+    (instance ?PLAN Plan)
+    (exists (?PURP)
+        (hasPurpose ?PLAN ?PURP)))
+
+(subclass SymbolicString ContentBearingObject)
+(documentation SymbolicString "The &%Class of alphanumeric sequences.")
+
+(subclass Character SymbolicString)
+(documentation Character "An element of an alphabet, a set of numerals, etc.  
+Note that a &%Character may or may not be part of a &%Language.  &%Character 
+is a subclass of &%SymbolicString, because every instance of &%Character is 
+an alphanumeric sequence consisting of a single element.")
+
+(=>
+    (instance ?STRING SymbolicString)
+    (exists (?PART)
+        (and
+            (part ?PART ?STRING)
+            (instance ?PART Character)))) 
+
+(instance containsInformation BinaryPredicate)
+(instance containsInformation AsymmetricRelation)
+(subrelation containsInformation represents)
+(domain containsInformation 1 ContentBearingObject)
+(domain containsInformation 2 Proposition)
+(documentation containsInformation "A subrelation of &%represents.  This 
+predicate relates a &%ContentBearingObject to the &%Proposition that is 
+expressed by the &%ContentBearingObject. Examples include the relationships 
+between a physical novel and its story and between a printed score and its 
+musical content.")
+
+(subclass Icon ContentBearingObject)
+(documentation Icon "This is the subclass of &%ContentBearingObjects 
+which are not part of a &%Language and which have some sort of similarity 
+with the &%Objects that they represent.  This &%Class would include symbolic 
+roadway signs, representational art works, photographs, etc.")
+
+(subrelation realization represents)
+(instance realization AsymmetricRelation)
+(domain realization 1 Process)
+(domain realization 2 Proposition)
+(relatedInternalConcept realization equivalentContentInstance)
+(relatedInternalConcept realization containsInformation)
+(documentation realization "A subrelation of &%represents.  
+(&%realization ?PROCESS ?PROP) means that ?PROCESS is a Process which 
+expresses the content of ?PROP. Examples include a particular musical 
+performance, which realizes the content of a musical score, or the 
+reading of a poem.")
+
+(=>
+   (realization ?PROCESS ?PROP)
+   (exists (?OBJ)
+      (and
+         (instance ?OBJ ContentBearingObject)
+         (containsInformation ?OBJ ?PROP))))
+
+(instance expressedInLanguage BinaryPredicate)
+(instance expressedInLanguage AsymmetricRelation)
+(domain expressedInLanguage 1 LinguisticExpression)
+(domain expressedInLanguage 2 Language)
+(documentation expressedInLanguage "(&%expressedInLanguage ?EXPRESS ?LANG) 
+means that ?EXPRESS is expressed in &%Language ?LANG.")
+
+(<=> 
+	(expressedInLanguage ?EXPRESS ?LANGUAGE) 
+	(exists (?PROP) 
+		(representsInLanguage ?EXPRESS ?PROP ?LANGUAGE)))
+
+(instance subProposition BinaryPredicate)
+(instance subProposition TransitiveRelation)
+(instance subProposition IrreflexiveRelation)
+(domain subProposition 1 Proposition)
+(domain subProposition 2 Proposition)
+(documentation subProposition "(&%subProposition ?PROP1 ?PROP2) means that 
+?PROP1 is a &%Proposition which is a proper part of the &%Proposition ?PROP2.  
+In other words, &%subProposition is the analogue of &%properPart for chunks 
+of abstract content.")
+
+(=>
+   (subProposition ?PROP1 ?PROP2)
+   (forall (?OBJ1 ?OBJ2)
+      (=>
+         (and
+            (containsInformation ?OBJ1 ?PROP1)
+            (containsInformation ?OBJ2 ?PROP2))
+         (subsumesContentInstance ?OBJ2 ?OBJ1))))
+
+(subclass Predicate Relation)
+(instance Predicate InheritableRelation)
+(documentation Predicate "A &%Predicate is a sentence-forming &%Relation.  
+Each tuple in the &%Relation is a finite, ordered sequence of objects.  
+The fact that a particular tuple is an element of a &%Predicate is denoted 
+by '(*predicate* arg_1 arg_2 .. arg_n)', where the arg_i are the 
+objects so related.  In the case of &%BinaryPredicates, the fact can
+be read as `arg_1 is *predicate* arg_2' or `a *predicate* of
+arg_1 is arg_2'.")
+
+(subclass Function SingleValuedRelation)
+(instance Function InheritableRelation)
+(documentation Function "A &%Function is a term-forming &%Relation that 
+maps from a n-tuple of arguments to a range and that associates this 
+n-tuple with at most one range element.  Note that the range is a &%SetOrClass, 
+and each element of the range is an instance of the &%SetOrClass.")
+
+(subclass UnaryFunction Function)
+(subclass UnaryFunction BinaryRelation)
+(instance UnaryFunction InheritableRelation)
+(documentation UnaryFunction "The &%Class of &%Functions that require a 
+single argument.")
+
+(=>
+   (instance ?FUNCTION UnaryFunction)
+   (valence ?FUNCTION 1))
+
+(subclass OneToOneFunction UnaryFunction)
+(documentation OneToOneFunction "The &%Class of &%UnaryFunctions which 
+are one to one.  A function F is one to one just in case for all X, Y in the 
+domain of F, if X is not identical to Y, then F(X) is not identical to F(Y).")
+
+(=> 
+   (instance ?FUN OneToOneFunction) 
+   (forall (?ARG1 ?ARG2) 
+      (=> 
+         (and 
+            (domain ?FUN 1 ?CLASS)
+            (instance ?ARG1 ?CLASS)
+            (instance ?ARG2 ?CLASS)
+            (not (equal ?ARG1 ?ARG2))) 
+         (not (equal (AssignmentFn ?FUN ?ARG1) (AssignmentFn ?FUN ?ARG2))))))
+
+(subclass SequenceFunction OneToOneFunction)
+(documentation SequenceFunction "The &%Class of &%OneToOneFunctions whose range 
+is a subclass of the &%PositiveIntegers.")
+
+(=> 
+   (and
+      (instance ?SEQ SequenceFunction) 
+      (range ?SEQ ?CLASS))
+   (subclass ?CLASS Integer))
+
+(subclass BinaryFunction Function)
+(subclass BinaryFunction TernaryRelation)
+(instance BinaryFunction InheritableRelation)
+(documentation BinaryFunction "The &%Class of &%Functions that require 
+two arguments.")
+
+(=>
+	(instance ?FUNCTION BinaryFunction)
+	(valence ?FUNCTION 2))
+
+(subclass AssociativeFunction BinaryFunction)
+(documentation AssociativeFunction "A &%BinaryFunction is associative if 
+bracketing has no effect on the value returned by the &%Function.  More 
+precisely, a &%Function ?FUNCTION is associative just in case 
+(?FUNCTION ?INST1 (?FUNCTION ?INST2 ?INST3)) is equal to 
+(?FUNCTION (?FUNCTION ?INST1 ?INST2) ?INST3), for all ?INST1, ?INST2, 
+and ?INST3.")
+
+(=>
+   (instance ?FUNCTION AssociativeFunction)
+   (forall (?INST1 ?INST2 ?INST3)
+      (=>
+         (and
+            (domain ?FUNCTION 1 ?CLASS)
+            (instance ?INST1 ?CLASS)
+            (instance ?INST2 ?CLASS)
+            (instance ?INST3 ?CLASS))
+         (equal (AssignmentFn ?FUNCTION ?INST1 (AssignmentFn ?FUNCTION ?INST2 ?INST3))
+             (AssignmentFn ?FUNCTION (AssignmentFn ?FUNCTION ?INST1 ?INST2) ?INST3)))))
+
+(subclass CommutativeFunction BinaryFunction)
+(documentation CommutativeFunction "A &%BinaryFunction is commutative if 
+the ordering of the arguments of the function has no effect on the value 
+returned by the function.  More precisely, a function ?FUNCTION is 
+commutative just in case (?FUNCTION ?INST1 ?INST2) is equal to (?FUNCTION 
+?INST2 ?INST1), for all ?INST1 and ?INST2.")
+
+(=>
+   (instance ?FUNCTION CommutativeFunction)
+   (forall (?INST1 ?INST2)
+      (=>
+         (and
+            (domain ?FUNCTION 1 ?CLASS)
+            (instance ?INST1 ?CLASS)
+            (instance ?INST2 ?CLASS))
+         (equal (AssignmentFn ?FUNCTION ?INST1 ?INST2) 
+                (AssignmentFn ?FUNCTION ?INST2 ?INST1)))))
+
+(subclass TernaryFunction Function)
+(subclass TernaryFunction QuaternaryRelation)
+(instance TernaryFunction InheritableRelation)
+(documentation TernaryFunction "The &%Class of &%Functions that require 
+exactly three arguments.")
+
+(=>
+	(instance ?FUNCTION TernaryFunction)
+	(valence ?FUNCTION 3))
+
+(subclass QuaternaryFunction Function)
+(subclass QuaternaryFunction QuintaryRelation)
+(instance QuaternaryFunction InheritableRelation)
+(documentation QuaternaryFunction "The &%Class of &%Functions that require 
+exactly four arguments.")
+
+(=>
+	(instance ?FUNCTION QuaternaryFunction)
+	(valence ?FUNCTION 4))
+
+(subclass ContinuousFunction Function)
+(documentation ContinuousFunction "&%Functions which are continuous.  
+This concept is taken as primitive until representations for limits 
+are devised.")
+
+(subclass LogicalOperator Predicate)
+(documentation LogicalOperator "This &%Class currently comprises all 
+of the logical operators (viz. 'and', 'or', 'not', '=>', and '<=>').")
+
+(subclass BinaryPredicate Predicate)
+(subclass BinaryPredicate BinaryRelation)
+(instance BinaryPredicate InheritableRelation)
+(documentation BinaryPredicate "A &%Predicate relating two items - its 
+valence is two.")
+
+(=>
+	(instance ?REL BinaryPredicate)
+	(valence ?REL 2))
+
+(subclass TernaryPredicate Predicate)
+(subclass TernaryPredicate TernaryRelation)
+(instance TernaryPredicate InheritableRelation)
+(documentation TernaryPredicate "The &%Class of &%Predicates that require 
+exactly three arguments.")
+
+(=>
+	(instance ?REL TernaryPredicate)
+	(valence ?REL 3))
+
+(subclass QuaternaryPredicate Predicate)
+(subclass QuaternaryPredicate QuaternaryRelation)
+(instance QuaternaryPredicate InheritableRelation)
+(documentation QuaternaryPredicate "The &%Class of &%Predicates that 
+require four arguments.")
+
+(=>
+	(instance ?REL QuaternaryPredicate)
+	(valence ?REL 4))
+
+(subclass QuintaryPredicate Predicate)
+(subclass QuintaryPredicate QuintaryRelation)
+(instance QuintaryPredicate InheritableRelation)
+(documentation QuintaryPredicate "The &%Class of &%Predicates that 
+require five arguments.")
+
+(=>
+	(instance ?REL QuintaryPredicate)
+	(valence ?REL 5))
+
+(subclass VariableArityRelation Relation)
+(documentation VariableArityRelation "The &%Class of &%Relations that 
+do not have a fixed number of arguments.")
+
+(=>
+        (instance ?REL VariableArityRelation)
+        (not
+           (exists (?INT)
+              (valence ?REL ?INT))))
+
+(subclass RelationExtendedToQuantities Relation)
+(instance RelationExtendedToQuantities InheritableRelation)
+(documentation RelationExtendedToQuantities "A 
+&%RelationExtendedToQuantities is a &%Relation that, when it is true on 
+a sequence of arguments that are &%RealNumbers, it is also true on a 
+sequence of &%ConstantQuantites with those magnitudes in some unit of 
+measure.  For example, the &%lessThan relation is extended to quantities.  
+This means that for all pairs of quantities ?QUANTITY1 and ?QUANTITY2, 
+(lessThan ?QUANTITY1 ?QUANTITY2) if and only if, for some ?NUMBER1, 
+?NUMBER2, and ?UNIT, ?QUANTITY1 = (MeasureFn ?NUMBER1 ?UNIT), 
+?QUANTITY2 = (MeasureFn ?NUMBER2 ?UNIT), and (lessThan ?NUMBER1 ?NUMBER2), 
+for all units ?UNIT on which ?QUANTITY1 and ?QUANTITY2 can be measured.  
+Note that, when a &%RelationExtendedToQuantities is extended from 
+&%RealNumbers to &%ConstantQuantities, the &%ConstantQuantities must be 
+measured along the same physical dimension.")
+
+
+(subclass Proposition Abstract)
+(documentation Proposition "&%Propositions are &%Abstract entities that 
+express a complete thought or a set of such thoughts.  As an example, 
+the formula '(instance Yojo Cat)' expresses the &%Proposition that the 
+entity named Yojo is an element of the &%Class of Cats.  Note that 
+propositions are not restricted to the content expressed by individual 
+sentences of a &%Language.  They may encompass the content expressed by 
+theories, books, and even whole libraries.  It is important to distinguish 
+&%Propositions from the &%ContentBearingObjects that express them.  A 
+&%Proposition is a piece of information, e.g. that the cat is on the mat, 
+but a &%ContentBearingObject is an &%Object that represents this information.  
+A &%Proposition is an abstraction that may have multiple representations: 
+strings, sounds, icons, etc.  For example, the &%Proposition that the cat is 
+on the mat is represented here as a string of graphical characters displayed 
+on a monitor and/or printed on paper, but it can be represented by a sequence 
+of sounds or by some non-latin alphabet or by some cryptographic form")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;  Stuff added on or after 2005-03-10 to complete some missing references
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(instance holdsDuring BinaryPredicate)
+(instance holdsDuring AsymmetricRelation)
+(domain holdsDuring 1 TimePosition)
+(domain holdsDuring 2 Formula)
+(documentation holdsDuring "(&%holdsDuring ?TIME ?FORMULA) means that the 
+proposition denoted by ?FORMULA is true in the time frame ?TIME.  Note 
+that this implies that ?FORMULA is true at every &%TimePoint which is a 
+&%temporalPart of ?TIME.")
+
+(=>
+   (and
+      (holdsDuring ?TIME ?SITUATION1)
+      (entails ?SITUATION1 ?SITUATION2))
+   (holdsDuring ?TIME ?SITUATION2))
+
+(=>
+   (holdsDuring ?TIME (not ?SITUATION))
+   (not (holdsDuring ?TIME ?SITUATION)))
+
+(instance temporalPart BinaryPredicate)
+(instance temporalPart TemporalRelation)
+(instance temporalPart PartialOrderingRelation)
+(domain temporalPart 1 TimePosition)
+(domain temporalPart 2 TimePosition)
+(documentation temporalPart "The temporal analogue of the spatial &%part predicate.  
+(&%temporalPart ?POS1 ?POS2) means that &%TimePosition ?POS1 is part of &%TimePosition ?POS2.  Note that since &%temporalPart is a &%ReflexiveRelation every &%TimePostion is a 
+&%temporalPart of itself.")
+
+(=>
+   (instance ?POINT TimePoint)
+   (exists (?INTERVAL)
+      (and
+         (instance ?INTERVAL TimeInterval)
+         (temporalPart ?POINT ?INTERVAL))))
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (exists (?POINT)
+      (and
+         (instance ?POINT TimePoint)
+         (temporalPart ?POINT ?INTERVAL))))
+
+(=>
+   (and
+      (holdsDuring ?TIME1 ?SITUATION)
+      (temporalPart ?TIME2 ?TIME1))
+   (holdsDuring ?TIME2 ?SITUATION))
+
+(=>
+   (and
+      (holdsDuring ?INTERVAL (holds ?REL ?INST1 ?INST2))
+      (instance ?INST1 Physical)
+      (instance ?INST2 Physical))
+   (and
+      (time ?INST1 ?INTERVAL)
+      (time ?INST2 ?INTERVAL)))
+
+(<=>
+   (temporalPart ?POS (WhenFn ?THING))
+   (time ?THING ?POS))
+
+(instance BeginFn TemporalRelation)
+(instance BeginFn UnaryFunction)
+(instance BeginFn TotalValuedRelation)
+(domain BeginFn 1 TimeInterval)
+(range BeginFn TimePoint)
+(documentation BeginFn "A &%UnaryFunction that maps a &%TimeInterval to 
+the &%TimePoint at which the interval begins.")
+
+(=>
+   (origin ?PROCESS ?OBJ)
+   (located (WhereFn ?PROCESS (BeginFn (WhenFn ?PROCESS))) (WhereFn ?OBJ (BeginFn (WhenFn ?OBJ)))))
+
+(=>
+   (equal (BeginFn ?INTERVAL) ?POINT)
+   (forall (?OTHERPOINT)
+      (=>
+         (and
+            (temporalPart ?OTHERPOINT ?INTERVAL)
+            (not (equal ?OTHERPOINT ?POINT)))
+         (before ?POINT ?OTHERPOINT))))
+
+(instance EndFn TemporalRelation)
+(instance EndFn UnaryFunction)
+(instance EndFn TotalValuedRelation)
+(domain EndFn 1 TimeInterval)
+(range EndFn TimePoint)
+(documentation EndFn "A &%UnaryFunction that maps a &%TimeInterval to 
+the &%TimePoint at which the interval ends.")
+
+(=>
+   (equal (EndFn ?INTERVAL) ?POINT)
+   (forall (?OTHERPOINT)
+      (=>
+         (and
+            (temporalPart ?OTHERPOINT ?INTERVAL)
+            (not (equal ?OTHERPOINT ?POINT)))
+         (before ?OTHERPOINT ?POINT))))
+
+(=>
+     (and
+          (resource ?PROC ?OBJ)
+          (holdsDuring (BeginFn (WhenFn ?PROC)) (measure ?OBJ ?QUANT1))
+          (holdsDuring (EndFn (WhenFn ?PROC)) (measure ?OBJ ?QUANT2)))
+     (greaterThan ?QUANT1 ?QUANT2))
+
+(subrelation starts temporalPart)
+(instance starts TemporalRelation)
+(instance starts TransitiveRelation)
+(instance starts IrreflexiveRelation)
+(domain starts 1 TimeInterval)
+(domain starts 2 TimeInterval)
+(documentation starts "(&%starts ?INTERVAL1 ?INTERVAL2) means that 
+?INTERVAL1 and ?INTERVAL2 are both &%TimeIntervals that have the same 
+initial &%TimePoint and that ?INTERVAL1 ends before ?INTERVAL2.")
+
+(<=> 
+   (starts ?INTERVAL1 ?INTERVAL2)
+   (and 
+      (equal
+         (BeginFn ?INTERVAL1)
+	   (BeginFn ?INTERVAL2))
+      (before
+         (EndFn ?INTERVAL1)
+  	   (EndFn ?INTERVAL2))))
+
+(subrelation finishes temporalPart)
+(instance finishes TemporalRelation)
+(instance finishes TransitiveRelation)
+(instance finishes IrreflexiveRelation)
+(domain finishes 1 TimeInterval)
+(domain finishes 2 TimeInterval)
+(documentation finishes "(&%finishes ?INTERVAL1 ?INTERVAL2) means that 
+?INTERVAL1 and ?INTERVAL2 are both &%TimeIntervals that have the same 
+ending &%TimePoint and that ?INTERVAL2 begins before ?INTERVAL1.")
+
+(<=>
+   (finishes ?INTERVAL1 ?INTERVAL2)
+   (and
+      (before
+         (BeginFn ?INTERVAL2)
+         (BeginFn ?INTERVAL1))
+      (equal
+         (EndFn ?INTERVAL2)
+         (EndFn ?INTERVAL1))))
+
+(instance before TemporalRelation)
+(instance before IrreflexiveRelation)
+(instance before TransitiveRelation)
+(subrelation before beforeOrEqual)
+(relatedInternalConcept before earlier)
+(domain before 1 TimePoint)
+(domain before 2 TimePoint)
+(documentation before "(&%before ?POINT1 ?POINT2) means that ?POINT1 
+precedes ?POINT2 on the universal timeline.")
+
+;; An Object exists (and, hence, retains its identity) over time, i.e., 
+;; an object exists at every point over some interval of time.
+
+(=> 
+    (instance ?OBJ Object)
+    (exists (?TIME1 ?TIME2)
+       (and 
+          (instance ?TIME1 TimePoint) 
+          (instance ?TIME2 TimePoint) 
+          (before ?TIME1 ?TIME2)
+          (forall (?TIME)
+             (=> 
+	         (and 
+		     (beforeOrEqual ?TIME1 ?TIME) 
+                 (beforeOrEqual ?TIME ?TIME2))
+               (time ?OBJ ?TIME))))))
+
+(=>
+   (result ?PROC ?OBJ)
+   (forall (?TIME)
+      (=>
+         (before ?TIME (BeginFn (WhenFn ?PROC)))
+         (not
+            (time ?OBJ ?TIME)))))
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (before (BeginFn ?INTERVAL) (EndFn ?INTERVAL)))
+
+(instance beforeOrEqual BinaryPredicate)
+(instance beforeOrEqual TemporalRelation)
+(instance beforeOrEqual PartialOrderingRelation)
+(domain beforeOrEqual 1 TimePoint)
+(domain beforeOrEqual 2 TimePoint)
+(documentation beforeOrEqual "(&%beforeOrEqual ?POINT1 ?POINT2) means that ?POINT1 
+is identical with ?POINT2 or occurs before it on the universal timeline.")
+
+(=> 
+   (beforeOrEqual ?POINT1 ?POINT2)
+   (or 
+       (before ?POINT1 ?POINT2) 
+       (equal ?POINT1 ?POINT2)))
+
+(instance temporallyBetween TemporalRelation)
+(instance temporallyBetween TernaryPredicate)
+(subrelation temporallyBetween temporallyBetweenOrEqual)
+(domain temporallyBetween 1 TimePoint)
+(domain temporallyBetween 2 TimePoint)
+(domain temporallyBetween 3 TimePoint)
+(documentation temporallyBetween "(&%temporallyBetween ?POINT1 ?POINT2 
+?POINT3) means that the &%TimePoint ?POINT2 is between the &%TimePoints 
+?POINT1 and ?POINT3, i.e. ?POINT1 is before ?POINT2 and ?POINT2 is before 
+?POINT3.")
+
+(<=>
+   (temporallyBetween ?POINT1 ?POINT2 ?POINT3)
+   (and
+      (before ?POINT1 ?POINT2)
+      (before ?POINT2 ?POINT3))) 
+
+(instance temporallyBetweenOrEqual TemporalRelation)
+(instance temporallyBetweenOrEqual TernaryPredicate)
+(domain temporallyBetweenOrEqual 1 TimePoint)
+(domain temporallyBetweenOrEqual 2 TimePoint)
+(domain temporallyBetweenOrEqual 3 TimePoint)
+(documentation temporallyBetweenOrEqual "(&%temporallyBetweenOrEqual ?POINT1 ?POINT2 
+?POINT3) means that the &%TimePoint ?POINT1 is before or equal to the 
+&%TimePoint ?POINT2 and ?POINT2 is before or equal to the &%TimePoint 
+?POINT3.")
+
+(<=>
+   (temporallyBetweenOrEqual ?POINT1 ?POINT2 ?POINT3)
+   (and
+      (beforeOrEqual ?POINT1 ?POINT2)
+      (beforeOrEqual ?POINT2 ?POINT3)))
+
+(<=>
+   (and
+      (time ?PHYS ?TIME)
+      (instance ?TIME TimePoint))
+   (temporallyBetweenOrEqual (BeginFn (WhenFn ?PHYS)) ?TIME (EndFn (WhenFn ?PHYS))))
+
+(instance overlapsTemporally BinaryPredicate)
+(instance overlapsTemporally TemporalRelation)
+(instance overlapsTemporally ReflexiveRelation)
+(instance overlapsTemporally SymmetricRelation)
+(domain overlapsTemporally 1 TimeInterval)
+(domain overlapsTemporally 2 TimeInterval)
+(documentation overlapsTemporally "(&%overlapsTemporally ?INTERVAL1 
+?INTERVAL2) means that the &%TimeIntervals ?INTERVAL1 and ?INTERVAL2 
+have a &%TimeInterval as a common part.")
+
+(<=>
+   (overlapsTemporally ?INTERVAL1 ?INTERVAL2)
+   (exists (?INTERVAL3) 
+      (and
+         (instance ?INTERVAL3 TimeInterval)
+         (temporalPart ?INTERVAL3 ?INTERVAL1)
+         (temporalPart ?INTERVAL3 ?INTERVAL2))))
+
+(=>
+   (and
+      (instance ?REL SpatialRelation)
+      (holds ?REL ?OBJ1 ?OBJ2))
+   (overlapsTemporally (WhenFn ?OBJ1) (WhenFn ?OBJ2)))
+
+(subrelation during temporalPart)
+(instance during TransitiveRelation)
+(instance during IrreflexiveRelation)
+(subrelation during overlapsTemporally)
+(domain during 1 TimeInterval)
+(domain during 2 TimeInterval)
+(documentation during "(&%during ?INTERVAL1 ?INTERVAL2) means that 
+?INTERVAL1 starts after and ends before ?INTERVAL2.") 
+
+(=> 
+   (during ?INTERVAL1 ?INTERVAL2)
+   (and 
+      (before (EndFn ?INTERVAL1) (EndFn ?INTERVAL2))
+      (before (BeginFn ?INTERVAL2) (BeginFn ?INTERVAL1))))
+
+(instance meetsTemporally BinaryPredicate)
+(instance meetsTemporally TemporalRelation)
+(instance meetsTemporally AsymmetricRelation)
+(instance meetsTemporally IntransitiveRelation)
+(domain meetsTemporally 1 TimeInterval)
+(domain meetsTemporally 2 TimeInterval)
+(documentation meetsTemporally "(&%meetsTemporally ?INTERVAL1 ?INTERVAL2) 
+means that the terminal point of the &%TimeInterval ?INTERVAL1 is the 
+initial point of the &%TimeInterval ?INTERVAL2.")
+
+(<=> 
+   (meetsTemporally ?INTERVAL1 ?INTERVAL2)
+   (equal 
+      (EndFn ?INTERVAL1)
+      (BeginFn ?INTERVAL2)))
+
+(=>
+  (and
+    (equal
+      (BeginFn ?INTERVAL1)
+      (BeginFn ?INTERVAL2))
+    (equal
+      (EndFn ?INTERVAL1)
+      (EndFn ?INTERVAL2)))
+    (equal ?INTERVAL1 ?INTERVAL2))
+
+(instance earlier BinaryPredicate)
+(instance earlier TemporalRelation)
+(instance earlier TransitiveRelation)
+(instance earlier IrreflexiveRelation)
+(domain earlier 1 TimeInterval)
+(domain earlier 2 TimeInterval)
+(documentation earlier "(&%earlier ?INTERVAL1 ?INTERVAL2) means that 
+the &%TimeInterval ?INTERVAL1 ends before the &%TimeInterval ?INTERVAL2 
+begins.")
+
+(<=>
+    (earlier ?INTERVAL1 ?INTERVAL2)
+    (before (EndFn ?INTERVAL1) (BeginFn ?INTERVAL2)))
+
+(instance cooccur BinaryPredicate)
+(instance cooccur TemporalRelation)
+(instance cooccur EquivalenceRelation)
+(domain cooccur 1 Physical)
+(domain cooccur 2 Physical)
+(documentation cooccur "(&%cooccur ?THING1 ?THING2) means that the 
+&%Object or &%Process ?THING1 occurs at the same time as, together with, 
+or jointly with the &%Object or &%Process ?THING2.  This covers the 
+following temporal relations:  is co-incident with, is concurrent with, 
+is contemporaneous with, and is concomitant with.")
+
+(<=>
+   (cooccur ?PHYS1 ?PHYS2)
+   (equal (WhenFn ?PHYS1) (WhenFn ?PHYS2))) 
+
+;; The following functions generate &%TimeIntervals.
+
+(instance TimeIntervalFn BinaryFunction)
+(instance TimeIntervalFn TemporalRelation)
+(domain TimeIntervalFn 1 TimePoint)
+(domain TimeIntervalFn 2 TimePoint)
+(range TimeIntervalFn TimeInterval)
+(documentation TimeIntervalFn "A &%BinaryFunction that takes two &%TimePoints 
+as arguments and returns the &%TimeInterval defined by these two &%TimePoints.  
+Note that the first &%TimePoint must occur earlier than the second &%TimePoint.")
+
+(=>
+   (and
+      (instance ?POINT1 TimePoint)
+      (instance ?POINT2 TimePoint)
+      (instance ?INTERVAL TimeInterval)
+      (equal (TimeIntervalFn ?POINT1 ?POINT2) ?INTERVAL))
+   (and
+      (equal (BeginFn ?INTERVAL) ?POINT1)
+      (equal (EndFn ?INTERVAL) ?POINT2)))
+
+(=>
+   (and
+      (instance ?POINT1 TimePoint)
+      (instance ?POINT2 TimePoint)
+      (instance ?INTERVAL TimeInterval)
+      (equal (TimeIntervalFn ?POINT1 ?POINT2) ?INTERVAL))
+   (forall (?POINT)
+      (<=>
+         (temporallyBetweenOrEqual ?POINT1 ?POINT ?POINT2)
+         (temporalPart ?POINT ?INTERVAL))))
+
+(instance RecurrentTimeIntervalFn TemporalRelation)
+(instance RecurrentTimeIntervalFn BinaryFunction)
+(domainSubclass RecurrentTimeIntervalFn 1 TimeInterval)
+(domainSubclass RecurrentTimeIntervalFn 2 TimeInterval)
+(rangeSubclass RecurrentTimeIntervalFn TimeInterval)
+(documentation RecurrentTimeIntervalFn "A function that is useful for generating 
+recurring time intervals.  For example, (&%RecurrentTimeIntervalFn (&%HourFn 6 &%Day)  
+(&%HourFn 12 &%Day)) returns the &%Class of &%TimeIntervals beginning at 6 in the 
+morning and ending at 12 noon.  For another example, (&%RecurrentTimeInterval 
+&%Saturday &%Sunday) returns the &%Class of all weekends.  For still another example, 
+(&%RecurrentTimeInterval &%June &%August) returns the &%Class containing the academic 
+summer period.")
+
+(=>
+   (instance ?INTERVAL (RecurrentTimeIntervalFn ?TIMECLASS1 ?TIMECLASS2))
+   (exists (?TIME1 ?TIME2)
+      (and
+         (instance ?TIME1 ?TIMECLASS1)
+         (instance ?TIME2 ?TIMECLASS2)
+         (starts ?TIME1 ?INTERVAL)
+         (finishes ?TIME2 ?INTERVAL))))
+
+(instance WhenFn TemporalRelation)
+(instance WhenFn UnaryFunction)
+(instance WhenFn TotalValuedRelation)
+(domain WhenFn 1 Physical)
+(range WhenFn TimeInterval)
+(documentation WhenFn "A &%UnaryFunction that maps an &%Object or 
+&%Process to the exact &%TimeInterval during which it exists.  Note 
+that, for every &%TimePoint ?TIME outside of the &%TimeInterval 
+(WhenFn ?THING), (time ?THING ?TIME) does not hold.")
+
+(instance PastFn TemporalRelation)
+(instance PastFn UnaryFunction)
+(instance PastFn TotalValuedRelation)
+(domain PastFn 1 TimePosition)
+(range PastFn TimeInterval)
+(documentation PastFn "A &%UnaryFunction that maps a &%TimePosition 
+to the &%TimeInterval that meets it and that begins at 
+&%NegativeInfinity.")
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (meetsTemporally (PastFn ?INTERVAL) ?INTERVAL))
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (equal (PastFn ?INTERVAL) (TimeIntervalFn NegativeInfinity (BeginFn ?INTERVAL))))
+
+(instance ImmediatePastFn TemporalRelation)
+(instance ImmediatePastFn UnaryFunction)
+(instance ImmediatePastFn TotalValuedRelation)
+(domain ImmediatePastFn 1 TimePosition)
+(range ImmediatePastFn TimeInterval)
+(documentation ImmediatePastFn "A &%UnaryFunction that maps a 
+&%TimePosition to a short, indeterminate &%TimeInterval that 
+immediately precedes the &%TimePosition.")
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (finishes (ImmediatePastFn ?INTERVAL) (PastFn ?INTERVAL)))
+
+(instance FutureFn TemporalRelation)
+(instance FutureFn UnaryFunction)
+(instance FutureFn TotalValuedRelation)
+(domain FutureFn 1 TimePosition)
+(range FutureFn TimeInterval)
+(documentation FutureFn "A &%UnaryFunction that maps a &%TimePosition 
+to the &%TimeInterval which it meets and which ends at 
+&%PositiveInfinity.")
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (meetsTemporally ?INTERVAL (FutureFn ?INTERVAL)))
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (equal (FutureFn ?INTERVAL) (TimeIntervalFn (EndFn ?INTERVAL) PositiveInfinity)))
+
+(instance ImmediateFutureFn TemporalRelation)
+(instance ImmediateFutureFn UnaryFunction)
+(instance ImmediateFutureFn TotalValuedRelation)
+(domain ImmediateFutureFn 1 TimePosition)
+(range ImmediateFutureFn TimeInterval)
+(documentation ImmediateFutureFn "A &%UnaryFunction that maps a 
+&%TimePosition to a short, indeterminate &%TimeInterval that 
+immediately follows the &%TimePosition.")
+
+(=>
+   (instance ?INTERVAL TimeInterval)
+   (starts (ImmediateFutureFn ?INTERVAL) (FutureFn ?INTERVAL)))
+
+;; The following definitions and axioms (down to the next section break) 
+;; cover the content in the Simple-Time ontology on the Ontolingua server.
+
+(instance date BinaryPredicate)
+(instance date SingleValuedRelation)
+(instance date AsymmetricRelation)
+(domain date 1 Physical)
+(domain date 2 Day)
+(subrelation date time)
+(documentation date "A &%BinaryPredicate that specifies a 
+&%TimePosition in absolute calendar time, at the resolution 
+of one day, for a particular &%Object or &%Process.")
+
+(instance YearFn TemporalRelation)
+(instance YearFn UnaryFunction)
+(domain YearFn 1 Integer)
+(rangeSubclass YearFn Year)
+(documentation YearFn "A &%UnaryFunction that maps a number to the corresponding calendar 
+&%Year.  For example, (&%YearFn 1912) returns the &%Class containing just one instance, 
+the year of 1912.  As might be expected, positive integers return years in the Common Era, 
+while negative integers return years in B.C.E.  Note that this function returns a &%Class 
+as a value.  The reason for this is that the related functions, viz. &%MonthFn, &%DayFn, 
+&%HourFn, &%MinuteFn, and &%SecondFn, are used to generate both specific &%TimeIntervals 
+and recurrent intervals, and the only way to do this is to make the domains and ranges of 
+these functions classes rather than individuals.")
+
+(instance MonthFn TemporalRelation)
+(instance MonthFn BinaryFunction)
+(domainSubclass MonthFn 1 Month)
+(domainSubclass MonthFn 2 Year)
+(rangeSubclass MonthFn Month)
+(documentation MonthFn "A &%BinaryFunction that maps a subclass of &%Month and a 
+subclass of &%Year to the class containing the &%Months corresponding to thos &%Years. 
+For example (&%MonthFn &%January (&%YearFn 1912)) is the class containing the eighth 
+&%Month, i.e. August, of the &%Year 1912.  For another example, (&%MonthFn &%August 
+&%Year) is equal to &%August, the class of all months of August.  Note that this function 
+returns a &%Class as a value.  The reason for this is that the related functions, viz. 
+DayFn, HourFn, MinuteFn, and SecondFn, are used to generate both specific &%TimeIntervals 
+and recurrent intervals, and the only way to do this is to make the domains and ranges of 
+these functions classes rather than individuals.")
+
+(instance DayFn TemporalRelation)
+(instance DayFn BinaryFunction)
+(domain DayFn 1 PositiveRealNumber)
+(domainSubclass DayFn 2 Month)
+(rangeSubclass DayFn Day)
+(documentation DayFn "A &%BinaryFunction that assigns a &%PositiveRealNumber and 
+a subclass of &%Months to the &%Days within each &%Month corresponding to that 
+&%PositiveRealNumber.  For example, (&%DayFn 16 &%August) is the &%Class of all 
+sixteenth days of August.  For another example, (&%DayFn 9 &%Month) would return 
+the class of all ninth days of any month.  For still another example, (&%DayFn 18 
+(&%MonthFn &%August (&%YearFn 1912))) denotes the 18th day of August 1912.")
+
+(=>
+   (instance ?DAY (DayFn ?NUMBER ?MONTH))
+   (lessThanOrEqualTo ?NUMBER 31)) 
+
+(=>
+   (and
+      (instance ?DAY1 (DayFn ?NUMBER1 ?MONTH))
+      (instance ?DAY2 (DayFn ?NUMBER2 ?MONTH))
+      (equal (SubtractionFn ?NUMBER2 ?NUMBER1) 1))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(instance HourFn TemporalRelation)
+(instance HourFn BinaryFunction)
+(domain HourFn 1 PositiveRealNumber)
+(domainSubclass HourFn 2 Day)
+(rangeSubclass HourFn Hour)
+(documentation HourFn "A &%BinaryFunction that assigns a &%PositiveRealNumber and 
+a subclass of &%Days to the &%Hours within each &%Day corresponding to that 
+&%PositiveRealNumber.  For example, (&%HourFn 12 &%Thursday) is the &%Class of all 
+instances of noon Thursday.  For another example, (&%HourFn 24 &%Day) would return 
+the class of all instances of midnight.  For still another example, (&%HourFn 14 
+(&%DayFn 18 (&%MonthFn &%August (&%YearFn 1912)))) denotes 2 PM on the 18th day of 
+August 1912.")
+
+(=>
+   (instance ?HOUR (HourFn ?NUMBER ?DAY))
+   (lessThan ?NUMBER 24))
+
+(=>
+   (and
+      (instance ?HOUR1 (HourFn ?NUMBER1 ?DAY))
+      (instance ?HOUR2 (HourFn ?NUMBER2 ?DAY))
+      (equal (SubtractionFn ?NUMBER2 ?NUMBER1) 1))
+   (meetsTemporally ?HOUR1 ?HOUR2))
+
+(instance MinuteFn TemporalRelation)
+(instance MinuteFn BinaryFunction)
+(domain MinuteFn 1 PositiveRealNumber)
+(domainSubclass MinuteFn 2 Hour)
+(rangeSubclass MinuteFn Minute)
+(documentation MinuteFn "A &%BinaryFunction that assigns a &%PositiveRealNumber and 
+a subclass of &%Hours to the &%Minutes within each &%Hour corresponding to that 
+&%PositiveRealNumber.  For example, (&%MinuteFn 30 (&%HourFn 17 &%Day)) is the &%Class 
+of all 5:30's in the afternoon.  For another example, (&%MinuteFn 15 &%Hour) would return 
+the class of all instances of quarter past the hour.  For still another example, 
+(&%MinuteFn 15 (&%HourFn 14 (&%DayFn 18 (&%MonthFn &%August (&%YearFn 1912))))) denotes 
+15 minutes after 2 PM on the 18th day of August 1912.")
+
+(=>
+   (instance ?MINUTE (MinuteFn ?NUMBER ?HOUR))
+   (lessThan ?NUMBER 60)) 
+
+(=>
+   (and
+      (instance ?MINUTE1 (MinuteFn ?NUMBER1 ?HOUR))
+      (instance ?MINUTE2 (MinuteFn ?NUMBER2 ?HOUR))
+      (equal (SubtractionFn ?NUMBER2 ?NUMBER1) 1))
+   (meetsTemporally ?MINUTE1 ?MINUTE2))
+
+(instance SecondFn TemporalRelation)
+(instance SecondFn BinaryFunction)
+(domain SecondFn 1 PositiveRealNumber)
+(domainSubclass SecondFn 2 Minute)
+(rangeSubclass SecondFn Second)
+(documentation SecondFn "A &%BinaryFunction that assigns a &%PositiveRealNumber and a 
+subclass of &%Minutes to the &%Seconds within each &%Minute corresponding to that 
+&%PositiveRealNumber.  For example, (&%SecondFn 4 (&%MinuteFn 5 &%Hour)) is the &%Class 
+of all fourth &%Seconds of every fifth &%Minute of every hour.  For another example, 
+(&%SecondFn 8 &%Minute) would return the eighth second of every minute.  For still 
+another example, (&%SecondFn 9 (&%MinuteFn 15 (&%HourFn 14 (&%DayFn 18 (&%MonthFn 
+&%August (&%YearFn 1912)))))) denotes 9 seconds and 15 minutes after 2 PM on the 18th 
+day of August 1912.")
+
+(=>
+   (instance ?SECOND (SecondFn ?NUMBER ?MINUTE))
+   (lessThan ?NUMBER 60)) 
+
+(=>
+   (and
+      (instance ?SECOND1 (SecondFn ?NUMBER1 ?MINUTE))
+      (instance ?SECOND2 (SecondFn ?NUMBER2 ?MINUTE))
+      (equal (SubtractionFn ?NUMBER2 ?NUMBER1) 1))
+   (meetsTemporally ?SECOND1 ?SECOND2))
+
+(subclass Year TimeInterval)
+(relatedInternalConcept Year YearFn)
+(relatedInternalConcept Year YearDuration)
+(documentation Year "The &%Class of all calendar &%Years.")
+
+(=>
+   (instance ?YEAR Year)
+   (duration ?YEAR (MeasureFn 1 YearDuration)))
+
+(=>
+   (and
+      (instance ?YEAR1 Year)
+      (instance ?YEAR2 Year)
+      (equal (SubtractionFn ?YEAR2 ?YEAR1) 1))
+   (meetsTemporally ?YEAR1 ?YEAR2))
+
+(subclass LeapYear Year)
+(documentation LeapYear "The &%Class of all leap years.  These are years 
+which are either (i.) evenly divisible by 4 and not by 100 or (ii.) evenly 
+divisible by 400 (this latter case is known as a leap century).")
+
+(=>
+   (and
+      (instance ?LEAP LeapYear)
+      (equal ?LEAP (MeasureFn ?NUMBER Year)))
+   (or
+      (and
+         (equal (RemainderFn ?NUMBER 4) 0)
+         (not (equal (RemainderFn ?NUMBER 100) 0)))
+      (equal (RemainderFn ?NUMBER 400) 0)))
+
+(subclass Month TimeInterval)
+(relatedInternalConcept Month MonthFn)
+(documentation Month "The &%Class of all calendar &%Months.")
+
+(subclass January Month)
+(documentation January "The &%Class of all &%Months which are January.")
+
+(=>
+   (instance ?MONTH January)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn January ?YEAR))
+      (equal ?MONTH2 (MonthFn February ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass February Month)
+(documentation February "The &%Class of all &%Months which are February.")
+
+(=>
+   (and
+      (equal (MonthFn February ?YEAR) ?MONTH)
+      (not (instance ?YEAR LeapYear)))
+   (duration ?MONTH (MeasureFn 28 DayDuration)))
+
+(=>
+   (and
+      (equal (MonthFn February ?YEAR) ?MONTH)
+      (instance ?YEAR LeapYear))
+   (duration ?MONTH (MeasureFn 29 DayDuration))) 
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn February ?YEAR))
+      (equal ?MONTH2 (MonthFn March ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass March Month)
+(documentation March "The &%Class of all &%Months which are March.")
+
+(=>
+   (instance ?MONTH March)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn March ?YEAR))
+      (equal ?MONTH2 (MonthFn April ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass April Month)
+(documentation April "The &%Class of all &%Months which are April.")
+
+(=>
+   (instance ?MONTH April)
+   (duration ?MONTH (MeasureFn 30 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn April ?YEAR))
+      (equal ?MONTH2 (MonthFn May ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass May Month)
+(documentation May "The &%Class of all &%Months which are May.")
+
+(=>
+   (instance ?MONTH May)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn May ?YEAR))
+      (equal ?MONTH2 (MonthFn June ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass June Month)
+(documentation June "The &%Class of all &%Months which are June.")
+
+(=>
+   (instance ?MONTH June)
+   (duration ?MONTH (MeasureFn 30 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn June ?YEAR))
+      (equal ?MONTH2 (MonthFn July ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass July Month)
+(documentation July "The &%Class of all &%Months which are July.")
+
+(=>
+   (instance ?MONTH July)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn July ?YEAR))
+      (equal ?MONTH2 (MonthFn August ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass August Month)
+(documentation August "The &%Class of all &%Months which are August.")
+
+(=>
+   (instance ?MONTH August)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn August ?YEAR))
+      (equal ?MONTH2 (MonthFn September ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass September Month)
+(documentation September "The &%Class of all &%Months which are September.")
+
+(=>
+   (instance ?MONTH September)
+   (duration ?MONTH (MeasureFn 30 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn September ?YEAR))
+      (equal ?MONTH2 (MonthFn October ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass October Month)
+(documentation October "The &%Class of all &%Months which are October.")
+
+(=>
+   (instance ?MONTH October)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn October ?YEAR))
+      (equal ?MONTH2 (MonthFn November ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass November Month)
+(documentation November "The &%Class of all &%Months which are November.")
+
+(=>
+   (instance ?MONTH November)
+   (duration ?MONTH (MeasureFn 30 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn November ?YEAR))
+      (equal ?MONTH2 (MonthFn December ?YEAR)))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass December Month)
+(documentation December "The &%Class of all &%Months which are December.")
+
+(=>
+   (instance ?MONTH December)
+   (duration ?MONTH (MeasureFn 31 DayDuration)))
+
+(=>
+   (and
+      (equal ?MONTH1 (MonthFn December ?YEAR1))
+      (equal ?MONTH2 (MonthFn January ?YEAR2))
+      (meetsTemporally ?YEAR1 ?YEAR2))
+   (meetsTemporally ?MONTH1 ?MONTH2))
+
+(subclass Day TimeInterval)
+(relatedInternalConcept Day DayFn)
+(relatedInternalConcept Day DayDuration)
+(documentation Day "The &%Class of all calendar &%Days.")
+
+(=>
+   (instance ?DAY Day)
+   (duration ?DAY (MeasureFn 1 DayDuration)))
+
+(subclass Monday Day)
+(documentation Monday "The &%Class of all calendar Mondays.")
+
+(subclass Tuesday Day)
+(documentation Tuesday "The &%Class of all calendar Tuesdays.")
+
+(=>
+   (and
+      (instance ?DAY1 Monday)
+      (instance ?DAY2 Tuesday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Wednesday Day)
+(documentation Wednesday "The &%Class of all calendar Wednesdays.")
+
+(=>
+   (and
+      (instance ?DAY1 Tuesday)
+      (instance ?DAY2 Wednesday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Thursday Day)
+(documentation Thursday "The &%Class of all calendar Thursdays.")
+
+(=>
+   (and
+      (instance ?DAY1 Wednesday)
+      (instance ?DAY2 Thursday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Friday Day)
+(documentation Friday "The &%Class of all calendar Fridays.")
+
+(=>
+   (and
+      (instance ?DAY1 Thursday)
+      (instance ?DAY2 Friday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Saturday Day)
+(documentation Saturday "The &%Class of all calendar Saturdays.")
+
+(=>
+   (and
+      (instance ?DAY1 Friday)
+      (instance ?DAY2 Saturday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Sunday Day)
+(documentation Sunday "The &%Class of all calendar Sundays.")
+
+(=>
+   (and
+      (instance ?DAY1 Saturday)
+      (instance ?DAY2 Sunday)
+      (instance ?WEEK Week)
+      (temporalPart ?DAY1 ?WEEK)
+      (temporalPart ?DAY2 ?WEEK))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(=>
+   (and
+      (instance ?DAY1 Sunday)
+      (instance ?DAY2 Monday)
+      (instance ?WEEK1 Week)
+      (instance ?WEEK2 Week)
+      (temporalPart ?DAY1 ?WEEK1)
+      (temporalPart ?DAY2 ?WEEK2)
+      (meetsTemporally ?WEEK1 ?WEEK2))
+   (meetsTemporally ?DAY1 ?DAY2))
+
+(subclass Week TimeInterval)
+(documentation Week "The &%Class of all calendar weeks.")
+
+(=>
+   (instance ?WEEK Week)
+   (duration ?WEEK (MeasureFn 1 WeekDuration)))
+
+(subclass Hour TimeInterval)
+(relatedInternalConcept Hour HourFn)
+(relatedInternalConcept Hour HourDuration)
+(documentation Hour "The &%Class of all clock &%Hours.")
+
+(=>
+   (instance ?HOUR Hour)
+   (duration ?HOUR (MeasureFn 1 HourDuration)))
+
+(subclass Minute TimeInterval)
+(relatedInternalConcept Minute MinuteFn)
+(relatedInternalConcept Minute MinuteDuration)
+(documentation Minute "The &%Class of all clock &%Minutes.")
+
+(=>
+   (instance ?MINUTE Minute)
+   (duration ?MINUTE (MeasureFn 1 MinuteDuration)))
+
+(subclass Second TimeInterval)
+(relatedInternalConcept Second SecondDuration)
+(relatedInternalConcept Second SecondFn)
+(documentation Second "The &%Class of all clock &%Seconds.")
+
+(=>
+   (instance ?SECOND Second)
+   (duration ?SECOND (MeasureFn 1 SecondDuration)))
+
+(instance TemporalCompositionFn TemporalRelation)
+(instance TemporalCompositionFn BinaryFunction)
+(domain TemporalCompositionFn 1 TimeInterval)
+(domainSubclass TemporalCompositionFn 2 TimeInterval)
+(rangeSubclass TemporalCompositionFn TimeInterval)
+(documentation TemporalCompositionFn "The basic &%Function for expressing 
+the composition of larger &%TimeIntervals out of smaller &%TimeIntervals.  
+For example, if &%ThisSeptember is an &%instance of &%September, 
+(&%TemporalCompositionFn &%ThisSeptember &%Day) denotes the &%Class of 
+consecutive days that make up &%ThisSeptember.  Note that one can obtain 
+the number of instances of this &%Class by using the function &%CardinalityFn.")
+
+(=>
+   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+   (forall (?TIME1 ?TIME2)
+      (=>
+         (and
+            (instance ?TIME1 ?INTERVAL-TYPE)
+            (instance ?TIME2 ?CLASS))
+         (exists (?DURATION)
+            (and 
+               (duration ?TIME1 ?DURATION)
+               (duration ?TIME2 ?DURATION))))))
+
+(=>
+   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+   (forall (?TIME1 ?TIME2)
+      (=>
+         (and
+            (instance ?TIME1 ?CLASS)
+            (instance ?TIME2 ?CLASS)
+            (not (equal ?TIME1 ?TIME2)))
+         (or
+            (meetsTemporally ?TIME1 ?TIME2)
+            (meetsTemporally ?TIME2 ?TIME1)
+            (earlier ?TIME1 ?TIME2)
+            (earlier ?TIME2 ?TIME1)))))
+
+; pod debugging
+;(=>
+;   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+;   (exists (?TIME)
+;      (and
+;         (instance ?TIME ?CLASS)
+;         (starts ?TIME ?INTERVAL))))
+;
+;(=>
+;   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+;   (exists (?TIME)
+;      (and
+;         (instance ?TIME ?CLASS)
+;         (finishes ?TIME ?INTERVAL))))
+
+(=>
+   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+   (forall (?TIME1)
+      (=>
+         (and
+            (instance ?TIME1 ?CLASS)
+            (not (finishes ?TIME1 ?INTERVAL)))
+         (exists (?TIME2)
+            (and
+               (instance ?TIME2 ?CLASS)
+               (meetsTemporally ?TIME1 ?TIME2))))))
+
+(=>
+   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+   (forall (?TIME1)
+      (=>
+         (and
+            (instance ?TIME1 ?CLASS)
+            (not (starts ?TIME1 ?INTERVAL)))
+         (exists (?TIME2)
+            (and
+               (instance ?TIME2 ?CLASS)
+               (meetsTemporally ?TIME2 ?TIME1))))))
+
+(=>
+   (equal (TemporalCompositionFn ?INTERVAL ?INTERVAL-TYPE) ?CLASS)
+   (forall (?TIME)
+      (=>
+         (and
+            (instance ?TIME TimePoint)
+            (temporalPart ?TIME ?INTERVAL))
+         (exists (?INSTANCE)
+            (and
+               (instance ?INSTANCE ?CLASS)
+               (temporalPart ?TIME ?INSTANCE)))))) 
+
+(=>
+   (instance ?YEAR Year)
+   (equal (CardinalityFn (TemporalCompositionFn ?YEAR Month)) 12))
+
+(=>
+   (and
+      (instance ?MONTH Month)
+      (duration ?MONTH (MeasureFn ?NUMBER DayDuration)))
+   (equal (CardinalityFn (TemporalCompositionFn ?MONTH Day)) ?NUMBER))
+
+(=>
+   (instance ?WEEK Week)
+   (equal (CardinalityFn (TemporalCompositionFn ?WEEK Day)) 7))
+
+(=>
+   (instance ?DAY Day)
+   (equal (CardinalityFn (TemporalCompositionFn ?DAY Hour)) 24))
+
+(=>
+   (instance ?HOUR Hour)
+   (equal (CardinalityFn (TemporalCompositionFn ?HOUR Minute)) 60))
+
+(=>
+   (instance ?MINUTE Minute)
+   (equal (CardinalityFn (TemporalCompositionFn ?MINUTE Second)) 60))
+
+(instance duration BinaryPredicate)
+(instance duration AsymmetricRelation)
+(instance duration TotalValuedRelation)
+(domain duration 1 TimeInterval)
+(domain duration 2 TimeDuration)
+(documentation duration "(&%duration ?POS ?TIME) means that the 
+duration of the &%TimePosition ?POS is ?TIME.  Note that this 
+&%Predicate can be used in conjunction with the &%Function &%WhenFn 
+to specify the duration of any instance of &%Physical.")
+
+(subrelation result patient)
+(domain result 1 Process)
+(domain result 2 Entity)
+(documentation result "(result ?ACTION ?OUTPUT) means that ?OUTPUT is 
+a product of ?ACTION.  For example, house is a &%result in the 
+following proposition: Eric built a house.")
+
+(instance patient CaseRole)
+(domain patient 1 Process)
+(domain patient 2 Entity)
+(documentation patient "(&%patient ?PROCESS ?ENTITY) means that ?ENTITY 
+is a participant in ?PROCESS that may be moved, said, experienced, etc.  
+For example, the direct objects in the sentences 'The cat swallowed the 
+canary' and 'Billy likes the beer' would be examples of &%patients.  Note 
+that the &%patient of a &%Process may or may not undergo structural 
+change as a result of the &%Process.  The &%CaseRole of &%patient is used 
+when one wants to specify as broadly as possible the object of a 
+&%Process.")
+
+(subrelation resource patient)
+(domain resource 1 Process)
+(domain resource 2 Object)
+(disjointRelation resource result instrument)
+(documentation resource "(&%resource ?PROCESS ?RESOURCE) means that 
+?RESOURCE is present at the beginning of ?PROCESS, is used by ?PROCESS, 
+and as a consequence is changed by ?PROCESS.  For example, soap is a 
+&%resource in the following proposition:  the gun was carved out of soap.  
+Note that &%resource differs from &%instrument, another subrelation of 
+&%patient, in that its internal or physical properties are altered in 
+some way by the &%Process.")
+
+(instance origin CaseRole)
+(domain origin 1 Process)
+(domain origin 2 Object)
+(documentation origin "(&%origin ?PROCESS ?SOURCE) means that ?SOURCE 
+indicates where the ?Process began.  Note that this relation implies 
+that ?SOURCE is present at the beginning of the process, but need not 
+participate throughout the process.  For example, the submarine is the 
+&%origin in the following proposition: the missile was launched from a 
+submarine.")
+
+(instance part SpatialRelation)
+(instance part PartialOrderingRelation)
+(domain part 1 Object)
+(domain part 2 Object)
+(documentation part "The basic mereological relation.  All other 
+mereological relations are defined in terms of this one.  
+(&%part ?PART ?WHOLE) simply means that the &%Object ?PART is part
+of the &%Object ?WHOLE.  Note that, since &%part is a 
+&%ReflexiveRelation, every &%Object is a part of itself.")
+
+(instance properPart AsymmetricRelation)
+(instance properPart TransitiveRelation)
+(subrelation properPart part)
+(documentation properPart "(&%properPart ?OBJ1 ?OBJ2) means that 
+?OBJ1 is a part of ?OBJ2 other than ?OBJ2 itself. This is a 
+&%TransitiveRelation and &%AsymmetricRelation (hence an 
+&%IrreflexiveRelation).")
+
+(<=> 
+   (properPart ?OBJ1 ?OBJ2)
+      (and
+	   (part ?OBJ1 ?OBJ2)
+	   (not
+	      (part ?OBJ2 ?OBJ1))))
+
+(subrelation piece part)
+(domain piece 1 Substance)
+(domain piece 2 Substance)
+(documentation piece "A specialized common sense notion of part for 
+arbitrary parts of &%Substances.  Quasi-synonyms are: chunk, hunk, bit, 
+etc.  Compare &%component, another subrelation of &%part.")
+
+(=>
+   (piece ?SUBSTANCE1 ?SUBSTANCE2)
+   (forall (?CLASS)
+      (=>
+         (instance ?SUBSTANCE1 ?CLASS)
+         (instance ?SUBSTANCE2 ?CLASS))))
+
+(subrelation component part)
+(domain component 1 CorpuscularObject)
+(domain component 2 CorpuscularObject)
+(documentation component "A specialized common sense notion of part 
+for heterogeneous parts of complexes. (&%component ?COMPONENT ?WHOLE) 
+means that ?COMPONENT is a component of ?WHOLE. Examples of component 
+include the doors and walls of a house, the states or provinces of a 
+country, or the limbs and organs of an animal.  Compare &%piece, which 
+is also a subrelation of &%part.")
+
+(instance material BinaryPredicate)
+(domainSubclass material 1 Substance)
+(domain material 2 CorpuscularObject)
+(documentation material "(&%material ?SUBSTANCE ?OBJECT) means that 
+?OBJECT is structurally made up in part of ?SUBSTANCE. This relation 
+encompasses the concepts of 'composed of', 'made of', and 'formed of'.  
+For example, plastic is a &%material of my computer monitor.  Compare 
+&%part and its subrelations, viz &%component and &%piece.")
+
+;;; =========== location and holes ===================
+
+(instance hole BinaryPredicate)
+(instance hole SpatialRelation)
+(instance hole AsymmetricRelation)
+(domain hole 1 Hole)
+(domain hole 2 SelfConnectedObject)
+(documentation hole "(&%hole ?HOLE ?OBJ) means that ?HOLE is a 
+&%Hole in ?OBJ.  A &%Hole is a fillable body located at the 
+&%surface an &%Object.")
+
+(subclass Hole Region)
+
+(instance partlyLocated SpatialRelation)
+(instance partlyLocated AntisymmetricRelation)
+(instance partlyLocated BinaryPredicate)
+(domain partlyLocated 1 Physical)
+(domain partlyLocated 2 Object)
+(documentation partlyLocated "(&%partlyLocated ?THING ?OBJ) means that the 
+instance of &%Physical ?THING is at least partially located at ?OBJ.  For 
+example, Istanbul is partly located in &%Asia and partly located in &%Europe.  
+Note that &%partlyLocated is the most basic localization relation:  &%located 
+is an immediate &%subrelation of &%partlyLocated and &%exactlyLocated is 
+an immediate &%subrelation of &%located.") 
+
+(=>
+   (and
+      (instance ?OBJ1 Object)
+      (partlyLocated ?OBJ1 ?OBJ2))
+   (overlapsSpatially ?OBJ1 ?OBJ2)) 
+
+(=>
+   (and
+      (instance ?OBJ1 Object)
+      (partlyLocated ?OBJ1 ?OBJ2))
+   (exists (?SUB)
+      (and
+         (part ?SUB ?OBJ1)
+         (located ?SUB ?OBJ2))))
+
+
+(subrelation contains partlyLocated)
+(instance contains SpatialRelation)
+(instance contains AsymmetricRelation)
+(disjointRelation contains part)
+(domain contains 1 SelfConnectedObject)
+(domain contains 2 Object)
+(documentation contains "The relation of spatial containment for two 
+separable objects.  When the two objects are not separable (e.g. an 
+automobile and one of its seats), the relation of &%part should be used.  
+(&%contains ?OBJ1 ?OBJ2) means that the &%SelfConnectedObject ?OBJ1 has 
+a space (i.e. a &%Hole) which is at least partially filled by ?OBJ2.")
+
+(<=>
+   (contains ?OBJ1 ?OBJ2)
+   (exists (?HOLE)
+      (and
+         (hole ?HOLE ?OBJ1)
+         (properlyFills ?OBJ2 ?HOLE))))
+
+(instance located AntisymmetricRelation)
+(instance located TransitiveRelation)
+(subrelation located partlyLocated)
+(documentation located "(&%located ?PHYS ?OBJ) means that ?PHYS is &%partlyLocated 
+at ?OBJ, and there is no &%part or &%subProcess of ?PHYS that is not &%located at 
+?OBJ.")
+
+(=>
+   (located ?OBJ1 ?OBJ2)
+   (forall (?SUB)
+      (=>
+         (part ?SUB ?OBJ1)
+         (located ?SUB ?OBJ2))))
+
+(=>
+   (located ?PROCESS ?OBJ)
+   (forall (?SUB)
+      (=>
+         (subProcess ?SUB ?PROCESS)
+         (located ?SUB ?OBJ))))
+
+(instance time BinaryPredicate)
+(instance time TemporalRelation)
+(instance time AsymmetricRelation)
+(domain time 1 Physical)
+(domain time 2 TimePosition)
+(relatedInternalConcept time located)
+(relatedInternalConcept time holdsDuring)
+(documentation time "This relation holds between an instance of 
+&%Physical and an instance of &%TimePosition just in case the temporal 
+lifespan of the former includes the latter.  In other words, (&%time
+?THING ?TIME) means that ?THING existed or occurred at ?TIME.  Note 
+that &%time does for instances of &%Physical what &%holdsDuring does 
+for instances of &%Formula.  The constants &%located and &%time are 
+the basic spatial and temporal predicates, respectively.")
+
+(instance subProcess BinaryPredicate)
+(instance subProcess PartialOrderingRelation)
+(domain subProcess 1 Process)
+(domain subProcess 2 Process)
+(documentation subProcess "(&%subProcess ?SUBPROC ?PROC) means that ?SUBPROC 
+is a subprocess of ?PROC.  A subprocess is here understood as a temporally 
+distinguished part (proper or not) of a &%Process.")
+
+(=>
+   (subProcess ?SUBPROC ?PROC)
+   (temporalPart (WhenFn ?SUBPROC) (WhenFn ?PROC)))
+
+(=>
+   (subProcess ?SUBPROC ?PROC)
+   (forall (?REGION)
+      (=>
+         (located ?PROC ?REGION)
+         (located ?SUBPROC ?REGION))))
+
+(=> 
+	(and 
+            (instance ?PROC Process)
+            (subProcess ?SUBPROC ?PROC))
+     	(exists (?TIME)
+      	    (time ?SUBPROC ?TIME)))
+
+(instance subsumesContentInstance BinaryPredicate)
+(instance subsumesContentInstance PartialOrderingRelation)
+(domain subsumesContentInstance 1 ContentBearingObject)
+(domain subsumesContentInstance 2 ContentBearingObject)
+(relatedInternalConcept subsumesContentInstance subsumesContentClass)
+(documentation subsumesContentInstance "A &%BinaryPredicate relating two 
+instances of &%ContentBearingObject.  (&%subsumesContentInstance ?OBJ1 ?OBJ2) 
+means that the content expressed by ?OBJ2 is part of the content expressed 
+by ?OBJ1.  An example is the relationship between a handwritten poem and 
+one of its stanzas.  Note that this is a relation between instances, 
+rather than &%Classes.  If one wants to assert a content relationship 
+between &%Classes, e.g. between the version of an intellectual work and a 
+part of that work, the relation &%subsumesContentClass should be used.")
+
+(=>
+   (subsumesContentInstance ?OBJ1 ?OBJ2)
+   (forall (?INFO)
+      (=>
+         (containsInformation ?OBJ2 ?INFO)
+         (containsInformation ?OBJ1 ?INFO))))
+
+(instance trichotomizingOn BinaryPredicate)
+(instance trichotomizingOn AsymmetricRelation)
+(domain trichotomizingOn 1 BinaryRelation)
+(domain trichotomizingOn 2 SetOrClass)
+(documentation trichotomizingOn "A &%BinaryRelation ?REL is 
+trichotomizing on a &%SetOrClass only if, for all instances ?INST1 and ?INST2 
+of the &%SetOrClass, at least one of the following holds:  (?REL ?INST1 ?INST2),
+(?REL ?INST2 ?INST1) or (equal ?INST1 ?INST2).")
+
+(=>
+   (trichotomizingOn ?RELATION ?CLASS)
+   (forall (?INST1 ?INST2)
+      (=> 
+         (and 
+            (instance ?INST1 ?CLASS)
+            (instance ?INST2 ?CLASS))
+         (or 
+            (holds ?RELATION ?INST1 ?INST2) 
+            (holds ?RELATION ?INST2 ?INST1) 
+            (equal ?INST1 ?INST2)))))
+
+(instance inList BinaryPredicate)
+(instance inList IrreflexiveRelation)
+(instance inList AsymmetricRelation)
+(domain inList 1 Entity)
+(domain inList 2 List)
+(documentation inList "The analog of &%element and &%instance for &%Lists.  
+(&%inList ?OBJ ?LIST) means that ?OBJ is in the &%List ?LIST.  For example, 
+(&%inList &%Tuesday (&%ListFn &%Monday &%Tuesday &%Wednesday)) would be true.")
+
+(=>
+   (inList ?ITEM ?LIST)
+   (exists (?NUMBER)
+      (equal (ListOrderFn ?LIST ?NUMBER) ?ITEM)))
+
+
+(subclass CaseRole BinaryPredicate)
+(instance CaseRole InheritableRelation)
+(subclass CaseRole AsymmetricRelation)
+(documentation CaseRole "The &%Class of &%Predicates relating the 
+spatially distinguished parts of a &%Process. &%CaseRoles include, for 
+example, the &%agent, &%patient or &%destination of an action, the flammable 
+substance in a burning process, or the water that falls in rain.")
+
+(subclass Process Physical)
+(documentation Process "Intuitively, the class of things that happen 
+and have temporal parts or stages.  Examples include extended events 
+like a football match or a race, actions like &%Pursuing and &%Reading, 
+and biological processes. The formal definition is: anything that lasts 
+for a time but is not an &%Object.  Note that a &%Process may have 
+participants 'inside' it which are &%Objects, such as the players 
+in a football match.  In a 4D ontology, a &%Process is something whose 
+spatiotemporal extent is thought of as dividing into temporal stages 
+roughly perpendicular to the time-axis.")
+
+(subclass NonNullSet SetOrClass)
+(documentation NonNullSet "Any &%SetOrClass that contains at least one 
+instance.")
+
+(=>
+   (instance ?SET NonNullSet)
+   (exists (?INST) (instance ?INST ?SET)))
+
+(subclass SpatialRelation Relation)
+(instance SpatialRelation InheritableRelation)
+(documentation SpatialRelation "The &%Class of &%Relations that are 
+spatial in a wide sense.  This &%Class includes mereological relations 
+and topological relations.")
+
+(subclass TemporalRelation Relation)
+(instance TemporalRelation InheritableRelation)
+(documentation TemporalRelation "The &%Class of temporal &%Relations.  
+This &%Class includes notions of (temporal) topology of intervals, 
+(temporal) schemata, and (temporal) extension.")
+
+
+;;; POD What does this mean, the properties of a Relation can be inherited?
+;;; POD Is the Relation's transitivity a 'property' of the relation?
+(instance InheritableRelation Class)
+(documentation InheritableRelation "This is a &%Class of &%Classes.  Each 
+&%instance of &%InheritableRelation is a &%subclass of &%Relation whose 
+properties can be inherited downward in the class hierarchy via the 
+&%subrelation &%Predicate.")
+
+;;;===========================================================================
+;;; Above is stuff in common with amis.kif, below is additions for trade
+;;;===========================================================================
+
+;;;===========================================================================
+;;; Stuff added to get initial trade concepts (above) established
+;;;===========================================================================
+
+(instance hasPurpose BinaryPredicate)
+(instance hasPurpose AsymmetricRelation)
+(domain hasPurpose 1 Physical)
+(domain hasPurpose 2 Formula)
+(documentation hasPurpose "This &%Predicate expresses the concept of a 
+conventional goal, i.e. a goal with a neutralized agent's intention.  
+Accordingly, (&%hasPurpose ?THING ?FORMULA) means that the instance of 
+&%Physical ?THING has, as its purpose, the &%Proposition expressed by 
+?FORMULA.  Note that there is an important difference in meaning between 
+the &%Predicates &%hasPurpose and &%result.  Although the second argument 
+of the latter can satisfy the second argument of the former, 
+a conventional goal is an expected and desired outcome, while a result 
+may be neither expected nor desired.  For example, a machine process may 
+have outcomes but no goals, aimless wandering may have an outcome but no 
+goal; a learning process may have goals with no outcomes, and so on.")
+
+(instance hasPurposeForAgent TernaryPredicate)
+(domain hasPurposeForAgent 1 Physical)
+(domain hasPurposeForAgent 2 Formula)
+(domain hasPurposeForAgent 3 CognitiveAgent)
+(documentation hasPurposeForAgent "Expresses a cognitive attitude of an 
+agent with respect to a particular instance of Physical.  More precisely, 
+(&%hasPurposeForAgent ?THING ?FORMULA ?AGENT) means that the purpose of 
+?THING for ?AGENT is the proposition expressed by ?FORMULA.  Very complex 
+issues are involved here.  In particular, the rules of inference of the 
+first order predicate calculus are not truth-preserving for the second 
+argument position of this &%Predicate.")
+
+(=>
+   (hasPurpose ?THING ?PURPOSE)
+   (exists (?AGENT)
+      (hasPurposeForAgent ?THING ?PURPOSE ?AGENT)))
+
+
+(subclass Certificate Text)
+(documentation Certificate "A &%Text that confers a right or obligation 
+on the holder of the &%Certificate.  Note that the right or obligation 
+need not be a legal one, as in the case of an academic diploma that grants 
+certain privileges in the professional world.")
+
+(=>
+   (instance ?DOC Certificate)
+   (exists (?PROP ?NORM)
+      (or
+         (confersNorm ?DOC ?PROP ?NORM)
+         (deprivesNorm ?DOC ?PROP ?NORM))))
+
+(subclass Text LinguisticExpression)
+(subclass Text Artifact)
+(documentation Text "A &%LinguisticExpression or set of 
+&%LinguisticExpressions that perform a specific function related 
+to &%Communication, e.g. express a discourse about a particular 
+topic, and that are inscribed in a &%CorpuscularObject by &%Humans.")
+
+(=>
+    (instance ?TEXT Text)
+    (exists (?PART)
+        (and
+            (part ?PART ?TEXT)
+            (instance ?PART LinguisticExpression))))
+
+(=>
+   (instance ?TEXT Text)
+   (exists (?WRITE)
+      (and
+         (instance ?WRITE Writing)
+         (result ?WRITE ?TEXT))))
+
+(instance confersNorm TernaryPredicate)
+(domain confersNorm 1 Entity)
+(domain confersNorm 2 Formula)
+(domain confersNorm 3 ObjectiveNorm)
+(documentation confersNorm "Expresses the relationship between a &%Formula, 
+an &%Entity, and an &%ObjectiveNorm when the &%Entity brings it about that 
+the &%Formula has the &%ObjectiveNorm.")
+
+(=>
+   (holdsDuring ?TIME (confersNorm ?ENTITY ?FORMULA ?NORM))
+   (and
+      (holdsDuring (ImmediatePastFn ?TIME) (not (modalAttribute ?FORMULA ?NORM)))
+      (holdsDuring (ImmediateFutureFn ?TIME) (modalAttribute ?FORMULA ?NORM))))
+
+(instance deprivesNorm TernaryPredicate)
+(disjointRelation deprivesNorm confersNorm)
+(domain deprivesNorm 1 Entity)
+(domain deprivesNorm 2 Formula)
+(domain deprivesNorm 3 ObjectiveNorm)
+(documentation deprivesNorm "Expresses the relationship between an 
+&%Entity, a &%Formula, and an &%ObjectiveNorm when the &%Entity 
+brings it about that the &%Formula does not have the &%ObjectiveNorm.") 
+
+(=>
+   (holdsDuring ?TIME (deprivesNorm ?ENTITY ?FORMULA ?NORM))
+   (and
+      (holdsDuring (ImmediatePastFn ?TIME) (modalAttribute ?FORMULA ?NORM))
+      (holdsDuring (ImmediateFutureFn ?TIME) (not (modalAttribute ?FORMULA ?NORM)))))
+
+
+(instance agent CaseRole)
+(domain agent 1 Process)
+(domain agent 2 Agent)
+(documentation agent "(&%agent ?PROCESS ?AGENT) means that ?AGENT is 
+an active determinant, either animate or inanimate, of the &%Process 
+?PROCESS, with or without voluntary intention.  For example, Eve is an 
+&%agent in the following proposition: Eve bit an apple.")
+
+(=>
+   (instance ?PROCESS Process)
+   (exists (?CAUSE)
+      (agent ?PROCESS ?CAUSE)))
+
+(instance destination CaseRole)
+(domain destination 1 Process)
+(domain destination 2 Entity)
+(documentation destination "(destination ?PROCESS ?GOAL) means that 
+?GOAL is the target or goal of the Process ?PROCESS.  For example, 
+Danbury would be the destination in the following proposition:  Bob went 
+to Danbury.  Note that this is a very general &%CaseRole and, in 
+particular, that it covers the concepts of 'recipient' and 'beneficiary'.  
+Thus, John would be the &%destination in the following proposition:  
+Tom gave a book to John.")
+
+(instance geopoliticalSubdivision AsymmetricRelation) 
+(instance geopoliticalSubdivision TransitiveRelation) 
+(subrelation geopoliticalSubdivision geographicSubregion) 
+(domain geopoliticalSubdivision 1 GeopoliticalArea) 
+(domain geopoliticalSubdivision 2 GeopoliticalArea) 
+(documentation geopoliticalSubdivision "(&%geopoliticalSubdivision 
+?AREA1 ?AREA2) means that ?AREA1 is any geopolitical part of ?AREA2; 
+that is, ?AREA1 is an integral &%geographicSubregion of ?AREA2 (not a 
+&%DependencyOrSpecialSovereigntyArea), having its own associated 
+&%GovernmentOrganization which is subordinated to or constrained by 
+the government of ?AREA2.  Cf. &%dependentGeopoliticalArea.") 
+
+(=>
+	(geopoliticalSubdivision ?SUB ?AREA)
+	(not (instance ?SUB Nation)))
+
+(instance monetaryValue SingleValuedRelation)
+(subrelation monetaryValue measure)
+(domain monetaryValue 1 Physical)
+(domain monetaryValue 2 CurrencyMeasure)
+(documentation monetaryValue "A &%BinaryPredicate that associates an 
+&%Object or &%Process with its value expressed as an instance of 
+&%CurrencyMeasure.")
+
+(subclass IntentionalProcess Process)
+(documentation IntentionalProcess "A &%Process that has a specific 
+purpose for the &%CognitiveAgent who performs it.") 
+
+(=>
+   (and
+      (instance ?PROC IntentionalProcess)
+      (agent ?PROC ?AGENT))
+   (exists (?PURP)
+      (hasPurposeForAgent ?PROC ?PURP ?AGENT)))
+
+(=>
+   (instance ?PROC IntentionalProcess)
+   (exists (?AGENT)
+      (and
+         (instance ?AGENT CognitiveAgent)
+         (agent ?PROC ?AGENT))))
+
+(=>
+   (and
+      (instance ?PROC IntentionalProcess)
+      (agent ?PROC ?HUMAN)
+      (instance ?HUMAN Animal))
+   (holdsDuring (WhenFn ?PROC) (attribute ?HUMAN Awake)))
+
+
+(subclass SocialInteraction IntentionalProcess)
+(documentation SocialInteraction "The &%subclass of 
+&%IntentionalProcess that involves interactions between 
+&%CognitiveAgents.")
+
+(=>
+   (instance ?INTERACTION SocialInteraction)
+   (exists (?AGENT1 ?AGENT2)
+      (and
+         (agent ?INTERACTION ?AGENT1)
+         (agent ?INTERACTION ?AGENT2)
+         (not
+            (equal ?AGENT1 ?AGENT2)))))
+
+(subclass ChangeOfPossession SocialInteraction)
+(relatedInternalConcept ChangeOfPossession possesses)
+(documentation ChangeOfPossession "The &%Class of &%Processes where 
+ownership of something is transferred from one &%Agent to another.")
+
+(=>
+   (and
+      (instance ?CHANGE ChangeOfPossession)
+      (patient ?CHANGE ?OBJ)
+      (holdsDuring (BeginFn (WhenFn ?CHANGE)) (possesses ?AGENT1 ?OBJ))
+      (holdsDuring (EndFn (WhenFn ?CHANGE)) (possesses ?AGENT2 ?OBJ)))
+   (not
+      (equal ?AGENT1 ?AGENT2)))
+
+(=>
+   (and
+      (instance ?CHANGE ChangeOfPossession)
+      (origin ?CHANGE ?AGENT1)
+      (destination ?CHANGE ?AGENT2)
+      (instance ?AGENT1 Agent)
+      (instance ?AGENT2 Agent)
+      (patient ?CHANGE ?OBJ))
+   (and
+      (holdsDuring (BeginFn (WhenFn ?CHANGE)) (possesses ?AGENT1 ?OBJ))
+      (holdsDuring (EndFn (WhenFn ?CHANGE)) (possesses ?AGENT2 ?OBJ))))
+
+(subclass Transaction ChangeOfPossession)
+(subclass Transaction DualObjectProcess)
+(documentation Transaction "The &%subclass of &%ChangeOfPossession where 
+something is exchanged for something else.")
+
+(=>
+   (instance ?TRANS Transaction)
+   (exists (?AGENT1 ?AGENT2 ?GIVE1 ?GIVE2 ?OBJ1 ?OBJ2)
+      (and
+         (instance ?GIVE1 Giving)
+         (instance ?GIVE2 Giving)
+	   (subProcess ?GIVE1 ?TRANS)
+   	   (subProcess ?GIVE2 ?TRANS)
+         (agent ?GIVE1 ?AGENT1)
+         (agent ?GIVE2 ?AGENT2)
+         (patient ?GIVE1 ?OBJ1)
+         (patient ?GIVE2 ?OBJ2)
+         (destination ?GIVE1 ?AGENT2)
+         (destination ?GIVE2 ?AGENT1)
+         (not
+            (equal ?AGENT1 ?AGENT2))
+         (not
+            (equal ?OBJ1 ?OBJ2)))))
+
+(subclass FinancialTransaction Transaction)
+(documentation FinancialTransaction "A &%Transaction where an instance 
+of &%Currency is exchanged for something else.")
+
+(=>
+   (instance ?TRANS FinancialTransaction)
+   (exists (?OBJ)
+      (and
+         (patient ?TRANS ?OBJ)
+         (instance ?OBJ Currency))))
+
+(subclass Giving ChangeOfPossession)
+(documentation Giving "The &%subclass of &%ChangeOfPossession where the 
+&%agent gives the &%destination something.")
+
+(=>
+   (and
+      (instance ?GIVE Giving)
+      (agent ?GIVE ?AGENT1)
+      (destination ?GIVE ?AGENT2)
+      (instance ?AGENT2 Agent)
+      (patient ?GIVE ?OBJ))
+   (exists (?GET)
+      (and
+         (instance ?GET Getting)
+         (agent ?GET ?AGENT2)
+         (origin ?GET ?AGENT1)
+         (patient ?GET ?OBJ))))
+
+(=>
+   (and
+      (instance ?GIVE Giving)
+      (agent ?GIVE ?AGENT))
+   (origin ?GIVE ?AGENT))
+
+(subclass Getting ChangeOfPossession)
+(documentation Getting "The &%subclass of &%ChangeOfPossession where the
+&%agent gets something.  Note that the source from which something is 
+obtained is specified with the &%origin &%CaseRole.")
+
+(=>
+   (and
+      (instance ?GET Getting)
+      (agent ?GET ?AGENT))
+   (destination ?GET ?AGENT))
+
+;;; --------------
+
+(subclass Motion Process)
+(documentation Motion "Any &%Process of movement.")
+
+(=>
+   (and
+      (instance ?MOTION Motion)
+      (patient ?MOTION ?OBJ)
+      (origin ?MOTION ?PLACE))
+   (holdsDuring (BeginFn (WhenFn ?MOTION)) (located ?OBJ ?PLACE)))
+
+(=>
+   (and
+      (instance ?MOTION Motion)
+      (patient ?MOTION ?OBJ)
+      (destination ?MOTION ?PLACE))
+   (holdsDuring (EndFn (WhenFn ?MOTION)) (located ?OBJ ?PLACE)))
+
+(instance path CaseRole)
+(domain path 1 Motion)
+(domain path 2 Object)
+(documentation path "(&%path ?MOTION ?PATH) means that ?PATH is a route 
+along which ?MOTION occurs.  For example, Highway 101 is the path in the 
+following proposition:  the car drove up Highway 101.")
+
+(=>
+   (and
+      (path ?PROCESS ?PATH1)
+      (origin ?PROCESS ?SOURCE)
+      (destination ?PROCESS ?DEST)
+      (length ?PATH1 ?MEASURE1)
+      (distance ?SOURCE ?DEST ?DISTANCE)
+      (not (greaterThan ?MEASURE1 ?DISTANCE)))
+   (forall (?OBJ)
+      (=>
+         (part ?OBJ ?PATH1)
+         (between ?SOURCE ?OBJ ?DEST))))
+
+(subclass Translocation Motion)
+(documentation Translocation "&%Translocation is that class of &%Motions 
+in which an object moves from one place to another.  In the case of round 
+trips, the &%origin and &%destination are the same, but the intervening 
+motion passes through other locations.  &%Translocation represents linear 
+motion, in contrast to rotation or other movement in place.  A vehicle is 
+not necessary; &%Ambulating is a kind of &%Translocation.")
+
+(=>
+	(and
+		(instance ?MOVEMENT Translocation)
+		(origin ?MOVEMENT ?PLACE1))
+	(exists (?PLACE2 ?STAGE)
+		(and
+			(instance ?PLACE2 Region)
+			(not (equal ?PLACE1 ?PLACE2))
+			(subProcess ?STAGE ?MOVEMENT)
+			(located ?STAGE ?PLACE2))))
+
+(subclass Transportation Translocation)
+(relatedInternalConcept Transportation TransportationDevice)
+(documentation Transportation "&%Motion from one point to another by means 
+of a &%TransportationDevice.")
+
+(=>
+   (instance ?TRANS Transportation)
+   (exists (?DEVICE)
+      (and
+         (instance ?DEVICE TransportationDevice)
+         (instrument ?TRANS ?DEVICE))))
+
+;;; --------------------------
+
+(subclass Communication SocialInteraction)
+(subclass Communication ContentBearingProcess)
+(partition Communication Stating Supposing Directing Committing Expressing Declaring)
+(relatedInternalConcept Communication ContentDevelopment)
+(documentation Communication "A &%SocialInteraction that involves 
+the transfer of information between two or more &%CognitiveAgents.  
+Note that &%Communication is closely related to, but essentially 
+different from, &%ContentDevelopment.  The latter involves the creation 
+or modification of a &%ContentBearingObject, while &%Communication is 
+the transfer of information for the purpose of conveying a message.")
+
+(=>
+   (instance ?COMMUNICATE Communication)
+   (exists (?PHYS ?ENTITY ?AGENT1 ?AGENT2)
+      (and
+         (refers ?PHYS ?ENTITY)
+         (patient ?COMMUNICATE ?PHYS)
+         (instance ?AGENT1 CognitiveAgent)
+         (agent ?COMMUNICATE ?AGENT1)
+         (instance ?AGENT2 CognitiveAgent)
+         (destination ?COMMUNICATE ?AGENT2))))
+
+(subclass LinguisticCommunication Communication)
+(documentation LinguisticCommunication "A &%Communication that involves 
+the transfer of information via a &%LinguisticExpression.")
+
+(=>
+   (instance ?COMMUNICATE LinguisticCommunication)
+   (exists (?OBJ)
+      (and
+         (represents ?COMMUNICATE ?OBJ)
+         (instance ?OBJ LinguisticExpression)
+         (patient ?COMMUNICATE ?OBJ))))
+
+(subclass Committing LinguisticCommunication)
+(documentation Committing "Instances of this &%Class commit the &%agent to some 
+future course.  For example, Bob promised Susan that he would be home by 11pm.") 
+
+(=>
+   (and
+      (instance ?COMMIT Committing)
+      (patient ?COMMIT ?FORMULA)
+      (instance ?FORMULA Formula))
+   (modalAttribute ?FORMULA Promise))
+
+;;; --------------------------
+
+(subclass OrganicObject CorpuscularObject)
+(disjoint OrganicObject Artifact)
+
+;;; POD (partition OrganicObject Organism AnatomicalStructure)
+
+(documentation OrganicObject "This class encompasses &%Organisms, 
+&%CorpuscularObjects that are parts of &%Organisms, i.e. &%BodyParts, 
+and &%CorpuscularObjects that are nonintentionally produced by 
+&%Organisms, e.g. &%ReproductiveBodies.")
+
+
+(subclass Organism OrganicObject)
+(subclass Organism Agent)
+
+;;;POD(partition Organism Animal Plant Microorganism)
+
+(documentation Organism "Generally, a living individual, including all 
+&%Plants and &%Animals.")
+
+(=>
+   (instance ?ORGANISM Organism)
+   (exists (?BIRTH)
+      (and
+         (instance ?BIRTH Birth)
+         (experiencer ?BIRTH ?ORGANISM))))
+
+
+(subclass Animal Organism)
+(partition Animal Vertebrate Invertebrate)
+(documentation Animal "An &%Organism with eukaryotic &%Cells, and lacking 
+stiff cell walls, plastids, and photosynthetic pigments.")
+
+(subclass BiologicalProcess InternalChange)
+(documentation BiologicalProcess "A &%Process embodied in an &%Organism.")
+
+(=>
+   (instance ?PROC BiologicalProcess)
+   (exists (?OBJ)
+      (and
+         (instance ?OBJ Organism)
+         (located ?PROC ?OBJ))))
+
+(=>
+   (and
+      (instance ?PROC BiologicalProcess)
+      (experiencer ?PROC ?ORG))
+   (instance ?ORG Organism))
+
+(subclass PhysiologicProcess BiologicalProcess)
+(documentation PhysiologicProcess "A normal process of an &%Organism 
+or part of an &%Organism.")
+
+(subclass OrganismProcess PhysiologicProcess)
+(documentation OrganismProcess "A physiologic function of the 
+&%Organism as a whole, of multiple organ systems or of multiple 
+&%Organs or &%Tissues.")
+
+
+(subclass Birth OrganismProcess)
+(documentation Birth "The &%Process of being born.")
+
+(=>
+   (and
+      (instance ?BIRTH Birth)
+      (experiencer ?BIRTH ?AGENT))
+   (exists (?DEATH)
+      (and
+         (instance ?DEATH Death)
+         (experiencer ?DEATH ?AGENT))))
+
+(subclass Death OrganismProcess)
+(documentation Death "The &%Process of dying.")
+
+(=>
+   (and
+      (instance ?DEATH Death)
+      (experiencer ?DEATH ?AGENT))
+   (holdsDuring (FutureFn (WhenFn ?DEATH)) (attribute ?AGENT Dead)))
+
+(=>
+   (and
+      (instance ?DEATH Death)
+      (instance ?BIRTH Birth)
+      (experiencer ?DEATH ?AGENT)
+      (experiencer ?BIRTH ?AGENT))
+   (exists (?TIME)
+      (and
+         (meetsTemporally (WhenFn ?BIRTH) ?TIME)
+         (meetsTemporally ?TIME (WhenFn ?DEATH))
+         (holdsDuring ?TIME (attribute ?AGENT Living)))))
+
+
+
+;;; --------------------------
+
+(subclass ContentDevelopment IntentionalProcess)
+(documentation ContentDevelopment "A &%subclass of &%IntentionalProcess in 
+which content is modified, its form is altered or it is created anew.")
+
+(=>
+   (instance ?DEVELOP ContentDevelopment)
+   (exists (?OBJ)
+      (and
+         (instance ?OBJ ContentBearingObject)
+         (patient ?DEVELOP ?OBJ))))
+
+(subclass Writing ContentDevelopment)
+(documentation Writing "A &%subclass of &%ContentDevelopment in which 
+content is converted from one form (e.g. uttered, written or represented 
+mentally) into a written form.  Note that this class covers both 
+transcription and original creation of written &%Texts.")
+
+
+;;; --------------------------
+
+(subclass Word LinguisticExpression)
+(documentation Word "A term of a &%Language that represents a concept.")
+
+(subclass Sentence LinguisticExpression)
+(documentation Sentence "A syntactically well-formed formula of a 
+&%Language.  It includes, at minimum, a predicate and a subject (which 
+may be explicit or implicit), and it expresses a &%Proposition.")
+
+(=>
+   (instance ?SENT Sentence)
+   (exists (?NOUN ?VERB)
+      (and
+         (instance ?NOUN NounPhrase)
+         (instance ?VERB VerbPhrase)
+         (part ?NOUN ?SENT)
+         (part ?VERB ?SENT))))
+
+(=>
+    (instance ?SENT Sentence)
+    (exists (?PROP)
+        (and
+            (instance ?PROP Proposition)
+            (containsInformation ?SENT ?PROP))))
+
+(subclass Noun Word)
+(partition Word Noun Verb Adjective Adverb ParticleWord)
+(documentation Noun "One of the parts of speech.  The &%Class of &%Words 
+that conventionally denote &%Objects.")
+
+(subclass Verb Word)
+(documentation Verb "One of the parts of speech.  The &%Class of &%Words 
+that conventionally denote &%Processes.")
+
+
+(subclass Phrase LinguisticExpression)
+(disjointDecomposition Phrase VerbPhrase NounPhrase PrepositionalPhrase)
+(documentation Phrase "A set of &%Words in a &%Language which form a unit, 
+i.e. express a meaning in the &%Language.")
+
+(=>
+    (instance ?PHRASE Phrase)
+    (exists (?PART1 ?PART2)
+        (and
+            (part ?PART1 ?PHRASE)
+	      (part ?PART2 ?PHRASE)
+            (instance ?PART1 Word)
+	      (instance ?PART2 Word)
+            (not (equal ?PART1 ?PART2)))))
+
+(subclass VerbPhrase Phrase)
+(documentation VerbPhrase "A &%Phrase that has the same function as a 
+&%Verb.")
+
+(=>
+   (instance ?PHRASE VerbPhrase)
+   (exists (?VERB)
+      (and
+         (instance ?VERB Verb)
+         (part ?VERB ?PHRASE))))
+
+(subclass NounPhrase Phrase)
+(disjoint NounPhrase VerbPhrase)
+(documentation NounPhrase "A &%Phrase that has the same function as a 
+&%Noun.")
+
+(=>
+    (instance ?SENTENCE Sentence)
+    (exists (?PHRASE1 ?PHRASE2)
+        (and
+           (instance ?PHRASE1 NounPhrase)
+           (instance ?PHRASE2 VerbPhrase)
+           (part ?PHRASE1 ?SENTENCE)
+           (part ?PHRASE2 ?SENTENCE))))
+
+(=>
+   (instance ?PHRASE NounPhrase)
+   (exists (?NOUN)
+      (and
+         (instance ?NOUN Noun)
+         (part ?NOUN ?PHRASE))))
+
+
+(subclass Formula Sentence)
+(documentation Formula "A syntactically well-formed formula in the 
+SUO-KIF knowledge representation language.")
+
+;;; --------------------------
+
+(subclass Agent Object)
+(documentation Agent "Something or someone that can act on its own and 
+produce changes in the world.")
+
+(<=>
+	(instance ?AGENT Agent)
+	(exists (?PROC)
+		(agent ?PROC ?AGENT)))
+
+(subclass SentientAgent Agent)
+(documentation SentientAgent "An &%Agent that has rights but may or may 
+not have responsibilities and the ability to reason.  If the latter are 
+present, then the &%Agent is also an instance of &%CognitiveAgent.  
+Domesticated animals are an example of &%SentientAgents that are not 
+also &%CognitiveAgents.")
+
+(subclass CognitiveAgent SentientAgent)
+(documentation CognitiveAgent "A &%SentientAgent with responsibilities 
+and the ability to reason, deliberate, make plans, etc.  This is 
+essentially the legal/ethical notion of a person.  Note that, although 
+&%Human is a subclass of &%CognitiveAgent, there may be instances of 
+&%CognitiveAgent which are not also instances of &%Human.  For example, 
+chimpanzees, gorillas, dolphins, whales, and some extraterrestrials 
+(if they exist) may be &%CognitiveAgents.")
+
+;;; --------------------------
+
+(subclass Region Object)
+(documentation Region "A topographic location.  &%Regions encompass 
+surfaces of &%Objects, imaginary places, and &%GeographicAreas.  Note 
+that a &%Region is the only kind of &%Object which can be located at 
+itself.  Note too that &%Region is not a subclass of &%SelfConnectedObject, 
+because some &%Regions, e.g. archipelagos, have &%parts which are not 
+&%connected with one another.")
+
+(=>
+   (instance ?REGION Region)
+   (exists (?PHYS)
+      (located ?PHYS ?REGION)))
+
+(subclass GeographicArea Region)
+(partition GeographicArea WaterArea LandArea)
+(documentation GeographicArea "A geographic location, generally having 
+definite boundaries.  Note that this differs from its immediate superclass 
+&%Region in that a &%GeographicArea is a three-dimensional &%Region of the 
+earth.  Accordingly, all astronomical objects other than earth and all 
+one-dimensional and two-dimensional &%Regions are not classed under 
+&%GeographicArea.") 
+
+(instance geographicSubregion BinaryPredicate)
+(instance geographicSubregion TransitiveRelation)
+(instance geographicSubregion AsymmetricRelation)
+(subrelation geographicSubregion properPart)
+(subrelation geographicSubregion located)
+(domain geographicSubregion 1 GeographicArea)
+(domain geographicSubregion 2 GeographicArea)
+(documentation geographicSubregion "(&%geographicSubregion ?PART ?WHOLE) 
+means that the &%GeographicArea ?PART is part of the &%GeographicArea 
+?WHOLE.")
+
+(subclass GeopoliticalArea GeographicArea)
+(subclass GeopoliticalArea Agent)
+(documentation GeopoliticalArea "Any &%GeographicArea which is associated 
+with some sort of political structure.  This class includes &%Lands, 
+&%Cities, districts of cities, counties, etc.  Note that the identity 
+of a &%GeopoliticalArea may remain constant after a change in borders.")
+
+(=>
+   (and
+      (instance ?AREA GeopoliticalArea)
+	(leader (GovernmentFn ?AREA) ?PERSON))
+   (leader ?AREA ?PERSON))
+
+(=>
+   (and
+      (instance ?AREA GeopoliticalArea)
+	(leader ?AREA ?PERSON))
+(leader (GovernmentFn ?AREA) ?PERSON))
+
+
+(instance geopoliticalSubdivision AsymmetricRelation) 
+(instance geopoliticalSubdivision TransitiveRelation) 
+(subrelation geopoliticalSubdivision geographicSubregion) 
+(domain geopoliticalSubdivision 1 GeopoliticalArea) 
+(domain geopoliticalSubdivision 2 GeopoliticalArea) 
+(documentation geopoliticalSubdivision "(&%geopoliticalSubdivision 
+?AREA1 ?AREA2) means that ?AREA1 is any geopolitical part of ?AREA2; 
+that is, ?AREA1 is an integral &%geographicSubregion of ?AREA2 (not a 
+&%DependencyOrSpecialSovereigntyArea), having its own associated 
+&%GovernmentOrganization which is subordinated to or constrained by 
+the government of ?AREA2.  Cf. &%dependentGeopoliticalArea.") 
+
+(=>
+	(geopoliticalSubdivision ?SUB ?AREA)
+	(not (instance ?SUB Nation)))
+
+(subclass Nation GeopoliticalArea)
+(subclass Nation LandArea)
+(documentation Nation "The broadest &%GeopoliticalArea, i.e. &%Nations are 
+&%GeopoliticalAreas that are not part of any other overarching and 
+comprehensive governance structure (excepting commonwealths and other sorts 
+of loose international organizations).")
+
+(subclass LandArea GeographicArea)
+(documentation LandArea "An area which is predominantly solid ground, 
+e.g. a &%Nation, a mountain, a desert, etc.  Note that a &%LandArea may 
+contain some relatively small &%WaterAreas.  For example, Australia is 
+a &%LandArea even though it contains various rivers and lakes.")
+
+(=>
+   (instance ?LAND1 LandArea)
+   (exists (?LAND2)
+      (and
+         (part ?LAND1 ?LAND2)
+         (or
+            (instance ?LAND2 Continent)
+            (instance ?LAND2 Island)))))
+
+(subclass Continent LandArea)
+(documentation Continent "One of the seven largest land masses on earth, 
+viz. Africa, North America, &%SouthAmerica, &%Antarctica, Europe, Asia, and 
+Oceania.  Note that this naming scheme is the one used in the CIA World 
+Factbook.")
+
+(equal (CardinalityFn Continent) 7)
+
+(subclass Island LandArea)
+(documentation Island "A &%LandArea that is completely surrounded by a &%WaterArea.")
+
+(=>
+   (instance ?ISLAND Island)
+   (not
+      (exists (?AREA ?PART1 ?PART2)
+         (and
+            (instance ?AREA LandArea)
+            (part ?PART1 ?ISLAND)
+            (part ?PART2 ?AREA)
+            (not 
+               (part ?ISLAND ?AREA))
+            (not
+               (part ?AREA ?ISLAND))
+            (meetsSpatially ?PART1 ?PART2)))))
+
+(=>
+	(and 
+		(instance ?ISLE Island)
+		(instance ?AREA GeographicArea)
+		(meetsSpatially ?ISLE ?AREA))
+	(not
+		(instance ?AREA LandArea)))
+
+(=>
+	(instance ?ISLE Island)
+	(exists (?WATER)
+		(and
+			(instance ?WATER WaterArea)
+			(meetsSpatially ?ISLE ?WATER))))
+
+
+(subclass WaterArea GeographicArea)
+(documentation WaterArea "A body which is made up predominantly of water, 
+e.g. rivers, lakes, oceans, etc.")
+
+(=>
+   (instance ?AREA WaterArea)
+   (exists (?BED ?HOLE ?WATER)
+      (and
+         (equal (HoleHostFn ?HOLE) ?BED)
+         (instance ?WATER Water)
+         (properlyFills ?WATER ?HOLE)
+         (equal (MereologicalSumFn ?BED ?WATER) ?AREA))))
+
+(instance completelyFills AsymmetricRelation)
+(subrelation completelyFills partiallyFills)
+(documentation completelyFills "(&%completelyFills ?OBJ ?HOLE) 
+means that some &%part of the &%Object ?OBJ fills the &%Hole ?HOLE.  
+Note that if (&%completelyFills ?OBJ1 ?HOLE) and (&%part 
+?OBJ1 ?OBJ2), then (&%completelyFills ?OBJ2 ?HOLE). 
+A complete filler of (a part of) a hole is connected with everything 
+with which (that part of) the hole itself is connected. 
+A perfect filler of (a part of) a hole completely fills every proper 
+part of (that part of) that hole.")
+
+(=> 
+	(completelyFills ?OBJ1 ?HOLE)
+	(exists (?OBJ2)
+		(and 
+			(part ?OBJ2 ?OBJ1)
+			(fills ?OBJ2 ?HOLE))))
+
+(subrelation partiallyFills located)
+(instance partiallyFills SpatialRelation)
+(instance partiallyFills AsymmetricRelation)
+(domain partiallyFills 1 Object)
+(domain partiallyFills 2 Hole)
+(documentation partiallyFills "(&%partiallyFills ?OBJ ?HOLE) means that 
+?OBJ &%completelyFills some part of ?HOLE. Note that if (&%partiallyFills 
+?OBJ1 ?HOLE) and (&%part ?OBJ1 ?OBJ2), then (&%partiallyFills ?OBJ2 ?HOLE). 
+Note too that a partial filler need not be wholly inside a hole (it may 
+stick out), which means that every complete filler also qualifies as 
+(is a limit case of) a partial one.")
+
+(=> 
+	(partiallyFills ?OBJ ?HOLE1)
+	(exists (?HOLE2)
+		(and 
+			(part ?HOLE2 ?HOLE1)
+			(completelyFills ?OBJ ?HOLE2))))
+
+(instance properlyFills AsymmetricRelation)
+(subrelation properlyFills partiallyFills)
+(domain properlyFills 1 Object)
+(domain properlyFills 2 Hole)
+(documentation properlyFills "(&%properlyFills ?OBJ ?HOLE) 
+means that ?HOLE is properly (though perhaps incompletely) filled by 
+?OBJ, i.e. some part of ?HOLE is perfectly filled by ?OBJ.  Note that 
+&%properlyFills is the dual of &%completelyFills, and is so 
+related to &%partiallyFills that ?OBJ &%properlyFills ?HOLE just in 
+case ?OBJ &%partiallyFills every part of ?HOLE.  (Thus, every perfect 
+filler is both complete and proper in this sense). 
+Every hole is connected with everything with which a proper filler 
+of the hole is connected. Every proper part of a perfect filler of (a part of) a hole properly 
+fills (that part of) that hole.")
+
+(=> 
+	(properlyFills ?OBJ ?HOLE1)
+	(exists (?HOLE2)
+		(and 
+			(part ?HOLE2 ?HOLE1)
+			(fills ?OBJ ?HOLE2))))
+
+(instance fills AsymmetricRelation)
+(subrelation fills completelyFills)
+(subrelation fills properlyFills)
+(domain fills 1 Object)
+(domain fills 2 Hole)
+(relatedInternalConcept fills Fillable)
+(documentation fills "Holes can be filled.  (&%fills ?OBJ ?HOLE) 
+means that the &%Object ?OBJ fills the &%Hole ?HOLE.  Note that 
+&%fills here means perfectly filled. Perfect fillers and fillable entities have no parts in common (rather, 
+they may occupy the same spatial region).")
+
+(=> 
+	(and 
+		(fills ?OBJ1 ?HOLE)
+           	(attribute ?OBJ2 Fillable))
+      (not 
+		(overlapsSpatially ?OBJ1 ?OBJ2)))
+
+;;;----------------------
+
+(subclass Substance SelfConnectedObject)
+
+(subclass PureSubstance Substance) 
+(partition PureSubstance CompoundSubstance ElementalSubstance) 
+(documentation PureSubstance "The &%Class of &%Substances with constant 
+composition.  A &%PureSubstance can be either an element (&%ElementalSubstance) 
+or a compound of elements (&%CompoundSubstance).  Examples: Table salt 
+(sodium chloride, NaCl), sugar (sucrose, C_{12}H_{22}O_{11}), water (H_2O), 
+iron (Fe), copper (Cu), and oxygen (O_2).") 
+
+
+(subclass CompoundSubstance PureSubstance) 
+(documentation CompoundSubstance "The &%Class of &%Substances that contain 
+two or more elements (&%ElementalSubstances), in definite proportion by weight. 
+The composition of a pure compound will be invariant, regardless of the method 
+of preparation. Compounds are composed of more than one kind of atom (element). 
+The term molecule is often used for the smallest unit of a compound that still 
+retains all of the properties of the compound.  Examples: Table salt (sodium 
+chloride, NaCl), sugar (sucrose, C_{12}H_{22}O_{11}), and water (H_2O). ") 
+
+(subclass Water CompoundSubstance)
+(documentation Water "The &%Class of samples of the compound H20.  Note 
+that this &%Class covers both pure and impure &%Water.")
+
+;;;----------------------
+
+(subclass Artifact CorpuscularObject)
+(documentation Artifact "A &%CorpuscularObject that is the product of a 
+&%Making.")
+
+(<=>
+   (instance ?ARTIFACT Artifact)
+   (exists (?MAKING)
+      (and
+         (instance ?MAKING Making)
+         (result ?MAKING ?ARTIFACT))))
+
+(subclass Product Artifact)
+(documentation Product "An &%Artifact that is produced by &%Manufacture.")
+
+(=>
+   (instance ?PRODUCT Product)
+   (exists (?MANUFACTURE)
+      (and
+         (instance ?MANUFACTURE Manufacture)
+         (result ?MANUFACTURE ?PRODUCT))))
+
+(instance version BinaryPredicate)
+(instance version AsymmetricRelation)
+(instance version TransitiveRelation)
+(domainSubclass version 1 Artifact)
+(domainSubclass version 2 Artifact)
+(documentation version "Some &%Artifacts have a life cycle with discrete 
+stages or versions.  (&%version ARTIFACT1 ARTIFACT2) means that ARTIFACT1 
+is a version of ARTIFACT2.  Note that this &%Predicate relates subclasses of 
+&%Artifact and not instances.")
+
+(=>
+    (version ?ARTIFACT1 ?ARTIFACT2)
+    (subclass ?ARTIFACT1 ?ARTIFACT2))
+
+;; The following part of the ontology will eventually encompass all 
+;; artifacts.  For the time being, it is mostly restricted to the content 
+;; of the Ontolingua ontology component-assemblies, which covers the types 
+;; of elements used to construct engineering systems.
+
+
+(subclass Device Artifact)
+(documentation Device "A &%Device is an &%Artifact whose purpose is to 
+serve as an &%instrument in a specific subclass of &%Process.")
+
+(=>
+   (instance ?DEVICE Device)
+   (exists (?PROC)
+      (capability ?PROC instrument ?DEVICE)))
+
+(=>
+   (instance ?DEVICE Device)
+   (exists (?PROC)
+      (hasPurpose ?DEVICE (exists (?INST) 
+                             (and 
+                                (instance ?INST ?PROC) 
+                                (instrument ?INST ?DEVICE))))))
+
+(subclass TransportationDevice Device)
+(documentation TransportationDevice "A &%TransportationDevice is a &%Device 
+which serves as the &%instrument in a &%Transportation &%Process which carries 
+the &%patient of the &%Process from one point to another.")
+
+(=>
+   (instance ?DEVICE TransportationDevice)
+   (capability Transportation instrument ?DEVICE))
+
+(subclass Vehicle TransportationDevice)
+(documentation Vehicle "&%Vehicle is the subclass of 
+&%TransportationDevices that transport passengers or goods 
+from one place to another by moving from one place to the other 
+with them, e.g., cars, trucks, ferries, and airplanes.  Contrast 
+with devices such as pipelines, escalators, or supermarket 
+checkout belts, which carry items from one place to another by means 
+of a moving part, without the device removing from the origin to 
+the destination.")
+
+(=>
+	(and
+		(instance ?TRANSPORT Vehicle)
+		(instance ?MOVE Translocation)
+		(instrument ?MOVE ?TRANSPORT)
+		(origin ?MOVE ?FROM))
+	(holdsDuring (BeginFn (WhenFn ?MOVE)) (located ?TRANSPORT ?FROM)))
+
+(=>
+	(and
+		(instance ?TRANSPORT Vehicle)
+		(instance ?MOVE Translocation)
+		(instrument ?MOVE ?TRANSPORT)
+		(destination ?MOVE ?TO))
+	(holdsDuring (BeginFn (WhenFn ?MOVE)) (located ?TRANSPORT ?TO)))
+
+;;; ---------------------
+
+(subclass InternalChange Process)
+(documentation InternalChange "&%Processes which involve altering an internal 
+property of an &%Object, e.g. the shape of the &%Object, its coloring, its 
+structure, etc.  &%Processes that are not instances of this class include 
+changes that only affect the relationship to other objects, e.g. changes in 
+spatial or temporal location.") 
+
+(=>
+   (and
+      (instance ?CHANGE InternalChange)
+      (patient ?CHANGE ?OBJ))
+   (exists (?PROPERTY)
+      (or
+         (and
+            (holdsDuring (BeginFn (WhenFn ?CHANGE)) (attribute ?OBJ ?PROPERTY))
+            (holdsDuring (EndFn (WhenFn ?CHANGE)) (not (attribute ?OBJ ?PROPERTY))))
+         (and
+            (holdsDuring (BeginFn (WhenFn ?CHANGE)) (not (attribute ?OBJ ?PROPERTY)))
+            (holdsDuring (EndFn (WhenFn ?CHANGE)) (attribute ?OBJ ?PROPERTY))))))
+
+(subclass Creation InternalChange)
+(relatedInternalConcept Creation Destruction)
+(documentation Creation "The &%subclass of &%Process in which 
+something is created.  Note that the thing created is specified 
+with the &%result &%CaseRole.")
+
+(=>
+   (instance ?ACTION Creation)
+   (exists (?RESULT)
+      (result ?ACTION ?RESULT)))
+
+(<=>
+   (instance ?PROCESS Creation)
+   (exists (?PATIENT)
+      (and 
+         (patient ?PROCESS ?PATIENT)
+         (time ?PATIENT (EndFn (WhenFn ?PROCESS))) 
+         (not 
+            (time ?PATIENT (BeginFn (WhenFn ?PROCESS)))))))
+
+(subclass Making Creation)
+(subclass Making IntentionalProcess)
+(documentation Making "The &%subclass of &%Creation in which an individual 
+&%Artifact or a type of &%Artifact is made.")
+
+
+(subclass Manufacture Making)
+(documentation Manufacture "The &%Making of &%Artifacts on a mass 
+scale.")
+
+(instance connected BinaryPredicate)
+(instance connected SpatialRelation)
+(instance connected ReflexiveRelation)
+(instance connected SymmetricRelation)
+(domain connected 1 Object)
+(domain connected 2 Object)
+(documentation connected "(connected ?OBJ1 ?OBJ2) means that ?OBJ1 
+&%meetsSpatially ?OBJ2 or that ?OBJ1 &%overlapsSpatially ?OBJ2.")
+
+(=>
+     (connected ?OBJ1 ?OBJ2)
+     (or
+          (meetsSpatially ?OBJ1 ?OBJ2)
+          (overlapsSpatially ?OBJ1 ?OBJ2)))
+
+(<=> 
+	(instance ?OBJ SelfConnectedObject)
+	(forall (?PART1 ?PART2)
+		(=> 
+			(equal ?OBJ (MereologicalSumFn ?PART1 ?PART2))
+			(connected ?PART1 ?PART2))))
+
+(instance capability TernaryPredicate)
+(domainSubclass capability 1 Process)
+(domain capability 2 CaseRole)
+(domain capability 3 Object)
+(documentation capability "(&%capability ?PROCESS ?ROLE ?OBJ) means 
+that ?OBJ has the ability to play the role of ?ROLE in &%Processes of 
+type ?PROCESS.")
+
+(=>
+   (and
+      (instance ?ROLE CaseRole)
+      (holds ?ROLE ?ARG1 ?ARG2)
+      (instance ?ARG1 ?PROC)
+      (subclass ?PROC Process))
+   (capability ?PROC ?ROLE ?ARG2))
+
+(subrelation meetsSpatially connected)
+(instance meetsSpatially IrreflexiveRelation)
+(instance meetsSpatially SymmetricRelation)
+(disjointRelation meetsSpatially overlapsSpatially)
+(documentation meetsSpatially "(&%meetsSpatially ?OBJ1 ?OBJ2) means that 
+?OBJ1 and ?OBJ2 are &%connected but that neither ?OBJ1 nor ?OBJ2 
+&%overlapsSpatially the other.")
+
+(subrelation overlapsSpatially connected)
+(instance overlapsSpatially ReflexiveRelation)
+(instance overlapsSpatially SymmetricRelation)
+(documentation overlapsSpatially "(&%overlapsSpatially ?OBJ1 ?OBJ2) means 
+that the &%Objects ?OBJ1 and ?OBJ2 have some parts in common.  This is a 
+reflexive and symmetric (but not transitive) relation.")
+
+(<=>
+	(overlapsSpatially ?OBJ1 ?OBJ2)
+     	(exists (?OBJ3)
+          	(and
+               	(part ?OBJ3 ?OBJ1)
+               	(part ?OBJ3 ?OBJ2))))
+
+(=>
+   (and
+      (member ?OBJ1 ?COLL)
+      (member ?OBJ2 ?COLL)
+	(not (equal ?OBJ1 ?OBJ2)))
+   (not
+         (overlapsSpatially ?OBJ1 ?OBJ2)))
+
+(=> 
+   (and 
+      (instance ?REL CaseRole) 
+      (instance ?OBJ Object)
+      (holds ?REL ?PROCESS ?OBJ)) 
+   (exists (?TIME) 
+      (overlapsSpatially (WhereFn ?PROCESS ?TIME) ?OBJ)))
+
+(instance leader BinaryPredicate)
+(instance leader AsymmetricRelation)
+(instance leader SingleValuedRelation)
+(domain leader 1 Agent)
+(domain leader 2 Human)
+(documentation leader "(&%leader ?INSTITUTION ?PERSON)
+means that the leader of ?INSTITUTION is ?PERSON.")
+
+(=>
+	(leader ?X ?Y)
+	(attribute ?Y Living))
+
+(instance experiencer CaseRole)
+(domain experiencer 1 Process)
+(domain experiencer 2 Agent)
+(documentation experiencer "(&%experiencer ?PROCESS ?AGENT) means 
+that ?AGENT experiences the &%Process ?PROCESS.  For example, Yojo 
+is the &%experiencer of seeing in the following proposition:  Yojo 
+sees the fish.  Note that &%experiencer, unlike &%agent, does 
+not entail a causal relation between its arguments.")
+
+
+(instance modalAttribute BinaryPredicate)
+(instance modalAttribute AsymmetricRelation)
+(instance modalAttribute IrreflexiveRelation)
+(subrelation modalAttribute property)
+(domain modalAttribute 1 Formula)
+(domain modalAttribute 2 NormativeAttribute)
+(documentation modalAttribute "A &%BinaryRelation that is used to state the 
+normative force of a &%Proposition.  (&%modalAttribute ?FORMULA ?PROP) means 
+that the &%Proposition expressed by ?FORMULA has the &%NormativeAttribute 
+?PROP.  For example, (&%modalAttribute (&%exists (?ACT ?OBJ) (&%and 
+(&%instance ?ACT &%Giving) (&%agent ?ACT John) (&%patient ?ACT ?OBJ) 
+(&%destination ?ACT Tom))) &%Obligation) means that John is obligated to give 
+Tom something.")  
+
+(=>
+   (and
+      (modalAttribute ?FORMULA1 ?PROP)
+      (entails ?FORMULA1 ?FORMULA2))
+   (modalAttribute ?FORMULA2 ?PROP))
+
+(=>
+    (modalAttribute ?FORMULA Permission)
+    (modalAttribute ?FORMULA Possibility))
+
+(subrelation instrument patient)
+(domain instrument 1 Process)
+(domain instrument 2 Object)
+(documentation instrument "(instrument ?EVENT ?TOOL) means that ?TOOL 
+is used by an agent in bringing about ?EVENT and that ?TOOL is not 
+changed by ?EVENT.  For example, the key is an &%instrument in the 
+following proposition: The key opened the door.  Note that &%instrument 
+and &%resource cannot be satisfied by the same ordered pair.")
+
+(subrelation length measure)
+(domain length 2 LengthMeasure)
+(documentation length "&%BinaryPredicate that is used to state the measure 
+of an &%Object from one point to another point along its surface.  Note 
+that the difference between the predicates &%length and &%distance is that 
+the &%length is used to state the &%LengthMeasure of one of the dimensions of 
+a single object, while &%distance is used to state the &%LengthMeasure that 
+separates two distinct objects")
+
+(instance distance SingleValuedRelation)
+(instance distance SpatialRelation)
+(instance distance TernaryPredicate)
+(domain distance 1 Physical)
+(domain distance 2 Physical)
+(domain distance 3 LengthMeasure)
+(documentation distance "(&%distance ?OBJ1 ?OBJ2 ?QUANT) means that the 
+shortest distance between the two objects ?OBJ1 and ?OBJ2 is ?QUANT.  Note 
+that the difference between the predicates &%length and &%distance is that 
+the &%length is used to state the &%LengthMeasure of one of the dimensions of 
+a single object, while &%distance is used to state the &%LengthMeasure that 
+separates two distinct objects.")
+
+(=>
+   (distance ?OBJ1 ?OBJ2 ?QUANT)
+   (distance ?OBJ2 ?OBJ1 ?QUANT))
+
+(instance between SpatialRelation)
+(instance between TernaryPredicate)
+(domain between 1 Object)
+(domain between 2 Object)
+(domain between 3 Object)
+(documentation between "(between ?OBJ1 ?OBJ2 ?OBJ3) means that ?OBJ2 is 
+spatially located between ?OBJ1 and ?OBJ3.  Note that this implies that 
+?OBJ2 is directly between ?OBJ1 and ?OBJ3, i.e. the projections of ?OBJ1 
+and ?OBJ3 overlap with ?OBJ2.")
+
+(instance measure BinaryPredicate)
+(instance measure AsymmetricRelation)
+(domain measure 1 Object)
+(domain measure 2 PhysicalQuantity)
+(documentation measure "A very general &%Predicate for asserting that a 
+particular &%Object is measured by a particular &%ConstantQuantity.  
+In general, the second argument of this &%Predicate will be an instance 
+of the &%Function &%MeasureFn.")
+
+(subrelation length measure)
+(domain length 2 LengthMeasure)
+(documentation length "&%BinaryPredicate that is used to state the measure 
+of an &%Object from one point to another point along its surface.  Note 
+that the difference between the predicates &%length and &%distance is that 
+the &%length is used to state the &%LengthMeasure of one of the dimensions of 
+a single object, while &%distance is used to state the &%LengthMeasure that 
+separates two distinct objects")
+
+(subrelation member part)
+(instance member AsymmetricRelation)
+(instance member IntransitiveRelation)
+(domain member 1 SelfConnectedObject)
+(domain member 2 Collection)
+(relatedInternalConcept member instance)
+(relatedInternalConcept member element)
+(documentation member "A specialized common sense notion of part for 
+uniform parts of &%Collections.  For example, each sheep in a flock of 
+sheep would have the relationship of member to the flock.")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  NUMERIC FUNCTIONS   ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; INCLUDES 'STRUCTURAL ONTOLOGY'
+;; INCLUDES 'BASE ONTOLOGY'
+
+(instance MultiplicationFn BinaryFunction)
+(instance MultiplicationFn AssociativeFunction)
+(instance MultiplicationFn CommutativeFunction)
+(instance MultiplicationFn RelationExtendedToQuantities)
+(instance MultiplicationFn TotalValuedRelation)
+(domain MultiplicationFn 1 Quantity)
+(domain MultiplicationFn 2 Quantity)
+(range MultiplicationFn Quantity)
+(documentation MultiplicationFn "If ?NUMBER1 and ?NUMBER2 are &%Numbers, 
+then (&%MultiplicationFn ?NUMBER1 ?NUMBER2) is the arithmetical product 
+of these numbers.")
+
+(instance AdditionFn BinaryFunction)
+(instance AdditionFn AssociativeFunction)
+(instance AdditionFn CommutativeFunction)
+(instance AdditionFn RelationExtendedToQuantities)
+(instance AdditionFn TotalValuedRelation)
+(domain AdditionFn 1 Quantity)
+(domain AdditionFn 2 Quantity)
+(range AdditionFn Quantity)
+(documentation AdditionFn "If ?NUMBER1 and ?NUMBER2 are &%Numbers, then 
+(&%AdditionFn ?NUMBER1 ?NUMBER2) is the arithmetical sum of these 
+numbers.")
+
+(equal (SuccessorFn ?NUMBER) (AdditionFn ?NUMBER 1))
+
+(instance SubtractionFn BinaryFunction)
+(instance SubtractionFn AssociativeFunction)
+(instance SubtractionFn RelationExtendedToQuantities)
+(instance SubtractionFn TotalValuedRelation)
+(domain SubtractionFn 1 Quantity)
+(domain SubtractionFn 2 Quantity)
+(range SubtractionFn Quantity)
+(documentation SubtractionFn "If ?NUMBER1 and ?NUMBER2 are &%Numbers, 
+then (&%SubtractionFn ?NUMBER1 ?NUMBER2) is the arithmetical difference 
+between ?NUMBER1 and ?NUMBER2, i.e. ?NUMBER1 minus ?NUMBER2.  An 
+exception occurs when ?NUMBER1 is equal to 0, in which case 
+(&%SubtractionFn ?NUMBER1 ?NUMBER2) is the negation of ?NUMBER2.")
+
+(equal (PredecessorFn ?NUMBER) (SubtractionFn ?NUMBER 1))
+
+(instance DivisionFn BinaryFunction)
+(instance DivisionFn AssociativeFunction)
+(instance DivisionFn RelationExtendedToQuantities)
+(instance DivisionFn PartialValuedRelation)
+(domain DivisionFn 1 Quantity)
+(domain DivisionFn 2 Quantity)
+(range DivisionFn Quantity)
+(documentation DivisionFn "If ?NUMBER1 and ?NUMBER2 are &%Numbers, then 
+(&%DivisionFn ?NUMBER1 ?NUMBER2) is the result of dividing ?NUMBER1 by 
+?NUMBER2.  Note that when ?NUMBER1 = 1 (&%DivisionFn ?NUMBER1 ?NUMBER2) 
+is the reciprocal of ?NUMBER2.  Note too that (&%DivisionFn ?NUMBER1 
+?NUMBER2) is undefined when ?NUMBER2 = 0.")
+
+(=>
+   (instance ?NUMBER RationalNumber)
+   (exists (?INT1 ?INT2)
+      (and
+         (instance ?INT1 Integer)
+         (instance ?INT2 Integer)
+         (equal ?NUMBER (DivisionFn ?INT1 ?INT2)))))
+
+(instance AbsoluteValueFn UnaryFunction)
+(instance AbsoluteValueFn TotalValuedRelation)
+(domain AbsoluteValueFn 1 RealNumber)
+(range AbsoluteValueFn NonnegativeRealNumber)
+(documentation AbsoluteValueFn "The value of (&%AbsoluteValueFn ?NUMBER) 
+is the absolute value of the &%RealNumber ?NUMBER.")
+
+(<=>
+     (and
+         (equal (AbsoluteValueFn ?NUMBER1) ?NUMBER2)
+         (instance ?NUMBER1 RealNumber)
+         (instance ?NUMBER2 RealNumber))
+     (or 
+         (and 
+              (instance ?NUMBER1 NonnegativeRealNumber)
+              (equal ?NUMBER1 ?NUMBER2))     
+         (and 
+              (instance ?NUMBER1 NegativeRealNumber)
+              (equal ?NUMBER2 (SubtractionFn 0 ?NUMBER1)))))
+
+(instance CeilingFn UnaryFunction)
+(instance CeilingFn TotalValuedRelation)
+(domain CeilingFn 1 RealNumber)
+(range CeilingFn Integer)
+(documentation CeilingFn "(&%CeilingFn ?NUMBER) returns the smallest 
+&%Integer greater than or equal to the &%RealNumber ?NUMBER.")
+
+(=>
+   (equal (CeilingFn ?NUMBER) ?INT)
+   (not
+      (exists (?OTHERINT)
+         (and
+            (instance ?OTHERINT Integer)
+            (greaterThanOrEqualTo ?OTHERINT ?NUMBER)
+            (lessThan ?OTHERINT ?INT)))))
+
+(instance DenominatorFn UnaryFunction)
+(instance DenominatorFn TotalValuedRelation)
+(domain DenominatorFn 1 RealNumber)
+(range DenominatorFn Integer)
+(documentation DenominatorFn "(&%DenominatorFn ?NUMBER) returns the 
+denominator of the canonical reduced form of the &%RealNumber ?NUMBER.")
+
+(instance ExponentiationFn BinaryFunction)
+(instance ExponentiationFn RelationExtendedToQuantities)
+(instance ExponentiationFn TotalValuedRelation)
+(domain ExponentiationFn 1 Quantity)
+(domain ExponentiationFn 2 Integer)
+(range ExponentiationFn Quantity)
+(documentation ExponentiationFn "(&%ExponentiationFn ?NUMBER ?INT) returns 
+the &%RealNumber ?NUMBER raised to the power of the &%Integer ?INT.")
+
+(instance FloorFn UnaryFunction)
+(instance FloorFn TotalValuedRelation)
+(domain FloorFn 1 RealNumber)
+(range FloorFn Integer)
+(documentation FloorFn "(&%FloorFn ?NUMBER) returns the largest &%Integer 
+less than or equal to the &%RealNumber ?NUMBER.")
+
+(=>
+   (equal (FloorFn ?NUMBER) ?INT)
+   (not
+      (exists (?OTHERINT)
+         (and
+            (instance ?OTHERINT Integer)
+            (lessThanOrEqualTo ?OTHERINT ?NUMBER)
+            (greaterThan ?OTHERINT ?INT)))))
+
+(instance GreatestCommonDivisorFn Function)
+(instance GreatestCommonDivisorFn VariableArityRelation)
+(instance GreatestCommonDivisorFn PartialValuedRelation)
+(range GreatestCommonDivisorFn Integer)
+(documentation GreatestCommonDivisorFn "(&%GreatestCommonDivisorFn 
+?NUMBER1 ?NUMBER2 ... ?NUMBER) returns the greatest common divisor of 
+?NUMBER1 through ?NUMBER.")
+
+(=>
+   (equal (GreatestCommonDivisorFn @ROW) ?NUMBER)
+   (forall (?ELEMENT)
+      (=>
+         (inList ?ELEMENT (ListFn @ROW))
+         (equal (RemainderFn ?ELEMENT ?NUMBER) 0))))
+
+(=>
+   (equal (GreatestCommonDivisorFn @ROW) ?NUMBER)
+   (not (exists (?GREATER)
+      (and
+         (greaterThan ?GREATER ?NUMBER)
+         (forall (?ELEMENT)
+            (=>
+               (inList ?ELEMENT (ListFn @ROW))
+               (equal (RemainderFn ?ELEMENT ?GREATER) 0)))))))
+
+(instance ImaginaryPartFn UnaryFunction)
+(instance ImaginaryPartFn TotalValuedRelation)
+(domain ImaginaryPartFn 1 ComplexNumber)
+(range ImaginaryPartFn ImaginaryNumber)
+(documentation ImaginaryPartFn "(&%ImaginaryPartFn ?NUMBER) returns 
+the part of ?NUMBER that has the square root of -1 as its factor.")
+
+(=>
+   (instance ?NUMBER ComplexNumber)
+   (exists (?PART1 ?PART2)
+      (and
+         (equal ?PART1 (RealNumberFn ?NUMBER))
+         (equal ?PART2 (ImaginaryPartFn ?NUMBER)))))
+
+(instance IntegerSquareRootFn UnaryFunction)
+(instance IntegerSquareRootFn PartialValuedRelation)
+(domain IntegerSquareRootFn 1 RealNumber)
+(range IntegerSquareRootFn NonnegativeInteger)
+(documentation IntegerSquareRootFn "(&%IntegerSquareRootFn ?NUMBER) 
+returns the integer square root of ?NUMBER.")
+
+(instance LeastCommonMultipleFn Function)
+(instance LeastCommonMultipleFn PartialValuedRelation)     
+(instance LeastCommonMultipleFn VariableArityRelation)
+(range LeastCommonMultipleFn Integer)
+(documentation LeastCommonMultipleFn "(&%LeastCommonMultipleFn 
+?NUMBER1 ?NUMBER2 ... ?NUMBER) returns the least common multiple of 
+?NUMBER1 through ?NUMBER.")
+
+(=>
+   (equal (LeastCommonMultipleFn @ROW) ?NUMBER)
+   (forall (?ELEMENT)
+      (=>
+         (inList ?ELEMENT (ListFn @ROW))
+         (equal (RemainderFn ?NUMBER ?ELEMENT) 0))))
+
+(=>
+   (equal (LeastCommonMultipleFn @ROW) ?NUMBER)
+   (not (exists (?LESS)
+      (and
+         (lessThan ?LESS ?NUMBER)
+         (forall (?ELEMENT)
+            (=>
+               (inList ?ELEMENT (ListFn @ROW))
+               (equal (RemainderFn ?LESS ?ELEMENT) 0)))))))
+
+(instance LogFn BinaryFunction)
+(domain LogFn 1 RealNumber)
+(domain LogFn 2 PositiveInteger)
+(range LogFn RealNumber)
+(documentation LogFn "(LogFn ?NUMBER ?INT) returns the logarithm of the 
+&%RealNumber ?NUMBER in the base denoted by the &%Integer ?INT.")
+
+(instance MaxFn BinaryFunction)
+(instance MaxFn AssociativeFunction)
+(instance MaxFn CommutativeFunction)
+(instance MaxFn RelationExtendedToQuantities)
+(instance MaxFn TotalValuedRelation)
+(domain MaxFn 1 Quantity)
+(domain MaxFn 2 Quantity)
+(range MaxFn Quantity)
+(documentation MaxFn "(&%MaxFn ?NUMBER1 ?NUMBER2) is the largest of 
+?NUMBER1 and ?NUMBER2.  In cases where ?NUMBER1 is equal to ?NUMBER2, 
+&%MaxFn returns one of its arguments.")
+
+(=>
+   (equal (MaxFn ?NUMBER1 ?NUMBER2) ?NUMBER)
+   (or
+      (and
+         (equal ?NUMBER ?NUMBER1)
+         (greaterThan ?NUMBER1 ?NUMBER2))
+      (and
+         (equal ?NUMBER ?NUMBER2)
+         (greaterThan ?NUMBER2 ?NUMBER1))
+      (and
+         (equal ?NUMBER ?NUMBER1)
+         (equal ?NUMBER ?NUMBER2))))
+
+(instance MinFn BinaryFunction)
+(instance MinFn AssociativeFunction)
+(instance MinFn CommutativeFunction)
+(instance MinFn RelationExtendedToQuantities)
+(instance MinFn TotalValuedRelation)
+(domain MinFn 1 Quantity)
+(domain MinFn 2 Quantity)
+(range MinFn Quantity)
+(documentation MinFn "(&%MinFn ?NUMBER1 ?NUMBER2) is the smallest of 
+?NUMBER1 and ?NUMBER2.  In cases where ?NUMBER1 is equal to ?NUMBER2, 
+&%MinFn returns one of its arguments.")
+
+(=>
+   (equal (MinFn ?NUMBER1 ?NUMBER2) ?NUMBER)
+   (or
+      (and
+         (equal ?NUMBER ?NUMBER1)
+         (lessThan ?NUMBER1 ?NUMBER2))
+      (and
+         (equal ?NUMBER ?NUMBER2)
+         (lessThan ?NUMBER2 ?NUMBER1))
+      (and
+         (equal ?NUMBER ?NUMBER1)
+         (equal ?NUMBER ?NUMBER2))))
+
+(instance NumeratorFn UnaryFunction)
+(instance NumeratorFn TotalValuedRelation)
+(domain NumeratorFn 1 RealNumber)
+(range NumeratorFn Integer)
+(documentation NumeratorFn "(&%NumeratorFn ?NUMBER) returns the numerator 
+of the canonical reduced form ?NUMBER.")
+
+(instance Pi PositiveRealNumber)
+(documentation Pi "&%Pi is the &%RealNumber that 
+is the ratio of the perimeter of a circle to its diameter.  It is 
+approximately equal to 3.141592653589793.")
+
+(instance NumberE PositiveRealNumber)
+(documentation NumberE "&%NumberE is the &%RealNumber that is the base for 
+natural logarithms.  It is approximately equal to 2.718282.")
+
+(instance RationalNumberFn UnaryFunction)
+(domain RationalNumberFn 1 Number)
+(range RationalNumberFn RationalNumber)
+(documentation RationalNumberFn "(&%RationalNumberFn ?NUMBER) returns 
+the rational representation of ?NUMBER.")
+
+(instance RealNumberFn UnaryFunction)
+(domain RealNumberFn 1 Number)
+(range RealNumberFn RealNumber)
+(documentation RealNumberFn "(RealNumberFn ?NUMBER) returns the part of 
+?NUMBER that is a &%RealNumber.")
+
+(instance ReciprocalFn UnaryFunction)
+(instance ReciprocalFn RelationExtendedToQuantities)
+(instance ReciprocalFn TotalValuedRelation)
+(domain ReciprocalFn 1 Quantity)
+(range ReciprocalFn Quantity)
+(documentation ReciprocalFn "(ReciprocalFn ?NUMBER) is the reciprocal 
+element of ?NUMBER with respect to the multiplication operator 
+(&%MultiplicationFn), i.e. 1/?NUMBER.  Not all numbers have a reciprocal 
+element.  For example the number 0 does not.  If a number ?NUMBER has a 
+reciprocal ?RECIP, then the product of ?NUMBER and ?RECIP will be 
+1, e.g. 3*1/3 = 1.  The reciprocal of an element is &%equal to 
+applying the &%ExponentiationFn function to the element to the power 
+-1.")
+
+(=>
+   (instance ?NUMBER Quantity)
+   (equal (ReciprocalFn ?NUMBER) (ExponentiationFn ?NUMBER -1)))
+
+(=>
+   (instance ?NUMBER Quantity)
+   (equal 1 (MultiplicationFn ?NUMBER (ReciprocalFn ?NUMBER))))
+
+(instance RemainderFn BinaryFunction)
+(instance RemainderFn RelationExtendedToQuantities)
+(instance RemainderFn PartialValuedRelation)
+(domain RemainderFn 1 Quantity)
+(domain RemainderFn 2 Quantity)
+(range RemainderFn Quantity)
+(documentation RemainderFn "(RemainderFn ?NUMBER ?DIVISOR) is the 
+remainder of the number ?NUMBER divided by the number ?DIVISOR.  
+The result has the same sign as ?DIVISOR.")
+
+(<=>
+   (equal (RemainderFn ?NUMBER1 ?NUMBER2) ?NUMBER)
+   (equal (AdditionFn (MultiplicationFn (FloorFn (DivisionFn ?NUMBER1 ?NUMBER2)) ?NUMBER2) ?NUMBER) ?NUMBER1))
+
+(=>
+   (equal (RemainderFn ?NUMBER1 ?NUMBER2) ?NUMBER)
+   (equal (SignumFn ?NUMBER2) (SignumFn ?NUMBER)))
+
+
+(=>
+	(instance ?NUMBER EvenInteger)
+	(equal (RemainderFn ?NUMBER 2) 0))
+
+(=>
+	(instance ?NUMBER OddInteger)
+	(equal (RemainderFn ?NUMBER 2) 1))
+
+(=>
+   (instance ?PRIME PrimeNumber)
+   (forall (?NUMBER)
+      (=>
+         (equal (RemainderFn ?PRIME ?NUMBER) 0)
+         (or
+            (equal ?NUMBER 1)
+            (equal ?NUMBER ?PRIME)))))
+
+(instance RoundFn UnaryFunction)
+(instance RoundFn RelationExtendedToQuantities)
+(instance RoundFn TotalValuedRelation)
+(domain RoundFn 1 Quantity)
+(range RoundFn Quantity)
+(documentation RoundFn "(&%RoundFn ?NUMBER) is the &%Integer closest 
+to ?NUMBER on the number line.  If ?NUMBER is halfway between two 
+&%Integers (for example 3.5), it denotes the larger &%Integer.")
+
+(=>
+   (equal (RoundFn ?NUMBER1) ?NUMBER2)
+   (or
+      (=>
+         (lessThan (SubtractionFn ?NUMBER1 (FloorFn ?NUMBER1)) 0.5)
+         (equal ?NUMBER2 (FloorFn ?NUMBER1)))
+      (=>
+         (greaterThanOrEqualTo (SubtractionFn ?NUMBER1 (FloorFn ?NUMBER1)) 0.5)
+         (equal ?NUMBER2 (CeilingFn ?NUMBER1)))))
+         
+(instance SignumFn UnaryFunction)
+(instance SignumFn TotalValuedRelation)
+(domain SignumFn 1 RealNumber)
+(range SignumFn Integer)
+(documentation SignumFn "(SignumFn ?NUMBER) denotes the sign of ?NUMBER.  
+This is one of the following values:  -1, 1, or 0.")
+
+(=>
+   (instance ?NUMBER NonnegativeRealNumber)
+   (or
+      (equal (SignumFn ?NUMBER) 1)
+      (equal (SignumFn ?NUMBER) 0)))
+
+(=>
+   (instance ?NUMBER PositiveRealNumber)
+   (equal (SignumFn ?NUMBER) 1))
+
+(=>
+   (instance ?NUMBER NegativeRealNumber)
+   (equal (SignumFn ?NUMBER) -1))
+
+(instance identityElement BinaryPredicate)
+(instance identityElement AsymmetricRelation)
+(domain identityElement 1 BinaryFunction)
+(domain identityElement 2 Entity)
+(documentation identityElement "An object ?ID is the identity element 
+for BinaryFunction ?FUNCTION just in case, for every instance ?INST, 
+applying ?FUNCTION to ?INST and ?ID results in ?INST.")
+
+(=>
+   (identityElement ?FUNCTION ?ID)
+   (forall (?INST)
+      (=>
+         (and
+            (domain ?FUNCTION 1 ?CLASS)
+            (instance ?INST ?CLASS))
+         (equal (AssignmentFn ?FUNCTION ?ID ?INST) ?INST))))
+
+(identityElement MultiplicationFn 1)
+(identityElement AdditionFn 0)
+(identityElement SubtractionFn 0)
+(identityElement DivisionFn 1)
+
+(instance SuccessorFn UnaryFunction)
+(instance SuccessorFn TotalValuedRelation)
+(domain SuccessorFn 1 Integer)
+(range SuccessorFn Integer)
+(documentation SuccessorFn "A &%UnaryFunction that maps an &%Integer to 
+its successor, e.g. the successor of 5 is 6.")
+
+(=>
+   (equal (SuccessorFn ?INT1) (SuccessorFn ?INT2))
+   (equal ?INT1 ?INT2))
+
+(=>
+   (instance ?INT Integer)
+   (lessThan ?INT (SuccessorFn ?INT)))
+
+(=>
+   (and
+      (instance ?INT1 Integer)
+      (instance ?INT2 Integer))
+   (not
+      (and
+         (lessThan ?INT1 ?INT2)
+         (lessThan ?INT2 (SuccessorFn ?INT1)))))
+
+(=>
+   (instance ?INT Integer)
+   (equal ?INT (SuccessorFn (PredecessorFn ?INT))))
+
+(=>
+   (instance ?INT Integer)
+   (equal ?INT (PredecessorFn (SuccessorFn ?INT))))
+
+(instance PredecessorFn UnaryFunction)
+(instance PredecessorFn TotalValuedRelation)
+(domain PredecessorFn 1 Integer)
+(range PredecessorFn Integer)
+(documentation PredecessorFn "A &%UnaryFunction that maps an &%Integer to 
+its predecessor, e.g. the predecessor of 5 is 4.")
+
+(=>
+   (equal (PredecessorFn ?INT1) (PredecessorFn ?INT2))
+   (equal ?INT1 ?INT2))
+
+(=>
+   (instance ?INT Integer)
+   (greaterThan ?INT (PredecessorFn ?INT)))
+
+(=>
+   (and
+      (instance ?INT1 Integer)
+      (instance ?INT2 Integer))
+   (not
+      (and
+         (lessThan ?INT2 ?INT1)
+         (lessThan (PredecessorFn ?INT1) ?INT2))))
+
+;;;----------------------------------------------
+
+(subclass Buying FinancialTransaction)
+(relatedInternalConcept Buying Selling)
+(documentation Buying "A &%FinancialTransaction in which an instance of 
+&%CurrencyMeasure is exchanged for an instance of &%Physical.")
+
+(=>
+   (and
+      (instance ?BUY Buying)
+      (agent ?BUY ?AGENT))
+   (destination ?BUY ?AGENT))
+
+(subclass Selling FinancialTransaction)
+(documentation Selling "A &%FinancialTransaction in which an instance of 
+&%Physical is exchanged for an instance of &%CurrencyMeasure.")
+
+(<=>
+   (exists (?BUY)
+      (and
+         (instance ?BUY Buying)
+         (agent ?BUY ?AGENT1)
+         (origin ?BUY ?AGENT2)
+         (patient ?BUY ?OBJECT)))
+   (exists (?SELL)
+      (and 
+         (instance ?SELL Selling)
+         (agent ?SELL ?AGENT2)
+         (destination ?SELL ?AGENT1)
+         (patient ?SELL ?OBJECT))))
+
+(=>
+   (and
+      (instance ?SELL Selling)
+      (agent ?SELL ?AGENT))
+   (origin ?SELL ?AGENT))
+
+
+(instance MagnitudeFn UnaryFunction)
+(domain MagnitudeFn  1 ConstantQuantity)
+(range MagnitudeFn RealNumber)
+(documentation MagnitudeFn "The magnitude of a &%ConstantQuantity is the 
+numeric value for the quantity.  In other words, &%MagnitudeFn converts 
+a &%ConstantQuantity with an associated &%UnitOfMeasure into an ordinary 
+&%RealNumber.  For example, the magnitude of the &%ConstantQuantity 2 
+&%Kilometers is the &%RealNumber 2.   Note that the magnitude of a 
+quantity in a given unit times that unit is equal to the original 
+quantity.")
+
+(=>
+   (and
+      (instance ?NUMBER RealNumber)
+      (instance ?UNIT UnitOfMeasure))
+(equal (MagnitudeFn (MeasureFn ?NUMBER ?UNIT)) ?NUMBER))
+
+(subclass UnitOfMeasure PhysicalQuantity)
+(documentation UnitOfMeasure "A standard of measurement for some dimension. 
+For example, the &%Meter is a &%UnitOfMeasure for the dimension of length, 
+as is the &%Inch.  There is no intrinsic property of a &%UnitOfMeasure that 
+makes it primitive or fundamental; rather, a system of units (e.g. 
+&%SystemeInternationalUnit) defines a set of orthogonal dimensions and 
+assigns units for each.") 
+
+(subclass MinuteDuration TimeDuration)
+(instance MinuteDuration UnitOfMeasure)
+(documentation MinuteDuration "Time unit. 1 minute = 60 seconds. ")
+
+;;; =====================================
+;;; END OF BASE.KIF
+;;; =====================================
