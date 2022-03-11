@@ -1,0 +1,1934 @@
+<?xml version='1.0' ?>
+<xmi:XMI xmlns:RDFProfile="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi" xmlns:OWLProfile="http://www.omg.org/spec/ODM/20131101/OWLProfile.xmi" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:StandardProfileL3="http://www.omg.org/spec/UML/20110701/StandardProfileL3">
+  <xmi:documentation xmi:type="xmi:Documentation">
+    <exporter>MagicDraw Clean XMI Exporter</exporter>
+    <exporterVersion>17.0.4</exporterVersion>
+  </xmi:documentation>
+  <uml:Package xmi:id="_16_6_1_15100de_1266442591270_512317_344" name="owl" URI="http://www.omg.org/spec/ODM/20131101/OWLLibrary.xmi">
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RDFProfile-Application">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xml#_12_5_1_137b03ac_1193948135234_354269_2454"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_OWLProfile-Application">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/OWLProfile.xml#_12_5_1_137b03ac_1194319380250_490899_3794"/>
+    </profileApplication>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_8fd028e_1268771414778_3450_2670" body="This library models the elements in the OWL namespace, http://www.w3.org/2002/07/owl.rdf, for use in vocabulary and ontology development.">
+      <annotatedElement xmi:idref="_16_6_1_15100de_1266442591270_512317_344"/>
+    </ownedComment>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_17_0_4_1_e980341_1380035884988_593448_5878">
+      <importedPackage href="RDFLibrary.xmi#_16_6_1_15100de_1266442802908_497608_344"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_17_0_4_1_e980341_1380035892757_870347_5884">
+      <importedPackage href="RDFLibrary.xmi#_16_6_1_15100de_1266442814710_964430_345"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_17_0_4_1_e980341_1380035897140_723648_5890">
+      <importedPackage href="XSDLibrary.xmi#_16_0_1_2780137_1234909558376_738774_2777"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_0_1_137b03ac_1234922626781_157578_1550" name="Nothing">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262288261567_262639_1649" body="This is the empty class.">
+        <annotatedElement xmi:idref="_16_0_1_137b03ac_1234922626781_157578_1550"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262288317900_552751_1654" general="_16_0_1_137b03ac_1234922700093_543315_1571"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272587340026_42232_1345" name="complementOf">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587340026_608114_1346"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587340045_9096_1347"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272587340026_608114_1346"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311484181638_699647_6180" body="The property that determines that a given class is the complement of another class.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272587340026_42232_1345"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587340045_9096_1347" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587340026_42232_1345">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311484157029_647900_6178"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311484157029_354738_6179" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587340026_608114_1346" name="complementOf" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587340026_42232_1345">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311484153952_21734_6176"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311484153952_726305_6177" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272587501226_806418_1381" name="unionOf">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587501226_957264_1382"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587501227_242149_1383"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272587501226_957264_1382"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311571075361_928090_4072" body="The property that determines the collection of classes or data ranges that build a union.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272587501226_806418_1381"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587501227_242149_1383" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587501226_806418_1381">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311571051051_407896_4070"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311571051052_93108_4071" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587501226_957264_1382" name="unionOf" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587501226_806418_1381">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311571047613_962319_4068"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311571047613_147277_4069" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272410382303_703213_1429" name="equivalentProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410382303_334334_1430"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410382303_674988_1431"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272410382303_334334_1430"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311488542141_287503_6708" body="The property that determines that two given properties are equivalent.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410382303_703213_1429"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410382303_334334_1430" name="equivalentProperty" visibility="public" association="_16_6_2_15100de_1272410382303_703213_1429">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488504297_372533_6704"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488504297_927166_6705" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410382303_674988_1431" visibility="public" association="_16_6_2_15100de_1272410382303_703213_1429">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488509109_907447_6706"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488509109_175532_6707" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262290117780_457096_2105" name="Annotation">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262290285949_917636_2176" body="The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262290117780_457096_2105"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262293222712_794317_2168">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262292359827_767937_1956" name="DataRange">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262292379576_600479_1975" body="The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262292359827_767937_1956"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_e980341_1311466246117_239555_4419">
+        <general href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1258411152192_312968_1737" name="ObjectProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1258411176678_447406_1756" body="The class of object properties.">
+        <annotatedElement xmi:idref="_16_6_630020f_1258411152192_312968_1737"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262294897159_711075_2332">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311568650088_961921_3650" name="propertyChainAxiom" visibility="public" association="_17_0_1_e980341_1311568650088_654717_3649">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311568679640_225800_3667"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311568679640_93076_3668" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262292851804_895123_2055" name="NamedIndividual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262292885591_216873_2074" body="The class of named individuals.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262292851804_895123_2055"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272410264424_689849_1405" general="_16_6_2_15100de_1272410181304_393078_1348"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272564568742_597582_1311" name="onProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564568742_15843_1312"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564568743_737193_1313"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272564568742_15843_1312"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311568291409_360632_3563" body="The property that determines the property that a property restriction refers to.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272564568742_597582_1311"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564568743_737193_1313" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_6_2_15100de_1272564568742_597582_1311">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311568377016_668507_3586"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311568377017_557588_3587" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564568742_15843_1312" name="onProperty" visibility="public" association="_16_6_2_15100de_1272564568742_597582_1311">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_2_15100de_1272565162398_448283_1511"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_0_1_137b03ac_1234922700093_543315_1571" name="Thing">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262288214081_782615_1648" body="The class of OWL individuals.">
+        <annotatedElement xmi:idref="_16_0_1_137b03ac_1234922700093_543315_1571"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1273344594639_671547_1964" general="_16_6_2_15100de_1272587637143_49283_1395"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272410445784_319607_1447" name="propertyDisjointWith">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410445784_813722_1448"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410445785_135371_1449"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272410445784_813722_1448"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311488947775_287083_6740" body="The property that determines that two given properties are disjoint.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410445784_319607_1447"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410445784_813722_1448" name="propertyDisjointWith" visibility="public" association="_16_6_2_15100de_1272410445784_319607_1447">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488841694_75362_6732"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488841694_788973_6733" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410445785_135371_1449" visibility="public" association="_16_6_2_15100de_1272410445784_319607_1447">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488845157_115236_6734"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488845157_925255_6735" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272564788892_684761_1403" name="hasValue">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564788892_167247_1404"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564788893_305764_1405"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272564788892_167247_1404"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311548132556_550140_7030" body="The property that determines the individual that a has-value restriction refers to.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272564788892_684761_1403"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564788893_305764_1405" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_6_2_15100de_1272564788892_684761_1403">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311548095024_409048_7022"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311548095024_918549_7023" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564788892_167247_1404" name="hasValue" visibility="public" association="_16_6_2_15100de_1272564788892_684761_1403">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_2_15100de_1272564819761_243294_1417"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1273343910645_197737_1489" name="oneOf">
+      <memberEnd xmi:idref="_16_6_2_15100de_1273343910647_491083_1492"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1273343910647_475472_1491"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1273343910647_491083_1492"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311567275156_53052_3487" body="The property that determines the collection of individuals or data values that build an enumeration.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1273343910645_197737_1489"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1273343910647_475472_1491" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1273343910645_197737_1489">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311567250950_364_3483"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311567250950_181135_3484" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1273343910647_491083_1492" name="oneOf" visibility="public" type="_16_6_2_15100de_1272587637143_49283_1395" association="_16_6_2_15100de_1273343910645_197737_1489">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311567254663_109836_3485"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311567254663_153973_3486" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_16_6_2_15100de_1267988115205_393865_952" name="Auxiliary Elements">
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_6_630020f_1258409647672_526548_1596" name="Labels"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_6_630020f_1262285172126_993214_1110" name="Comments"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_6_2_15100de_1267988127766_998569_953" name="URI References">
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1289001464386_264796_2252" name="http://www.w3.org/2002/07/owl#deprecated">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1289001495192_963317_2259">
+            <body>http://www.w3.org/2002/07/owl#deprecated</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288814517638_980056_2351" name="http://www.w3.org/2002/07/owl">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288814529205_814155_2356">
+            <body>http://www.w3.org/2002/07/owl</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288991217230_146891_2360" name="http://www.w3.org/2002/07/owl#Restriction">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288991261410_567761_2378">
+            <body>http://www.w3.org/2002/07/owl#Restriction</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:LiteralString" xmi:id="_16_8_e980341_1288817498971_864110_2219" value="http://www.w3.org/2002/07/owl"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1289001322190_771882_2216" name="http://www.w3.org/2002/07/owl#AnnotationProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1289001363573_151114_2221">
+            <body>http://www.w3.org/2002/07/owl#AnnotationProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1289001392165_271584_2233" name="http://www.w3.org/2002/07/owl#Thing">
+          <specification xmi:type="uml:LiteralString" xmi:id="_16_8_15100de_1291079691439_35125_2221" value="http://www.w3.org/2002/07/owl#Thing"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1290810962719_102456_3172" name="http://www.w3.org/2002/07/owl#rational">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1290810989239_979971_3191">
+            <body>http://www.w3.org/2002/07/owl#rational</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1290810834751_926544_3126" name="http://www.w3.org/2002/07/owl#real">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1290810902230_673348_3142">
+            <body>http://www.w3.org/2002/07/owl#real</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288991375959_208150_2471" name="http://www.w3.org/2002/07/owl#Class">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288991405561_505832_2490">
+            <body>http://www.w3.org/2002/07/owl#Class</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311457289096_140309_3991" name="http://www.w3.org/2002/07/owl#Nothing">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311457468730_489268_4035">
+            <body>http://www.w3.org/2002/07/owl#Nothing</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311457579927_976142_4082" name="http://www.w3.org/2002/07/owl#Ontology">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311457634792_472180_4104">
+            <body>http://www.w3.org/2002/07/owl#Ontology</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311464557023_542567_3069" name="http://www.w3.org/2002/07/owl#AllDifferent">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311464592985_679333_3088">
+            <body>http://www.w3.org/2002/07/owl#AllDifferent</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311464709064_190652_3167" name="http://www.w3.org/2002/07/owl#AllDisjointClasses">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311464744105_67971_3186">
+            <body>http://www.w3.org/2002/07/owl#AllDisjointClasses</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311464866987_353774_3330" name="http://www.w3.org/2002/07/owl#AllDisjointProperties">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311464896325_359142_3349">
+            <body>http://www.w3.org/2002/07/owl#AllDisjointProperties</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311465005050_923466_3426" name="http://www.w3.org/2002/07/owl#Annotation">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311465035825_283817_3445">
+            <body>http://www.w3.org/2002/07/owl#Annotation</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311465373545_783266_3748" name="http://www.w3.org/2002/07/owl#AsymmetricProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311465402528_739838_3767">
+            <body>http://www.w3.org/2002/07/owl#AsymmetricProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311465548899_391120_3870" name="http://www.w3.org/2002/07/owl#Axiom">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311465581340_384101_3889">
+            <body>http://www.w3.org/2002/07/owl#Axiom</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311466118373_986423_4323" name="http://www.w3.org/2002/07/owl#DataRange">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311466147498_730479_4342">
+            <body>http://www.w3.org/2002/07/owl#DataRange</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311466363824_233548_4533" name="http://www.w3.org/2002/07/owl#DatatypeProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311466382996_866496_4547">
+            <body>http://www.w3.org/2002/07/owl#DatatypeProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311466944008_74358_4725" name="http://www.w3.org/2002/07/owl#DeprecatedClass">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311466973171_64883_4736">
+            <body>http://www.w3.org/2002/07/owl#DeprecatedClass</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311467136012_678215_4774" name="http://www.w3.org/2002/07/owl#DeprecatedProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311467166959_980075_4785">
+            <body>http://www.w3.org/2002/07/owl#DeprecatedProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311468612505_653204_4832" name="http://www.w3.org/2002/07/owl#FunctionalProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311468641817_4414_4843">
+            <body>http://www.w3.org/2002/07/owl#FunctionalProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311468867606_801815_4879" name="http://www.w3.org/2002/07/owl#InverseFunctionalProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311468901264_940048_4890">
+            <body>http://www.w3.org/2002/07/owl#InverseFunctionalProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311469033785_139568_4925" name="http://www.w3.org/2002/07/owl#IrreflexiveProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311469052439_759683_4936">
+            <body>http://www.w3.org/2002/07/owl#IrreflexiveProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311470041488_916191_5072" name="http://www.w3.org/2002/07/owl#NamedIndividual">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311470070872_45304_5083">
+            <body>http://www.w3.org/2002/07/owl#NamedIndividual</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311470241041_384502_5120" name="http://www.w3.org/2002/07/owl#NegativePropertyAssertion">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311470269097_114055_5131">
+            <body>http://www.w3.org/2002/07/owl#NegativePropertyAssertion</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311470502754_630398_5171" name="http://www.w3.org/2002/07/owl#ObjectProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311470532592_482933_5182">
+            <body>http://www.w3.org/2002/07/owl#ObjectProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311470987906_306423_5296" name="http://www.w3.org/2002/07/owl#OntologyProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311471026697_139411_5307">
+            <body>http://www.w3.org/2002/07/owl#OntologyProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311471209757_405347_5345" name="http://www.w3.org/2002/07/owl#ReflexiveProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311471243027_552155_5356">
+            <body>http://www.w3.org/2002/07/owl#ReflexiveProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311471602439_207623_5391" name="http://www.w3.org/2002/07/owl#SymmetricProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311471629810_901_5402">
+            <body>http://www.w3.org/2002/07/owl#SymmetricProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311471811122_951485_5439" name="http://www.w3.org/2002/07/owl#TransitiveProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311471842375_275213_5450">
+            <body>http://www.w3.org/2002/07/owl#TransitiveProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311473322319_737702_5480" name="http://www.w3.org/2002/07/owl#allValuesFrom">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311473350870_297913_5491">
+            <body>http://www.w3.org/2002/07/owl#allValuesFrom</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311474369657_530160_5617" name="http://www.w3.org/2002/07/owl#annotatedProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311474401958_382953_5628">
+            <body>http://www.w3.org/2002/07/owl#annotatedProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311474658656_620544_5670" name="http://www.w3.org/2002/07/owl#annotatedSource">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311474690405_302365_5681">
+            <body>http://www.w3.org/2002/07/owl#annotatedSource</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311480965426_87788_5745" name="http://www.w3.org/2002/07/owl#annotatedTarget">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311481004592_6974_5756">
+            <body>http://www.w3.org/2002/07/owl#annotatedTarget</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311481574272_450213_5822" name="http://www.w3.org/2002/07/owl#assertionProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311481603597_28847_5833">
+            <body>http://www.w3.org/2002/07/owl#assertionProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311481811373_307481_5846" name="http://www.w3.org/2002/07/owl#backwardCompatibleWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311481845824_928670_5857">
+            <body>http://www.w3.org/2002/07/owl#backwardCompatibleWith</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311482816775_589367_5869" name="http://www.w3.org/2002/07/owl#bottomDataProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311482844223_758779_5880">
+            <body>http://www.w3.org/2002/07/owl#bottomDataProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311482977467_844723_5892" name="http://www.w3.org/2002/07/owl#bottomObjectProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311483015719_870823_5903">
+            <body>http://www.w3.org/2002/07/owl#bottomObjectProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311483632112_270005_5983" name="http://www.w3.org/2002/07/owl#cardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311483669041_832079_5994">
+            <body>http://www.w3.org/2002/07/owl#cardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311484259482_275827_6189" name="http://www.w3.org/2002/07/owl#complementOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311484286967_797453_6200">
+            <body>http://www.w3.org/2002/07/owl#complementOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311484781008_360475_6317" name="http://www.w3.org/2002/07/owl#datatypeComplementOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311484809948_135480_6328">
+            <body>http://www.w3.org/2002/07/owl#datatypeComplementOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311486021428_335041_6498" name="http://www.w3.org/2002/07/owl#differentFrom">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311486050083_751885_6509">
+            <body>http://www.w3.org/2002/07/owl#differentFrom</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311486699683_696998_6543" name="http://www.w3.org/2002/07/owl#disjointUnionOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311486732467_868286_6554">
+            <body>http://www.w3.org/2002/07/owl#disjointUnionOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311486894074_371433_6572" name="http://www.w3.org/2002/07/owl#disjointWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311486924122_216548_6583">
+            <body>http://www.w3.org/2002/07/owl#disjointWith</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311487936018_208361_6655" name="http://www.w3.org/2002/07/owl#distinctMembers">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311487960295_642874_6665">
+            <body>http://www.w3.org/2002/07/owl#distinctMembers</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311488109710_487619_6681" name="http://www.w3.org/2002/07/owl#equivalentClass">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311488142951_452140_6692">
+            <body>http://www.w3.org/2002/07/owl#equivalentClass</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311488583915_168535_6718" name="http://www.w3.org/2002/07/owl#equivalentProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311488616647_533586_6729">
+            <body>http://www.w3.org/2002/07/owl#equivalentProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311545745245_35209_6829" name="http://www.w3.org/2002/07/owl#hasKey">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311545784428_766333_6840">
+            <body>http://www.w3.org/2002/07/owl#hasKey</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311546057893_184127_6882" name="http://www.w3.org/2002/07/owl#hasSelf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311546100482_31843_6893">
+            <body>http://www.w3.org/2002/07/owl#hasSelf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311548420406_600607_7039" name="http://www.w3.org/2002/07/owl#hasValue">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311548458851_990634_7050">
+            <body>http://www.w3.org/2002/07/owl#hasValue</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311549507355_919546_7134" name="http://www.w3.org/2002/07/owl#incompatibleWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311549546479_540558_7145">
+            <body>http://www.w3.org/2002/07/owl#incompatibleWith</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311563093217_98743_3107" name="http://www.w3.org/2002/07/owl#intersectionOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311563130378_155118_3118">
+            <body>http://www.w3.org/2002/07/owl#intersectionOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311563284669_781897_3147" name="http://www.w3.org/2002/07/owl#inverseOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311563320599_708375_3158">
+            <body>http://www.w3.org/2002/07/owl#inverseOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311564303193_649650_3204" name="http://www.w3.org/2002/07/owl#maxCardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311564341435_371282_3215">
+            <body>http://www.w3.org/2002/07/owl#maxCardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311564811069_993487_3257" name="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311564862059_97912_3268">
+            <body>http://www.w3.org/2002/07/owl#maxQualifiedCardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311565250398_72794_3310" name="http://www.w3.org/2002/07/owl#members">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311565287550_195640_3321">
+            <body>http://www.w3.org/2002/07/owl#members</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311565506660_307169_3362" name="http://www.w3.org/2002/07/owl#minCardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311565536834_714754_3373">
+            <body>http://www.w3.org/2002/07/owl#minCardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311566470135_401222_3416" name="http://www.w3.org/2002/07/owl#minQualifiedCardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311566500124_591960_3427">
+            <body>http://www.w3.org/2002/07/owl#minQualifiedCardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311566708211_146068_3439" name="http://www.w3.org/2002/07/owl#onClass">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311566747771_140135_3450">
+            <body>http://www.w3.org/2002/07/owl#onClass</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311567080493_684662_3467" name="http://www.w3.org/2002/07/owl#onDatatype">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311567111405_832135_3478">
+            <body>http://www.w3.org/2002/07/owl#onDatatype</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311567312345_471494_3494" name="http://www.w3.org/2002/07/owl#oneOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311567344565_233329_3505">
+            <body>http://www.w3.org/2002/07/owl#oneOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311568193972_516474_3547" name="http://www.w3.org/2002/07/owl#onProperties">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311568221849_408620_3558">
+            <body>http://www.w3.org/2002/07/owl#onProperties</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311568310879_552875_3570" name="http://www.w3.org/2002/07/owl#onProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311568353587_889844_3583">
+            <body>http://www.w3.org/2002/07/owl#onProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311568442273_347093_3597" name="http://www.w3.org/2002/07/owl#priorVersion">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311568473431_674829_3608">
+            <body>http://www.w3.org/2002/07/owl#priorVersion</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311568869164_209383_3682" name="http://www.w3.org/2002/07/owl#propertyChainAxiom">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311568902747_752357_3693">
+            <body>http://www.w3.org/2002/07/owl#propertyChainAxiom</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311569070130_944694_3701" name="http://www.w3.org/2002/07/owl#propertyDisjointWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311569111083_400455_3712">
+            <body>http://www.w3.org/2002/07/owl#propertyDisjointWith</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311569308957_974004_3754" name="http://www.w3.org/2002/07/owl#qualifiedCardinality">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311569338859_938469_3765">
+            <body>http://www.w3.org/2002/07/owl#qualifiedCardinality</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311569497260_952600_3777" name="http://www.w3.org/2002/07/owl#sameAs">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311569529065_161484_3788">
+            <body>http://www.w3.org/2002/07/owl#sameAs</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311569687857_405210_3802" name="http://www.w3.org/2002/07/owl#someValuesFrom">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311569713619_676378_3813">
+            <body>http://www.w3.org/2002/07/owl#someValuesFrom</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311570156916_740145_3912" name="http://www.w3.org/2002/07/owl#sourceIndividual">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311570191382_479326_3923">
+            <body>http://www.w3.org/2002/07/owl#sourceIndividual</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311570201763_573491_3928" name="http://www.w3.org/2002/07/owl#targetIndividual">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311570227185_670881_3939">
+            <body>http://www.w3.org/2002/07/owl#targetIndividual</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311570536048_31299_4004" name="http://www.w3.org/2002/07/owl#targetValue">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311570552578_155335_4015">
+            <body>http://www.w3.org/2002/07/owl#targetValue</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311570699958_847193_4024" name="http://www.w3.org/2002/07/owl#topDataProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311570731479_832634_4035">
+            <body>http://www.w3.org/2002/07/owl#topDataProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311570853995_442745_4047" name="http://www.w3.org/2002/07/owl#topObjectProperty">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311570899653_545699_4058">
+            <body>http://www.w3.org/2002/07/owl#topObjectProperty</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311571153244_394076_4080" name="http://www.w3.org/2002/07/owl#unionOf">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311571181731_344357_4091">
+            <body>http://www.w3.org/2002/07/owl#unionOf</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311571321503_364751_4105" name="http://www.w3.org/2002/07/owl#versionInfo">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311571347964_407072_4116">
+            <body>http://www.w3.org/2002/07/owl#versionInfo</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311571802863_546480_4201" name="http://www.w3.org/2002/07/owl#versionIRI">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311571831839_901846_4212">
+            <body>http://www.w3.org/2002/07/owl#versionIRI</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_17_0_1_e980341_1311572554417_380100_4283" name="http://www.w3.org/2002/07/owl#withRestrictions">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_17_0_1_e980341_1311572581368_180191_4294">
+            <body>http://www.w3.org/2002/07/owl#withRestrictions</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_6_2_15100de_1269186535027_958230_1132" name="Blank Nodes">
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_16_0_1_137b03ac_1234922776093_686991_1732">
+          <client xmi:idref="_16_0_1_137b03ac_1234922626781_157578_1550"/>
+          <supplier xmi:idref="_16_0_1_137b03ac_1234922700093_543315_1571"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_6_2_15100de_1272925842429_938074_1586" name="real">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290810372108_120231_2508">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262294473442_202240_2289" name="OntologyProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262294500517_456615_2308" body="The class of ontology properties.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262294473442_202240_2289"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262294906447_916289_2341">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272925279167_573547_1435" name="topDataProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925279167_804680_1436"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925279168_643913_1437"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311570764380_139911_4038" body="The data property that relates every individual to every data value.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272925279167_573547_1435"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925279168_643913_1437" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272925279167_573547_1435">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311457173594_58806_3888"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311457173594_616752_3889" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925279167_804680_1436" name="topDataProperty" visibility="public" association="_16_6_2_15100de_1272925279167_573547_1435">
+        <type href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311457165950_112241_3883"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311457165950_598254_3884" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1258408669806_413845_1174" name="Class">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311466060415_386496_4281" body="The class of OWL classes.">
+        <annotatedElement xmi:idref="_16_6_630020f_1258408669806_413845_1174"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272587182490_720791_1296" general="_16_6_2_15100de_1272587084198_299609_1274"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311545560796_351624_6797" name="hasKey" visibility="public" association="_17_0_1_e980341_1311545560796_93183_6796">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311545628179_122423_6814"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311545628179_391311_6815" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272925151399_291265_1417" name="bottomObjectProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925151399_149863_1418"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925151399_754862_1419"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311482924877_800764_5885" body="The object property that does not relate any two individuals.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272925151399_291265_1417"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925151399_754862_1419" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272925151399_291265_1417">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456999513_374058_3718"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456999513_280156_3719" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925151399_149863_1418" name="bottomObjectProperty" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272925151399_291265_1417">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456991791_525137_3713"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456991791_363802_3714" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1270314961865_853722_1733" name="incompatibleWith">
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314961865_660931_1734"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314961866_329236_1735"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1270314961865_660931_1734"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311549175683_916258_7127" body="The annotation property that indicates that a given ontology is incompatible with another ontology.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1270314961865_853722_1733"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314961866_329236_1735" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314961865_853722_1733">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456684893_336094_2905"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456684893_651331_2906" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314961865_660931_1734" name="incompatibleWith" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314961865_853722_1733">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456678029_558951_2900"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456678029_727447_2901" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1270314785611_766424_1643" name="versionInfo">
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314785611_245340_1644"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314785611_604738_1645"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1270314785611_245340_1644"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311571308434_955802_4096" body="The annotation property that provides version information for an ontology or another OWL construct.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1270314785611_766424_1643"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314785611_245340_1644" name="versionInfo" visibility="public" association="_16_6_2_15100de_1270314785611_766424_1643">
+        <type href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456368790_291182_2506"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456368790_715307_2507" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314785611_604738_1645" visibility="public" association="_16_6_2_15100de_1270314785611_766424_1643">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456376418_964401_2511"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456376418_719240_2512" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_2_15100de_1272587084198_299609_1274" name="Type" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311466027392_391400_4257" body="The abstract Type class is used to help aggregate things that have either class or data values in OWL 2, to limit extraneous duplication of language in the profile.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272587084198_299609_1274"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272587192138_682869_1300">
+        <general href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311486498606_970581_6520" name="disjointUnionOf" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_17_0_1_e980341_1311486498605_978468_6518"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262295397987_684363_2411" name="Restriction">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262295434199_118100_2430" body="The class of property restrictions.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262295397987_684363_2411"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262295469921_558789_2435" general="_16_6_630020f_1258408669806_413845_1174"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311483322189_261523_5939" name="cardinality" visibility="public" association="_17_0_1_e980341_1311483322189_863298_5938">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311483365592_970104_5954"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311545881864_488110_6850" name="hasSelf" visibility="public" association="_17_0_1_e980341_1311545881864_427463_6849">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311548107612_943824_7028"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311564055043_577110_3168" name="maxCardinality" visibility="public" association="_17_0_1_e980341_1311564055042_599739_3167">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311564092756_452903_3185"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311564434686_613057_3225" name="maxQualifiedCardinality" visibility="public" association="_17_0_1_e980341_1311564434686_846873_3224">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311564503088_288246_3243"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311565393378_157431_3331" name="minCardinality" visibility="public" association="_17_0_1_e980341_1311565393378_205103_3330">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311565417768_331080_3348"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311566081490_450241_3384" name="minQualifiedCardinality" visibility="public" association="_17_0_1_e980341_1311566081490_689885_3383">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311566115918_151223_3401"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311567545158_617352_3515" name="onProperties" visibility="public" association="_17_0_1_e980341_1311567545158_940302_3514">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311567572110_915099_3528"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311567572110_391292_3529" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311569171463_544425_3722" name="qualifiedCardinality" visibility="public" association="_17_0_1_e980341_1311569171463_685228_3721">
+        <type href="XSDLibrary.xmi#_16_0_1_630020f_1243357274731_742760_1707"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311569199591_854802_3739"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_2_15100de_1272410181304_393078_1348" name="Individual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_2_15100de_1272410181307_459406_1351" body="This class represents the class of owl individuals  There is no explicit URI in the W3C OWL 2 namespace for this class.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410181304_393078_1348"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272410181307_946593_1350" general="_16_0_1_137b03ac_1234922700093_543315_1571"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272587700531_1131_1438" general="_16_6_2_15100de_1272587637143_49283_1395"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567872019_799567_3545" name="AsymmetricProperty">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568026267_145271_3721" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_2_15100de_1273344289769_352253_1898" name="AnonymousIndividual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_2_15100de_1273344289772_509068_1901" body="The class of anonymous owl individuals.  Such individuals can only be referenced locally, and thus there is no corresponding URI for this class in the W3C OWL 2 namespace.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1273344289769_352253_1898"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1273344289772_96319_1900" general="_16_6_2_15100de_1272410181304_393078_1348"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272410621079_199433_1506" name="differentFrom">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410621079_684072_1507"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410621079_908288_1508"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272410621079_684072_1507"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311485976194_527981_6489" body="The property that determines that two given individuals are different.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410621079_199433_1506"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410621079_908288_1508" visibility="private" type="_16_6_2_15100de_1272410181304_393078_1348" association="_16_6_2_15100de_1272410621079_199433_1506">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311485956308_323787_6487"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311485956308_736416_6488" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410621079_684072_1507" name="differentFrom" visibility="public" type="_16_6_2_15100de_1272410181304_393078_1348" association="_16_6_2_15100de_1272410621079_199433_1506">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311485953584_577350_6485"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311485953584_597166_6486" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567874876_856769_3576" name="TransitiveProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311471752686_63548_5430" body="The class of transitive properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567874876_856769_3576"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568041812_666413_3733" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_6_2_15100de_1272925754501_425908_1569" name="rational">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272926113049_607147_1624" general="_16_6_2_15100de_1272925842429_938074_1586"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567846500_979968_3455" name="ReflexiveProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311471144211_467520_5334" body="The class of reflexive properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567846500_979968_3455"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568047739_605039_3747" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_9_15100de_1298771725945_978929_2540" name="equivalentDatatype">
+      <memberEnd xmi:idref="_16_9_15100de_1298771725945_966017_2541"/>
+      <memberEnd xmi:idref="_16_9_15100de_1298771725946_703771_2542"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1298771725945_966017_2541"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311488441824_394006_6703" body='This property, owl:equivalentDatatype, is defined in the functional specification but was not included in "owl.owl", and thus has no explicit URI.'>
+        <annotatedElement xmi:idref="_16_9_15100de_1298771725945_978929_2540"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1298771725945_966017_2541" name="equivalentDatatype" visibility="public" association="_16_9_15100de_1298771725945_978929_2540">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1298771826420_346278_2583"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_9_15100de_1298771826420_723260_2584" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1298771725946_703771_2542" visibility="public" association="_16_9_15100de_1298771725945_978929_2540">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1298771808870_50620_2576"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_9_15100de_1298771808871_401667_2577" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_2_15100de_1272587637143_49283_1395" name="TypedThing">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311485674133_577080_6414" body="The TypedThing class is used to help aggregate things that types in the profile.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272587637143_49283_1395"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1272587677134_830385_1399">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_1_15100de_1266446273793_418588_840" name="Ontology">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311470677844_482272_5269" body="The class of ontologies.">
+        <annotatedElement xmi:idref="_16_6_1_15100de_1266446273793_418588_840"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_8fd028e_1268849560770_277372_3171">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567856300_4835_3483" name="SymmetricProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311471554157_772968_5380" body="The class of symmetric properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567856300_4835_3483"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568021604_210162_3707" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272564673437_298869_1367" name="someValuesFrom">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564673437_568880_1368"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564673437_948817_1369"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272564673437_568880_1368"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311569650086_835159_3793" body="The property that determines the class that an existential property restriction refers to.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272564673437_298869_1367"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564673437_948817_1369" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_6_2_15100de_1272564673437_298869_1367"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564673437_568880_1368" name="someValuesFrom" visibility="public" association="_16_6_2_15100de_1272564673437_298869_1367">
+        <type href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_2_15100de_1272564923444_700166_1437"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262289742672_695520_2011" name="AllDisjointProperties">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262289789574_336668_2030" body="This class is a proxy for the class of collections of pairwise disjoint properties.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262289742672_695520_2011"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262293211599_269217_2159">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262291680259_716326_1778" name="Axiom">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262291714046_836011_1797" body="The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262291680259_716326_1778"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262293270172_210583_2177">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1258413748721_166552_1182" name="DatatypeProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262292761533_14373_2050" body="The class of data properties.">
+        <annotatedElement xmi:idref="_16_6_630020f_1258413748721_166552_1182"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262294887960_260967_2322">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272410561950_97934_1476" name="inverseOf">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410561951_130474_1477"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410561951_260793_1478"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272410561951_130474_1477"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311563260378_135362_3140" body="The property that determines that two given properties are inverse.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410561950_97934_1476"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410561951_130474_1477" name="inverseOf" visibility="public" association="_16_6_2_15100de_1272410561950_97934_1476">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311563241875_866978_3136"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311563241876_986208_3137" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410561951_260793_1478" visibility="private" association="_16_6_2_15100de_1272410561950_97934_1476">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311563244864_90626_3138"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311563244864_4374_3139" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_2_15100de_1273342650082_711494_1194" name="Datatype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311468421578_710551_4818" body="This local Datatype class is used as the source of OWL-specific properties in the OWL profile.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1273342650082_711494_1194"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1273342752472_391412_1214">
+        <general href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </generalization>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1273343696368_497411_1451" general="_16_6_2_15100de_1272587084198_299609_1274"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_8_e980341_1288991860986_722009_2910" name="onType">
+      <memberEnd xmi:idref="_16_8_e980341_1288991860989_987898_2913"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288991860987_455864_2911"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288991860989_987898_2913"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311566885711_930438_3455" body="This local property is used in the profile in lieu of onDataRange, for example, to eliminate redundancy.  Thus, there is no explicit URI for this property, although the proper one will be generated through OWL export depending on the target.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288991860986_722009_2910"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1288991860987_455864_2911" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_8_e980341_1288991860986_722009_2910"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1288991860989_987898_2913" name="onType" visibility="public" association="_16_8_e980341_1288991860986_722009_2910">
+        <type href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288991860991_209772_2917"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1270314889529_727925_1697" name="priorVersion">
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314889529_340749_1698"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314889530_232538_1699"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1270314889529_340749_1698"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311568426235_208754_3590" body="The annotation property that indicates the predecessor ontology of a given ontology.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1270314889529_727925_1697"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314889530_232538_1699" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314889529_727925_1697">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456591573_987011_2780"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456591573_846514_2781" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314889529_340749_1698" name="priorVersion" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314889529_727925_1697">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456583727_123265_2775"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456583727_18238_2776" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272925333184_3227_1453" name="bottomDataProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925333184_789589_1454"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272925333185_347438_1455"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311482786412_634982_5862" body="The data property that does not relate any individual to any data value.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272925333184_3227_1453"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925333185_347438_1455" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272925333184_3227_1453">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311457220706_714768_3948"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311457220706_638816_3949" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272925333184_789589_1454" name="bottomDataProperty" visibility="public" association="_16_6_2_15100de_1272925333184_3227_1453">
+        <type href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311457212890_324064_3943"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311457212890_608194_3944" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272410601680_319832_1488" name="sameAs">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410601680_355368_1489"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272410601680_227855_1490"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272410601680_355368_1489"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311569469322_114_3770" body="The property that determines that two given individuals are equal.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272410601680_319832_1488"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410601680_227855_1490" visibility="private" type="_16_6_2_15100de_1272410181304_393078_1348" association="_16_6_2_15100de_1272410601680_319832_1488">
+        <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_6_2_15100de_1272410711271_750561_1598"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_6_2_15100de_1272410711272_797975_1599" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272410601680_355368_1489" name="sameAs" visibility="public" type="_16_6_2_15100de_1272410181304_393078_1348" association="_16_6_2_15100de_1272410601680_319832_1488">
+        <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_6_2_15100de_1272410697449_746932_1556"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_6_2_15100de_1272410697449_224692_1557" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272587253386_310886_1327" name="intersectionOf">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587253386_776774_1328"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272587253387_735305_1329"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272587253386_776774_1328"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311563037736_143670_2740" body="The property that determines the collection of classes or data ranges that build an intersection.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272587253386_310886_1327"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587253387_735305_1329" visibility="private" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587253386_310886_1327">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311563021989_935847_2738"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272587253386_776774_1328" name="intersectionOf" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_16_6_2_15100de_1272587253386_310886_1327">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311563017917_778222_2736"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311563017918_469834_2737" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1289001876323_351097_2803" name="deprecated">
+      <memberEnd xmi:idref="_16_8_e980341_1289001876323_474471_2804"/>
+      <memberEnd xmi:idref="_16_8_e980341_1289001876324_881462_2805"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1289001876323_474471_2804"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311485327260_180999_6333" body="The annotation property that indicates that a given entity has been deprecated.">
+        <annotatedElement xmi:idref="_16_8_e980341_1289001876323_351097_2803"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1289001876323_474471_2804" name="deprecated" visibility="public" association="_16_8_e980341_1289001876323_351097_2803">
+        <type href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1289001911218_893103_2859"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_8_e980341_1289001911220_455320_2860" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1289001876324_881462_2805" visibility="public" association="_16_8_e980341_1289001876323_351097_2803">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456418725_617378_2545"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456418725_689874_2546" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272409663773_323788_1272" name="disjointWIth">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272409663773_726763_1273"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272409663773_141650_1274"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272409663773_726763_1273"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311486881739_426455_6569" body="The property that determines that two given classes are disjoint.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272409663773_323788_1272"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272409663773_141650_1274" visibility="private" type="_16_6_630020f_1258408669806_413845_1174" association="_16_6_2_15100de_1272409663773_323788_1272">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311486830817_408970_6561"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311486830817_377852_6562" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272409663773_726763_1273" name="disjointWith" visibility="public" type="_16_6_630020f_1258408669806_413845_1174" association="_16_6_2_15100de_1272409663773_323788_1272">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311486826504_821038_6559"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311486826504_595387_6560" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262294055362_912457_2186" name="NegativePropertyAssertion">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262294083348_443713_2205" body="The class of negative property assertions.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262294055362_912457_2186"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262294092897_581852_2210">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311481306985_951263_5789" name="assertionProperty" visibility="public" association="_17_0_1_e980341_1311481306985_887408_5788">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311481387985_67904_5806"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311569941213_658647_3845" name="sourceIndividual" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_17_0_1_e980341_1311569941213_31355_3844">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311569970017_905195_3862"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311570050546_596338_3880" name="targetIndividual" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_17_0_1_e980341_1311570050546_446254_3879">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311570084773_250628_3897"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311570349032_124140_3972" name="targetValue" visibility="public" association="_17_0_1_e980341_1311570349032_684082_3971">
+        <type href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311570382671_761090_3985"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1270314930624_759534_1715" name="backwardCompatibleWith">
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314930624_491701_1716"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1270314930625_85122_1717"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1270314930624_491701_1716"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311481748966_26514_5839" body="The annotation property that indicates that a given ontology is backward compatible with another ontology.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1270314930624_759534_1715"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314930625_85122_1717" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314930624_759534_1715">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456652866_714228_2863"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456652866_967798_2864" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1270314930624_491701_1716" name="backwardCompatibleWith" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_16_6_2_15100de_1270314930624_759534_1715">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456647219_117101_2858"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456647219_217626_2859" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567699956_923492_3384" name="FunctionalProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311468595245_268462_4829" body="The class of functional properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567699956_923492_3384"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298567992070_562900_3653">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262289222534_883894_1912" name="AllDisjointClasses">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311464678864_85979_3162" body="The class of collections of pairwise disjoint classes.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262289222534_883894_1912"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262289250957_997944_1935">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_15100de_1261528954019_741599_1038" name="AllDifferent">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262288926010_500168_1876" body="The class of collections of pairwise different individuals.">
+        <annotatedElement xmi:idref="_16_6_15100de_1261528954019_741599_1038"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262293171802_393042_2149">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311487764689_375341_6619" name="distinctMembers" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_17_0_1_e980341_1311487764689_788404_6618">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311487816278_393712_6637"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311487816278_536977_6638" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272409595176_154051_1250" name="equivalentClass">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272409595176_557464_1251"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272409595177_979339_1252"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272409595176_557464_1251"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272409595177_979339_1252" visibility="public" type="_16_6_630020f_1258408669806_413845_1174" association="_16_6_2_15100de_1272409595176_154051_1250">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488083803_847056_6671"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488083803_627696_6672" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272409595176_557464_1251" name="equivalentClass" visibility="public" type="_16_6_630020f_1258408669806_413845_1174" association="_16_6_2_15100de_1272409595176_154051_1250">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311488077664_860172_6669"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311488077664_822806_6670" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272924821186_543703_1384" name="topObjectProperty">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272924821186_509049_1385"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272924821186_612870_1386"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311570931233_252623_4061" body="The object property that relates every two individuals.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272924821186_543703_1384"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272924821186_612870_1386" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272924821186_543703_1384">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456970497_46525_3679"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456970497_398134_3680" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272924821186_509049_1385" name="topObjectProperty" visibility="public" type="_16_0_1_137b03ac_1234922700093_543315_1571" association="_16_6_2_15100de_1272924821186_543703_1384">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311456962760_252201_3674"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311456962760_765945_3675" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_9_15100de_1299269719275_234525_2503" name="onDatatype">
+      <memberEnd xmi:idref="_16_9_15100de_1299269719275_794970_2504"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299269719275_892941_2505"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299269719275_794970_2504"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311567048071_277956_3460" body="The property that determines the datatype that a datatype restriction refers to.">
+        <annotatedElement xmi:idref="_16_9_15100de_1299269719275_234525_2503"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1299269719275_892941_2505" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_9_15100de_1299269719275_234525_2503">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299269783230_845920_2546"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_9_15100de_1299269783230_821673_2547" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1299269719275_794970_2504" name="onDatatype" visibility="public" type="_16_6_2_15100de_1273342650082_711494_1194" association="_16_9_15100de_1299269719275_234525_2503">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299269750850_156845_2536"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567858644_708816_3514" name="IrreflexiveProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311468984344_522538_4918" body="The class of irreflexive properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567858644_708816_3514"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568017500_865409_3693" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_6_630020f_1262291345067_927873_1354" name="AnnotationProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262291393749_294650_1382" body="The class of annotation properties.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262291345067_927873_1354"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262291374622_490505_1377">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_9_15100de_1299269932058_636701_2578" name="onClass">
+      <memberEnd xmi:idref="_16_9_15100de_1299269932058_957022_2579"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299269932058_601248_2580"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299269932058_957022_2579"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311566655563_897062_3432" body="The property that determines the class that a qualified object cardinality restriction refers to.">
+        <annotatedElement xmi:idref="_16_9_15100de_1299269932058_636701_2578"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1299269932058_601248_2580" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_9_15100de_1299269932058_636701_2578">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299270034863_361989_2632"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_9_15100de_1299270034863_389244_2633" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_9_15100de_1299269932058_957022_2579" name="onClass" visibility="public" association="_16_9_15100de_1299269932058_636701_2578">
+        <type href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299270010994_722643_2628"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_16_6_2_15100de_1272564752221_142798_1385" name="allValuesFrom">
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564752221_693091_1386"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1272564752221_480216_1387"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1272564752221_693091_1386"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311473276893_917358_5477" body="The property that determines the class that a universal property restriction refers to.">
+        <annotatedElement xmi:idref="_16_6_2_15100de_1272564752221_142798_1385"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564752221_480216_1387" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_16_6_2_15100de_1272564752221_142798_1385"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1272564752221_693091_1386" name="allValuesFrom" visibility="public" association="_16_6_2_15100de_1272564752221_142798_1385">
+        <type href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_2_15100de_1272564923468_139621_1439"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_9_15100de_1298567822372_420266_3419" name="InverseFunctionalProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311468803948_418632_4872" body="The class of inverse-functional properties.">
+        <annotatedElement xmi:idref="_16_9_15100de_1298567822372_420266_3419"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1298568001964_360841_3667" general="_16_6_630020f_1258411152192_312968_1737"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_15100de_1305238616029_804739_2623" name="versionIRI">
+      <memberEnd xmi:idref="_17_0_1_15100de_1305238616031_228449_2624"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1305238616032_96847_2625"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1305238616031_228449_2624"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311571776966_713545_4198" body="The property that identifies the version IRI of an ontology.">
+        <annotatedElement xmi:idref="_17_0_1_15100de_1305238616029_804739_2623"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1305238616032_96847_2625" visibility="public" type="_16_6_1_15100de_1266446273793_418588_840" association="_17_0_1_15100de_1305238616029_804739_2623">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311571764368_756514_4194"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311571764368_511628_4195" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1305238616031_228449_2624" name="versionIRI" visibility="public" association="_17_0_1_15100de_1305238616029_804739_2623">
+        <type href="RDFLibrary.xmi#_16_8_15100de_1290891304853_948470_2219"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1305238689351_868333_2651"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_17_0_1_e980341_1311466754968_967728_4688" name="DeprecatedClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311466818616_305497_4710" body="The class of deprecated classes.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311466754968_967728_4688"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_e980341_1311466834064_130347_4713">
+        <general href="RDFLibrary.xmi#_16_0_1_630020f_1243467886320_204818_305"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_17_0_1_e980341_1311467076565_528245_4747" name="DeprecatedProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311467191647_806608_4788" body="The class of deprecated properties.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311467076565_528245_4747"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_e980341_1311467130325_31598_4771">
+        <general href="RDFLibrary.xmi#_16_6_630020f_1262290714594_44229_883"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311473843695_893445_5582" name="annotatedProperty">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311473843695_358767_5583"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311473843695_494261_5584"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311473843695_358767_5583"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311474091759_349269_5602" body="The property that determines the predicate of an annotated axiom or annotated annotation.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311473843695_893445_5582"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311473843695_358767_5583" name="annotatedProperty" visibility="public" association="_17_0_1_e980341_1311473843695_893445_5582">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311474194442_495762_5607"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311473843695_494261_5584" visibility="public" association="_17_0_1_e980341_1311473843695_893445_5582">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311474207331_948187_5611"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311474207331_975284_5612" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311474484589_821091_5637" name="annotatedSource">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311474484589_79351_5638"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311474484589_449527_5639"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311474484589_449527_5639"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311474617159_755036_5667" body="The property that determines the subject of an annotated axiom or annotated annotation.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311474484589_821091_5637"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311474484589_79351_5638" visibility="public" association="_17_0_1_e980341_1311474484589_821091_5637">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311474586814_18301_5659"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311474586814_648294_5660" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311474484589_449527_5639" name="annotatedSource" visibility="public" association="_17_0_1_e980341_1311474484589_821091_5637">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311474582489_26454_5655"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311480694714_681063_5705" name="annotatedTarget">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311480694714_144090_5706"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311480694714_216688_5707"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311480694714_144090_5706"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311481045036_380553_5761" body="The property that determines the object of an annotated axiom or annotated annotation.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311480694714_681063_5705"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311480694714_144090_5706" name="annotatedTarget" visibility="public" association="_17_0_1_e980341_1311480694714_681063_5705">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311480768101_608830_5719"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311480694714_216688_5707" visibility="public" association="_17_0_1_e980341_1311480694714_681063_5705">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311480772165_663666_5723"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311480772165_338260_5724" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311481306985_887408_5788" name="assertionProperty">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311481306985_951263_5789"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311481306985_115765_5790"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311481645233_781485_5838" body="The property that determines the predicate of a negative property assertion.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311481306985_887408_5788"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311481306985_115765_5790" visibility="public" type="_16_6_630020f_1262294055362_912457_2186" association="_17_0_1_e980341_1311481306985_887408_5788">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311481384246_60322_5802"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311481384246_817821_5803" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311483322189_863298_5938" name="cardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311483322189_261523_5939"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311483322189_979649_5940"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311483447497_169643_5966" body="The property that determines the cardinality of an exact cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311483322189_863298_5938"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311483322189_979649_5940" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311483322189_863298_5938">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311483361591_30529_5950"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311483361592_41720_5951" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311484527170_721542_6278" name="datatypeComplementOf">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311484527170_556663_6279"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311484527170_161966_6280"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311484527170_161966_6280"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311484643791_652101_6308" body="The property that determines that a given data range is the complement of another data range with respect to the data domain.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311484527170_721542_6278"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311484527170_556663_6279" visibility="public" association="_17_0_1_e980341_1311484527170_721542_6278">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311484616082_729883_6296"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311484616082_711517_6297" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311484527170_161966_6280" name="datatypeComplementOf" visibility="public" association="_17_0_1_e980341_1311484527170_721542_6278">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311484611770_394920_6292"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311484611770_35599_6293" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311486498605_978468_6518" name="disjointUnionOf">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311486498606_96309_6519"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311486498606_970581_6520"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311486625229_289096_6536" body="The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311486498605_978468_6518"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311486498606_96309_6519" visibility="public" type="_16_6_2_15100de_1272587084198_299609_1274" association="_17_0_1_e980341_1311486498605_978468_6518"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311487764689_788404_6618" name="distinctMembers">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311487764689_375341_6619"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311487764689_243496_6620"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311487794834_264693_6630" body="The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311487764689_788404_6618"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311487764689_243496_6620" visibility="public" type="_16_6_15100de_1261528954019_741599_1038" association="_17_0_1_e980341_1311487764689_788404_6618">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311487803416_114189_6631"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311487803416_586251_6632" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311545560796_93183_6796" name="hasKey">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311545560796_351624_6797"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311545560796_461432_6798"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311545648213_439679_6818" body="The property that determines the collection of properties that jointly build a key.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311545560796_93183_6796"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311545560796_461432_6798" visibility="public" type="_16_6_630020f_1258408669806_413845_1174" association="_17_0_1_e980341_1311545560796_93183_6796">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311545623267_330072_6810"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311545623267_437228_6811" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311545881864_427463_6849" name="hasSelf">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311545881864_488110_6850"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311545881864_423114_6851"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311546010621_279847_6875" body="The property that determines the property that a self restriction refers to.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311545881864_427463_6849"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311545881864_423114_6851" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311545881864_427463_6849">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311545996813_653178_6871"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311545996813_585873_6872" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311564055042_599739_3167" name="maxCardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311564055043_577110_3168"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311564055043_754210_3169"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311564160595_758329_3193" body="The property that determines the cardinality of a maximum cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311564055042_599739_3167"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311564055043_754210_3169" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311564055042_599739_3167">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311564086893_287302_3181"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311564086893_642904_3182" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311564434686_846873_3224" name="maxQualifiedCardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311564434686_613057_3225"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311564434686_874688_3226"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311564464707_282835_3233" body="The property that determines the cardinality of a maximum qualified cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311564434686_846873_3224"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311564434686_874688_3226" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311564434686_846873_3224">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311564499174_929938_3239"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311564499174_182383_3240" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311565393378_205103_3330" name="minCardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311565393378_157431_3331"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311565393378_886521_3332"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311565565729_279302_3376" body="The property that determines the cardinality of a minimum cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311565393378_205103_3330"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311565393378_886521_3332" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311565393378_205103_3330">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311565414254_995626_3344"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311565414255_897735_3345" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311566081490_689885_3383" name="minQualifiedCardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311566081490_450241_3384"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311566081490_591564_3385"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311566165171_874575_3409" body="The property that determines the cardinality of a minimum qualified cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311566081490_689885_3383"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311566081490_591564_3385" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311566081490_689885_3383">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311566111567_193312_3397"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311566111567_116738_3398" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311567545158_940302_3514" name="onProperties">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311567545158_617352_3515"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311567545158_987638_3516"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311567618337_516156_3540" body="The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311567545158_940302_3514"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311567545158_987638_3516" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311567545158_940302_3514">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311567579223_755471_3532"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311567579223_59397_3533" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311568650088_654717_3649" name="propertyChainAxiom">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311568650088_961921_3650"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311568650088_531911_3651"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311568733082_341316_3675" body="The property that determines the n-tuple of properties that build a sub property chain of a given property.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311568650088_654717_3649"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311568650088_531911_3651" visibility="public" type="_16_6_630020f_1258411152192_312968_1737" association="_17_0_1_e980341_1311568650088_654717_3649">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311568666627_997706_3661"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311568666627_281716_3662" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311569171463_685228_3721" name="qualifiedCardinality">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311569171463_544425_3722"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311569171464_84919_3723"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311569244878_14938_3747" body="The property that determines the cardinality of an exact qualified cardinality restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311569171463_685228_3721"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311569171464_84919_3723" visibility="public" type="_16_6_630020f_1262295397987_684363_2411" association="_17_0_1_e980341_1311569171463_685228_3721">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311569196441_746330_3735"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311569196441_25872_3736" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311569941213_31355_3844" name="sourceIndividual">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311569941213_658647_3845"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311569941213_818877_3846"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311570011260_82511_3870" body="The property that determines the subject of a negative property assertion.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311569941213_31355_3844"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311569941213_818877_3846" visibility="public" type="_16_6_630020f_1262294055362_912457_2186" association="_17_0_1_e980341_1311569941213_31355_3844">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311569964755_737089_3858"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311569964755_729095_3859" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311570050546_446254_3879" name="targetIndividual">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311570050546_596338_3880"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311570050546_606445_3881"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311570116837_936958_3905" body="The property that determines the object of a negative object property assertion.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311570050546_446254_3879"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311570050546_606445_3881" visibility="public" type="_16_6_630020f_1262294055362_912457_2186" association="_17_0_1_e980341_1311570050546_446254_3879">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311570075773_309555_3893"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311570075773_274506_3894" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311570349032_684082_3971" name="targetValue">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311570349032_124140_3972"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311570349032_182458_3973"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311570433174_132128_3997" body="The property that determines the value of a negative data property assertion.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311570349032_684082_3971"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311570349032_182458_3973" visibility="public" type="_16_6_630020f_1262294055362_912457_2186" association="_17_0_1_e980341_1311570349032_684082_3971">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311570391172_856282_3989"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311570391172_302500_3990" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311565087018_511842_3277" name="members">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311565087018_518947_3278"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311565087018_929232_3279"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311565087018_929232_3279"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311565154431_144499_3299" body="The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311565087018_511842_3277"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311565087018_518947_3278" visibility="public" association="_17_0_1_e980341_1311565087018_511842_3277">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311565134082_610272_3295"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311565134083_286491_3296" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311565087018_929232_3279" name="members" visibility="public" association="_17_0_1_e980341_1311565087018_511842_3277">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311565130980_68008_3291"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311565130980_49068_3292" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_17_0_1_e980341_1311572331528_675109_4250" name="withRestrictions">
+      <memberEnd xmi:idref="_17_0_1_e980341_1311572331528_758986_4251"/>
+      <memberEnd xmi:idref="_17_0_1_e980341_1311572331528_643750_4252"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_e980341_1311572331528_758986_4251"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_1_e980341_1311572480059_917009_4276" body="The property that determines the collection of facet-value pairs that define a datatype restriction.">
+        <annotatedElement xmi:idref="_17_0_1_e980341_1311572331528_675109_4250"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311572331528_758986_4251" name="withRestrictions" visibility="public" association="_17_0_1_e980341_1311572331528_675109_4250">
+        <type href="RDFLibrary.xmi#_16_6_630020f_1258397255245_490233_959"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311572437188_322304_4268"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311572437188_289923_4269" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_17_0_1_e980341_1311572331528_643750_4252" visibility="public" association="_17_0_1_e980341_1311572331528_675109_4250">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_e980341_1311572428401_871040_4264"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_1_e980341_1311572428401_229645_4265" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_16_6_1_15100de_1266446269783_906569_837">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1193948135234_354269_2454"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_16_6_2_15100de_1268077930482_436440_1561">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/OWLProfile.xmi#_12_5_1_137b03ac_1194319380250_490899_3794"/>
+    </profileApplication>
+  </uml:Package>
+  <OWLProfile:datatypeProperty base_Property="_16_6_2_15100de_1272925333184_789589_1454" xmi:id="_16_6_2_15100de_1272925479542_620957_1523"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311545760444_55271_6839" base_InstanceSpecification="_17_0_1_e980341_1311545745245_35209_6829"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311471615925_320170_5401" base_InstanceSpecification="_17_0_1_e980341_1311471602439_207623_5391"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311484791594_763055_6327" base_InstanceSpecification="_17_0_1_e980341_1311484781008_360475_6317"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311568323865_659366_3580" base_InstanceSpecification="_17_0_1_e980341_1311568310879_552875_3570"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1290810994079_845160_3195" base_InstanceSpecification="_16_8_e980341_1290810962719_102456_3172"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1289001499120_728888_2262" base_InstanceSpecification="_16_8_e980341_1289001464386_264796_2252"/>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272410382303_334334_1430" xmi:id="_16_6_2_15100de_1272564157124_733126_1184"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272410181307_946593_1350" xmi:id="_16_6_2_15100de_1272410181307_164126_1352"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311474383156_666799_5627" base_InstanceSpecification="_17_0_1_e980341_1311474369657_530160_5617"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1273344289772_96319_1900" xmi:id="_16_6_2_15100de_1273344289773_982122_1903"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567874876_856769_3576" xmi:id="_16_9_15100de_1298568384982_170874_4093" identifier="_17_0_1_e980341_1311471811122_951485_5439">
+    <label>owl:TransitiveProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311569091028_50796_3711" base_InstanceSpecification="_17_0_1_e980341_1311569070130_944694_3701"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311567327106_750842_3504" base_InstanceSpecification="_17_0_1_e980341_1311567312345_471494_3494"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262294473442_202240_2289" xmi:id="_16_6_630020f_1262294473442_704799_2290" identifier="_17_0_1_e980341_1311470987906_306423_5296">
+    <label>owl:OntologyProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311564165036_368670_3194" identifier="_17_0_1_e980341_1311564303193_649650_3204" base_Association="_17_0_1_e980341_1311564055042_599739_3167">
+    <label>owl:maxCardinality</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564138718_997353_1172" identifier="_17_0_1_e980341_1311563284669_781897_3147" base_Association="_16_6_2_15100de_1272410561950_97934_1476">
+    <label>owl:inverseOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311571164980_864692_4090" base_InstanceSpecification="_17_0_1_e980341_1311571153244_394076_4080"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311464878032_629765_3344" base_InstanceSpecification="_17_0_1_e980341_1311464866987_353774_3330"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1289001449098_423109_2243" base_InstanceSpecification="_16_8_e980341_1289001392165_271584_2233"/>
+  <RDFProfile:subClassOf base_Generalization="_17_0_1_e980341_1311466834064_130347_4713" xmi:id="_17_0_1_e980341_1311466890186_428126_4715"/>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1273343910647_491083_1492" xmi:id="_16_6_2_15100de_1273343910648_725476_1495"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567858644_708816_3514" xmi:id="_16_9_15100de_1298568384984_880304_4095" identifier="_17_0_1_e980341_1311469033785_139568_4925">
+    <label>owl:IrreflexiveProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262291345067_927873_1354" xmi:id="_16_6_2_15100de_1268872700355_954843_2403" identifier="_16_8_e980341_1289001322190_771882_2216">
+    <label>owl:AnnotationProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311469045759_845509_4935" base_InstanceSpecification="_17_0_1_e980341_1311469033785_139568_4925"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272588167189_551500_1608" identifier="_17_0_1_e980341_1311571153244_394076_4080" base_Association="_16_6_2_15100de_1272587501226_806418_1381">
+    <label>owl:unionOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311468625829_875463_4842" base_InstanceSpecification="_17_0_1_e980341_1311468612505_653204_4832"/>
+  <OWLProfile:objectProperty xmi:id="_16_6_2_15100de_1272925495030_682833_1531" identifier="_17_0_1_e980341_1311482977467_844723_5892" base_Association="_16_6_2_15100de_1272925151399_291265_1417">
+    <label>owl:bottomObjectProperty</label>
+  </OWLProfile:objectProperty>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272587501226_957264_1382" xmi:id="_16_6_2_15100de_1272588178485_717420_1624"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272565066151_799866_1472" identifier="_17_0_1_e980341_1311473322319_737702_5480" base_Association="_16_6_2_15100de_1272564752221_142798_1385">
+    <label>owl:allValuesFrom</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:objectProperty base_Property="_16_6_2_15100de_1272925151399_149863_1418" xmi:id="_16_6_2_15100de_1272925513150_87562_1539"/>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272410621079_684072_1507" xmi:id="_16_6_2_15100de_1272564028281_313541_1151"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311564512544_368167_3247" identifier="_17_0_1_e980341_1311564811069_993487_3257" base_Association="_17_0_1_e980341_1311564434686_846873_3224">
+    <label>owl:maxQualifiedCardinality</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:annotationProperty base_Element="_16_6_2_15100de_1270314889529_727925_1697" xmi:id="_16_8_15100de_1290888647922_937922_3271" identifier="_17_0_1_e980341_1311568442273_347093_3597">
+    <label>owl:priorVersion</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311568205596_985145_3557" base_InstanceSpecification="_17_0_1_e980341_1311568193972_516474_3547"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1273343696368_497411_1451" xmi:id="_16_6_2_15100de_1273343747245_307132_1452"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311570173039_562302_3922" base_InstanceSpecification="_17_0_1_e980341_1311570156916_740145_3912"/>
+  <RDFProfile:rdfsClass base_Class="_17_0_1_e980341_1311466754968_967728_4688" xmi:id="_17_0_1_e980341_1311466767679_293295_4706" identifier="_17_0_1_e980341_1311466944008_74358_4725">
+    <label>owl:DeprecatedClass</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568017500_865409_3693" xmi:id="_16_9_15100de_1298568472878_732997_4146"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262292851804_895123_2055" xmi:id="_16_6_2_15100de_1268872780755_687942_2405" identifier="_17_0_1_e980341_1311470041488_916191_5072">
+    <label>owl:NamedIndividual</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311471827090_656111_5449" base_InstanceSpecification="_17_0_1_e980341_1311471811122_951485_5439"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311483405496_966080_5958" identifier="_17_0_1_e980341_1311483632112_270005_5983" base_Association="_17_0_1_e980341_1311483322189_863298_5938">
+    <label>owl:cardinality</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568041812_666413_3733" xmi:id="_16_9_15100de_1298568472878_861949_4145"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311471005129_939979_5306" base_InstanceSpecification="_17_0_1_e980341_1311470987906_306423_5296"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311572457446_611110_4272" identifier="_17_0_1_e980341_1311572554417_380100_4283" base_Association="_17_0_1_e980341_1311572331528_675109_4250">
+    <label>owl:withRestrictions</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1273342752472_391412_1214" xmi:id="_16_6_2_15100de_1273343747247_174312_1453"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311457352557_211397_4006" base_InstanceSpecification="_17_0_1_e980341_1311457289096_140309_3991"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311569699587_162260_3812" base_InstanceSpecification="_17_0_1_e980341_1311569687857_405210_3802"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311486605600_132625_6532" identifier="_17_0_1_e980341_1311486699683_696998_6543" base_Association="_17_0_1_e980341_1311486498605_978468_6518">
+    <label>owl:disjointUnionOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272564788892_167247_1404" xmi:id="_16_6_2_15100de_1272565082907_950780_1491"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311566729121_156456_3449" base_InstanceSpecification="_17_0_1_e980341_1311566708211_146068_3439"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311569320143_806730_3764" base_InstanceSpecification="_17_0_1_e980341_1311569308957_974004_3754"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311484698223_415297_6309" identifier="_17_0_1_e980341_1311484781008_360475_6317" base_Association="_17_0_1_e980341_1311484527170_721542_6278">
+    <label>owl:datatypeComplementOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311487888457_453619_6645" base_Association="_17_0_1_e980341_1311487764689_788404_6618">
+    <label>owl:distinctMembers</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311482827150_264723_5879" base_InstanceSpecification="_17_0_1_e980341_1311482816775_589367_5869"/>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568047739_605039_3747" xmi:id="_16_9_15100de_1298568472877_267140_4143"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311473334518_941193_5490" base_InstanceSpecification="_17_0_1_e980341_1311473322319_737702_5480"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564010074_896679_1144" identifier="_17_0_1_e980341_1311569497260_952600_3777" base_Association="_16_6_2_15100de_1272410601680_319832_1488">
+    <label>owl:sameAs</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311545962035_878067_6858" identifier="_17_0_1_e980341_1311546057893_184127_6882" base_Association="_17_0_1_e980341_1311545881864_427463_6849">
+    <label>owl:hasSelf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311567093191_507582_3477" base_InstanceSpecification="_17_0_1_e980341_1311567080493_684662_3467"/>
+  <RDFProfile:rdfsClass base_Class="_17_0_1_e980341_1311467076565_528245_4747" xmi:id="_17_0_1_e980341_1311467092788_210347_4765" identifier="_17_0_1_e980341_1311467136012_678215_4774">
+    <label>owl:DeprecatedProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272587340026_608114_1346" xmi:id="_16_6_2_15100de_1272588178479_204238_1622"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272565066147_319622_1471" identifier="_17_0_1_e980341_1311548420406_600607_7039" base_Association="_16_6_2_15100de_1272564788892_684761_1403">
+    <label>owl:hasValue</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:annotationProperty base_Element="_16_6_2_15100de_1270314930624_759534_1715" xmi:id="_16_8_15100de_1290888695218_922596_3274" identifier="_17_0_1_e980341_1311481811373_307481_5846">
+    <label>owl:backwardCompatibleWith</label>
+  </OWLProfile:annotationProperty>
+  <OWLProfile:annotationProperty base_Element="_16_8_e980341_1289001876323_351097_2803" xmi:id="_16_8_e980341_1289001898952_641198_2847" identifier="_16_8_e980341_1289001464386_264796_2252">
+    <label>owl:deprecated</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311467151148_18423_4784" base_InstanceSpecification="_17_0_1_e980341_1311467136012_678215_4774"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564010096_705646_1145" identifier="_17_0_1_e980341_1311488109710_487619_6681" base_Association="_16_6_2_15100de_1272409595176_154051_1250">
+    <label>owl:equivalentClass</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:owlClass base_Element="_16_6_630020f_1262295397987_684363_2411" xmi:id="_16_6_630020f_1262295397987_746885_2412" identifier="_16_8_e980341_1288991217230_146891_2360">
+    <label>owl:Restriction</label>
+  </OWLProfile:owlClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311468883729_495992_4889" base_InstanceSpecification="_17_0_1_e980341_1311468867606_801815_4879"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_6_2_15100de_1272926295728_415916_1682" base_DataType="_16_6_2_15100de_1272925754501_425908_1569" identifier="_16_8_e980341_1290810962719_102456_3172">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>owl:rational</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311566137387_294092_3405" identifier="_17_0_1_e980341_1311566470135_401222_3416" base_Association="_17_0_1_e980341_1311566081490_689885_3383">
+    <label>owl:minQualifiedCardinality</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_17_0_1_e980341_1311467130325_31598_4771" xmi:id="_17_0_1_e980341_1311467242882_192881_4792"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564010099_980995_1146" identifier="_17_0_1_e980341_1311486894074_371433_6572" base_Association="_16_6_2_15100de_1272409663773_323788_1272">
+    <label>owl:disjointWith</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262294906447_916289_2341" xmi:id="_16_6_630020f_1262294906447_478928_2342"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311470054111_875643_5082" base_InstanceSpecification="_17_0_1_e980341_1311470041488_916191_5072"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311484271644_331239_6199" base_InstanceSpecification="_17_0_1_e980341_1311484259482_275827_6189"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_2_15100de_1272587084198_299609_1274" xmi:id="_17_0_1_e980341_1311465900245_243157_4225">
+    <label>odm:Type</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfsClass base_Class="_16_6_2_15100de_1272587637143_49283_1395" xmi:id="_16_9_15100de_1298961527713_105300_2444">
+    <label>odm:TypedThing</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272410601680_355368_1489" xmi:id="_16_6_2_15100de_1272564028274_643532_1148"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1258408669806_413845_1174" xmi:id="_16_6_630020f_1258408669807_843111_1175" identifier="_16_8_e980341_1288991375959_208150_2471">
+    <label>owl:Class</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311569509033_903697_3787" base_InstanceSpecification="_17_0_1_e980341_1311569497260_952600_3777"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311466956782_123353_4735" base_InstanceSpecification="_17_0_1_e980341_1311466944008_74358_4725"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262294055362_912457_2186" xmi:id="_16_6_630020f_1262294055362_773168_2187" identifier="_17_0_1_e980341_1311470241041_384502_5120">
+    <label>owl:NegativePropertyAssertion</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272564752221_693091_1386" xmi:id="_16_6_2_15100de_1272565082911_270885_1492"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311568454321_403110_3607" base_InstanceSpecification="_17_0_1_e980341_1311568442273_347093_3597"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262291680259_716326_1778" xmi:id="_16_6_630020f_1262291680259_587806_1779" identifier="_17_0_1_e980341_1311465548899_391120_3870">
+    <label>owl:Axiom</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311564324103_892201_3214" base_InstanceSpecification="_17_0_1_e980341_1311564303193_649650_3204"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311570411866_579987_3993" identifier="_17_0_1_e980341_1311570536048_31299_4004" base_Association="_17_0_1_e980341_1311570349032_684082_3971">
+    <label>owl:targetValue</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311481586670_769065_5832" base_InstanceSpecification="_17_0_1_e980341_1311481574272_450213_5822"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262293222712_794317_2168" xmi:id="_16_6_630020f_1262293222712_178194_2169"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262290117780_457096_2105" xmi:id="_16_6_630020f_1262290117780_417332_2106" identifier="_17_0_1_e980341_1311465005050_923466_3426">
+    <label>owl:Annotation</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262293211599_269217_2159" xmi:id="_16_6_630020f_1262293211600_640938_2160"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262292359827_767937_1956" xmi:id="_16_6_630020f_1262292359827_650488_1957" identifier="_17_0_1_e980341_1311466118373_986423_4323">
+    <label>owl:DataRange</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311465017199_431550_3440" base_InstanceSpecification="_17_0_1_e980341_1311465005050_923466_3426"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311486035689_57805_6508" base_InstanceSpecification="_17_0_1_e980341_1311486021428_335041_6498"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311465562949_127992_3884" base_InstanceSpecification="_17_0_1_e980341_1311465548899_391120_3870"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272587192138_682869_1300" xmi:id="_16_6_2_15100de_1272587205937_247001_1301"/>
+  <RDFProfile:rdfProperty base_Property="_16_8_e980341_1288991860989_987898_2913" xmi:id="_16_8_e980341_1288991860991_55349_2918"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311565265233_57103_3320" base_InstanceSpecification="_17_0_1_e980341_1311565250398_72794_3310"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288814533386_135218_2359" base_InstanceSpecification="_16_8_e980341_1288814517638_980056_2351"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311486906448_616461_6582" base_InstanceSpecification="_17_0_1_e980341_1311486894074_371433_6572"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567872019_799567_3545" xmi:id="_16_9_15100de_1298568384981_235492_4091" identifier="_17_0_1_e980341_1311465373545_783266_3748">
+    <label>owl:AsymmetricProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1288991860989_799037_2912" base_Association="_16_8_e980341_1288991860986_722009_2910">
+    <label>odm:onType</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1290810910896_16732_3146" base_InstanceSpecification="_16_8_e980341_1290810834751_926544_3126"/>
+  <OWLProfile:objectProperty base_Property="_16_6_2_15100de_1272924821186_509049_1385" xmi:id="_16_6_2_15100de_1272925513154_295257_1540"/>
+  <RDFProfile:rdfProperty base_Property="_16_9_15100de_1299269719275_794970_2504" xmi:id="_16_9_15100de_1299270104544_731758_2657"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564138716_922223_1171" identifier="_17_0_1_e980341_1311488583915_168535_6718" base_Association="_16_6_2_15100de_1272410382303_703213_1429">
+    <label>owl:equivalentProperty</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311563110976_466658_3117" base_InstanceSpecification="_17_0_1_e980341_1311563093217_98743_3107"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311480978362_974307_5755" base_InstanceSpecification="_17_0_1_e980341_1311480965426_87788_5745"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272587677134_830385_1399" xmi:id="_16_6_2_15100de_1272587848881_630752_1551"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567856300_4835_3483" xmi:id="_16_9_15100de_1298568384982_532463_4092" identifier="_17_0_1_e980341_1311471602439_207623_5391">
+    <label>owl:SymmetricProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfsClass base_Class="_16_6_1_15100de_1266446273793_418588_840" xmi:id="_16_6_2_15100de_1268871524920_660665_2104" identifier="_17_0_1_e980341_1311457579927_976142_4082">
+    <label>owl:Ontology</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1273343910646_128138_1490" identifier="_17_0_1_e980341_1311567312345_471494_3494" base_Association="_16_6_2_15100de_1273343910645_197737_1489">
+    <label>owl:oneOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311571816186_268525_4211" base_InstanceSpecification="_17_0_1_e980341_1311571802863_546480_4201"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1258413748721_166552_1182" xmi:id="_16_6_2_15100de_1268872744723_411918_2404" identifier="_17_0_1_e980341_1311466363824_233548_4533">
+    <label>owl:DatatypeProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272409595176_557464_1251" xmi:id="_16_6_2_15100de_1272564028277_666721_1149"/>
+  <OWLProfile:objectProperty xmi:id="_16_6_2_15100de_1272925495034_315874_1532" identifier="_17_0_1_e980341_1311570853995_442745_4047" base_Association="_16_6_2_15100de_1272924821186_543703_1384">
+    <label>owl:topObjectProperty</label>
+  </OWLProfile:objectProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311549519691_320260_7144" base_InstanceSpecification="_17_0_1_e980341_1311549507355_919546_7134"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311488125622_754153_6691" base_InstanceSpecification="_17_0_1_e980341_1311488109710_487619_6681"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567699956_923492_3384" xmi:id="_16_9_15100de_1298568384983_980689_4094" identifier="_17_0_1_e980341_1311468612505_653204_4832">
+    <label>owl:FunctionalProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfsDatatype xmi:id="_16_6_2_15100de_1272926295732_991595_1683" base_DataType="_16_6_2_15100de_1272925842429_938074_1586" identifier="_16_8_e980341_1290810834751_926544_3126">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>owl:real</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311546069067_926640_6892" base_InstanceSpecification="_17_0_1_e980341_1311546057893_184127_6882"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311483651060_471620_5993" base_InstanceSpecification="_17_0_1_e980341_1311483632112_270005_5983"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311569990448_494117_3866" identifier="_17_0_1_e980341_1311570156916_740145_3912" base_Association="_17_0_1_e980341_1311569941213_31355_3844">
+    <label>owl:sourceIndividual</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:owlClass base_Element="_16_0_1_137b03ac_1234922700093_543315_1571" xmi:id="_16_0_1_137b03ac_1234922717875_333496_1590" identifier="_16_8_e980341_1289001392165_271584_2233">
+    <label>owl:Thing</label>
+  </OWLProfile:owlClass>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272565066370_901993_1474" identifier="_17_0_1_e980341_1311568310879_552875_3570" base_Association="_16_6_2_15100de_1272564568742_597582_1311">
+    <label>owl:onProperty</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:annotationProperty base_Element="_16_6_2_15100de_1270314961865_853722_1733" xmi:id="_16_8_15100de_1290888712858_555002_3277" identifier="_17_0_1_e980341_1311549507355_919546_7134">
+    <label>owl:incompatibleWith</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288991272326_575711_2382" base_InstanceSpecification="_16_8_e980341_1288991217230_146891_2360"/>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567846500_979968_3455" xmi:id="_16_9_15100de_1298568384985_726067_4096" identifier="_17_0_1_e980341_1311471209757_405347_5345">
+    <label>owl:ReflexiveProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272587253386_776774_1328" xmi:id="_16_6_2_15100de_1272588178482_208582_1623"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262294092897_581852_2210" xmi:id="_16_6_630020f_1262294092897_315713_2211"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272587182490_720791_1296" xmi:id="_16_6_2_15100de_1272587182491_974357_1297"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311545651312_387250_6819" identifier="_17_0_1_e980341_1311545745245_35209_6829" base_Association="_17_0_1_e980341_1311545560796_93183_6796">
+    <label>owl:hasKey</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568021604_210162_3707" xmi:id="_16_9_15100de_1298568472877_133815_4144"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311481537548_153613_5812" identifier="_17_0_1_e980341_1311481574272_450213_5822" base_Association="_17_0_1_e980341_1311481306985_887408_5788">
+    <label>owl:assertionProperty</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568026267_145271_3721" xmi:id="_16_9_15100de_1298568472880_44277_4148"/>
+  <RDFProfile:rdfProperty xmi:id="_16_9_15100de_1298961496201_25838_2440" base_Association="_16_9_15100de_1298771725945_978929_2540">
+    <label>odm:equivalentDatatype</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:datatypeProperty xmi:id="_16_6_2_15100de_1272925464503_358753_1515" identifier="_17_0_1_e980341_1311482816775_589367_5869" base_Association="_16_6_2_15100de_1272925333184_3227_1453">
+    <label>owl:bottomDataProperty</label>
+  </OWLProfile:datatypeProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262294897159_711075_2332" xmi:id="_16_6_630020f_1262294897159_633074_2333"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311565436125_692668_3352" identifier="_17_0_1_e980341_1311565506660_307169_3362" base_Association="_17_0_1_e980341_1311565393378_205103_3330">
+    <label>owl:minCardinality</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty base_Property="_17_0_1_e980341_1311564055043_754210_3169" xmi:id="_17_0_1_e980341_1311564135249_945894_3189"/>
+  <RDFProfile:rdfDocument namespaceDefinition="_17_0_4_1_e980341_1380036190319_29922_5902" xmi:id="_16_6_2_15100de_1268871477334_986525_2103" defaultNamespace="_16_8_e980341_1288814517638_980056_2351" base_Package="_16_6_1_15100de_1266442591270_512317_344" xmlBase="_16_8_e980341_1288814517638_980056_2351">
+    <label>OWL Library</label>
+  </RDFProfile:rdfDocument>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262294887960_260967_2322" xmi:id="_16_6_630020f_1262294887960_33416_2323"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262291374622_490505_1377" xmi:id="_16_6_630020f_1262291374622_295801_1378"/>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272564673437_568880_1368" xmi:id="_16_6_2_15100de_1272565082914_878708_1493"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311471223406_638962_5355" base_InstanceSpecification="_17_0_1_e980341_1311471209757_405347_5345"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311548439492_661067_7049" base_InstanceSpecification="_17_0_1_e980341_1311548420406_600607_7039"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311466131622_18519_4337" base_InstanceSpecification="_17_0_1_e980341_1311466118373_986423_4323"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311486714619_477806_6553" base_InstanceSpecification="_17_0_1_e980341_1311486699683_696998_6543"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262293270172_210583_2177" xmi:id="_16_6_630020f_1262293270172_663133_2178"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1258411152192_312968_1737" xmi:id="_16_6_2_15100de_1268872667715_51731_2402" identifier="_17_0_1_e980341_1311470502754_630398_5171">
+    <label>owl:ObjectProperty</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311466386447_369121_4550" base_InstanceSpecification="_17_0_1_e980341_1311466363824_233548_4533"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311565158101_344217_3300" identifier="_17_0_1_e980341_1311565250398_72794_3310" base_Association="_17_0_1_e980341_1311565087018_511842_3277">
+    <label>owl:members</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311566482284_395890_3426" base_InstanceSpecification="_17_0_1_e980341_1311566470135_401222_3416"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311487965704_237692_6666" base_InstanceSpecification="_17_0_1_e980341_1311487936018_208361_6655"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564138713_984891_1170" identifier="_17_0_1_e980341_1311569070130_944694_3701" base_Association="_16_6_2_15100de_1272410445784_319607_1447">
+    <label>owl:propertyDisjointWith</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288991413557_45916_2494" base_InstanceSpecification="_16_8_e980341_1288991375959_208150_2471"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272564010101_728898_1147" identifier="_17_0_1_e980341_1311486021428_335041_6498" base_Association="_16_6_2_15100de_1272410621079_199433_1506">
+    <label>owl:differentFrom</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272409663773_726763_1273" xmi:id="_16_6_2_15100de_1272564028279_109427_1150"/>
+  <RDFProfile:namespaceDefinition xmi:id="_17_0_4_1_e980341_1380036237845_831938_5914" namespacePrefix="owl" namespaceIRI="_16_8_e980341_1288814517638_980056_2351" base_InstanceSpecification="_17_0_4_1_e980341_1380036190319_29922_5902"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272565066155_311129_1473" identifier="_17_0_1_e980341_1311569687857_405210_3802" base_Association="_16_6_2_15100de_1272564673437_298869_1367">
+    <label>owl:someValuesFrom</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfsClass base_Class="_16_6_2_15100de_1272410181304_393078_1348" xmi:id="_16_6_2_15100de_1272410181306_816288_1349">
+    <label>owl:Individual</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311565518033_352974_3372" base_InstanceSpecification="_17_0_1_e980341_1311565506660_307169_3362"/>
+  <OWLProfile:complementOf xmi:id="_16_0_1_137b03ac_1234922776093_56408_1733" base_Dependency="_16_0_1_137b03ac_1234922776093_686991_1732"/>
+  <RDFProfile:subClassOf base_Generalization="_17_0_1_e980341_1311466246117_239555_4419" xmi:id="_17_0_1_e980341_1311466924209_471199_4719"/>
+  <OWLProfile:annotationProperty base_Element="_17_0_1_e980341_1311480694714_681063_5705" xmi:id="_17_0_1_e980341_1311480801670_157451_5727" identifier="_17_0_1_e980341_1311480965426_87788_5745">
+    <label>owl:annotatedTarget</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262288317900_552751_1654" xmi:id="_16_6_630020f_1262288317900_684319_1655"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311568710084_857264_3671" identifier="_17_0_1_e980341_1311568869164_209383_3682" base_Association="_17_0_1_e980341_1311568650088_654717_3649">
+    <label>owl:propertyChainAxiom</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:annotationProperty base_Element="_17_0_1_e980341_1311474484589_821091_5637" xmi:id="_17_0_1_e980341_1311474534036_554662_5649" identifier="_17_0_1_e980341_1311474658656_620544_5670">
+    <label>owl:annotatedSource</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272410445784_813722_1448" xmi:id="_16_6_2_15100de_1272564157121_459351_1182"/>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298567992070_562900_3653" xmi:id="_16_9_15100de_1298568472876_843229_4142"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311457594778_902384_4097" base_InstanceSpecification="_17_0_1_e980341_1311457579927_976142_4082"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311568887276_806030_3692" base_InstanceSpecification="_17_0_1_e980341_1311568869164_209383_3682"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311570712263_768038_4034" base_InstanceSpecification="_17_0_1_e980341_1311570699958_847193_4024"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311571333284_785366_4115" base_InstanceSpecification="_17_0_1_e980341_1311571321503_364751_4105"/>
+  <OWLProfile:owlClass base_Element="_16_0_1_137b03ac_1234922626781_157578_1550" xmi:id="_16_0_1_137b03ac_1234922652265_872354_1569" identifier="_17_0_1_e980341_1311457289096_140309_3991">
+    <label>owl:Nothing</label>
+  </OWLProfile:owlClass>
+  <OWLProfile:annotationProperty base_Element="_16_6_2_15100de_1270314785611_245340_1644" xmi:id="_16_6_2_15100de_1270315134631_706348_1819"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311482990229_465415_5902" base_InstanceSpecification="_17_0_1_e980341_1311482977467_844723_5892"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311474674054_349065_5680" base_InstanceSpecification="_17_0_1_e980341_1311474658656_620544_5670"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_2_15100de_1273344289769_352253_1898" xmi:id="_16_6_2_15100de_1273344289772_756117_1899">
+    <label>owl:AnonymousIndividual</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311570102268_719287_3901" identifier="_17_0_1_e980341_1311570201763_573491_3928" base_Association="_17_0_1_e980341_1311570050546_446254_3879">
+    <label>owl:targetIndividual</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311567600555_302833_3536" identifier="_17_0_1_e980341_1311568193972_516474_3547" base_Association="_17_0_1_e980341_1311567545158_940302_3514">
+    <label>owl:onProperties</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty xmi:id="_16_9_15100de_1299270092880_600359_2647" identifier="_17_0_1_e980341_1311567080493_684662_3467" base_Association="_16_9_15100de_1299269719275_234525_2503">
+    <label>owl:onDatatype</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_9_15100de_1298568001964_360841_3667" xmi:id="_16_9_15100de_1298568472879_874048_4147"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262289222534_883894_1912" xmi:id="_16_6_630020f_1262289222534_358142_1913" identifier="_17_0_1_e980341_1311464709064_190652_3167">
+    <label>owl:AllDisjointClasses</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272587700531_1131_1438" xmi:id="_16_6_2_15100de_1272587710649_896520_1439"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311465384444_46848_3762" base_InstanceSpecification="_17_0_1_e980341_1311465373545_783266_3748"/>
+  <OWLProfile:annotationProperty base_Element="_16_6_2_15100de_1270314785611_766424_1643" xmi:id="_16_6_2_15100de_1270315116295_512074_1795" identifier="_17_0_1_e980341_1311571321503_364751_4105">
+    <label>owl:versionInfo</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311572565929_215203_4293" base_InstanceSpecification="_17_0_1_e980341_1311572554417_380100_4283"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_15100de_1261528954019_741599_1038" xmi:id="_16_6_15100de_1261686973555_846299_1320" identifier="_17_0_1_e980341_1311464557023_542567_3069">
+    <label>owl:AllDifferent</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:rdfsClass base_Class="_16_6_630020f_1262289742672_695520_2011" xmi:id="_16_6_630020f_1262289742673_734594_2012" identifier="_17_0_1_e980341_1311464866987_353774_3330">
+    <label>owl:AllDisjointProperties</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1273344594639_671547_1964" xmi:id="_16_6_2_15100de_1273344606853_505596_1965"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262289250957_997944_1935" xmi:id="_16_6_630020f_1262289250957_648700_1936"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311570546909_850766_4014" base_InstanceSpecification="_17_0_1_e980341_1311570536048_31299_4004"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288817514705_11906_2224" base_LiteralString="_16_8_e980341_1288817498971_864110_2219"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311570212550_429204_3938" base_InstanceSpecification="_17_0_1_e980341_1311570201763_573491_3928"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311488597614_367577_6728" base_InstanceSpecification="_17_0_1_e980341_1311488583915_168535_6718"/>
+  <OWLProfile:datatypeProperty base_Property="_16_6_2_15100de_1272925279167_804680_1436" xmi:id="_16_6_2_15100de_1272925479545_551049_1524"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311470515577_373496_5181" base_InstanceSpecification="_17_0_1_e980341_1311470502754_630398_5171"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_2_15100de_1272410264424_689849_1405" xmi:id="_16_6_2_15100de_1272410264424_454443_1406"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311464725951_185803_3181" base_InstanceSpecification="_17_0_1_e980341_1311464709064_190652_3167"/>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272588167182_508106_1606" identifier="_17_0_1_e980341_1311484259482_275827_6189" base_Association="_16_6_2_15100de_1272587340026_42232_1345">
+    <label>owl:complementOf</label>
+  </RDFProfile:rdfProperty>
+  <OWLProfile:annotationProperty base_Element="_17_0_1_e980341_1311473843695_893445_5582" xmi:id="_17_0_1_e980341_1311473922977_797858_5591" identifier="_17_0_1_e980341_1311474369657_530160_5617">
+    <label>owl:annotatedProperty</label>
+  </OWLProfile:annotationProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311470253214_359151_5130" base_InstanceSpecification="_17_0_1_e980341_1311470241041_384502_5120"/>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262293171802_393042_2149" xmi:id="_16_6_630020f_1262293171802_822873_2150"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311570878368_799896_4057" base_InstanceSpecification="_17_0_1_e980341_1311570853995_442745_4047"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311563300742_195430_3157" base_InstanceSpecification="_17_0_1_e980341_1311563284669_781897_3147"/>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272410561951_130474_1477" xmi:id="_16_6_2_15100de_1272564157126_331348_1186"/>
+  <RDFProfile:rdfProperty base_Property="_16_9_15100de_1299269932058_957022_2579" xmi:id="_16_9_15100de_1299270058408_710678_2636"/>
+  <RDFProfile:rdfProperty xmi:id="_16_9_15100de_1299270073280_434326_2640" identifier="_17_0_1_e980341_1311566708211_146068_3439" base_Association="_16_9_15100de_1299269932058_636701_2578">
+    <label>owl:onClass</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:subClassOf base_Generalization="_16_6_630020f_1262295469921_558789_2435" xmi:id="_16_6_630020f_1262295469921_431246_2436"/>
+  <RDFProfile:rdfsClass base_Class="_16_6_2_15100de_1273342650082_711494_1194" xmi:id="_16_6_2_15100de_1273342677021_818359_1195">
+    <label>odm:Datatype</label>
+  </RDFProfile:rdfsClass>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311464573858_632298_3083" base_InstanceSpecification="_17_0_1_e980341_1311464557023_542567_3069"/>
+  <OWLProfile:datatypeProperty xmi:id="_16_6_2_15100de_1272925464524_878131_1516" identifier="_17_0_1_e980341_1311570699958_847193_4024" base_Association="_16_6_2_15100de_1272925279167_573547_1435">
+    <label>owl:topDataProperty</label>
+  </OWLProfile:datatypeProperty>
+  <RDFProfile:rdfProperty xmi:id="_16_6_2_15100de_1272588167186_147309_1607" identifier="_17_0_1_e980341_1311563093217_98743_3107" base_Association="_16_6_2_15100de_1272587253386_310886_1327">
+    <label>owl:intersectionOf</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311564840978_963380_3267" base_InstanceSpecification="_17_0_1_e980341_1311564811069_993487_3257"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_15100de_1305238749122_212351_2663" identifier="_17_0_1_e980341_1311571802863_546480_4201" base_Association="_17_0_1_15100de_1305238616029_804739_2623">
+    <label>owl:versionIRI</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfProperty base_Property="_16_6_2_15100de_1272564568742_15843_1312" xmi:id="_16_6_2_15100de_1272565082917_423950_1494"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1289001367528_935371_2224" base_InstanceSpecification="_16_8_e980341_1289001322190_771882_2216"/>
+  <RDFProfile:IRI xmi:id="_17_0_1_e980341_1311481824022_522054_5856" base_InstanceSpecification="_17_0_1_e980341_1311481811373_307481_5846"/>
+  <RDFProfile:rdfProperty xmi:id="_17_0_1_e980341_1311569224348_938618_3743" identifier="_17_0_1_e980341_1311569308957_974004_3754" base_Association="_17_0_1_e980341_1311569171463_685228_3721">
+    <label>owl:qualifiedCardinality</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfsClass base_Class="_16_9_15100de_1298567822372_420266_3419" xmi:id="_16_9_15100de_1298568384980_354541_4090" identifier="_17_0_1_e980341_1311468867606_801815_4879">
+    <label>InverseFunctionalProperty</label>
+  </RDFProfile:rdfsClass>
+</xmi:XMI>

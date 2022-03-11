@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_CHPgADoZEeCmpu-HRutBsg" name="Classification">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_L0S7QCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonStructure.fragment.xmi#_D211YDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_O2Sj8DedEeGvAsatMsov4Q">
+    <importedPackage xmi:type="uml:Package" href="Deployments.fragment.xmi#_EntRoDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_7CJcUDeiEeGvAsatMsov4Q">
+    <importedPackage xmi:type="uml:Package" href="CommonBehavior.fragment.xmi#_DF0oIDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiGzoZEeCmpu-HRutBsg" name="Substitution">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiHDoZEeCmpu-HRutBsg" annotatedElement="_D3SiGzoZEeCmpu-HRutBsg">
+      <body>A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiHToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiEjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiHjoZEeCmpu-HRutBsg" name="contract" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_D3SiwjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiHzoZEeCmpu-HRutBsg" annotatedElement="_D3SiHjoZEeCmpu-HRutBsg">
+        <body>The contract with which the substituting classifier complies.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiIDoZEeCmpu-HRutBsg" name="substitutingClassifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_SzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiIToZEeCmpu-HRutBsg" annotatedElement="_D3SiIDoZEeCmpu-HRutBsg">
+        <body>Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzHzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsOTToZEeCmpu-HRutBsg" name="BehavioralFeature" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOTjoZEeCmpu-HRutBsg" annotatedElement="_CHsOTToZEeCmpu-HRutBsg">
+      <body>A BehavioralFeature is a feature of a Classifier that specifies an aspect of the behavior of its instances.  A BehavioralFeature is implemented (realized) by a Behavior. A BehavioralFeature specifies that a Classifier will respond to a designated request by invoking its implementing method.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOUToZEeCmpu-HRutBsg" general="_CHsPIzoZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOUjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOUzoZEeCmpu-HRutBsg" name="concurrency" visibility="public" type="_CH1-zjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOVDoZEeCmpu-HRutBsg" annotatedElement="_CHsOUzoZEeCmpu-HRutBsg">
+        <body>Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a Class with isActive being false). Active instances control access to their own BehavioralFeatures.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_CHsOVToZEeCmpu-HRutBsg" type="_CH1-zjoZEeCmpu-HRutBsg" instance="_CH1-0DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOVjoZEeCmpu-HRutBsg" name="isAbstract" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOVzoZEeCmpu-HRutBsg" annotatedElement="_CHsOVjoZEeCmpu-HRutBsg">
+        <body>If true, then the BehavioralFeature does not have an implementation, and one must be supplied by a more specific Classifier. If false, theBehavioralFeature must have an implementation in the Classifier or one must be inherited.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsOWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOWToZEeCmpu-HRutBsg" name="method" visibility="public" association="_CH1_bDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOWjoZEeCmpu-HRutBsg" annotatedElement="_CHsOWToZEeCmpu-HRutBsg">
+        <body>A Behavioral that implements the BehavioralFeature. There may be at most one Behavior for a particular pairing of a Classifier (as owner of the Behavior) and a BehavioralFeature (as specification of the Behavior).</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOWzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOXDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOXToZEeCmpu-HRutBsg" name="ownedParameter" visibility="public" type="_CH19kjoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_CH1_YjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOXjoZEeCmpu-HRutBsg" annotatedElement="_CHsOXToZEeCmpu-HRutBsg">
+        <body>The ordered set of formal Parameters of this BehavioralFeature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOXzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOYDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOYToZEeCmpu-HRutBsg" name="ownedParameterSet" visibility="public" type="_CH19xjoZEeCmpu-HRutBsg" aggregation="composite" association="_CH1_aToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOYjoZEeCmpu-HRutBsg" annotatedElement="_CHsOYToZEeCmpu-HRutBsg">
+        <body>The ParameterSets owned by this BehavioralFeature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOYzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOZDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOZToZEeCmpu-HRutBsg" name="raisedException" visibility="public" association="_CH1_ZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOZjoZEeCmpu-HRutBsg" annotatedElement="_CHsOZToZEeCmpu-HRutBsg">
+        <body>The Types representing exceptions that may be raised during an invocation of this BehavioralFeature.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOZzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOaDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsOaToZEeCmpu-HRutBsg" name="isDistinguishableFrom" visibility="public" isQuery="true" bodyCondition="_CHsOazoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOajoZEeCmpu-HRutBsg" annotatedElement="_CHsOaToZEeCmpu-HRutBsg">
+        <body>The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they must have different signatures.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOazoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsOaToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsObDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>(n.oclIsKindOf(BehavioralFeature) and ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()) implies&#xA;   Set{}->including(self)->including(n.oclAsType(BehavioralFeature))->isUnique(ownedParameter->collect(type))&#xA;  </body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsObToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsObjoZEeCmpu-HRutBsg" name="n" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsObzoZEeCmpu-HRutBsg" name="ns" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3ShgzoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsOcDoZEeCmpu-HRutBsg" name="Classifier" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOcToZEeCmpu-HRutBsg" annotatedElement="_CHsOcDoZEeCmpu-HRutBsg">
+      <body>A Classifier represents a classification of objects according to their Features. Classifiers are related by Generalizations.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOdToZEeCmpu-HRutBsg" name="specialize_type" constrainedElement="_CHsOcDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOdjoZEeCmpu-HRutBsg" annotatedElement="_CHsOdToZEeCmpu-HRutBsg">
+        <body>A Classifier may only specialize Classifiers of a valid type.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOdzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parents()->forAll(c | self.maySpecializeType(c))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOeDoZEeCmpu-HRutBsg" name="maps_to_generalization_set" constrainedElement="_CHsOcDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOeToZEeCmpu-HRutBsg" annotatedElement="_CHsOeDoZEeCmpu-HRutBsg">
+        <body>The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances also be its subclasses.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOejoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>powertypeExtent->forAll( gs | &#xD;&#xA;  gs.generalization->forAll( gen | &#xD;&#xA;    not (gen.general = self) and not gen.general.allParents()->includes(self) and not (gen.specific = self) and not self.allParents()->includes(gen.specific) &#xD;&#xA;  ))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOezoZEeCmpu-HRutBsg" name="non_final_parents" constrainedElement="_CHsOcDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOfDoZEeCmpu-HRutBsg" annotatedElement="_CHsOezoZEeCmpu-HRutBsg">
+        <body>The parents of a Classifier must be non-final.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOfToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parents()->forAll(not isFinalSpecialization)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOfjoZEeCmpu-HRutBsg" name="no_cycles_in_generalization" constrainedElement="_CHsOcDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOfzoZEeCmpu-HRutBsg" annotatedElement="_CHsOfjoZEeCmpu-HRutBsg">
+        <body>Generalization hierarchies must be directed and acyclical. A Classifier can not be both a transitively general and transitively specific Classifier of the same Classifier.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOgDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not allParents()->includes(self)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOgToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOgjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOgzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiIjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsOhDoZEeCmpu-HRutBsg" general="_CH1-bToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOhToZEeCmpu-HRutBsg" name="attribute" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_CHsOjToZEeCmpu-HRutBsg _CH1--joZEeCmpu-HRutBsg" association="_CH1_XDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOhjoZEeCmpu-HRutBsg" annotatedElement="_CHsOhToZEeCmpu-HRutBsg">
+        <body>All of the Properties that are direct (i.e. not inherited or imported) attributes of the Classifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOhzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOiDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOiToZEeCmpu-HRutBsg" name="collaborationUse" visibility="public" aggregation="composite" association="_CH1_WToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOijoZEeCmpu-HRutBsg" annotatedElement="_CHsOiToZEeCmpu-HRutBsg">
+        <body>The CollaborationUses owned by the Classifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmL1DoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOizoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOjDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOjToZEeCmpu-HRutBsg" name="feature" visibility="public" type="_CHsPIzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_CH1_SjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOjjoZEeCmpu-HRutBsg" annotatedElement="_CHsOjToZEeCmpu-HRutBsg">
+        <body>Specifies each Feature directly defined in the classifier. Note that there may be members of the Classifier that are of the type Feature but are not included, e.g. inherited features.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOkDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOkToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShqDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOkjoZEeCmpu-HRutBsg" name="general" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" isDerived="true" association="_CH1_RjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOkzoZEeCmpu-HRutBsg" annotatedElement="_CHsOkjoZEeCmpu-HRutBsg">
+        <body>The generalizing Classifiers for this Classifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOlToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOljoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOlzoZEeCmpu-HRutBsg" name="generalization" visibility="public" type="_CHsPLToZEeCmpu-HRutBsg" aggregation="composite" association="_CH1_RToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOmDoZEeCmpu-HRutBsg" annotatedElement="_CHsOlzoZEeCmpu-HRutBsg">
+        <body>The Generalization relationships for this Classifier. These Generalizations navigate to more general Classifiers in the generalization hierarchy.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOmToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOmjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOmzoZEeCmpu-HRutBsg" name="inheritedMember" visibility="public" isReadOnly="true" isDerived="true" association="_CH1_UToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOnDoZEeCmpu-HRutBsg" annotatedElement="_CHsOmzoZEeCmpu-HRutBsg">
+        <body>All elements inherited by this Classifier from its general Classifiers.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOnToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOnjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShqDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOnzoZEeCmpu-HRutBsg" name="isAbstract" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOoDoZEeCmpu-HRutBsg" annotatedElement="_CHsOnzoZEeCmpu-HRutBsg">
+        <body>If true, the Classifier does not provide a complete declaration and cannot be instantiated. An abstract Classifier is intended to be used by other Classifiers e.g. as the target of Associations or Generalizations.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsOoToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOojoZEeCmpu-HRutBsg" name="isFinalSpecialization" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOozoZEeCmpu-HRutBsg" annotatedElement="_CHsOojoZEeCmpu-HRutBsg">
+        <body>If true, the Classifier cannot be specialized.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsOpDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOpToZEeCmpu-HRutBsg" name="ownedTemplateSignature" visibility="public" type="_CH1-kjoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_CH1--joZEeCmpu-HRutBsg" association="_CH1_UDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOpjoZEeCmpu-HRutBsg" annotatedElement="_CHsOpToZEeCmpu-HRutBsg">
+        <body>The optional RedefinableTemplateSignature specifying the formal template parameters.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOpzoZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiJToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOqDoZEeCmpu-HRutBsg" name="ownedUseCase" visibility="public" aggregation="composite" association="_CH1_XzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOqToZEeCmpu-HRutBsg" annotatedElement="_CHsOqDoZEeCmpu-HRutBsg">
+        <body>The UseCases owned by this classifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="UseCases.fragment.xmi#_LuSTpzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOqjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOqzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOrDoZEeCmpu-HRutBsg" name="powertypeExtent" visibility="public" type="_CHsPQDoZEeCmpu-HRutBsg" association="_CH1_RDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOrToZEeCmpu-HRutBsg" annotatedElement="_CHsOrDoZEeCmpu-HRutBsg">
+        <body>The GeneralizationSet of which this Classifier is a power type.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOrjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOrzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOsDoZEeCmpu-HRutBsg" name="redefinedClassifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" subsettedProperty="_CH1-fDoZEeCmpu-HRutBsg" association="_CH1_VToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOsToZEeCmpu-HRutBsg" annotatedElement="_CHsOsDoZEeCmpu-HRutBsg">
+        <body>The Classifiers redefined by this Classifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOsjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOszoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOtDoZEeCmpu-HRutBsg" name="representation" visibility="public" subsettedProperty="_CHsOiToZEeCmpu-HRutBsg" association="_CH1_TDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOtToZEeCmpu-HRutBsg" annotatedElement="_CHsOtDoZEeCmpu-HRutBsg">
+        <body>A CollaborationUse which indicates the Collaboration that represents this Classifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmL1DoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOtjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOtzoZEeCmpu-HRutBsg" name="substitution" visibility="public" type="_D3SiGzoZEeCmpu-HRutBsg" aggregation="composite" association="_CH1_SzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOuDoZEeCmpu-HRutBsg" annotatedElement="_CHsOtzoZEeCmpu-HRutBsg">
+        <body>The Substitutions owned by this Classifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOuToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOujoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShYjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOuzoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_CHsPFDoZEeCmpu-HRutBsg" association="_CH1_QzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOvDoZEeCmpu-HRutBsg" annotatedElement="_CHsOuzoZEeCmpu-HRutBsg">
+        <body>TheClassifierTemplateParameter that exposes this element as a formal parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOvToZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiBDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsOvjoZEeCmpu-HRutBsg" name="useCase" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOvzoZEeCmpu-HRutBsg" annotatedElement="_CHsOvjoZEeCmpu-HRutBsg">
+        <body>The set of UseCases for which this Classifier is the subject.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="UseCases.fragment.xmi#_LuSTpzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOwDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOwToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="UseCases.fragment.xmi#_LuSTzzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsOwjoZEeCmpu-HRutBsg" name="allFeatures" visibility="public" isQuery="true" bodyCondition="_CHsOxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOwzoZEeCmpu-HRutBsg" annotatedElement="_CHsOwjoZEeCmpu-HRutBsg">
+        <body>The query allFeatures() gives all of the features in the namespace of the Classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOxDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsOwjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOxToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>member->select(oclIsKindOf(Feature))->collect(oclAsType(Feature))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsOxjoZEeCmpu-HRutBsg" name="result" visibility="public" type="_CHsPIzoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOxzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOyDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsOyToZEeCmpu-HRutBsg" name="allParents" visibility="public" isQuery="true" bodyCondition="_CHsOyzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsOyjoZEeCmpu-HRutBsg" annotatedElement="_CHsOyToZEeCmpu-HRutBsg">
+        <body>The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsOyzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsOyToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsOzDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>parents()->union(parents()->collect(allParents())->asSet())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsOzToZEeCmpu-HRutBsg" name="result" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsOzjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsOzzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO0DoZEeCmpu-HRutBsg" name="conformsTo" visibility="public" isQuery="true" bodyCondition="_CHsO0joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO0ToZEeCmpu-HRutBsg" annotatedElement="_CHsO0DoZEeCmpu-HRutBsg">
+        <body>The query conformsTo() gives true for a Classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO0joZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO0DoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO0zoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self = other or allParents()->includes(other)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO1DoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO1ToZEeCmpu-HRutBsg" name="other" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg"/>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3SigToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO1joZEeCmpu-HRutBsg" name="general" visibility="public" isQuery="true" bodyCondition="_CHsO2DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO1zoZEeCmpu-HRutBsg" annotatedElement="_CHsO1joZEeCmpu-HRutBsg">
+        <body>The general Classifiers are the ones referenced by the Generalization relationships.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO2DoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO1joZEeCmpu-HRutBsg _CHsOkjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO2ToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>parents()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO2joZEeCmpu-HRutBsg" name="result" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsO2zoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsO3DoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO3ToZEeCmpu-HRutBsg" name="hasVisibilityOf" visibility="public" isQuery="true" precondition="_CHsO3zoZEeCmpu-HRutBsg" bodyCondition="_CHsO4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO3joZEeCmpu-HRutBsg" annotatedElement="_CHsO3ToZEeCmpu-HRutBsg">
+        <body>The query hasVisibilityOf() determines whether a NamedElement is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO3zoZEeCmpu-HRutBsg" name="pre" constrainedElement="_CHsO3ToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO4DoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>allParents()->including(self)->collect(member)->includes(n)</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO4ToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO3ToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO4joZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>n.visibility &lt;> VisibilityKind::private</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO4zoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO5DoZEeCmpu-HRutBsg" name="n" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO5ToZEeCmpu-HRutBsg" name="inherit" visibility="public" isQuery="true" bodyCondition="_CHsO6DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO5joZEeCmpu-HRutBsg" annotatedElement="_CHsO5ToZEeCmpu-HRutBsg">
+        <body>The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO6DoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO5ToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO6ToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>inhs</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO6joZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsO6zoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsO7DoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO7ToZEeCmpu-HRutBsg" name="inhs" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsO7joZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsO7zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO8DoZEeCmpu-HRutBsg" name="inheritableMembers" visibility="public" isQuery="true" precondition="_CHsO8joZEeCmpu-HRutBsg" bodyCondition="_CHsO9DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO8ToZEeCmpu-HRutBsg" annotatedElement="_CHsO8DoZEeCmpu-HRutBsg">
+        <body>The query inheritableMembers() gives all of the members of a Classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO8joZEeCmpu-HRutBsg" name="pre" constrainedElement="_CHsO8DoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO8zoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>c.allParents()->includes(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO9DoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO8DoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO9ToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>member->select(m | c.hasVisibilityOf(m))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO9joZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsO9zoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsO-DoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO-ToZEeCmpu-HRutBsg" name="c" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsO-joZEeCmpu-HRutBsg" name="inheritedMember" visibility="public" isQuery="true" bodyCondition="_CHsO_ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsO-zoZEeCmpu-HRutBsg" annotatedElement="_CHsO-joZEeCmpu-HRutBsg">
+        <body>The inheritedMember association is derived by inheriting the inheritable members of the parents.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsO_ToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsO-joZEeCmpu-HRutBsg _CHsOmzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsO_joZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>inherit(parents()->collect(inheritableMembers(self))->asSet())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsO_zoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPADoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPAToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsPAjoZEeCmpu-HRutBsg" name="isTemplate" visibility="public" isQuery="true" bodyCondition="_CHsPBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPAzoZEeCmpu-HRutBsg" annotatedElement="_CHsPAjoZEeCmpu-HRutBsg">
+        <body>The query isTemplate() returns whether this Classifier is actually a template.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPBDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsPAjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPBToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedTemplateSignature &lt;> null or general->exists(g | g.isTemplate())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsPBjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3SiLDoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsPBzoZEeCmpu-HRutBsg" name="maySpecializeType" visibility="public" isQuery="true" bodyCondition="_CHsPCToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPCDoZEeCmpu-HRutBsg" annotatedElement="_CHsPBzoZEeCmpu-HRutBsg">
+        <body>The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPCToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsPBzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPCjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.oclIsKindOf(c.oclType())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsPCzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsPDDoZEeCmpu-HRutBsg" name="c" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CHsPDToZEeCmpu-HRutBsg" name="parents" visibility="public" isQuery="true" bodyCondition="_CHsPDzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPDjoZEeCmpu-HRutBsg" annotatedElement="_CHsPDToZEeCmpu-HRutBsg">
+        <body>The query parents() gives all of the immediate ancestors of a generalized Classifier.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPDzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CHsPDToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPEDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>generalization.general->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CHsPEToZEeCmpu-HRutBsg" name="result" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPEjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPEzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JBV0MEKdEeGK1-D_bj1nyQ" name="directlyRealizedInterfaces" isQuery="true" bodyCondition="_UPcrYEKdEeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_dHTK8EKfEeGK1-D_bj1nyQ" annotatedElement="_JBV0MEKdEeGK1-D_bj1nyQ">
+        <body>The Interfaces directly realized by this Classifier</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_UPcrYEKdEeGK1-D_bj1nyQ" name="spec" constrainedElement="_JBV0MEKdEeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_UPcrYUKdEeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body>(clientDependency->&#xD;&#xA;  select(oclIsKindOf(Realization) and supplier->forAll(oclIsKindOf(Interface))))->&#xD;&#xA;      collect(supplier.oclAsType(Interface))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MtqU8EKdEeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RjBhYUKdEeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RjBhYEKdEeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jUEhIEKdEeGK1-D_bj1nyQ" name="directlyUsedInterfaces" isQuery="true" bodyCondition="_q7XpsEKdEeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_eDpecEKfEeGK1-D_bj1nyQ" annotatedElement="_jUEhIEKdEeGK1-D_bj1nyQ">
+        <body>The Interfaces directly used by this Classifier</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_q7XpsEKdEeGK1-D_bj1nyQ" name="spec" constrainedElement="_jUEhIEKdEeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_q7XpsUKdEeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body>(supplierDependency->&#xD;&#xA;  select(oclIsKindOf(Usage) and client->forAll(oclIsKindOf(Interface))))->&#xD;&#xA;    collect(client.oclAsType(Interface))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mBDr0EKdEeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_plD-EUKdEeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_plD-EEKdEeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_URCKUEKeEeGK1-D_bj1nyQ" name="allRealizedInterfaces" isQuery="true" bodyCondition="_aZUXMEKeEeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_f-3N8EKfEeGK1-D_bj1nyQ" annotatedElement="_URCKUEKeEeGK1-D_bj1nyQ">
+        <body>The Interfaces realized by this Classifier and all of its generalizations</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_aZUXMEKeEeGK1-D_bj1nyQ" name="spec" constrainedElement="_URCKUEKeEeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_aZUXMUKeEeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body>directlyRealizedInterfaces()->union(self.allParents()->collect(directlyRealizedInterfaces()))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WFa5EEKeEeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZQjYUUKeEeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZQjYUEKeEeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DJiocEKfEeGK1-D_bj1nyQ" name="allUsedInterfaces" isQuery="true" bodyCondition="_J3vl0EKfEeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_hs8gYEKfEeGK1-D_bj1nyQ" annotatedElement="_DJiocEKfEeGK1-D_bj1nyQ">
+        <body>The Interfaces used by this Classifier and all of its generalizations</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_J3vl0EKfEeGK1-D_bj1nyQ" name="spec" constrainedElement="_DJiocEKfEeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_J31scEKfEeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body>directlyUsedInterfaces()->union(self.allParents()->collect(directlyUsedInterfaces()))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FSrfMEKfEeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IxvnEUKfEeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IxvnEEKfEeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsPFDoZEeCmpu-HRutBsg" name="ClassifierTemplateParameter">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPFToZEeCmpu-HRutBsg" annotatedElement="_CHsPFDoZEeCmpu-HRutBsg">
+      <body>A ClassifierTemplateParameter exposes a Classifier as a formal template parameter.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPFjoZEeCmpu-HRutBsg" name="has_constraining_classifier" constrainedElement="_CHsPFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPFzoZEeCmpu-HRutBsg" annotatedElement="_CHsPFjoZEeCmpu-HRutBsg">
+        <body>If &quot;allowSubstitutable&quot; is true, then there must be a constrainingClassifier.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPGDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>allowSubstitutable implies constrainingClassifier->notEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsPGToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiSToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPGjoZEeCmpu-HRutBsg" name="allowSubstitutable" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPGzoZEeCmpu-HRutBsg" annotatedElement="_CHsPGjoZEeCmpu-HRutBsg">
+        <body>Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsPHDoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPHToZEeCmpu-HRutBsg" name="constrainingClassifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_PzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPHjoZEeCmpu-HRutBsg" annotatedElement="_CHsPHToZEeCmpu-HRutBsg">
+        <body>The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any Classifier that is compatible with this constraining Classifier can be substituted; otherwise, it must be either this Classifier or one of its specializations. If this property is empty, there are no constraints on the Classifier that can be used as an argument.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPHzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPIDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPIToZEeCmpu-HRutBsg" name="parameteredElement" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_QzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPIjoZEeCmpu-HRutBsg" annotatedElement="_CHsPIToZEeCmpu-HRutBsg">
+        <body>The Classifier exposed by this ClassifierTemplateParameter.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsPIzoZEeCmpu-HRutBsg" name="Feature" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPJDoZEeCmpu-HRutBsg" annotatedElement="_CHsPIzoZEeCmpu-HRutBsg">
+      <body>A Feature declares a behavioral or structural characteristic of Classifiers.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsPJToZEeCmpu-HRutBsg" general="_CH1-bToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPJjoZEeCmpu-HRutBsg" name="featuringClassifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_CH1_SjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPJzoZEeCmpu-HRutBsg" annotatedElement="_CHsPJjoZEeCmpu-HRutBsg">
+        <body>The Classifiers that have this Feature as a feature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPKDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPKToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si0zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPKjoZEeCmpu-HRutBsg" name="isStatic" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPKzoZEeCmpu-HRutBsg" annotatedElement="_CHsPKjoZEeCmpu-HRutBsg">
+        <body>Specifies whether this Feature characterizes individual instances classified by the Classifier (false) or the Classifier itself (true).</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsPLDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsPLToZEeCmpu-HRutBsg" name="Generalization">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPLjoZEeCmpu-HRutBsg" annotatedElement="_CHsPLToZEeCmpu-HRutBsg">
+      <body>A Generalization is a taxonomic relationship between a more general Classifier and a more specific Classifier. Each instance of the specific Classifier is also an instance of the general Classifier. The specific Classifier inherits the features of the more general Classifier. A Generalization is owned by the specific Classifier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsPMzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPNDoZEeCmpu-HRutBsg" name="general" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_OzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPNToZEeCmpu-HRutBsg" annotatedElement="_CHsPNDoZEeCmpu-HRutBsg">
+        <body>The general classifier in the Generalization relationship.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPNjoZEeCmpu-HRutBsg" name="generalizationSet" visibility="public" type="_CHsPQDoZEeCmpu-HRutBsg" association="_CH1_OjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPNzoZEeCmpu-HRutBsg" annotatedElement="_CHsPNjoZEeCmpu-HRutBsg">
+        <body>Represents a set of instances of Generalization.  A Generalization may appear in many GeneralizationSets.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPODoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPOToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPOjoZEeCmpu-HRutBsg" name="isSubstitutable" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPOzoZEeCmpu-HRutBsg" annotatedElement="_CHsPOjoZEeCmpu-HRutBsg">
+        <body>Indicates whether the specific Classifier can be used wherever the general Classifier can be used. If true, the execution traces of the specific Classifier shall be a superset of the execution traces of the general Classifier. If false, there is no such constraint on execution traces. If unset, the modeler has not stated whether there is such a constraint or not.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPPDoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CHsPPToZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPPjoZEeCmpu-HRutBsg" name="specific" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_RToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPPzoZEeCmpu-HRutBsg" annotatedElement="_CHsPPjoZEeCmpu-HRutBsg">
+        <body>The specializing Classifier in the Generalization relationship.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHsPQDoZEeCmpu-HRutBsg" name="GeneralizationSet">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPQToZEeCmpu-HRutBsg" annotatedElement="_CHsPQDoZEeCmpu-HRutBsg">
+      <body>A GeneralizationSet is a PackageableEelement whose instances represent sets of Generalization relationships.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPQjoZEeCmpu-HRutBsg" name="generalization_same_classifier" constrainedElement="_CHsPQDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPQzoZEeCmpu-HRutBsg" annotatedElement="_CHsPQjoZEeCmpu-HRutBsg">
+        <body>Every Generalization associated with a particular GeneralizationSet must have the same general Classifier.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPRDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>generalization->collect(general)->asSet()->size() &lt;= 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CHsPRToZEeCmpu-HRutBsg" name="maps_to_generalization_set" constrainedElement="_CHsPQDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPRjoZEeCmpu-HRutBsg" annotatedElement="_CHsPRToZEeCmpu-HRutBsg">
+        <body>The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances be its subclasses.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CHsPRzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>powertype &lt;> null implies generalization->forAll( gen | &#xD;&#xA;    not (gen.general = powertype) and not gen.general.allParents()->includes(powertype) and not (gen.specific = powertype) and not powertype.allParents()->includes(gen.specific)&#xD;&#xA;  )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_lbn4cDelEeGvAsatMsov4Q" name="complete_and_disjoint" constrainedElement="_CHsPQDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_8OxgIDelEeGvAsatMsov4Q" annotatedElement="_lbn4cDelEeGvAsatMsov4Q">
+        <body>A complete and disjoint GeneralizationSet implies that the common general Classifier is abstract</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_lbqUsDelEeGvAsatMsov4Q">
+        <language>OCL</language>
+        <body>isDisjoint and isCovering implies generalization->forAll(general.isAbstract)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CHsPSDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPSToZEeCmpu-HRutBsg" name="generalization" visibility="public" type="_CHsPLToZEeCmpu-HRutBsg" association="_CH1_OjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CHsPSjoZEeCmpu-HRutBsg" annotatedElement="_CHsPSToZEeCmpu-HRutBsg">
+        <body>Designates the instances of Generalization which are members of this GeneralizationSet.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CHsPSzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CHsPTDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHsPTToZEeCmpu-HRutBsg" name="isCovering" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH188DoZEeCmpu-HRutBsg" annotatedElement="_CHsPTToZEeCmpu-HRutBsg">
+        <body>Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH188ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH188joZEeCmpu-HRutBsg" name="isDisjoint" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH188zoZEeCmpu-HRutBsg" annotatedElement="_CH188joZEeCmpu-HRutBsg">
+        <body>Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH189DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH189ToZEeCmpu-HRutBsg" name="powertype" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_RDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH189joZEeCmpu-HRutBsg" annotatedElement="_CH189ToZEeCmpu-HRutBsg">
+        <body>Designates the Classifier that is defined as the power type for the associated GeneralizationSet, if there is one.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH189zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH18-DoZEeCmpu-HRutBsg" name="InstanceSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH18-ToZEeCmpu-HRutBsg" annotatedElement="_CH18-DoZEeCmpu-HRutBsg">
+      <body>An InstanceSpecification is a model element that represents an instance in a modeled system. An InstanceSpecification can act as a DeploymentTarget in a Deployment relationship, in the case that it represents an instance of a Node. It can also act as a DeployedArtifact, if it represents an instance of an Artifact.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH18-zoZEeCmpu-HRutBsg" name="deployment_artifact" constrainedElement="_CH18-DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH18_DoZEeCmpu-HRutBsg" annotatedElement="_CH18-zoZEeCmpu-HRutBsg">
+        <body>An InstanceSpecification can act as a DeployedArtifact if it represents an instance of an Artifact.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH18_ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>deploymentForArtifact->notEmpty() implies classifier->exists(oclIsKindOf(Artifact))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH18_joZEeCmpu-HRutBsg" name="structural_feature" constrainedElement="_CH18-DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH18_zoZEeCmpu-HRutBsg" annotatedElement="_CH18_joZEeCmpu-HRutBsg">
+        <body>One StructuralFeature (including the same feature inherited from multiple classifiers) is the defining feature of at most one slot in an InstanceSpecification.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19ADoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>classifier->forAll(c | (c.allFeatures()->forAll(f | slot->select(s | s.definingFeature = f)->size() &lt;= 1)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19AToZEeCmpu-HRutBsg" name="defining_feature" constrainedElement="_CH18-DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19AjoZEeCmpu-HRutBsg" annotatedElement="_CH19AToZEeCmpu-HRutBsg">
+        <body>The defining feature of each slot is a StructuralFeature (directly or inherited) of a classifier of the InstanceSpecification.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19AzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>slot->forAll(s | classifier->exists (c | c.allFeatures()->includes (s.definingFeature)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19BDoZEeCmpu-HRutBsg" name="deployment_target" constrainedElement="_CH18-DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19BToZEeCmpu-HRutBsg" annotatedElement="_CH19BDoZEeCmpu-HRutBsg">
+        <body>An InstanceSpecification can act as a DeploymentTarget if it represents an instance of a Node and functions as a part in the internal structure of an encompassing Node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19BjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>deployment->notEmpty() implies classifier->exists(node | node.oclIsKindOf(Node) and Node.allInstances()->exists(n | n.part->exists(p | p.type = node)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19BzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Deployments.fragment.xmi#_En3CyjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19CDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19CToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Deployments.fragment.xmi#_En3CpzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19CjoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_MjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19CzoZEeCmpu-HRutBsg" annotatedElement="_CH19CjoZEeCmpu-HRutBsg">
+        <body>The Classifier or Classifiers of the represented instance. If multiple Classifiers are specified, the instance is classified by all of them.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19DDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19DToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19DjoZEeCmpu-HRutBsg" name="slot" visibility="public" type="_CH1-sjoZEeCmpu-HRutBsg" aggregation="composite" association="_CH1_NjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19DzoZEeCmpu-HRutBsg" annotatedElement="_CH19DjoZEeCmpu-HRutBsg">
+        <body>A Slot giving the value or values of a StructuralFeature of the instance. An InstanceSpecification can have one Slot per StructuralFeature of its Classifiers, including inherited features. It is not necessary to model a Slot for every StructuralFeature, in which case the InstanceSpecification is a partial description.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19EDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19EToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19EjoZEeCmpu-HRutBsg" name="specification" visibility="public" aggregation="composite" association="_CH1_NzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19EzoZEeCmpu-HRutBsg" annotatedElement="_CH19EjoZEeCmpu-HRutBsg">
+        <body>A specification of how to compute, derive, or construct the instance.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19FDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH19FToZEeCmpu-HRutBsg" name="InstanceValue">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH19FjoZEeCmpu-HRutBsg" annotatedElement="_CH19FToZEeCmpu-HRutBsg">
+      <body>An InstanceValue is a ValueSpecification that identifies an instance.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19FzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19GDoZEeCmpu-HRutBsg" name="instance" visibility="public" type="_CH18-DoZEeCmpu-HRutBsg" association="_CH1_LjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19GToZEeCmpu-HRutBsg" annotatedElement="_CH19GDoZEeCmpu-HRutBsg">
+        <body>The InstanceSpecification that represents the specified value.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH19GjoZEeCmpu-HRutBsg" name="Operation">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH19GzoZEeCmpu-HRutBsg" annotatedElement="_CH19GjoZEeCmpu-HRutBsg">
+      <body>An Operation is a BehavioralFeature of a Classifier that specifies the name, type, parameters, and constraints for invoking an associated Behavior. An Operation may invoke both the execution of method behaviors as well as other behavioral responses. Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19HjoZEeCmpu-HRutBsg" name="at_most_one_return" constrainedElement="_CH19GjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19HzoZEeCmpu-HRutBsg" annotatedElement="_CH19HjoZEeCmpu-HRutBsg">
+        <body>An Operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return'</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19IDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.ownedParameter->select(direction = ParameterDirectionKind::return)->size() &lt;= 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19IToZEeCmpu-HRutBsg" name="only_body_for_query" constrainedElement="_CH19GjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19IjoZEeCmpu-HRutBsg" annotatedElement="_CH19IToZEeCmpu-HRutBsg">
+        <body>A bodyCondition can only be specified for a query Operation.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19IzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>bodyCondition &lt;> null implies isQuery</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19JDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiIjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19JToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh_joZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19JjoZEeCmpu-HRutBsg" general="_CHsOTToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19JzoZEeCmpu-HRutBsg" name="bodyCondition" visibility="public" aggregation="composite" association="_CH1_HDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19KDoZEeCmpu-HRutBsg" annotatedElement="_CH19JzoZEeCmpu-HRutBsg">
+        <body>An optional Constraint on the result values of an invocation of this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19KToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19KjoZEeCmpu-HRutBsg" name="class" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19KzoZEeCmpu-HRutBsg" annotatedElement="_CH19KjoZEeCmpu-HRutBsg">
+        <body>The Class that owns this operation, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19LDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1-gDoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="StructuredClassifiers.fragment.xmi#_LPmNPToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19LToZEeCmpu-HRutBsg" name="datatype" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19LjoZEeCmpu-HRutBsg" annotatedElement="_CH19LToZEeCmpu-HRutBsg">
+        <body>The DataType that owns this Operation, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwTToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19LzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1-gDoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="SimpleClassifiers.fragment.xmi#_JBTw0joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19MDoZEeCmpu-HRutBsg" name="interface" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19MToZEeCmpu-HRutBsg" annotatedElement="_CH19MDoZEeCmpu-HRutBsg">
+        <body>The Interface that owns this Operation, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19MjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1-gDoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="SimpleClassifiers.fragment.xmi#_JBTwyToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19MzoZEeCmpu-HRutBsg" name="isOrdered" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19NDoZEeCmpu-HRutBsg" annotatedElement="_CH19MzoZEeCmpu-HRutBsg">
+        <body>Specifies whether the return parameter is ordered or not, if present.  This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH19NjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19NzoZEeCmpu-HRutBsg" name="isQuery" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19ODoZEeCmpu-HRutBsg" annotatedElement="_CH19NzoZEeCmpu-HRutBsg">
+        <body>Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH19OToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19OjoZEeCmpu-HRutBsg" name="isUnique" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19OzoZEeCmpu-HRutBsg" annotatedElement="_CH19OjoZEeCmpu-HRutBsg">
+        <body>Specifies whether the return parameter is unique or not, if present. This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH19PToZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19PjoZEeCmpu-HRutBsg" name="lower" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19PzoZEeCmpu-HRutBsg" annotatedElement="_CH19PjoZEeCmpu-HRutBsg">
+        <body>Specifies the lower multiplicity of the return parameter, if present. This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19QToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_CH19QjoZEeCmpu-HRutBsg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19QzoZEeCmpu-HRutBsg" name="ownedParameter" visibility="public" type="_CH19kjoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" redefinedProperty="_CHsOXToZEeCmpu-HRutBsg" association="_CH1_LToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19RToZEeCmpu-HRutBsg" annotatedElement="_CH19QzoZEeCmpu-HRutBsg">
+        <body>The parameters owned by this Operation.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19RjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19RzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19SDoZEeCmpu-HRutBsg" name="postcondition" visibility="public" aggregation="composite" association="_CH1_HzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19SToZEeCmpu-HRutBsg" annotatedElement="_CH19SDoZEeCmpu-HRutBsg">
+        <body>An optional set of Constraints specifying the state of the system when the Operation is completed.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19SjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19SzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19TDoZEeCmpu-HRutBsg" name="precondition" visibility="public" aggregation="composite" association="_CH1_KjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19TToZEeCmpu-HRutBsg" annotatedElement="_CH19TDoZEeCmpu-HRutBsg">
+        <body>An optional set of Constraints on the state of the system when the Operation is invoked.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19TjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19TzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19UDoZEeCmpu-HRutBsg" name="raisedException" visibility="public" redefinedProperty="_CHsOZToZEeCmpu-HRutBsg" association="_CH1_JjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19UToZEeCmpu-HRutBsg" annotatedElement="_CH19UDoZEeCmpu-HRutBsg">
+        <body>The Types representing exceptions that may be raised during an invocation of this operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19UjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19UzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19VDoZEeCmpu-HRutBsg" name="redefinedOperation" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" subsettedProperty="_CH1-fDoZEeCmpu-HRutBsg" association="_CH1_IjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19VToZEeCmpu-HRutBsg" annotatedElement="_CH19VDoZEeCmpu-HRutBsg">
+        <body>The Operations that are redefined by this Operation.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19VjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19VzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19WDoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_CH19jToZEeCmpu-HRutBsg" association="_CH1_GzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19WToZEeCmpu-HRutBsg" annotatedElement="_CH19WDoZEeCmpu-HRutBsg">
+        <body>The OperationTemplateParameter that exposes this element as a formal parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19WjoZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiBDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19WzoZEeCmpu-HRutBsg" name="type" visibility="public" isReadOnly="true" isDerived="true" association="_CH1_FzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19XToZEeCmpu-HRutBsg" annotatedElement="_CH19WzoZEeCmpu-HRutBsg">
+        <body>The return type of the operation, if present. This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19XjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19XzoZEeCmpu-HRutBsg" name="upper" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19YDoZEeCmpu-HRutBsg" annotatedElement="_CH19XzoZEeCmpu-HRutBsg">
+        <body>The upper multiplicity of the return parameter, if present. This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19YjoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19YzoZEeCmpu-HRutBsg" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19ZDoZEeCmpu-HRutBsg" name="isConsistentWith" visibility="public" isQuery="true" precondition="_CH19aToZEeCmpu-HRutBsg" redefinedOperation="_CH1-hDoZEeCmpu-HRutBsg" bodyCondition="_CH19ZzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19ZToZEeCmpu-HRutBsg" annotatedElement="_CH19ZDoZEeCmpu-HRutBsg">
+        <body>A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter.  The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19ZzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19ZDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19aDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.oclIsKindOf(Operation) and&#xD;&#xA;let op : Operation = redefinee.oclAsType(Operation) in&#xD;&#xA;&#x9;self.ownedParameter->size() = op.ownedParameter->size() and&#xD;&#xA;&#x9;Sequence{1..self.ownedParameter->size()}->&#xD;&#xA;&#x9;&#x9;forAll(i |op.ownedParameter->at(1).type.conformsTo(self.ownedParameter->at(i).type))</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19aToZEeCmpu-HRutBsg" name="pre" constrainedElement="_CH19ZDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19ajoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.isRedefinitionContextValid(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19azoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19bDoZEeCmpu-HRutBsg" name="redefinee" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19bToZEeCmpu-HRutBsg" name="isOrdered" visibility="public" isQuery="true" bodyCondition="_CH19bzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19bjoZEeCmpu-HRutBsg" annotatedElement="_CH19bToZEeCmpu-HRutBsg">
+        <body>If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19bzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19bToZEeCmpu-HRutBsg _CH19MzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19cDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if returnResult()->notEmpty() then returnResult()-> exists(isOrdered) else false endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19cToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19cjoZEeCmpu-HRutBsg" name="isUnique" visibility="public" isQuery="true" bodyCondition="_CH19dDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19czoZEeCmpu-HRutBsg" annotatedElement="_CH19cjoZEeCmpu-HRutBsg">
+        <body>If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19dDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19cjoZEeCmpu-HRutBsg _CH19OjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19dToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if returnResult()->notEmpty() then returnResult()->exists(isUnique) else true endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19djoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19dzoZEeCmpu-HRutBsg" name="lower" visibility="public" isQuery="true" bodyCondition="_CH19eToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19eDoZEeCmpu-HRutBsg" annotatedElement="_CH19dzoZEeCmpu-HRutBsg">
+        <body>If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19eToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19dzoZEeCmpu-HRutBsg _CH19PjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19ejoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if returnResult()->notEmpty() then returnResult()->any(true).lower else null endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19ezoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19fDoZEeCmpu-HRutBsg" name="returnResult" visibility="public" isQuery="true" bodyCondition="_CH19fjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19fToZEeCmpu-HRutBsg" annotatedElement="_CH19fDoZEeCmpu-HRutBsg">
+        <body>The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19fjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19fDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19fzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedParameter->select (direction = ParameterDirectionKind::return)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19gDoZEeCmpu-HRutBsg" name="result" visibility="public" type="_CH19kjoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19gToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19gjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19gzoZEeCmpu-HRutBsg" name="type" visibility="public" isQuery="true" bodyCondition="_CH19hToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19hDoZEeCmpu-HRutBsg" annotatedElement="_CH19gzoZEeCmpu-HRutBsg">
+        <body>If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19hToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19gzoZEeCmpu-HRutBsg _CH19WzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19hjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if returnResult()->notEmpty() then returnResult()->any(true).type else null endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19hzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19iDoZEeCmpu-HRutBsg" name="upper" visibility="public" isQuery="true" bodyCondition="_CH19ijoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19iToZEeCmpu-HRutBsg" annotatedElement="_CH19iDoZEeCmpu-HRutBsg">
+        <body>If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19ijoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19iDoZEeCmpu-HRutBsg _CH19XzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19izoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if returnResult()->notEmpty() then returnResult()->any(true).upper else null endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19jDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH19jToZEeCmpu-HRutBsg" name="OperationTemplateParameter">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH19jjoZEeCmpu-HRutBsg" annotatedElement="_CH19jToZEeCmpu-HRutBsg">
+      <body>An OperationTemplateParameter exposes an Operation as a formal parameter for a template.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19jzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiSToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19kDoZEeCmpu-HRutBsg" name="parameteredElement" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" association="_CH1_GzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19kToZEeCmpu-HRutBsg" annotatedElement="_CH19kDoZEeCmpu-HRutBsg">
+        <body>The Operation exposed by this OperationTemplateParameter.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH19kjoZEeCmpu-HRutBsg" name="Parameter">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH19kzoZEeCmpu-HRutBsg" annotatedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <body>A Parameter is a specification of an argument used to pass information into or out of an invocation of a BehavioralFeature.  Parameters can be treated as ConnectableElements within Collaborations.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19ljoZEeCmpu-HRutBsg" name="in_and_out" constrainedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19lzoZEeCmpu-HRutBsg" annotatedElement="_CH19ljoZEeCmpu-HRutBsg">
+        <body>Only in and inout Parameters may have a delete effect. Only out, inout, and return Parameters may have a create effect.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19mDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(effect = ParameterEffectKind::delete implies (direction = ParameterDirectionKind::_'in' or direction = ParameterDirectionKind::inout))&#xD;&#xA;and&#xD;&#xA;(effect = ParameterEffectKind::create implies (direction = ParameterDirectionKind::out or direction = ParameterDirectionKind::inout or direction = ParameterDirectionKind::return))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19mToZEeCmpu-HRutBsg" name="not_exception" constrainedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19mjoZEeCmpu-HRutBsg" annotatedElement="_CH19mToZEeCmpu-HRutBsg">
+        <body>An input Parameter cannot be an exception.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19mzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>isException implies (direction &lt;> ParameterDirectionKind::_'in' and direction &lt;> ParameterDirectionKind::inout)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19nDoZEeCmpu-HRutBsg" name="connector_end" constrainedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19nToZEeCmpu-HRutBsg" annotatedElement="_CH19nDoZEeCmpu-HRutBsg">
+        <body>A Parameter may only be associated with a Connector end within the context of a Collaboration.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19njoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>end->notEmpty() implies collaboration->notEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19nzoZEeCmpu-HRutBsg" name="reentrant_behaviors" constrainedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19oDoZEeCmpu-HRutBsg" annotatedElement="_CH19nzoZEeCmpu-HRutBsg">
+        <body>Reentrant behaviors cannot have stream Parameters.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19oToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(isStream and behavior &lt;> null) implies not behavior.isReentrant</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19ojoZEeCmpu-HRutBsg" name="stream_and_exception" constrainedElement="_CH19kjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19ozoZEeCmpu-HRutBsg" annotatedElement="_CH19ojoZEeCmpu-HRutBsg">
+        <body>A Parameter cannot be a stream and exception at the same time.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19pDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not (isException and isStream)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19pToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzZToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19pjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMKjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19pzoZEeCmpu-HRutBsg" name="default" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19qDoZEeCmpu-HRutBsg" annotatedElement="_CH19pzoZEeCmpu-HRutBsg">
+        <body>A String that represents a value to be used when no argument is supplied for the Parameter.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19qToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19qjoZEeCmpu-HRutBsg" name="defaultValue" visibility="public" aggregation="composite" association="_CH1_FDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19qzoZEeCmpu-HRutBsg" annotatedElement="_CH19qjoZEeCmpu-HRutBsg">
+        <body>Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19rDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19rToZEeCmpu-HRutBsg" name="direction" visibility="public" type="_CH1-1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19rjoZEeCmpu-HRutBsg" annotatedElement="_CH19rToZEeCmpu-HRutBsg">
+        <body>Indicates whether a parameter is being sent into or out of a behavioral element.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_CH19rzoZEeCmpu-HRutBsg" type="_CH1-1joZEeCmpu-HRutBsg" instance="_CH1-2DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19sDoZEeCmpu-HRutBsg" name="effect" visibility="public" type="_CH1-4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19sToZEeCmpu-HRutBsg" annotatedElement="_CH19sDoZEeCmpu-HRutBsg">
+        <body>Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19sjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19szoZEeCmpu-HRutBsg" name="isException" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19tDoZEeCmpu-HRutBsg" annotatedElement="_CH19szoZEeCmpu-HRutBsg">
+        <body>Tells whether an output parameter may emit a value to the exclusion of the other outputs.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH19tToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19tjoZEeCmpu-HRutBsg" name="isStream" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19tzoZEeCmpu-HRutBsg" annotatedElement="_CH19tjoZEeCmpu-HRutBsg">
+        <body>Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter may post values while the behavior is executing.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH19uDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19uToZEeCmpu-HRutBsg" name="operation" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" subsettedProperty="_CH1_YzoZEeCmpu-HRutBsg" association="_CH1_LToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19ujoZEeCmpu-HRutBsg" annotatedElement="_CH19uToZEeCmpu-HRutBsg">
+        <body>The Operation owning this parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19uzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19vDoZEeCmpu-HRutBsg" name="parameterSet" visibility="public" type="_CH19xjoZEeCmpu-HRutBsg" association="_CH1_EzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19vToZEeCmpu-HRutBsg" annotatedElement="_CH19vDoZEeCmpu-HRutBsg">
+        <body>The ParameterSets containing the parameter. See ParameterSet.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH19vjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19vzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH19wDoZEeCmpu-HRutBsg" name="default" visibility="public" isQuery="true" bodyCondition="_CH19wjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19wToZEeCmpu-HRutBsg" annotatedElement="_CH19wDoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Parameter::/default : String</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19wjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH19wDoZEeCmpu-HRutBsg _CH19pzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19wzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if self.type = String then defaultValue.stringValue() else null endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH19xDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH19xToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH19xjoZEeCmpu-HRutBsg" name="ParameterSet">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH19xzoZEeCmpu-HRutBsg" annotatedElement="_CH19xjoZEeCmpu-HRutBsg">
+      <body>A ParameterSet designates alternative sets of inputs or outputs that a Behavior may use.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19yDoZEeCmpu-HRutBsg" name="same_parameterized_entity" constrainedElement="_CH19xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19yToZEeCmpu-HRutBsg" annotatedElement="_CH19yDoZEeCmpu-HRutBsg">
+        <body>The Parameters in a ParameterSet must all be inputs or all be outputs of the same parameterized entity, and the ParameterSet is owned by that entity.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19yjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parameter->forAll(p1, p2 | self.owner = p1.owner and self.owner = p2.owner and p1.direction = p2.direction)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19yzoZEeCmpu-HRutBsg" name="input" constrainedElement="_CH19xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19zDoZEeCmpu-HRutBsg" annotatedElement="_CH19yzoZEeCmpu-HRutBsg">
+        <body>If a Behavior has input Parameters that are in a ParameterSet, then any inputs that are not in a ParameterSet must be streaming. Same for output Parameters.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19zToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(parameter->exists(direction = ParameterDirectionKind::_'in' and behavior &lt;> null) implies &#xD;&#xA;  parameter->any(true).behavior.ownedParameter->forAll(p | p.parameterSet->isEmpty() implies p.direction = ParameterDirectionKind::_'in'))&#xD;&#xA;    and&#xD;&#xA;(parameter->exists(direction = ParameterDirectionKind::out and behavior &lt;> null) implies &#xD;&#xA;    parameter->any(true).behavior.ownedParameter->forAll(p | p.parameterSet->isEmpty() implies p.direction = ParameterDirectionKind::out))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19zjoZEeCmpu-HRutBsg" name="two_parameter_sets" constrainedElement="_CH19xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19zzoZEeCmpu-HRutBsg" annotatedElement="_CH19zjoZEeCmpu-HRutBsg">
+        <body>Two ParameterSets cannot have exactly the same set of Parameters.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH190DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parameter->forAll(parameterSet->forAll(s1, s2 | s1->size() = s2->size() implies s1.parameter->exists(p | not s2.parameter->includes(p))))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH190ToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH190joZEeCmpu-HRutBsg" name="condition" visibility="public" aggregation="composite" association="_CH1_EDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH190zoZEeCmpu-HRutBsg" annotatedElement="_CH190joZEeCmpu-HRutBsg">
+        <body>A constraint that should be satisfied for the owner of the Parameters in an input ParameterSet to start execution using the values provided for those Parameters, or the owner of the Parameters in an output ParameterSet to end execution providing the values for those Parameters, if all preconditions and conditions on input ParameterSets were satisfied.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH191DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH191ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH191joZEeCmpu-HRutBsg" name="parameter" visibility="public" type="_CH19kjoZEeCmpu-HRutBsg" association="_CH1_EzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH191zoZEeCmpu-HRutBsg" annotatedElement="_CH191joZEeCmpu-HRutBsg">
+        <body>Parameters in the ParameterSet.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH192DoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH192ToZEeCmpu-HRutBsg" name="Property">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH192zoZEeCmpu-HRutBsg" annotatedElement="_CH192ToZEeCmpu-HRutBsg">
+      <body>A Property is a StructuralFeature. A Property related by ownedAttribute to a Classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the Classifier to a value or set of values of the type of the attribute. A Property related by memberEnd to an Association represents an end of the Association. The type of the Property is the type of the end of the Association. A Property has the capability of being a DeploymentTarget in a Deployment relationship. This enables modeling the deployment to hierarchical nodes that have Properties functioning as internal parts.  Property specializes ParameterableElement to specify that a Property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH193zoZEeCmpu-HRutBsg" name="subsetting_context_conforms" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH194DoZEeCmpu-HRutBsg" annotatedElement="_CH193zoZEeCmpu-HRutBsg">
+        <body>Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH194ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>subsettedProperty->notEmpty() implies&#xA;  (subsettingContext()->notEmpty() and subsettingContext()->forAll (sc |&#xA;    subsettedProperty->forAll(sp |&#xA;      sp.subsettingContext()->exists(c | sc.conformsTo(c)))))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH194joZEeCmpu-HRutBsg" name="derived_union_is_read_only" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH194zoZEeCmpu-HRutBsg" annotatedElement="_CH194joZEeCmpu-HRutBsg">
+        <body>A derived union is read only.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH195DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>isDerivedUnion implies isReadOnly</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH195ToZEeCmpu-HRutBsg" name="multiplicity_of_composite" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH195joZEeCmpu-HRutBsg" annotatedElement="_CH195ToZEeCmpu-HRutBsg">
+        <body>A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH196DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>isComposite and association &lt;> null implies opposite.upperBound() &lt;= 1&#xD;&#xA;&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH196ToZEeCmpu-HRutBsg" name="redefined_property_inherited" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH196joZEeCmpu-HRutBsg" annotatedElement="_CH196ToZEeCmpu-HRutBsg">
+        <body>A redefined Property must be inherited from a more general Classifier.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH196zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(redefinedProperty->notEmpty()) implies&#xD;&#xA;  (redefinitionContext->notEmpty() and&#xD;&#xA;      redefinedProperty->forAll(rp|&#xD;&#xA;        ((redefinitionContext->collect(fc|&#xD;&#xA;          fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH197DoZEeCmpu-HRutBsg" name="subsetting_rules" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH197ToZEeCmpu-HRutBsg" annotatedElement="_CH197DoZEeCmpu-HRutBsg">
+        <body>A subsetting Property may strengthen the type of the subsetted Property, and its upper bound may be less.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH197joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>subsettedProperty->forAll(sp |&#xA;  self.type.conformsTo(sp.type) and&#xA;    ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies&#xA;      self.upperBound() &lt;= sp.upperBound() ))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH197zoZEeCmpu-HRutBsg" name="binding_to_attribute" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH198DoZEeCmpu-HRutBsg" annotatedElement="_CH197zoZEeCmpu-HRutBsg">
+        <body>A binding of a PropertyTemplateParameter representing an attribute must be to an attribute.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH198ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(isAttribute(self) and (templateParameterSubstitution->notEmpty())&#xD;&#xA;  implies (templateParameterSubstitution->forAll(ts | ts.formal.oclIsKindOf(Property) and isAttribute(ts.formal.oclAsType(Property)))))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH198joZEeCmpu-HRutBsg" name="derived_union_is_derived" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH198zoZEeCmpu-HRutBsg" annotatedElement="_CH198joZEeCmpu-HRutBsg">
+        <body>A derived union is derived.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH199DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>isDerivedUnion implies isDerived</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH199ToZEeCmpu-HRutBsg" name="deployment_target" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH199joZEeCmpu-HRutBsg" annotatedElement="_CH199ToZEeCmpu-HRutBsg">
+        <body>A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH199zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>deployment->notEmpty() implies owner.oclIsKindOf(Node) and Node.allInstances()->exists(n | n.part->exists(p | p = self))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH19-DoZEeCmpu-HRutBsg" name="subsetted_property_names" constrainedElement="_CH192ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19-ToZEeCmpu-HRutBsg" annotatedElement="_CH19-DoZEeCmpu-HRutBsg">
+        <body>A Property may not subset a Property with the same name.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH19-joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>subsettedProperty->forAll(sp | sp.name &lt;> name)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19-zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMKjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19_DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Deployments.fragment.xmi#_En3CyjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH19_ToZEeCmpu-HRutBsg" general="_CH1-vToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH19_joZEeCmpu-HRutBsg" name="aggregation" visibility="public" type="_CH1-xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH19_zoZEeCmpu-HRutBsg" annotatedElement="_CH19_joZEeCmpu-HRutBsg">
+        <body>Specifies the kind of aggregation that applies to the Property.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_CH1-ADoZEeCmpu-HRutBsg" type="_CH1-xjoZEeCmpu-HRutBsg" instance="_CH1-yDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-AToZEeCmpu-HRutBsg" name="association" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-AjoZEeCmpu-HRutBsg" annotatedElement="_CH1-AToZEeCmpu-HRutBsg">
+        <body>The Association of which this Property is a member, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPcd4ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-AzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si0zoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="StructuredClassifiers.fragment.xmi#_LPmNSjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-BDoZEeCmpu-HRutBsg" name="associationEnd" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" association="_CH1_AToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-BToZEeCmpu-HRutBsg" annotatedElement="_CH1-BDoZEeCmpu-HRutBsg">
+        <body>Designates the optional association end that owns a qualifier attribute.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-BjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-BzoZEeCmpu-HRutBsg" name="class" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-CDoZEeCmpu-HRutBsg" annotatedElement="_CH1-BzoZEeCmpu-HRutBsg">
+        <body>The Class that owns this Property, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-CjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="StructuredClassifiers.fragment.xmi#_LPmM8ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1_XToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="StructuredClassifiers.fragment.xmi#_LPmNQzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-CzoZEeCmpu-HRutBsg" name="datatype" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-DDoZEeCmpu-HRutBsg" annotatedElement="_CH1-CzoZEeCmpu-HRutBsg">
+        <body>The DataType that owns this Property, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwTToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-DToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1_XToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="SimpleClassifiers.fragment.xmi#_JBTw0ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-DjoZEeCmpu-HRutBsg" name="default" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-DzoZEeCmpu-HRutBsg" annotatedElement="_CH1-DjoZEeCmpu-HRutBsg">
+        <body>A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-EToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-EjoZEeCmpu-HRutBsg" name="defaultValue" visibility="public" aggregation="composite" association="_CH1_BjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-EzoZEeCmpu-HRutBsg" annotatedElement="_CH1-EjoZEeCmpu-HRutBsg">
+        <body>A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-FDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-FToZEeCmpu-HRutBsg" name="interface" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-FjoZEeCmpu-HRutBsg" annotatedElement="_CH1-FToZEeCmpu-HRutBsg">
+        <body>The Interface that owns this Property, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-FzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1_XToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="SimpleClassifiers.fragment.xmi#_JBTwyjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-GDoZEeCmpu-HRutBsg" name="isComposite" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-GToZEeCmpu-HRutBsg" annotatedElement="_CH1-GDoZEeCmpu-HRutBsg">
+        <body>If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute. This is a derived value, indicating whether the aggregation of the Property is composite or not.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-GzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-HDoZEeCmpu-HRutBsg" name="isDerived" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-HToZEeCmpu-HRutBsg" annotatedElement="_CH1-HDoZEeCmpu-HRutBsg">
+        <body>Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-HzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-IDoZEeCmpu-HRutBsg" name="isDerivedUnion" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-IToZEeCmpu-HRutBsg" annotatedElement="_CH1-IDoZEeCmpu-HRutBsg">
+        <body>Specifies whether the property is derived as the union of all of the Properties that are constrained to subset it.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-IjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-IzoZEeCmpu-HRutBsg" name="isID" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-JDoZEeCmpu-HRutBsg" annotatedElement="_CH1-IzoZEeCmpu-HRutBsg">
+        <body>True indicates this property can be used to uniquely identify an instance of the containing Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-JToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-JjoZEeCmpu-HRutBsg" name="isReadOnly" visibility="public" redefinedProperty="_CH1-wzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-JzoZEeCmpu-HRutBsg" annotatedElement="_CH1-JjoZEeCmpu-HRutBsg">
+        <body>If isReadOnly is true, the Property may not be written to after initialization.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-KToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-KjoZEeCmpu-HRutBsg" name="opposite" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" isDerived="true" association="_CH1_CToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-KzoZEeCmpu-HRutBsg" annotatedElement="_CH1-KjoZEeCmpu-HRutBsg">
+        <body>In the case where the Property is one end of a binary association this gives the other end.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-LDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-LToZEeCmpu-HRutBsg" name="owningAssociation" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-LjoZEeCmpu-HRutBsg" annotatedElement="_CH1-LToZEeCmpu-HRutBsg">
+        <body>The owning association of this property, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPcd4ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-LzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1-AToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_CH1-gDoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="StructuredClassifiers.fragment.xmi#_LPmNTzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-MDoZEeCmpu-HRutBsg" name="qualifier" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_CH1_AToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-MToZEeCmpu-HRutBsg" annotatedElement="_CH1-MDoZEeCmpu-HRutBsg">
+        <body>An optional list of ordered qualifier attributes for the end.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-MjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-MzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-NDoZEeCmpu-HRutBsg" name="redefinedProperty" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" subsettedProperty="_CH1-fDoZEeCmpu-HRutBsg" association="_CH1_AjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-NToZEeCmpu-HRutBsg" annotatedElement="_CH1-NDoZEeCmpu-HRutBsg">
+        <body>The properties that are redefined by this property, if any.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-NjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-NzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-ODoZEeCmpu-HRutBsg" name="subsettedProperty" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" association="_CH1_DDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-OToZEeCmpu-HRutBsg" annotatedElement="_CH1-ODoZEeCmpu-HRutBsg">
+        <body>The properties of which this Property is constrained to be a subset, if any.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-OjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-OzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-PDoZEeCmpu-HRutBsg" name="default" visibility="public" isQuery="true" bodyCondition="_CH1-PjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-PToZEeCmpu-HRutBsg" annotatedElement="_CH1-PDoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Property::/default : String</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-PjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-PDoZEeCmpu-HRutBsg _CH1-DjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-PzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if self.type = String then defaultValue.stringValue() else null endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-QDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-QToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-QjoZEeCmpu-HRutBsg" name="isAttribute" visibility="public" isQuery="true" bodyCondition="_CH1-RDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-QzoZEeCmpu-HRutBsg" annotatedElement="_CH1-QjoZEeCmpu-HRutBsg">
+        <body>The query isAttribute() is true if the Property is defined as an attribute of some Classifier.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-RDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-QjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-RToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>Classifier.allInstances()->exists(c | c.attribute->includes(p))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-RjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-RzoZEeCmpu-HRutBsg" name="p" visibility="public" type="_CH192ToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-SDoZEeCmpu-HRutBsg" name="isCompatibleWith" visibility="public" isQuery="true" bodyCondition="_CH1-SjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-SToZEeCmpu-HRutBsg" annotatedElement="_CH1-SDoZEeCmpu-HRutBsg">
+        <body>The query isCompatibleWith() determines if this Property is compatible with the specified ParameterableElement. By default ParameterableElement P is compatible with ParameterableElement Q if the kind of P is the same or a subtype as the kind of Q. In addition, for Properties, the type must be conformant with the type of the specified ParameterableElement.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-SjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-SDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-SzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>p.oclIsKindOf(self.oclType()) and self.type.conformsTo(p.oclAsType(Property).type)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-TDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-TToZEeCmpu-HRutBsg" name="p" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh_joZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3SiBzoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-TjoZEeCmpu-HRutBsg" name="isComposite" visibility="public" isQuery="true" bodyCondition="_CH1-UDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-TzoZEeCmpu-HRutBsg" annotatedElement="_CH1-TjoZEeCmpu-HRutBsg">
+        <body>The value of isComposite is true only if aggregation is composite.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-UDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-TjoZEeCmpu-HRutBsg _CH1-GDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-UToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>aggregation = AggregationKind::composite</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-UjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-UzoZEeCmpu-HRutBsg" name="isConsistentWith" visibility="public" isQuery="true" precondition="_CH1-VjoZEeCmpu-HRutBsg" redefinedOperation="_CH1-hDoZEeCmpu-HRutBsg" bodyCondition="_CH1-WDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-VDoZEeCmpu-HRutBsg" annotatedElement="_CH1-UzoZEeCmpu-HRutBsg">
+        <body>The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining Property is consistent with a redefined Property if the type of the redefining Property conforms to the type of the redefined Property, and the multiplicity of the redefining Property (if specified) is contained in the multiplicity of the redefined Property.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-VjoZEeCmpu-HRutBsg" name="pre" constrainedElement="_CH1-UzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-VzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.isRedefinitionContextValid(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-WDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-UzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-WToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isComposite implies prop.isComposite))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-WjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-WzoZEeCmpu-HRutBsg" name="redefinee" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-XDoZEeCmpu-HRutBsg" name="isNavigable" visibility="public" isQuery="true" bodyCondition="_CH1-XjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-XToZEeCmpu-HRutBsg" annotatedElement="_CH1-XDoZEeCmpu-HRutBsg">
+        <body>The query isNavigable() indicates whether it is possible to navigate across the property.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-XjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-XDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-XzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>not classifier->isEmpty() or association.navigableOwnedEnd->includes(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-YDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-YToZEeCmpu-HRutBsg" name="opposite" visibility="public" isQuery="true" bodyCondition="_CH1-YzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-YjoZEeCmpu-HRutBsg" annotatedElement="_CH1-YToZEeCmpu-HRutBsg">
+        <body>If this property is a memberEnd of a binary association then opposite gives the other end.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-YzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-YToZEeCmpu-HRutBsg _CH1-KjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-ZDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if association &lt;> null and association.memberEnd->size() = 2&#xA;then&#xA;    association.memberEnd->any(e | e &lt;> self)&#xA;else&#xA;    null&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-ZToZEeCmpu-HRutBsg" name="result" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-ZjoZEeCmpu-HRutBsg" name="subsettingContext" visibility="public" isQuery="true" bodyCondition="_CH1-aDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-ZzoZEeCmpu-HRutBsg" annotatedElement="_CH1-ZjoZEeCmpu-HRutBsg">
+        <body>The query subsettingContext() gives the context for subsetting a Property. It consists, in the case of an attribute, of the corresponding Classifier, and in the case of an association end, all of the Classifiers at the other ends.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-aDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-ZjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-aToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if association &lt;> null&#xA;then association.endType->excluding(type)&#xA;else &#xA;  if classifier&lt;>null&#xA;  then classifier->asSet()&#xA;  else Set{} &#xA;  endif&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-ajoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-azoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-bDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH1-bToZEeCmpu-HRutBsg" name="RedefinableElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-bjoZEeCmpu-HRutBsg" annotatedElement="_CH1-bToZEeCmpu-HRutBsg">
+      <body>A RedefinableElement is an element that, when defined in the context of a Classifier, can be redefined more specifically or differently in the context of another Classifier that specializes (directly or indirectly) the context Classifier.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-bzoZEeCmpu-HRutBsg" name="redefinition_consistent" constrainedElement="_CH1-bToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-cDoZEeCmpu-HRutBsg" annotatedElement="_CH1-bzoZEeCmpu-HRutBsg">
+        <body>A redefining element must be consistent with each redefined element.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-cToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>redefinedElement->forAll(isConsistentWith(self))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-cjoZEeCmpu-HRutBsg" name="non_leaf_redefinition" constrainedElement="_CH1-bToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-czoZEeCmpu-HRutBsg" annotatedElement="_CH1-cjoZEeCmpu-HRutBsg">
+        <body>A RedefinableElement can only redefine non-leaf RedefinableElements</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-dDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>redefinedElement->forAll(not isLeaf)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-dToZEeCmpu-HRutBsg" name="redefinition_context_valid" constrainedElement="_CH1-bToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-djoZEeCmpu-HRutBsg" annotatedElement="_CH1-dToZEeCmpu-HRutBsg">
+        <body>At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-dzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>redefinedElement->forAll(e | isRedefinitionContextValid(e))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-eDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-eToZEeCmpu-HRutBsg" name="isLeaf" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-ejoZEeCmpu-HRutBsg" annotatedElement="_CH1-eToZEeCmpu-HRutBsg">
+        <body>Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-ezoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-fDoZEeCmpu-HRutBsg" name="redefinedElement" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_CH1-_ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-fToZEeCmpu-HRutBsg" annotatedElement="_CH1-fDoZEeCmpu-HRutBsg">
+        <body>The RedefinableElement that is being redefined by this element.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-fjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-fzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-gDoZEeCmpu-HRutBsg" name="redefinitionContext" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_CH1--ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-gToZEeCmpu-HRutBsg" annotatedElement="_CH1-gDoZEeCmpu-HRutBsg">
+        <body>The contexts that this element may be redefined from.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-gjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-gzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-hDoZEeCmpu-HRutBsg" name="isConsistentWith" visibility="public" isQuery="true" precondition="_CH1-iDoZEeCmpu-HRutBsg" bodyCondition="_CH1-hjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-hToZEeCmpu-HRutBsg" annotatedElement="_CH1-hDoZEeCmpu-HRutBsg">
+        <body>The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-hjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-hDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-hzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-iDoZEeCmpu-HRutBsg" name="pre" constrainedElement="_CH1-hDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-iToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.isRedefinitionContextValid(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-ijoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-izoZEeCmpu-HRutBsg" name="redefinee" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-jDoZEeCmpu-HRutBsg" name="isRedefinitionContextValid" visibility="public" isQuery="true" bodyCondition="_CH1-jjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-jToZEeCmpu-HRutBsg" annotatedElement="_CH1-jDoZEeCmpu-HRutBsg">
+        <body>The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-jjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-jDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-jzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinitionContext->exists(c | c.allParents()->includesAll(redefined.redefinitionContext))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-kDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-kToZEeCmpu-HRutBsg" name="redefined" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH1-kjoZEeCmpu-HRutBsg" name="RedefinableTemplateSignature">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-kzoZEeCmpu-HRutBsg" annotatedElement="_CH1-kjoZEeCmpu-HRutBsg">
+      <body>A RedefinableTemplateSignature supports the addition of formal template parameters in a specialization of a template classifier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-lzoZEeCmpu-HRutBsg" general="_CH1-bToZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-mDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiazoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-mToZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" subsettedProperty="_CH1-gDoZEeCmpu-HRutBsg" association="_CH1_UDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-mjoZEeCmpu-HRutBsg" annotatedElement="_CH1-mToZEeCmpu-HRutBsg">
+        <body>The Classifier that owns this RedefinableTemplateSignature.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SieDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-mzoZEeCmpu-HRutBsg" name="extendedSignature" visibility="public" type="_CH1-kjoZEeCmpu-HRutBsg" subsettedProperty="_CH1-fDoZEeCmpu-HRutBsg" association="_CH1-8ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-nDoZEeCmpu-HRutBsg" annotatedElement="_CH1-mzoZEeCmpu-HRutBsg">
+        <body>The RedefinableTemplateSignature that is extended by this RedefinableTemplateSignature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-nToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-njoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-nzoZEeCmpu-HRutBsg" name="inheritedParameter" visibility="public" isReadOnly="true" isDerived="true" association="_CH1-9ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-oDoZEeCmpu-HRutBsg" annotatedElement="_CH1-nzoZEeCmpu-HRutBsg">
+        <body>The formal template parameters of the extended signature.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiSToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-oToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-ojoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SidToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-ozoZEeCmpu-HRutBsg" name="inheritedParameter" visibility="public" isQuery="true" bodyCondition="_CH1-pToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-pDoZEeCmpu-HRutBsg" annotatedElement="_CH1-ozoZEeCmpu-HRutBsg">
+        <body>Missing derivation for RedefinableTemplateSignature::/inheritedParameter : TemplateParameter</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-pToZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-ozoZEeCmpu-HRutBsg _CH1-nzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-pjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter->asSet() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-pzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiSToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-qDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-qToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CH1-qjoZEeCmpu-HRutBsg" name="isConsistentWith" visibility="public" isQuery="true" precondition="_CH1-rjoZEeCmpu-HRutBsg" redefinedOperation="_CH1-hDoZEeCmpu-HRutBsg" bodyCondition="_CH1-rDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-qzoZEeCmpu-HRutBsg" annotatedElement="_CH1-qjoZEeCmpu-HRutBsg">
+        <body>The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-rDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_CH1-qjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-rToZEeCmpu-HRutBsg" name="spec">
+          <language>OCL</language>
+          <body>redefinee.oclIsKindOf(RedefinableTemplateSignature)</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_CH1-rjoZEeCmpu-HRutBsg" name="pre" constrainedElement="_CH1-qjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_CH1-rzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>redefinee.isRedefinitionContextValid(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-sDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CH1-sToZEeCmpu-HRutBsg" name="redefinee" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH1-sjoZEeCmpu-HRutBsg" name="Slot">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-szoZEeCmpu-HRutBsg" annotatedElement="_CH1-sjoZEeCmpu-HRutBsg">
+      <body>A Slot designates that an entity modeled by an InstanceSpecification has a value or values for a specific StructuralFeature.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-tDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzLjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-tToZEeCmpu-HRutBsg" name="definingFeature" visibility="public" type="_CH1-vToZEeCmpu-HRutBsg" association="_CH1-6joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-tjoZEeCmpu-HRutBsg" annotatedElement="_CH1-tToZEeCmpu-HRutBsg">
+        <body>The StructuralFeature that specifies the values that may be held by the Slot.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-tzoZEeCmpu-HRutBsg" name="owningInstance" visibility="public" type="_CH18-DoZEeCmpu-HRutBsg" association="_CH1_NjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-uDoZEeCmpu-HRutBsg" annotatedElement="_CH1-tzoZEeCmpu-HRutBsg">
+        <body>The InstanceSpecification that owns this Slot.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-uToZEeCmpu-HRutBsg" name="value" visibility="public" isOrdered="true" aggregation="composite" association="_CH1-7joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-ujoZEeCmpu-HRutBsg" annotatedElement="_CH1-uToZEeCmpu-HRutBsg">
+        <body>The value or values held by the Slot.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-uzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-vDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CH1-vToZEeCmpu-HRutBsg" name="StructuralFeature" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-vzoZEeCmpu-HRutBsg" annotatedElement="_CH1-vToZEeCmpu-HRutBsg">
+      <body>A StructuralFeature is a typed feature of a Classifier that specifies the structure of instances of the Classifier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-wDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzZToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-wToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SihzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1-wjoZEeCmpu-HRutBsg" general="_CHsPIzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CH1-wzoZEeCmpu-HRutBsg" name="isReadOnly" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-xDoZEeCmpu-HRutBsg" annotatedElement="_CH1-wzoZEeCmpu-HRutBsg">
+        <body>True if the StructuralFeature's value may not be modified by a client.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_CH1-xToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_CH1-xjoZEeCmpu-HRutBsg" name="AggregationKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-xzoZEeCmpu-HRutBsg" annotatedElement="_CH1-xjoZEeCmpu-HRutBsg">
+      <body>AggregationKind is an Enumeration for specifying the kind of aggregation of a Property.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-yDoZEeCmpu-HRutBsg" name="none" classifier="_CH1-xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-yToZEeCmpu-HRutBsg" annotatedElement="_CH1-yDoZEeCmpu-HRutBsg">
+        <body>Indicates that the Property has no aggregation.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-yjoZEeCmpu-HRutBsg" name="shared" classifier="_CH1-xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-yzoZEeCmpu-HRutBsg" annotatedElement="_CH1-yjoZEeCmpu-HRutBsg">
+        <body>Indicates that the Property has shared aggregation.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-zDoZEeCmpu-HRutBsg" name="composite" classifier="_CH1-xjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-zToZEeCmpu-HRutBsg" annotatedElement="_CH1-zDoZEeCmpu-HRutBsg">
+        <body>Indicates that the Property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_CH1-zjoZEeCmpu-HRutBsg" name="CallConcurrencyKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-zzoZEeCmpu-HRutBsg" annotatedElement="_CH1-zjoZEeCmpu-HRutBsg">
+      <body>CallConcurrencyKind is an Enumeration used to specify the semantics of concurrent calls to a BehavioralFeature.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-0DoZEeCmpu-HRutBsg" name="sequential" classifier="_CH1-zjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-0ToZEeCmpu-HRutBsg" annotatedElement="_CH1-0DoZEeCmpu-HRutBsg">
+        <body>No concurrency management mechanism is associated with the BehavioralFeature and, therefore, concurrency conflicts may occur. Instances that invoke a BehavioralFeature need to coordinate so that only one invocation to a target on any BehavioralFeature occurs at once.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-0joZEeCmpu-HRutBsg" name="guarded" classifier="_CH1-zjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-0zoZEeCmpu-HRutBsg" annotatedElement="_CH1-0joZEeCmpu-HRutBsg">
+        <body>Multiple invocations of a BehavioralFeature may occur simultaneously to one instance, but only one is allowed to commence. The others are blocked until the performance of the currently executing BehavioralFeature is complete. It is the responsibility of the system designer to ensure that deadlocks do not occur due to simultaneous blocks.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-1DoZEeCmpu-HRutBsg" name="concurrent" classifier="_CH1-zjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-1ToZEeCmpu-HRutBsg" annotatedElement="_CH1-1DoZEeCmpu-HRutBsg">
+        <body>Multiple invocations of a BehavioralFeature may occur simultaneously to one instance and all of them may proceed concurrently.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_CH1-1joZEeCmpu-HRutBsg" name="ParameterDirectionKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-1zoZEeCmpu-HRutBsg" annotatedElement="_CH1-1joZEeCmpu-HRutBsg">
+      <body>ParameterDirectionKind is an Enumeration that defines literals used to specify direction of parameters.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-2DoZEeCmpu-HRutBsg" name="in" classifier="_CH1-1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-2ToZEeCmpu-HRutBsg" annotatedElement="_CH1-2DoZEeCmpu-HRutBsg">
+        <body>Indicates that parameter values are passed into the behavioral element by the caller.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-2joZEeCmpu-HRutBsg" name="inout" classifier="_CH1-1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-2zoZEeCmpu-HRutBsg" annotatedElement="_CH1-2joZEeCmpu-HRutBsg">
+        <body>Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-3DoZEeCmpu-HRutBsg" name="out" classifier="_CH1-1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-3ToZEeCmpu-HRutBsg" annotatedElement="_CH1-3DoZEeCmpu-HRutBsg">
+        <body>Indicates that parameter values are passed from a behavioral element out to the caller.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-3joZEeCmpu-HRutBsg" name="return" classifier="_CH1-1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-3zoZEeCmpu-HRutBsg" annotatedElement="_CH1-3joZEeCmpu-HRutBsg">
+        <body>Indicates that parameter values are passed as return values from a behavioral element back to the caller.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_CH1-4DoZEeCmpu-HRutBsg" name="ParameterEffectKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-4ToZEeCmpu-HRutBsg" annotatedElement="_CH1-4DoZEeCmpu-HRutBsg">
+      <body>ParameterEffectKind is an Enumeration that indicates the effect of a Behavior on values passed in or out of its parameters.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-4joZEeCmpu-HRutBsg" name="create" classifier="_CH1-4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-4zoZEeCmpu-HRutBsg" annotatedElement="_CH1-4joZEeCmpu-HRutBsg">
+        <body>Indicates that the behavior creates values.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-5DoZEeCmpu-HRutBsg" name="read" classifier="_CH1-4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-5ToZEeCmpu-HRutBsg" annotatedElement="_CH1-5DoZEeCmpu-HRutBsg">
+        <body>Indicates that the behavior reads values.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-5joZEeCmpu-HRutBsg" name="update" classifier="_CH1-4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-5zoZEeCmpu-HRutBsg" annotatedElement="_CH1-5joZEeCmpu-HRutBsg">
+        <body>Indicates that the behavior updates values.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CH1-6DoZEeCmpu-HRutBsg" name="delete" classifier="_CH1-4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_CH1-6ToZEeCmpu-HRutBsg" annotatedElement="_CH1-6DoZEeCmpu-HRutBsg">
+        <body>Indicates that the behavior deletes values.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1-6joZEeCmpu-HRutBsg" name="A_definingFeature_slot" memberEnd="_CH1-tToZEeCmpu-HRutBsg _CH1-6zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1-6zoZEeCmpu-HRutBsg" name="slot" visibility="public" type="_CH1-sjoZEeCmpu-HRutBsg" association="_CH1-6joZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-7DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-7ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1-7joZEeCmpu-HRutBsg" name="A_value_owningSlot" memberEnd="_CH1-uToZEeCmpu-HRutBsg _CH1-7zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1-7zoZEeCmpu-HRutBsg" name="owningSlot" visibility="public" type="_CH1-sjoZEeCmpu-HRutBsg" association="_CH1-7joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-8DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1-8ToZEeCmpu-HRutBsg" name="A_extendedSignature_redefinableTemplateSignature" memberEnd="_CH1-mzoZEeCmpu-HRutBsg _CH1-8joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1-8joZEeCmpu-HRutBsg" name="redefinableTemplateSignature" visibility="public" type="_CH1-kjoZEeCmpu-HRutBsg" subsettedProperty="_CH1-_joZEeCmpu-HRutBsg" association="_CH1-8ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-8zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-9DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1-9ToZEeCmpu-HRutBsg" name="A_inheritedParameter_redefinableTemplateSignature" memberEnd="_CH1-nzoZEeCmpu-HRutBsg _CH1-9joZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1-9joZEeCmpu-HRutBsg" name="redefinableTemplateSignature" visibility="public" type="_CH1-kjoZEeCmpu-HRutBsg" association="_CH1-9ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-9zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1--DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiojoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1--ToZEeCmpu-HRutBsg" name="A_redefinitionContext_redefinableElement" memberEnd="_CH1-gDoZEeCmpu-HRutBsg _CH1--joZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1--joZEeCmpu-HRutBsg" name="redefinableElement" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg" association="_CH1--ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1--zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1-_DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1-_ToZEeCmpu-HRutBsg" name="A_redefinedElement_redefinableElement" memberEnd="_CH1-fDoZEeCmpu-HRutBsg _CH1-_joZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1-_joZEeCmpu-HRutBsg" name="redefinableElement" visibility="public" type="_CH1-bToZEeCmpu-HRutBsg" association="_CH1-_ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1-_zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_ADoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_AToZEeCmpu-HRutBsg" name="A_qualifier_associationEnd" memberEnd="_CH1-MDoZEeCmpu-HRutBsg _CH1-BDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_AjoZEeCmpu-HRutBsg" name="A_redefinedProperty_property" memberEnd="_CH1-NDoZEeCmpu-HRutBsg _CH1_AzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_AzoZEeCmpu-HRutBsg" name="property" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" subsettedProperty="_CH1-_joZEeCmpu-HRutBsg" association="_CH1_AjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_BDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_BToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_BjoZEeCmpu-HRutBsg" name="A_defaultValue_owningProperty" memberEnd="_CH1-EjoZEeCmpu-HRutBsg _CH1_BzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_BzoZEeCmpu-HRutBsg" name="owningProperty" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" association="_CH1_BjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_CDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_CToZEeCmpu-HRutBsg" name="A_opposite_property" memberEnd="_CH1-KjoZEeCmpu-HRutBsg _CH1_CjoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_CjoZEeCmpu-HRutBsg" name="property" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" association="_CH1_CToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_CzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_DDoZEeCmpu-HRutBsg" name="A_subsettedProperty_property" memberEnd="_CH1-ODoZEeCmpu-HRutBsg _CH1_DToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_DToZEeCmpu-HRutBsg" name="property" visibility="public" type="_CH192ToZEeCmpu-HRutBsg" association="_CH1_DDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_DjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_DzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_EDoZEeCmpu-HRutBsg" name="A_condition_parameterSet" memberEnd="_CH190joZEeCmpu-HRutBsg _CH1_EToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_EToZEeCmpu-HRutBsg" name="parameterSet" visibility="public" type="_CH19xjoZEeCmpu-HRutBsg" association="_CH1_EDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_EjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_EzoZEeCmpu-HRutBsg" name="A_parameterSet_parameter" memberEnd="_CH19vDoZEeCmpu-HRutBsg _CH191joZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_FDoZEeCmpu-HRutBsg" name="A_defaultValue_owningParameter" memberEnd="_CH19qjoZEeCmpu-HRutBsg _CH1_FToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_FToZEeCmpu-HRutBsg" name="owningParameter" visibility="public" type="_CH19kjoZEeCmpu-HRutBsg" association="_CH1_FDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_FjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_FzoZEeCmpu-HRutBsg" name="A_type_operation" memberEnd="_CH19WzoZEeCmpu-HRutBsg _CH1_GDoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_GDoZEeCmpu-HRutBsg" name="operation" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" association="_CH1_FzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_GToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_GjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_GzoZEeCmpu-HRutBsg" name="A_operation_templateParameter_parameteredElement" memberEnd="_CH19WDoZEeCmpu-HRutBsg _CH19kDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_HDoZEeCmpu-HRutBsg" name="A_bodyCondition_bodyContext" memberEnd="_CH19JzoZEeCmpu-HRutBsg _CH1_HToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_HToZEeCmpu-HRutBsg" name="bodyContext" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" association="_CH1_HDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_HjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzFjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_HzoZEeCmpu-HRutBsg" name="A_postcondition_postContext" memberEnd="_CH19SDoZEeCmpu-HRutBsg _CH1_IDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_IDoZEeCmpu-HRutBsg" name="postContext" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" association="_CH1_HzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_IToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzFjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_IjoZEeCmpu-HRutBsg" name="A_redefinedOperation_operation" memberEnd="_CH19VDoZEeCmpu-HRutBsg _CH1_IzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_IzoZEeCmpu-HRutBsg" name="operation" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" subsettedProperty="_CH1-_joZEeCmpu-HRutBsg" association="_CH1_IjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_JDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_JToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_JjoZEeCmpu-HRutBsg" name="A_raisedException_operation" memberEnd="_CH19UDoZEeCmpu-HRutBsg _CH1_JzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_JzoZEeCmpu-HRutBsg" name="operation" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" subsettedProperty="_CH1_ZjoZEeCmpu-HRutBsg" association="_CH1_JjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_KDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_KToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_KjoZEeCmpu-HRutBsg" name="A_precondition_preContext" memberEnd="_CH19TDoZEeCmpu-HRutBsg _CH1_KzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_KzoZEeCmpu-HRutBsg" name="preContext" visibility="public" type="_CH19GjoZEeCmpu-HRutBsg" association="_CH1_KjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_LDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzFjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_LToZEeCmpu-HRutBsg" name="A_ownedParameter_operation" memberEnd="_CH19QzoZEeCmpu-HRutBsg _CH19uToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_LjoZEeCmpu-HRutBsg" name="A_instance_instanceValue" memberEnd="_CH19GDoZEeCmpu-HRutBsg _CH1_LzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_LzoZEeCmpu-HRutBsg" name="instanceValue" visibility="public" type="_CH19FToZEeCmpu-HRutBsg" association="_CH1_LjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_MDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_MToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_MjoZEeCmpu-HRutBsg" name="A_classifier_instanceSpecification" memberEnd="_CH19CjoZEeCmpu-HRutBsg _CH1_MzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_MzoZEeCmpu-HRutBsg" name="instanceSpecification" visibility="public" type="_CH18-DoZEeCmpu-HRutBsg" association="_CH1_MjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_NDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_NToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_NjoZEeCmpu-HRutBsg" name="A_slot_owningInstance" memberEnd="_CH19DjoZEeCmpu-HRutBsg _CH1-tzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_NzoZEeCmpu-HRutBsg" name="A_specification_owningInstanceSpec" memberEnd="_CH19EjoZEeCmpu-HRutBsg _CH1_ODoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_ODoZEeCmpu-HRutBsg" name="owningInstanceSpec" visibility="public" type="_CH18-DoZEeCmpu-HRutBsg" association="_CH1_NzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_OToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_OjoZEeCmpu-HRutBsg" name="A_generalizationSet_generalization" memberEnd="_CHsPNjoZEeCmpu-HRutBsg _CHsPSToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_OzoZEeCmpu-HRutBsg" name="A_general_generalization" memberEnd="_CHsPNDoZEeCmpu-HRutBsg _CH1_PDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_PDoZEeCmpu-HRutBsg" name="generalization" visibility="public" type="_CHsPLToZEeCmpu-HRutBsg" association="_CH1_OzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_PToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_PjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_PzoZEeCmpu-HRutBsg" name="A_constrainingClassifier_classifierTemplateParameter" memberEnd="_CHsPHToZEeCmpu-HRutBsg _CH1_QDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_QDoZEeCmpu-HRutBsg" name="classifierTemplateParameter" visibility="public" type="_CHsPFDoZEeCmpu-HRutBsg" association="_CH1_PzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_QToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_QjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_QzoZEeCmpu-HRutBsg" name="A_classifier_templateParameter_parameteredElement" memberEnd="_CHsOuzoZEeCmpu-HRutBsg _CHsPIToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_RDoZEeCmpu-HRutBsg" name="A_powertypeExtent_powertype" memberEnd="_CHsOrDoZEeCmpu-HRutBsg _CH189ToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_RToZEeCmpu-HRutBsg" name="A_generalization_specific" memberEnd="_CHsOlzoZEeCmpu-HRutBsg _CHsPPjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_RjoZEeCmpu-HRutBsg" name="A_general_classifier" memberEnd="_CHsOkjoZEeCmpu-HRutBsg _CH1_RzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_RzoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_RjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_SDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_SToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_SjoZEeCmpu-HRutBsg" name="A_feature_featuringClassifier" memberEnd="_CHsOjToZEeCmpu-HRutBsg _CHsPJjoZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_SzoZEeCmpu-HRutBsg" name="A_substitution_substitutingClassifier" memberEnd="_CHsOtzoZEeCmpu-HRutBsg _D3SiIDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_TDoZEeCmpu-HRutBsg" name="A_representation_classifier" memberEnd="_CHsOtDoZEeCmpu-HRutBsg _CH1_TjoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_CH1_TToZEeCmpu-HRutBsg" general="_CH1_WToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_TjoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" redefinedProperty="_CH1_WjoZEeCmpu-HRutBsg" association="_CH1_TDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_TzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_UDoZEeCmpu-HRutBsg" name="A_ownedTemplateSignature_classifier" memberEnd="_CHsOpToZEeCmpu-HRutBsg _CH1-mToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_UToZEeCmpu-HRutBsg" name="A_inheritedMember_inheritingClassifier" memberEnd="_CHsOmzoZEeCmpu-HRutBsg _CH1_UjoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_UjoZEeCmpu-HRutBsg" name="inheritingClassifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_UToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_UzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_VDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si0zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_VToZEeCmpu-HRutBsg" name="A_redefinedClassifier_classifier" memberEnd="_CHsOsDoZEeCmpu-HRutBsg _CH1_VjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_VjoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" subsettedProperty="_CH1-_joZEeCmpu-HRutBsg" association="_CH1_VToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_VzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_WDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_WToZEeCmpu-HRutBsg" name="A_collaborationUse_classifier" memberEnd="_CHsOiToZEeCmpu-HRutBsg _CH1_WjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_WjoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_WToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_WzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_XDoZEeCmpu-HRutBsg" name="A_attribute_classifier" memberEnd="_CHsOhToZEeCmpu-HRutBsg _CH1_XToZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_XToZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" subsettedProperty="_CHsPJjoZEeCmpu-HRutBsg _CH1-gDoZEeCmpu-HRutBsg" association="_CH1_XDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_XjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_XzoZEeCmpu-HRutBsg" name="A_ownedUseCase_classifier" memberEnd="_CHsOqDoZEeCmpu-HRutBsg _CH1_YDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_YDoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_CHsOcDoZEeCmpu-HRutBsg" association="_CH1_XzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_YToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_YjoZEeCmpu-HRutBsg" name="A_ownedParameter_ownerFormalParam" memberEnd="_CHsOXToZEeCmpu-HRutBsg _CH1_YzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_YzoZEeCmpu-HRutBsg" name="ownerFormalParam" visibility="public" type="_CHsOTToZEeCmpu-HRutBsg" association="_CH1_YjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_ZDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_ZToZEeCmpu-HRutBsg" name="A_raisedException_behavioralFeature" memberEnd="_CHsOZToZEeCmpu-HRutBsg _CH1_ZjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_ZjoZEeCmpu-HRutBsg" name="behavioralFeature" visibility="public" type="_CHsOTToZEeCmpu-HRutBsg" association="_CH1_ZToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CH1_ZzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_aDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_aToZEeCmpu-HRutBsg" name="A_ownedParameterSet_behavioralFeature" memberEnd="_CHsOYToZEeCmpu-HRutBsg _CH1_ajoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CH1_ajoZEeCmpu-HRutBsg" name="behavioralFeature" visibility="public" type="_CHsOTToZEeCmpu-HRutBsg" association="_CH1_aToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CH1_azoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CH1_bDoZEeCmpu-HRutBsg" name="A_method_specification">
+    <memberEnd xmi:type="uml:Property" href="#_CHsOWToZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="CommonBehavior.fragment.xmi#_DF-ZQDoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiwjoZEeCmpu-HRutBsg" name="A_contract_substitution" memberEnd="_D3SiHjoZEeCmpu-HRutBsg _D3SiwzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SiwzoZEeCmpu-HRutBsg" name="substitution" visibility="public" type="_D3SiGzoZEeCmpu-HRutBsg" association="_D3SiwjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SixDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SixToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si9ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

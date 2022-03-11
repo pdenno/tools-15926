@@ -1,0 +1,67 @@
+
+<topLevel> ::= ('import' <unit> ';' )* <transformation>*
+
+<unit> ::= <identifier> ('.' <identifier>)*
+
+<transformation> ::= 'transformation' <identifier> '(' <modelDecl> (',' <modelDecl>)* ')'
+                       ['extends' <identifier>] '{' <keyDecl>* ( <relation> | <query> )* '}'
+
+<modelDecl> ::= <modelId> ':' ( <metaModelId> | '{' <metaModelId> (',' <metaModelId>)* '}' )
+
+<modelId> ::= <identifier>
+
+<metaModelId> ::= <identifier>
+
+<keyDecl> ::= 'key' <classId> '{' <keyProperty> (, <keyProperty>)* '}' ';'
+
+<classId> ::= <pathNameCS>
+
+<keyProperty> ::= <identifier> | 'opposite' '(' <classId> '.' <identifier> ')'
+
+<relation> ::= ['top'] 'relation' <identifier> ['overrides' <identifier>] '{' 
+               <varDeclaration>* (<domain> | <primitiveTypeDomain>)+ 
+                [<when>] [<where>] '}'
+
+<varDeclaration> ::= <identifier> (, <identifier>)* ':' <TypeCS> ';'
+
+<domain> ::= [<checkEnforceQualifier>] 'domain' <modelId> <template>
+             ['implementedby' <OperationCallExpCS>] ['default_values' '{' (<assignmentExp>)+ '}'] ';'
+
+<primitiveTypeDomain> ::= 'primitive' 'domain' <identifier> ':' <TypeCS> ';'
+
+<checkEnforceQualifier> ::= 'checkonly' | 'enforce'
+
+<template> ::= (<objectTemplate> | <collectionTemplate>) ['{' <OclExpressionCS> '}']
+
+<objectTemplate> ::= [<identifier>] ':' <pathNameCS>  '{' [<propertyTemplateList>] '}'
+
+<propertyTemplateList> ::= <propertyTemplate> (',' <propertyTemplate>)*
+
+<propertyTemplate> ::= <identifier> '=' <OclExpressionCS> 
+                       | 'opposite' '(' <classId> '.' <identifier> ')' '=' <OclExpressionCS>
+
+<collectionTemplate> ::= [<identifier>] ':'
+
+<CollectionTypeIdentifierCS> '(' <TypeCS> ')' '{' [<memberSelection>] '}'
+
+<memberSelection> ::= (<identifier> | <template> | '_') (',' (<identifier> | <template> | '_'))* 
+                      '++' (<identifier> | '_')
+
+<assignmentExp> ::= <identifier> '=' <OclExpressionCS> ';'
+
+<when> ::= 'when' '{' (<OclExpressionCS> ';')* '}'
+
+<where> ::= 'where' '{' (<OclExpressionCS> ';')* '}'
+
+<query> ::= 'query' <identifier> '(' [<paramDeclaration> (',' <paramDeclaration>)*] ')'
+            ':' <TypeCS> (';' | '{' <OclExpressionCS> '}')
+
+<paramDeclaration> ::= <identifier> ':' <TypeCS>
+
+<OclExpressionCS> ::= <PropertyCallExpCS>
+                    | <VariableExpCS>
+                    | <LiteralExpCS>
+                    | <LetExpCS>
+                    | <IfExpCS>
+                    | '(' <OclExpressionCS> ')'
+                    | <template>

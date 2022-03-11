@@ -1,0 +1,187 @@
+
+From 10-12-06 (XMI 2.4)
+
+
+1:Document::= 1a:XMI | //Content Elements//
+
+1a:XMI ::= "<xmi:XMI"
+             1e:Namespaces ">"
+           ( 2a:XMIObjectElement)*
+           ( 3:Extension )*
+           "</xmi:XMI>"
+
+1e:Namespaces ::= 1f:XMINamespaceDecl ?
+                  ( "xmlns:" 1h:NsPrefix "=’" 1i:NsURI "’"  )*
+
+1f:XMINamespaceDecl ::= "xmlns:xmi=’http://www.omg.org/spec/XMI/20100901’"
+
+1g:Namespace ::= ( 1h:NsPrefix> ":" )?
+
+1h:NsPrefix ::= Name of namespace prefix
+
+1i:NsURI ::= URI of namespace
+
+2:XMIElement ::= 2a:XMIObjectElement | 2b:XMIValueElement | 2c:XMIReferenceElement 
+
+2a:XMIObjectElement ::= ( "<" 2k:QName 2d:XMIAttributes "/>" )
+                        | ( "<" 2k:QName 2d:XMIAttributes ">"
+                          (2:XMIElement)*
+                          "</" 2k:QName ">" )
+
+2b:XMIValueElement ::=   ( "<" //xmiName// ">" //value//  "</" //xmiName// ">" )
+                       | ( "<xsi:nil='true'/>" )
+
+2c:XMIReferenceElement::= "<" //xmiName//  2l:LinkAttribs "/>"
+
+2d:XMIAttributes ::= (1e:Namespaces)? (2e:IdentityAttribs)? (2g:TypeAttrib) (2h:FeatureAttrib)*
+
+2e:IdentityAttribs ::= ( 2f:IdAttribName "=’" //id// "’")? ( "xmi:label=’" //label// "’" )? 
+                       ( "xmi:uuid=’" //uuid// "’" )?
+
+2f:IdAttribName ::= "xmi:id"
+
+2g:TypeAttrib ::= "xmi:type=’" 2k:QName "’"
+
+2h:FeatureAttrib ::= 2i:XMIValueAttribute | 2j:XMIReferenceAttribute
+
+2i:XMIValueAttribute ::= //xmiName// "=’" value "’"
+
+2j:XMIReferenceAttribute ::= //xmiName// "=’" ( //refId// )+ "’"
+
+2k:QName ::= ( //prefix// ":" )? //xmiName//
+
+2l:LinkAttribs ::= "xmi:idref=’" //refId// "’" | 2m:Link
+
+2m:Link ::= "href='" 2n:URIref "'"
+
+2n:URIref ::= //URI reference//
+
+3:Extension ::= "<xmi:extension" “xmi:type=’xmi:Extension’”
+                  (" extender=’" // extender // "’")?
+                  (" extenderID=’" // extenderID // "’")?
+                 ">"
+                 // Extension elements //
+                "</xmi:extension>"
+
+
+
+
+;;;==================================
+1. The content of an XMI document may be enclosed in an XMI XML element, but it does not need
+   to be. The XML specification requires that there be one root element in an XML document for the
+   document to be well formed. The XMI elements(identified via the XMI namespace) may appear
+   anywhere in an arbitrary XML document, intermingled with non-XMI elements – though this can
+   be somewhat restricted through the use of the org.omg.xmi.contentType tag
+
+1a. An XMI element has XML attributes that declare namespaces and specify the version of XMI, and
+    the XMI element contains XML elements that make up the header, content, differences, and
+    extensions for the XMI document.
+
+1e. The XMI namespace and the namespaces associated with a model must be declared or already be
+    visible to the XMI element in the XML document. Since there is no requirement that the XMI XML
+    element be the root element, these namespaces may be declared in XML elements that contain the
+    XMI element.
+
+    The namespace declarations must include the following if tag org.omg.xmi.includeNils is true for at
+    least one Property in the metamodel, or org.omg.xmi.useSchemaExtensions is true:
+    xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”
+
+1g. The use of a namespace prefix, including a ":" separator. If the namespace prefix is blank, the result
+    is the empty string.
+
+1h. A particular namespace prefix. Document producers can choose their own namespace prefixes, as
+    long as doing so results in legal XML documents, or they may choose to use the value of the
+    org.omg.xmi.nsPrefix tag.
+
+1i. The logical URI of the namespace. Note that namespaces are resolved to logical URIs, as opposed
+    to physical ones, so that there is no expectation that this URI will be resolved and that there will be
+    any information at that location. The URI is obtained from the org.omg.xmi.nsURI tag.
+
+2a. An object has a starting element, contents, and a closing element. If the contents are empty, you
+    may end the starting element with "/>". You use this production rule to serialize top-level objects
+    and to serialize objects that are the values of Properties.
+
+    If the object is a top-level object, the tag name is the namespace prefix followed by ":" and the XMI
+    name for the object. The XMI name for the object is either the name of the object’s class or the
+    value of the org.omg.xmi.xmiName tag. If the object is the value of an attribute or reference, the
+    XMI name is the name of the Property, or the value of the org.omg.xmi.xmiName tag. The
+    namespace prefix is ignored for an object that is the value of a Property.
+
+    The order of the elements for properties must follow any prescribed XML Schema ordering as
+    defined in Section 5 – even if no XML Schema has actually been generated. Furthermore if the
+    ordered tag is true, the values of multi-valued properties must follow the order in the model (if
+    isOrdered is true for the property) otherwise alphabetic order of the string rendition of that property
+    value.
+
+2b. Each value of a property is represented by an XML element; for multi-valued properties, there is
+    one XML element for each value. Null values may be serialized as well, unless the value of the
+    org.omg.xmi.includeNils tag is “false,” in which case you may not serialize null values.
+
+2c. Use this production rule to serialize a reference to an object using an XML element. If you use
+    identity attributes, the values of the identity attributes must match the values of the identity
+    attributes for the object that is referenced.
+
+2d. The XML attributes for an object are the optional start attributes, identity attributes, and attributes
+    corresponding to an object’s Properties. The start attributes must be written if the object is a toplevel
+    object for XMI.
+
+2e. The identity attributes consist of an optional id, label, and uuid. If the element has a MOF uuid, it
+    may be used here.
+
+2f. The name of the identity attribute is “id” in the XMI namespace.
+
+2g. You must specify the class name using the “type” attribute. The value of this attribute is defined by
+    the XML Schema Part 1: Structures specification to be a QName, consisting of a namespace prefix
+    for the value’s class (if there is one and it is not the default prefix for the document), a “:” and the
+    name of the value’s class. The QName can be either “xmi” (referring to the XMI namespace) or
+    “xsi” (referring to the XML Schema Instance namespace). See the schema specification for more
+    details. You may only use the XML schema instance type attribute if
+    org.omg.xmi.useSchemaExtensions is true.
+
+2h. The XML attributes of the element correspond to Properties whose type is a data value or
+    enumeration, or Class-typed properties whose values are objects in the document. You may not
+    serialize a Property as both an XML element and an XML attribute in the same object. You must
+    not serialize a Property as an XML attribute if the value of the org.omg.xmi.element tag is “true.”
+    You must not serialize a Property at all if the value of the org.omg.xmi.serialize tag is “false;” or
+    the value of that tag is “non-derived” and the Property has isDerived=”true.” You must not serialize
+    a Class-typed Property at all if the org.omg.xmi.remoteOnly tag is true and the Property has a value
+    that is an object in the same XML document. You may serialize classifier-level attributes with an
+    object.
+
+2i. Use this production rule to serialize a Property whose type is not an object and whose value can be
+    represented by a string. Multi-valued DataType-typed Properties cannot be serialized as XML
+    attributes. If the Property’s type is one of the types defined by the XML Schema Part 2: Datatypes
+    specification, serialize the value as specified in that specification.
+
+    Also use this production rule if the Property type is an enumeration and whose value is one of the
+    legal enumeration literals. If the org.omg.xmi.xmiName is specified for the literal, the value of that
+    tag should be used; otherwise, the name of the enumeration literal specified in the model is used.
+
+2j. Use this production rule to serialize Class-typed Properties whose values are objects that are
+    serialized in the same document. The value of the XML attribute contains the XMI ID of each
+    referenced object, separated by a space. 
+
+2k. The name of an XMI element or attribute with an optional namespace prefix.
+
+2l. Use the idref attribute to specify the id of an XML element that is referenced in the document; use
+    the href attribute to specify an XML element in another document. If the org.omg.xmi.href tag is
+    “true,” you must not use the idref attribute; use the href attribute for references within the documentn
+    and across documents.
+
+2m. An XMI link. The value of the href attribute is a URI reference that refers to an XML element in
+    another document or in the same document.
+
+2.n A URI Reference, optionally preceded by the type of the object being referenced. The URI
+    reference refers to an XML element in another document or in the same document. For example, if
+    the href is “someFile.xmi#someId,” the href refers to an XML element in the “someFile.xmi”
+    document whose XMI ID is “someId.” If the URI reference is ”#anotherId,” it refers to an XML
+    element whose XMI ID is “anotherId” in the same document. XLinks are also supported in XMI.
+    See 7.10.2, ’Linking’ for more information. See the W3C XLink and XPointer specification for
+    production rules.
+ 
+3   Extension elements may be provided to complement the serialized model with additional information, such as
+    tool-specific diagram data, for example. Each extension element has an optional extender and 
+    extenderID attribute; its content can be anything (see for examples)
+
+
+

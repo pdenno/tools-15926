@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_FQPRQDoZEeCmpu-HRutBsg" name="InformationFlows">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_DaUjICeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="UseCases.fragment.xmi#_LuIhwDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_GPh1sCeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Deployments.fragment.xmi#_EntRoDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_I-NCcCeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="StructuredClassifiers.fragment.xmi#_LPJfsDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Ly0fICeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_OdeHgCeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="SimpleClassifiers.fragment.xmi#_JBJ-IDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Rfxa4CeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Packages.fragment.xmi#_IHytMDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_UEKqQCeHEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Activities.fragment.xmi#_BHLKIDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FQPSwToZEeCmpu-HRutBsg" name="InformationFlow">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_FQPSwjoZEeCmpu-HRutBsg" annotatedElement="_FQPSwToZEeCmpu-HRutBsg">
+      <body>InformationFlows describe circulation of information through a system in a general manner. They do not specify the nature of the information, mechanisms by which it is conveyed, sequences of exchange or any control conditions. During more detailed modeling, representation and realization links may be added to specify which model elements implement an InformationFlow and to show how information is conveyed.  InformationFlows require some kind of “information channel” for unidirectional transmission of information items from sources to targets.  They specify the information channel’s realizations, if any, and identify the information that flows along them.  Information moving along the information channel may be represented by abstract InformationItems and by concrete Classifiers.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPSwzoZEeCmpu-HRutBsg" name="must_conform" constrainedElement="_FQPSwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPSxDoZEeCmpu-HRutBsg" annotatedElement="_FQPSwzoZEeCmpu-HRutBsg">
+        <body>The sources and targets of the information flow must conform with the sources and targets or conversely the targets and sources of the realization relationships.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPSxToZEeCmpu-HRutBsg">
+        <language>Analysis</language>
+        <body>Not implemented in OCL</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPSxjoZEeCmpu-HRutBsg" name="sources_and_targets_kind" constrainedElement="_FQPSwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPSxzoZEeCmpu-HRutBsg" annotatedElement="_FQPSxjoZEeCmpu-HRutBsg">
+        <body>The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPSyDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(self.informationSource->forAll(oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xD;&#xA;  oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xD;&#xA;  oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xD;&#xA;  oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xD;&#xA;  oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and&#xD;&#xA;    (self.informationTarget->forAll(oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xD;&#xA;      oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xD;&#xA;      oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xD;&#xA;      oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xD;&#xA;      oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPSyToZEeCmpu-HRutBsg" name="convey_classifiers" constrainedElement="_FQPSwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPSyjoZEeCmpu-HRutBsg" annotatedElement="_FQPSyToZEeCmpu-HRutBsg">
+        <body>An information flow can only convey classifiers that are allowed to represent an information item.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPSyzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.conveyed->forAll(oclIsKindOf(Class) or oclIsKindOf(Interface)&#xD;&#xA;  or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_FQPSzDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_FQPSzToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPSzjoZEeCmpu-HRutBsg" name="conveyed" visibility="public" association="_FQPS-zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPSzzoZEeCmpu-HRutBsg" annotatedElement="_FQPSzjoZEeCmpu-HRutBsg">
+        <body>Specifies the information items that may circulate on this information flow.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS0DoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS0ToZEeCmpu-HRutBsg" name="informationSource" visibility="public" association="_FQPTBzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS0joZEeCmpu-HRutBsg" annotatedElement="_FQPS0ToZEeCmpu-HRutBsg">
+        <body>Defines from which source the conveyed InformationItems are initiated.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS0zoZEeCmpu-HRutBsg" value="*"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS1DoZEeCmpu-HRutBsg" name="informationTarget" visibility="public" association="_FQPTEzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS1ToZEeCmpu-HRutBsg" annotatedElement="_FQPS1DoZEeCmpu-HRutBsg">
+        <body>Defines to which target the conveyed InformationItems are directed.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS1joZEeCmpu-HRutBsg" value="*"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS1zoZEeCmpu-HRutBsg" name="realization" visibility="public" association="_FQPTCzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS2DoZEeCmpu-HRutBsg" annotatedElement="_FQPS1zoZEeCmpu-HRutBsg">
+        <body>Determines which Relationship will realize the specified flow</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiFToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS2ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS2joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS2zoZEeCmpu-HRutBsg" name="realizingActivityEdge" visibility="public" association="_FQPS_zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS3DoZEeCmpu-HRutBsg" annotatedElement="_FQPS2zoZEeCmpu-HRutBsg">
+        <body>Determines which ActivityEdges will realize the specified flow.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Activities.fragment.xmi#_BHet9joZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS3ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS3joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS3zoZEeCmpu-HRutBsg" name="realizingConnector" visibility="public" association="_FQPTDzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS4DoZEeCmpu-HRutBsg" annotatedElement="_FQPS3zoZEeCmpu-HRutBsg">
+        <body>Determines which Connectors will realize the specified flow.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMQjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS4ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS4joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS4zoZEeCmpu-HRutBsg" name="realizingMessage" visibility="public" association="_FQPTAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS5DoZEeCmpu-HRutBsg" annotatedElement="_FQPS4zoZEeCmpu-HRutBsg">
+        <body>Determines which Messages will realize the specified flow.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Interactions.fragment.xmi#_F_wqBDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS5ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS5joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FQPS5zoZEeCmpu-HRutBsg" name="InformationItem">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS6DoZEeCmpu-HRutBsg" annotatedElement="_FQPS5zoZEeCmpu-HRutBsg">
+      <body>InformationItems represent many kinds of information that can flow from sources to targets in very abstract ways.  They represent the kinds of information that may move within a system, but do not elaborate details of the transferred information.  Details of transferred information are the province of other Classifiers that may ultimately define InformationItems.  Consequently, InformationItems cannot be instantiated and do not themselves have features, generalizations, or associations. An important use of InformationItems is to represent information during early design stages, possibly before the detailed modeling decisions that will ultimately define them have been made. Another purpose of InformationItems is to abstract portions of complex models in less precise, but perhaps more general and communicable, ways. </body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPS6ToZEeCmpu-HRutBsg" name="sources_and_targets" constrainedElement="_FQPS5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS6joZEeCmpu-HRutBsg" annotatedElement="_FQPS6ToZEeCmpu-HRutBsg">
+        <body>The sources and targets of an information item (its related information flows) must designate subsets of the sources and targets of the representation information item, if any.The Classifiers that can realize an information item can only be of the following kind: Class, Interface, InformationItem, Signal, Component.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPS6zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(self.represented->select(oclIsKindOf(InformationItem))->forAll(p |&#xD;&#xA;  p.conveyingFlow.source->forAll(q | self.conveyingFlow.source->includes(q)) and&#xD;&#xA;    p.conveyingFlow.target->forAll(q | self.conveyingFlow.target->includes(q)))) and&#xD;&#xA;      (self.represented->forAll(oclIsKindOf(Class) or oclIsKindOf(Interface) or&#xD;&#xA;        oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPS7DoZEeCmpu-HRutBsg" name="has_no" constrainedElement="_FQPS5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS7ToZEeCmpu-HRutBsg" annotatedElement="_FQPS7DoZEeCmpu-HRutBsg">
+        <body>An informationItem has no feature, no generalization, and no associations.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPS7joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.generalization->isEmpty() and self.feature->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_FQPS7zoZEeCmpu-HRutBsg" name="not_instantiable" constrainedElement="_FQPS5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS8DoZEeCmpu-HRutBsg" annotatedElement="_FQPS7zoZEeCmpu-HRutBsg">
+        <body>It is not instantiable.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_FQPS8ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>isAbstract</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_FQPS8joZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FQPS8zoZEeCmpu-HRutBsg" name="represented" visibility="public" association="_FQPS9zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_FQPS9DoZEeCmpu-HRutBsg" annotatedElement="_FQPS8zoZEeCmpu-HRutBsg">
+        <body>Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS9ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS9joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPS9zoZEeCmpu-HRutBsg" name="A_represented_representation" memberEnd="_FQPS8zoZEeCmpu-HRutBsg _FQPS-DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPS-DoZEeCmpu-HRutBsg" name="representation" visibility="public" type="_FQPS5zoZEeCmpu-HRutBsg" association="_FQPS9zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS-ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS-joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPS-zoZEeCmpu-HRutBsg" name="A_conveyed_conveyingFlow" memberEnd="_FQPSzjoZEeCmpu-HRutBsg _FQPS_DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPS_DoZEeCmpu-HRutBsg" name="conveyingFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPS-zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPS_ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPS_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPS_zoZEeCmpu-HRutBsg" name="A_realizingActivityEdge_informationFlow" memberEnd="_FQPS2zoZEeCmpu-HRutBsg _FQPTADoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTADoZEeCmpu-HRutBsg" name="informationFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPS_zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTAToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTAjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPTAzoZEeCmpu-HRutBsg" name="A_realizingMessage_informationFlow" memberEnd="_FQPS4zoZEeCmpu-HRutBsg _FQPTBDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTBDoZEeCmpu-HRutBsg" name="informationFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPTAzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTBToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTBjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPTBzoZEeCmpu-HRutBsg" name="A_informationSource_informationFlow" memberEnd="_FQPS0ToZEeCmpu-HRutBsg _FQPTCDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTCDoZEeCmpu-HRutBsg" name="informationFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPTBzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTCToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTCjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPTCzoZEeCmpu-HRutBsg" name="A_realization_abstraction_flow" memberEnd="_FQPS1zoZEeCmpu-HRutBsg _FQPTDDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTDDoZEeCmpu-HRutBsg" name="abstraction" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPTCzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTDToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTDjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPTDzoZEeCmpu-HRutBsg" name="A_realizingConnector_informationFlow" memberEnd="_FQPS3zoZEeCmpu-HRutBsg _FQPTEDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTEDoZEeCmpu-HRutBsg" name="informationFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPTDzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTEToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTEjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FQPTEzoZEeCmpu-HRutBsg" name="A_informationTarget_informationFlow" memberEnd="_FQPS1DoZEeCmpu-HRutBsg _FQPTFDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FQPTFDoZEeCmpu-HRutBsg" name="informationFlow" visibility="public" type="_FQPSwToZEeCmpu-HRutBsg" association="_FQPTEzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FQPTFToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FQPTFjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

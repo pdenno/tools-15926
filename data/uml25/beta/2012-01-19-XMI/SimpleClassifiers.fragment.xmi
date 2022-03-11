@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_JBJ-IDoZEeCmpu-HRutBsg" name="SimpleClassifiers">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_GivYsCefEeGyjaSNIDwC0w">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwOzoZEeCmpu-HRutBsg" name="BehavioredClassifier" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwPDoZEeCmpu-HRutBsg" annotatedElement="_JBTwOzoZEeCmpu-HRutBsg">
+      <body>A BehavioredClassifier may have InterfaceRealizations, and owns a set of Behaviors one of which may specify the behavior of the BehavioredClassifier itself.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_JBTwPjoZEeCmpu-HRutBsg" name="class_behavior" constrainedElement="_JBTwOzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwPzoZEeCmpu-HRutBsg" annotatedElement="_JBTwPjoZEeCmpu-HRutBsg">
+        <body>If a behavior is classifier behavior, it does not have a specification.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_JBTwQDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>classifierBehavior->notEmpty() implies classifierBehavior.specification->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwQToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwQjoZEeCmpu-HRutBsg" name="classifierBehavior" visibility="public" subsettedProperty="_JBTwSToZEeCmpu-HRutBsg" association="_JBTw1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwQzoZEeCmpu-HRutBsg" annotatedElement="_JBTwQjoZEeCmpu-HRutBsg">
+        <body>A Behavior that specifies the behavior of the BehavioredClassifier itself.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwRDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwRToZEeCmpu-HRutBsg" name="interfaceRealization" visibility="public" type="_JBTwlzoZEeCmpu-HRutBsg" aggregation="composite" association="_JBTw2joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwRjoZEeCmpu-HRutBsg" annotatedElement="_JBTwRToZEeCmpu-HRutBsg">
+        <body>The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwRzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwSDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShYjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwSToZEeCmpu-HRutBsg" name="ownedBehavior" visibility="public" aggregation="composite" association="_JBTw0zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwSjoZEeCmpu-HRutBsg" annotatedElement="_JBTwSToZEeCmpu-HRutBsg">
+        <body>Behaviors owned by a BehavioredClassifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwSzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwTDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwTToZEeCmpu-HRutBsg" name="DataType">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwTjoZEeCmpu-HRutBsg" annotatedElement="_JBTwTToZEeCmpu-HRutBsg">
+      <body>A DataType is a type whose instances are identified only by their value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwTzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwUDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" association="_JBTw0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwUToZEeCmpu-HRutBsg" annotatedElement="_JBTwUDoZEeCmpu-HRutBsg">
+        <body>The Attributes owned by the DataType.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwUjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwUzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwVDoZEeCmpu-HRutBsg" name="ownedOperation" visibility="public" isOrdered="true" aggregation="composite" association="_JBTw0joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwVToZEeCmpu-HRutBsg" annotatedElement="_JBTwVDoZEeCmpu-HRutBsg">
+        <body>The Operations owned by the DataType.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19GjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwVjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwVzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JBTwWDoZEeCmpu-HRutBsg" name="inherit" visibility="public" isQuery="true" bodyCondition="_JBTwWjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwWToZEeCmpu-HRutBsg" annotatedElement="_JBTwWDoZEeCmpu-HRutBsg">
+        <body>The inherit operation is overridden to exclude redefined properties.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_JBTwWjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_JBTwWDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_JBTwWzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>inhs->reject(inh |&#xD;&#xA;     inh.oclIsKindOf(RedefinableElement) and ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh.oclAsType(RedefinableElement)))->notEmpty())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JBTwXDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwXToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwXjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JBTwXzoZEeCmpu-HRutBsg" name="inhs" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwYDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwYToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="Classification.fragment.xmi#_CHsO5ToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwYjoZEeCmpu-HRutBsg" name="Enumeration">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwYzoZEeCmpu-HRutBsg" annotatedElement="_JBTwYjoZEeCmpu-HRutBsg">
+      <body>An Enumeration is a DataType whose values are enumerated in the model as EnumerationLiterals.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwZDoZEeCmpu-HRutBsg" general="_JBTwTToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwZToZEeCmpu-HRutBsg" name="ownedLiteral" visibility="public" type="_JBTwaToZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_JBTw0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwZjoZEeCmpu-HRutBsg" annotatedElement="_JBTwZToZEeCmpu-HRutBsg">
+        <body>The ordered set of literals owned by this Enumeration.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwZzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwaDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwaToZEeCmpu-HRutBsg" name="EnumerationLiteral">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwajoZEeCmpu-HRutBsg" annotatedElement="_JBTwaToZEeCmpu-HRutBsg">
+      <body>An EnumerationLiteral is a user-defined data value for an Enumeration.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwbToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH18-DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwbjoZEeCmpu-HRutBsg" name="classifier" visibility="public" type="_JBTwYjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" association="_JBTwyzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwbzoZEeCmpu-HRutBsg" annotatedElement="_JBTwbjoZEeCmpu-HRutBsg">
+        <body>The classifier of this EnumerationLiteral derived to be equal to its Enumeration.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH19CjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwcDoZEeCmpu-HRutBsg" name="enumeration" visibility="public" type="_JBTwYjoZEeCmpu-HRutBsg" association="_JBTw0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwcToZEeCmpu-HRutBsg" annotatedElement="_JBTwcDoZEeCmpu-HRutBsg">
+        <body>The Enumeration that this EnumerationLiteral is a member of.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwcjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JBTwczoZEeCmpu-HRutBsg" name="classifier" visibility="public" isQuery="true" bodyCondition="_JBTwdToZEeCmpu-HRutBsg">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_JBTwdToZEeCmpu-HRutBsg" name="spec" constrainedElement="_JBTwczoZEeCmpu-HRutBsg _JBTwbjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_JBTwdjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>enumeration</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JBTwdzoZEeCmpu-HRutBsg" name="result" visibility="public" type="_JBTwYjoZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTweDoZEeCmpu-HRutBsg" name="Interface">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwejoZEeCmpu-HRutBsg" annotatedElement="_JBTweDoZEeCmpu-HRutBsg">
+      <body>Interfaces declare coherent services that are implemented by BehavioredClassifiers that implement the Interfaces via InterfaceRealizations.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_JBTwfDoZEeCmpu-HRutBsg" name="visibility" constrainedElement="_JBTweDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwfToZEeCmpu-HRutBsg" annotatedElement="_JBTwfDoZEeCmpu-HRutBsg">
+        <body>The visibility of all Features owned by an Interface must be public.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_JBTwfjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>feature->forAll(visibility = VisibilityKind::public)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwfzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwgDoZEeCmpu-HRutBsg" name="nestedClassifier" visibility="public" isOrdered="true" aggregation="composite" association="_JBTwxjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwgToZEeCmpu-HRutBsg" annotatedElement="_JBTwgDoZEeCmpu-HRutBsg">
+        <body>References all the Classifiers that are defined (nested) within the Interface.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwgjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwgzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwhDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" association="_JBTwyjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwhToZEeCmpu-HRutBsg" annotatedElement="_JBTwhDoZEeCmpu-HRutBsg">
+        <body>The attributes (i.e. the Properties) owned by the Interface.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwhjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwhzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwiDoZEeCmpu-HRutBsg" name="ownedOperation" visibility="public" isOrdered="true" aggregation="composite" association="_JBTwyToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwiToZEeCmpu-HRutBsg" annotatedElement="_JBTwiDoZEeCmpu-HRutBsg">
+        <body>The Operations owned by the Interface.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19GjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwijoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwizoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwjDoZEeCmpu-HRutBsg" name="ownedReception" visibility="public" type="_JBTwoToZEeCmpu-HRutBsg" aggregation="composite" association="_JBTwvzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwjToZEeCmpu-HRutBsg" annotatedElement="_JBTwjDoZEeCmpu-HRutBsg">
+        <body>Receptions that objects providing this Interface are willing to accept.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwjjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwjzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwkDoZEeCmpu-HRutBsg" name="protocol" visibility="public" aggregation="composite" association="_JBTwuzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwkToZEeCmpu-HRutBsg" annotatedElement="_JBTwkDoZEeCmpu-HRutBsg">
+        <body>References a ProtocolStateMachine specifying the legal sequences of the invocation of the BehavioralFeatures described in the Interface.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StateMachines.fragment.xmi#_Kq8AHToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwkjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwkzoZEeCmpu-HRutBsg" name="redefinedInterface" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwwjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwlDoZEeCmpu-HRutBsg" annotatedElement="_JBTwkzoZEeCmpu-HRutBsg">
+        <body>References all the Interfaces redefined by this Interface.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwlToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwljoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwlzoZEeCmpu-HRutBsg" name="InterfaceRealization">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwmDoZEeCmpu-HRutBsg" annotatedElement="_JBTwlzoZEeCmpu-HRutBsg">
+      <body>An InterfaceRealization is a specialized realization relationship between a BehavioredClassifier and an Interface. This relationship signifies that the realizing BehavioredClassifier conforms to the contract specified by the Interface.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwmToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiEjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwmjoZEeCmpu-HRutBsg" name="contract" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwtzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwmzoZEeCmpu-HRutBsg" annotatedElement="_JBTwmjoZEeCmpu-HRutBsg">
+        <body>References the Interface specifying the conformance contract.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwnDoZEeCmpu-HRutBsg" name="implementingClassifier" visibility="public" type="_JBTwOzoZEeCmpu-HRutBsg" association="_JBTw2joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwnToZEeCmpu-HRutBsg" annotatedElement="_JBTwnDoZEeCmpu-HRutBsg">
+        <body>References the BehavioredClassifier that owns this InterfaceRealization, i.e., the BehavioredClassifier that realizes the Interface to which it refers.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzHzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwnjoZEeCmpu-HRutBsg" name="PrimitiveType">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwnzoZEeCmpu-HRutBsg" annotatedElement="_JBTwnjoZEeCmpu-HRutBsg">
+      <body>A PrimitiveType defines a predefined DataType, without any substructure. A PrimitiveType may have an algebra and operations defined outside of UML, for example, mathematically.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwoDoZEeCmpu-HRutBsg" general="_JBTwTToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwoToZEeCmpu-HRutBsg" name="Reception">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwojoZEeCmpu-HRutBsg" annotatedElement="_JBTwoToZEeCmpu-HRutBsg">
+      <body>A Reception is a declaration stating that a Classifier is prepared to react to the receipt of a Signal.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwpjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOTToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwpzoZEeCmpu-HRutBsg" name="signal" visibility="public" type="_JBTwqToZEeCmpu-HRutBsg" association="_JBTwszoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwqDoZEeCmpu-HRutBsg" annotatedElement="_JBTwpzoZEeCmpu-HRutBsg">
+        <body>The Signal that this Reception handles.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBTwqToZEeCmpu-HRutBsg" name="Signal">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwqjoZEeCmpu-HRutBsg" annotatedElement="_JBTwqToZEeCmpu-HRutBsg">
+      <body>A Signal is a specification of a kind of communication between objects in which a reaction is asynchronously triggered in the receiver without a reply.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwqzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JBTwrDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" association="_JBTwsDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwrToZEeCmpu-HRutBsg" annotatedElement="_JBTwrDoZEeCmpu-HRutBsg">
+        <body>The attributes owned by the Signal.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwrjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwrzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwsDoZEeCmpu-HRutBsg" name="A_ownedAttribute_owningSignal" memberEnd="_JBTwrDoZEeCmpu-HRutBsg _JBTwsToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwsToZEeCmpu-HRutBsg" name="owningSignal" visibility="public" type="_JBTwqToZEeCmpu-HRutBsg" association="_JBTwsDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwsjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_XToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwszoZEeCmpu-HRutBsg" name="A_signal_reception" memberEnd="_JBTwpzoZEeCmpu-HRutBsg _JBTwtDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwtDoZEeCmpu-HRutBsg" name="reception" visibility="public" type="_JBTwoToZEeCmpu-HRutBsg" association="_JBTwszoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwtToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwtjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwtzoZEeCmpu-HRutBsg" name="A_contract_interfaceRealization" memberEnd="_JBTwmjoZEeCmpu-HRutBsg _JBTwuDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwuDoZEeCmpu-HRutBsg" name="interfaceRealization" visibility="public" type="_JBTwlzoZEeCmpu-HRutBsg" association="_JBTwtzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwuToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwujoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si9ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwuzoZEeCmpu-HRutBsg" name="A_protocol_interface" memberEnd="_JBTwkDoZEeCmpu-HRutBsg _JBTwvDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwvDoZEeCmpu-HRutBsg" name="interface" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwuzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_JBTwvToZEeCmpu-HRutBsg" annotatedElement="_JBTwvDoZEeCmpu-HRutBsg">
+        <body>Specifies the namespace in which the protocol state machine is defined.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwvjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwvzoZEeCmpu-HRutBsg" name="A_ownedReception_interface" memberEnd="_JBTwjDoZEeCmpu-HRutBsg _JBTwwDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwwDoZEeCmpu-HRutBsg" name="interface" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwvzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwwToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwwjoZEeCmpu-HRutBsg" name="A_redefinedInterface_interface" memberEnd="_JBTwkzoZEeCmpu-HRutBsg _JBTwwzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwwzoZEeCmpu-HRutBsg" name="interface" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwwjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwxDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwxToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_VjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwxjoZEeCmpu-HRutBsg" name="A_nestedClassifier_interface" memberEnd="_JBTwgDoZEeCmpu-HRutBsg _JBTwxzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwxzoZEeCmpu-HRutBsg" name="interface" visibility="public" type="_JBTweDoZEeCmpu-HRutBsg" association="_JBTwxjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwyDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-gDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwyToZEeCmpu-HRutBsg" name="A_ownedOperation_interface">
+    <memberEnd xmi:type="uml:Property" href="#_JBTwiDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH19MDoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwyjoZEeCmpu-HRutBsg" name="A_ownedAttribute_interface">
+    <memberEnd xmi:type="uml:Property" href="#_JBTwhDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-FToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTwyzoZEeCmpu-HRutBsg" name="A_classifier_enumerationLiteral" memberEnd="_JBTwbjoZEeCmpu-HRutBsg _JBTwzToZEeCmpu-HRutBsg" isDerived="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTwzDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Association" href="Classification.fragment.xmi#_CH1_MjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTwzToZEeCmpu-HRutBsg" name="enumerationLiteral" visibility="public" type="_JBTwaToZEeCmpu-HRutBsg" association="_JBTwyzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBTwzjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTwzzoZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_MzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw0DoZEeCmpu-HRutBsg" name="A_ownedLiteral_enumeration" memberEnd="_JBTwZToZEeCmpu-HRutBsg _JBTwcDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw0ToZEeCmpu-HRutBsg" name="A_ownedAttribute_datatype">
+    <memberEnd xmi:type="uml:Property" href="#_JBTwUDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-CzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw0joZEeCmpu-HRutBsg" name="A_ownedOperation_datatype">
+    <memberEnd xmi:type="uml:Property" href="#_JBTwVDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH19LToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw0zoZEeCmpu-HRutBsg" name="A_ownedBehavior_behavioredClassifier" memberEnd="_JBTwSToZEeCmpu-HRutBsg _JBTw1DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTw1DoZEeCmpu-HRutBsg" name="behavioredClassifier" visibility="public" type="_JBTwOzoZEeCmpu-HRutBsg" association="_JBTw0zoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTw1ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw1joZEeCmpu-HRutBsg" name="A_classifierBehavior_behavioredClassifier" memberEnd="_JBTwQjoZEeCmpu-HRutBsg _JBTw2DoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_JBTw1zoZEeCmpu-HRutBsg" general="_JBTw0zoZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JBTw2DoZEeCmpu-HRutBsg" name="behavioredClassifier" visibility="public" type="_JBTwOzoZEeCmpu-HRutBsg" redefinedProperty="_JBTw1DoZEeCmpu-HRutBsg" association="_JBTw1joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBTw2ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JBTw2joZEeCmpu-HRutBsg" name="A_interfaceRealization_implementingClassifier" memberEnd="_JBTwRToZEeCmpu-HRutBsg _JBTwnDoZEeCmpu-HRutBsg"/>
+</uml:Package>

@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_IHytMDoZEeCmpu-HRutBsg" name="Packages">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_ucCn0CeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="StructuredClassifiers.fragment.xmi#_LPJfsDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_xyci8CeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_2qTpwCeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonStructure.fragment.xmi#_D211YDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8frzoZEeCmpu-HRutBsg" name="Extension">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fsDoZEeCmpu-HRutBsg" annotatedElement="_IH8frzoZEeCmpu-HRutBsg">
+      <body>An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8fsToZEeCmpu-HRutBsg" name="non_owned_end" constrainedElement="_IH8frzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fsjoZEeCmpu-HRutBsg" annotatedElement="_IH8fsToZEeCmpu-HRutBsg">
+        <body>The non-owned end of an Extension is typed by a Class.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8fszoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>metaclassEnd()->notEmpty() and metaclassEnd().type.oclIsKindOf(Class)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8ftDoZEeCmpu-HRutBsg" name="is_binary" constrainedElement="_IH8frzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8ftToZEeCmpu-HRutBsg" annotatedElement="_IH8ftDoZEeCmpu-HRutBsg">
+        <body>An Extension is binary, i.e., it has only two memberEnds.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8ftjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>memberEnd->size() = 2</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8ftzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPcd4ToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8fuDoZEeCmpu-HRutBsg" name="isRequired" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fuToZEeCmpu-HRutBsg" annotatedElement="_IH8fuDoZEeCmpu-HRutBsg">
+        <body>Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_IH8fujoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8fuzoZEeCmpu-HRutBsg" name="metaclass" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fvDoZEeCmpu-HRutBsg" annotatedElement="_IH8fuzoZEeCmpu-HRutBsg">
+        <body>References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="StructuredClassifiers.fragment.xmi#_LPmNQjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8fvToZEeCmpu-HRutBsg" name="ownedEnd" visibility="public" type="_IH8fzjoZEeCmpu-HRutBsg" aggregation="composite" association="_IH8guDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fvjoZEeCmpu-HRutBsg" annotatedElement="_IH8fvToZEeCmpu-HRutBsg">
+        <body>References the end of the extension that is typed by a Stereotype.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="StructuredClassifiers.fragment.xmi#_LPceADoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8fvzoZEeCmpu-HRutBsg" name="isRequired" visibility="public" isQuery="true" bodyCondition="_IH8fwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fwDoZEeCmpu-HRutBsg" annotatedElement="_IH8fvzoZEeCmpu-HRutBsg">
+        <body>The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8fwToZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8fvzoZEeCmpu-HRutBsg _IH8fuDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8fwjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedEnd.lowerBound() = 1</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8fwzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8fxDoZEeCmpu-HRutBsg" name="metaclass" visibility="public" isQuery="true" bodyCondition="_IH8fxjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fxToZEeCmpu-HRutBsg" annotatedElement="_IH8fxDoZEeCmpu-HRutBsg">
+        <body>The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8fxjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8fxDoZEeCmpu-HRutBsg _IH8fuzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8fxzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>metaclassEnd().type.oclAsType(Class)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8fyDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8fyToZEeCmpu-HRutBsg" name="metaclassEnd" visibility="public" isQuery="true" bodyCondition="_IH8fyzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fyjoZEeCmpu-HRutBsg" annotatedElement="_IH8fyToZEeCmpu-HRutBsg">
+        <body>The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8fyzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8fyToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8fzDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>memberEnd->reject(p | ownedEnd->includes(p.oclAsType(ExtensionEnd)))->any(true)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8fzToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8fzjoZEeCmpu-HRutBsg" name="ExtensionEnd">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8fzzoZEeCmpu-HRutBsg" annotatedElement="_IH8fzjoZEeCmpu-HRutBsg">
+      <body>An extension end is used to tie an extension to a stereotype when extending a metaclass.
+The default multiplicity of an extension end is 0..1.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8f0ToZEeCmpu-HRutBsg" name="multiplicity" constrainedElement="_IH8fzjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f0joZEeCmpu-HRutBsg" annotatedElement="_IH8f0ToZEeCmpu-HRutBsg">
+        <body>The multiplicity of ExtensionEnd is 0..1 or 1.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8f0zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(lowerBound() = 0 or lowerBound() = 1) and upperBound() = 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8f1DoZEeCmpu-HRutBsg" name="aggregation" constrainedElement="_IH8fzjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f1ToZEeCmpu-HRutBsg" annotatedElement="_IH8f1DoZEeCmpu-HRutBsg">
+        <body>The aggregation of an ExtensionEnd is composite.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8f1joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.aggregation = AggregationKind::composite</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f1zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f2DoZEeCmpu-HRutBsg" name="lower" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f2ToZEeCmpu-HRutBsg" annotatedElement="_IH8f2DoZEeCmpu-HRutBsg">
+        <body>This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f2joZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzejoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f2zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f3DoZEeCmpu-HRutBsg" name="type" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" association="_IH8gtDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f3ToZEeCmpu-HRutBsg" annotatedElement="_IH8f3DoZEeCmpu-HRutBsg">
+        <body>References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiizoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8f3joZEeCmpu-HRutBsg" name="lowerBound" visibility="public" isQuery="true" bodyCondition="_IH8f4DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f3zoZEeCmpu-HRutBsg" annotatedElement="_IH8f3joZEeCmpu-HRutBsg">
+        <body>The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8f4DoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8f3joZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8f4ToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if lowerValue=null then 0 else lowerValue.integerValue() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8f4joZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f4zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3IzsjoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8f5DoZEeCmpu-HRutBsg" name="Image">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f5ToZEeCmpu-HRutBsg" annotatedElement="_IH8f5DoZEeCmpu-HRutBsg">
+      <body>Physical definition of a graphical image.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f5joZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzLjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f5zoZEeCmpu-HRutBsg" name="content" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f6DoZEeCmpu-HRutBsg" annotatedElement="_IH8f5zoZEeCmpu-HRutBsg">
+        <body>This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f6ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f6joZEeCmpu-HRutBsg" name="format" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f6zoZEeCmpu-HRutBsg" annotatedElement="_IH8f6joZEeCmpu-HRutBsg">
+        <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example &quot;SVG&quot; could instead be expressed as &quot;MIME: image/svg+xml&quot;.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f7DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f7ToZEeCmpu-HRutBsg" name="location" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f7joZEeCmpu-HRutBsg" annotatedElement="_IH8f7ToZEeCmpu-HRutBsg">
+        <body>This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f7zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8f8DoZEeCmpu-HRutBsg" name="Model">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f8ToZEeCmpu-HRutBsg" annotatedElement="_IH8f8DoZEeCmpu-HRutBsg">
+      <body>A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f8joZEeCmpu-HRutBsg" general="_IH8f9joZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8f8zoZEeCmpu-HRutBsg" name="viewpoint" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f9DoZEeCmpu-HRutBsg" annotatedElement="_IH8f8zoZEeCmpu-HRutBsg">
+        <body>The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8f9ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8f9joZEeCmpu-HRutBsg" name="Package">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f9zoZEeCmpu-HRutBsg" annotatedElement="_IH8f9joZEeCmpu-HRutBsg">
+      <body>A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.
+Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.
+A package is used to group elements, and provides a namespace for the grouped elements.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8f-joZEeCmpu-HRutBsg" name="elements_public_or_private" constrainedElement="_IH8f9joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8f-zoZEeCmpu-HRutBsg" annotatedElement="_IH8f-joZEeCmpu-HRutBsg">
+        <body>If an element that is owned by a package has visibility, it is public or private.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8f_DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>packagedElement->forAll(e | e.visibility&lt;> null implies e.visibility = VisibilityKind::public or e.visibility = VisibilityKind::private)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f_ToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f_joZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiIjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8f_zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gADoZEeCmpu-HRutBsg" name="URI" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gAToZEeCmpu-HRutBsg" annotatedElement="_IH8gADoZEeCmpu-HRutBsg">
+        <body>Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gAjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gAzoZEeCmpu-HRutBsg" name="nestedPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" isDerived="true" aggregation="composite" subsettedProperty="_IH8gFjoZEeCmpu-HRutBsg" association="_IH8grjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gBDoZEeCmpu-HRutBsg" annotatedElement="_IH8gAzoZEeCmpu-HRutBsg">
+        <body>References the packaged elements that are Packages.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gBToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gBjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gBzoZEeCmpu-HRutBsg" name="nestingPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" subsettedProperty="_IH8gqzoZEeCmpu-HRutBsg" association="_IH8grjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gCDoZEeCmpu-HRutBsg" annotatedElement="_IH8gBzoZEeCmpu-HRutBsg">
+        <body>References the Package that owns this Package.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gCToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gCjoZEeCmpu-HRutBsg" name="ownedStereotype" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" aggregation="composite" subsettedProperty="_IH8gFjoZEeCmpu-HRutBsg" association="_IH8gsToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gCzoZEeCmpu-HRutBsg" annotatedElement="_IH8gCjoZEeCmpu-HRutBsg">
+        <body>References the Stereotypes that are owned by the Package</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gDDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gDToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gDjoZEeCmpu-HRutBsg" name="ownedType" visibility="public" isDerived="true" aggregation="composite" subsettedProperty="_IH8gFjoZEeCmpu-HRutBsg" association="_IH8gsDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gDzoZEeCmpu-HRutBsg" annotatedElement="_IH8gDjoZEeCmpu-HRutBsg">
+        <body>References the packaged elements that are Types.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gEDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gEToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gEjoZEeCmpu-HRutBsg" name="packageMerge" visibility="public" type="_IH8gVDoZEeCmpu-HRutBsg" aggregation="composite" association="_IH8grToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gEzoZEeCmpu-HRutBsg" annotatedElement="_IH8gEjoZEeCmpu-HRutBsg">
+        <body>References the PackageMerges that are owned by this Package.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gFDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gFToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gFjoZEeCmpu-HRutBsg" name="packagedElement" visibility="public" aggregation="composite" association="_IH8gqjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gFzoZEeCmpu-HRutBsg" annotatedElement="_IH8gFjoZEeCmpu-HRutBsg">
+        <body>Specifies the packageable elements that are owned by this Package.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gGDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gGToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gGjoZEeCmpu-HRutBsg" name="profileApplication" visibility="public" type="_IH8gbDoZEeCmpu-HRutBsg" aggregation="composite" association="_IH8grzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gGzoZEeCmpu-HRutBsg" annotatedElement="_IH8gGjoZEeCmpu-HRutBsg">
+        <body>References the ProfileApplications that indicate which profiles have been applied to the Package.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gHDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gHToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gHjoZEeCmpu-HRutBsg" name="allApplicableStereotypes" visibility="public" isQuery="true" bodyCondition="_IH8gIDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gHzoZEeCmpu-HRutBsg" annotatedElement="_IH8gHjoZEeCmpu-HRutBsg">
+        <body>The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gIDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gHjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gIToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>let ownedPackages : Bag(Package) = ownedMember->select(oclIsKindOf(Package))->collect(oclAsType(Package)) in&#xD;&#xA; ownedStereotype->union(ownedPackages.allApplicableStereotypes())->flatten()->asSet()&#xD;&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gIjoZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gIzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gJDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gJToZEeCmpu-HRutBsg" name="containingProfile" visibility="public" isQuery="true" bodyCondition="_IH8gJzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gJjoZEeCmpu-HRutBsg" annotatedElement="_IH8gJToZEeCmpu-HRutBsg">
+        <body>The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gJzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gJToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gKDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if self.oclIsKindOf(Profile) then &#xD;&#xA;&#x9;self.oclAsType(Profile)&#xD;&#xA;else&#xD;&#xA;&#x9;self.namespace.oclAsType(Package).containingProfile()&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gKToZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gKjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gKzoZEeCmpu-HRutBsg" name="makesVisible" visibility="public" isQuery="true" precondition="_IH8gLToZEeCmpu-HRutBsg" bodyCondition="_IH8gLzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gLDoZEeCmpu-HRutBsg" annotatedElement="_IH8gKzoZEeCmpu-HRutBsg">
+        <body>The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gLToZEeCmpu-HRutBsg" name="pre" constrainedElement="_IH8gKzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gLjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>member->includes(el)</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gLzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gKzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gMDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedMember->includes(el) or&#xA;(elementImport->select(ei|ei.importedElement = VisibilityKind::public)->collect(importedElement.oclAsType(NamedElement))->includes(el)) or&#xA;(packageImport->select(visibility = VisibilityKind::public)->collect(importedPackage.member->includes(el))->notEmpty())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gMToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gMjoZEeCmpu-HRutBsg" name="el" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gMzoZEeCmpu-HRutBsg" name="mustBeOwned" visibility="public" isQuery="true" bodyCondition="_IH8gNToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gNDoZEeCmpu-HRutBsg" annotatedElement="_IH8gMzoZEeCmpu-HRutBsg">
+        <body>The query mustBeOwned() indicates whether elements of this type must have an owner.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gNToZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gMzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gNjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gNzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3IzSDoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gODoZEeCmpu-HRutBsg" name="nestedPackage" visibility="public" isQuery="true" bodyCondition="_IH8gOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gOToZEeCmpu-HRutBsg" annotatedElement="_IH8gODoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Package::/nestedPackage : Package</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gOjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gODoZEeCmpu-HRutBsg _IH8gAzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gOzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Package))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gPDoZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gPToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gPjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gPzoZEeCmpu-HRutBsg" name="ownedStereotype" visibility="public" isQuery="true" bodyCondition="_IH8gQToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gQDoZEeCmpu-HRutBsg" annotatedElement="_IH8gPzoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Package::/ownedStereotype : Stereotype</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gQToZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gPzoZEeCmpu-HRutBsg _IH8gCjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gQjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gQzoZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gRDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gRToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gRjoZEeCmpu-HRutBsg" name="ownedType" visibility="public" isQuery="true" bodyCondition="_IH8gSDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gRzoZEeCmpu-HRutBsg" annotatedElement="_IH8gRjoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Package::/ownedType : Type</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gSDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gRjoZEeCmpu-HRutBsg _IH8gDjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gSToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>packagedElement->select(oclIsKindOf(Type))->collect(oclAsType(Type))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gSjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gSzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gTDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gTToZEeCmpu-HRutBsg" name="visibleMembers" visibility="public" isQuery="true" bodyCondition="_IH8gTzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gTjoZEeCmpu-HRutBsg" annotatedElement="_IH8gTToZEeCmpu-HRutBsg">
+        <body>The query visibleMembers() defines which members of a Package can be accessed outside it.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gTzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gTToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gUDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>member->select( m | m.oclIsKindOf(PackageableElement) and self.makesVisible(m))->collect(oclAsType(PackageableElement))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gUToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gUjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gUzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8gVDoZEeCmpu-HRutBsg" name="PackageMerge">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gVToZEeCmpu-HRutBsg" annotatedElement="_IH8gVDoZEeCmpu-HRutBsg">
+      <body>A package merge defines how the contents of one package are extended by the contents of another package.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8gVjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gVzoZEeCmpu-HRutBsg" name="mergedPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" association="_IH8gpjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gWDoZEeCmpu-HRutBsg" annotatedElement="_IH8gVzoZEeCmpu-HRutBsg">
+        <body>References the Package that is to be merged with the receiving package of the PackageMerge.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gWToZEeCmpu-HRutBsg" name="receivingPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" association="_IH8grToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gWjoZEeCmpu-HRutBsg" annotatedElement="_IH8gWToZEeCmpu-HRutBsg">
+        <body>References the Package that is being extended with the contents of the merged package of the PackageMerge.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8gWzoZEeCmpu-HRutBsg" name="Profile">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gXDoZEeCmpu-HRutBsg" annotatedElement="_IH8gWzoZEeCmpu-HRutBsg">
+      <body>A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gXToZEeCmpu-HRutBsg" name="metaclass_reference_not_specialized" constrainedElement="_IH8gWzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gXjoZEeCmpu-HRutBsg" annotatedElement="_IH8gXToZEeCmpu-HRutBsg">
+        <body>An element imported as a metaclassReference is not specialized or generalized in a Profile.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gXzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>metaclassReference.importedElement->&#xD;&#xA;&#x9;select(c | c.oclIsKindOf(Classifier) and&#xD;&#xA;&#x9;&#x9;(c.oclAsType(Classifier).allParents()->collect(namespace)->includes(self)))->isEmpty()&#xD;&#xA;and &#xD;&#xA;packagedElement->&#xD;&#xA;    select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier).allParents())->&#xD;&#xA;       intersection(metaclassReference.importedElement->select(oclIsKindOf(Classifier))->collect(oclAsType(Classifier)))->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gYDoZEeCmpu-HRutBsg" name="references_same_metamodel" constrainedElement="_IH8gWzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gYToZEeCmpu-HRutBsg" annotatedElement="_IH8gYDoZEeCmpu-HRutBsg">
+        <body>All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gYjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages()->&#xD;&#xA;  union(metaclassReference.importedElement.allOwningPackages() )->notEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8gYzoZEeCmpu-HRutBsg" general="_IH8f9joZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gZDoZEeCmpu-HRutBsg" name="metaclassReference" visibility="public" aggregation="composite" association="_IH8goDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gZToZEeCmpu-HRutBsg" annotatedElement="_IH8gZDoZEeCmpu-HRutBsg">
+        <body>References a metaclass that may be extended.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzTToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gZjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gZzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShoDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gaDoZEeCmpu-HRutBsg" name="metamodelReference" visibility="public" aggregation="composite" association="_IH8gozoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gaToZEeCmpu-HRutBsg" annotatedElement="_IH8gaDoZEeCmpu-HRutBsg">
+        <body>References a package containing (directly or indirectly) metaclasses that may be extended.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh8ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gajoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gazoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShtDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8gbDoZEeCmpu-HRutBsg" name="ProfileApplication">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gbToZEeCmpu-HRutBsg" annotatedElement="_IH8gbDoZEeCmpu-HRutBsg">
+      <body>A profile application is used to show which profiles have been applied to a package.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8gbjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gbzoZEeCmpu-HRutBsg" name="appliedProfile" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" association="_IH8gnDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gcDoZEeCmpu-HRutBsg" annotatedElement="_IH8gbzoZEeCmpu-HRutBsg">
+        <body>References the Profiles that are applied to a Package through this ProfileApplication.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gcToZEeCmpu-HRutBsg" name="applyingPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" association="_IH8grzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gcjoZEeCmpu-HRutBsg" annotatedElement="_IH8gcToZEeCmpu-HRutBsg">
+        <body>The package that owns the profile application.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8gczoZEeCmpu-HRutBsg" name="isStrict" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gdDoZEeCmpu-HRutBsg" annotatedElement="_IH8gczoZEeCmpu-HRutBsg">
+        <body>Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_IH8gdToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IH8gdjoZEeCmpu-HRutBsg" name="Stereotype">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gdzoZEeCmpu-HRutBsg" annotatedElement="_IH8gdjoZEeCmpu-HRutBsg">
+      <body>A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8geDoZEeCmpu-HRutBsg" name="binaryAssociationsOnly" constrainedElement="_IH8gdjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8geToZEeCmpu-HRutBsg" annotatedElement="_IH8geDoZEeCmpu-HRutBsg">
+        <body>Stereotypes may only participate in binary associations.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gejoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>ownedAttribute.association->forAll(memberEnd->size()=2)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gezoZEeCmpu-HRutBsg" name="generalize" constrainedElement="_IH8gdjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gfDoZEeCmpu-HRutBsg" annotatedElement="_IH8gezoZEeCmpu-HRutBsg">
+        <body>A Stereotype may only generalize or specialize another Stereotype.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gfToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>allParents()->forAll(oclIsKindOf(Stereotype)) &#xD;&#xA;and Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype)) implies c.oclIsKindOf(Stereotype))&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gfjoZEeCmpu-HRutBsg" name="name_not_clash" constrainedElement="_IH8gdjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gfzoZEeCmpu-HRutBsg" annotatedElement="_IH8gfjoZEeCmpu-HRutBsg">
+        <body>Stereotype names should not clash with keyword names for the extended model element.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8ggDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8ggToZEeCmpu-HRutBsg" name="associationEndOwnership" constrainedElement="_IH8gdjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8ggjoZEeCmpu-HRutBsg" annotatedElement="_IH8ggToZEeCmpu-HRutBsg">
+        <body>Where a stereotype’s property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8ggzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>ownedAttribute&#xD;&#xA;->select(association->notEmpty() and not association.oclIsKindOf(Extension) and not type.oclIsKindOf(Stereotype))&#xD;&#xA;->forAll(opposite.owner = association)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8ghDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8ghToZEeCmpu-HRutBsg" name="icon" visibility="public" type="_IH8f5DoZEeCmpu-HRutBsg" aggregation="composite" association="_IH8gmToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8ghjoZEeCmpu-HRutBsg" annotatedElement="_IH8ghToZEeCmpu-HRutBsg">
+        <body>Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8ghzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8giDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IH8giToZEeCmpu-HRutBsg" name="profile" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" association="_IH8glToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gijoZEeCmpu-HRutBsg" annotatedElement="_IH8giToZEeCmpu-HRutBsg">
+        <body>The profile that directly or indirectly contains this stereotype.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gizoZEeCmpu-HRutBsg" name="containingProfile" visibility="public" isQuery="true" bodyCondition="_IH8gjToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gjDoZEeCmpu-HRutBsg" annotatedElement="_IH8gizoZEeCmpu-HRutBsg">
+        <body>The query containingProfile returns the closest profile directly or indirectly containing this stereotype.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gjToZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gizoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gjjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.namespace.oclAsType(Package).containingProfile()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8gjzoZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IH8gkDoZEeCmpu-HRutBsg" name="profile" visibility="public" isQuery="true" bodyCondition="_IH8gkjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_IH8gkToZEeCmpu-HRutBsg" annotatedElement="_IH8gkDoZEeCmpu-HRutBsg">
+        <body>A stereotype must be contained, directly or indirectly, in a profile.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_IH8gkjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_IH8gkDoZEeCmpu-HRutBsg _IH8giToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IH8gkzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.containingProfile()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IH8glDoZEeCmpu-HRutBsg" name="result" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8glToZEeCmpu-HRutBsg" name="A_profile_stereotype" memberEnd="_IH8giToZEeCmpu-HRutBsg _IH8gljoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gljoZEeCmpu-HRutBsg" name="stereotype" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" association="_IH8glToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8glzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gmDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gmToZEeCmpu-HRutBsg" name="A_icon_stereotype" memberEnd="_IH8ghToZEeCmpu-HRutBsg _IH8gmjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gmjoZEeCmpu-HRutBsg" name="stereotype" visibility="public" type="_IH8gdjoZEeCmpu-HRutBsg" association="_IH8gmToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gmzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gnDoZEeCmpu-HRutBsg" name="A_appliedProfile_profileApplication" memberEnd="_IH8gbzoZEeCmpu-HRutBsg _IH8gnToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gnToZEeCmpu-HRutBsg" name="profileApplication" visibility="public" type="_IH8gbDoZEeCmpu-HRutBsg" association="_IH8gnDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gnjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gnzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8goDoZEeCmpu-HRutBsg" name="A_metaclassReference_profile" memberEnd="_IH8gZDoZEeCmpu-HRutBsg _IH8goToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8goToZEeCmpu-HRutBsg" name="profile" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" association="_IH8goDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gojoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzWzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gozoZEeCmpu-HRutBsg" name="A_metamodelReference_profile" memberEnd="_IH8gaDoZEeCmpu-HRutBsg _IH8gpDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gpDoZEeCmpu-HRutBsg" name="profile" visibility="public" type="_IH8gWzoZEeCmpu-HRutBsg" association="_IH8gozoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gpToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Sh-ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gpjoZEeCmpu-HRutBsg" name="A_mergedPackage_packageMerge" memberEnd="_IH8gVzoZEeCmpu-HRutBsg _IH8gpzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gpzoZEeCmpu-HRutBsg" name="packageMerge" visibility="public" type="_IH8gVDoZEeCmpu-HRutBsg" association="_IH8gpjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gqDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gqToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gqjoZEeCmpu-HRutBsg" name="A_packagedElement_owningPackage" memberEnd="_IH8gFjoZEeCmpu-HRutBsg _IH8gqzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gqzoZEeCmpu-HRutBsg" name="owningPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" association="_IH8gqjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8grDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8grToZEeCmpu-HRutBsg" name="A_packageMerge_receivingPackage" memberEnd="_IH8gEjoZEeCmpu-HRutBsg _IH8gWToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8grjoZEeCmpu-HRutBsg" name="A_nestedPackage_nestingPackage" memberEnd="_IH8gAzoZEeCmpu-HRutBsg _IH8gBzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8grzoZEeCmpu-HRutBsg" name="A_profileApplication_applyingPackage" memberEnd="_IH8gGjoZEeCmpu-HRutBsg _IH8gcToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gsDoZEeCmpu-HRutBsg" name="A_ownedType_package">
+    <memberEnd xmi:type="uml:Property" href="#_IH8gDjoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SifjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gsToZEeCmpu-HRutBsg" name="A_ownedStereotype_owningPackage" memberEnd="_IH8gCjoZEeCmpu-HRutBsg _IH8gszoZEeCmpu-HRutBsg" isDerived="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_IH8gsjoZEeCmpu-HRutBsg" general="_IH8gqjoZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gszoZEeCmpu-HRutBsg" name="owningPackage" visibility="public" type="_IH8f9joZEeCmpu-HRutBsg" redefinedProperty="_IH8gqzoZEeCmpu-HRutBsg" association="_IH8gsToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8gtDoZEeCmpu-HRutBsg" name="A_type_extensionEnd" memberEnd="_IH8f3DoZEeCmpu-HRutBsg _IH8gtToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8gtToZEeCmpu-HRutBsg" name="extensionEnd" visibility="public" type="_IH8fzjoZEeCmpu-HRutBsg" association="_IH8gtDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IH8gtjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IH8gtzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SinToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IH8guDoZEeCmpu-HRutBsg" name="A_ownedEnd_extension" memberEnd="_IH8fvToZEeCmpu-HRutBsg _IH8guToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IH8guToZEeCmpu-HRutBsg" name="extension" visibility="public" type="_IH8frzoZEeCmpu-HRutBsg" association="_IH8guDoZEeCmpu-HRutBsg">
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-LToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

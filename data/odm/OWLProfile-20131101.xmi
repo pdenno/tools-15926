@@ -1,0 +1,1541 @@
+<?xml version='1.0' ?>
+<xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701" xmlns:StandardProfileL3="http://www.omg.org/spec/UML/20110701/StandardProfileL3">
+  <xmi:documentation xmi:type="xmi:Documentation">
+    <exporter>MagicDraw Clean XMI Exporter</exporter>
+    <exporterVersion>17.0.4</exporterVersion>
+  </xmi:documentation>
+  <uml:Profile xmi:id="_12_5_1_137b03ac_1194319380250_490899_3794" name="OWLProfile" URI="http://www.omg.org/spec/ODM/20131101/OWLProfile.xmi">
+    <metamodelReference xmi:idref="_12_5_1_137b03ac_1194319380250_490899_3794_packageImportcreatedOnLoad"/>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_137b03ac_1264011100908_503488_1577" body="Description: This package defines the ODM 1.1 UML Profile for OWL, November 2013.">
+      <annotatedElement xmi:idref="_12_5_1_137b03ac_1194319380250_490899_3794"/>
+    </ownedComment>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_12_5_1_137b03ac_1194319380250_490899_3794_packageImportcreatedOnLoad">
+      <importedPackage href="http://www.omg.org/spec/UML/20110701/UML.xmi#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_17_0_4_1_e980341_1380031514767_274627_3782">
+      <importedPackage href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1193948135234_354269_2454"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288731264841_730525_2620">
+      <memberEnd xmi:idref="_16_8_e980341_1288731264841_98557_2621"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288731264842_441908_2622"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288731264842_441908_2622"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288731264842_441908_2622" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288731257865_134805_2619" association="_16_8_e980341_1288731264841_730525_2620">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288731264842_156136_2623"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1254862709016_884318_1353" name="Entity" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262553260178_50454_1718" body="Entities are the fundamental building blocks of OWL 2 ontologies, and they define the vocabulary — the named terms — of an ontology.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1254862709016_884318_1353"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_4_1_e980341_1377021257726_455335_4134">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_5_2_630020f_1250725403251_896961_1023"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_5_4_630020f_1254862757829_522509_1375" name="versionInfo" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_2_15100de_1313775518860_911639_1645"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_17_0_2_15100de_1313775518860_729314_1646" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_2c17055e_1195865915735_652749_2636" name="isDeprecated" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_2c17055e_1195865980038_229124_2638"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_16_0_1_630020f_1243640369496_46107_1281"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_12_5_1_137b03ac_1194366605906_334976_1042">
+      <memberEnd xmi:idref="_12_5_1_137b03ac_1194366605906_519223_1043"/>
+      <memberEnd xmi:idref="_12_5_1_137b03ac_1194366605906_125932_1044"/>
+      <navigableOwnedEnd xmi:idref="_12_5_1_137b03ac_1194366605906_125932_1044"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_12_5_1_137b03ac_1194366605906_125932_1044" name="extension_owlValue" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194366574765_954001_1036" association="_12_5_1_137b03ac_1194366605906_334976_1042">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194366605906_769981_1045"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288291897251_310320_4959">
+      <memberEnd xmi:idref="_16_8_e980341_1288291897251_915332_4960"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288291897252_646648_4961"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288291897252_646648_4961"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288291897252_646648_4961" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288291888649_275167_4958" association="_16_8_e980341_1288291897251_310320_4959">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288291897252_848685_4962"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288299181064_391266_5097" name="onClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288299494688_320591_5131" body="All cardinality restrictions can be qualified or unqualified: in the former case, the cardinality restriction only applies to individuals that are connected by the object property expression and are instances of the qualifying class expression; in the latter case the restriction applies to all individuals that are connected by the object property expression (this is equivalent to the qualified case with the qualifying class expression equal to owl:Thing).  &#xA;&#xA;The onClass stereotype is used for qualified cardinality restrictions to indicate the qualifying class expression.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288299181064_391266_5097"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288299190071_468302_5099" name="base_Dependency" visibility="private" association="_16_8_e980341_1288299190071_936098_5098">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288733323059_18873_3118">
+      <memberEnd xmi:idref="_16_8_e980341_1288733323060_364513_3119"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288733323060_188394_3120"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288733323060_188394_3120"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288733323060_188394_3120" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288733318220_226339_3117" association="_16_8_e980341_1288733323059_18873_3118">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288733323060_784172_3121"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288299605732_326852_5135">
+      <memberEnd xmi:idref="_16_8_e980341_1288299605732_731997_5136"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288299605732_954510_5137"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288299605732_954510_5137"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288299605732_954510_5137" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288299585746_786496_5134" association="_16_8_e980341_1288299605732_326852_5135">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288299605733_557236_5138"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749029859_298642_1747" name="disjointProperties">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749576192_437209_2017" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194320082953_752842_4020" name="annotationProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262304676542_851833_2540" body="OWL annotations provide a means to add metadata or make statements about elements of an OWL ontology, including annotations of annotations, outside of the set of axioms used as a basis for reasoning.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194320082953_752842_4020"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287456476906_181527_2439" name="annotationTarget">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194320082953_752842_4020"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287456476907_535277_2440">
+          <body>(self.target.oclType()=oclIsKindOf(Entity)) or (self.target.oclType()=oclIsKindOf(RDFProfile::literal)) or (self.target.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1254863128311_58684_1439" general="_16_5_4_630020f_1254862709016_884318_1353"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1287355879931_316373_1539">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1286406966125_122245_2134"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1218004287524_94739_338">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004287540_739772_339"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004287540_458292_340"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1218004287540_458292_340"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1218004287540_458292_340" name="extension_allValuesFrom" visibility="private" aggregation="composite" type="_15_0_1_137b03ac_1218003170728_400194_3316" association="_15_0_1_137b03ac_1218004287524_94739_338">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1218004287540_39308_341"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202881079281_754706_2418">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881079281_367794_2419"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881079281_112874_2420"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202881079281_112874_2420"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202881079281_112874_2420" name="extension_allDifferent" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194371151656_268356_1669" association="_15_0_1_137b03ac_1202881079281_754706_2418">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202881079281_424093_2421"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1203013883734_956239_1778">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1203013883734_929194_1779"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1203013883750_471815_1780"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1203013883750_471815_1780"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1203013883750_471815_1780" name="extension_intersectionOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194366769812_837442_1073" association="_15_0_1_137b03ac_1203013883734_956239_1778">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1203013883750_696187_1781"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202880979500_615963_2398">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880979500_84622_2399"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880979500_797089_2400"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202880979500_797089_2400"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202880979500_797089_2400" name="extension_complementOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194327435046_139665_4501" association="_15_0_1_137b03ac_1202880979500_615963_2398">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202880979500_243330_2401"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288732291343_733710_2883">
+      <memberEnd xmi:idref="_16_8_e980341_1288732291343_331627_2884"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288732291344_714523_2885"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288732291344_714523_2885"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288732291344_714523_2885" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288732280092_935884_2882" association="_16_8_e980341_1288732291343_733710_2883">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288732291344_232146_2886"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_630020f_1262551030432_905013_1655" name="AnonymousIndividual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262551634239_604135_1688" body="An OWL 2 anonymous individual (i.e., one that has no identity, synonymous with an RDF blank node).">
+        <annotatedElement xmi:idref="_16_6_630020f_1262551030432_905013_1655"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_6_630020f_1262551521479_244602_1684">
+        <constrainedElement xmi:idref="_16_6_630020f_1262551030432_905013_1655"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_6_630020f_1262551521479_336817_1685">
+          <body>self.label -&gt; isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_6_630020f_1262551558502_982033_1686">
+        <constrainedElement xmi:idref="_16_6_630020f_1262551030432_905013_1655"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_6_630020f_1262551558502_204563_1687">
+          <body>self.identifier -&gt; isEmpty()</body>
+          <language>English</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262551070175_454874_1679" general="_15_0_137b03ac_1201330208281_398389_2705"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1262551037731_30329_1657" name="base_InstanceSpecification" visibility="private" association="_16_6_630020f_1262551037731_928635_1656">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#InstanceSpecification"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299354748676_467430_2337">
+      <memberEnd xmi:idref="_16_9_15100de_1299354748676_249126_2338"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299354748676_422624_2339"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299354748676_422624_2339"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299354748676_422624_2339" name="extension_ComplementDatatype" visibility="private" aggregation="composite" type="_16_9_15100de_1299354348370_549832_2062" association="_16_9_15100de_1299354748676_467430_2337">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299354748676_50329_2340"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_1_15100de_1267002336474_77302_1224">
+      <memberEnd xmi:idref="_16_6_1_15100de_1267002336474_923238_1225"/>
+      <memberEnd xmi:idref="_16_6_1_15100de_1267002336474_879872_1226"/>
+      <navigableOwnedEnd xmi:idref="_16_6_1_15100de_1267002336474_879872_1226"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_1_15100de_1267002336474_879872_1226" name="extension_equivalentProperty" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194370383046_902286_1389" association="_16_6_1_15100de_1267002336474_77302_1224">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_1_15100de_1267002336475_881696_1227"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1298771382155_422672_1657" name="equivalentDatatype">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1298771425484_283486_1669" name="base_Generalization" visibility="private" association="_16_9_15100de_1298771425483_404064_1668">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1298771425487_561838_1674" name="base_Dependency" visibility="private" association="_16_9_15100de_1298771425487_528875_1673">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_0_1_630020f_1243638647195_160715_370">
+      <memberEnd xmi:idref="_16_0_1_630020f_1243638647196_519408_371"/>
+      <memberEnd xmi:idref="_16_0_1_630020f_1243638647196_600134_372"/>
+      <navigableOwnedEnd xmi:idref="_16_0_1_630020f_1243638647196_600134_372"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_0_1_630020f_1243638647196_600134_372" name="extension_inverseOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194370700765_231238_1554" association="_16_0_1_630020f_1243638647195_160715_370">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_0_1_630020f_1243638647196_271064_373"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288227917176_591289_3206" name="versionInfo">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288228018731_785473_3281" body="The owl:versionInfo annotation property can be used to provide an IRI with a string that describes the IRI's version.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288227917176_591289_3206"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1288228104626_336328_3306" name="versionInfoTarget">
+        <constrainedElement xmi:idref="_16_8_e980341_1288227917176_591289_3206"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288228104626_755541_3307">
+          <body>(self.target.oclType()=oclIsKindOf(RDFProfile::literal))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288986143565_321227_2044">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1288985084717_979212_1326"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288726877570_248191_2532">
+      <memberEnd xmi:idref="_16_8_e980341_1288726877571_610371_2533"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288726877571_356462_2534"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288726877571_356462_2534"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288726877571_356462_2534" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288726869106_737025_2531" association="_16_8_e980341_1288726877570_248191_2532">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288726877571_634546_2535"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194371445218_26410_1722" name="DataRange" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_0_1_630020f_1243639041013_805375_809" name="base_DataType" visibility="private" association="_16_0_1_630020f_1243639041013_735123_808">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#DataType"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1218004725071_765436_432">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004725071_132572_433"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004725071_659881_434"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1218004725071_659881_434"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1218004725071_659881_434" name="extension_hasValue" visibility="private" aggregation="composite" type="_15_0_1_137b03ac_1218004603149_244122_426" association="_15_0_1_137b03ac_1218004725071_765436_432">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1218004725071_584308_435"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1291791132341_526013_1712">
+      <memberEnd xmi:idref="_16_9_15100de_1291791132341_699495_1713"/>
+      <memberEnd xmi:idref="_16_9_15100de_1291791132341_546960_1714"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1291791132341_546960_1714"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1291791132341_546960_1714" name="extension_" visibility="private" aggregation="composite" type="_16_9_15100de_1291791117330_591958_1669" association="_16_9_15100de_1291791132341_526013_1712">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1291791132341_525526_1715"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288731257865_134805_2619" name="Annotation">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288732997220_349617_3041" general="_16_8_e980341_1288291025077_788807_4355"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288731264841_98557_2621" name="base_Class" visibility="private" association="_16_8_e980341_1288731264841_730525_2620">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1299354348370_549832_2062" name="ComplementDatatype">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1299354748657_365095_2336" general="_12_5_1_137b03ac_1194371445218_26410_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299354748676_249126_2338" name="base_DataType" visibility="private" association="_16_9_15100de_1299354748676_467430_2337">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#DataType"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_137b03ac_1201330087296_976374_2508">
+      <memberEnd xmi:idref="_15_0_137b03ac_1201330087296_389960_2509"/>
+      <memberEnd xmi:idref="_15_0_137b03ac_1201330087296_136094_2510"/>
+      <navigableOwnedEnd xmi:idref="_15_0_137b03ac_1201330087296_136094_2510"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_137b03ac_1201330087296_136094_2510" name="extension_singleton" visibility="private" aggregation="composite" type="_12_5_1_2c17055e_1195867959734_869501_2760" association="_15_0_137b03ac_1201330087296_976374_2508">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_137b03ac_1201330087296_722945_2511"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194369864359_316287_1200" name="objectProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262550705568_195392_1600" body="Object properties in OWL link individuals to other individuals.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194369864359_316287_1200"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_0_1_630020f_1244328311735_483810_768" general="_12_5_1_137b03ac_1194370054984_719501_1243"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_5_4_630020f_1257373342538_873208_921" name="isAsymmetric" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_5_4_630020f_1257373365988_571830_923"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194369925281_156632_1216" name="isInverseFunctional" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194369961109_821867_1217"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_5_4_630020f_1257373291140_340306_917" name="isIrreflexive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_5_4_630020f_1257373311717_466363_919"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_5_4_630020f_1257373167888_204109_913" name="isReflexive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_5_4_630020f_1257373251296_501689_915"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194369964625_918729_1219" name="isSymmetric" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194369990203_456008_1220"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_2c17055e_1195867072829_603538_2738" name="isTransitive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_2c17055e_1195867091446_794334_2740"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_630020f_1262642829902_31451_1257" name="SurrogateObjectProperty">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262642864285_180703_1281">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_0_1_630020f_1244140884212_791691_295"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1262642840224_449876_1259" name="base_Class" visibility="private" association="_16_6_630020f_1262642840224_729876_1258">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288299585746_786496_5134" name="hasSelf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288299736083_535456_5168" body="The ObjectHasSelf class expression contains those individuals that are connected by an object property expression to themselves.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288299585746_786496_5134"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288299605732_731997_5136" name="base_Dependency" visibility="private" association="_16_8_e980341_1288299605732_326852_5135">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288359422075_870880_2563" name="hasKey">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288359552883_54805_2585" body="A key axiom HasKey( CE ( OPE1 ... OPEm ) ( DPE1 ... DPEn ) ) states that each (named) instance of the class expression CE is uniquely identified by the object property expressions OPEi and/or the data property experssions DPEj — that is, no two distinct (named) instances of CE can coincide on the values of all object property expressions OPEi and all data property expressions DPEj. In each such axiom in an OWL ontology, m or n (or both) MUST be larger than zero. A key axiom of the form HasKey( owl:Thing ( OPE ) () ) is similar to the axiom InverseFunctionalObjectProperty( OPE ), the main differences being that the former axiom is applicable only to individuals that are explicitly named in an ontology, while the latter axiom is also applicable to individuals whose existence is implied by existential quantification.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288359422075_870880_2563"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288359570378_944274_2588" general="_16_8_e980341_1288291025077_788807_4355"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299371866504_123935_1693" name="base_Dependency" visibility="private" association="_16_9_15100de_1299371866444_825625_1692">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194366574765_954001_1036" name="owlValue">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194366605906_519223_1043" name="base_Property" visibility="private" association="_12_5_1_137b03ac_1194366605906_334976_1042">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194366645250_491746_1065" name="hasValue" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#InstanceSpecification"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194366667687_273681_1067"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_12_5_1_137b03ac_1194366667687_575170_1068" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194366672890_7477_1069" name="someValuesFrom" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194366708875_642846_1071"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1222750173894_36563_3953" name="allValuesFrom" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1222750210691_483242_3955"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194325570734_68953_4443" name="owlRestriction">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262374143544_491597_2576" body="Restriction classes are classes defined through property restrictions -- they are defined by constraining set of individuals that may be included in the class by restricting range of a  property of that class.  These restrictions may include restrictions on the values that property may have, or the number of values it may have.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194325570734_68953_4443"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1255033873675_656421_934" general="_16_5_4_630020f_1255032857717_48736_934"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194325727921_756495_4497" name="onProperty" visibility="public" type="_12_5_1_137b03ac_1194370054984_719501_1243"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_0_1_630020f_1243640148444_793981_794" name="cardinality" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#UnlimitedNatural"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_0_1_630020f_1243640203112_968303_797"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_0_1_630020f_1243640219340_410935_799" name="minCardinality" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#UnlimitedNatural"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_0_1_630020f_1243640232047_468186_802"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_0_1_630020f_1243640263213_893874_804" name="maxCardinality" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#UnlimitedNatural"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_0_1_630020f_1243640277394_290489_807"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299353622873_722121_1623" name="hasSelf" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299353672756_939821_1637"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194325413515_18128_4389" name="EnumeratedClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262374897346_52650_2577" body="Enumeration classes define an exhaustive enumeration of individuals that together form the instances of a class.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194325413515_18128_4389"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1255033006088_53344_961" general="_16_5_4_630020f_1255032857717_48736_934"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_2c17055e_1195866041757_380893_2640" name="isComplete" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_2c17055e_1195866069717_521191_2642"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202881036031_851929_2408">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881036031_97260_2409"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881036031_67528_2410"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202881036031_67528_2410"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202881036031_67528_2410" name="extension_sameAs" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194371013171_545685_1611" association="_15_0_1_137b03ac_1202881036031_851929_2408">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202881036031_557294_2411"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288732377388_357149_2954" name="targetValue">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288732384889_363067_2956" name="base_Dependency" visibility="private" association="_16_8_e980341_1288732384889_822084_2955">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288733282284_197767_3093" name="annotatedProperty">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288733288836_498512_3095" name="base_Dependency" visibility="private" association="_16_8_e980341_1288733288836_399289_3094">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194370700765_231238_1554" name="inverseOf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262535231967_564901_1639" body="In RDF and OWL, all properties are binary and directed, from domain to range.  Similarly to UML, property inverses can be either implicit or explicit -- owl:inverseOf allows us to make such properties explicit in OWL.  &#xA;&#xA;Because of the directional nature of properties in OWL, although the reverse of an inverse can be inferred, it is sometimes useful to state both directions, in order to increase run-time performance for some applications. &#xA;&#xA; Note that the domain and range of an OWL inverse property must be object properties.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194370700765_231238_1554"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_0_1_630020f_1243638647196_519408_371" name="base_Dependency" visibility="private" association="_16_0_1_630020f_1243638647195_160715_370">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1299354353267_373446_2068" name="UnionDatatype">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1299354753161_730268_2354" general="_12_5_1_137b03ac_1194371445218_26410_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299354753178_61758_2356" name="base_DataType" visibility="private" association="_16_9_15100de_1299354753178_82398_2355">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#DataType"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288291888649_275167_4958" name="PropertyAxiom" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288292033906_885112_5041" body="Object property axioms can be used to characterize and establish relationships between object property expressions.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288291888649_275167_4958"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288291931582_162670_4998" general="_16_8_e980341_1288291025077_788807_4355"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288291897251_915332_4960" name="base_Class" visibility="private" association="_16_8_e980341_1288291897251_310320_4959">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288732315916_516230_2906" name="targetIndividual">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288732322043_864997_2908" name="base_Dependency" visibility="private" association="_16_8_e980341_1288732322043_78451_2907">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1255033015415_310027_967" name="UnionClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262375851497_690635_2580" body="Union classes define the set of individuals that are members of the union of two or more class expressions.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1255033015415_310027_967"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1255033167535_737334_1071" general="_16_5_4_630020f_1255032857717_48736_934"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1300685778558_883989_1665" name="isDisjointUnion" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1300685834493_968230_1676"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1254953264837_235926_972" name="disjointUnionOf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262477659262_67664_1604" body="A disjointUnionOf generalization set is used together with an anonymous unionClass to define a set union (that is explicitly disjoint).  The generalization set is drawn from the member class expressions to the anonymous union class (i.e., the arrow-head should point to the unionClass). A union can contain one or more member class extensions.  In order to model this, the ontologist must draw individual generalizations, stereotyped by disjointUnionOf, from each member class expression to the anonymous unionClass, then select and group the generalizations together as a generalization set, also stereotyped by disjointUnionOf.&#xA;&#xA;In order to match the OWL semantics, the generalization set should be covering and disjoint (see unionOf for cases where members of the union may be overlapping).&#xA;&#xA;Note that intersections in OWL are analogous to logical disjunction.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1254953264837_235926_972"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_5_4_630020f_1255019668812_658349_994" name="IsCovering">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_5_4_630020f_1255019668812_603846_995">
+          <body>isCovering=true</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_5_4_630020f_1255019707798_301666_996" name="IsDisjoint">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_5_4_630020f_1255019707798_561186_997">
+          <body>isDisjoint=true</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1265505110199_306578_1255" name="base_Generalization" visibility="private" association="_16_6_630020f_1265505110199_613077_1254">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288291036430_627905_4356">
+      <memberEnd xmi:idref="_16_8_e980341_1288291036430_47836_4357"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288291036431_133561_4358"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288291036431_133561_4358"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288291036431_133561_4358" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288291025077_788807_4355" association="_16_8_e980341_1288291036430_627905_4356">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288291036431_110168_4359"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288486825711_133276_2622" name="withRestrictions">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288486967540_265551_2644" body="A datatype restriction DatatypeRestriction( DT F1 lt1 ... Fn ltn ) consists of a unary datatype DT and n pairs ( Fi , lti ). The resulting data range is unary and is obtained by restricting the value space of DT according to the semantics of all ( Fi , vi ) (multiple pairs are interpreted conjunctively), where vi are the data values of the literals lti.&#xA;&#xA;The withRestrictions dependency links the datatype restriction to one or more facet value pairs that restrict the value space.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288486825711_133276_2622"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288486834223_421783_2624" name="base_Dependency" visibility="private" association="_16_8_e980341_1288486834223_811358_2623">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_15_0_1_137b03ac_1218003170728_400194_3316" name="allValuesFrom">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262386792385_194040_2587" body="A restriction containing an owl:allValuesFrom constraint is used to describe a class of all individuals for which all values of the property under consideration are either members of the class extension of the class expression or are data values within the specified data range.  All values expressions (object or data) are essentially used for universal quantification over property expressions.">
+        <annotatedElement xmi:idref="_15_0_1_137b03ac_1218003170728_400194_3316"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1218004287540_739772_339" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1218004287524_94739_338">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288733288836_399289_3094">
+      <memberEnd xmi:idref="_16_8_e980341_1288733288836_498512_3095"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288733288837_801299_3096"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288733288837_801299_3096"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288733288837_801299_3096" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288733282284_197767_3093" association="_16_8_e980341_1288733288836_399289_3094">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288733288837_836699_3097"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_2c17055e_1195867959734_869501_2760" name="Singleton">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262551764871_12344_1689" body="A singleton is a UML class representation of an OWL individual; this provides an alternate graphical notation for the basic owlIndividual instance specification, as needed, to model complex individuals.&#xA;&#xA;For modeling consistency, best practice would be to model both the instance specification and the singleton, and then use the rdfAbout dependency to link the singleton to the instance specification it refines.">
+        <annotatedElement xmi:idref="_12_5_1_2c17055e_1195867959734_869501_2760"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1254864062132_720209_1618" general="_16_5_4_630020f_1254862709016_884318_1353"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_137b03ac_1201330087296_389960_2509" name="base_Class" visibility="private" association="_15_0_137b03ac_1201330087296_976374_2508">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288733256762_209288_3070">
+      <memberEnd xmi:idref="_16_8_e980341_1288733256762_918886_3071"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288733256763_472284_3072"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288733256763_472284_3072"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288733256763_472284_3072" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288733251623_301529_3069" association="_16_8_e980341_1288733256762_209288_3070">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288733256763_977587_3073"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291748956457_218101_1649" name="equivalentClasses">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749555922_736598_1997" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1262642840224_729876_1258">
+      <memberEnd xmi:idref="_16_6_630020f_1262642840224_449876_1259"/>
+      <memberEnd xmi:idref="_16_6_630020f_1262642840224_265088_1260"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1262642840224_265088_1260"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1262642840224_265088_1260" name="extension_" visibility="private" aggregation="composite" type="_16_6_630020f_1262642829902_31451_1257" association="_16_6_630020f_1262642840224_729876_1258">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1262642840225_999331_1261"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202881053078_999916_2413">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881053078_710118_2414"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881053078_959174_2415"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202881053078_959174_2415"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202881053078_959174_2415" name="extension_differentFrom" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194371089171_459705_1640" association="_15_0_1_137b03ac_1202881053078_999916_2413">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202881053078_338903_2416"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1299269260362_93889_1897" name="onType">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299269318572_520290_1917" name="base_Dependency" visibility="private" association="_16_9_15100de_1299269318572_722048_1916">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1292105874160_763763_1615">
+      <memberEnd xmi:idref="_16_9_15100de_1292105874161_17160_1616"/>
+      <memberEnd xmi:idref="_16_9_15100de_1292105874162_236865_1617"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1292105874162_236865_1617"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1292105874162_236865_1617" name="extension_intersectionOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194366769812_837442_1073" association="_16_9_15100de_1292105874160_763763_1615">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1292105874162_802417_1618"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288726869106_737025_2531" name="members">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288726877571_610371_2533" name="base_Dependency" visibility="private" association="_16_8_e980341_1288726877570_248191_2532">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194327435046_139665_4501" name="complementOf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262475233947_414991_1600" body="A complementOf dependency links a class to a class extension, and means that the extension of the target class represents the set complement of the source class (i.e., the extension of the target class contains exactly those individuals that do not belong to the extension of the source class).   owl:complementOf is analogous to logical negation. ">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194327435046_139665_4501"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202880979500_84622_2399" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202880979500_615963_2398">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194370383046_902286_1389" name="equivalentProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262534908112_853098_1638" body="An equivalentProperty dependency links a property to a property expression, and means that the two properties have exactly the same extension (i.e., the properties are synonymous, and can be used interchangeably without changing the meaning of the ontology).  ">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194370383046_902286_1389"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202880474937_778403_2231" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202880474937_680746_2230">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_1_15100de_1267002336474_923238_1225" name="base_Generalization" visibility="private" association="_16_6_1_15100de_1267002336474_77302_1224">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_137b03ac_1201330270796_84095_2711">
+      <memberEnd xmi:idref="_15_0_137b03ac_1201330270796_222609_2712"/>
+      <memberEnd xmi:idref="_15_0_137b03ac_1201330270796_735256_2713"/>
+      <navigableOwnedEnd xmi:idref="_15_0_137b03ac_1201330270796_735256_2713"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_137b03ac_1201330270796_735256_2713" name="extension_owlIndividual" visibility="private" aggregation="composite" type="_15_0_137b03ac_1201330208281_398389_2705" association="_15_0_137b03ac_1201330270796_84095_2711">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_137b03ac_1201330270796_169734_2714"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288359810635_649074_2597">
+      <memberEnd xmi:idref="_16_8_e980341_1288359810636_502146_2598"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288359810636_764352_2599"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288359810636_764352_2599"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288359810636_764352_2599" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288359800746_911826_2596" association="_16_8_e980341_1288359810635_649074_2597">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288359810636_746523_2600"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1255033129536_537002_1047" name="ComplementClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262375754548_730170_2578" body="Complement classes are used to define the complement of a particular class expression.  The relationship is one to one (i.e., a class should have exactly one complement containing -everything- that is not in the class itself).  &#xA;&#xA;Note that complement expressions should be used sparingly, as they may lead to unintended inconsistencies.  For example, animate vs. inanimate objects seem natural complements within the context of things that are tangible objects, but there are also other things in the universe that may not be defined in another ontology as an object, such as ideas or other abstract conceptual notions.  Unless you are quite certain that the closure over a particular class and its complement is complete and true for all cases in which an ontology might be used, it may be safer to say that the classes are disjoint rather than using complement expressions.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1255033129536_537002_1047"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1255033177105_749282_1077" general="_16_5_4_630020f_1255032857717_48736_934"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288291025077_788807_4355" name="Axiom" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288291081156_169504_4384" body="The main component of an OWL 2 ontology is a set of axioms — statements that say what is true in the domain. OWL 2 provides an extensive set of axioms, all of which extend the Axiom class in the structural specification.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288291025077_788807_4355"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288291036430_47836_4357" name="base_Class" visibility="private" association="_16_8_e980341_1288291036430_627905_4356">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1299354367836_41336_2074" name="DatatypeRestriction">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1299354744322_542102_2318" general="_12_5_1_137b03ac_1194371445218_26410_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299354744339_317082_2320" name="base_DataType" visibility="private" association="_16_9_15100de_1299354744339_990969_2319">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#DataType"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239027563_678121_2305" name="minInclusive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239120646_372365_2332"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239054566_208459_2312" name="minExclusive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239200944_518538_2337"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239242784_716873_2339" name="maxExclusive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239277054_13188_2344"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239308135_377251_2346" name="maxInclusive" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239345762_628767_2351"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239385088_229230_2353" name="minLength" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239404657_776171_2358"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239404692_657069_2360" name="length" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239418283_485147_2366"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239418321_890268_2368" name="maxLength" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239431544_175051_2374"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239431583_634199_2376" name="pattern" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239449745_847674_2382"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303239449782_797946_2384" name="langRange" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303239465211_308467_2390"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202881002765_668870_2403">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881002765_387348_2404"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202881002765_394843_2405"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202881002765_394843_2405"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202881002765_394843_2405" name="extension_equivalentClass" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194367300515_647326_1131" association="_15_0_1_137b03ac_1202881002765_668870_2403">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202881002765_78856_2406"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_2_15100de_1273123496928_553021_464">
+      <memberEnd xmi:idref="_16_6_2_15100de_1273123496928_866018_465"/>
+      <memberEnd xmi:idref="_16_6_2_15100de_1273123496928_883527_466"/>
+      <navigableOwnedEnd xmi:idref="_16_6_2_15100de_1273123496928_883527_466"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_2_15100de_1273123496928_883527_466" name="extension_oneOf" visibility="private" aggregation="composite" type="_16_6_2_15100de_1273123479441_410669_458" association="_16_6_2_15100de_1273123496928_553021_464">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_2_15100de_1273123496929_727744_467"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194324599531_868732_4176" name="backwardCompatibleWith">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262311137494_184217_2554" body="The owl:backwardCompatibleWith annotation property specifies the IRI of a prior version of the containing ontology that is compatible with the current version of the containing ontology.  &#xA;&#xA;Within a UML model, owl:backwardCompatibleWith is represented as a dependency from the current model to the model that is a compatible prior version.  This typically means that any changes made are non-destructive (additive and logically consistent with the earlier version).">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194324599531_868732_4176"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287360868982_800731_1871" name="SourceMustBeAnOntologyOrIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324599531_868732_4176"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287360868983_112034_1872">
+          <body>(self.source.oclType()=oclIsKindOf(owlOntology)) or (self.source.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287459656787_842291_2604" name="TargetMustBeAnIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324599531_868732_4176"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287459656787_681736_2605">
+          <body>(self.target.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288986143546_49824_2040">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1288985084717_979212_1326"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288359800746_911826_2596" name="Assertion" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288359853645_57812_2618" body="OWL 2 supports a rich set of axioms for stating assertions — axioms about individuals that are often also called facts.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288359800746_911826_2596"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288359860612_507578_2621" general="_16_8_e980341_1288291025077_788807_4355"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288359810636_502146_2598" name="base_Class" visibility="private" association="_16_8_e980341_1288359810635_649074_2597">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288305219000_505252_5294" name="disjointProperty">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288305224323_306340_5296" name="base_Dependency" visibility="private" association="_16_8_e980341_1288305224323_328966_5295">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299373523785_344628_1862">
+      <memberEnd xmi:idref="_16_9_15100de_1299373523785_91705_1863"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299373523785_707515_1864"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299373523785_707515_1864"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299373523785_707515_1864" name="extension_inverseProperty" visibility="private" aggregation="composite" type="_16_9_15100de_1291791117330_591958_1669" association="_16_9_15100de_1299373523785_344628_1862">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299373523786_202564_1865"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749016988_10308_1685" name="equivalentProperties">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749579465_328642_2030" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194371151656_268356_1669" name="distinctMember">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262553096309_657010_1717" body="distinctMember is used together with an instance of the foundation library AllDifferent class as an idiom for stating that a list of individuals are all different.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194371151656_268356_1669"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202881079281_367794_2419" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202881079281_754706_2418">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1196810825718_788941_1153" name="unionOf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262477467680_372336_1603" body="A unionOf generalization set is used together with an anonymous unionClass to define a set union.  The generalization set is drawn from the member class expressions to the anonymous union class (i.e., the arrow-head should point to the unionClass). A union can contain one or more member class extensions.  In order to model this, the ontologist must draw individual generalizations, stereotyped by unionOf, from each member class expression to the anonymous unionClass, then select and group the generalizations together as a generalization set, also stereotyped by unionOf.&#xA;&#xA;In order to match the OWL semantics, the generalization set should be covering, but may be overlapping (see disjointUnionOf for cases where all members of the union are explicitly disjoint).&#xA;&#xA;Note that intersections in OWL are analogous to logical disjunction.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1196810825718_788941_1153"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_5_4_630020f_1255019473352_452621_970" name="IsCovering">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_5_4_630020f_1255019473354_711734_971">
+          <body>isCovering=true</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_5_4_630020f_1255019609303_759487_992" name="IsDisjoint">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_5_4_630020f_1255019609303_199598_993">
+          <body>isDisjoint=false</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1265504788620_829929_1250" name="base_Generalization" visibility="private" association="_16_6_630020f_1265504788605_832923_1249">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1292105892211_927801_1625" name="base_Dependency" visibility="private" association="_16_9_15100de_1292105892211_831602_1624">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291791117330_591958_1669" name="inverseProperty">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291791132318_68293_1706" general="_12_5_1_137b03ac_1194369864359_316287_1200"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1291791132337_201283_1708" name="base_Property" visibility="private" association="_16_9_15100de_1291791132336_653358_1707">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1291791132341_699495_1713" name="base_Association" visibility="private" association="_16_9_15100de_1291791132341_526013_1712">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Association"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299373523785_91705_1863" name="base_Class" visibility="private" association="_16_9_15100de_1299373523785_344628_1862">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288731547640_732605_2753">
+      <memberEnd xmi:idref="_16_8_e980341_1288731547640_360083_2754"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288731547641_38445_2755"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288731547641_38445_2755"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288731547641_38445_2755" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288731539201_359648_2752" association="_16_8_e980341_1288731547640_732605_2753">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288731547641_709835_2756"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1298771425487_528875_1673">
+      <memberEnd xmi:idref="_16_9_15100de_1298771425487_561838_1674"/>
+      <memberEnd xmi:idref="_16_9_15100de_1298771425487_607410_1675"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1298771425487_607410_1675"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1298771425487_607410_1675" name="extension_equivalentDatatype" visibility="private" aggregation="composite" type="_16_9_15100de_1298771382155_422672_1657" association="_16_9_15100de_1298771425487_528875_1673">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1298771425487_406168_1676"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_15_0_1_137b03ac_1218004603149_244122_426" name="hasValue">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262408360775_65482_1598" body="A restriction containing an owl:hasValue constraint is used to describe a class of all individuals for which the property under consideration has at least one value semantically equal to the value of the restriction (it may have others).">
+        <annotatedElement xmi:idref="_15_0_1_137b03ac_1218004603149_244122_426"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1218004725071_132572_433" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1218004725071_765436_432">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1291791132336_653358_1707">
+      <memberEnd xmi:idref="_16_9_15100de_1291791132337_201283_1708"/>
+      <memberEnd xmi:idref="_16_9_15100de_1291791132337_784827_1709"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1291791132337_784827_1709"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1291791132337_784827_1709" name="extension_" visibility="private" aggregation="composite" type="_16_9_15100de_1291791117330_591958_1669" association="_16_9_15100de_1291791132336_653358_1707">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1291791132337_641549_1710"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194324927578_28788_4263" name="priorVersion">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262311035501_603228_2552" body="The owl:priorVersion annotation property specifies the IRI of a prior version of the containing ontology.  Within a UML model, owl:priorVersion is represented as a dependency from the current model to the model that is a prior version.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194324927578_28788_4263"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287456101449_972867_2254" name="SourceMustBeAnOntologyOrIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324927578_28788_4263"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287456101449_337037_2255">
+          <body>(self.source.oclType()=oclIsKindOf(owlOntology)) or (self.source.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287460103571_276020_2685" name="TargetMustBeAnIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324927578_28788_4263"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287460103571_983226_2686">
+          <body>(self.target.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288986143562_656818_2043">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1288985084717_979212_1326"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288305224323_328966_5295">
+      <memberEnd xmi:idref="_16_8_e980341_1288305224323_306340_5296"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288305224324_493928_5297"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288305224324_493928_5297"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288305224324_493928_5297" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288305219000_505252_5294" association="_16_8_e980341_1288305224323_328966_5295">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288305224324_276323_5298"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194367300515_647326_1131" name="equivalentClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262475085871_220229_1599" body="An equivalentClass dependency links a class to a class expression, and means that the two classes have exactly the same extension (i.e., the exact same set of individuals comprise their extension).">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194367300515_647326_1131"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202881002765_387348_2404" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202881002765_668870_2403">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1265505402574_233864_1620" name="base_Generalization" visibility="private" association="_16_6_630020f_1265505402574_367840_1619">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299354737028_516720_2301">
+      <memberEnd xmi:idref="_16_9_15100de_1299354737029_40851_2302"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299354737029_185252_2303"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299354737029_185252_2303"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299354737029_185252_2303" name="extension_IntersectionDatatype" visibility="private" aggregation="composite" type="_16_9_15100de_1299354244586_944456_2027" association="_16_9_15100de_1299354737028_516720_2301">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299354737029_968364_2304"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1217058403793_109992_2961">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1217058403793_953993_2962"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1217058403793_753022_2963"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1217058403793_753022_2963"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1217058403793_753022_2963" name="extension_onProperty" visibility="private" aggregation="composite" type="_15_0_1_137b03ac_1217058334841_980646_2955" association="_15_0_1_137b03ac_1217058403793_109992_2961">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1217058403793_149051_2964"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1298771425483_404064_1668">
+      <memberEnd xmi:idref="_16_9_15100de_1298771425484_283486_1669"/>
+      <memberEnd xmi:idref="_16_9_15100de_1298771425484_101781_1670"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1298771425484_101781_1670"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1298771425484_101781_1670" name="extension_equivalentDatatype" visibility="private" aggregation="composite" type="_16_9_15100de_1298771382155_422672_1657" association="_16_9_15100de_1298771425483_404064_1668">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1298771425484_844413_1671"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194371013171_545685_1611" name="sameAs">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262553009188_19258_1715" body="owl:sameAs is used to state that two URI references refer to the same individual.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194371013171_545685_1611"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202881036031_97260_2409" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202881036031_851929_2408">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_15_0_137b03ac_1201330208281_398389_2705" name="owlIndividual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262551192645_229519_1680" body="Individuals in OWL are defined via individual axioms (facts), which may include facts about class membership and property values as well as facts regarding individual identity.">
+        <annotatedElement xmi:idref="_15_0_137b03ac_1201330208281_398389_2705"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1295812885918_342235_1735">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_5_2_630020f_1250725403251_896961_1023"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_137b03ac_1201330270796_222609_2712" name="base_InstanceSpecification" visibility="private" association="_15_0_137b03ac_1201330270796_84095_2711">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#InstanceSpecification"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_2_2_15100de_1355449328571_105111_2307" name="isAnonymous" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_2_2_15100de_1355449462720_542950_2308"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_17_0_2_2_15100de_1355449487918_445700_2311"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288299190071_936098_5098">
+      <memberEnd xmi:idref="_16_8_e980341_1288299190071_468302_5099"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288299190090_8310_5100"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288299190090_8310_5100"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288299190090_8310_5100" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288299181064_391266_5097" association="_16_8_e980341_1288299190071_936098_5098">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288299190090_388719_5101"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288733318220_226339_3117" name="annotatedTarget">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288733323060_364513_3119" name="base_Dependency" visibility="private" association="_16_8_e980341_1288733323059_18873_3118">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194367207421_103646_1102" name="disjointWith">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262476931572_978165_1601" body="A disjointWith dependency links a class with a class expression, and states that the source and target classes have no individuals in their extensions in common.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194367207421_103646_1102"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202880522890_935408_2369" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202880522890_711011_2368">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194366769812_837442_1073" name="intersectionOf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262477154307_128224_1602" body="An intersectionOf generalization is used together with an anonymous intersectionClass to define a set intersection.  The generalization is drawn from the intersection class to a class expression that is a member of the intersection (i.e., the arrow-head should point to the class extension at the opposite end of the relationship from the intersectionClass). An intersection can contain one or more member class extensions.  &#xA;&#xA;Note that intersections in OWL are analogous to logical conjunction.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194366769812_837442_1073"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1203013883734_929194_1779" name="base_Generalization" visibility="private" association="_15_0_1_137b03ac_1203013883734_956239_1778">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Generalization"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1292105874161_17160_1616" name="base_Dependency" visibility="private" association="_16_9_15100de_1292105874160_763763_1615">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288486834223_811358_2623">
+      <memberEnd xmi:idref="_16_8_e980341_1288486834223_421783_2624"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288486834223_645603_2625"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288486834223_645603_2625"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288486834223_645603_2625" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288486825711_133276_2622" association="_16_8_e980341_1288486834223_811358_2623">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288486834223_565262_2626"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288732384889_822084_2955">
+      <memberEnd xmi:idref="_16_8_e980341_1288732384889_363067_2956"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288732384890_177471_2957"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288732384890_177471_2957"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288732384890_177471_2957" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288732377388_357149_2954" association="_16_8_e980341_1288732384889_822084_2955">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288732384890_6763_2958"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288487609287_865266_2659" name="onDatatype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288487787406_571397_2681" body="A datatype restriction DatatypeRestriction( DT F1 lt1 ... Fn ltn ) consists of a unary datatype DT and n pairs ( Fi , lti ). The resulting data range is unary and is obtained by restricting the value space of DT according to the semantics of all ( Fi , vi ) (multiple pairs are interpreted conjunctively), where vi are the data values of the literals lti.&#xA;&#xA;The onDatatype dependency links the datatype in question to the restriction.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288487609287_865266_2659"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288487617300_671787_2661" name="base_Dependency" visibility="private" association="_16_8_e980341_1288487617300_992240_2660">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299354753178_82398_2355">
+      <memberEnd xmi:idref="_16_9_15100de_1299354753178_61758_2356"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299354753178_605499_2357"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299354753178_605499_2357"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299354753178_605499_2357" name="extension_UnionDatatype" visibility="private" aggregation="composite" type="_16_9_15100de_1299354353267_373446_2068" association="_16_9_15100de_1299354753178_82398_2355">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299354753178_667544_2358"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749454378_711354_1942" name="naryAxiom" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1291749464920_79262_1944" name="base_InstanceSpecification" visibility="private" association="_16_9_15100de_1291749464920_863838_1943">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#InstanceSpecification"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1291749885507_316383_2209" name="operand" visibility="public">
+        <type href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1193950188718_678043_2735"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1291750454092_197360_2284"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_9_15100de_1291750454092_671433_2285" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1255032857717_48736_934" name="ClassExpression" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262376448723_953007_2581" body="Class expressions provide the basic building blocks for defining sets of individuals in OWL.  &#xA;&#xA;Classes and property expressions are used to construct class expression, (sometimes  called descriptions, as in the OWL 1 specifications), and, in the description logic literature, complex concepts. Class expressions represent sets of individuals by formally specifying conditions on the individuals&apos; properties; individuals satisfying these conditions are said to be instances of the respective class expressions.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1255032857717_48736_934"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1305243005203_273970_2780">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1193953653921_226495_3191"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_5_4_630020f_1255033075588_797584_1003" name="IntersectionClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262375778562_553956_2579" body="Intersection classes define a set of individuals that are members of the intersection of two or more class expressions.">
+        <annotatedElement xmi:idref="_16_5_4_630020f_1255033075588_797584_1003"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_5_4_630020f_1255033173380_179346_1074" general="_16_5_4_630020f_1255032857717_48736_934"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1262551037731_928635_1656">
+      <memberEnd xmi:idref="_16_6_630020f_1262551037731_30329_1657"/>
+      <memberEnd xmi:idref="_16_6_630020f_1262551037731_868876_1658"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1262551037731_868876_1658"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1262551037731_868876_1658" name="extension_" visibility="private" aggregation="composite" type="_16_6_630020f_1262551030432_905013_1655" association="_16_6_630020f_1262551037731_928635_1656">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1262551037731_600142_1659"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288731539201_359648_2752" name="NegativePropertyAssertion">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288731563136_260006_2776" general="_16_8_e980341_1288359800746_911826_2596"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288731547640_360083_2754" name="base_Class" visibility="private" association="_16_8_e980341_1288731547640_732605_2753">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_2_15100de_1273123479441_410669_458" name="oneOf">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_2_15100de_1273123496928_866018_465" name="base_Dependency" visibility="private" association="_16_6_2_15100de_1273123496928_553021_464">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_0_1_630020f_1243639041013_735123_808">
+      <memberEnd xmi:idref="_16_0_1_630020f_1243639041013_805375_809"/>
+      <memberEnd xmi:idref="_16_0_1_630020f_1243639041013_45642_810"/>
+      <navigableOwnedEnd xmi:idref="_16_0_1_630020f_1243639041013_45642_810"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_0_1_630020f_1243639041013_45642_810" name="extension_dataRange" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194371445218_26410_1722" association="_16_0_1_630020f_1243639041013_735123_808">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_0_1_630020f_1243639041013_288513_811"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194319654750_608170_3796" name="owlOntology">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262303860678_732310_2529" body="An ontology specifies a rich description of the terminology, concepts, and the relationships among those concepts relevant to a particular domain or area of interest.  Ontologies can provide insight into the nature of information particular to a given field and are essential to any attempts to arrive at a shared understanding of the relevant concepts.  They may be specified at various levels of complexity and formality depending on the domain and needs of the participants in a given conversation.&#xA;&#xA;An OWL ontology is an ontology that satisfies certain conditions given in the OWL language specifications. The main component of an OWL 2 ontology is its set of axioms. Because the association between an ontology and its axioms is a set, an ontology cannot contain two axioms that are structurally equivalent. Apart from axioms, ontologies can also contain ontology annotations, and they can also import other ontologies.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194319654750_608170_3796"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_12_5_1_137b03ac_1194319767218_179243_3868" isSubstitutable="false">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1194020624296_145941_3320"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_137b03ac_1201300096375_85649_4522" name="versionIRI" visibility="public">
+        <type href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1194021442187_410369_3394"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287358538830_578202_1860"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_2_2_15100de_1361749060018_945215_2304" name="base_Package" visibility="private" association="_17_0_2_2_15100de_1361749060018_486908_2303">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1292105892211_831602_1624">
+      <memberEnd xmi:idref="_16_9_15100de_1292105892211_927801_1625"/>
+      <memberEnd xmi:idref="_16_9_15100de_1292105892211_43264_1626"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1292105892211_43264_1626"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1292105892211_43264_1626" name="extension_unionOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1196810825718_788941_1153" association="_16_9_15100de_1292105892211_831602_1624">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1292105892211_1210_1627"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288228523510_117525_3413" name="deprecated">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288228670178_401162_3530" body="An annotation with the owl:deprecated annotation property and the value equal to true (xsd boolean) can be used to specify that an IRI is deprecated.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288228523510_117525_3413"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1288228813804_758072_3702" name="deprecatedTarget">
+        <constrainedElement xmi:idref="_16_8_e980341_1288228523510_117525_3413"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288228813804_982107_3703">
+          <body>(self.target.oclType()=oclIsKindOf(xsd::boolean))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288986143552_12806_2041">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1288985084717_979212_1326"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288732352677_264839_2930" name="assertionProperty">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288732357991_247049_2932" name="base_Dependency" visibility="private" association="_16_8_e980341_1288732357990_945642_2931">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194324728968_493854_4205" name="owlImports">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262311433374_606221_2555" body="An OWL ontology can import other ontologies in order to gain access to their entities, expressions, and axioms, thus providing the basic facility for ontology modularization.&#xA;&#xA;In UML, this feature is emulated through the package import facility.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194324728968_493854_4205"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_2_15100de_1268091049571_248405_702">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_15_0_1_137b03ac_1225399507515_464557_2841"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288291184901_684351_4499">
+      <memberEnd xmi:idref="_16_8_e980341_1288291184901_580923_4500"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288291184901_619873_4501"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288291184901_619873_4501"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288291184901_619873_4501" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288291175538_972660_4498" association="_16_8_e980341_1288291184901_684351_4499">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288291184902_949149_4502"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288498067355_304228_2702" name="onDataRange">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288498203357_847785_2724" body="For use with qualified cardinality constraints on data properties, the onDataRange dependency links the restriction class to the qualifying datatype.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288498067355_304228_2702"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288498081524_303004_2704" name="base_Dependency" visibility="private" association="_16_8_e980341_1288498081524_579184_2703">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194370054984_719501_1243" name="owlProperty" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262550624441_419978_1598" body="owlProperty is an abstract stereotype used to collect properties common to both OWL object and datatype properties.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194370054984_719501_1243"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_12_5_1_137b03ac_1194370220187_110777_1305" isSubstitutable="false">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1194309085281_252601_2640"/>
+      </generalization>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_4_1_e980341_1377021210801_224112_4112" general="_16_5_4_630020f_1254862709016_884318_1353"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_12_5_1_137b03ac_1194370134781_838016_1262" name="isFunctional" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12_5_1_137b03ac_1194370167718_581367_1263"/>
+      </ownedAttribute>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_16_0_1_630020f_1244328363433_817848_770" name="owlPropertyGeneralizationSet"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_2_15100de_1273082719807_357729_458" name="DataEnumeration">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288730009018_367411_2437" general="_12_5_1_137b03ac_1194371445218_26410_1722"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288498081524_579184_2703">
+      <memberEnd xmi:idref="_16_8_e980341_1288498081524_303004_2704"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288498081525_101717_2705"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288498081525_101717_2705"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288498081525_101717_2705" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288498067355_304228_2702" association="_16_8_e980341_1288498081524_579184_2703">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288498081525_539938_2706"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288732357990_945642_2931">
+      <memberEnd xmi:idref="_16_8_e980341_1288732357991_247049_2932"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288732357991_712749_2933"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288732357991_712749_2933"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288732357991_712749_2933" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288732352677_264839_2930" association="_16_8_e980341_1288732357990_945642_2931">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288732357991_475188_2934"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1265505402574_367840_1619">
+      <memberEnd xmi:idref="_16_6_630020f_1265505402574_233864_1620"/>
+      <memberEnd xmi:idref="_16_6_630020f_1265505402574_115025_1621"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1265505402574_115025_1621"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1265505402574_115025_1621" name="extension_equivalentClass" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194367300515_647326_1131" association="_16_6_630020f_1265505402574_367840_1619">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1265505402574_32104_1622"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202880474937_680746_2230">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880474937_778403_2231"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880474937_189_2232"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202880474937_189_2232"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202880474937_189_2232" name="extension_equivalentProperty" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194370383046_902286_1389" association="_15_0_1_137b03ac_1202880474937_680746_2230">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202880474937_61799_2233"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194371089171_459705_1640" name="differentFrom">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262553038813_427520_1716" body="owl:differentFrom is used to state that two URI references refer to different individuals.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194371089171_459705_1640"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1202881053078_710118_2414" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1202881053078_999916_2413">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_15_0_1_137b03ac_1218004322196_86034_343" name="someValuesFrom">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262387105632_601496_2588" body="A restriction containing an owl:someValuesFrom constraint is used to describe a class of all individuals for which at least one value of the property under consideration is either a member of the class extension of the class expression or a data value within the specified data range.  Some values expressions (object or data) are essentially used for existential quantification over property expressions.">
+        <annotatedElement xmi:idref="_15_0_1_137b03ac_1218004322196_86034_343"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1218004350462_427654_350" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1218004350462_989953_349">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749038941_891312_1809" name="differentIndividuals">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749593384_163266_2056" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194324816000_910224_4234" name="incompatibleWith">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262311044950_288811_2553" body="The owl:incompatibleWith annotation property specifies the IRI of a prior version of the containing ontology that is incompatible with the current version of the containing ontology.  Within a UML model, owl:incompatibleWith is represented as a dependency from the current model to the model that is an incompatible prior version.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194324816000_910224_4234"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287456124860_764766_2265" name="SourceMustBeAnOntologyOrIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324816000_910224_4234"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287456124860_716824_2266">
+          <body>(self.source.oclType()=oclIsKindOf(owlOntology)) or (self.source.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287460564862_129340_2827" name="TargetMustBeAnIRI">
+        <constrainedElement xmi:idref="_12_5_1_137b03ac_1194324816000_910224_4234"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287460564862_156291_2828">
+          <body>(self.target.oclType()=oclIsKindOf(RDFProfile::IRI))</body>
+          <language>OCL2.0</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288986143557_778251_2042">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_8_e980341_1288985084717_979212_1326"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1265505110199_613077_1254">
+      <memberEnd xmi:idref="_16_6_630020f_1265505110199_306578_1255"/>
+      <memberEnd xmi:idref="_16_6_630020f_1265505110199_152334_1256"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1265505110199_152334_1256"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1265505110199_152334_1256" name="extension_disjointUnionOf" visibility="private" aggregation="composite" type="_16_5_4_630020f_1254953264837_235926_972" association="_16_6_630020f_1265505110199_613077_1254">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1265505110199_159852_1257"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194325238078_997500_4316" name="owlClass">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262374113633_941978_2575" body="The class of  OWL classes.  In OWL 2, the class of -named- OWL classes.&#xA;&#xA;Like RDF classes (and, in fact, UML classes), every OWL class represents a set of individuals, i.e., its extension. A class has an intensional meaning (the underlying concept) which is related but not equal to its class extension. Two classes may have the same extension, yet define unique concepts.  The classic example here is the &quot;Morning Star&quot; vs. the &quot;Evening Star&quot;.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194325238078_997500_4316"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1305246623845_839126_2898" general="_16_5_4_630020f_1254862709016_884318_1353"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1305246808701_585639_2962" general="_16_5_4_630020f_1255032857717_48736_934"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1265504788605_832923_1249">
+      <memberEnd xmi:idref="_16_6_630020f_1265504788620_829929_1250"/>
+      <memberEnd xmi:idref="_16_6_630020f_1265504788620_728957_1251"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1265504788620_728957_1251"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1265504788620_728957_1251" name="extension_unionOf" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1196810825718_788941_1153" association="_16_6_630020f_1265504788605_832923_1249">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1265504788620_392218_1252"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1299354244586_944456_2027" name="IntersectionDatatype">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1299354737010_913187_2300" general="_12_5_1_137b03ac_1194371445218_26410_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1299354737029_40851_2302" name="base_DataType" visibility="private" association="_16_9_15100de_1299354737028_516720_2301">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#DataType"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749024117_442984_1716" name="disjointClasses">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749588960_8035_2043" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_6_630020f_1262642891488_886851_1285">
+      <memberEnd xmi:idref="_16_6_630020f_1262642891488_532746_1286"/>
+      <memberEnd xmi:idref="_16_6_630020f_1262642891488_504827_1287"/>
+      <navigableOwnedEnd xmi:idref="_16_6_630020f_1262642891488_504827_1287"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_6_630020f_1262642891488_504827_1287" name="extension_" visibility="private" aggregation="composite" type="_16_6_630020f_1262642885726_64965_1284" association="_16_6_630020f_1262642891488_886851_1285">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_6_630020f_1262642891488_246268_1288"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288733251623_301529_3069" name="annotatedSource">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288733256762_918886_3071" name="base_Dependency" visibility="private" association="_16_8_e980341_1288733256762_209288_3070">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749757579_877874_2153" name="operand">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_9_15100de_1291749846876_99188_2155" name="base_Dependency" visibility="private" association="_16_9_15100de_1291749846876_99045_2154">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303064483355_9108_1845" name="index" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303064573297_457429_1862"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303520989477_565084_1681" name="name" visibility="public">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303521052452_346183_1698"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_9_15100de_1291749033586_900314_1778" name="sameIndividual">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_9_15100de_1291749601360_606189_2067" general="_16_9_15100de_1291749454378_711354_1942"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_630020f_1262550960306_644512_1628" name="NamedIndividual">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262551279660_611138_1681" body="OWL 2 distinguishes named individuals from those that are anonymous.  Named individuals must have identity.">
+        <annotatedElement xmi:idref="_16_6_630020f_1262550960306_644512_1628"/>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_6_630020f_1262551305177_959138_1682">
+        <constrainedElement xmi:idref="_16_6_630020f_1262550960306_644512_1628"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_6_630020f_1262551305177_108503_1683">
+          <body>self.identifier -&gt; nonEmpty()</body>
+          <language>English</language>
+        </specification>
+      </ownedRule>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262551007479_95621_1652" general="_15_0_137b03ac_1201330208281_398389_2705"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288729258993_629780_2328" general="_16_5_4_630020f_1254862709016_884318_1353"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288486081114_390863_2585" name="onProperties">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288486736204_789509_2619" body="An onProperties dependency links a restriction class to the data properties that it restricts.  This construct is used to support n-ary existential and universal quantification over data properties.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288486081114_390863_2585"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288486088976_118442_2587" name="base_Dependency" visibility="private" association="_16_8_e980341_1288486088975_362315_2586">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_12_5_1_137b03ac_1194369733718_478221_1166" name="datatypeProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262550665809_897931_1599" body="Data properties in OWL link individuals to data values.">
+        <annotatedElement xmi:idref="_12_5_1_137b03ac_1194369733718_478221_1166"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_0_1_630020f_1244328309020_650698_765" general="_12_5_1_137b03ac_1194370054984_719501_1243"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_6_630020f_1262642885726_64965_1284" name="SurrogateDatatypeProperty">
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_630020f_1262642927270_554175_1308">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_0_1_630020f_1244140884212_791691_295"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_6_630020f_1262642891488_532746_1286" name="base_Class" visibility="private" association="_16_6_630020f_1262642891488_886851_1285">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1291749846876_99045_2154">
+      <memberEnd xmi:idref="_16_9_15100de_1291749846876_99188_2155"/>
+      <memberEnd xmi:idref="_16_9_15100de_1291749846877_20986_2156"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1291749846877_20986_2156"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1291749846877_20986_2156" name="extension_" visibility="private" aggregation="composite" type="_16_9_15100de_1291749757579_877874_2153" association="_16_9_15100de_1291749846876_99045_2154">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1291749846877_97036_2157"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288486088975_362315_2586">
+      <memberEnd xmi:idref="_16_8_e980341_1288486088976_118442_2587"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288486088976_77099_2588"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288486088976_77099_2588"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288486088976_77099_2588" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288486081114_390863_2585" association="_16_8_e980341_1288486088975_362315_2586">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288486088976_689974_2589"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299354744339_990969_2319">
+      <memberEnd xmi:idref="_16_9_15100de_1299354744339_317082_2320"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299354744339_760002_2321"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299354744339_760002_2321"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299354744339_760002_2321" name="extension_DatatypeRestriction" visibility="private" aggregation="composite" type="_16_9_15100de_1299354367836_41336_2074" association="_16_9_15100de_1299354744339_990969_2319">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299354744339_366421_2322"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288487617300_992240_2660">
+      <memberEnd xmi:idref="_16_8_e980341_1288487617300_671787_2661"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288487617300_344982_2662"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288487617300_344982_2662"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288487617300_344982_2662" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288487609287_865266_2659" association="_16_8_e980341_1288487617300_992240_2660">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288487617301_608639_2663"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1202880522890_711011_2368">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880522890_935408_2369"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1202880522890_156309_2370"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1202880522890_156309_2370"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1202880522890_156309_2370" name="extension_disjointWith" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194367207421_103646_1102" association="_15_0_1_137b03ac_1202880522890_711011_2368">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1202880522890_667644_2371"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1291749464920_863838_1943">
+      <memberEnd xmi:idref="_16_9_15100de_1291749464920_79262_1944"/>
+      <memberEnd xmi:idref="_16_9_15100de_1291749464921_108140_1945"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1291749464921_108140_1945"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1291749464921_108140_1945" name="extension_" visibility="private" aggregation="composite" type="_16_9_15100de_1291749454378_711354_1942" association="_16_9_15100de_1291749464920_863838_1943">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1291749464921_7105_1946"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_15_0_1_137b03ac_1218004350462_989953_349">
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004350462_427654_350"/>
+      <memberEnd xmi:idref="_15_0_1_137b03ac_1218004350462_701722_351"/>
+      <navigableOwnedEnd xmi:idref="_15_0_1_137b03ac_1218004350462_701722_351"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_15_0_1_137b03ac_1218004350462_701722_351" name="extension_someValuesFrom" visibility="private" aggregation="composite" type="_15_0_1_137b03ac_1218004322196_86034_343" association="_15_0_1_137b03ac_1218004350462_989953_349">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_15_0_1_137b03ac_1218004350462_157920_352"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_8_e980341_1288732322043_78451_2907">
+      <memberEnd xmi:idref="_16_8_e980341_1288732322043_864997_2908"/>
+      <memberEnd xmi:idref="_16_8_e980341_1288732322043_969888_2909"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1288732322043_969888_2909"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_8_e980341_1288732322043_969888_2909" name="extension_" visibility="private" aggregation="composite" type="_16_8_e980341_1288732315916_516230_2906" association="_16_8_e980341_1288732322043_78451_2907">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1288732322044_871824_2910"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288732280092_935884_2882" name="sourceIndividual">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288732291343_331627_2884" name="base_Dependency" visibility="private" association="_16_8_e980341_1288732291343_733710_2883">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_16_8_e980341_1288291175538_972660_4498" name="ClassAxiom" isAbstract="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288291282859_101140_4527" body="Class axioms allow relationships to be established between class expressions. The SubClassOf axiom allows one to state that each instance of one class expression is also an instance of another class expression, and thus to construct a hierarchy of classes. The EquivalentClasses axiom allows one to state that several class expressions are equivalent to each other. The DisjointClasses axiom allows one to state that several class expressions are pairwise disjoint — that is, that they have no instances in common. Finally, the DisjointUnion class expression allows one to define a class as a disjoint union of several class expressions and thus to express covering constraints.">
+        <annotatedElement xmi:idref="_16_8_e980341_1288291175538_972660_4498"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1288291289969_93842_4536" general="_16_8_e980341_1288291025077_788807_4355"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1288291184901_580923_4500" name="base_Class" visibility="private" association="_16_8_e980341_1288291184901_684351_4499">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299269318572_722048_1916">
+      <memberEnd xmi:idref="_16_9_15100de_1299269318572_520290_1917"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299269318572_725969_1918"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299269318572_725969_1918"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299269318572_725969_1918" name="extension_onType" visibility="private" aggregation="composite" type="_16_9_15100de_1299269260362_93889_1897" association="_16_9_15100de_1299269318572_722048_1916">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299269318572_870721_1919"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_15_0_1_137b03ac_1217058334841_980646_2955" name="onProperty">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_6_630020f_1262386705889_877758_2586" body="An onProperty dependency links a restriction class to the property that it restricts.  A particular restriction should be linked to one and only one property.">
+        <annotatedElement xmi:idref="_15_0_1_137b03ac_1217058334841_980646_2955"/>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_15_0_1_137b03ac_1217058403793_953993_2962" name="base_Dependency" visibility="private" association="_15_0_1_137b03ac_1217058403793_109992_2961">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_16_9_15100de_1299371866444_825625_1692">
+      <memberEnd xmi:idref="_16_9_15100de_1299371866504_123935_1693"/>
+      <memberEnd xmi:idref="_16_9_15100de_1299371866505_254863_1694"/>
+      <navigableOwnedEnd xmi:idref="_16_9_15100de_1299371866505_254863_1694"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_16_9_15100de_1299371866505_254863_1694" name="extension_hasKey" visibility="private" aggregation="composite" type="_16_8_e980341_1288359422075_870880_2563" association="_16_9_15100de_1299371866444_825625_1692">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_9_15100de_1299371866506_405722_1695"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303064422673_157674_1774" name="propertyChain">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303064436354_874733_1805" general="_12_5_1_137b03ac_1194369864359_316287_1200"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303064436375_794538_1807" name="base_Association" visibility="private" association="_17_0_1_15100de_1303064436375_333948_1806">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Association"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303064436380_806982_1812" name="base_Class" visibility="private" association="_17_0_1_15100de_1303064436380_749171_1811">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303064436385_358058_1817" name="base_Property" visibility="private" association="_17_0_1_15100de_1303064436385_822653_1816">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303064436375_333948_1806">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436375_794538_1807"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436375_446737_1808"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303064436375_446737_1808"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303064436375_446737_1808" name="extension_" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303064422673_157674_1774" association="_17_0_1_15100de_1303064436375_333948_1806">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303064436375_48216_1809"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303064436380_749171_1811">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436380_806982_1812"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436381_708489_1813"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303064436381_708489_1813"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303064436381_708489_1813" name="extension_" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303064422673_157674_1774" association="_17_0_1_15100de_1303064436380_749171_1811">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303064436381_733667_1814"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303064436385_822653_1816">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436385_358058_1817"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303064436385_706636_1818"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303064436385_706636_1818"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303064436385_706636_1818" name="extension_" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303064422673_157674_1774" association="_17_0_1_15100de_1303064436385_822653_1816">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303064436385_411693_1819"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_17_0_1_15100de_1303239054484_193401_2311" name="integer" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303765279790_740161_1710" name="minInclusive">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924822495_846374_2718" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303765303982_472403_1740" name="maxInclusive">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924826903_315769_2731" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303923851650_829554_1722" name="datatypeFacet" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303923863801_176413_1724" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303923863800_437284_1723">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303923863800_437284_1723">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303923863801_176413_1724"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303923863801_192676_1725"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303923863801_192676_1725"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303923863801_192676_1725" name="extension_" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303923851650_829554_1722" association="_17_0_1_15100de_1303923863800_437284_1723">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303923863801_919035_1726"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924226193_535890_1791" name="minExclusive">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924364799_308296_2058" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924364815_221323_2060" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924364815_445061_2059">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924249473_838632_1822" name="maxExclusive">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924375551_464643_2094" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924375567_789000_2096" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924375567_764937_2095">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924266729_797314_1855" name="minLength">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924380863_123431_2112" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924380879_724907_2114" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924380879_755041_2113">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924285281_717231_1886" name="length">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924358830_656062_2040" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924358846_116769_2042" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924358846_108164_2041">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924298488_807096_1917" name="maxLength">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924369006_922640_2076" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924369022_857864_2078" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924369022_371123_2077">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924308409_176507_1950" name="pattern">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924384670_381011_2130" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924384686_509526_2132" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924384686_323879_2131">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1303924317275_184552_1984" name="langRange">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_1_15100de_1303924354735_899061_2022" general="_17_0_1_15100de_1303923851650_829554_1722"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1303924354753_875365_2024" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1303924354753_704745_2023">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924354753_704745_2023">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924354753_875365_2024"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924354754_548009_2025"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924354754_548009_2025"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924354754_548009_2025" name="extension_langRange" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924317275_184552_1984" association="_17_0_1_15100de_1303924354753_704745_2023">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924354754_134790_2026"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924358846_108164_2041">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924358846_116769_2042"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924358846_612575_2043"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924358846_612575_2043"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924358846_612575_2043" name="extension_length" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924285281_717231_1886" association="_17_0_1_15100de_1303924358846_108164_2041">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924358846_963516_2044"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924364815_445061_2059">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924364815_221323_2060"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924364815_188479_2061"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924364815_188479_2061"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924364815_188479_2061" name="extension_minExclusive" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924226193_535890_1791" association="_17_0_1_15100de_1303924364815_445061_2059">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924364815_405713_2062"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924369022_371123_2077">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924369022_857864_2078"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924369022_72733_2079"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924369022_72733_2079"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924369022_72733_2079" name="extension_maxLength" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924298488_807096_1917" association="_17_0_1_15100de_1303924369022_371123_2077">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924369022_388949_2080"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924375567_764937_2095">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924375567_789000_2096"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924375568_636528_2097"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924375568_636528_2097"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924375568_636528_2097" name="extension_maxExclusive" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924249473_838632_1822" association="_17_0_1_15100de_1303924375567_764937_2095">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924375568_27534_2098"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924380879_755041_2113">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924380879_724907_2114"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924380880_708718_2115"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924380880_708718_2115"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924380880_708718_2115" name="extension_minLength" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924266729_797314_1855" association="_17_0_1_15100de_1303924380879_755041_2113">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924380880_655247_2116"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1303924384686_323879_2131">
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924384686_509526_2132"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1303924384687_759249_2133"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1303924384687_759249_2133"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1303924384687_759249_2133" name="extension_pattern" visibility="private" aggregation="composite" type="_17_0_1_15100de_1303924308409_176507_1950" association="_17_0_1_15100de_1303924384686_323879_2131">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1303924384687_760398_2134"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1305068237308_41678_1739" name="versionIRI">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1305068264905_253907_1752" name="base_Dependency" visibility="private" association="_17_0_1_15100de_1305068264904_900283_1751">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1305068264904_900283_1751">
+      <memberEnd xmi:idref="_17_0_1_15100de_1305068264905_253907_1752"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1305068264905_339302_1753"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1305068264905_339302_1753"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1305068264905_339302_1753" name="extension_versionIRI" visibility="private" aggregation="composite" type="_17_0_1_15100de_1305068237308_41678_1739" association="_17_0_1_15100de_1305068264904_900283_1751">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1305068264905_405440_1754"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_1_15100de_1305242480947_715044_2654" name="propertyGroup">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_1_15100de_1306198991054_316168_1697" name="base_InstanceSpecification" visibility="private" association="_17_0_1_15100de_1306198991053_884575_1696">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#InstanceSpecification"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_1_15100de_1306198991053_884575_1696">
+      <memberEnd xmi:idref="_17_0_1_15100de_1306198991054_316168_1697"/>
+      <memberEnd xmi:idref="_17_0_1_15100de_1306198991054_604032_1698"/>
+      <navigableOwnedEnd xmi:idref="_17_0_1_15100de_1306198991054_604032_1698"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_1_15100de_1306198991054_604032_1698" name="extension_propertyGroup" visibility="private" aggregation="composite" type="_17_0_1_15100de_1305242480947_715044_2654" association="_17_0_1_15100de_1306198991053_884575_1696">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_1_15100de_1306198991054_156188_1699"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_2_2_15100de_1361749060018_486908_2303">
+      <memberEnd xmi:idref="_17_0_2_2_15100de_1361749060018_945215_2304"/>
+      <memberEnd xmi:idref="_17_0_2_2_15100de_1361749060019_545621_2305"/>
+      <navigableOwnedEnd xmi:idref="_17_0_2_2_15100de_1361749060019_545621_2305"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_2_2_15100de_1361749060019_545621_2305" name="extension_owlOntology" visibility="private" aggregation="composite" type="_12_5_1_137b03ac_1194319654750_608170_3796" association="_17_0_2_2_15100de_1361749060018_486908_2303">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_2_2_15100de_1361749060019_959750_2306"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_4_1_e980341_1379972948611_164472_4273" name="SurrogateAnnotationProperty">
+      <generalization xmi:type="uml:Generalization" xmi:id="_17_0_4_1_e980341_1379972961715_31575_4301">
+        <general href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_16_0_1_630020f_1244140884212_791691_295"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_4_1_e980341_1379972961715_599397_4304" name="base_Class" visibility="private" association="_17_0_4_1_e980341_1379972961715_653359_4303">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_4_1_e980341_1379972961715_653359_4303">
+      <memberEnd xmi:idref="_17_0_4_1_e980341_1379972961715_599397_4304"/>
+      <memberEnd xmi:idref="_17_0_4_1_e980341_1379972961715_643317_4305"/>
+      <navigableOwnedEnd xmi:idref="_17_0_4_1_e980341_1379972961715_643317_4305"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_4_1_e980341_1379972961715_643317_4305" name="extension_" visibility="private" aggregation="composite" type="_17_0_4_1_e980341_1379972948611_164472_4273" association="_17_0_4_1_e980341_1379972961715_653359_4303">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_4_1_e980341_1379972961715_741805_4306"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_17_0_4_1_e980341_1383940357741_981779_4597" name="hasDataRange">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_17_0_4_1_e980341_1383940376756_779700_4599" name="base_Dependency" visibility="private" association="_17_0_4_1_e980341_1383940376755_935856_4598">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_17_0_4_1_e980341_1383940376755_935856_4598">
+      <memberEnd xmi:idref="_17_0_4_1_e980341_1383940376756_779700_4599"/>
+      <memberEnd xmi:idref="_17_0_4_1_e980341_1383940376756_853402_4600"/>
+      <navigableOwnedEnd xmi:idref="_17_0_4_1_e980341_1383940376756_853402_4600"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_17_0_4_1_e980341_1383940376756_853402_4600" name="extension_" visibility="private" aggregation="composite" type="_17_0_4_1_e980341_1383940357741_981779_4597" association="_17_0_4_1_e980341_1383940376755_935856_4598">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_17_0_4_1_e980341_1383940376756_873032_4601"/>
+      </ownedEnd>
+    </packagedElement>
+  </uml:Profile>
+    <mofext:Tag xmi:id="_-Tag" xmi:type="mofext:Tag">
+    <name>org.omg.xmi.nsPrefix</name>
+    <value>OWLProfile</value>
+    <element xmi:idref="_12_5_1_137b03ac_1194319380250_490899_3794"/>
+  </mofext:Tag>
+</xmi:XMI>

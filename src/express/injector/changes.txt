@@ -1,0 +1,62 @@
+
+ToDo: 
+
+- Eliminate misuse of ActualType.
+- Define xmi-hidden place for type labels, and implement ActualTypeConstraint.
+- 
+
+;;; ===================
+
+DONE - new enum-type OrderingKind   ("Indexed" "Ordered" "Unordered" ))
+DONE - Ordering kind used in [some AGG thing]
+DONE NOTHING - ActualType inherits from LocalElement
+DONE NOTHING - ActualType has namespace attr
+DONE NOTHING - matching --> matching-type
+DONE - LocalId --> ScopedId (everywhere)
+DONE NOTHING - Algorithm.actual-types is new
+DONE - Algorithm.local-variables --> x.variables
+- AlgorithScope.common-elements is new
+DONE - AlgorithmScope.variables is new
+DONE NOTHING - Attribute.owning-entities is gone
+DONE NOTHING - AttributeValue.value --> .actual-value is new
+DONE - BAGType (etc) has ordering attribute
+- CommonScope.named-elements is new.
+DONE - ConstantRef.name is gone. 
+- EntityType.plays-role is new
+DONE NOTHING - ExpressText no longer inherits from String
+- GenericAggregate now inherits from LISTValue, not AggregateValue and lots all its attributes.
+DONE NOTHING - Identifier no longer inherits from ExpressText
+DONE - Instance.of-type --> Instance.instantiates
+- New object InterfacedElement
+DONE NOTHING - Keyword no longer inherits from ExpressText
+DONE - LISTType.ordering is new
+- New object LocalElement
+DONE - Removed object LocalId
+DONE - LocalScope.local-variables --> x.variables
+- MemberBinding.to-slot :RANGE is ListMember not SeqMember 
+- NamedRule now inherits from LocalElement
+- NamedType.local-names is gone and x.type-elments -> named-elements
+- Parameter now inherits from LocalElement
+DONE NOTHING - PartialEntityType.eqivalent is gone
+DONE - Object Query now call QueryExpression
+DONE - UniqueRule.domain is new
+- Redeclaration.refined-role is new ... bunch of comments?
+DONE - Redeclaration.addname --> x.alias
+DONE - Redeclaration.redeclared-type --> x.restricted-type
+DONE - Redeclaration.domain --> x.scope (same entity as above)
+DONE - Redeclaration.scope is new (:range is GlobalRule)
+DONE NOTHING - Redeclaration.refines gone (same entity as above)
+DONE - RoleName is new (note to Edbark -- this isn't used).
+DONE - SETType has isUnique and ordering
+- Schema.interfaced-elements is new
+- Schema.interfaces is new
+DONE NOTHING - Schema.schema-defined-terms gone
+DONE - ScopedId.identifies is new
+DONE NOTHING - ScopedId.refers-to is new
+DONE NOTHING - Class SeqMember is gone
+DONE NOTHING - SingleEntityValue.instance-of --> x.of-type
+DONE - SupertypeRule.supertype --> x.named-supertype
+DONE NOTHING - TypeElement.id is gone
+DONE - object TypeName is new (note to Edbark -- this isn't used).
+DONE NOTHING - Variable inherits from LocalElement, not NamedElement
+DONE - 3 new namespace attributes REPEATED

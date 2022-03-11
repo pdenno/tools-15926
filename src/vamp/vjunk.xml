@@ -1,0 +1,1243 @@
+;;; Diagnostics
+#|
+(defun tryme ()
+  (let* ((pipe (make-instance 'pod::pipe))
+	 (pname (format nil "Vampire IO ~A" 1))
+	 (cname (format nil "XML Cleaner ~A" 1))
+	 (timeout 5))
+    (start-reaper-process 1 timeout)
+    (mp:process-run-function 
+     cname nil 
+     #'(lambda () 
+	 (handler-case
+	  (with-input-from-string (vstream *big-string*)
+	      (vampire-clean-xml vstream pipe))
+	  (error (err)
+		 (format t "~%Error in XML correction code:~%~A" err)))))
+    (mp:process-run-function
+     pname nil 
+     #'(lambda ()
+	 (handler-case
+	  (let ((context (make-instance 'vampire-response-context)))
+	    (format t "~% result = ~a"
+		    (xmlp:document-parser pipe :construction-context context)))
+	  (error (err)
+		 (format t "~%Error XML parsing response from Vampire:~%~A" err)))))))
+
+
+(defun old-tryme ()
+  (with-input-from-string (s *rrr*)
+     (vampire-clean-xml s *standard-output*)))
+|#
+#|
+(defparameter *big-string*
+"<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?x' value='owen'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='8'>
+            (holds parent owen peter)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='8'>
+              (holds parent owen peter)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='20'>
+            (holds parent owen peter)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='74'>
+            (not (holds parent ?X0 peter))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='74'>
+              (not (holds parent ?X0 peter))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='82'>
+            (or (not (holds parent ?X0 peter))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='20'>
+              (holds parent owen peter)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='82'>
+              (or (not (holds parent ?X0 peter))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='83'>
+            ($answer owen)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='1'/>
+</queryResponse>")
+|#
+
+#|
+(defparameter *rrr* 
+"<markup><color foreground='blue'>===== (instance ?x Relation) =====</color><color background='yellow'>
+Bindings:</color>
+(?X = PowerSetFn)
+
+<color background='yellow'>Proof:</color>
+1 [KB]
+(instance PowerSetFn TotalValuedRelation)
+2 [KB]
+<![CDATA[
+(<=> (instance ?X18 TotalValuedRelation)
+     (exists
+      (?X47)
+      (and
+       (instance ?X18 Relation)
+       (valence ?X18 ?X47)
+       (=>
+         (forall
+          (?X13 ?X33 ?X1)
+          (=>
+            (and
+             (< ?X13 ?X47)
+             (domain ?X18 ?X13 ?X1)
+             (equal
+              ?X33
+              (ListOrderFn (ListFn ?X14 ?X15 ?X16 ?X17) ?X13)))
+            (instance ?X33 ?X1)))
+         (exists (?X48) (?X18 ?X14 ?X15 ?X16 ?X17 ?X48))))))
+]]>
+3 [2]
+(or (instance ?X0 Relation) (not (instance ?X0 TotalValuedRelation)))
+4 [KB]
+(not (instance ?X215 Relation))
+5 [4]
+(or (not (instance ?X0 Relation)) ($ answer ?X0))
+6 [3,5]
+(or (not (instance ?X0 TotalValuedRelation)) ($ answer ?X0))
+7 [1,6]
+($ answer PowerSetFn)
+</markup>")
+|#
+#|
+;;; Stuff to clean
+(defparameter *rrr*
+"<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?x' value='PowerSetFn'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='239'>
+            (holds instance PowerSetFn TotalValuedRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='239'>
+              (holds instance PowerSetFn TotalValuedRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4024'>
+            (holds instance PowerSetFn TotalValuedRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='373'>
+            (<=> (holds instance ?X18 TotalValuedRelation)
+                 (exists ( ?X47)
+                   (and (holds instance ?X18 Relation)
+                        (holds valence ?X18 ?X47)
+                        (=> (forall ( ?X13 ?X33 ?X1)
+                              (=> (and (< ?X13 ?X47)
+                                       (holds domain ?X18 ?X13 ?X1)
+                                       (equal ?X33 (holds ListOrderFn (ListFn ?X
+14 ?X15 ?X16 ?X17) ?X13)))
+                                  (holds instance ?X33 ?X1)))
+                            (exists ( ?X48)
+                              (holds ?X18 ?X14 ?X15 ?X16 ?X17 ?X48))))))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='373'>
+              (<=> (holds instance ?X18 TotalValuedRelation)
+                   (exists ( ?X47)
+                     (and (holds instance ?X18 Relation)
+                          (holds valence ?X18 ?X47)
+                          (=> (forall ( ?X13 ?X33 ?X1)
+                                (=> (and (< ?X13 ?X47)
+                                         (holds domain ?X18 ?X13 ?X1)
+                                         (equal ?X33 (holds ListOrderFn (ListFn
+?X14 ?X15 ?X16 ?X17) ?X13)))
+                                    (holds instance ?X33 ?X1)))
+                              (exists ( ?X48)
+                                (holds ?X18 ?X14 ?X15 ?X16 ?X17 ?X48))))))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4311'>
+            (or (holds instance ?X0 Relation)
+                (not (holds instance ?X0 TotalValuedRelation)))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4301'>
+            (not (holds instance ?X215 Relation))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4301'>
+              (not (holds instance ?X215 Relation))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4312'>
+            (or (not (holds instance ?X0 Relation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4311'>
+              (or (holds instance ?X0 Relation)
+                  (not (holds instance ?X0 TotalValuedRelation)))
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4312'>
+              (or (not (holds instance ?X0 Relation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4313'>
+            (or (not (holds instance ?X0 TotalValuedRelation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4024'>
+              (holds instance PowerSetFn TotalValuedRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4313'>
+              (or (not (holds instance ?X0 TotalValuedRelation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4314'>
+            ($answer PowerSetFn)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='1'/>
+</queryResponse>")
+
+(defparameter *ccc*
+"<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?x' value='PowerSetFn'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='239'>
+            (holds instance PowerSetFn TotalValuedRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='239'>
+              (holds instance PowerSetFn TotalValuedRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4024'>
+            (holds instance PowerSetFn TotalValuedRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='373'>
+            ( (holds instance ?X18 TotalValuedRelation)
+                 (exists ( ?X47)
+                   (and (holds instance ?X18 Relation)
+                        (holds valence ?X18 ?X47)
+                        ( (forall ( ?X13 ?X33 ?X1)
+                              ( (and ( ?X13 ?X47)
+                                       (holds domain ?X18 ?X13 ?X1)
+                                       (equal ?X33 (holds ListOrderFn (ListFn ?X
+14 ?X15 ?X16 ?X17) ?X13)))
+                                  (holds instance ?X33 ?X1)))
+                            (exists ( ?X48)
+                              (holds ?X18 ?X14 ?X15 ?X16 ?X17 ?X48))))))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='373'>
+              ( (holds instance ?X18 TotalValuedRelation)
+                   (exists ( ?X47)
+                     (and (holds instance ?X18 Relation)
+                          (holds valence ?X18 ?X47)
+                          ( (forall ( ?X13 ?X33 ?X1)
+                                ( (and ( ?X13 ?X47)
+                                         (holds domain ?X18 ?X13 ?X1)
+                                         (equal ?X33 (holds ListOrderFn (ListFn
+?X14 ?X15 ?X16 ?X17) ?X13)))
+                                    (holds instance ?X33 ?X1)))
+                              (exists ( ?X48)
+                                (holds ?X18 ?X14 ?X15 ?X16 ?X17 ?X48))))))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4311'>
+            (or (holds instance ?X0 Relation)
+                (not (holds instance ?X0 TotalValuedRelation)))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4301'>
+            (not (holds instance ?X215 Relation))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4301'>
+              (not (holds instance ?X215 Relation))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4312'>
+            (or (not (holds instance ?X0 Relation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4311'>
+              (or (holds instance ?X0 Relation)
+                  (not (holds instance ?X0 TotalValuedRelation)))
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4312'>
+              (or (not (holds instance ?X0 Relation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4313'>
+            (or (not (holds instance ?X0 TotalValuedRelation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4024'>
+              (holds instance PowerSetFn TotalValuedRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4313'>
+              (or (not (holds instance ?X0 TotalValuedRelation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4314'>
+            ($answer PowerSetFn)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='1'/>
+</queryResponse>")
+
+(defparameter *ccc* "<stuff>&GT;</stuff>")
+
+(defun tryme ()
+  (let ((context (make-instance 'vampire-response-context)))
+    (xmlp:document-parser *ccc* :construction-context context)))
+
+|#
+
+(defparameter *big-r*
+"<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='BinaryPredicate'/>
+        <var name='?x' value='instance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='1'>
+            (holds instance instance BinaryPredicate)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='1'>
+              (holds instance instance BinaryPredicate)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4300'>
+            (holds instance instance BinaryPredicate)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4313'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4300'>
+              (holds instance instance BinaryPredicate)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4313'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4314'>
+            ($answer BinaryPredicate instance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='2'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='AsymmetricRelation'/>
+        <var name='?x' value='immediateInstance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='5'>
+            (holds instance immediateInstance AsymmetricRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='5'>
+              (holds instance immediateInstance AsymmetricRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4296'>
+            (holds instance immediateInstance AsymmetricRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4319'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4296'>
+              (holds instance immediateInstance AsymmetricRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4319'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4320'>
+            ($answer AsymmetricRelation immediateInstance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='3'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='IntransitiveRelation'/>
+        <var name='?x' value='immediateInstance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='6'>
+            (holds instance immediateInstance IntransitiveRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='6'>
+              (holds instance immediateInstance IntransitiveRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4295'>
+            (holds instance immediateInstance IntransitiveRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4325'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4295'>
+              (holds instance immediateInstance IntransitiveRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4325'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4326'>
+            ($answer IntransitiveRelation immediateInstance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='4'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='BinaryPredicate'/>
+        <var name='?x' value='inverse'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='8'>
+            (holds instance inverse BinaryPredicate)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='8'>
+              (holds instance inverse BinaryPredicate)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4293'>
+            (holds instance inverse BinaryPredicate)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4331'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4293'>
+              (holds instance inverse BinaryPredicate)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4331'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4332'>
+            ($answer BinaryPredicate inverse)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='5'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='IrreflexiveRelation'/>
+        <var name='?x' value='inverse'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='9'>
+            (holds instance inverse IrreflexiveRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='9'>
+              (holds instance inverse IrreflexiveRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4292'>
+            (holds instance inverse IrreflexiveRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4337'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4292'>
+              (holds instance inverse IrreflexiveRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4337'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4338'>
+            ($answer IrreflexiveRelation inverse)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='5'/>
+</queryResponse>")
+
+(defparameter *big-r1*
+"<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='BinaryPredicate'/>
+        <var name='?x' value='instance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='1'>
+            (holds instance instance BinaryPredicate)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='1'>
+              (holds instance instance BinaryPredicate)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4300'>
+            (holds instance instance BinaryPredicate)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4313'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4300'>
+              (holds instance instance BinaryPredicate)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4313'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4314'>
+            ($answer BinaryPredicate instance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='2'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='AsymmetricRelation'/>
+        <var name='?x' value='immediateInstance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='5'>
+            (holds instance immediateInstance AsymmetricRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='5'>
+              (holds instance immediateInstance AsymmetricRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4296'>
+            (holds instance immediateInstance AsymmetricRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4319'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4296'>
+              (holds instance immediateInstance AsymmetricRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4319'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4320'>
+            ($answer AsymmetricRelation immediateInstance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='3'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='IntransitiveRelation'/>
+        <var name='?x' value='immediateInstance'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='6'>
+            (holds instance immediateInstance IntransitiveRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='6'>
+              (holds instance immediateInstance IntransitiveRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4295'>
+            (holds instance immediateInstance IntransitiveRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4325'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4295'>
+              (holds instance immediateInstance IntransitiveRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4325'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4326'>
+            ($answer IntransitiveRelation immediateInstance)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='4'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='BinaryPredicate'/>
+        <var name='?x' value='inverse'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='8'>
+            (holds instance inverse BinaryPredicate)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='8'>
+              (holds instance inverse BinaryPredicate)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4293'>
+            (holds instance inverse BinaryPredicate)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4331'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4293'>
+              (holds instance inverse BinaryPredicate)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4331'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4332'>
+            ($answer BinaryPredicate inverse)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <answer result='yes' number='5'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?y' value='IrreflexiveRelation'/>
+        <var name='?x' value='inverse'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='9'>
+            (holds instance inverse IrreflexiveRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='9'>
+              (holds instance inverse IrreflexiveRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4292'>
+            (holds instance inverse IrreflexiveRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='4305'>
+            (not (holds instance ?X216 ?X215))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='4305'>
+              (not (holds instance ?X216 ?X215))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4337'>
+            (or (not (holds instance ?X0 ?X1))
+                ($answer ?X1 ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='4292'>
+              (holds instance inverse IrreflexiveRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='4337'>
+              (or (not (holds instance ?X0 ?X1))
+                  ($answer ?X1 ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='4338'>
+            ($answer IrreflexiveRelation inverse)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='5'/>
+</queryResponse>")

@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_BHLKIDoZEeCmpu-HRutBsg" name="Activities">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_xasmwCeEEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Actions.fragment.xmi#_Aja80DoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHetxToZEeCmpu-HRutBsg" name="Activity">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHetxjoZEeCmpu-HRutBsg" annotatedElement="_BHetxToZEeCmpu-HRutBsg">
+      <body>An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHetxzoZEeCmpu-HRutBsg" name="autonomous" constrainedElement="_BHetxToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHetyDoZEeCmpu-HRutBsg" annotatedElement="_BHetxzoZEeCmpu-HRutBsg">
+        <body>An activity cannot be autonomous and have a classifier or behavioral feature context at the same time.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHetyToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHetyjoZEeCmpu-HRutBsg" name="no_supergroups" constrainedElement="_BHetxToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHetyzoZEeCmpu-HRutBsg" annotatedElement="_BHetyjoZEeCmpu-HRutBsg">
+        <body>The groups of an activity have no supergroups.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHetzDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHetzToZEeCmpu-HRutBsg" name="activity_parameter_node" constrainedElement="_BHetxToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHetzjoZEeCmpu-HRutBsg" annotatedElement="_BHetzToZEeCmpu-HRutBsg">
+        <body>The nodes of the activity must include one ActivityParameterNode for each parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHetzzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHet0DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet0ToZEeCmpu-HRutBsg" name="edge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" aggregation="composite" association="_BHn2ZjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet0joZEeCmpu-HRutBsg" annotatedElement="_BHet0ToZEeCmpu-HRutBsg">
+        <body>Edges expressing flow between nodes of the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet0zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet1DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet1ToZEeCmpu-HRutBsg" name="group" visibility="public" type="_BHeuIzoZEeCmpu-HRutBsg" aggregation="composite" association="_BHn2YzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet1joZEeCmpu-HRutBsg" annotatedElement="_BHet1ToZEeCmpu-HRutBsg">
+        <body>Top-level groups in the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet1zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet2DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet2ToZEeCmpu-HRutBsg" name="isReadOnly" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet2joZEeCmpu-HRutBsg" annotatedElement="_BHet2ToZEeCmpu-HRutBsg">
+        <body>If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHet2zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet3DoZEeCmpu-HRutBsg" name="isSingleExecution" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet3ToZEeCmpu-HRutBsg" annotatedElement="_BHet3DoZEeCmpu-HRutBsg">
+        <body>If true, all invocations of the activity are handled by the same execution.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHet3joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet3zoZEeCmpu-HRutBsg" name="node" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" aggregation="composite" association="_BHn2ZDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet4DoZEeCmpu-HRutBsg" annotatedElement="_BHet3zoZEeCmpu-HRutBsg">
+        <body>Nodes coordinated by the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet4ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet4joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet4zoZEeCmpu-HRutBsg" name="partition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" subsettedProperty="_BHet1ToZEeCmpu-HRutBsg" association="_BHn2ZzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet5DoZEeCmpu-HRutBsg" annotatedElement="_BHet4zoZEeCmpu-HRutBsg">
+        <body>Top-level partitions in the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet5ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet5joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet5zoZEeCmpu-HRutBsg" name="structuredNode" visibility="public" isReadOnly="true" aggregation="composite" subsettedProperty="_BHet1ToZEeCmpu-HRutBsg _BHet3zoZEeCmpu-HRutBsg" association="_BHn2YjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet6DoZEeCmpu-HRutBsg" annotatedElement="_BHet5zoZEeCmpu-HRutBsg">
+        <body>Top-level structured nodes in the activity.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkwZxToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet6ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet6joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHet6zoZEeCmpu-HRutBsg" name="variable" visibility="public" type="_BHevfzoZEeCmpu-HRutBsg" aggregation="composite" association="_BHn2ZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet7DoZEeCmpu-HRutBsg" annotatedElement="_BHet6zoZEeCmpu-HRutBsg">
+        <body>Top-level variables in the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHet7ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHet7joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHet9joZEeCmpu-HRutBsg" name="ActivityEdge" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHet9zoZEeCmpu-HRutBsg" annotatedElement="_BHet9joZEeCmpu-HRutBsg">
+      <body>An activity edge is an abstract class for directed connections between two activity nodes.
+Activity edges can be contained in interruptible regions.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHet-ToZEeCmpu-HRutBsg" name="owned" constrainedElement="_BHet9joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet-joZEeCmpu-HRutBsg" annotatedElement="_BHet-ToZEeCmpu-HRutBsg">
+        <body>Activity edges may be owned only by activities or groups.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHet-zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHet_DoZEeCmpu-HRutBsg" name="source_and_target" constrainedElement="_BHet9joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHet_ToZEeCmpu-HRutBsg" annotatedElement="_BHet_DoZEeCmpu-HRutBsg">
+        <body>The source and target of an edge must be in the same activity as the edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHet_joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHet_zoZEeCmpu-HRutBsg" name="structured_node" constrainedElement="_BHet9joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuADoZEeCmpu-HRutBsg" annotatedElement="_BHet_zoZEeCmpu-HRutBsg">
+        <body>Activity edges may be owned by at most one structured node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuAToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeuAjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH1-bToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuAzoZEeCmpu-HRutBsg" name="activity" visibility="public" type="_BHetxToZEeCmpu-HRutBsg" association="_BHn2ZjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuBDoZEeCmpu-HRutBsg" annotatedElement="_BHeuAzoZEeCmpu-HRutBsg">
+        <body>Activity containing the edge.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuBToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuBjoZEeCmpu-HRutBsg" name="guard" visibility="public" aggregation="composite" association="_BHn2XzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuBzoZEeCmpu-HRutBsg" annotatedElement="_BHeuBjoZEeCmpu-HRutBsg">
+        <body>Specification evaluated at runtime to determine if the edge can be traversed.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuCDoZEeCmpu-HRutBsg" name="inGroup" visibility="public" type="_BHeuIzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_BHn2VToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuCToZEeCmpu-HRutBsg" annotatedElement="_BHeuCDoZEeCmpu-HRutBsg">
+        <body>Groups containing the edge.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuCjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuCzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuDDoZEeCmpu-HRutBsg" name="inPartition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" subsettedProperty="_BHeuCDoZEeCmpu-HRutBsg" association="_BHn2SDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuDToZEeCmpu-HRutBsg" annotatedElement="_BHeuDDoZEeCmpu-HRutBsg">
+        <body>Partitions containing the edge.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuDjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuDzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuEDoZEeCmpu-HRutBsg" name="inStructuredNode" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuEToZEeCmpu-HRutBsg" annotatedElement="_BHeuEDoZEeCmpu-HRutBsg">
+        <body>Structured activity node containing the edge.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkwZxToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuEjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_BHeuCDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="Actions.fragment.xmi#_AkwaRDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuEzoZEeCmpu-HRutBsg" name="interrupts" visibility="public" type="_BHevFDoZEeCmpu-HRutBsg" association="_BHn2LjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuFDoZEeCmpu-HRutBsg" annotatedElement="_BHeuEzoZEeCmpu-HRutBsg">
+        <body>Region that the edge can interrupt.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuFToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuFjoZEeCmpu-HRutBsg" name="redefinedEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2WDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuFzoZEeCmpu-HRutBsg" annotatedElement="_BHeuFjoZEeCmpu-HRutBsg">
+        <body>Inherited edges replaced by this edge in a specialization of the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuGDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuGToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-fDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuGjoZEeCmpu-HRutBsg" name="source" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" association="_BHn2UDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuGzoZEeCmpu-HRutBsg" annotatedElement="_BHeuGjoZEeCmpu-HRutBsg">
+        <body>Node from which tokens are taken when they traverse the edge.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuHDoZEeCmpu-HRutBsg" name="target" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" association="_BHn2TzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuHToZEeCmpu-HRutBsg" annotatedElement="_BHeuHDoZEeCmpu-HRutBsg">
+        <body>Node to which tokens are put when they traverse the edge.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuHjoZEeCmpu-HRutBsg" name="weight" visibility="public" aggregation="composite" association="_BHn2XDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuHzoZEeCmpu-HRutBsg" annotatedElement="_BHeuHjoZEeCmpu-HRutBsg">
+        <body>The minimum number of tokens that must traverse the edge at the same time.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuIDoZEeCmpu-HRutBsg" name="ActivityFinalNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuIToZEeCmpu-HRutBsg" annotatedElement="_BHeuIDoZEeCmpu-HRutBsg">
+      <body>An activity final node is a final node that stops all flows in an activity.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeuIjoZEeCmpu-HRutBsg" general="_BHeu-ToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuIzoZEeCmpu-HRutBsg" name="ActivityGroup" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuJDoZEeCmpu-HRutBsg" annotatedElement="_BHeuIzoZEeCmpu-HRutBsg">
+      <body>ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuJToZEeCmpu-HRutBsg" name="nodes_and_edges" constrainedElement="_BHeuIzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuJjoZEeCmpu-HRutBsg" annotatedElement="_BHeuJToZEeCmpu-HRutBsg">
+        <body>All nodes and edges of the group must be in the same activity as the group.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuJzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuKDoZEeCmpu-HRutBsg" name="group_owned" constrainedElement="_BHeuIzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuKToZEeCmpu-HRutBsg" annotatedElement="_BHeuKDoZEeCmpu-HRutBsg">
+        <body>Groups may only be owned by activities or groups.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuKjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuKzoZEeCmpu-HRutBsg" name="not_contained" constrainedElement="_BHeuIzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuLDoZEeCmpu-HRutBsg" annotatedElement="_BHeuKzoZEeCmpu-HRutBsg">
+        <body>No node or edge in a group may be contained by its subgroups or its containing groups, transitively.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuLToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeuLjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuLzoZEeCmpu-HRutBsg" name="containedEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_BHn2VToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuMDoZEeCmpu-HRutBsg" annotatedElement="_BHeuLzoZEeCmpu-HRutBsg">
+        <body>Edges immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuMToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuMjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuMzoZEeCmpu-HRutBsg" name="containedNode" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_BHn2VjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuNDoZEeCmpu-HRutBsg" annotatedElement="_BHeuMzoZEeCmpu-HRutBsg">
+        <body>Nodes immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuNToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuNjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuNzoZEeCmpu-HRutBsg" name="inActivity" visibility="public" type="_BHetxToZEeCmpu-HRutBsg" association="_BHn2YzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuODoZEeCmpu-HRutBsg" annotatedElement="_BHeuNzoZEeCmpu-HRutBsg">
+        <body>Activity containing the group.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuOToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuOjoZEeCmpu-HRutBsg" name="subgroup" visibility="public" type="_BHeuIzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" aggregation="composite" association="_BHn2VzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuOzoZEeCmpu-HRutBsg" annotatedElement="_BHeuOjoZEeCmpu-HRutBsg">
+        <body>Groups immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuPDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuPToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuPjoZEeCmpu-HRutBsg" name="superGroup" visibility="public" type="_BHeuIzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_BHn2VzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuPzoZEeCmpu-HRutBsg" annotatedElement="_BHeuPjoZEeCmpu-HRutBsg">
+        <body>Group immediately containing the group.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuQDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuQToZEeCmpu-HRutBsg" name="ActivityNode" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuQjoZEeCmpu-HRutBsg" annotatedElement="_BHeuQToZEeCmpu-HRutBsg">
+      <body>ActivityNode is an abstract class for points in the flow of an activity connected by edges.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuQzoZEeCmpu-HRutBsg" name="owned" constrainedElement="_BHeuQToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuRDoZEeCmpu-HRutBsg" annotatedElement="_BHeuQzoZEeCmpu-HRutBsg">
+        <body>Activity nodes can only be owned by activities or groups.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuRToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuRjoZEeCmpu-HRutBsg" name="owned_structured_node" constrainedElement="_BHeuQToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuRzoZEeCmpu-HRutBsg" annotatedElement="_BHeuRjoZEeCmpu-HRutBsg">
+        <body>Activity nodes may be owned by at most one structured node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuSDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeuSToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH1-bToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuSjoZEeCmpu-HRutBsg" name="activity" visibility="public" type="_BHetxToZEeCmpu-HRutBsg" association="_BHn2ZDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuSzoZEeCmpu-HRutBsg" annotatedElement="_BHeuSjoZEeCmpu-HRutBsg">
+        <body>Activity containing the node.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuTDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuTToZEeCmpu-HRutBsg" name="inGroup" visibility="public" type="_BHeuIzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_BHn2VjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuTjoZEeCmpu-HRutBsg" annotatedElement="_BHeuTToZEeCmpu-HRutBsg">
+        <body>Groups containing the node.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuTzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuUDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuUToZEeCmpu-HRutBsg" name="inInterruptibleRegion" visibility="public" type="_BHevFDoZEeCmpu-HRutBsg" subsettedProperty="_BHeuTToZEeCmpu-HRutBsg" association="_BHn2TToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuUjoZEeCmpu-HRutBsg" annotatedElement="_BHeuUToZEeCmpu-HRutBsg">
+        <body>Interruptible regions containing the node.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuUzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuVDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuVToZEeCmpu-HRutBsg" name="inPartition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" subsettedProperty="_BHeuTToZEeCmpu-HRutBsg" association="_BHn2TjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuVjoZEeCmpu-HRutBsg" annotatedElement="_BHeuVToZEeCmpu-HRutBsg">
+        <body>Partitions containing the node.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuVzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuWToZEeCmpu-HRutBsg" name="inStructuredNode" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuWjoZEeCmpu-HRutBsg" annotatedElement="_BHeuWToZEeCmpu-HRutBsg">
+        <body>Structured activity node containing the node.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkwZxToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuWzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_BHeuTToZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="Actions.fragment.xmi#_AkwaRToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuXDoZEeCmpu-HRutBsg" name="incoming" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2TzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuXToZEeCmpu-HRutBsg" annotatedElement="_BHeuXDoZEeCmpu-HRutBsg">
+        <body>Edges that have the node as target.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuXjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuXzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuYDoZEeCmpu-HRutBsg" name="outgoing" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2UDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuYToZEeCmpu-HRutBsg" annotatedElement="_BHeuYDoZEeCmpu-HRutBsg">
+        <body>Edges that have the node as source.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuYjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuYzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuZDoZEeCmpu-HRutBsg" name="redefinedNode" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" association="_BHn2UToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuZToZEeCmpu-HRutBsg" annotatedElement="_BHeuZDoZEeCmpu-HRutBsg">
+        <body>Inherited nodes replaced by this node in a specialization of the activity.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeuZjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuZzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-fDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuaDoZEeCmpu-HRutBsg" name="ActivityParameterNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuaToZEeCmpu-HRutBsg" annotatedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <body>An activity parameter node is an object node for inputs and outputs to activities.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuajoZEeCmpu-HRutBsg" name="no_outgoing_edges" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuazoZEeCmpu-HRutBsg" annotatedElement="_BHeuajoZEeCmpu-HRutBsg">
+        <body>Activity parameter object nodes with no outgoing edges and one or more incoming edges must have a parameter with out, inout, or return direction.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeubDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeubToZEeCmpu-HRutBsg" name="maximum_two_parameter_nodes" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeubjoZEeCmpu-HRutBsg" annotatedElement="_BHeubToZEeCmpu-HRutBsg">
+        <body>A parameter with direction inout must have at most two activity parameter nodes in an activity, one with incoming flows and one with outgoing flows.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeubzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeucDoZEeCmpu-HRutBsg" name="has_parameters" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeucToZEeCmpu-HRutBsg" annotatedElement="_BHeucDoZEeCmpu-HRutBsg">
+        <body>Activity parameter nodes must have parameters from the containing activity.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeucjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuczoZEeCmpu-HRutBsg" name="same_type" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeudDoZEeCmpu-HRutBsg" annotatedElement="_BHeuczoZEeCmpu-HRutBsg">
+        <body>The type of an activity parameter node is the same as the type of its parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeudToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeudjoZEeCmpu-HRutBsg" name="maximum_one_parameter_node" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeudzoZEeCmpu-HRutBsg" annotatedElement="_BHeudjoZEeCmpu-HRutBsg">
+        <body>A parameter with direction other than inout must have at most one activity parameter node in an activity.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeueDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeueToZEeCmpu-HRutBsg" name="no_incoming_edges" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuejoZEeCmpu-HRutBsg" annotatedElement="_BHeueToZEeCmpu-HRutBsg">
+        <body>Activity parameter object nodes with no incoming edges and one or more outgoing edges must have a parameter with in or inout direction.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuezoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeufDoZEeCmpu-HRutBsg" name="no_edges" constrainedElement="_BHeuaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeufToZEeCmpu-HRutBsg" annotatedElement="_BHeufDoZEeCmpu-HRutBsg">
+        <body>An activity parameter node may have all incoming edges or all outgoing edges, but it must not have both incoming and outgoing edges.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeufjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeufzoZEeCmpu-HRutBsg" general="_BHevYjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeugDoZEeCmpu-HRutBsg" name="parameter" visibility="public" association="_BHn2SToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeugToZEeCmpu-HRutBsg" annotatedElement="_BHeugDoZEeCmpu-HRutBsg">
+        <body>The parameter the object node will be accepting or providing values for.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19kjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeugjoZEeCmpu-HRutBsg" name="ActivityPartition">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeugzoZEeCmpu-HRutBsg" annotatedElement="_BHeugjoZEeCmpu-HRutBsg">
+      <body>An activity partition is a kind of activity group for identifying actions that have some characteristic in common.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuhDoZEeCmpu-HRutBsg" name="represents_classifier" constrainedElement="_BHeugjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuhToZEeCmpu-HRutBsg" annotatedElement="_BHeuhDoZEeCmpu-HRutBsg">
+        <body>If a non-external partition represents a classifier and is contained in another partition, then the containing partition must represent a classifier, and the classifier of the subpartition must be nested in the classifier represented by the containing partition, or be at the contained end of a strong composition association with the classifier represented by the containing partition.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuhjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuhzoZEeCmpu-HRutBsg" name="represents_part_and_is_contained" constrainedElement="_BHeugjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuiDoZEeCmpu-HRutBsg" annotatedElement="_BHeuhzoZEeCmpu-HRutBsg">
+        <body>If a partition represents a part and is contained by another partition, then the part must be of a classifier represented by the containing partition, or of a classifier that is the type of a part representing the containing partition.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuiToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuijoZEeCmpu-HRutBsg" name="represents_part" constrainedElement="_BHeugjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuizoZEeCmpu-HRutBsg" annotatedElement="_BHeuijoZEeCmpu-HRutBsg">
+        <body>If a partition represents a part, then all the non-external partitions in the same dimension and at the same level of nesting in that dimension must represent parts directly contained in the internal structure of the same classifier.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeujDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeujToZEeCmpu-HRutBsg" name="dimension_not_contained" constrainedElement="_BHeugjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeujjoZEeCmpu-HRutBsg" annotatedElement="_BHeujToZEeCmpu-HRutBsg">
+        <body>A partition with isDimension = true may not be contained by another partition.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeujzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeukDoZEeCmpu-HRutBsg" general="_BHeuIzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeukToZEeCmpu-HRutBsg" name="edge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" subsettedProperty="_BHeuLzoZEeCmpu-HRutBsg" association="_BHn2SDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeukjoZEeCmpu-HRutBsg" annotatedElement="_BHeukToZEeCmpu-HRutBsg">
+        <body>Edges immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeukzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeulDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeulToZEeCmpu-HRutBsg" name="isDimension" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuljoZEeCmpu-HRutBsg" annotatedElement="_BHeulToZEeCmpu-HRutBsg">
+        <body>Tells whether the partition groups other partitions along a dimension.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHeulzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeumDoZEeCmpu-HRutBsg" name="isExternal" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeumToZEeCmpu-HRutBsg" annotatedElement="_BHeumDoZEeCmpu-HRutBsg">
+        <body>Tells whether the partition represents an entity to which the partitioning structure does not apply.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHeumjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeumzoZEeCmpu-HRutBsg" name="node" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" subsettedProperty="_BHeuMzoZEeCmpu-HRutBsg" association="_BHn2TjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeunDoZEeCmpu-HRutBsg" annotatedElement="_BHeumzoZEeCmpu-HRutBsg">
+        <body>Nodes immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeunToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeunjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeunzoZEeCmpu-HRutBsg" name="represents" visibility="public" association="_BHn2QzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuoDoZEeCmpu-HRutBsg" annotatedElement="_BHeunzoZEeCmpu-HRutBsg">
+        <body>An element constraining behaviors invoked by nodes in the partition.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzLjoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuoToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeuojoZEeCmpu-HRutBsg" name="subpartition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_BHeuOjoZEeCmpu-HRutBsg" association="_BHn2RzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuozoZEeCmpu-HRutBsg" annotatedElement="_BHeuojoZEeCmpu-HRutBsg">
+        <body>Partitions immediately contained in the partition.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeupDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeupToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeupjoZEeCmpu-HRutBsg" name="superPartition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" subsettedProperty="_BHeuPjoZEeCmpu-HRutBsg" association="_BHn2RzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeupzoZEeCmpu-HRutBsg" annotatedElement="_BHeupjoZEeCmpu-HRutBsg">
+        <body>Partition immediately containing the partition.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeuqDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuqToZEeCmpu-HRutBsg" name="CentralBufferNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuqjoZEeCmpu-HRutBsg" annotatedElement="_BHeuqToZEeCmpu-HRutBsg">
+      <body>A central buffer node is an object node for managing flows from multiple sources and destinations.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeuqzoZEeCmpu-HRutBsg" general="_BHevYjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeurDoZEeCmpu-HRutBsg" name="ControlFlow">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeurToZEeCmpu-HRutBsg" annotatedElement="_BHeurDoZEeCmpu-HRutBsg">
+      <body>A control flow is an edge that starts an activity node after the previous one is finished.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeurjoZEeCmpu-HRutBsg" name="object_nodes" constrainedElement="_BHeurDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeurzoZEeCmpu-HRutBsg" annotatedElement="_BHeurjoZEeCmpu-HRutBsg">
+        <body>Control flows may not have object nodes at either end, except for object nodes with control type.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeusDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeusToZEeCmpu-HRutBsg" general="_BHet9joZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeusjoZEeCmpu-HRutBsg" name="ControlNode" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuszoZEeCmpu-HRutBsg" annotatedElement="_BHeusjoZEeCmpu-HRutBsg">
+      <body>A control node is an abstract activity node that coordinates flows in an activity.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeutDoZEeCmpu-HRutBsg" general="_BHeuQToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeutToZEeCmpu-HRutBsg" name="DataStoreNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeutjoZEeCmpu-HRutBsg" annotatedElement="_BHeutToZEeCmpu-HRutBsg">
+      <body>A data store node is a central buffer node for non-transient information.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeutzoZEeCmpu-HRutBsg" general="_BHeuqToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeuuDoZEeCmpu-HRutBsg" name="DecisionNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuuToZEeCmpu-HRutBsg" annotatedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <body>A decision node is a control node that chooses between outgoing flows.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuujoZEeCmpu-HRutBsg" name="zero_input_parameters" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuuzoZEeCmpu-HRutBsg" annotatedElement="_BHeuujoZEeCmpu-HRutBsg">
+        <body>If the decision node has no decision input flow and an incoming control flow, then a decision input behavior has zero input parameters.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuvDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuvToZEeCmpu-HRutBsg" name="edges" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuvjoZEeCmpu-HRutBsg" annotatedElement="_BHeuvToZEeCmpu-HRutBsg">
+        <body>The edges coming into and out of a decision node, other than the decision input flow (if any), must be either all object flows or all control flows.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuvzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuwDoZEeCmpu-HRutBsg" name="decision_input_flow_incoming" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuwToZEeCmpu-HRutBsg" annotatedElement="_BHeuwDoZEeCmpu-HRutBsg">
+        <body>The decisionInputFlow of a decision node must be an incoming edge of the decision node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuwjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuwzoZEeCmpu-HRutBsg" name="two_input_parameters" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuxDoZEeCmpu-HRutBsg" annotatedElement="_BHeuwzoZEeCmpu-HRutBsg">
+        <body>If the decision node has a decision input flow and an second incoming object flow, then a decision input behavior has two input parameters, the first of which has a type that is the same as or a supertype of the type of the type of object tokens offered on the nondecision input flow and the second of which has a type that is the same as or a supertype of the type of object tokens offered on the decision input flow.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuxToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuxjoZEeCmpu-HRutBsg" name="incoming_outgoing_edges" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuxzoZEeCmpu-HRutBsg" annotatedElement="_BHeuxjoZEeCmpu-HRutBsg">
+        <body>A decision node has one or two incoming edges and at least one outgoing edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuyDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuyToZEeCmpu-HRutBsg" name="incoming_control_one_input_parameter" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuyjoZEeCmpu-HRutBsg" annotatedElement="_BHeuyToZEeCmpu-HRutBsg">
+        <body>If the decision node has a decision input flow and an incoming control flow, then a decision input behavior has one input parameter whose type is the same as or a supertype of the type of object tokens offered on the decision input flow.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuyzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuzDoZEeCmpu-HRutBsg" name="parameters" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeuzToZEeCmpu-HRutBsg" annotatedElement="_BHeuzDoZEeCmpu-HRutBsg">
+        <body>A decision input behavior has no output parameters, no in-out parameters and one return parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeuzjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeuzzoZEeCmpu-HRutBsg" name="incoming_object_one_input_parameter" constrainedElement="_BHeuuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu0DoZEeCmpu-HRutBsg" annotatedElement="_BHeuzzoZEeCmpu-HRutBsg">
+        <body>If the decision node has no decision input flow and an incoming object flow, then a decision input behavior has one input parameter whose type is the same as or a supertype of the type of object tokens offered on the incoming edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu0ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeu0joZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu0zoZEeCmpu-HRutBsg" name="decisionInput" visibility="public" association="_BHn2PDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu1DoZEeCmpu-HRutBsg" annotatedElement="_BHeu0zoZEeCmpu-HRutBsg">
+        <body>Provides input to guard specifications on edges outgoing from the decision node.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeu1ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu1joZEeCmpu-HRutBsg" name="decisionInputFlow" visibility="public" type="_BHevOjoZEeCmpu-HRutBsg" association="_BHn2QDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu1zoZEeCmpu-HRutBsg" annotatedElement="_BHeu1joZEeCmpu-HRutBsg">
+        <body>An additional edge incoming to the decision node that provides a decision input value.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeu2DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeu2ToZEeCmpu-HRutBsg" name="ExceptionHandler">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu2joZEeCmpu-HRutBsg" annotatedElement="_BHeu2ToZEeCmpu-HRutBsg">
+      <body>An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeu2zoZEeCmpu-HRutBsg" name="exception_body" constrainedElement="_BHeu2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu3DoZEeCmpu-HRutBsg" annotatedElement="_BHeu2zoZEeCmpu-HRutBsg">
+        <body>The exception handler and its input object node are not the source or target of any edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu3ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeu3joZEeCmpu-HRutBsg" name="result_pins" constrainedElement="_BHeu2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu3zoZEeCmpu-HRutBsg" annotatedElement="_BHeu3joZEeCmpu-HRutBsg">
+        <body>If the protected node is a StructuredActivityNode with output pins, then the exception handler body must also be a StructuredActivityNode with output pins that correspond in number and types to those of the protected node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu4DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeu4ToZEeCmpu-HRutBsg" name="one_input" constrainedElement="_BHeu2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu4joZEeCmpu-HRutBsg" annotatedElement="_BHeu4ToZEeCmpu-HRutBsg">
+        <body>The handler body has one input, and that input is the same as the exception input.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu4zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeu5DoZEeCmpu-HRutBsg" name="edge_source_target" constrainedElement="_BHeu2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu5ToZEeCmpu-HRutBsg" annotatedElement="_BHeu5DoZEeCmpu-HRutBsg">
+        <body>An edge that has a source in an exception handler structured node must have its target in the handler also, and vice versa.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu5joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeu5zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzLjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu6DoZEeCmpu-HRutBsg" name="exceptionInput" visibility="public" type="_BHevYjoZEeCmpu-HRutBsg" association="_BHn2ODoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu6ToZEeCmpu-HRutBsg" annotatedElement="_BHeu6DoZEeCmpu-HRutBsg">
+        <body>An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu6joZEeCmpu-HRutBsg" name="exceptionType" visibility="public" association="_BHn2NDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu6zoZEeCmpu-HRutBsg" annotatedElement="_BHeu6joZEeCmpu-HRutBsg">
+        <body>The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeu7DoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu7ToZEeCmpu-HRutBsg" name="handlerBody" visibility="public" type="_BHeu8ToZEeCmpu-HRutBsg" association="_BHn2MDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu7joZEeCmpu-HRutBsg" annotatedElement="_BHeu7ToZEeCmpu-HRutBsg">
+        <body>A node that is executed if the handler satisfies an uncaught exception.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu7zoZEeCmpu-HRutBsg" name="protectedNode" visibility="public" type="_BHeu8ToZEeCmpu-HRutBsg" association="_BHn2LzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu8DoZEeCmpu-HRutBsg" annotatedElement="_BHeu7zoZEeCmpu-HRutBsg">
+        <body>The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeu8ToZEeCmpu-HRutBsg" name="ExecutableNode" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu8joZEeCmpu-HRutBsg" annotatedElement="_BHeu8ToZEeCmpu-HRutBsg">
+      <body>An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
+An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeu9DoZEeCmpu-HRutBsg" general="_BHeuQToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHeu9ToZEeCmpu-HRutBsg" name="handler" visibility="public" type="_BHeu2ToZEeCmpu-HRutBsg" aggregation="composite" association="_BHn2LzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu9joZEeCmpu-HRutBsg" annotatedElement="_BHeu9ToZEeCmpu-HRutBsg">
+        <body>A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHeu9zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeu-DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeu-ToZEeCmpu-HRutBsg" name="FinalNode" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu-joZEeCmpu-HRutBsg" annotatedElement="_BHeu-ToZEeCmpu-HRutBsg">
+      <body>A final node is an abstract control node at which a flow in an activity stops.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHeu-zoZEeCmpu-HRutBsg" name="no_outgoing_edges" constrainedElement="_BHeu-ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeu_DoZEeCmpu-HRutBsg" annotatedElement="_BHeu-zoZEeCmpu-HRutBsg">
+        <body>A final node has no outgoing edges.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHeu_ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHeu_joZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHeu_zoZEeCmpu-HRutBsg" name="FlowFinalNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevADoZEeCmpu-HRutBsg" annotatedElement="_BHeu_zoZEeCmpu-HRutBsg">
+      <body>A flow final node is a final node that terminates a flow.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevAToZEeCmpu-HRutBsg" general="_BHeu-ToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevAjoZEeCmpu-HRutBsg" name="ForkNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevAzoZEeCmpu-HRutBsg" annotatedElement="_BHevAjoZEeCmpu-HRutBsg">
+      <body>A fork node is a control node that splits a flow into multiple concurrent flows.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevBDoZEeCmpu-HRutBsg" name="edges" constrainedElement="_BHevAjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevBToZEeCmpu-HRutBsg" annotatedElement="_BHevBDoZEeCmpu-HRutBsg">
+        <body>The edges coming into and out of a fork node must be either all object flows or all control flows.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevBjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevBzoZEeCmpu-HRutBsg" name="one_incoming_edge" constrainedElement="_BHevAjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevCDoZEeCmpu-HRutBsg" annotatedElement="_BHevBzoZEeCmpu-HRutBsg">
+        <body>A fork node has one incoming edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevCToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevCjoZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevCzoZEeCmpu-HRutBsg" name="InitialNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevDDoZEeCmpu-HRutBsg" annotatedElement="_BHevCzoZEeCmpu-HRutBsg">
+      <body>An initial node is a control node at which flow starts when the activity is invoked.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevDToZEeCmpu-HRutBsg" name="no_incoming_edges" constrainedElement="_BHevCzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevDjoZEeCmpu-HRutBsg" annotatedElement="_BHevDToZEeCmpu-HRutBsg">
+        <body>An initial node has no incoming edges.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevDzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevEDoZEeCmpu-HRutBsg" name="control_edges" constrainedElement="_BHevCzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevEToZEeCmpu-HRutBsg" annotatedElement="_BHevEDoZEeCmpu-HRutBsg">
+        <body>Only control edges can have initial nodes as source.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevEjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevEzoZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevFDoZEeCmpu-HRutBsg" name="InterruptibleActivityRegion">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevFToZEeCmpu-HRutBsg" annotatedElement="_BHevFDoZEeCmpu-HRutBsg">
+      <body>An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevFjoZEeCmpu-HRutBsg" name="interrupting_edges" constrainedElement="_BHevFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevFzoZEeCmpu-HRutBsg" annotatedElement="_BHevFjoZEeCmpu-HRutBsg">
+        <body>Interrupting edges of a region must have their source node in the region and their target node outside the region in the same activity containing the region.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevGDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevGToZEeCmpu-HRutBsg" general="_BHeuIzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevGjoZEeCmpu-HRutBsg" name="interruptingEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2LjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevGzoZEeCmpu-HRutBsg" annotatedElement="_BHevGjoZEeCmpu-HRutBsg">
+        <body>The edges leaving the region that will abort other tokens flowing in the region.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHevHDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevHToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevHjoZEeCmpu-HRutBsg" name="node" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" subsettedProperty="_BHeuMzoZEeCmpu-HRutBsg" association="_BHn2TToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevHzoZEeCmpu-HRutBsg" annotatedElement="_BHevHjoZEeCmpu-HRutBsg">
+        <body>Nodes immediately contained in the group.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHevIDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevIToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevIjoZEeCmpu-HRutBsg" name="JoinNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevIzoZEeCmpu-HRutBsg" annotatedElement="_BHevIjoZEeCmpu-HRutBsg">
+      <body>A join node is a control node that synchronizes multiple flows.
+Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevJToZEeCmpu-HRutBsg" name="one_outgoing_edge" constrainedElement="_BHevIjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevJjoZEeCmpu-HRutBsg" annotatedElement="_BHevJToZEeCmpu-HRutBsg">
+        <body>A join node has one outgoing edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevJzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>outgoing->size() = 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevKDoZEeCmpu-HRutBsg" name="incoming_object_flow" constrainedElement="_BHevIjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevKToZEeCmpu-HRutBsg" annotatedElement="_BHevKDoZEeCmpu-HRutBsg">
+        <body>If a join node has an incoming object flow, it must have an outgoing object flow, otherwise, it must have an outgoing control flow.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevKjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>incoming->select(oclIsKindOf(ObjectFlow))->notEmpty() implies&#xD;&#xA;  outgoing->forAll(oclIsKindOf(ObjectFlow)) and&#xD;&#xA;    (incoming->select(oclIsKindOf(ObjectFlow))->isEmpty() implies&#xD;&#xA;      outgoing->forAll(oclIsKindOf(ControlFlow)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevKzoZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevLDoZEeCmpu-HRutBsg" name="isCombineDuplicate" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevLToZEeCmpu-HRutBsg" annotatedElement="_BHevLDoZEeCmpu-HRutBsg">
+        <body>Tells whether tokens having objects with the same identity are combined into one by the join.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHevLjoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevLzoZEeCmpu-HRutBsg" name="joinSpec" visibility="public" aggregation="composite" association="_BHn2KzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevMDoZEeCmpu-HRutBsg" annotatedElement="_BHevLzoZEeCmpu-HRutBsg">
+        <body>A specification giving the conditions under which the join with emit a token. Default is &quot;and&quot;.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevMToZEeCmpu-HRutBsg" name="MergeNode">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevMjoZEeCmpu-HRutBsg" annotatedElement="_BHevMToZEeCmpu-HRutBsg">
+      <body>A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevMzoZEeCmpu-HRutBsg" name="one_outgoing_edge" constrainedElement="_BHevMToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevNDoZEeCmpu-HRutBsg" annotatedElement="_BHevMzoZEeCmpu-HRutBsg">
+        <body>A merge node has one outgoing edge.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevNToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevNjoZEeCmpu-HRutBsg" name="edges" constrainedElement="_BHevMToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevNzoZEeCmpu-HRutBsg" annotatedElement="_BHevNjoZEeCmpu-HRutBsg">
+        <body>The edges coming into and out of a merge node must be either all object flows or all control flows.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevODoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevOToZEeCmpu-HRutBsg" general="_BHeusjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevOjoZEeCmpu-HRutBsg" name="ObjectFlow">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevOzoZEeCmpu-HRutBsg" annotatedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <body>An object flow is an activity edge that can have objects or data passing along it.
+Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevPToZEeCmpu-HRutBsg" name="input_and_output_parameter" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevPjoZEeCmpu-HRutBsg" annotatedElement="_BHevPToZEeCmpu-HRutBsg">
+        <body>A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of the same as or a supertype of the type of source object node. The output parameter must be the same or a subtype of the type of source object node. The behavior cannot have side effects.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevPzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevQDoZEeCmpu-HRutBsg" name="no_actions" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevQToZEeCmpu-HRutBsg" annotatedElement="_BHevQDoZEeCmpu-HRutBsg">
+        <body>Object flows may not have actions at either end.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevQjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevQzoZEeCmpu-HRutBsg" name="transformation_behaviour" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevRDoZEeCmpu-HRutBsg" annotatedElement="_BHevQzoZEeCmpu-HRutBsg">
+        <body>A transformation behavior has one input parameter and one output parameter. The input parameter must be the same as or a supertype of the type of object token coming from the source end. The output parameter must be the same or a subtype of the type of object token expected downstream. The behavior cannot have side effects.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevRToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevRjoZEeCmpu-HRutBsg" name="selection_behaviour" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevRzoZEeCmpu-HRutBsg" annotatedElement="_BHevRjoZEeCmpu-HRutBsg">
+        <body>An object flow may have a selection behavior only if has an object node as a source.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevSDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevSToZEeCmpu-HRutBsg" name="compatible_types" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevSjoZEeCmpu-HRutBsg" annotatedElement="_BHevSToZEeCmpu-HRutBsg">
+        <body>Object nodes connected by an object flow, with optionally intervening control nodes, must have compatible types. In particular, the downstream object node type must be the same or a supertype of the upstream object node type.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevSzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevTDoZEeCmpu-HRutBsg" name="same_upper_bounds" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevTToZEeCmpu-HRutBsg" annotatedElement="_BHevTDoZEeCmpu-HRutBsg">
+        <body>Object nodes connected by an object flow, with optionally intervening control nodes, must have the same upper bounds.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevTjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevTzoZEeCmpu-HRutBsg" name="target" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevUDoZEeCmpu-HRutBsg" annotatedElement="_BHevTzoZEeCmpu-HRutBsg">
+        <body>An edge with constant weight may not target an object node, or lead to an object node downstream with no intervening actions, that has an upper bound less than the weight.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevUToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevUjoZEeCmpu-HRutBsg" name="is_multicast_or_is_multireceive" constrainedElement="_BHevOjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevUzoZEeCmpu-HRutBsg" annotatedElement="_BHevUjoZEeCmpu-HRutBsg">
+        <body>isMulticast and isMultireceive cannot both be true.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevVDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevVToZEeCmpu-HRutBsg" general="_BHet9joZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevVjoZEeCmpu-HRutBsg" name="isMulticast" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevVzoZEeCmpu-HRutBsg" annotatedElement="_BHevVjoZEeCmpu-HRutBsg">
+        <body>Tells whether the objects in the flow are passed by multicasting.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHevWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevWToZEeCmpu-HRutBsg" name="isMultireceive" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevWjoZEeCmpu-HRutBsg" annotatedElement="_BHevWToZEeCmpu-HRutBsg">
+        <body>Tells whether the objects in the flow are gathered from respondents to multicasting.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHevWzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevXDoZEeCmpu-HRutBsg" name="selection" visibility="public" association="_BHn2JzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevXToZEeCmpu-HRutBsg" annotatedElement="_BHevXDoZEeCmpu-HRutBsg">
+        <body>Selects tokens from a source object node.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevXjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevXzoZEeCmpu-HRutBsg" name="transformation" visibility="public" association="_BHn2IzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevYDoZEeCmpu-HRutBsg" annotatedElement="_BHevXzoZEeCmpu-HRutBsg">
+        <body>Changes or replaces data tokens flowing along edge.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevYToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevYjoZEeCmpu-HRutBsg" name="ObjectNode" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevYzoZEeCmpu-HRutBsg" annotatedElement="_BHevYjoZEeCmpu-HRutBsg">
+      <body>Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
+An object node is an abstract activity node that is part of defining object flow in an activity.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevZToZEeCmpu-HRutBsg" name="input_output_parameter" constrainedElement="_BHevYjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevZjoZEeCmpu-HRutBsg" annotatedElement="_BHevZToZEeCmpu-HRutBsg">
+        <body>A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of the same type as the object node or a supertype of the type of object node. The output parameter must be the same or a subtype of the type of object node. The behavior cannot have side effects.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevZzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevaDoZEeCmpu-HRutBsg" name="selection_behavior" constrainedElement="_BHevYjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevaToZEeCmpu-HRutBsg" annotatedElement="_BHevaDoZEeCmpu-HRutBsg">
+        <body>If an object node has a selection behavior, then the ordering of the object node is ordered, and vice versa.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevajoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevazoZEeCmpu-HRutBsg" name="object_flow_edges" constrainedElement="_BHevYjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevbDoZEeCmpu-HRutBsg" annotatedElement="_BHevazoZEeCmpu-HRutBsg">
+        <body>All edges coming into or going out of object nodes must be object flow edges.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevbToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevbjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SihzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevbzoZEeCmpu-HRutBsg" general="_BHeuQToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevcDoZEeCmpu-HRutBsg" name="inState" visibility="public" association="_BHn2HDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevcToZEeCmpu-HRutBsg" annotatedElement="_BHevcDoZEeCmpu-HRutBsg">
+        <body>The required states of the object available at this point in the activity.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StateMachines.fragment.xmi#_Kq8AtToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHevcjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevczoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevdDoZEeCmpu-HRutBsg" name="isControlType" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevdToZEeCmpu-HRutBsg" annotatedElement="_BHevdDoZEeCmpu-HRutBsg">
+        <body>Tells whether the type of the object node is to be treated as control.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BHevdjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevdzoZEeCmpu-HRutBsg" name="ordering" visibility="public" type="_BHevkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeveDoZEeCmpu-HRutBsg" annotatedElement="_BHevdzoZEeCmpu-HRutBsg">
+        <body>Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_BHeveToZEeCmpu-HRutBsg" type="_BHevkzoZEeCmpu-HRutBsg" instance="_BHn2FjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevejoZEeCmpu-HRutBsg" name="selection" visibility="public" association="_BHn2GDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevezoZEeCmpu-HRutBsg" annotatedElement="_BHevejoZEeCmpu-HRutBsg">
+        <body>Selects tokens for outgoing edges.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevfDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevfToZEeCmpu-HRutBsg" name="upperBound" visibility="public" aggregation="composite" association="_BHn2IDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevfjoZEeCmpu-HRutBsg" annotatedElement="_BHevfToZEeCmpu-HRutBsg">
+        <body>The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BHevfzoZEeCmpu-HRutBsg" name="Variable">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevgDoZEeCmpu-HRutBsg" annotatedElement="_BHevfzoZEeCmpu-HRutBsg">
+      <body>A variable is considered a connectable element.
+Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevgjoZEeCmpu-HRutBsg" name="owned" constrainedElement="_BHevfzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevgzoZEeCmpu-HRutBsg" annotatedElement="_BHevgjoZEeCmpu-HRutBsg">
+        <body>A variable is owned by a StructuredNode or Activity, but not both.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevhDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevhToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMKjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_BHevhjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzZToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevhzoZEeCmpu-HRutBsg" name="activityScope" visibility="public" type="_BHetxToZEeCmpu-HRutBsg" association="_BHn2ZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHeviDoZEeCmpu-HRutBsg" annotatedElement="_BHevhzoZEeCmpu-HRutBsg">
+        <body>An activity that owns the variable.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHeviToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BHevijoZEeCmpu-HRutBsg" name="scope" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevizoZEeCmpu-HRutBsg" annotatedElement="_BHevijoZEeCmpu-HRutBsg">
+        <body>A structured activity node that owns the variable.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkwZxToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHevjDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="Actions.fragment.xmi#_AkwaRjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BHevjToZEeCmpu-HRutBsg" name="isAccessibleBy" visibility="public" isQuery="true" bodyCondition="_BHevjzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHevjjoZEeCmpu-HRutBsg" annotatedElement="_BHevjToZEeCmpu-HRutBsg">
+        <body>The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_BHevjzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_BHevjToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_BHevkDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_BHevkToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_BHevkjoZEeCmpu-HRutBsg" name="a" visibility="public">
+        <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkdfaDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_BHevkzoZEeCmpu-HRutBsg" name="ObjectNodeOrderingKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_BHevlDoZEeCmpu-HRutBsg" annotatedElement="_BHevkzoZEeCmpu-HRutBsg">
+      <body>ObjectNodeOrderingKind is an enumeration indicating queuing order within a node.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BHn2EDoZEeCmpu-HRutBsg" name="unordered" classifier="_BHevkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHn2EToZEeCmpu-HRutBsg" annotatedElement="_BHn2EDoZEeCmpu-HRutBsg">
+        <body>Indicates that object node tokens are unordered.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BHn2EjoZEeCmpu-HRutBsg" name="ordered" classifier="_BHevkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHn2EzoZEeCmpu-HRutBsg" annotatedElement="_BHn2EjoZEeCmpu-HRutBsg">
+        <body>Indicates that object node tokens are ordered.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BHn2FDoZEeCmpu-HRutBsg" name="LIFO" classifier="_BHevkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHn2FToZEeCmpu-HRutBsg" annotatedElement="_BHn2FDoZEeCmpu-HRutBsg">
+        <body>Indicates that object node tokens are queued in a last in, first out manner.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BHn2FjoZEeCmpu-HRutBsg" name="FIFO" classifier="_BHevkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_BHn2FzoZEeCmpu-HRutBsg" annotatedElement="_BHn2FjoZEeCmpu-HRutBsg">
+        <body>Indicates that object node tokens are queued in a first in, first out manner.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2GDoZEeCmpu-HRutBsg" name="A_selection_objectNode" memberEnd="_BHevejoZEeCmpu-HRutBsg _BHn2GToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2GToZEeCmpu-HRutBsg" name="objectNode" visibility="public" type="_BHevYjoZEeCmpu-HRutBsg" association="_BHn2GDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2GjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2GzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2HDoZEeCmpu-HRutBsg" name="A_inState_objectNode" memberEnd="_BHevcDoZEeCmpu-HRutBsg _BHn2HToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2HToZEeCmpu-HRutBsg" name="objectNode" visibility="public" type="_BHevYjoZEeCmpu-HRutBsg" association="_BHn2HDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2HjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2HzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2IDoZEeCmpu-HRutBsg" name="A_upperBound_objectNode" memberEnd="_BHevfToZEeCmpu-HRutBsg _BHn2IToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2IToZEeCmpu-HRutBsg" name="objectNode" visibility="public" type="_BHevYjoZEeCmpu-HRutBsg" association="_BHn2IDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2IjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2IzoZEeCmpu-HRutBsg" name="A_transformation_objectFlow" memberEnd="_BHevXzoZEeCmpu-HRutBsg _BHn2JDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2JDoZEeCmpu-HRutBsg" name="objectFlow" visibility="public" type="_BHevOjoZEeCmpu-HRutBsg" association="_BHn2IzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2JToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2JjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2JzoZEeCmpu-HRutBsg" name="A_selection_objectFlow" memberEnd="_BHevXDoZEeCmpu-HRutBsg _BHn2KDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2KDoZEeCmpu-HRutBsg" name="objectFlow" visibility="public" type="_BHevOjoZEeCmpu-HRutBsg" association="_BHn2JzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2KToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2KjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2KzoZEeCmpu-HRutBsg" name="A_joinSpec_joinNode" memberEnd="_BHevLzoZEeCmpu-HRutBsg _BHn2LDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2LDoZEeCmpu-HRutBsg" name="joinNode" visibility="public" type="_BHevIjoZEeCmpu-HRutBsg" association="_BHn2KzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2LToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2LjoZEeCmpu-HRutBsg" name="A_interruptingEdge_interrupts" memberEnd="_BHevGjoZEeCmpu-HRutBsg _BHeuEzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2LzoZEeCmpu-HRutBsg" name="A_handler_protectedNode" memberEnd="_BHeu9ToZEeCmpu-HRutBsg _BHeu7zoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2MDoZEeCmpu-HRutBsg" name="A_handlerBody_exceptionHandler" memberEnd="_BHeu7ToZEeCmpu-HRutBsg _BHn2MToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2MToZEeCmpu-HRutBsg" name="exceptionHandler" visibility="public" type="_BHeu2ToZEeCmpu-HRutBsg" association="_BHn2MDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2MjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2MzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2NDoZEeCmpu-HRutBsg" name="A_exceptionType_exceptionHandler" memberEnd="_BHeu6joZEeCmpu-HRutBsg _BHn2NToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2NToZEeCmpu-HRutBsg" name="exceptionHandler" visibility="public" type="_BHeu2ToZEeCmpu-HRutBsg" association="_BHn2NDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2NjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2NzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2ODoZEeCmpu-HRutBsg" name="A_exceptionInput_exceptionHandler" memberEnd="_BHeu6DoZEeCmpu-HRutBsg _BHn2OToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2OToZEeCmpu-HRutBsg" name="exceptionHandler" visibility="public" type="_BHeu2ToZEeCmpu-HRutBsg" association="_BHn2ODoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2OjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2OzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2PDoZEeCmpu-HRutBsg" name="A_decisionInput_decisionNode" memberEnd="_BHeu0zoZEeCmpu-HRutBsg _BHn2PToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2PToZEeCmpu-HRutBsg" name="decisionNode" visibility="public" type="_BHeuuDoZEeCmpu-HRutBsg" association="_BHn2PDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2PjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2PzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2QDoZEeCmpu-HRutBsg" name="A_decisionInputFlow_decisionNode" memberEnd="_BHeu1joZEeCmpu-HRutBsg _BHn2QToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2QToZEeCmpu-HRutBsg" name="decisionNode" visibility="public" type="_BHeuuDoZEeCmpu-HRutBsg" association="_BHn2QDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2QjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2QzoZEeCmpu-HRutBsg" name="A_represents_activityPartition" memberEnd="_BHeunzoZEeCmpu-HRutBsg _BHn2RDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2RDoZEeCmpu-HRutBsg" name="activityPartition" visibility="public" type="_BHeugjoZEeCmpu-HRutBsg" association="_BHn2QzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2RToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2RjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2RzoZEeCmpu-HRutBsg" name="A_subpartition_superPartition" memberEnd="_BHeuojoZEeCmpu-HRutBsg _BHeupjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2SDoZEeCmpu-HRutBsg" name="A_edge_inPartition" memberEnd="_BHeukToZEeCmpu-HRutBsg _BHeuDDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2SToZEeCmpu-HRutBsg" name="A_parameter_activityParameterNode" memberEnd="_BHeugDoZEeCmpu-HRutBsg _BHn2SjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2SjoZEeCmpu-HRutBsg" name="activityParameterNode" visibility="public" type="_BHeuaDoZEeCmpu-HRutBsg" association="_BHn2SToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2SzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2TDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2TToZEeCmpu-HRutBsg" name="A_inInterruptibleRegion_node" memberEnd="_BHeuUToZEeCmpu-HRutBsg _BHevHjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2TjoZEeCmpu-HRutBsg" name="A_inPartition_node" memberEnd="_BHeuVToZEeCmpu-HRutBsg _BHeumzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2TzoZEeCmpu-HRutBsg" name="A_incoming_target_node" memberEnd="_BHeuXDoZEeCmpu-HRutBsg _BHeuHDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2UDoZEeCmpu-HRutBsg" name="A_outgoing_source_node" memberEnd="_BHeuYDoZEeCmpu-HRutBsg _BHeuGjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2UToZEeCmpu-HRutBsg" name="A_redefinedNode_activityNode" memberEnd="_BHeuZDoZEeCmpu-HRutBsg _BHn2UjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2UjoZEeCmpu-HRutBsg" name="activityNode" visibility="public" type="_BHeuQToZEeCmpu-HRutBsg" association="_BHn2UToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2UzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2VDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2VToZEeCmpu-HRutBsg" name="A_containedEdge_inGroup" memberEnd="_BHeuLzoZEeCmpu-HRutBsg _BHeuCDoZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2VjoZEeCmpu-HRutBsg" name="A_containedNode_inGroup" memberEnd="_BHeuMzoZEeCmpu-HRutBsg _BHeuTToZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2VzoZEeCmpu-HRutBsg" name="A_subgroup_superGroup" memberEnd="_BHeuOjoZEeCmpu-HRutBsg _BHeuPjoZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2WDoZEeCmpu-HRutBsg" name="A_redefinedEdge_activityEdge" memberEnd="_BHeuFjoZEeCmpu-HRutBsg _BHn2WToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2WToZEeCmpu-HRutBsg" name="activityEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2WDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHn2WjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2WzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2XDoZEeCmpu-HRutBsg" name="A_weight_activityEdge" memberEnd="_BHeuHjoZEeCmpu-HRutBsg _BHn2XToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2XToZEeCmpu-HRutBsg" name="activityEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2XDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2XjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2XzoZEeCmpu-HRutBsg" name="A_guard_activityEdge" memberEnd="_BHeuBjoZEeCmpu-HRutBsg _BHn2YDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2YDoZEeCmpu-HRutBsg" name="activityEdge" visibility="public" type="_BHet9joZEeCmpu-HRutBsg" association="_BHn2XzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2YToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2YjoZEeCmpu-HRutBsg" name="A_structuredNode_activity">
+    <memberEnd xmi:type="uml:Property" href="#_BHet5zoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Actions.fragment.xmi#_AkwZ1DoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2YzoZEeCmpu-HRutBsg" name="A_group_inActivity" memberEnd="_BHet1ToZEeCmpu-HRutBsg _BHeuNzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2ZDoZEeCmpu-HRutBsg" name="A_node_activity" memberEnd="_BHet3zoZEeCmpu-HRutBsg _BHeuSjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2ZToZEeCmpu-HRutBsg" name="A_variable_activityScope" memberEnd="_BHet6zoZEeCmpu-HRutBsg _BHevhzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2ZjoZEeCmpu-HRutBsg" name="A_edge_activity" memberEnd="_BHet0ToZEeCmpu-HRutBsg _BHeuAzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BHn2ZzoZEeCmpu-HRutBsg" name="A_partition_activity" memberEnd="_BHet4zoZEeCmpu-HRutBsg _BHn2aDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BHn2aDoZEeCmpu-HRutBsg" name="activity" visibility="public" type="_BHetxToZEeCmpu-HRutBsg" subsettedProperty="_BHeuNzoZEeCmpu-HRutBsg" association="_BHn2ZzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHn2aToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

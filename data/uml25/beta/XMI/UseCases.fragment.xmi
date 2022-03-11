@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_LuIhwDoZEeCmpu-HRutBsg" name="UseCases">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_h5Dy8CeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="StructuredClassifiers.fragment.xmi#_LPJfsDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_j84E0CeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonBehavior.fragment.xmi#_DF0oIDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LuSTfToZEeCmpu-HRutBsg" name="Actor">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTfjoZEeCmpu-HRutBsg" annotatedElement="_LuSTfToZEeCmpu-HRutBsg">
+      <body>An Actor specifies a role played by a user or any other system that interacts with the subject.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTfzoZEeCmpu-HRutBsg" name="associations" constrainedElement="_LuSTfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTgDoZEeCmpu-HRutBsg" annotatedElement="_LuSTfzoZEeCmpu-HRutBsg">
+        <body>An Actor can only have Associations to UseCases, Components and Classes. Furthermore these Associations must be binary.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTgToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.attribute->forAll ( a |&#xA;&#x9;&#x9;(a.association->notEmpty()) implies&#xA;&#x9;&#x9;((a.association.memberEnd->size() = 2) and&#xA;&#x9;&#x9;(a.opposite.class.oclIsKindOf(UseCase) or&#xA;&#x9;&#x9;(a.opposite.class.oclIsKindOf(Class) and not a.opposite.class.oclIsKindOf(Behavior)))))&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTgjoZEeCmpu-HRutBsg" name="must_have_name" constrainedElement="_LuSTfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTgzoZEeCmpu-HRutBsg" annotatedElement="_LuSTgjoZEeCmpu-HRutBsg">
+        <body>An Actor must have a name.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSThDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>name->notEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSThToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LuSThjoZEeCmpu-HRutBsg" name="Extend">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LuSThzoZEeCmpu-HRutBsg" annotatedElement="_LuSThjoZEeCmpu-HRutBsg">
+      <body>A relationship from an extending UseCase to an extended UseCase that specifies how and when the behavior defined in the extending UseCase can be inserted into the behavior defined in the extended UseCase.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTiDoZEeCmpu-HRutBsg" name="extension_points" constrainedElement="_LuSThjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTiToZEeCmpu-HRutBsg" annotatedElement="_LuSTiDoZEeCmpu-HRutBsg">
+        <body>The ExtensionPoints referenced by the Extend relationship must belong to the UseCase that is being extended.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTijoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSTizoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSTjDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTjToZEeCmpu-HRutBsg" name="condition" visibility="public" aggregation="composite" association="_LuST2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTjjoZEeCmpu-HRutBsg" annotatedElement="_LuSTjToZEeCmpu-HRutBsg">
+        <body>References the condition that must hold when the first ExtensionPoint is reached for the extension to take place. If no constraint is associated with the Extend relationship, the extension is unconditional.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTjzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTkDoZEeCmpu-HRutBsg" name="extendedCase" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" association="_LuST3DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTkToZEeCmpu-HRutBsg" annotatedElement="_LuSTkDoZEeCmpu-HRutBsg">
+        <body>The UseCase that is being extended.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTkjoZEeCmpu-HRutBsg" name="extension" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" association="_LuST0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTkzoZEeCmpu-HRutBsg" annotatedElement="_LuSTkjoZEeCmpu-HRutBsg">
+        <body>The UseCase that represents the extension and owns the Extend relationship.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTlDoZEeCmpu-HRutBsg" name="extensionLocation" visibility="public" type="_LuSTlzoZEeCmpu-HRutBsg" isOrdered="true" association="_LuST1ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTlToZEeCmpu-HRutBsg" annotatedElement="_LuSTlDoZEeCmpu-HRutBsg">
+        <body>An ordered list of ExtensionPoints belonging to the extended UseCase, specifying where the respective behavioral fragments of the extending UseCase are to be inserted. The first fragment in the extending UseCase is associated with the first extension point in the list, the second fragment with the second point, and so on. Note that, in most practical cases, the extending UseCase has just a single behavior fragment, so that the list of ExtensionPoints is trivial.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTljoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LuSTlzoZEeCmpu-HRutBsg" name="ExtensionPoint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTmDoZEeCmpu-HRutBsg" annotatedElement="_LuSTlzoZEeCmpu-HRutBsg">
+      <body>An ExtensionPoint identifies a point in the behavior of a UseCase where that behavior can be extended by the behavior of some other (extending) UseCase, as specified by an Extend relationship.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTmToZEeCmpu-HRutBsg" name="must_have_name" constrainedElement="_LuSTlzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTmjoZEeCmpu-HRutBsg" annotatedElement="_LuSTmToZEeCmpu-HRutBsg">
+        <body>An ExtensionPoint must have a name.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTmzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>name->notEmpty ()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSTnDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH1-bToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTnToZEeCmpu-HRutBsg" name="useCase" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" association="_LuSTzToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTnjoZEeCmpu-HRutBsg" annotatedElement="_LuSTnToZEeCmpu-HRutBsg">
+        <body>The UseCase that owns this ExtensionPoint.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LuSTnzoZEeCmpu-HRutBsg" name="Include">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LuSToDoZEeCmpu-HRutBsg" annotatedElement="_LuSTnzoZEeCmpu-HRutBsg">
+      <body>An Include relationship specifies that a UseCase contains the behavior defined in another UseCase.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSToToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzJToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSTojoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTozoZEeCmpu-HRutBsg" name="addition" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" association="_LuST0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTpDoZEeCmpu-HRutBsg" annotatedElement="_LuSTozoZEeCmpu-HRutBsg">
+        <body>The UseCase that is to be included.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTpToZEeCmpu-HRutBsg" name="includingCase" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" association="_LuSTzjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTpjoZEeCmpu-HRutBsg" annotatedElement="_LuSTpToZEeCmpu-HRutBsg">
+        <body>The UseCase which includes the addition and owns the Include relationship.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzKDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LuSTpzoZEeCmpu-HRutBsg" name="UseCase">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTqDoZEeCmpu-HRutBsg" annotatedElement="_LuSTpzoZEeCmpu-HRutBsg">
+      <body>A UseCase specifies a set of actions performed by its subject, which yields an observable result that is of value for one or more Actors or other stakeholders of the subject.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTqToZEeCmpu-HRutBsg" name="binary_associations" constrainedElement="_LuSTpzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTqjoZEeCmpu-HRutBsg" annotatedElement="_LuSTqToZEeCmpu-HRutBsg">
+        <body>UseCases can only be involved in binary Associations.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTqzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies a.memberEnd->size() = 2)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTrDoZEeCmpu-HRutBsg" name="no_association_to_use_case" constrainedElement="_LuSTpzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTrToZEeCmpu-HRutBsg" annotatedElement="_LuSTrDoZEeCmpu-HRutBsg">
+        <body>UseCases can not have Associations to UseCases specifying the same subject.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTrjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies &#xD;&#xA;   (&#xD;&#xA;   let usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))->collect(oclAsType(UseCase))->asSet() in&#xD;&#xA;   usecases->size() > 1 implies usecases->collect(subject)->size() > 1&#xD;&#xA;   )&#xD;&#xA;)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTrzoZEeCmpu-HRutBsg" name="cannot_include_self" constrainedElement="_LuSTpzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTsDoZEeCmpu-HRutBsg" annotatedElement="_LuSTrzoZEeCmpu-HRutBsg">
+        <body>A UseCase cannot include UseCases that directly or indirectly include it.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTsToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not allIncludedUseCases()->includes(self)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTsjoZEeCmpu-HRutBsg" name="must_have_name" constrainedElement="_LuSTpzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTszoZEeCmpu-HRutBsg" annotatedElement="_LuSTsjoZEeCmpu-HRutBsg">
+        <body>A UseCase must have a name.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTtDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>name -> notEmpty ()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LuSTtToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTtjoZEeCmpu-HRutBsg" name="extend" visibility="public" type="_LuSThjoZEeCmpu-HRutBsg" aggregation="composite" association="_LuST0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTtzoZEeCmpu-HRutBsg" annotatedElement="_LuSTtjoZEeCmpu-HRutBsg">
+        <body>The Extend relationships owned by this UseCase.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTuDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTuToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTujoZEeCmpu-HRutBsg" name="extensionPoint" visibility="public" type="_LuSTlzoZEeCmpu-HRutBsg" aggregation="composite" association="_LuSTzToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTuzoZEeCmpu-HRutBsg" annotatedElement="_LuSTujoZEeCmpu-HRutBsg">
+        <body>The ExtensionPoints owned by this UseCase.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTvDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTvToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTvjoZEeCmpu-HRutBsg" name="include" visibility="public" type="_LuSTnzoZEeCmpu-HRutBsg" aggregation="composite" association="_LuSTzjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTvzoZEeCmpu-HRutBsg" annotatedElement="_LuSTvjoZEeCmpu-HRutBsg">
+        <body>The Include relationships owned by this UseCase.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTwDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTwToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si7ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LuSTwjoZEeCmpu-HRutBsg" name="subject" visibility="public" association="_LuSTzzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTwzoZEeCmpu-HRutBsg" annotatedElement="_LuSTwjoZEeCmpu-HRutBsg">
+        <body>The subjects to which this UseCase applies. The subject or its parts realize all the UseCases that apply to this subject. UseCases need not be attached to any specific subject, however. The subject may, but need not, own the UseCases that apply to it.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTxDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTxToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LuSTxjoZEeCmpu-HRutBsg" name="allIncludedUseCases" visibility="public" isQuery="true" bodyCondition="_LuSTyDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LuSTxzoZEeCmpu-HRutBsg" annotatedElement="_LuSTxjoZEeCmpu-HRutBsg">
+        <body>The query allIncludedUseCases() returns the transitive closure of all UseCases (directly or indirectly) included by this UseCase.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LuSTyDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LuSTxjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LuSTyToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.include.addition->union(self.include.addition->collect(uc | uc.allIncludedUseCases()))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LuSTyjoZEeCmpu-HRutBsg" name="result" visibility="public" type="_LuSTpzoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuSTyzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuSTzDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuSTzToZEeCmpu-HRutBsg" name="A_extensionPoint_useCase" memberEnd="_LuSTujoZEeCmpu-HRutBsg _LuSTnToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuSTzjoZEeCmpu-HRutBsg" name="A_include_includingCase" memberEnd="_LuSTvjoZEeCmpu-HRutBsg _LuSTpToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuSTzzoZEeCmpu-HRutBsg" name="A_subject_useCase">
+    <memberEnd xmi:type="uml:Property" href="#_LuSTwjoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOvjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuST0DoZEeCmpu-HRutBsg" name="A_extend_extension" memberEnd="_LuSTtjoZEeCmpu-HRutBsg _LuSTkjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuST0ToZEeCmpu-HRutBsg" name="A_addition_include" memberEnd="_LuSTozoZEeCmpu-HRutBsg _LuST0joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LuST0joZEeCmpu-HRutBsg" name="include" visibility="public" type="_LuSTnzoZEeCmpu-HRutBsg" association="_LuST0ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuST0zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuST1DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuST1ToZEeCmpu-HRutBsg" name="A_extensionLocation_extension" memberEnd="_LuSTlDoZEeCmpu-HRutBsg _LuST1joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LuST1joZEeCmpu-HRutBsg" name="extension" visibility="public" type="_LuSThjoZEeCmpu-HRutBsg" association="_LuST1ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuST1zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuST2DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuST2ToZEeCmpu-HRutBsg" name="A_condition_extend" memberEnd="_LuSTjToZEeCmpu-HRutBsg _LuST2joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LuST2joZEeCmpu-HRutBsg" name="extend" visibility="public" type="_LuSThjoZEeCmpu-HRutBsg" association="_LuST2ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuST2zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LuST3DoZEeCmpu-HRutBsg" name="A_extendedCase_extend" memberEnd="_LuSTkDoZEeCmpu-HRutBsg _LuST3ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LuST3ToZEeCmpu-HRutBsg" name="extend" visibility="public" type="_LuSThjoZEeCmpu-HRutBsg" association="_LuST3DoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LuST3joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LuST3zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si8ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

@@ -1,0 +1,1315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_D211YDoZEeCmpu-HRutBsg" name="CommonStructure">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_N4Y1UCgHEeGHQ8530KvmVA">
+    <importedPackage xmi:type="uml:Package" href="Packages.fragment.xmi#_IHytMDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3Iy8zoZEeCmpu-HRutBsg" name="Abstraction">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3Iy9DoZEeCmpu-HRutBsg" annotatedElement="_D3Iy8zoZEeCmpu-HRutBsg">
+      <body>An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3Iy9ToZEeCmpu-HRutBsg" general="_D3IzGzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Iy9joZEeCmpu-HRutBsg" name="mapping" visibility="public" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3SjBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Iy9zoZEeCmpu-HRutBsg" annotatedElement="_D3Iy9joZEeCmpu-HRutBsg">
+        <body>An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTiljoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Iy-DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3Iy-ToZEeCmpu-HRutBsg" name="Comment">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3Iy-joZEeCmpu-HRutBsg" annotatedElement="_D3Iy-ToZEeCmpu-HRutBsg">
+      <body>A comment is a textual annotation that can be attached to a set of elements.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3Iy-zoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Iy_DoZEeCmpu-HRutBsg" name="annotatedElement" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" association="_D3SjADoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Iy_ToZEeCmpu-HRutBsg" annotatedElement="_D3Iy_DoZEeCmpu-HRutBsg">
+        <body>References the Element(s) being commented.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Iy_joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Iy_zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzADoZEeCmpu-HRutBsg" name="body" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzAToZEeCmpu-HRutBsg" annotatedElement="_D3IzADoZEeCmpu-HRutBsg">
+        <body>Specifies a string that is the comment.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzAjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzAzoZEeCmpu-HRutBsg" name="Constraint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzBDoZEeCmpu-HRutBsg" annotatedElement="_D3IzAzoZEeCmpu-HRutBsg">
+      <body>A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzBToZEeCmpu-HRutBsg" name="boolean_value" constrainedElement="_D3IzAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzBjoZEeCmpu-HRutBsg" annotatedElement="_D3IzBToZEeCmpu-HRutBsg">
+        <body>The value specification for a constraint must evaluate to a Boolean value.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzBzoZEeCmpu-HRutBsg">
+        <language>Analysis</language>
+        <body>Cannot be expressed in OCL&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzCDoZEeCmpu-HRutBsg" name="no_side_effects" constrainedElement="_D3IzAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzCToZEeCmpu-HRutBsg" annotatedElement="_D3IzCDoZEeCmpu-HRutBsg">
+        <body>Evaluating the value specification for a constraint must not have side effects.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzCjoZEeCmpu-HRutBsg">
+        <language>Analysis</language>
+        <body>Cannot be expressed in OCL</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzCzoZEeCmpu-HRutBsg" name="not_apply_to_self" constrainedElement="_D3IzAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzDDoZEeCmpu-HRutBsg" annotatedElement="_D3IzCzoZEeCmpu-HRutBsg">
+        <body>A constraint cannot be applied to itself.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzDToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not constrainedElement->includes(self)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzEToZEeCmpu-HRutBsg" general="_D3Sh6DoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzEjoZEeCmpu-HRutBsg" name="constrainedElement" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isOrdered="true" association="_D3Si-ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzEzoZEeCmpu-HRutBsg" annotatedElement="_D3IzEjoZEeCmpu-HRutBsg">
+        <body>The ordered set of Elements referenced by this Constraint.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzFDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzFToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzFjoZEeCmpu-HRutBsg" name="context" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" subsettedProperty="_D3ShbDoZEeCmpu-HRutBsg" association="_D3Si0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzFzoZEeCmpu-HRutBsg" annotatedElement="_D3IzFjoZEeCmpu-HRutBsg">
+        <body>Specifies the namespace that owns the NamedElement.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzGDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzGToZEeCmpu-HRutBsg" name="specification" visibility="public" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3Si_ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzGjoZEeCmpu-HRutBsg" annotatedElement="_D3IzGToZEeCmpu-HRutBsg">
+        <body>A condition that must be true when evaluated in order for the constraint to be satisfied.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzGzoZEeCmpu-HRutBsg" name="Dependency">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzHDoZEeCmpu-HRutBsg" annotatedElement="_D3IzGzoZEeCmpu-HRutBsg">
+      <body>A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzHToZEeCmpu-HRutBsg" general="_D3IzJToZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzHjoZEeCmpu-HRutBsg" general="_D3Sh6DoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzHzoZEeCmpu-HRutBsg" name="client" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg" subsettedProperty="_D3IzKDoZEeCmpu-HRutBsg" association="_D3Si3ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzIDoZEeCmpu-HRutBsg" annotatedElement="_D3IzHzoZEeCmpu-HRutBsg">
+        <body>The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzIToZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzIjoZEeCmpu-HRutBsg" name="supplier" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg" subsettedProperty="_D3IzKzoZEeCmpu-HRutBsg" association="_D3Si9DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzIzoZEeCmpu-HRutBsg" annotatedElement="_D3IzIjoZEeCmpu-HRutBsg">
+        <body>The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzJDoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzJToZEeCmpu-HRutBsg" name="DirectedRelationship" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzJjoZEeCmpu-HRutBsg" annotatedElement="_D3IzJToZEeCmpu-HRutBsg">
+      <body>A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzJzoZEeCmpu-HRutBsg" general="_D3SiFToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzKDoZEeCmpu-HRutBsg" name="source" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_D3SiGDoZEeCmpu-HRutBsg" association="_D3Si7DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzKToZEeCmpu-HRutBsg" annotatedElement="_D3IzKDoZEeCmpu-HRutBsg">
+        <body>Specifies the sources of the DirectedRelationship.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzKjoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzKzoZEeCmpu-HRutBsg" name="target" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_D3SiGDoZEeCmpu-HRutBsg" association="_D3Si8DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzLDoZEeCmpu-HRutBsg" annotatedElement="_D3IzKzoZEeCmpu-HRutBsg">
+        <body>Specifies the targets of the DirectedRelationship.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzLToZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzLjoZEeCmpu-HRutBsg" name="Element" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzLzoZEeCmpu-HRutBsg" annotatedElement="_D3IzLjoZEeCmpu-HRutBsg">
+      <body>An element is a constituent of a model. As such, it has the capability of owning other elements.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzMDoZEeCmpu-HRutBsg" name="has_owner" constrainedElement="_D3IzLjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzMToZEeCmpu-HRutBsg" annotatedElement="_D3IzMDoZEeCmpu-HRutBsg">
+        <body>Elements that must be owned must have an owner.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzMjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>mustBeOwned() implies owner->notEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzMzoZEeCmpu-HRutBsg" name="not_own_self" constrainedElement="_D3IzLjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzNDoZEeCmpu-HRutBsg" annotatedElement="_D3IzMzoZEeCmpu-HRutBsg">
+        <body>An element may not directly or indirectly own itself.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzNToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not allOwnedElements()->includes(self)</body>
+      </specification>
+    </ownedRule>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzNjoZEeCmpu-HRutBsg" name="ownedComment" visibility="public" type="_D3Iy-ToZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3Si6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzNzoZEeCmpu-HRutBsg" annotatedElement="_D3IzNjoZEeCmpu-HRutBsg">
+        <body>The Comments owned by this element.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzODoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzOToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzOjoZEeCmpu-HRutBsg" name="ownedElement" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" aggregation="composite" association="_D3Si6DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzOzoZEeCmpu-HRutBsg" annotatedElement="_D3IzOjoZEeCmpu-HRutBsg">
+        <body>The Elements owned by this element.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzPDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzPToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzPjoZEeCmpu-HRutBsg" name="owner" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_D3Si6DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzPzoZEeCmpu-HRutBsg" annotatedElement="_D3IzPjoZEeCmpu-HRutBsg">
+        <body>The Element that owns this element.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzQDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzQToZEeCmpu-HRutBsg" name="allOwnedElements" visibility="public" isQuery="true" bodyCondition="_D3IzQzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzQjoZEeCmpu-HRutBsg" annotatedElement="_D3IzQToZEeCmpu-HRutBsg">
+        <body>The query allOwnedElements() gives all of the direct and indirect owned elements of an element.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzQzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzQToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzRDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzRToZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzRjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzRzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzSDoZEeCmpu-HRutBsg" name="mustBeOwned" visibility="public" isQuery="true" bodyCondition="_D3IzSjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzSToZEeCmpu-HRutBsg" annotatedElement="_D3IzSDoZEeCmpu-HRutBsg">
+        <body>The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzSjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzSDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzSzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzTDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzTToZEeCmpu-HRutBsg" name="ElementImport">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzTjoZEeCmpu-HRutBsg" annotatedElement="_D3IzTToZEeCmpu-HRutBsg">
+      <body>An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzTzoZEeCmpu-HRutBsg" name="imported_element_is_public" constrainedElement="_D3IzTToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzUDoZEeCmpu-HRutBsg" annotatedElement="_D3IzTzoZEeCmpu-HRutBsg">
+        <body>An importedElement has either public visibility or no visibility at all.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzUToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>importedElement.visibility &lt;> null implies importedElement.visibility = VisibilityKind::public</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzUjoZEeCmpu-HRutBsg" name="visibility_public_or_private" constrainedElement="_D3IzTToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzUzoZEeCmpu-HRutBsg" annotatedElement="_D3IzUjoZEeCmpu-HRutBsg">
+        <body>The visibility of an ElementImport is either public or private.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzVDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>visibility = VisibilityKind::public or visibility = VisibilityKind::private</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzVToZEeCmpu-HRutBsg" general="_D3IzJToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzVjoZEeCmpu-HRutBsg" name="alias" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzVzoZEeCmpu-HRutBsg" annotatedElement="_D3IzVjoZEeCmpu-HRutBsg">
+        <body>Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzWToZEeCmpu-HRutBsg" name="importedElement" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg" subsettedProperty="_D3IzKzoZEeCmpu-HRutBsg" association="_D3Si5DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzWjoZEeCmpu-HRutBsg" annotatedElement="_D3IzWToZEeCmpu-HRutBsg">
+        <body>Specifies the PackageableElement whose name is to be added to a Namespace.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzWzoZEeCmpu-HRutBsg" name="importingNamespace" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzKDoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3SizjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzXDoZEeCmpu-HRutBsg" annotatedElement="_D3IzWzoZEeCmpu-HRutBsg">
+        <body>Specifies the Namespace that imports a PackageableElement from another Package.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzXToZEeCmpu-HRutBsg" name="visibility" visibility="public" type="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzXjoZEeCmpu-HRutBsg" annotatedElement="_D3IzXToZEeCmpu-HRutBsg">
+        <body>Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_D3IzXzoZEeCmpu-HRutBsg" type="_D3SikjoZEeCmpu-HRutBsg" instance="_D3SilDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzYDoZEeCmpu-HRutBsg" name="getName" visibility="public" isQuery="true" bodyCondition="_D3IzYjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzYToZEeCmpu-HRutBsg" annotatedElement="_D3IzYDoZEeCmpu-HRutBsg">
+        <body>The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzYjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzYDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzYzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if alias->notEmpty() then&#xA;  alias&#xA;else&#xA;  importedElement.name&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzZDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3IzZToZEeCmpu-HRutBsg" name="MultiplicityElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzZjoZEeCmpu-HRutBsg" annotatedElement="_D3IzZToZEeCmpu-HRutBsg">
+      <body>A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzZzoZEeCmpu-HRutBsg" name="upper_ge_lower" constrainedElement="_D3IzZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzaDoZEeCmpu-HRutBsg" annotatedElement="_D3IzZzoZEeCmpu-HRutBsg">
+        <body>The upper bound must be greater than or equal to the lower bound.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzaToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(upperBound() &lt;> null and lowerBound() &lt;> null) implies upperBound() >= lowerBound()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzajoZEeCmpu-HRutBsg" name="lower_ge_0" constrainedElement="_D3IzZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzazoZEeCmpu-HRutBsg" annotatedElement="_D3IzajoZEeCmpu-HRutBsg">
+        <body>The lower bound must be a non-negative integer literal.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzbDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>lowerBound() &lt;> null implies lowerBound() >= 0</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzbToZEeCmpu-HRutBsg" name="value_specification_no_side_effects" constrainedElement="_D3IzZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzbjoZEeCmpu-HRutBsg" annotatedElement="_D3IzbToZEeCmpu-HRutBsg">
+        <body>If a non-literal ValueSpecification is used for the lower or upper bound, then evaluating that specification must not have side effects.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzbzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzcDoZEeCmpu-HRutBsg" name="value_specification_constant" constrainedElement="_D3IzZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzcToZEeCmpu-HRutBsg" annotatedElement="_D3IzcDoZEeCmpu-HRutBsg">
+        <body>If a non-literal ValueSpecification is used for the lower or upper bound, then that specification must be a constant expression.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzcjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3IzczoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzdDoZEeCmpu-HRutBsg" name="isOrdered" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzdToZEeCmpu-HRutBsg" annotatedElement="_D3IzdDoZEeCmpu-HRutBsg">
+        <body>For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_D3IzdjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzdzoZEeCmpu-HRutBsg" name="isUnique" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzeDoZEeCmpu-HRutBsg" annotatedElement="_D3IzdzoZEeCmpu-HRutBsg">
+        <body>For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_D3IzeToZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzejoZEeCmpu-HRutBsg" name="lower" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzezoZEeCmpu-HRutBsg" annotatedElement="_D3IzejoZEeCmpu-HRutBsg">
+        <body>Specifies the lower bound of the multiplicity interval.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzfDoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzfToZEeCmpu-HRutBsg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzfjoZEeCmpu-HRutBsg" name="lowerValue" visibility="public" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3Si3joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzfzoZEeCmpu-HRutBsg" annotatedElement="_D3IzfjoZEeCmpu-HRutBsg">
+        <body>The specification of the lower bound for this multiplicity.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzgDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzgToZEeCmpu-HRutBsg" name="upper" visibility="public" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzgjoZEeCmpu-HRutBsg" annotatedElement="_D3IzgToZEeCmpu-HRutBsg">
+        <body>Specifies the upper bound of the multiplicity interval.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzgzoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3IzhDoZEeCmpu-HRutBsg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3IzhToZEeCmpu-HRutBsg" name="upperValue" visibility="public" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3Si4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzhjoZEeCmpu-HRutBsg" annotatedElement="_D3IzhToZEeCmpu-HRutBsg">
+        <body>The specification of the upper bound for this multiplicity.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzhzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IziDoZEeCmpu-HRutBsg" name="compatibleWith" visibility="public" isQuery="true" bodyCondition="_D3IzijoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IziToZEeCmpu-HRutBsg" annotatedElement="_D3IziDoZEeCmpu-HRutBsg">
+        <body>The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzijoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IziDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzizoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>(other.lowerBound() &lt;= self.lowerBound()) and ((other.upperBound() = *) or (self.upperBound() &lt;= other.upperBound()))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzjDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzjToZEeCmpu-HRutBsg" name="other" visibility="public" type="_D3IzZToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzljoZEeCmpu-HRutBsg" name="includesMultiplicity" visibility="public" isQuery="true" precondition="_D3IzmDoZEeCmpu-HRutBsg" bodyCondition="_D3IzmjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzlzoZEeCmpu-HRutBsg" annotatedElement="_D3IzljoZEeCmpu-HRutBsg">
+        <body>The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzmDoZEeCmpu-HRutBsg" name="pre" constrainedElement="_D3IzljoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzmToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzmjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzljoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzmzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>(self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IznDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IznToZEeCmpu-HRutBsg" name="M" visibility="public" type="_D3IzZToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IznjoZEeCmpu-HRutBsg" name="is" visibility="public" isQuery="true" bodyCondition="_D3IzoDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IznzoZEeCmpu-HRutBsg" annotatedElement="_D3IznjoZEeCmpu-HRutBsg">
+        <body>The operation is determines if the upper and lower bound of the ranges are the ones given.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzoDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IznjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzoToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>lowerbound = self.lowerBound() and upperbound = self.upperBound()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzojoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzozoZEeCmpu-HRutBsg" name="lowerbound" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzpDoZEeCmpu-HRutBsg" name="upperbound" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzpToZEeCmpu-HRutBsg" name="isMultivalued" visibility="public" isQuery="true" precondition="_D3IzpzoZEeCmpu-HRutBsg" bodyCondition="_D3IzqToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzpjoZEeCmpu-HRutBsg" annotatedElement="_D3IzpToZEeCmpu-HRutBsg">
+        <body>The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzpzoZEeCmpu-HRutBsg" name="pre" constrainedElement="_D3IzpToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzqDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>upperBound()->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzqToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzpToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzqjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>upperBound() > 1</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzqzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzrDoZEeCmpu-HRutBsg" name="lower" visibility="public" isQuery="true" bodyCondition="_D3IzrjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzrToZEeCmpu-HRutBsg" annotatedElement="_D3IzrDoZEeCmpu-HRutBsg">
+        <body>The derived lower attribute must equal the lowerBound.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzrjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzrDoZEeCmpu-HRutBsg _D3IzejoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzrzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>lowerBound()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzsDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzsToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzsjoZEeCmpu-HRutBsg" name="lowerBound" visibility="public" isQuery="true" bodyCondition="_D3IztDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzszoZEeCmpu-HRutBsg" annotatedElement="_D3IzsjoZEeCmpu-HRutBsg">
+        <body>The query lowerBound() returns the lower bound of the multiplicity as an integer.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IztDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzsjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IztToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if lowerValue=null then 1 else lowerValue.integerValue() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IztjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IztzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzuDoZEeCmpu-HRutBsg" name="upper" visibility="public" isQuery="true" bodyCondition="_D3IzujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3IzuToZEeCmpu-HRutBsg" annotatedElement="_D3IzuDoZEeCmpu-HRutBsg">
+        <body>The derived upper attribute must equal the upperBound.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3IzujoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzuDoZEeCmpu-HRutBsg _D3IzgToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3IzuzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>upperBound()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3IzvDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3IzvToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3IzvjoZEeCmpu-HRutBsg" name="upperBound" visibility="public" isQuery="true" bodyCondition="_D3ShUToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShUDoZEeCmpu-HRutBsg" annotatedElement="_D3IzvjoZEeCmpu-HRutBsg">
+        <body>The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShUToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3IzvjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShUjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if upperValue=null then 1 else upperValue.unlimitedValue() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShUzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShVDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3ShVToZEeCmpu-HRutBsg" name="NamedElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShVjoZEeCmpu-HRutBsg" annotatedElement="_D3ShVToZEeCmpu-HRutBsg">
+      <body>A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).
+A named element is an element in a model that may have a name.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShWDoZEeCmpu-HRutBsg" name="visibility_needs_ownership" constrainedElement="_D3ShVToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShWToZEeCmpu-HRutBsg" annotatedElement="_D3ShWDoZEeCmpu-HRutBsg">
+        <body>If a NamedElement is not owned by a Namespace, it does not have a visibility.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShWjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>namespace = null implies visibility = null</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShWzoZEeCmpu-HRutBsg" name="has_qualified_name" constrainedElement="_D3ShVToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShXDoZEeCmpu-HRutBsg" annotatedElement="_D3ShWzoZEeCmpu-HRutBsg">
+        <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShXToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(name &lt;> null and allNamespaces()->select(ns | ns.name = null)->isEmpty()) implies&#xA;  qualifiedName = allNamespaces()->iterate( ns : Namespace; agg: String = name | ns.name.concat(self.separator()).concat(agg))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShXjoZEeCmpu-HRutBsg" name="has_no_qualified_name" constrainedElement="_D3ShVToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShXzoZEeCmpu-HRutBsg" annotatedElement="_D3ShXjoZEeCmpu-HRutBsg">
+        <body>If there is no name, or one of the containing namespaces has no name, there is no qualified name.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShYDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>name=null or allNamespaces()->select( ns | ns.name=null )->notEmpty() implies qualifiedName = null</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3ShYToZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShYjoZEeCmpu-HRutBsg" name="clientDependency" visibility="public" type="_D3IzGzoZEeCmpu-HRutBsg" subsettedProperty="_D3Si7ToZEeCmpu-HRutBsg" association="_D3Si3ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShYzoZEeCmpu-HRutBsg" annotatedElement="_D3ShYjoZEeCmpu-HRutBsg">
+        <body>Indicates the dependencies that reference the client.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShZDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShZToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShZjoZEeCmpu-HRutBsg" name="name" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShZzoZEeCmpu-HRutBsg" annotatedElement="_D3ShZjoZEeCmpu-HRutBsg">
+        <body>The name of the NamedElement.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShaDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShaToZEeCmpu-HRutBsg" name="nameExpression" visibility="public" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3Si2joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShajoZEeCmpu-HRutBsg" annotatedElement="_D3ShaToZEeCmpu-HRutBsg">
+        <body>The string expression used to define the name of this named element.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTi0ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShazoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShbDoZEeCmpu-HRutBsg" name="namespace" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" subsettedProperty="_D3Si0zoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3SizzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShbToZEeCmpu-HRutBsg" annotatedElement="_D3ShbDoZEeCmpu-HRutBsg">
+        <body>Specifies the namespace that owns the NamedElement.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShbjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShbzoZEeCmpu-HRutBsg" name="qualifiedName" visibility="public" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShcDoZEeCmpu-HRutBsg" annotatedElement="_D3ShbzoZEeCmpu-HRutBsg">
+        <body>A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShcToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShcjoZEeCmpu-HRutBsg" name="visibility" visibility="public" type="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShczoZEeCmpu-HRutBsg" annotatedElement="_D3ShcjoZEeCmpu-HRutBsg">
+        <body>Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShdDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShdToZEeCmpu-HRutBsg" name="allNamespaces" visibility="public" isQuery="true" bodyCondition="_D3ShdzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShdjoZEeCmpu-HRutBsg" annotatedElement="_D3ShdToZEeCmpu-HRutBsg">
+        <body>The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShdzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShdToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SheDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if namespace->isEmpty()&#xA;then OrderedSet{}&#xA;else namespace.allNamespaces()->prepend(namespace)&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SheToZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" isOrdered="true" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShejoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShezoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShfDoZEeCmpu-HRutBsg" name="allOwningPackages" visibility="public" isQuery="true" bodyCondition="_D3ShfjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShfToZEeCmpu-HRutBsg" annotatedElement="_D3ShfDoZEeCmpu-HRutBsg">
+        <body>The query allOwningPackages() returns all the directly or indirectly owning packages.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShfjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShfDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShfzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if namespace.oclIsKindOf(Package)&#xD;&#xA;then&#xD;&#xA;  let owningPackage : Package = namespace.oclAsType(Package) in&#xD;&#xA;    owningPackage->union(owningPackage.allOwningPackages())&#xD;&#xA;else&#xD;&#xA;  null&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShgDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Packages.fragment.xmi#_IH8f9joZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShgToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShgjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShgzoZEeCmpu-HRutBsg" name="isDistinguishableFrom" visibility="public" isQuery="true" bodyCondition="_D3ShhToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShhDoZEeCmpu-HRutBsg" annotatedElement="_D3ShgzoZEeCmpu-HRutBsg">
+        <body>The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShhToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShgzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShhjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>(self.oclIsKindOf(n.oclType()) or n.oclIsKindOf(self.oclType())) implies&#xA;    ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShhzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShiDoZEeCmpu-HRutBsg" name="n" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShiToZEeCmpu-HRutBsg" name="ns" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShkDoZEeCmpu-HRutBsg" name="qualifiedName" visibility="public" isQuery="true" bodyCondition="_D3ShkjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShkToZEeCmpu-HRutBsg" annotatedElement="_D3ShkDoZEeCmpu-HRutBsg">
+        <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShkjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShkDoZEeCmpu-HRutBsg _D3ShbzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShkzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if self.name &lt;> null and self.allNamespaces()->select( ns | ns.name=null )->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; agg: String = self.name | ns.name.concat(self.separator()).concat(agg))&#xA;else&#xA;   null&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShlDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShlToZEeCmpu-HRutBsg" name="separator" visibility="public" isQuery="true" bodyCondition="_D3ShlzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShljoZEeCmpu-HRutBsg" annotatedElement="_D3ShlToZEeCmpu-HRutBsg">
+        <body>The query separator() gives the string that is used to separate names when constructing a qualified name.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShlzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShlToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShmDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>'::'</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShmToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3ShmjoZEeCmpu-HRutBsg" name="Namespace" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShmzoZEeCmpu-HRutBsg" annotatedElement="_D3ShmjoZEeCmpu-HRutBsg">
+      <body>A namespace is an element in a model that contains a set of named elements that can be identified by name.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShnDoZEeCmpu-HRutBsg" name="members_distinguishable" constrainedElement="_D3ShmjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShnToZEeCmpu-HRutBsg" annotatedElement="_D3ShnDoZEeCmpu-HRutBsg">
+        <body>All the members of a Namespace are distinguishable within it.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShnjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>membersAreDistinguishable()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3ShnzoZEeCmpu-HRutBsg" general="_D3ShVToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShoDoZEeCmpu-HRutBsg" name="elementImport" visibility="public" type="_D3IzTToZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3Si7ToZEeCmpu-HRutBsg" association="_D3SizjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShoToZEeCmpu-HRutBsg" annotatedElement="_D3ShoDoZEeCmpu-HRutBsg">
+        <body>References the ElementImports owned by the Namespace.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShojoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShozoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShpDoZEeCmpu-HRutBsg" name="importedMember" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" subsettedProperty="_D3ShqDoZEeCmpu-HRutBsg" association="_D3Si1joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShpToZEeCmpu-HRutBsg" annotatedElement="_D3ShpDoZEeCmpu-HRutBsg">
+        <body>References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShpjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShpzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShqDoZEeCmpu-HRutBsg" name="member" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_D3Si0joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShqToZEeCmpu-HRutBsg" annotatedElement="_D3ShqDoZEeCmpu-HRutBsg">
+        <body>A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShqjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShqzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShrDoZEeCmpu-HRutBsg" name="ownedMember" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" aggregation="composite" subsettedProperty="_D3ShqDoZEeCmpu-HRutBsg _D3IzOjoZEeCmpu-HRutBsg" association="_D3SizzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShrToZEeCmpu-HRutBsg" annotatedElement="_D3ShrDoZEeCmpu-HRutBsg">
+        <body>A collection of NamedElements owned by the Namespace.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShrjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShrzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShsDoZEeCmpu-HRutBsg" name="ownedRule" visibility="public" type="_D3IzAzoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3ShrDoZEeCmpu-HRutBsg" association="_D3Si0DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShsToZEeCmpu-HRutBsg" annotatedElement="_D3ShsDoZEeCmpu-HRutBsg">
+        <body>Specifies a set of Constraints owned by this Namespace.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShsjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShszoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3ShtDoZEeCmpu-HRutBsg" name="packageImport" visibility="public" type="_D3Sh8ToZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3Si7ToZEeCmpu-HRutBsg" association="_D3Si0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShtToZEeCmpu-HRutBsg" annotatedElement="_D3ShtDoZEeCmpu-HRutBsg">
+        <body>References the PackageImports owned by the Namespace.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShtjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShtzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShuDoZEeCmpu-HRutBsg" name="excludeCollisions" visibility="public" isQuery="true" bodyCondition="_D3ShujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShuToZEeCmpu-HRutBsg" annotatedElement="_D3ShuDoZEeCmpu-HRutBsg">
+        <body>The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShujoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShuDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShuzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>imps->reject(imp1  | imps->exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShvDoZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShvToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShvjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShvzoZEeCmpu-HRutBsg" name="imps" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShwDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShwToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShwjoZEeCmpu-HRutBsg" name="getNamesOfMember" visibility="public" isQuery="true" bodyCondition="_D3ShxToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShwzoZEeCmpu-HRutBsg" annotatedElement="_D3ShwjoZEeCmpu-HRutBsg">
+        <body>The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
+The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShxToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShwjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShxjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if self.ownedMember ->includes(element)&#xA;then Set{element.name}&#xA;else let elementImports : Set(ElementImport) = self.elementImport->select(ei | ei.importedElement = element) in&#xA;  if elementImports->notEmpty()&#xA;  then&#xA;     elementImports->collect(el | el.getName())->asSet()&#xA;  else &#xA;     self.packageImport->select(pi | pi.importedPackage.visibleMembers().oclAsType(NamedElement)->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))->asSet()&#xA;  endif&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShxzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3ShyDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3ShyToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShyjoZEeCmpu-HRutBsg" name="element" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3ShyzoZEeCmpu-HRutBsg" name="importMembers" visibility="public" isQuery="true" bodyCondition="_D3ShzToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3ShzDoZEeCmpu-HRutBsg" annotatedElement="_D3ShyzoZEeCmpu-HRutBsg">
+        <body>The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3ShzToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3ShyzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3ShzjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | imp.isDistinguishableFrom(mem, self)))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3ShzzoZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Sh0DoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Sh0ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3Sh0joZEeCmpu-HRutBsg" name="imps" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Sh0zoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Sh1DoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3Sh1ToZEeCmpu-HRutBsg" name="importedMember" visibility="public" isQuery="true" bodyCondition="_D3Sh1zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh1joZEeCmpu-HRutBsg" annotatedElement="_D3Sh1ToZEeCmpu-HRutBsg">
+        <body>The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3Sh1zoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3Sh1ToZEeCmpu-HRutBsg _D3ShpDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3Sh2DoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.importMembers(elementImport.importedElement->asSet()->union(packageImport.importedPackage->collect(p | p.visibleMembers()))->asSet())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3Sh2ToZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3Sh6DoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Sh2joZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Sh2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3Sh3DoZEeCmpu-HRutBsg" name="membersAreDistinguishable" visibility="public" isQuery="true" bodyCondition="_D3Sh3joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh3ToZEeCmpu-HRutBsg" annotatedElement="_D3Sh3DoZEeCmpu-HRutBsg">
+        <body>The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3Sh3joZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3Sh3DoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3Sh3zoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>member->forAll( memb |&#xA;   member->excluding(memb)->forAll(other |&#xA;       memb.isDistinguishableFrom(other, self)))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3Sh4DoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3Sh6DoZEeCmpu-HRutBsg" name="PackageableElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh6ToZEeCmpu-HRutBsg" annotatedElement="_D3Sh6DoZEeCmpu-HRutBsg">
+      <body>A packageable element indicates a named element that may be owned directly by a package.
+Packageable elements are able to serve as a template parameter.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3Sh6zoZEeCmpu-HRutBsg" general="_D3Sh_joZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3Sh7DoZEeCmpu-HRutBsg" general="_D3ShVToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Sh7ToZEeCmpu-HRutBsg" name="visibility" visibility="public" type="_D3SikjoZEeCmpu-HRutBsg" redefinedProperty="_D3ShcjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh7joZEeCmpu-HRutBsg" annotatedElement="_D3Sh7ToZEeCmpu-HRutBsg">
+        <body>Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_D3Sh7zoZEeCmpu-HRutBsg" type="_D3SikjoZEeCmpu-HRutBsg" instance="_D3SilDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3Sh8ToZEeCmpu-HRutBsg" name="PackageImport">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh8joZEeCmpu-HRutBsg" annotatedElement="_D3Sh8ToZEeCmpu-HRutBsg">
+      <body>A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3Sh8zoZEeCmpu-HRutBsg" name="public_or_private" constrainedElement="_D3Sh8ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh9DoZEeCmpu-HRutBsg" annotatedElement="_D3Sh8zoZEeCmpu-HRutBsg">
+        <body>The visibility of a PackageImport is either public or private.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3Sh9ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>visibility = VisibilityKind::public or visibility = VisibilityKind::private</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3Sh9joZEeCmpu-HRutBsg" general="_D3IzJToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Sh9zoZEeCmpu-HRutBsg" name="importedPackage" visibility="public" subsettedProperty="_D3IzKzoZEeCmpu-HRutBsg" association="_D3SiyjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh-DoZEeCmpu-HRutBsg" annotatedElement="_D3Sh9zoZEeCmpu-HRutBsg">
+        <body>Specifies the Package whose members are imported into a Namespace.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Packages.fragment.xmi#_IH8f9joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Sh-ToZEeCmpu-HRutBsg" name="importingNamespace" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzKDoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3Si0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh-joZEeCmpu-HRutBsg" annotatedElement="_D3Sh-ToZEeCmpu-HRutBsg">
+        <body>Specifies the Namespace that imports the members from a Package.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3Sh-zoZEeCmpu-HRutBsg" name="visibility" visibility="public" type="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh_DoZEeCmpu-HRutBsg" annotatedElement="_D3Sh-zoZEeCmpu-HRutBsg">
+        <body>Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_D3Sh_ToZEeCmpu-HRutBsg" type="_D3SikjoZEeCmpu-HRutBsg" instance="_D3SilDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3Sh_joZEeCmpu-HRutBsg" name="ParameterableElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3Sh_zoZEeCmpu-HRutBsg" annotatedElement="_D3Sh_joZEeCmpu-HRutBsg">
+      <body>A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiADoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiAToZEeCmpu-HRutBsg" name="owningTemplateParameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" subsettedProperty="_D3SiBDoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3SitToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiAjoZEeCmpu-HRutBsg" annotatedElement="_D3SiAToZEeCmpu-HRutBsg">
+        <body>The formal template parameter that owns this element.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiAzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiBDoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" association="_D3SiujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiBToZEeCmpu-HRutBsg" annotatedElement="_D3SiBDoZEeCmpu-HRutBsg">
+        <body>The template parameter that exposes this element as a formal parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiBjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3SiBzoZEeCmpu-HRutBsg" name="isCompatibleWith" visibility="public" isQuery="true" bodyCondition="_D3SiCToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiCDoZEeCmpu-HRutBsg" annotatedElement="_D3SiBzoZEeCmpu-HRutBsg">
+        <body>The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiCToZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3SiBzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiCjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>p->oclIsKindOf(self.oclType())</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SiCzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SiDDoZEeCmpu-HRutBsg" name="p" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3SiDToZEeCmpu-HRutBsg" name="isTemplateParameter" visibility="public" isQuery="true" bodyCondition="_D3SiDzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiDjoZEeCmpu-HRutBsg" annotatedElement="_D3SiDToZEeCmpu-HRutBsg">
+        <body>The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiDzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3SiDToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiEDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>templateParameter->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SiEToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiEjoZEeCmpu-HRutBsg" name="Realization">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiEzoZEeCmpu-HRutBsg" annotatedElement="_D3SiEjoZEeCmpu-HRutBsg">
+      <body>Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiFDoZEeCmpu-HRutBsg" general="_D3Iy8zoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiFToZEeCmpu-HRutBsg" name="Relationship" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiFjoZEeCmpu-HRutBsg" annotatedElement="_D3SiFToZEeCmpu-HRutBsg">
+      <body>Relationship is an abstract concept that specifies some kind of relationship between elements.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiFzoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiGDoZEeCmpu-HRutBsg" name="relatedElement" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_D3SixjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiGToZEeCmpu-HRutBsg" annotatedElement="_D3SiGDoZEeCmpu-HRutBsg">
+        <body>Specifies the elements related by the Relationship.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiGjoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiIjoZEeCmpu-HRutBsg" name="TemplateableElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiIzoZEeCmpu-HRutBsg" annotatedElement="_D3SiIjoZEeCmpu-HRutBsg">
+      <body>A templateable element is an element that can optionally be defined as a template and bound to other templates.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiJDoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiJToZEeCmpu-HRutBsg" name="ownedTemplateSignature" visibility="public" type="_D3SiazoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3SiwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiJjoZEeCmpu-HRutBsg" annotatedElement="_D3SiJToZEeCmpu-HRutBsg">
+        <body>The optional template signature specifying the formal template parameters.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiJzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiKDoZEeCmpu-HRutBsg" name="templateBinding" visibility="public" type="_D3SiODoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3Si7ToZEeCmpu-HRutBsg" association="_D3SiwDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiKToZEeCmpu-HRutBsg" annotatedElement="_D3SiKDoZEeCmpu-HRutBsg">
+        <body>The optional bindings from this element to templates.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiKjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiKzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3SiLDoZEeCmpu-HRutBsg" name="isTemplate" visibility="public" isQuery="true" bodyCondition="_D3SiLjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiLToZEeCmpu-HRutBsg" annotatedElement="_D3SiLDoZEeCmpu-HRutBsg">
+        <body>The query isTemplate() returns whether this templateable element is actually a template.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiLjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3SiLDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiLzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedTemplateSignature &lt;> null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SiMDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3SiMToZEeCmpu-HRutBsg" name="parameterableElements" visibility="public" isQuery="true" bodyCondition="_D3SiMzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiMjoZEeCmpu-HRutBsg" annotatedElement="_D3SiMToZEeCmpu-HRutBsg">
+        <body>The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiMzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3SiMToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiNDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.allOwnedElements()->select(oclIsKindOf(ParameterableElement)).oclAsType(ParameterableElement)->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SiNToZEeCmpu-HRutBsg" name="result" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiNjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiNzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiODoZEeCmpu-HRutBsg" name="TemplateBinding">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiOToZEeCmpu-HRutBsg" annotatedElement="_D3SiODoZEeCmpu-HRutBsg">
+      <body>A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiOjoZEeCmpu-HRutBsg" name="parameter_substitution_formal" constrainedElement="_D3SiODoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiOzoZEeCmpu-HRutBsg" annotatedElement="_D3SiOjoZEeCmpu-HRutBsg">
+        <body>Each parameter substitution must refer to a formal template parameter of the target template signature.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiPDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parameterSubstitution->forAll(b | signature.parameter->includes(b.formal))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiPToZEeCmpu-HRutBsg" name="one_parameter_substitution" constrainedElement="_D3SiODoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiPjoZEeCmpu-HRutBsg" annotatedElement="_D3SiPToZEeCmpu-HRutBsg">
+        <body>A binding contains at most one parameter substitution for each formal template parameter of the target template signature.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiPzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>signature.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() &lt;= 1)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiQDoZEeCmpu-HRutBsg" general="_D3IzJToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiQToZEeCmpu-HRutBsg" name="boundElement" visibility="public" type="_D3SiIjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzKDoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3SiwDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiQjoZEeCmpu-HRutBsg" annotatedElement="_D3SiQToZEeCmpu-HRutBsg">
+        <body>The element that is bound by this binding.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiQzoZEeCmpu-HRutBsg" name="parameterSubstitution" visibility="public" type="_D3SiXDoZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg" association="_D3SivzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiRDoZEeCmpu-HRutBsg" annotatedElement="_D3SiQzoZEeCmpu-HRutBsg">
+        <body>The parameter substitutions owned by this template binding.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiRToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiRjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiRzoZEeCmpu-HRutBsg" name="signature" visibility="public" type="_D3SiazoZEeCmpu-HRutBsg" subsettedProperty="_D3IzKzoZEeCmpu-HRutBsg" association="_D3SiuzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiSDoZEeCmpu-HRutBsg" annotatedElement="_D3SiRzoZEeCmpu-HRutBsg">
+        <body>The template signature for the template that is the target of the binding.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiSToZEeCmpu-HRutBsg" name="TemplateParameter">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiSjoZEeCmpu-HRutBsg" annotatedElement="_D3SiSToZEeCmpu-HRutBsg">
+      <body>A template parameter exposes a parameterable element as a formal template parameter of a template.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiSzoZEeCmpu-HRutBsg" name="must_be_compatible" constrainedElement="_D3SiSToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiTDoZEeCmpu-HRutBsg" annotatedElement="_D3SiSzoZEeCmpu-HRutBsg">
+        <body>The default must be compatible with the formal template parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiTToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>default &lt;> null implies default.isCompatibleWith(parameteredElement)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiTjoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiTzoZEeCmpu-HRutBsg" name="default" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" association="_D3SitjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiUDoZEeCmpu-HRutBsg" annotatedElement="_D3SiTzoZEeCmpu-HRutBsg">
+        <body>The element that is the default for this formal template parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiUToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiUjoZEeCmpu-HRutBsg" name="ownedDefault" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3SiTzoZEeCmpu-HRutBsg" association="_D3SisToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiUzoZEeCmpu-HRutBsg" annotatedElement="_D3SiUjoZEeCmpu-HRutBsg">
+        <body>The element that is owned by this template parameter for the purpose of providing a default.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiVDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiVToZEeCmpu-HRutBsg" name="ownedParameteredElement" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3SiWDoZEeCmpu-HRutBsg" association="_D3SitToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiVjoZEeCmpu-HRutBsg" annotatedElement="_D3SiVToZEeCmpu-HRutBsg">
+        <body>The element that is owned by this template parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiVzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiWDoZEeCmpu-HRutBsg" name="parameteredElement" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" association="_D3SiujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiWToZEeCmpu-HRutBsg" annotatedElement="_D3SiWDoZEeCmpu-HRutBsg">
+        <body>The element exposed by this template parameter.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiWjoZEeCmpu-HRutBsg" name="signature" visibility="public" type="_D3SiazoZEeCmpu-HRutBsg" subsettedProperty="_D3SiojoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" association="_D3SioDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiWzoZEeCmpu-HRutBsg" annotatedElement="_D3SiWjoZEeCmpu-HRutBsg">
+        <body>The template signature that owns this template parameter.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiXDoZEeCmpu-HRutBsg" name="TemplateParameterSubstitution">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiXToZEeCmpu-HRutBsg" annotatedElement="_D3SiXDoZEeCmpu-HRutBsg">
+      <body>A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SiXjoZEeCmpu-HRutBsg" name="must_be_compatible" constrainedElement="_D3SiXDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiXzoZEeCmpu-HRutBsg" annotatedElement="_D3SiXjoZEeCmpu-HRutBsg">
+        <body>The actual parameter must be compatible with the formal template parameter, e.g. the actual parameter for a class template parameter must be a class.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SiYDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>actual->forAll(a | a.isCompatibleWith(formal.parameteredElement))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiYToZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiYjoZEeCmpu-HRutBsg" name="actual" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" association="_D3SipToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiYzoZEeCmpu-HRutBsg" annotatedElement="_D3SiYjoZEeCmpu-HRutBsg">
+        <body>The element that is the actual parameter for this substitution.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiZDoZEeCmpu-HRutBsg" name="formal" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" association="_D3SirToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiZToZEeCmpu-HRutBsg" annotatedElement="_D3SiZDoZEeCmpu-HRutBsg">
+        <body>The formal template parameter that is associated with this substitution.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiZjoZEeCmpu-HRutBsg" name="ownedActual" visibility="public" type="_D3Sh_joZEeCmpu-HRutBsg" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3SiYjoZEeCmpu-HRutBsg" association="_D3SiqToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiZzoZEeCmpu-HRutBsg" annotatedElement="_D3SiZjoZEeCmpu-HRutBsg">
+        <body>The actual parameter that is owned by this substitution.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiaDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiaToZEeCmpu-HRutBsg" name="templateBinding" visibility="public" type="_D3SiODoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3SivzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiajoZEeCmpu-HRutBsg" annotatedElement="_D3SiaToZEeCmpu-HRutBsg">
+        <body>The optional bindings from this element to templates.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiazoZEeCmpu-HRutBsg" name="TemplateSignature">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SibDoZEeCmpu-HRutBsg" annotatedElement="_D3SiazoZEeCmpu-HRutBsg">
+      <body>A template signature bundles the set of formal template parameters for a templated element.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SibToZEeCmpu-HRutBsg" name="own_elements" constrainedElement="_D3SiazoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SibjoZEeCmpu-HRutBsg" annotatedElement="_D3SibToZEeCmpu-HRutBsg">
+        <body>Parameters must own the elements they parameter or those elements must be owned by the element being templated.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SibzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>template.ownedElement->includesAll(parameter.parameteredElement->asSet() - parameter.ownedParameteredElement->asSet())</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SicDoZEeCmpu-HRutBsg" general="_D3IzLjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SicToZEeCmpu-HRutBsg" name="ownedParameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" subsettedProperty="_D3IzOjoZEeCmpu-HRutBsg _D3SidToZEeCmpu-HRutBsg" association="_D3SioDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SicjoZEeCmpu-HRutBsg" annotatedElement="_D3SicToZEeCmpu-HRutBsg">
+        <body>The formal template parameters that are owned by this template signature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiczoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SidDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SidToZEeCmpu-HRutBsg" name="parameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" isOrdered="true" association="_D3SioToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SidjoZEeCmpu-HRutBsg" annotatedElement="_D3SidToZEeCmpu-HRutBsg">
+        <body>The ordered set of all formal template parameters for this template signature.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SidzoZEeCmpu-HRutBsg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SieDoZEeCmpu-HRutBsg" name="template" visibility="public" type="_D3SiIjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3SiwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SieToZEeCmpu-HRutBsg" annotatedElement="_D3SieDoZEeCmpu-HRutBsg">
+        <body>The element that owns this template signature.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SiejoZEeCmpu-HRutBsg" name="Type" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiezoZEeCmpu-HRutBsg" annotatedElement="_D3SiejoZEeCmpu-HRutBsg">
+      <body>A type is a named element that is used as the type for a typed element. A type can be contained in a package.
+A type constrains the values represented by a typed element.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SifToZEeCmpu-HRutBsg" general="_D3Sh6DoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SifjoZEeCmpu-HRutBsg" name="package" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SifzoZEeCmpu-HRutBsg" annotatedElement="_D3SifjoZEeCmpu-HRutBsg">
+        <body>Specifies the owning package of this classifier, if any.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Packages.fragment.xmi#_IH8f9joZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SigDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Packages.fragment.xmi#_IH8gqzoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="Packages.fragment.xmi#_IH8gsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D3SigToZEeCmpu-HRutBsg" name="conformsTo" visibility="public" isQuery="true" bodyCondition="_D3SigzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SigjoZEeCmpu-HRutBsg" annotatedElement="_D3SigToZEeCmpu-HRutBsg">
+        <body>The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_D3SigzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_D3SigToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_D3SihDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SihToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3SihjoZEeCmpu-HRutBsg" name="other" visibility="public" type="_D3SiejoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SihzoZEeCmpu-HRutBsg" name="TypedElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SiiDoZEeCmpu-HRutBsg" annotatedElement="_D3SihzoZEeCmpu-HRutBsg">
+      <body>A typed element has a type.
+A typed element is a kind of named element that represents an element with a type.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiijoZEeCmpu-HRutBsg" general="_D3ShVToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D3SiizoZEeCmpu-HRutBsg" name="type" visibility="public" type="_D3SiejoZEeCmpu-HRutBsg" association="_D3SinDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SijDoZEeCmpu-HRutBsg" annotatedElement="_D3SiizoZEeCmpu-HRutBsg">
+        <body>The type of the TypedElement.
+This information is derived from the return result for this Operation.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SijjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D3SijzoZEeCmpu-HRutBsg" name="Usage">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SikDoZEeCmpu-HRutBsg" annotatedElement="_D3SijzoZEeCmpu-HRutBsg">
+      <body>A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SikToZEeCmpu-HRutBsg" general="_D3IzGzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_D3SikjoZEeCmpu-HRutBsg" name="VisibilityKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_D3SikzoZEeCmpu-HRutBsg" annotatedElement="_D3SikjoZEeCmpu-HRutBsg">
+      <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_D3SilDoZEeCmpu-HRutBsg" name="public" classifier="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SilToZEeCmpu-HRutBsg" annotatedElement="_D3SilDoZEeCmpu-HRutBsg">
+        <body>A public element is visible to all elements that can access the contents of the namespace that owns it.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_D3SiljoZEeCmpu-HRutBsg" name="private" classifier="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SilzoZEeCmpu-HRutBsg" annotatedElement="_D3SiljoZEeCmpu-HRutBsg">
+        <body>A private element is only visible inside the namespace that owns it.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_D3SimDoZEeCmpu-HRutBsg" name="protected" classifier="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SimToZEeCmpu-HRutBsg" annotatedElement="_D3SimDoZEeCmpu-HRutBsg">
+        <body>A protected element is visible to elements that have a generalization relationship to the namespace that owns it.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_D3SimjoZEeCmpu-HRutBsg" name="package" classifier="_D3SikjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3SimzoZEeCmpu-HRutBsg" annotatedElement="_D3SimjoZEeCmpu-HRutBsg">
+        <body>A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility. Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility). Outside the nearest enclosing package, an element marked as having package visibility is not visible.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SinDoZEeCmpu-HRutBsg" name="A_type_typedElement" memberEnd="_D3SiizoZEeCmpu-HRutBsg _D3SinToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SinToZEeCmpu-HRutBsg" name="typedElement" visibility="public" type="_D3SihzoZEeCmpu-HRutBsg" association="_D3SinDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SinjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SinzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SioDoZEeCmpu-HRutBsg" name="A_ownedParameter_signature" memberEnd="_D3SicToZEeCmpu-HRutBsg _D3SiWjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SioToZEeCmpu-HRutBsg" name="A_parameter_templateSignature" memberEnd="_D3SidToZEeCmpu-HRutBsg _D3SiojoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SiojoZEeCmpu-HRutBsg" name="templateSignature" visibility="public" type="_D3SiazoZEeCmpu-HRutBsg" association="_D3SioToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiozoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SipDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SipToZEeCmpu-HRutBsg" name="A_actual_templateParameterSubstitution" memberEnd="_D3SiYjoZEeCmpu-HRutBsg _D3SipjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SipjoZEeCmpu-HRutBsg" name="templateParameterSubstitution" visibility="public" type="_D3SiXDoZEeCmpu-HRutBsg" association="_D3SipToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SipzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiqDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiqToZEeCmpu-HRutBsg" name="A_ownedActual_owningTemplateParameterSubstitution" memberEnd="_D3SiZjoZEeCmpu-HRutBsg _D3SiqzoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SiqjoZEeCmpu-HRutBsg" general="_D3SipToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SiqzoZEeCmpu-HRutBsg" name="owningTemplateParameterSubstitution" visibility="public" type="_D3SiXDoZEeCmpu-HRutBsg" redefinedProperty="_D3SipjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3SiqToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SirDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SirToZEeCmpu-HRutBsg" name="A_formal_templateParameterSubstitution" memberEnd="_D3SiZDoZEeCmpu-HRutBsg _D3SirjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SirjoZEeCmpu-HRutBsg" name="templateParameterSubstitution" visibility="public" type="_D3SiXDoZEeCmpu-HRutBsg" association="_D3SirToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SirzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SisDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SisToZEeCmpu-HRutBsg" name="A_ownedDefault_templateParameter" memberEnd="_D3SiUjoZEeCmpu-HRutBsg _D3SiszoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_D3SisjoZEeCmpu-HRutBsg" general="_D3SitjoZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SiszoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" redefinedProperty="_D3SitzoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3SisToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SitDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SitToZEeCmpu-HRutBsg" name="A_ownedParameteredElement_owningTemplateParameter" memberEnd="_D3SiVToZEeCmpu-HRutBsg _D3SiAToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SitjoZEeCmpu-HRutBsg" name="A_default_templateParameter" memberEnd="_D3SiTzoZEeCmpu-HRutBsg _D3SitzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SitzoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_D3SiSToZEeCmpu-HRutBsg" association="_D3SitjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiuDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiuToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiujoZEeCmpu-HRutBsg" name="A_parameteredElement_templateParameter" memberEnd="_D3SiWDoZEeCmpu-HRutBsg _D3SiBDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiuzoZEeCmpu-HRutBsg" name="A_signature_templateBinding" memberEnd="_D3SiRzoZEeCmpu-HRutBsg _D3SivDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SivDoZEeCmpu-HRutBsg" name="templateBinding" visibility="public" type="_D3SiODoZEeCmpu-HRutBsg" subsettedProperty="_D3Si8ToZEeCmpu-HRutBsg" association="_D3SiuzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SivToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SivjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SivzoZEeCmpu-HRutBsg" name="A_parameterSubstitution_templateBinding" memberEnd="_D3SiQzoZEeCmpu-HRutBsg _D3SiaToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiwDoZEeCmpu-HRutBsg" name="A_templateBinding_boundElement" memberEnd="_D3SiKDoZEeCmpu-HRutBsg _D3SiQToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiwToZEeCmpu-HRutBsg" name="A_ownedTemplateSignature_template" memberEnd="_D3SiJToZEeCmpu-HRutBsg _D3SieDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SixjoZEeCmpu-HRutBsg" name="A_relatedElement_relationship" memberEnd="_D3SiGDoZEeCmpu-HRutBsg _D3SixzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SixzoZEeCmpu-HRutBsg" name="relationship" visibility="public" type="_D3SiFToZEeCmpu-HRutBsg" association="_D3SixjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SiyDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SiyToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SiyjoZEeCmpu-HRutBsg" name="A_importedPackage_packageImport" memberEnd="_D3Sh9zoZEeCmpu-HRutBsg _D3SiyzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SiyzoZEeCmpu-HRutBsg" name="packageImport" visibility="public" type="_D3Sh8ToZEeCmpu-HRutBsg" subsettedProperty="_D3Si8ToZEeCmpu-HRutBsg" association="_D3SiyjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SizDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SizToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SizjoZEeCmpu-HRutBsg" name="A_elementImport_importingNamespace" memberEnd="_D3ShoDoZEeCmpu-HRutBsg _D3IzWzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SizzoZEeCmpu-HRutBsg" name="A_ownedMember_namespace" memberEnd="_D3ShrDoZEeCmpu-HRutBsg _D3ShbDoZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si0DoZEeCmpu-HRutBsg" name="A_ownedRule_context" memberEnd="_D3ShsDoZEeCmpu-HRutBsg _D3IzFjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si0ToZEeCmpu-HRutBsg" name="A_packageImport_importingNamespace" memberEnd="_D3ShtDoZEeCmpu-HRutBsg _D3Sh-ToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si0joZEeCmpu-HRutBsg" name="A_member_memberNamespace" memberEnd="_D3ShqDoZEeCmpu-HRutBsg _D3Si0zoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si0zoZEeCmpu-HRutBsg" name="memberNamespace" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" association="_D3Si0joZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si1DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si1ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si1joZEeCmpu-HRutBsg" name="A_importedMember_namespace" memberEnd="_D3ShpDoZEeCmpu-HRutBsg _D3Si1zoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si1zoZEeCmpu-HRutBsg" name="namespace" visibility="public" type="_D3ShmjoZEeCmpu-HRutBsg" subsettedProperty="_D3Si0zoZEeCmpu-HRutBsg" association="_D3Si1joZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si2DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si2ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si2joZEeCmpu-HRutBsg" name="A_nameExpression_namedElement" memberEnd="_D3ShaToZEeCmpu-HRutBsg _D3Si2zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si2zoZEeCmpu-HRutBsg" name="namedElement" visibility="public" type="_D3ShVToZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3Si2joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si3DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si3ToZEeCmpu-HRutBsg" name="A_clientDependency_client" memberEnd="_D3ShYjoZEeCmpu-HRutBsg _D3IzHzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si3joZEeCmpu-HRutBsg" name="A_lowerValue_owningLower" memberEnd="_D3IzfjoZEeCmpu-HRutBsg _D3Si3zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si3zoZEeCmpu-HRutBsg" name="owningLower" visibility="public" type="_D3IzZToZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3Si3joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si4DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si4ToZEeCmpu-HRutBsg" name="A_upperValue_owningUpper" memberEnd="_D3IzhToZEeCmpu-HRutBsg _D3Si4joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si4joZEeCmpu-HRutBsg" name="owningUpper" visibility="public" type="_D3IzZToZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3Si4ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si4zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si5DoZEeCmpu-HRutBsg" name="A_importedElement_import" memberEnd="_D3IzWToZEeCmpu-HRutBsg _D3Si5ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si5ToZEeCmpu-HRutBsg" name="import" visibility="public" type="_D3IzTToZEeCmpu-HRutBsg" subsettedProperty="_D3Si8ToZEeCmpu-HRutBsg" association="_D3Si5DoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si5joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si5zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si6DoZEeCmpu-HRutBsg" name="A_ownedElement_owner" memberEnd="_D3IzOjoZEeCmpu-HRutBsg _D3IzPjoZEeCmpu-HRutBsg" isDerived="true"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si6ToZEeCmpu-HRutBsg" name="A_ownedComment_owningElement" memberEnd="_D3IzNjoZEeCmpu-HRutBsg _D3Si6joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si6joZEeCmpu-HRutBsg" name="owningElement" visibility="public" type="_D3IzLjoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3Si6ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si6zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si7DoZEeCmpu-HRutBsg" name="A_source_directedRelationship" memberEnd="_D3IzKDoZEeCmpu-HRutBsg _D3Si7ToZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si7ToZEeCmpu-HRutBsg" name="directedRelationship" visibility="public" type="_D3IzJToZEeCmpu-HRutBsg" subsettedProperty="_D3SixzoZEeCmpu-HRutBsg" association="_D3Si7DoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si7joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si7zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si8DoZEeCmpu-HRutBsg" name="A_target_directedRelationship" memberEnd="_D3IzKzoZEeCmpu-HRutBsg _D3Si8ToZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si8ToZEeCmpu-HRutBsg" name="directedRelationship" visibility="public" type="_D3IzJToZEeCmpu-HRutBsg" subsettedProperty="_D3SixzoZEeCmpu-HRutBsg" association="_D3Si8DoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si8joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si8zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si9DoZEeCmpu-HRutBsg" name="A_supplier_supplierDependency" memberEnd="_D3IzIjoZEeCmpu-HRutBsg _D3Si9ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si9ToZEeCmpu-HRutBsg" name="supplierDependency" visibility="public" type="_D3IzGzoZEeCmpu-HRutBsg" subsettedProperty="_D3Si8ToZEeCmpu-HRutBsg" association="_D3Si9DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D3Si9joZEeCmpu-HRutBsg" annotatedElement="_D3Si9ToZEeCmpu-HRutBsg">
+        <body>Indicates the dependencies that reference the supplier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si9zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si-DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si-ToZEeCmpu-HRutBsg" name="A_constrainedElement_constraint" memberEnd="_D3IzEjoZEeCmpu-HRutBsg _D3Si-joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si-joZEeCmpu-HRutBsg" name="constraint" visibility="public" type="_D3IzAzoZEeCmpu-HRutBsg" association="_D3Si-ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3Si-zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si_DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3Si_ToZEeCmpu-HRutBsg" name="A_specification_owningConstraint" memberEnd="_D3IzGToZEeCmpu-HRutBsg _D3Si_joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3Si_joZEeCmpu-HRutBsg" name="owningConstraint" visibility="public" type="_D3IzAzoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3Si_ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3Si_zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SjADoZEeCmpu-HRutBsg" name="A_annotatedElement_comment" memberEnd="_D3Iy_DoZEeCmpu-HRutBsg _D3SjAToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SjAToZEeCmpu-HRutBsg" name="comment" visibility="public" type="_D3Iy-ToZEeCmpu-HRutBsg" association="_D3SjADoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D3SjAjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SjAzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D3SjBDoZEeCmpu-HRutBsg" name="A_mapping_abstraction" memberEnd="_D3Iy9joZEeCmpu-HRutBsg _D3SjBToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3SjBToZEeCmpu-HRutBsg" name="abstraction" visibility="public" type="_D3Iy8zoZEeCmpu-HRutBsg" subsettedProperty="_D3IzPjoZEeCmpu-HRutBsg" association="_D3SjBDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D3SjBjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

@@ -1,0 +1,131 @@
+
+ExpressionInOclCS ::= OclExpressionCS
+
+OclExpressionCS ::= PropertyCallExpCS
+OclExpressionCS ::= VariableExpCS
+OclExpressionCS ::= LiteralExpCS
+OclExpressionCS ::= LetExpCS
+OclExpressionCS ::= OclMessageExpCS
+OclExpressionCS ::= IfExpCS
+
+VariableExpCS ::= simpleNameCS
+
+simpleNameCS ::= <String>
+
+pathNameCS ::= simpleNameCS ('::' pathNameCS )?
+
+LiteralExpCS ::= EnumLiteralExpCS
+LiteralExpCS ::= CollectionLiteralExpCS
+LiteralExpCS ::= TupleLiteralExpCS
+LiteralExpCS ::= PrimitiveLiteralExpCS
+
+EnumLiteralExpCS ::= pathNameCS '::' simpleNameCS
+
+CollectionLiteralExpCS ::= CollectionTypeIdentifierCS ‘{‘ CollectionLiteralPartsCS? ‘}'
+
+CollectionTypeIdentifierCS ::= 'Set'
+CollectionTypeIdentifierCS ::= 'Bag'
+CollectionTypeIdentifierCS ::= 'Sequence'
+CollectionTypeIdentifierCS ::= 'Collection'
+CollectionTypeIdentifierCS ::= 'OrderedSet'
+
+CollectionLiteralPartsCS[1] = CollectionLiteralPartCS ( ',' CollectionLiteralPartsCS[2] )?
+
+CollectionLiteralPartCS ::= CollectionRangeCS
+CollectionLiteralPartCS ::= OclExpressionCS
+
+CollectionRangeCS ::= OclExpressionCS[1] '..' OclExpressionCS[2]
+
+PrimitiveLiteralExpCS ::= IntegerLiteralExpCS
+PrimitiveLiteralExpCS ::= RealLiteralExpCS
+PrimitiveLiteralExpCS ::= StringLiteralExpCS
+PrimitiveLiteralExpCS ::= BooleanLiteralExpCS
+
+TupleLiteralExpCS ::= ‘Tuple' ‘{‘ variableDeclarationListCS ‘}'
+
+IntegerLiteralExpCS ::= <String>
+
+RealLiteralExpCS ::= <String>
+
+StringLiteralExpCS ::= ''' <String> '''
+
+BooleanLiteralExpCS ::= 'true'
+BooleanLiteralExpCS ::= 'false'
+
+PropertyCallExpCS ::= ModelPropertyCallExpCS
+PropertyCallExpCS ::= LoopExpCS
+
+LoopExpCS ::= IteratorExpCS
+LoopExpCS ::= IterateExpCS
+
+IteratorExpCS ::= OclExpressionCS[1] '->' simpleNameCS
+'(' (VariableDeclarationCS[1],
+(',' VariableDeclarationCS[2])? '|' )?
+OclExpressionCS[2]
+')'
+IteratorExpCS ::= OclExpressionCS '.' simpleNameCS '('argumentsCS?')'
+IteratorExpCS ::= OclExpressionCS '.' simpleNameCS
+IteratorExpCS ::= OclExpressionCS '.' simpleNameCS ('[' argumentsCS ']')?
+IteratorExpCS ::= OclExpressionCS '.' simpleNameCS ('[' argumentsCS ']')?
+
+IterateExpCS ::= OclExpressionCS[1] '->' 'iterate' '(' (VariableDeclarationCS[1] ';')?
+VariableDeclarationCS[2] '|' OclExpressionCS[2] ')'
+
+VariableDeclarationCS ::= simpleNameCS (':' typeCS)? ( '=' OclExpressionCS )?
+
+typeCS ::= pathNameCS
+typeCS ::= collectionTypeCS
+typeCS ::= tupleTypeCS
+
+collectionTypeCS ::= collectionTypeIdentifierCS '(' typeCS ')'
+
+tupleTypeCS ::= 'Tuple' '(' variableDeclarationListCS? ')'
+
+variableDeclarationListCS[1] = VariableDeclarationCS (','variableDeclarationListCS[2] )?
+
+ModelPropertyCallExpCS ::= OperationCallExpCS
+ModelPropertyCallExpCS ::= AttributeCallExpCS
+ModelPropertyCallExpCS ::= NavigationCallExpCS
+
+OperationCallExpCS ::= OclExpressionCS[1] simpleNameCS OclExpressionCS[2]
+OperationCallExpCS ::= OclExpressionCS '->' simpleNameCS '(' argumentsCS? ')'
+OperationCallExpCS ::= OclExpressionCS '.' simpleNameCS '(' argumentsCS? ')'
+OperationCallExpCS ::= simpleNameCS '(' argumentsCS? ')'
+OperationCallExpCS ::= OclExpressionCS '.' simpleNameCS isMarkedPreCS '(' argumentsCS? ')'
+OperationCallExpCS ::= simpleNameCS isMarkedPreCS '(' argumentsCS? ')'
+OperationCallExpCS ::= pathNameCS '(' argumentsCS? ')'
+OperationCallExpCS ::= simpleNameCS OclExpressionCS
+
+AttributeCallExpCS ::= OclExpressionCS '.' simpleNameCS isMarkedPreCS?
+AttributeCallExpCS ::= simpleNameCS isMarkedPreCS?
+AttributeCallExpCS ::= pathNameCS
+
+NavigationCallExpCS ::= AssociationEndCallExpCS
+NavigationCallExpCS ::= AssociationClassCallExpCS
+
+AssociationEndCallExpCS ::= OclExpressionCS '.' simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
+AssociationEndCallExpCS ::= simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
+
+AssociationClassCallExpCS ::= OclExpressionCS '.' simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
+AssociationClassCallExpCS ::= simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
+
+isMarkedPreCS ::= '@' 'pre'
+
+argumentsCS[1] ::= OclExpressionCS ( ',' argumentsCS[2] )?
+
+LetExpCS ::= 'let' VariableDeclarationCS LetExpSubCS
+
+LetExpSubCS[1] ::= ',' VariableDeclarationCS LetExpSubCS[2]
+LetExpSubCS ::= 'in' OclExpressionCS
+
+OclMessageExpCS ::= OclExpressionCS '^^' simpleNameCS '(' OclMessageArgumentsCS? ')'
+OclMessageExpCS ::= OclExpressionCS '^' simpleNameCS '(' OclMessageArgumentsCS? ')'
+
+OclMessageArgumentsCS[1] ::= OclMessageArgCS ( ',' OclMessageArgumentsCS[2] )?
+
+OclMessageArgCS ::= '?' (':' typeCS)?
+OclMessageArgCS ::= OclExpressionCS
+
+IfExpCS ::= 'if' OclExpression[1] 'then' OclExpression[2] 'else' OclExpression[3] 'endif'            
+
+

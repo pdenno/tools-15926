@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_DF0oIDoZEeCmpu-HRutBsg" name="CommonBehavior">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_gHsYcCeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_lLRnECeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="SimpleClassifiers.fragment.xmi#_JBJ-IDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF0rXDoZEeCmpu-HRutBsg" name="AnyReceiveEvent">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF0rXToZEeCmpu-HRutBsg" annotatedElement="_DF0rXDoZEeCmpu-HRutBsg">
+      <body>A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF0rXjoZEeCmpu-HRutBsg" general="_DF-ZXzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF0rXzoZEeCmpu-HRutBsg" name="Behavior" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF0rYDoZEeCmpu-HRutBsg" annotatedElement="_DF0rXzoZEeCmpu-HRutBsg">
+      <body>Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.
+A behavior owns zero or more parameter sets.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF0rYjoZEeCmpu-HRutBsg" name="most_one_behaviour" constrainedElement="_DF0rXzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF0rYzoZEeCmpu-HRutBsg" annotatedElement="_DF0rYjoZEeCmpu-HRutBsg">
+        <body>There may be at most one behavior for a given pairing of classifier (as owner of the behavior) and behavioral feature (as specification of the behavior).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF0rZDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF0rZToZEeCmpu-HRutBsg" name="must_realize" constrainedElement="_DF0rXzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF0rZjoZEeCmpu-HRutBsg" annotatedElement="_DF0rZToZEeCmpu-HRutBsg">
+        <body>If the implemented behavioral feature has been redefined in the ancestors of the owner of the behavior, then the behavior must realize the latest redefining behavioral feature.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF0rZzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF0raDoZEeCmpu-HRutBsg" name="parameters_match" constrainedElement="_DF0rXzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZIDoZEeCmpu-HRutBsg" annotatedElement="_DF0raDoZEeCmpu-HRutBsg">
+        <body>The parameters of the behavior must match the parameters of the implemented behavioral feature.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZIToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZIjoZEeCmpu-HRutBsg" name="feature_of_context_classifier" constrainedElement="_DF0rXzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZIzoZEeCmpu-HRutBsg" annotatedElement="_DF-ZIjoZEeCmpu-HRutBsg">
+        <body>The implemented behavioral feature must be a feature (possibly inherited) of the context classifier of the behavior.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZJDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZJToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZJjoZEeCmpu-HRutBsg" name="context" visibility="public" isReadOnly="true" isDerived="true" association="_DF-ZpDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZJzoZEeCmpu-HRutBsg" annotatedElement="_DF-ZJjoZEeCmpu-HRutBsg">
+        <body>The classifier that is the context for the execution of the behavior. A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZKDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-gDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZKToZEeCmpu-HRutBsg" name="isReentrant" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZKjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZKToZEeCmpu-HRutBsg">
+        <body>Tells whether the behavior can be invoked while it is still executing from a previous invocation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_DF-ZKzoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZLDoZEeCmpu-HRutBsg" name="ownedParameter" visibility="public" isOrdered="true" aggregation="composite" association="_DF-ZsjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZLToZEeCmpu-HRutBsg" annotatedElement="_DF-ZLDoZEeCmpu-HRutBsg">
+        <body>References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19kjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZLjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZLzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZMDoZEeCmpu-HRutBsg" name="ownedParameterSet" visibility="public" aggregation="composite" association="_DF-ZoToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZMToZEeCmpu-HRutBsg" annotatedElement="_DF-ZMDoZEeCmpu-HRutBsg">
+        <body>The ParameterSets owned by this Behavior.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19xjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZMjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZMzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZNDoZEeCmpu-HRutBsg" name="postcondition" visibility="public" aggregation="composite" association="_DF-ZqzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZNToZEeCmpu-HRutBsg" annotatedElement="_DF-ZNDoZEeCmpu-HRutBsg">
+        <body>An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZNjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZNzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZODoZEeCmpu-HRutBsg" name="precondition" visibility="public" aggregation="composite" association="_DF-ZqDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZOToZEeCmpu-HRutBsg" annotatedElement="_DF-ZODoZEeCmpu-HRutBsg">
+        <body>An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZOjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZOzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZQDoZEeCmpu-HRutBsg" name="specification" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZQToZEeCmpu-HRutBsg" annotatedElement="_DF-ZQDoZEeCmpu-HRutBsg">
+        <body>Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOTToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZQjoZEeCmpu-HRutBsg"/>
+      <association xmi:type="uml:Association" href="Classification.fragment.xmi#_CH1_bDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZPDoZEeCmpu-HRutBsg" name="redefinedBehavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZrjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZPToZEeCmpu-HRutBsg" annotatedElement="_DF-ZPDoZEeCmpu-HRutBsg">
+        <body>References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZPjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZPzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOsDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DF-ZQzoZEeCmpu-HRutBsg" name="context" visibility="public" isQuery="true" bodyCondition="_DF-ZRToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZRDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZQzoZEeCmpu-HRutBsg">
+        <body>Missing derivation for Behavior::/context : BehavioredClassifier</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZRToZEeCmpu-HRutBsg" name="spec" constrainedElement="_DF-ZQzoZEeCmpu-HRutBsg _DF-ZJjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZRjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DF-ZRzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZSDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZSToZEeCmpu-HRutBsg" name="CallEvent">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZSjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZSToZEeCmpu-HRutBsg">
+      <body>A call event models the receipt by an object of a message invoking a call of an operation.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZSzoZEeCmpu-HRutBsg" general="_DF-ZXzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZTDoZEeCmpu-HRutBsg" name="operation" visibility="public" association="_DF-ZnToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZTToZEeCmpu-HRutBsg" annotatedElement="_DF-ZTDoZEeCmpu-HRutBsg">
+        <body>Designates the operation whose invocation raised the call event.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19GjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZTjoZEeCmpu-HRutBsg" name="ChangeEvent">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZTzoZEeCmpu-HRutBsg" annotatedElement="_DF-ZTjoZEeCmpu-HRutBsg">
+      <body>A change event models a change in the system configuration that makes a condition true.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZUDoZEeCmpu-HRutBsg" general="_DF-ZUzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZUToZEeCmpu-HRutBsg" name="changeExpression" visibility="public" aggregation="composite" association="_DF-ZmjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZUjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZUToZEeCmpu-HRutBsg">
+        <body>A Boolean-valued expression that will result in a change event whenever its value changes from false to true.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZUzoZEeCmpu-HRutBsg" name="Event" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZVDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZUzoZEeCmpu-HRutBsg">
+      <body>An event is the specification of some occurrence that may potentially trigger effects by an object.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZVToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZVjoZEeCmpu-HRutBsg" name="FunctionBehavior">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZVzoZEeCmpu-HRutBsg" annotatedElement="_DF-ZVjoZEeCmpu-HRutBsg">
+      <body>A function behavior is an opaque behavior that does not access or modify any objects or other external data.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZWDoZEeCmpu-HRutBsg" name="one_output_parameter" constrainedElement="_DF-ZVjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZWToZEeCmpu-HRutBsg" annotatedElement="_DF-ZWDoZEeCmpu-HRutBsg">
+        <body>A function behavior has at least one output parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZWjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.ownedParameter->&#xD;&#xA;  select(p | p.direction = ParameterDirectionKind::out or p.direction= ParameterDirectionKind::inout or p.direction= ParameterDirectionKind::return)->size() >= 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZWzoZEeCmpu-HRutBsg" name="types_of_parameters" constrainedElement="_DF-ZVjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZXDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZWzoZEeCmpu-HRutBsg">
+        <body>The types of parameters are all data types, which may not nest anything but other datatypes.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZXToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>ownedParameter->forAll(p | p.type &lt;> null and&#xD;&#xA;  p.type.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p.type.oclAsType(DataType)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZXjoZEeCmpu-HRutBsg" general="_DF-ZYjoZEeCmpu-HRutBsg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_llwW4DYbEeG8q77ujcumXA" name="hasAllDataTypeAttributes" isQuery="true" bodyCondition="_20QDMDYbEeG8q77ujcumXA">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_20QDMDYbEeG8q77ujcumXA" name="spec" constrainedElement="_llwW4DYbEeG8q77ujcumXA">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_20TGgDYbEeG8q77ujcumXA">
+          <language>OCL</language>
+          <body>d.ownedAttribute->forAll(a |&#xD;&#xA;    a.type.oclIsKindOf(DataType) and&#xD;&#xA;      hasAllDataTypeAttributes(a.type.oclAsType(DataType)))</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qjqbUDYbEeG8q77ujcumXA" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8xAVgDYbEeG8q77ujcumXA" name="d">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwTToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZXzoZEeCmpu-HRutBsg" name="MessageEvent" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZYDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZXzoZEeCmpu-HRutBsg">
+      <body>A message event specifies the receipt by an object of either a call or a signal.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZYToZEeCmpu-HRutBsg" general="_DF-ZUzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZYjoZEeCmpu-HRutBsg" name="OpaqueBehavior">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZYzoZEeCmpu-HRutBsg" annotatedElement="_DF-ZYjoZEeCmpu-HRutBsg">
+      <body>An behavior with implementation-specific semantics.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZZDoZEeCmpu-HRutBsg" general="_DF0rXzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZZToZEeCmpu-HRutBsg" name="body" visibility="public" isOrdered="true" isUnique="false">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZZjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZZToZEeCmpu-HRutBsg">
+        <body>Specifies the behavior in one or more languages.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZZzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZaDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZaToZEeCmpu-HRutBsg" name="language" visibility="public" isOrdered="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZajoZEeCmpu-HRutBsg" annotatedElement="_DF-ZaToZEeCmpu-HRutBsg">
+        <body>Languages the body strings use in the same order as the body strings.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZazoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZbToZEeCmpu-HRutBsg" name="SignalEvent">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZbjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZbToZEeCmpu-HRutBsg">
+      <body>A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZbzoZEeCmpu-HRutBsg" general="_DF-ZXzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZcDoZEeCmpu-HRutBsg" name="signal" visibility="public" association="_DF-ZljoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZcToZEeCmpu-HRutBsg" annotatedElement="_DF-ZcDoZEeCmpu-HRutBsg">
+        <body>The specific signal that is associated with this event.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwqToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZcjoZEeCmpu-HRutBsg" name="TimeEvent">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZczoZEeCmpu-HRutBsg" annotatedElement="_DF-ZcjoZEeCmpu-HRutBsg">
+      <body>A time event can be defined relative to entering the current state of the executing state machine.
+A time event specifies a point in time. At the specified time, the event occurs.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZdToZEeCmpu-HRutBsg" name="when_non_negative" constrainedElement="_DF-ZcjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZdjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZdToZEeCmpu-HRutBsg">
+        <body>The ValueSpecification when must return a non-negative Integer.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZdzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_DF-ZeDoZEeCmpu-HRutBsg" name="starting_time" constrainedElement="_DF-ZcjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZeToZEeCmpu-HRutBsg" annotatedElement="_DF-ZeDoZEeCmpu-HRutBsg">
+        <body>The starting time for a relative time event may only be omitted for a time event that is the trigger of a state machine.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_DF-ZejoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZezoZEeCmpu-HRutBsg" general="_DF-ZUzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZfDoZEeCmpu-HRutBsg" name="isRelative" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZfToZEeCmpu-HRutBsg" annotatedElement="_DF-ZfDoZEeCmpu-HRutBsg">
+        <body>Specifies whether it is relative or absolute time.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_DF-ZfjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZfzoZEeCmpu-HRutBsg" name="when" visibility="public" aggregation="composite" association="_DF-ZkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZgDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZfzoZEeCmpu-HRutBsg">
+        <body>Specifies the corresponding time deadline.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTi8DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DF-ZgToZEeCmpu-HRutBsg" name="Trigger">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZgjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZgToZEeCmpu-HRutBsg">
+      <body>A trigger relates an event to a behavior that may affect an instance of the classifier.
+A trigger specification may be qualified by the port on which the event occurred.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_DF-ZhDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZhToZEeCmpu-HRutBsg" name="event" visibility="public" type="_DF-ZUzoZEeCmpu-HRutBsg" association="_DF-ZizoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZhjoZEeCmpu-HRutBsg" annotatedElement="_DF-ZhToZEeCmpu-HRutBsg">
+        <body>The event that causes the trigger.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DF-ZhzoZEeCmpu-HRutBsg" name="port" visibility="public" association="_DF-ZjzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DF-ZiDoZEeCmpu-HRutBsg" annotatedElement="_DF-ZhzoZEeCmpu-HRutBsg">
+        <body>A optional port of the receiver object on which the behavioral feature is invoked.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMkzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZiToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZijoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZizoZEeCmpu-HRutBsg" name="A_event_trigger" memberEnd="_DF-ZhToZEeCmpu-HRutBsg _DF-ZjDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZjDoZEeCmpu-HRutBsg" name="trigger" visibility="public" type="_DF-ZgToZEeCmpu-HRutBsg" association="_DF-ZizoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZjToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZjjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZjzoZEeCmpu-HRutBsg" name="A_port_trigger" memberEnd="_DF-ZhzoZEeCmpu-HRutBsg _DF-ZkDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZkDoZEeCmpu-HRutBsg" name="trigger" visibility="public" type="_DF-ZgToZEeCmpu-HRutBsg" association="_DF-ZjzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZkToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZkjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZkzoZEeCmpu-HRutBsg" name="A_when_timeEvent" memberEnd="_DF-ZfzoZEeCmpu-HRutBsg _DF-ZlDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZlDoZEeCmpu-HRutBsg" name="timeEvent" visibility="public" type="_DF-ZcjoZEeCmpu-HRutBsg" association="_DF-ZkzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZlToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZljoZEeCmpu-HRutBsg" name="A_signal_signalEvent" memberEnd="_DF-ZcDoZEeCmpu-HRutBsg _DF-ZlzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZlzoZEeCmpu-HRutBsg" name="signalEvent" visibility="public" type="_DF-ZbToZEeCmpu-HRutBsg" association="_DF-ZljoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZmDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZmToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZmjoZEeCmpu-HRutBsg" name="A_changeExpression_changeEvent" memberEnd="_DF-ZUToZEeCmpu-HRutBsg _DF-ZmzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZmzoZEeCmpu-HRutBsg" name="changeEvent" visibility="public" type="_DF-ZTjoZEeCmpu-HRutBsg" association="_DF-ZmjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZnDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZnToZEeCmpu-HRutBsg" name="A_operation_callEvent" memberEnd="_DF-ZTDoZEeCmpu-HRutBsg _DF-ZnjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZnjoZEeCmpu-HRutBsg" name="callEvent" visibility="public" type="_DF-ZSToZEeCmpu-HRutBsg" association="_DF-ZnToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZnzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZoDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZoToZEeCmpu-HRutBsg" name="A_ownedParameterSet_behavior" memberEnd="_DF-ZMDoZEeCmpu-HRutBsg _DF-ZojoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZojoZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZoToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZozoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZpDoZEeCmpu-HRutBsg" name="A_context_behavior" memberEnd="_DF-ZJjoZEeCmpu-HRutBsg _DF-ZpToZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZpToZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZpDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZpjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZpzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZqDoZEeCmpu-HRutBsg" name="A_precondition_behavior" memberEnd="_DF-ZODoZEeCmpu-HRutBsg _DF-ZqToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZqToZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZqDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZqjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzFjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZqzoZEeCmpu-HRutBsg" name="A_postcondition_behavior" memberEnd="_DF-ZNDoZEeCmpu-HRutBsg _DF-ZrDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZrDoZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZqzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZrToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzFjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZrjoZEeCmpu-HRutBsg" name="A_redefinedBehavior_behavior" memberEnd="_DF-ZPDoZEeCmpu-HRutBsg _DF-ZrzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZrzoZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZrjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DF-ZsDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZsToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_VjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DF-ZsjoZEeCmpu-HRutBsg" name="A_ownedParameter_behavior" memberEnd="_DF-ZLDoZEeCmpu-HRutBsg _DF-ZszoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_DF-ZszoZEeCmpu-HRutBsg" name="behavior" visibility="public" type="_DF0rXzoZEeCmpu-HRutBsg" association="_DF-ZsjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DF-ZtDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

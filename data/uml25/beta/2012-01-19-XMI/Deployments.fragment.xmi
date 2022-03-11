@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_EntRoDoZEeCmpu-HRutBsg" name="Deployments">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_QnjO4CeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="StructuredClassifiers.fragment.xmi#_LPJfsDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Sd_MECeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonStructure.fragment.xmi#_D211YDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_EntUiDoZEeCmpu-HRutBsg" name="Artifact">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_EntUiToZEeCmpu-HRutBsg" annotatedElement="_EntUiDoZEeCmpu-HRutBsg">
+      <body>An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
+An artifact is the source of a deployment to a node.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_EntUizoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_EntUjDoZEeCmpu-HRutBsg" general="_En3CpzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EntUjToZEeCmpu-HRutBsg" name="fileName" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_EntUjjoZEeCmpu-HRutBsg" annotatedElement="_EntUjToZEeCmpu-HRutBsg">
+        <body>A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EntUjzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EntUkDoZEeCmpu-HRutBsg" name="manifestation" visibility="public" type="_En3C4joZEeCmpu-HRutBsg" aggregation="composite" association="_En3DDDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_EntUkToZEeCmpu-HRutBsg" annotatedElement="_EntUkDoZEeCmpu-HRutBsg">
+        <body>The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EntUkjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EntUkzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShYjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EntUlDoZEeCmpu-HRutBsg" name="nestedArtifact" visibility="public" type="_EntUiDoZEeCmpu-HRutBsg" aggregation="composite" association="_En3DCToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_EntUlToZEeCmpu-HRutBsg" annotatedElement="_EntUlDoZEeCmpu-HRutBsg">
+        <body>The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EntUljoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EntUlzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EntUmDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" association="_En3DAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_EntUmToZEeCmpu-HRutBsg" annotatedElement="_EntUmDoZEeCmpu-HRutBsg">
+        <body>The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EntUmjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EntUmzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EntUnDoZEeCmpu-HRutBsg" name="ownedOperation" visibility="public" isOrdered="true" aggregation="composite" association="_En3DBjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_EntUnToZEeCmpu-HRutBsg" annotatedElement="_EntUnDoZEeCmpu-HRutBsg">
+        <body>The Operations defined for the Artifact. The association is a specialization of the ownedMember association.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19GjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EntUnjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CoDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3CoToZEeCmpu-HRutBsg" name="CommunicationPath">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3CojoZEeCmpu-HRutBsg" annotatedElement="_En3CoToZEeCmpu-HRutBsg">
+      <body>A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_En3CozoZEeCmpu-HRutBsg" name="association_ends" constrainedElement="_En3CoToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CpDoZEeCmpu-HRutBsg" annotatedElement="_En3CozoZEeCmpu-HRutBsg">
+        <body>The association ends of a CommunicationPath are typed by DeploymentTargets.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_En3CpToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>endType->forAll (oclIsKindOf(DeploymentTarget))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3CpjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPcd4ToZEeCmpu-HRutBsg"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3CpzoZEeCmpu-HRutBsg" name="DeployedArtifact" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3CqDoZEeCmpu-HRutBsg" annotatedElement="_En3CpzoZEeCmpu-HRutBsg">
+      <body>A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3CqToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3CqjoZEeCmpu-HRutBsg" name="Deployment">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3CqzoZEeCmpu-HRutBsg" annotatedElement="_En3CqjoZEeCmpu-HRutBsg">
+      <body>A deployment is the allocation of an artifact or artifact instance to a deployment target.
+A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3CrToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzGzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CrjoZEeCmpu-HRutBsg" name="configuration" visibility="public" type="_En3CuDoZEeCmpu-HRutBsg" aggregation="composite" association="_En3DAjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CrzoZEeCmpu-HRutBsg" annotatedElement="_En3CrjoZEeCmpu-HRutBsg">
+        <body>The specification of properties that parameterize the deployment and execution of one or more Artifacts.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3CsDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CsToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CsjoZEeCmpu-HRutBsg" name="deployedArtifact" visibility="public" type="_En3CpzoZEeCmpu-HRutBsg" association="_En3C_joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CszoZEeCmpu-HRutBsg" annotatedElement="_En3CsjoZEeCmpu-HRutBsg">
+        <body>The Artifacts that are deployed onto a Node. This association specializes the supplier association.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3CtDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CtToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CtjoZEeCmpu-HRutBsg" name="location" visibility="public" type="_En3CyjoZEeCmpu-HRutBsg" association="_En3C_ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CtzoZEeCmpu-HRutBsg" annotatedElement="_En3CtjoZEeCmpu-HRutBsg">
+        <body>The DeployedTarget which is the target of a Deployment.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzHzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3CuDoZEeCmpu-HRutBsg" name="DeploymentSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3CuToZEeCmpu-HRutBsg" annotatedElement="_En3CuDoZEeCmpu-HRutBsg">
+      <body>A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_En3CujoZEeCmpu-HRutBsg" name="deployment_target" constrainedElement="_En3CuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CuzoZEeCmpu-HRutBsg" annotatedElement="_En3CujoZEeCmpu-HRutBsg">
+        <body>The DeploymentTarget of a DeploymentSpecification is a kind of ExecutionEnvironment.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_En3CvDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>deployment->forAll (location.oclIsKindOf(ExecutionEnvironment))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_En3CvToZEeCmpu-HRutBsg" name="deployed_elements" constrainedElement="_En3CuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CvjoZEeCmpu-HRutBsg" annotatedElement="_En3CvToZEeCmpu-HRutBsg">
+        <body>The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e. the configured components).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_En3CvzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>deployment->forAll (location.deployedElement->forAll (oclIsKindOf(Component)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3CwDoZEeCmpu-HRutBsg" general="_EntUiDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CwToZEeCmpu-HRutBsg" name="deployment" visibility="public" type="_En3CqjoZEeCmpu-HRutBsg" association="_En3DAjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CwjoZEeCmpu-HRutBsg" annotatedElement="_En3CwToZEeCmpu-HRutBsg">
+        <body>The deployment with which the DeploymentSpecification is associated.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CwzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CxDoZEeCmpu-HRutBsg" name="deploymentLocation" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CxToZEeCmpu-HRutBsg" annotatedElement="_En3CxDoZEeCmpu-HRutBsg">
+        <body>The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CxjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CxzoZEeCmpu-HRutBsg" name="executionLocation" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CyDoZEeCmpu-HRutBsg" annotatedElement="_En3CxzoZEeCmpu-HRutBsg">
+        <body>The location where a component Artifact executes. This may be a local or remote location.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3CyToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3CyjoZEeCmpu-HRutBsg" name="DeploymentTarget" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3CyzoZEeCmpu-HRutBsg" annotatedElement="_En3CyjoZEeCmpu-HRutBsg">
+      <body>A deployment target is the location for a deployed artifact.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3CzDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3CzToZEeCmpu-HRutBsg" name="deployedElement" visibility="public" isReadOnly="true" isDerived="true" association="_En3C-ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3CzjoZEeCmpu-HRutBsg" annotatedElement="_En3CzToZEeCmpu-HRutBsg">
+        <body>The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3CzzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C0DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3C0ToZEeCmpu-HRutBsg" name="deployment" visibility="public" type="_En3CqjoZEeCmpu-HRutBsg" aggregation="composite" association="_En3C_ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3C0joZEeCmpu-HRutBsg" annotatedElement="_En3C0ToZEeCmpu-HRutBsg">
+        <body>The set of Deployments for a DeploymentTarget.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3C0zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C1DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShYjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_En3C1ToZEeCmpu-HRutBsg" name="deployedElement" visibility="public" isQuery="true" bodyCondition="_En3C1zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3C1joZEeCmpu-HRutBsg" annotatedElement="_En3C1ToZEeCmpu-HRutBsg">
+        <body>Missing derivation for DeploymentTarget::/deployedElement : PackageableElement</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_En3C1zoZEeCmpu-HRutBsg" name="spec" constrainedElement="_En3C1ToZEeCmpu-HRutBsg _En3CzToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_En3C2DoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>deployment.deployedArtifact->select(oclIsKindOf(Artifact))->collect(oclAsType(Artifact).manifestation)->collect(utilizedElement)->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_En3C2ToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3C2joZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3C3DoZEeCmpu-HRutBsg" name="Device">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3C3ToZEeCmpu-HRutBsg" annotatedElement="_En3C3DoZEeCmpu-HRutBsg">
+      <body>A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3C3joZEeCmpu-HRutBsg" general="_En3C5zoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3C3zoZEeCmpu-HRutBsg" name="ExecutionEnvironment">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3C4DoZEeCmpu-HRutBsg" annotatedElement="_En3C3zoZEeCmpu-HRutBsg">
+      <body>An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3C4ToZEeCmpu-HRutBsg" general="_En3C5zoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3C4joZEeCmpu-HRutBsg" name="Manifestation">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3C4zoZEeCmpu-HRutBsg" annotatedElement="_En3C4joZEeCmpu-HRutBsg">
+      <body>A manifestation is the concrete physical rendering of one or more model elements by an artifact.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3C5DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Iy8zoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3C5ToZEeCmpu-HRutBsg" name="utilizedElement" visibility="public" association="_En3C9ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3C5joZEeCmpu-HRutBsg" annotatedElement="_En3C5ToZEeCmpu-HRutBsg">
+        <body>The model element that is utilized in the manifestation in an Artifact.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_En3C5zoZEeCmpu-HRutBsg" name="Node">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_En3C6DoZEeCmpu-HRutBsg" annotatedElement="_En3C5zoZEeCmpu-HRutBsg">
+      <body>A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_En3C6ToZEeCmpu-HRutBsg" name="internal_structure" constrainedElement="_En3C5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3C6joZEeCmpu-HRutBsg" annotatedElement="_En3C6ToZEeCmpu-HRutBsg">
+        <body>The internal structure of a Node (if defined) consists solely of parts of type Node.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_En3C6zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3C7DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPceFToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_En3C7ToZEeCmpu-HRutBsg" general="_En3CyjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_En3C7joZEeCmpu-HRutBsg" name="nestedNode" visibility="public" type="_En3C5zoZEeCmpu-HRutBsg" aggregation="composite" association="_En3C8joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_En3C7zoZEeCmpu-HRutBsg" annotatedElement="_En3C7joZEeCmpu-HRutBsg">
+        <body>The Nodes that are defined (nested) within the Node.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3C8DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C8ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3C8joZEeCmpu-HRutBsg" name="A_nestedNode_node" memberEnd="_En3C7joZEeCmpu-HRutBsg _En3C8zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3C8zoZEeCmpu-HRutBsg" name="node" visibility="public" type="_En3C5zoZEeCmpu-HRutBsg" association="_En3C8joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C9DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3C9ToZEeCmpu-HRutBsg" name="A_utilizedElement_manifestation" memberEnd="_En3C5ToZEeCmpu-HRutBsg _En3C9joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3C9joZEeCmpu-HRutBsg" name="manifestation" visibility="public" type="_En3C4joZEeCmpu-HRutBsg" association="_En3C9ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3C9zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C-DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si9ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3C-ToZEeCmpu-HRutBsg" name="A_deployedElement_deploymentTarget" memberEnd="_En3CzToZEeCmpu-HRutBsg _En3C-joZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3C-joZEeCmpu-HRutBsg" name="deploymentTarget" visibility="public" type="_En3CyjoZEeCmpu-HRutBsg" association="_En3C-ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3C-zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3C_DoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3C_ToZEeCmpu-HRutBsg" name="A_deployment_location" memberEnd="_En3C0ToZEeCmpu-HRutBsg _En3CtjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3C_joZEeCmpu-HRutBsg" name="A_deployedArtifact_deployment" memberEnd="_En3CsjoZEeCmpu-HRutBsg _En3C_zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3C_zoZEeCmpu-HRutBsg" name="deployment" visibility="public" type="_En3CqjoZEeCmpu-HRutBsg" association="_En3C_joZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_En3DADoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3DAToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si9ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3DAjoZEeCmpu-HRutBsg" name="A_configuration_deployment" memberEnd="_En3CrjoZEeCmpu-HRutBsg _En3CwToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3DAzoZEeCmpu-HRutBsg" name="A_ownedAttribute_artifact" memberEnd="_EntUmDoZEeCmpu-HRutBsg _En3DBDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3DBDoZEeCmpu-HRutBsg" name="artifact" visibility="public" type="_EntUiDoZEeCmpu-HRutBsg" association="_En3DAzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3DBToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_XToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3DBjoZEeCmpu-HRutBsg" name="A_ownedOperation_artifact" memberEnd="_EntUnDoZEeCmpu-HRutBsg _En3DBzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3DBzoZEeCmpu-HRutBsg" name="artifact" visibility="public" type="_EntUiDoZEeCmpu-HRutBsg" association="_En3DBjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3DCDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-gDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3DCToZEeCmpu-HRutBsg" name="A_nestedArtifact_artifact" memberEnd="_EntUlDoZEeCmpu-HRutBsg _En3DCjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3DCjoZEeCmpu-HRutBsg" name="artifact" visibility="public" type="_EntUiDoZEeCmpu-HRutBsg" association="_En3DCToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_En3DCzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_En3DDDoZEeCmpu-HRutBsg" name="A_manifestation_artifact" memberEnd="_EntUkDoZEeCmpu-HRutBsg _En3DDToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_En3DDToZEeCmpu-HRutBsg" name="artifact" visibility="public" type="_EntUiDoZEeCmpu-HRutBsg" association="_En3DDDoZEeCmpu-HRutBsg">
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzHzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

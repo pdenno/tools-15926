@@ -1,0 +1,177 @@
+{
+  "head": {
+    "vars": [ "class" , "classDesignation" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS422594" } ,
+        "classDesignation": { "type": "literal" , "value": "ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS201644" } ,
+        "classDesignation": { "type": "literal" , "value": "ARTEFACT CLASS" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS1376055681" } ,
+        "classDesignation": { "type": "literal" , "value": "ARTEFACT IN FOCUS" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS244574" } ,
+        "classDesignation": { "type": "literal" , "value": "ASME B16.5 ARTEFACT CLASS" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS432179" } ,
+        "classDesignation": { "type": "literal" , "value": "BENT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS432044" } ,
+        "classDesignation": { "type": "literal" , "value": "CAST ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS14129690" } ,
+        "classDesignation": { "type": "literal" , "value": "CONTINOUS DUTY RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907582" } ,
+        "classDesignation": { "type": "literal" , "value": "EI 120 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907644" } ,
+        "classDesignation": { "type": "literal" , "value": "EI 160 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907706" } ,
+        "classDesignation": { "type": "literal" , "value": "EI 30 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907751" } ,
+        "classDesignation": { "type": "literal" , "value": "EI 60 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907796" } ,
+        "classDesignation": { "type": "literal" , "value": "EI 90 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS432089" } ,
+        "classDesignation": { "type": "literal" , "value": "EXTRUDED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS5921646" } ,
+        "classDesignation": { "type": "literal" , "value": "FAIL OPEN ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907520" } ,
+        "classDesignation": { "type": "literal" , "value": "FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS428804" } ,
+        "classDesignation": { "type": "literal" , "value": "FORGED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907841" } ,
+        "classDesignation": { "type": "literal" , "value": "I 120 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907886" } ,
+        "classDesignation": { "type": "literal" , "value": "I 160 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907931" } ,
+        "classDesignation": { "type": "literal" , "value": "I 30 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7907976" } ,
+        "classDesignation": { "type": "literal" , "value": "I 60 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908021" } ,
+        "classDesignation": { "type": "literal" , "value": "I 90 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS8744320" } ,
+        "classDesignation": { "type": "literal" , "value": "IEC 85 THERMAL RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7941920" } ,
+        "classDesignation": { "type": "literal" , "value": "IN1 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7942000" } ,
+        "classDesignation": { "type": "literal" , "value": "IN2 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS14129420" } ,
+        "classDesignation": { "type": "literal" , "value": "INTERMITTENT DUTY RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7941354" } ,
+        "classDesignation": { "type": "literal" , "value": "K1A FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7941416" } ,
+        "classDesignation": { "type": "literal" , "value": "K2 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7286380" } ,
+        "classDesignation": { "type": "literal" , "value": "NOMINAL SIZE ARTEFACT CLASS" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS430694" } ,
+        "classDesignation": { "type": "literal" , "value": "PRESSURE RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908066" } ,
+        "classDesignation": { "type": "literal" , "value": "REI 120 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908111" } ,
+        "classDesignation": { "type": "literal" , "value": "REI 160 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908156" } ,
+        "classDesignation": { "type": "literal" , "value": "REI 30 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908201" } ,
+        "classDesignation": { "type": "literal" , "value": "REI 60 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS7908246" } ,
+        "classDesignation": { "type": "literal" , "value": "REI 90 FIRE RESISTANT ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS432134" } ,
+        "classDesignation": { "type": "literal" , "value": "ROLLED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS458774" } ,
+        "classDesignation": { "type": "literal" , "value": "SEAMLESS ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS6724200" } ,
+        "classDesignation": { "type": "literal" , "value": "SERVICE RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS14129465" } ,
+        "classDesignation": { "type": "literal" , "value": "SHORT-TIME DUTY RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS6709465" } ,
+        "classDesignation": { "type": "literal" , "value": "TEMPERATURE RATED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS948374" } ,
+        "classDesignation": { "type": "literal" , "value": "THERMAL RATED ELECTRICAL ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS431999" } ,
+        "classDesignation": { "type": "literal" , "value": "WELDED ARTEFACT" }
+      } ,
+      {
+        "class": { "type": "uri" , "value": "http://jord-dev.org/rdl/RDS459314" } ,
+        "classDesignation": { "type": "literal" , "value": "WROUGHT ARTEFACT" }
+      }
+    ]
+  }
+}

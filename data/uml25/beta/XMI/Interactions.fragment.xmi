@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_F_Uk0DoZEeCmpu-HRutBsg" name="Interactions">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_48zbYCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonStructure.fragment.xmi#_D211YDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_8Ys6gCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_-5YukCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="SimpleClassifiers.fragment.xmi#_JBJ-IDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_nikToZEeCmpu-HRutBsg" name="ActionExecutionSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_nikjoZEeCmpu-HRutBsg" annotatedElement="_F_nikToZEeCmpu-HRutBsg">
+      <body>An ActionExecutionSpecification is a kind of ExecutionSpecification representing the execution of an Action.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nikzoZEeCmpu-HRutBsg" name="action_referenced" constrainedElement="_F_nikToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nilDoZEeCmpu-HRutBsg" annotatedElement="_F_nikzoZEeCmpu-HRutBsg">
+        <body>The Action referenced by the ActionExecutionSpecification must be owned by the Interaction owning that ActionExecutionSpecification.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nilToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(enclosingInteraction->notEmpty() or enclosingOperand.combinedFragment->notEmpty()) and&#xD;&#xA;let parentInteraction : Set(Interaction) = enclosingInteraction.oclAsType(Interaction)->asSet()->union(&#xD;&#xA;enclosingOperand.combinedFragment->closure(enclosingOperand.combinedFragment)->&#xD;&#xA;collect(enclosingInteraction).oclAsType(Interaction)->asSet()) in&#xD;&#xA;(parentInteraction->size() = 1) and self.action.interaction->asSet() = parentInteraction</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_niljoZEeCmpu-HRutBsg" general="_F_ni3zoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_nilzoZEeCmpu-HRutBsg" name="action" visibility="public" association="_F_wrBToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nimDoZEeCmpu-HRutBsg" annotatedElement="_F_nilzoZEeCmpu-HRutBsg">
+        <body>Action whose execution is occurring.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkdfaDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_nimToZEeCmpu-HRutBsg" name="BehaviorExecutionSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_nimjoZEeCmpu-HRutBsg" annotatedElement="_F_nimToZEeCmpu-HRutBsg">
+      <body>A BehaviorExecutionSpecification is a kind of ExecutionSpecification representing the execution of a Behavior.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_nimzoZEeCmpu-HRutBsg" general="_F_ni3zoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ninDoZEeCmpu-HRutBsg" name="behavior" visibility="public" association="_F_wrAToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ninToZEeCmpu-HRutBsg" annotatedElement="_F_ninDoZEeCmpu-HRutBsg">
+        <body>Behavior whose execution is occurring.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_ninjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ninzoZEeCmpu-HRutBsg" name="CombinedFragment">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_nioDoZEeCmpu-HRutBsg" annotatedElement="_F_ninzoZEeCmpu-HRutBsg">
+      <body>A CombinedFragment defines an expression of InteractionFragments. A CombinedFragment is defined by an interaction operator and corresponding InteractionOperands. Through the use of CombinedFragments the user will be able to describe a number of traces in a compact and concise manner.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nipDoZEeCmpu-HRutBsg" name="break" constrainedElement="_F_ninzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nipToZEeCmpu-HRutBsg" annotatedElement="_F_nipDoZEeCmpu-HRutBsg">
+        <body>If the interactionOperator is break, the corresponding InteractionOperand must cover all Lifelines covered by the enclosing InteractionFragment.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nipjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>if interactionOperator=InteractionOperatorKind::break  then   &#xD;&#xA;enclosingInteraction.oclAsType(InteractionFragment)->&#xD;&#xA;asSet()->union(enclosingOperand.oclAsType(InteractionFragment)->asSet()).covered->asSet() = &#xD;&#xA;self.covered->asSet()&#xD;&#xA;else true &#xD;&#xA;endif</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nipzoZEeCmpu-HRutBsg" name="consider_and_ignore" constrainedElement="_F_ninzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niqDoZEeCmpu-HRutBsg" annotatedElement="_F_nipzoZEeCmpu-HRutBsg">
+        <body>The interaction operators 'consider' and 'ignore' can only be used for the CombineIgnoreFragment subtype of CombinedFragment</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_niqToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>((interactionOperator = InteractionOperatorKind::consider) or (interactionOperator =  InteractionOperatorKind::ignore)) implies oclIsKindOf(ConsiderIgnoreFragment)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_niqjoZEeCmpu-HRutBsg" name="opt_loop_break_neg" constrainedElement="_F_ninzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niqzoZEeCmpu-HRutBsg" annotatedElement="_F_niqjoZEeCmpu-HRutBsg">
+        <body>If the interactionOperator is opt, loop, break, assert or neg, there must be exactly one operand.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nirDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(interactionOperator =  InteractionOperatorKind::opt or interactionOperator = InteractionOperatorKind::loop or&#xD;&#xA;interactionOperator = InteractionOperatorKind::break or interactionOperator = InteractionOperatorKind::assert or&#xD;&#xA;interactionOperator = InteractionOperatorKind::neg)&#xD;&#xA;implies operand->size()=1</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_nirToZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_nirjoZEeCmpu-HRutBsg" name="cfragmentGate" visibility="public" type="_F_ni6ToZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq-zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nirzoZEeCmpu-HRutBsg" annotatedElement="_F_nirjoZEeCmpu-HRutBsg">
+        <body>Specifies the gates that form the interface between this CombinedFragment and its surroundings</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_nisDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_nisToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_nisjoZEeCmpu-HRutBsg" name="interactionOperator" visibility="public" type="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niszoZEeCmpu-HRutBsg" annotatedElement="_F_nisjoZEeCmpu-HRutBsg">
+        <body>Specifies the operation which defines the semantics of this combination of InteractionFragments.</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_F_nitDoZEeCmpu-HRutBsg" type="_F_wqYzoZEeCmpu-HRutBsg" instance="_F_wqZToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_nitToZEeCmpu-HRutBsg" name="operand" visibility="public" type="_F_wpszoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_F_wq_joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nitjoZEeCmpu-HRutBsg" annotatedElement="_F_nitToZEeCmpu-HRutBsg">
+        <body>The set of operands of the combined fragment.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_nitzoZEeCmpu-HRutBsg" value="*"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_niuDoZEeCmpu-HRutBsg" name="ConsiderIgnoreFragment">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_niuToZEeCmpu-HRutBsg" annotatedElement="_F_niuDoZEeCmpu-HRutBsg">
+      <body>A ConsiderIgnoreFragment is a kind of CombinedFragment that is used for the consider and ignore cases, which require lists of pertinent Messages to be specified.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_niujoZEeCmpu-HRutBsg" name="consider_or_ignore" constrainedElement="_F_niuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niuzoZEeCmpu-HRutBsg" annotatedElement="_F_niujoZEeCmpu-HRutBsg">
+        <body>The interaction operator of a ConsiderIgnoreFragment must be either 'consider' or 'ignore'.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nivDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(interactionOperator =  InteractionOperatorKind::consider) or (interactionOperator =  InteractionOperatorKind::ignore)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nivToZEeCmpu-HRutBsg" name="type" constrainedElement="_F_niuDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nivjoZEeCmpu-HRutBsg" annotatedElement="_F_nivToZEeCmpu-HRutBsg">
+        <body>The NamedElements must be of a type of element that can be a signature for a message (i.e.., an Operation, or a Signal).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nivzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>message->forAll(m | m.oclIsKindOf(Operation) or m.oclIsKindOf(Signal))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_niwDoZEeCmpu-HRutBsg" general="_F_ninzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_niwToZEeCmpu-HRutBsg" name="message" visibility="public" association="_F_wq9zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niwjoZEeCmpu-HRutBsg" annotatedElement="_F_niwToZEeCmpu-HRutBsg">
+        <body>The set of messages that apply to this fragment</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_niwzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_nixDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_nixToZEeCmpu-HRutBsg" name="Continuation">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_nixjoZEeCmpu-HRutBsg" annotatedElement="_F_nixToZEeCmpu-HRutBsg">
+      <body>A Continuation is a syntactic way to define continuations of different branches of an alternative CombinedFragment. Continuations are intuitively similar to labels representing intermediate points in a flow of control.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nixzoZEeCmpu-HRutBsg" name="first_or_last_interaction_fragment" constrainedElement="_F_nixToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niyDoZEeCmpu-HRutBsg" annotatedElement="_F_nixzoZEeCmpu-HRutBsg">
+        <body>Continuations always occur as the very first InteractionFragment or the very last InteractionFragment of the enclosing InteractionOperand.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_niyToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body> enclosingOperand->notEmpty() and &#xD;&#xA; let peerFragments : OrderedSet(InteractionFragment) =  enclosingOperand.fragment in &#xD;&#xA;   ( peerFragments->notEmpty() and &#xD;&#xA;   ((peerFragments->first() = self) or  (peerFragments->last() = self)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_niyjoZEeCmpu-HRutBsg" name="same_name" constrainedElement="_F_nixToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_niyzoZEeCmpu-HRutBsg" annotatedElement="_F_niyjoZEeCmpu-HRutBsg">
+        <body>Across all Interaction instances having the same context value, every Lifeline instance covered by a Continuation (self) must be common with one covered Lifeline instance of all other Continuation instances with the same name as self, and every Lifeline instance covered by a Continuation instance with the same name as self must be common with one covered Lifeline instance of self. Lifeline instances are common if they have the same selector and represents associationEnd values.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nizDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>enclosingOperand.combinedFragment->notEmpty() and&#xD;&#xA;let parentInteraction : Set(Interaction) = &#xD;&#xA;enclosingOperand.combinedFragment->closure(enclosingOperand.combinedFragment)->&#xD;&#xA;collect(enclosingInteraction).oclAsType(Interaction)->asSet()&#xD;&#xA;in &#xD;&#xA;(parentInteraction->size() = 1) &#xD;&#xA;and let peerInteractions : Set(Interaction) =&#xD;&#xA; (parentInteraction->union(parentInteraction->collect(_'context')->collect(behavior)->&#xD;&#xA; select(oclIsKindOf(Interaction)).oclAsType(Interaction)->asSet())->asSet()) in&#xD;&#xA; (peerInteractions->notEmpty()) and &#xD;&#xA;  let combinedFragments1 : Set(CombinedFragment) = peerInteractions.fragment->&#xD;&#xA; select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet() in&#xD;&#xA;   combinedFragments1->notEmpty() and  combinedFragments1->closure(operand.fragment->&#xD;&#xA;   select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment))->asSet().operand.fragment->&#xD;&#xA;   select(oclIsKindOf(Continuation)).oclAsType(Continuation)->asSet()->&#xD;&#xA;   forAll(c : Continuation |  (c.name = self.name) implies &#xD;&#xA;  (c.covered->asSet()->forAll(cl : Lifeline | --  cl must be common to one lifeline covered by self&#xD;&#xA;  self.covered->asSet()->&#xD;&#xA;  select(represents = cl.represents and selector = cl.selector)->asSet()->size()=1))&#xD;&#xA;   and&#xD;&#xA; (self.covered->asSet()->forAll(cl : Lifeline | --  cl must be common to one lifeline covered by c&#xD;&#xA; c.covered->asSet()->&#xD;&#xA;  select(represents = cl.represents and selector = cl.selector)->asSet()->size()=1))&#xD;&#xA;  )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_nizToZEeCmpu-HRutBsg" name="global" constrainedElement="_F_nixToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_nizjoZEeCmpu-HRutBsg" annotatedElement="_F_nizToZEeCmpu-HRutBsg">
+        <body>Continuations are always global in the enclosing InteractionFragment e.g. it always covers all Lifelines covered by the enclosing InteractionOperator.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_nizzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>enclosingOperand->notEmpty() and&#xD;&#xA;  let operandLifelines : Set(Lifeline) =  enclosingOperand.covered in &#xD;&#xA;    (operandLifelines->notEmpty() and &#xD;&#xA;    operandLifelines->forAll(ol :Lifeline |self.covered->includes(ol)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni0DoZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni0ToZEeCmpu-HRutBsg" name="setting" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni0joZEeCmpu-HRutBsg" annotatedElement="_F_ni0ToZEeCmpu-HRutBsg">
+        <body>True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_F_ni0zoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni1DoZEeCmpu-HRutBsg" name="DestructionOccurrenceSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni1ToZEeCmpu-HRutBsg" annotatedElement="_F_ni1DoZEeCmpu-HRutBsg">
+      <body>A DestructionOccurenceSpecification models the destruction of an object.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_ni1joZEeCmpu-HRutBsg" name="no_occurrence_specifications_below" constrainedElement="_F_ni1DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni1zoZEeCmpu-HRutBsg" annotatedElement="_F_ni1joZEeCmpu-HRutBsg">
+        <body>No other OccurrenceSpecifications on a given Lifeline in an InteractionOperand may appear below a DestructionOccurrenceSpecification.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_ni2DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>let o : InteractionOperand = enclosingOperand in o->notEmpty() and &#xD;&#xA;let peerEvents : OrderedSet(OccurrenceSpecification) = covered.events->select(enclosingOperand = o)&#xD;&#xA;in peerEvents->last() = self</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni2ToZEeCmpu-HRutBsg" general="_F_wqPzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni2joZEeCmpu-HRutBsg" name="ExecutionOccurrenceSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni2zoZEeCmpu-HRutBsg" annotatedElement="_F_ni2joZEeCmpu-HRutBsg">
+      <body>An ExecutionOccurrenceSpecification represents moments in time at which Actions or Behaviors start or finish.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni3DoZEeCmpu-HRutBsg" general="_F_wqQzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni3ToZEeCmpu-HRutBsg" name="execution" visibility="public" type="_F_ni3zoZEeCmpu-HRutBsg" association="_F_wq8zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni3joZEeCmpu-HRutBsg" annotatedElement="_F_ni3ToZEeCmpu-HRutBsg">
+        <body>References the execution specification describing the execution that is started or finished at this execution event.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni3zoZEeCmpu-HRutBsg" name="ExecutionSpecification" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni4DoZEeCmpu-HRutBsg" annotatedElement="_F_ni3zoZEeCmpu-HRutBsg">
+      <body>An ExecutionSpecification is a specification of the execution of a unit of Behavior or Action within the Lifeline. The duration of an ExecutionSpecification is represented by two OccurrenceSpecifications, the start OccurrenceSpecification and the finish OccurrenceSpecification.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_ni4ToZEeCmpu-HRutBsg" name="same_lifeline" constrainedElement="_F_ni3zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni4joZEeCmpu-HRutBsg" annotatedElement="_F_ni4ToZEeCmpu-HRutBsg">
+        <body>The startEvent and the finishEvent must be on the same Lifeline.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_ni4zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>start.covered = finish.covered</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni5DoZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni5ToZEeCmpu-HRutBsg" name="finish" visibility="public" type="_F_wqQzoZEeCmpu-HRutBsg" association="_F_wq6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni5joZEeCmpu-HRutBsg" annotatedElement="_F_ni5ToZEeCmpu-HRutBsg">
+        <body>References the OccurrenceSpecification that designates the finish of the Action or Behavior.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni5zoZEeCmpu-HRutBsg" name="start" visibility="public" type="_F_wqQzoZEeCmpu-HRutBsg" association="_F_wq7joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni6DoZEeCmpu-HRutBsg" annotatedElement="_F_ni5zoZEeCmpu-HRutBsg">
+        <body>References the OccurrenceSpecification that designates the start of the Action or Behavior</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni6ToZEeCmpu-HRutBsg" name="Gate">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni6joZEeCmpu-HRutBsg" annotatedElement="_F_ni6ToZEeCmpu-HRutBsg">
+      <body>A Gate is a MessageEnd which serves as a connection point for relating a Message which has a MessageEnd (sendEvent / receiveEvent) outside an InteractionFragment with another Message which has a MessageEnd (receiveEvent / sendEvent)  inside that InteractionFragment.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_crmeoEhLEeGxx8OhognRMQ" name="actual_gate_matched" constrainedElement="_F_ni6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_Lzv7QEhMEeGxx8OhognRMQ" annotatedElement="_crmeoEhLEeGxx8OhognRMQ">
+        <body>If this Gate is an actualGate it must have exactly one matching formalGate within the referred Interaction</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_ctiYUEhLEeGxx8OhognRMQ">
+        <language>OCL</language>
+        <body>interactionUse->notEmpty() implies interactionUse.refersTo.formalGate->select(matches(self))->size()=1&#xD;&#xA;&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_l_Mw8EhLEeGxx8OhognRMQ" name="inside_cf_matched" constrainedElement="_F_ni6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_kleBEEhPEeGxx8OhognRMQ" annotatedElement="_l_Mw8EhLEeGxx8OhognRMQ">
+        <body>If this Gate is inside a CombinedFragment, it must have exactly one matching Gate which is outside of that CombinedFragment.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_l_Mw8UhLEeGxx8OhognRMQ">
+        <language>OCL</language>
+        <body>isInsideCF() implies combinedFragment.cfragmentGate->select(isOutsideCF() and matches(self))->size()=1&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_n_plwEhLEeGxx8OhognRMQ" name="outside_cf_matched" constrainedElement="_F_ni6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_6GIl0EhSEeGxx8OhognRMQ" annotatedElement="_n_plwEhLEeGxx8OhognRMQ">
+        <body>If this Gate is outside an 'alt' CombinedFragment,  for every InteractionOperator inside that CombinedFragment there must be exactly one matching Gate inside the CombindedFragment with its opposing end enclosed by that InteractionOperator. If this Gate is outside CombinedFragment with operator other than 'alt',   there must be exactly one matching Gate inside that CombindedFragment.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_n_plwUhLEeGxx8OhognRMQ">
+        <language>OCL</language>
+        <body>isOutsideCF() implies&#xD;&#xA; if self.combinedFragment.interactionOperator->asOrderedSet()->first() = InteractionOperatorKind::alt&#xD;&#xA; then self.combinedFragment.operand->forAll(op : InteractionOperand |&#xD;&#xA; self.combinedFragment.cfragmentGate->select(isInsideCF() and &#xD;&#xA; oppositeEnd().enclosingFragment()->includes(self.combinedFragment) and matches(self))->size()=1)&#xD;&#xA; else  self.combinedFragment.cfragmentGate->select(isInsideCF() and matches(self))->size()=1&#xD;&#xA; endif&#xD;&#xA; &#xD;&#xA; &#xD;&#xA; &#xD;&#xA; &#xD;&#xA; &#xD;&#xA; &#xD;&#xA; &#xD;&#xA; </body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni8ToZEeCmpu-HRutBsg" general="_F_wqOToZEeCmpu-HRutBsg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_O6peEEbIEeGo1OdfzQkV8w" name="isOutsideCF" isQuery="true" bodyCondition="__JBAMEeqEeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_q_2lMEg8EeGxx8OhognRMQ" annotatedElement="_O6peEEbIEeGo1OdfzQkV8w">
+        <body>This query returns true if this Gate is attached to the boundary of a CombinedFragment, and its other end (if present)  is outside of the same CombindedFragment.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="__JBAMEeqEeGlc9w7JT3BVw" name="spec" constrainedElement="_O6peEEbIEeGo1OdfzQkV8w">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="__JBAMUeqEeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>self.oppositeEnd()-> notEmpty() and combinedFragment->notEmpty() implies&#xD;&#xA;let oppEnd : MessageEnd = self.oppositeEnd()->asOrderedSet()->first() in&#xD;&#xA;if oppEnd.oclIsKindOf(MessageOccurrenceSpecification) &#xD;&#xA;then let oppMOS : MessageOccurrenceSpecification = oppEnd.oclAsType(MessageOccurrenceSpecification)&#xD;&#xA;in  self.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(self.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet()) =&#xD;&#xA;     oppMOS.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(oppMOS.enclosingOperand.oclAsType(InteractionFragment)->asSet())&#xD;&#xA;else let oppGate : Gate = oppEnd.oclAsType(Gate) &#xD;&#xA;in self.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(self.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet()) =&#xD;&#xA;     oppGate.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(oppGate.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet())&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-umQwEbIEeGo1OdfzQkV8w" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7f3jcUhTEeGxx8OhognRMQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7f3jcEhTEeGxx8OhognRMQ" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YD_ywEbJEeGo1OdfzQkV8w" name="isInsideCF" isQuery="true" bodyCondition="_I21wYEerEeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_oTvkQEg8EeGxx8OhognRMQ" annotatedElement="_YD_ywEbJEeGo1OdfzQkV8w">
+        <body>This query returns true if this Gate is attached to the boundary of a CombinedFragment, and its other end (if present) is inside of an InteractionOperator of the same CombindedFragment.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_I21wYEerEeGlc9w7JT3BVw" name="spec" constrainedElement="_YD_ywEbJEeGo1OdfzQkV8w">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_I21wYUerEeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>self.oppositeEnd()-> notEmpty() and combinedFragment->notEmpty() implies&#xD;&#xA;let oppEnd : MessageEnd = self.oppositeEnd()->asOrderedSet()->first() in&#xD;&#xA;if oppEnd.oclIsKindOf(MessageOccurrenceSpecification) &#xD;&#xA;then let oppMOS : MessageOccurrenceSpecification = oppEnd.oclAsType(MessageOccurrenceSpecification) &#xD;&#xA;in combinedFragment = oppMOS.enclosingOperand.combinedFragment&#xD;&#xA;else let oppGate : Gate = oppEnd.oclAsType(Gate) &#xD;&#xA;in combinedFragment = oppGate.combinedFragment&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_fk2VEEbJEeGo1OdfzQkV8w" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nJJM8EbJEeGo1OdfzQkV8w" name="isActual" isQuery="true" bodyCondition="_hUDtMEerEeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LyK2oEg7EeGxx8OhognRMQ" annotatedElement="_nJJM8EbJEeGo1OdfzQkV8w">
+        <body>This query returns true value if this Gate is an actualGate of an InteractionUse</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_hUDtMEerEeGlc9w7JT3BVw" name="spec" constrainedElement="_nJJM8EbJEeGo1OdfzQkV8w">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_hUNeMEerEeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>interactionUse->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_rLOiUEbJEeGo1OdfzQkV8w" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nKoasEbJEeGo1OdfzQkV8w" name="isFormal" isQuery="true" bodyCondition="_mp5JcEerEeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_uXJGkEg7EeGxx8OhognRMQ" annotatedElement="_nKoasEbJEeGo1OdfzQkV8w">
+        <body>This query returns true if this Gate is a formalGat of an Interaction.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_mp5JcEerEeGlc9w7JT3BVw" name="spec" constrainedElement="_nKoasEbJEeGo1OdfzQkV8w">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_y1sVgEg7EeGxx8OhognRMQ" annotatedElement="_mp5JcEerEeGlc9w7JT3BVw">
+          <body>&lt;p>interaction-&amp;gt;notEmpty()&lt;/p></body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_mp5JcUerEeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>interaction->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xb7EUEbJEeGo1OdfzQkV8w" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7zBbAEbJEeGo1OdfzQkV8w" name="getName" isQuery="true" bodyCondition="_YSMrIEerEeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_-G8xAEkwEeGb8MnuV3Ogzw" annotatedElement="_7zBbAEbJEeGo1OdfzQkV8w">
+        <body>This query returns the name of the gate, either the explicit name (.name) or the constructed name ('out_&quot; or 'in_' concatenated in front of .message.name) if the explicit name is not present.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_YSMrIEerEeGlc9w7JT3BVw" name="spec" constrainedElement="_7zBbAEbJEeGo1OdfzQkV8w">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_YSMrIUerEeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>if name->notEmpty() then name->asOrderedSet()->first()&#xD;&#xA;else  if isActual() or isOutsideCF() &#xD;&#xA;  then if isSend() &#xD;&#xA;    then 'out_'.concat(self.message.name->asOrderedSet()->first())&#xD;&#xA;    else 'in_'.concat(self.message.name->asOrderedSet()->first())&#xD;&#xA;    endif&#xD;&#xA;  else if isSend()&#xD;&#xA;    then 'in_'.concat(self.message.name->asOrderedSet()->first())&#xD;&#xA;    else 'out_'.concat(self.message.name->asOrderedSet()->first())&#xD;&#xA;    endif&#xD;&#xA;  endif&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="__5IUwEbJEeGo1OdfzQkV8w" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LKJT4EhoEeGF1Y58Y1-AiA" name="matches" isQuery="true" bodyCondition="__3VGYEhoEeGF1Y58Y1-AiA">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_dmUUQEhoEeGF1Y58Y1-AiA" annotatedElement="_LKJT4EhoEeGF1Y58Y1-AiA">
+        <body>This query returns true if the name of this Gate matches the name of the in parameter Gate, and the messages for the two Gates correspond. The Message for one Gate (say A) corresponds to the Message for another Gate (say B) if (A and B have the same name value) and (if A is a sendEvent then B is a receiveEvent) and (if A is a receiveEvent then B is a sendEvent) and (A and B have the same messageSort value) and (A and B have the same signature value)</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="__3VGYEhoEeGF1Y58Y1-AiA" name="spec" constrainedElement="_LKJT4EhoEeGF1Y58Y1-AiA">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="__3eQUEhoEeGF1Y58Y1-AiA">
+          <language>OCL</language>
+          <body>self.getName() = gateToMatch.getName() and &#xD;&#xA;self.message.messageSort = gateToMatch.message.messageSort and&#xD;&#xA;self.message.name = gateToMatch.message.name and&#xD;&#xA;self.message.sendEvent->includes(self) implies gateToMatch.message.receiveEvent->includes(gateToMatch)  and&#xD;&#xA;self.message.receiveEvent->includes(self) implies gateToMatch.message.sendEvent->includes(gateToMatch) and&#xD;&#xA;self.message.signature = gateToMatch.message.signature&#xD;&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pXbK0EhoEeGF1Y58Y1-AiA" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xD6VYEhoEeGF1Y58Y1-AiA" name="gateToMatch" type="_F_ni6ToZEeCmpu-HRutBsg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_p_uPAUhqEeGF1Y58Y1-AiA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_p_uPAEhqEeGF1Y58Y1-AiA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni8joZEeCmpu-HRutBsg" name="GeneralOrdering">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni8zoZEeCmpu-HRutBsg" annotatedElement="_F_ni8joZEeCmpu-HRutBsg">
+      <body>A GeneralOrdering represents a binary relation between two OccurrenceSpecifications, to describe that one OccurrenceSpecification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of OccurrenceSpecifications that may otherwise not have a specified order.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_ni9DoZEeCmpu-HRutBsg" name="irreflexive_transitive_closure" constrainedElement="_F_ni8joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni9ToZEeCmpu-HRutBsg" annotatedElement="_F_ni9DoZEeCmpu-HRutBsg">
+        <body>An occurrence specification must not be ordered relative to itself through a series of general orderings. (In other words, the transitive closure of the general orderings is irreflexive.)</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_ni9joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>after->closure(toAfter.after)->excludes(before)&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni9zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni-DoZEeCmpu-HRutBsg" name="after" visibility="public" type="_F_wqQzoZEeCmpu-HRutBsg" association="_F_wqoDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni-ToZEeCmpu-HRutBsg" annotatedElement="_F_ni-DoZEeCmpu-HRutBsg">
+        <body>The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_ni-joZEeCmpu-HRutBsg" name="before" visibility="public" type="_F_wqQzoZEeCmpu-HRutBsg" association="_F_wq6DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni-zoZEeCmpu-HRutBsg" annotatedElement="_F_ni-joZEeCmpu-HRutBsg">
+        <body>The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_ni_DoZEeCmpu-HRutBsg" name="Interaction">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_ni_ToZEeCmpu-HRutBsg" annotatedElement="_F_ni_DoZEeCmpu-HRutBsg">
+      <body>An Interaction is a unit of Behavior that focuses on the observable exchange of information between connectable elements.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_p5KjED-uEeGWgbo5suG6MQ" name="not_contained" constrainedElement="_F_ni_DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_H2f5gD-vEeGWgbo5suG6MQ" annotatedElement="_p5KjED-uEeGWgbo5suG6MQ">
+        <body>An Interaction instance must not be contained within another Interaction instance</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_p5KjET-uEeGWgbo5suG6MQ">
+        <language>OCL</language>
+        <body>enclosingInteraction->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni_joZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_ni_zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njADoZEeCmpu-HRutBsg" name="action" visibility="public" aggregation="composite" association="_F_wq3zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njAToZEeCmpu-HRutBsg" annotatedElement="_F_njADoZEeCmpu-HRutBsg">
+        <body>Actions owned by the Interaction.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Actions.fragment.xmi#_AkdfaDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njAjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njAzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njBDoZEeCmpu-HRutBsg" name="formalGate" visibility="public" type="_F_ni6ToZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq4joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njBToZEeCmpu-HRutBsg" annotatedElement="_F_njBDoZEeCmpu-HRutBsg">
+        <body>Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njBjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njBzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njCDoZEeCmpu-HRutBsg" name="fragment" visibility="public" type="_F_njLzoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_F_wq5joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njCToZEeCmpu-HRutBsg" annotatedElement="_F_njCDoZEeCmpu-HRutBsg">
+        <body>The ordered set of fragments in the Interaction.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njCjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njCzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njDDoZEeCmpu-HRutBsg" name="lifeline" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq5ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njDToZEeCmpu-HRutBsg" annotatedElement="_F_njDDoZEeCmpu-HRutBsg">
+        <body>Specifies the participants in this Interaction.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njDjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njDzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njEDoZEeCmpu-HRutBsg" name="message" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njEToZEeCmpu-HRutBsg" annotatedElement="_F_njEDoZEeCmpu-HRutBsg">
+        <body>The Messages contained in this Interaction.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njEjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njEzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_njFDoZEeCmpu-HRutBsg" name="InteractionConstraint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_njFToZEeCmpu-HRutBsg" annotatedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <body>An InteractionConstraint is a Boolean expression that guards an operand in a CombinedFragment.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njFjoZEeCmpu-HRutBsg" name="minint_maxint" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njFzoZEeCmpu-HRutBsg" annotatedElement="_F_njFjoZEeCmpu-HRutBsg">
+        <body>Minint/maxint can only be present if the InteractionConstraint is associated with the operand of a loop CombinedFragment.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njGDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njGToZEeCmpu-HRutBsg" name="minint_non_negative" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njGjoZEeCmpu-HRutBsg" annotatedElement="_F_njGToZEeCmpu-HRutBsg">
+        <body>If minint is specified, then the expression must evaluate to a non-negative integer.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njGzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njHDoZEeCmpu-HRutBsg" name="maxint_positive" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njHToZEeCmpu-HRutBsg" annotatedElement="_F_njHDoZEeCmpu-HRutBsg">
+        <body>If maxint is specified, then the expression must evaluate to a positive integer.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njHjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njHzoZEeCmpu-HRutBsg" name="dynamic_variables" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njIDoZEeCmpu-HRutBsg" annotatedElement="_F_njHzoZEeCmpu-HRutBsg">
+        <body>The dynamic variables that take part in the constraint must be owned by the ConnectableElement corresponding to the covered Lifeline.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njIToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njIjoZEeCmpu-HRutBsg" name="global_data" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njIzoZEeCmpu-HRutBsg" annotatedElement="_F_njIjoZEeCmpu-HRutBsg">
+        <body>The constraint may contain references to global data or write-once data.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njJDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_njJToZEeCmpu-HRutBsg" name="maxint_greater_equal_minint" constrainedElement="_F_njFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njJjoZEeCmpu-HRutBsg" annotatedElement="_F_njJToZEeCmpu-HRutBsg">
+        <body>If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_njJzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_njKDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njKToZEeCmpu-HRutBsg" name="maxint" visibility="public" aggregation="composite" association="_F_wq3DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njKjoZEeCmpu-HRutBsg" annotatedElement="_F_njKToZEeCmpu-HRutBsg">
+        <body>The maximum number of iterations of a loop</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njKzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njLDoZEeCmpu-HRutBsg" name="minint" visibility="public" aggregation="composite" association="_F_wq2ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njLToZEeCmpu-HRutBsg" annotatedElement="_F_njLDoZEeCmpu-HRutBsg">
+        <body>The minimum number of iterations of a loop</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njLjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_njLzoZEeCmpu-HRutBsg" name="InteractionFragment" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_njMDoZEeCmpu-HRutBsg" annotatedElement="_F_njLzoZEeCmpu-HRutBsg">
+      <body>InteractionFragment is an abstract notion of the most general interaction unit. An InteractionFragment is a piece of an Interaction. Each InteractionFragment is conceptually like an Interaction by itself.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_njMToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njMjoZEeCmpu-HRutBsg" name="covered" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" association="_F_wq1zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njMzoZEeCmpu-HRutBsg" annotatedElement="_F_njMjoZEeCmpu-HRutBsg">
+        <body>References the Lifelines that the InteractionFragment involves.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_njNDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njNToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njNjoZEeCmpu-HRutBsg" name="enclosingInteraction" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wq5joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njNzoZEeCmpu-HRutBsg" annotatedElement="_F_njNjoZEeCmpu-HRutBsg">
+        <body>The Interaction enclosing this InteractionFragment.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njODoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njOToZEeCmpu-HRutBsg" name="enclosingOperand" visibility="public" type="_F_wpszoZEeCmpu-HRutBsg" association="_F_wq0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_njOjoZEeCmpu-HRutBsg" annotatedElement="_F_njOToZEeCmpu-HRutBsg">
+        <body>The operand enclosing this InteractionFragment (they may nest recursively)</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_njOzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_njPDoZEeCmpu-HRutBsg" name="generalOrdering" visibility="public" type="_F_ni8joZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq1DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpsDoZEeCmpu-HRutBsg" annotatedElement="_F_njPDoZEeCmpu-HRutBsg">
+        <body>The general ordering relationships contained in this fragment.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wpsToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wpsjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wpszoZEeCmpu-HRutBsg" name="InteractionOperand">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wptDoZEeCmpu-HRutBsg" annotatedElement="_F_wpszoZEeCmpu-HRutBsg">
+      <body>An InteractionOperand is contained in a CombinedFragment. An InteractionOperand represents one operand of the expression given by the enclosing CombinedFragment.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wptToZEeCmpu-HRutBsg" name="guard_contain_references" constrainedElement="_F_wpszoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wptjoZEeCmpu-HRutBsg" annotatedElement="_F_wptToZEeCmpu-HRutBsg">
+        <body>The guard must contain only references to values local to the Lifeline on which it resides, or values global to the whole Interaction.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wptzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wpuDoZEeCmpu-HRutBsg" name="guard_directly_prior" constrainedElement="_F_wpszoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpuToZEeCmpu-HRutBsg" annotatedElement="_F_wpuDoZEeCmpu-HRutBsg">
+        <body>The guard must be placed directly prior to (above) the OccurrenceSpecification that will become the first OccurrenceSpecification within this InteractionOperand.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wpujoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wpuzoZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wpvDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wpvToZEeCmpu-HRutBsg" name="fragment" visibility="public" type="_F_njLzoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_F_wq0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpvjoZEeCmpu-HRutBsg" annotatedElement="_F_wpvToZEeCmpu-HRutBsg">
+        <body>The fragments of the operand.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wpvzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wpwDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wpwToZEeCmpu-HRutBsg" name="guard" visibility="public" type="_F_njFDoZEeCmpu-HRutBsg" aggregation="composite" association="_F_wq0joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpwjoZEeCmpu-HRutBsg" annotatedElement="_F_wpwToZEeCmpu-HRutBsg">
+        <body>Constraint of the operand.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wpwzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wpxDoZEeCmpu-HRutBsg" name="InteractionUse">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpxToZEeCmpu-HRutBsg" annotatedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <body>An InteractionUse refers to an Interaction. The InteractionUse is a shorthand for copying the contents of the referenced Interaction where the InteractionUse is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal Gates with the actual ones.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wpxjoZEeCmpu-HRutBsg" name="gates_match" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpxzoZEeCmpu-HRutBsg" annotatedElement="_F_wpxjoZEeCmpu-HRutBsg">
+        <body>Actual Gates of the InteractionUse must match Formal Gates of the referred Interaction. Gates match when their names are equal and their messages correspond.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wpyDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>actualGate->notEmpty() implies &#xD;&#xA;refersTo.formalGate->forAll( fg : Gate | self.actualGate->select(matches(fg))->size()=1) and&#xD;&#xA;self.actualGate->forAll(ag : Gate | refersTo.formalGate->select(matches(ag))->size()=1)&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wpyToZEeCmpu-HRutBsg" name="arguments_are_constants" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpyjoZEeCmpu-HRutBsg" annotatedElement="_F_wpyToZEeCmpu-HRutBsg">
+        <body>The arguments must only be constants, parameters of the enclosing Interaction or attributes of the classifier owning the enclosing Interaction.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wpyzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wpzDoZEeCmpu-HRutBsg" name="returnValueRecipient_coverage" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wpzToZEeCmpu-HRutBsg" annotatedElement="_F_wpzDoZEeCmpu-HRutBsg">
+        <body>The returnValueRecipient must be a Property of a ConnectableElement that is represented by a Lifeline covered by this InteractionUse.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wpzjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wpzzoZEeCmpu-HRutBsg" name="arguments_correspond_to_parameters" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp0DoZEeCmpu-HRutBsg" annotatedElement="_F_wpzzoZEeCmpu-HRutBsg">
+        <body>The arguments of the InteractionUse must correspond to parameters of the referred Interaction</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp0ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wp0joZEeCmpu-HRutBsg" name="returnValue_type_recipient_correspondence" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp0zoZEeCmpu-HRutBsg" annotatedElement="_F_wp0joZEeCmpu-HRutBsg">
+        <body>The type of the returnValue must correspond to the type of the returnValueRecipient.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp1DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wp1ToZEeCmpu-HRutBsg" name="all_lifelines" constrainedElement="_F_wpxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp1joZEeCmpu-HRutBsg" annotatedElement="_F_wp1ToZEeCmpu-HRutBsg">
+        <body>The InteractionUse must cover all Lifelines of the enclosing Interaction that are common with the lifelines covered by the referred Interaction. Lifelines are common if they have the same selector and represents associationEnd values.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp1zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>let parentInteraction : Set(Interaction) = enclosingInteraction->asSet()->&#xD;&#xA;union(enclosingOperand.combinedFragment->closure(enclosingOperand.combinedFragment)->&#xD;&#xA;collect(enclosingInteraction).oclAsType(Interaction)->asSet()) in&#xD;&#xA;parentInteraction->size()=1 and let refInteraction : Interaction = refersTo in&#xD;&#xA;parentInteraction.covered-> forAll(intLifeline : Lifeline | refInteraction.covered->&#xD;&#xA;forAll( refLifeline : Lifeline | refLifeline.represents = intLifeline.represents and &#xD;&#xA;refLifeline.selector = intLifeline.selector implies self.covered->asSet()->includes(intLifeline)))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wp2DoZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp2ToZEeCmpu-HRutBsg" name="actualGate" visibility="public" type="_F_ni6ToZEeCmpu-HRutBsg" aggregation="composite" association="_F_wqzjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp2joZEeCmpu-HRutBsg" annotatedElement="_F_wp2ToZEeCmpu-HRutBsg">
+        <body>The actual gates of the InteractionUse</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wp2zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp3DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp3ToZEeCmpu-HRutBsg" name="argument" visibility="public" isOrdered="true" aggregation="composite" association="_F_wqyzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp3joZEeCmpu-HRutBsg" annotatedElement="_F_wp3ToZEeCmpu-HRutBsg">
+        <body>The actual arguments of the Interaction</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wp3zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp4DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp4ToZEeCmpu-HRutBsg" name="refersTo" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wqxDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp4joZEeCmpu-HRutBsg" annotatedElement="_F_wp4ToZEeCmpu-HRutBsg">
+        <body>Refers to the Interaction that defines its meaning</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp4zoZEeCmpu-HRutBsg" name="returnValue" visibility="public" aggregation="composite" association="_F_wqyDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp5DoZEeCmpu-HRutBsg" annotatedElement="_F_wp4zoZEeCmpu-HRutBsg">
+        <body>The value of the executed Interaction.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp5ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp5joZEeCmpu-HRutBsg" name="returnValueRecipient" visibility="public" association="_F_wqwDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp5zoZEeCmpu-HRutBsg" annotatedElement="_F_wp5joZEeCmpu-HRutBsg">
+        <body>The recipient of the return value.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp6DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wp6ToZEeCmpu-HRutBsg" name="Lifeline">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp6joZEeCmpu-HRutBsg" annotatedElement="_F_wp6ToZEeCmpu-HRutBsg">
+      <body>A Lifeline represents an individual participant in the Interaction. While parts and structural features may have multiplicity greater than 1, Lifelines represent only one interacting entity.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wp6zoZEeCmpu-HRutBsg" name="selector_specified" constrainedElement="_F_wp6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp7DoZEeCmpu-HRutBsg" annotatedElement="_F_wp6zoZEeCmpu-HRutBsg">
+        <body>The selector for a Lifeline must only be specified if the referenced Part is multivalued.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp7ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(self.selector->isEmpty() implies not self.represents.oclAsType(MultiplicityElement).isMultivalued()) or&#xA;(not self.selector->isEmpty() implies self.represents.oclAsType(MultiplicityElement).isMultivalued())</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wp7joZEeCmpu-HRutBsg" name="interaction_uses_share_lifeline" constrainedElement="_F_wp6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp7zoZEeCmpu-HRutBsg" annotatedElement="_F_wp7joZEeCmpu-HRutBsg">
+        <body>If two (or more) InteractionUses within one Interaction, refer to Interactions with 'common Lifelines,' those Lifelines must also appear in the Interaction with the InteractionUses. By common Lifelines we mean Lifelines with the same selector and represents associations.&#xD;
+&#xD;
+recast as:&#xD;
+&#xD;
+If a lifeline in an Interaction refered to by an InteractionUse in an enclosing Interaction,  and that lifeline is common with another lifeline in an Interaction referred by by another InteractonUse within that same enclosing Interaction, it must be common to a lifeline within that enclosing Interaction. By common Lifelines we mean Lifelines with the same selector and represents associations.&#xD;
+</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp8DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>let intUses : Set(InteractionUse) = interaction.interactionUse  in intUses->notEmpty() implies&#xD;&#xA;intUses->forAll&#xD;&#xA;( iuse : InteractionUse | &#xD;&#xA;let usingInteraction : Set(Interaction)  = iuse.enclosingInteraction->asSet()&#xD;&#xA;->union(&#xD;&#xA;iuse.enclosingOperand.combinedFragment->asSet()->closure(enclosingOperand.combinedFragment).enclosingInteraction->asSet()&#xD;&#xA;               ) &#xD;&#xA;in&#xD;&#xA;let peerUses : Set(InteractionUse) = usingInteraction.fragment->select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;->union(&#xD;&#xA;usingInteraction.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)->asSet()&#xD;&#xA;->closure(operand.fragment->select(oclIsKindOf(CombinedFragment)).oclAsType(CombinedFragment)).operand.fragment->&#xD;&#xA;select(oclIsKindOf(InteractionUse)).oclAsType(InteractionUse)->asSet()&#xD;&#xA;               )->excluding(iuse)&#xD;&#xA; in&#xD;&#xA;peerUses->notEmpty() implies&#xD;&#xA;peerUses->forAll( peerUse : InteractionUse |&#xD;&#xA; peerUse.refersTo.lifeline->forAll( l : Lifeline | (l.represents = self.represents and l.selector = self.selector ) implies&#xD;&#xA; usingInteraction.lifeline->select(represents = self.represents and selector = self.selector)->notEmpty()&#xD;&#xA;                                                )&#xD;&#xA;                    )&#xD;&#xA;)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wp8ToZEeCmpu-HRutBsg" name="same_classifier" constrainedElement="_F_wp6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp8joZEeCmpu-HRutBsg" annotatedElement="_F_wp8ToZEeCmpu-HRutBsg">
+        <body>The classifier containing the referenced ConnectableElement must be the same classifier, or an ancestor, of the classifier that contains the interaction enclosing this lifeline.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wp8zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>represents.namespace->closure(namespace)->includes(interaction.'context')&#xD;&#xA;&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wp9DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp9ToZEeCmpu-HRutBsg" name="coveredBy" visibility="public" type="_F_njLzoZEeCmpu-HRutBsg" association="_F_wq1zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp9joZEeCmpu-HRutBsg" annotatedElement="_F_wp9ToZEeCmpu-HRutBsg">
+        <body>References the InteractionFragments in which this Lifeline takes part.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wp9zoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp-DoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp-ToZEeCmpu-HRutBsg" name="decomposedAs" visibility="public" type="_F_wqUDoZEeCmpu-HRutBsg" association="_F_wquToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp-joZEeCmpu-HRutBsg" annotatedElement="_F_wp-ToZEeCmpu-HRutBsg">
+        <body>References the Interaction that represents the decomposition.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wp-zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp_DoZEeCmpu-HRutBsg" name="interaction" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wq5ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp_ToZEeCmpu-HRutBsg" annotatedElement="_F_wp_DoZEeCmpu-HRutBsg">
+        <body>References the Interaction enclosing this Lifeline.</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wp_joZEeCmpu-HRutBsg" name="represents" visibility="public" association="_F_wquzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wp_zoZEeCmpu-HRutBsg" annotatedElement="_F_wp_joZEeCmpu-HRutBsg">
+        <body>References the ConnectableElement within the classifier that contains the enclosing interaction.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMKjoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqADoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqAToZEeCmpu-HRutBsg" name="selector" visibility="public" aggregation="composite" association="_F_wqtjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqAjoZEeCmpu-HRutBsg" annotatedElement="_F_wqAToZEeCmpu-HRutBsg">
+        <body>If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqAzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqBDoZEeCmpu-HRutBsg" name="Message">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqBToZEeCmpu-HRutBsg" annotatedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <body>A Message defines a particular communication between Lifelines of an Interaction.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqBjoZEeCmpu-HRutBsg" name="sending_receiving_message_event" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqBzoZEeCmpu-HRutBsg" annotatedElement="_F_wqBjoZEeCmpu-HRutBsg">
+        <body>If the sendEvent and the receiveEvent of the same Message are on the same Lifeline, the sendEvent must be ordered before the receiveEvent.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqCDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>sendEvent.oclIsKindOf(MessageOccurrenceSpecification)->notEmpty() and receiveEvent.oclIsKindOf(MessageOccurrenceSpecification)->notEmpty()&#xD;&#xA;implies&#xD;&#xA;let f :  Lifeline = sendEvent.oclIsKindOf(MessageOccurrenceSpecification).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first().covered in&#xD;&#xA;f = receiveEvent.oclIsKindOf(MessageOccurrenceSpecification).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first().covered  implies&#xD;&#xA;f.events->indexOf(sendEvent.oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() ) &lt; &#xD;&#xA;f.events->indexOf(receiveEvent.oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqCToZEeCmpu-HRutBsg" name="arguments" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqCjoZEeCmpu-HRutBsg" annotatedElement="_F_wqCToZEeCmpu-HRutBsg">
+        <body>Arguments of a Message must only be: i) attributes of the sending lifeline ii) constants iii) symbolic values (which are wildcard values representing any legal value) iv) explicit parameters of the enclosing Interaction v) attributes of the class owning the Interaction</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqCzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqDDoZEeCmpu-HRutBsg" name="cannot_cross_boundaries" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqDToZEeCmpu-HRutBsg" annotatedElement="_F_wqDDoZEeCmpu-HRutBsg">
+        <body>Messages cannot cross boundaries of CombinedFragments or their operands.  This is true if and only if both MessageEnds are enclosed within the same InteractionFragment (i.e., an InteractionOperand or an Interaction).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqDjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>sendEvent->notEmpty() and receiveEvent->notEmpty() implies&#xD;&#xA;let sendEnclosingFrag : Set(InteractionFragment) = &#xD;&#xA;sendEvent->asOrderedSet()->first().enclosingFragment()&#xD;&#xA;in &#xD;&#xA;let receiveEnclosingFrag : Set(InteractionFragment) = &#xD;&#xA;receiveEvent->asOrderedSet()->first().enclosingFragment()&#xD;&#xA;in  sendEnclosingFrag = receiveEnclosingFrag</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqDzoZEeCmpu-HRutBsg" name="signature_is_signal" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqEDoZEeCmpu-HRutBsg" annotatedElement="_F_wqDzoZEeCmpu-HRutBsg">
+        <body>In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Arguement is of the same Class or a specialization of that of the Attribute.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqEToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqEjoZEeCmpu-HRutBsg" name="occurrence_specifications" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqEzoZEeCmpu-HRutBsg" annotatedElement="_F_wqEjoZEeCmpu-HRutBsg">
+        <body>If the MessageEnds are both OccurrenceSpecifications then the connector must go between the Parts represented by the Lifelines of the two MessageEnds.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqFDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqFToZEeCmpu-HRutBsg" name="signature_refer_to" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqFjoZEeCmpu-HRutBsg" annotatedElement="_F_wqFToZEeCmpu-HRutBsg">
+        <body>The signature must either refer an Operation (in which case messageSort is either synchCall or asynchCall or reply) or a Signal (in which case messageSort is asynchSignal). The name of the NamedElement referenced by signature must be the same as that of the Message.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqFzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>signature->notEmpty() implies &#xD;&#xA;((signature.oclIsKindOf(Operation) and &#xD;&#xA;(messageSort = MessageSort::asynchCall or messageSort = MessageSort::synchCall or messageSort = MessageSort::reply) &#xD;&#xA;) or (signature.oclIsKindOf(Signal)  and messageSort = MessageSort::asynchSignal )&#xD;&#xA; ) and name = signature.name&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqGDoZEeCmpu-HRutBsg" name="signature_is_operation" constrainedElement="_F_wqBDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqGToZEeCmpu-HRutBsg" annotatedElement="_F_wqGDoZEeCmpu-HRutBsg">
+        <body>In the case when the Message signature is an Operation, the arguments of the Message must correspond to the parameters of the Operation. A Parameter corresponds to an Argument if the Argument is of the same Class or a specialization of that of the Parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqGjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqGzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqHDoZEeCmpu-HRutBsg" name="argument" visibility="public" isOrdered="true" aggregation="composite" association="_F_wqszoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqHToZEeCmpu-HRutBsg" annotatedElement="_F_wqHDoZEeCmpu-HRutBsg">
+        <body>The arguments of the Message</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Values.fragment.xmi#_MYTjCToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqHjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqHzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqIDoZEeCmpu-HRutBsg" name="connector" visibility="public" association="_F_wqqToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqIToZEeCmpu-HRutBsg" annotatedElement="_F_wqIDoZEeCmpu-HRutBsg">
+        <body>The Connector on which this Message is sent.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StructuredClassifiers.fragment.xmi#_LPmMQjoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqIzoZEeCmpu-HRutBsg" name="interaction" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wq5zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqJDoZEeCmpu-HRutBsg" annotatedElement="_F_wqIzoZEeCmpu-HRutBsg">
+        <body>The enclosing Interaction owning the Message</body>
+      </ownedComment>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqJToZEeCmpu-HRutBsg" name="messageKind" visibility="public" type="_F_wqfToZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqJjoZEeCmpu-HRutBsg" annotatedElement="_F_wqJToZEeCmpu-HRutBsg">
+        <body>The derived kind of the Message (complete, lost, found or unknown)</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_F_wqJzoZEeCmpu-HRutBsg" type="_F_wqfToZEeCmpu-HRutBsg" instance="_F_wqhToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqKDoZEeCmpu-HRutBsg" name="messageSort" visibility="public" type="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqKToZEeCmpu-HRutBsg" annotatedElement="_F_wqKDoZEeCmpu-HRutBsg">
+        <body>The sort of communication reflected by the Message</body>
+      </ownedComment>
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_F_wqKjoZEeCmpu-HRutBsg" type="_F_wqhzoZEeCmpu-HRutBsg" instance="_F_wqiToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqKzoZEeCmpu-HRutBsg" name="receiveEvent" visibility="public" type="_F_wqOToZEeCmpu-HRutBsg" subsettedProperty="_F_wqojoZEeCmpu-HRutBsg" association="_F_wqrToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqLDoZEeCmpu-HRutBsg" annotatedElement="_F_wqKzoZEeCmpu-HRutBsg">
+        <body>References the Receiving of the Message</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqLToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqLjoZEeCmpu-HRutBsg" name="sendEvent" visibility="public" type="_F_wqOToZEeCmpu-HRutBsg" subsettedProperty="_F_wqojoZEeCmpu-HRutBsg" association="_F_wqsDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqLzoZEeCmpu-HRutBsg" annotatedElement="_F_wqLjoZEeCmpu-HRutBsg">
+        <body>References the Sending of the Message.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqMDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqMToZEeCmpu-HRutBsg" name="signature" visibility="public" association="_F_wqpToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqMjoZEeCmpu-HRutBsg" annotatedElement="_F_wqMToZEeCmpu-HRutBsg">
+        <body>The signature of the Message is the specification of its content. It refers either an Operation or a Signal.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqMzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_F_wqNDoZEeCmpu-HRutBsg" name="messageKind" visibility="public" isQuery="true" bodyCondition="_F_wqNjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqNToZEeCmpu-HRutBsg" annotatedElement="_F_wqNDoZEeCmpu-HRutBsg">
+        <body>This query returns the MessageKind value for this Message</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqNjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_F_wqNDoZEeCmpu-HRutBsg _F_wqJToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqNzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>messageKind</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_F_wqODoZEeCmpu-HRutBsg" name="result" visibility="public" type="_F_wqfToZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TPKcwFI4EeGCpdlH6UIV2A" name="isDistinguishableFrom" isQuery="true" bodyCondition="_sIJIgFI4EeGCpdlH6UIV2A">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_6go4EFI4EeGCpdlH6UIV2A" annotatedElement="_TPKcwFI4EeGCpdlH6UIV2A">
+        <body>The query isDistinguishableFrom() specifies that any two Messages may coexist in the same Namespace, regardless of their names.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_sIJIgFI4EeGCpdlH6UIV2A" name="spec" constrainedElement="_TPKcwFI4EeGCpdlH6UIV2A">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_sIJIgVI4EeGCpdlH6UIV2A">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJhd8FI4EeGCpdlH6UIV2A" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_fPI1wFI4EeGCpdlH6UIV2A" name="n">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_oMH-4FI4EeGCpdlH6UIV2A" name="ns">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShmjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3ShgzoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqOToZEeCmpu-HRutBsg" name="MessageEnd" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqOjoZEeCmpu-HRutBsg" annotatedElement="_F_wqOToZEeCmpu-HRutBsg">
+      <body>MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a Message.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqOzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqPDoZEeCmpu-HRutBsg" name="message" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" association="_F_wqoToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqPToZEeCmpu-HRutBsg" annotatedElement="_F_wqPDoZEeCmpu-HRutBsg">
+        <body>References a Message.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YazbgEcREeGkKaziZW0vFg" name="oppositeEnd" isQuery="true" precondition="_AbQ_8EdjEeG-RYeNDrXHVA" bodyCondition="_vsdgUEdiEeG-RYeNDrXHVA">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_Gv-tAEdoEeG-RYeNDrXHVA" annotatedElement="_YazbgEcREeGkKaziZW0vFg">
+        <body>This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_vsdgUEdiEeG-RYeNDrXHVA" name="spec" constrainedElement="_YazbgEcREeGkKaziZW0vFg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_vsdgUUdiEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body>message->asSet().messageEnd->asSet()->excluding(self)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_AbQ_8EdjEeG-RYeNDrXHVA" name="pre" constrainedElement="_YazbgEcREeGkKaziZW0vFg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_AbQ_8UdjEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body>message->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3WkwIEcREeGkKaziZW0vFg" name="result" type="_F_wqOToZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a1u-gEdhEeG-RYeNDrXHVA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NniQIEdnEeG-RYeNDrXHVA"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_cIenIEcREeGkKaziZW0vFg" name="isSend" isQuery="true" precondition="_yoQUUEdoEeG-RYeNDrXHVA" bodyCondition="__iq8UEdoEeG-RYeNDrXHVA">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_85144EdoEeG-RYeNDrXHVA" annotatedElement="_cIenIEcREeGkKaziZW0vFg">
+        <body>This query returns value true if this MessageEnd is a sendEvent</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_yoQUUEdoEeG-RYeNDrXHVA" name="pre" constrainedElement="_cIenIEcREeGkKaziZW0vFg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_yoQUUUdoEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body></body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="__iq8UEdoEeG-RYeNDrXHVA" name="spec" constrainedElement="_cIenIEcREeGkKaziZW0vFg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="__iq8UUdoEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body>message.sendEvent->asSet()->includes(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_woXywEcREeGkKaziZW0vFg" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jr3gEEcREeGkKaziZW0vFg" name="isReceive" isQuery="true" precondition="_O7wboEdoEeG-RYeNDrXHVA" bodyCondition="_gPNgcEdoEeG-RYeNDrXHVA">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_aviywEdoEeG-RYeNDrXHVA" annotatedElement="_jr3gEEcREeGkKaziZW0vFg">
+        <body>This query returns value true if this MessageEnd is a receiveEvent</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_O7wboEdoEeG-RYeNDrXHVA" name="pre" constrainedElement="_jr3gEEcREeGkKaziZW0vFg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_T3EfEEdoEeG-RYeNDrXHVA" annotatedElement="_O7wboEdoEeG-RYeNDrXHVA">
+          <body>&lt;p>message-&amp;gt;notEmpty()&lt;/p></body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_O7wboUdoEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body>message->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_gPNgcEdoEeG-RYeNDrXHVA" name="spec" constrainedElement="_jr3gEEcREeGkKaziZW0vFg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_gPXRcEdoEeG-RYeNDrXHVA">
+          <language>OCL</language>
+          <body>message.receiveEvent->asSet()->includes(self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_oy8uoEcREeGkKaziZW0vFg" name="result" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Rh76cEe6EeGlc9w7JT3BVw" name="enclosingFragment" isQuery="true" bodyCondition="_qVzcsEe6EeGlc9w7JT3BVw">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_QUMGMEfAEeGlc9w7JT3BVw" annotatedElement="_Rh76cEe6EeGlc9w7JT3BVw">
+        <body>This query returns a set including the enclosing InteractionFragment this MessageEnd is enclosed within</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_qVzcsEe6EeGlc9w7JT3BVw" name="spec" constrainedElement="_Rh76cEe6EeGlc9w7JT3BVw">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qV8moEe6EeGlc9w7JT3BVw">
+          <language>OCL</language>
+          <body>if self->select(oclIsKindOf(Gate))->notEmpty() &#xD;&#xA;then -- it is a Gate&#xD;&#xA;let endGate : Gate = &#xD;&#xA;  self->select(oclIsKindOf(Gate)).oclAsType(Gate)->asOrderedSet()->first()&#xD;&#xA;  in&#xD;&#xA;  if endGate.isOutsideCF() &#xD;&#xA;  then endGate.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(endGate.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet())&#xD;&#xA;  else if endGate.isInsideCF() &#xD;&#xA;    then endGate.combinedFragment.oclAsType(InteractionFragment)->asSet()&#xD;&#xA;    else if endGate.isFormal() &#xD;&#xA;      then endGate.interaction.oclAsType(InteractionFragment)->asSet()&#xD;&#xA;      else if endGate.isActual() &#xD;&#xA;        then endGate.interactionUse.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->&#xD;&#xA;     union(endGate.interactionUse.enclosingOperand.oclAsType(InteractionFragment)->asSet())&#xD;&#xA;        else null&#xD;&#xA;        endif&#xD;&#xA;      endif&#xD;&#xA;    endif&#xD;&#xA;  endif&#xD;&#xA;else -- it is a MessageOccurrenceSpecification&#xD;&#xA;let endMOS : MessageOccurrenceSpecification  = &#xD;&#xA;  self->select(oclIsKindOf(MessageOccurrenceSpecification)).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() &#xD;&#xA;  in&#xD;&#xA;  if endMOS.enclosingInteraction->notEmpty() &#xD;&#xA;  then endMOS.enclosingInteraction.oclAsType(InteractionFragment)->asSet()&#xD;&#xA;  else endMOS.enclosingOperand.oclAsType(InteractionFragment)->asSet()&#xD;&#xA;  endif&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Vvya8Ee6EeGlc9w7JT3BVw" name="result" type="_F_njLzoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ixD44Ue6EeGlc9w7JT3BVw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ixD44Ee6EeGlc9w7JT3BVw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqPzoZEeCmpu-HRutBsg" name="MessageOccurrenceSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqQDoZEeCmpu-HRutBsg" annotatedElement="_F_wqPzoZEeCmpu-HRutBsg">
+      <body>A MessageOccurrenceSpecification specifies the occurrence of Message events, such as sending and receiving of Signals or invoking or receiving of Operation calls. A MessageOccurrenceSpecification is a kind of MessageEnd. Messages are generated either by synchronous Operation calls or asynchronous Signal sends. They are received by the execution of corresponding AcceptEventActions.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqQToZEeCmpu-HRutBsg" general="_F_wqOToZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqQjoZEeCmpu-HRutBsg" general="_F_wqQzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqQzoZEeCmpu-HRutBsg" name="OccurrenceSpecification">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqRDoZEeCmpu-HRutBsg" annotatedElement="_F_wqQzoZEeCmpu-HRutBsg">
+      <body>An OccurrenceSpecification is the basic semantic unit of Interactions. The sequences of occurrences specified by them are the meanings of Interactions.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqRToZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqRjoZEeCmpu-HRutBsg" name="covered" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" redefinedProperty="_F_njMjoZEeCmpu-HRutBsg" association="_F_wqnDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqRzoZEeCmpu-HRutBsg" annotatedElement="_F_wqRjoZEeCmpu-HRutBsg">
+        <body>References the Lifeline on which the OccurrenceSpecification appears.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqSDoZEeCmpu-HRutBsg" name="toAfter" visibility="public" type="_F_ni8joZEeCmpu-HRutBsg" association="_F_wq6DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqSToZEeCmpu-HRutBsg" annotatedElement="_F_wqSDoZEeCmpu-HRutBsg">
+        <body>References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqSjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqSzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqTDoZEeCmpu-HRutBsg" name="toBefore" visibility="public" type="_F_ni8joZEeCmpu-HRutBsg" association="_F_wqoDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqTToZEeCmpu-HRutBsg" annotatedElement="_F_wqTDoZEeCmpu-HRutBsg">
+        <body>References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqTjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqTzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqUDoZEeCmpu-HRutBsg" name="PartDecomposition">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqUToZEeCmpu-HRutBsg" annotatedElement="_F_wqUDoZEeCmpu-HRutBsg">
+      <body>A PartDecomposition is a description of the internal Interactions of one Lifeline relative to an Interaction.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqUjoZEeCmpu-HRutBsg" name="commutativity_of_decomposition" constrainedElement="_F_wqUDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqUzoZEeCmpu-HRutBsg" annotatedElement="_F_wqUjoZEeCmpu-HRutBsg">
+        <body>Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Assume also that there is within X an InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqVDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqVToZEeCmpu-HRutBsg" name="assume" constrainedElement="_F_wqUDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqVjoZEeCmpu-HRutBsg" annotatedElement="_F_wqVToZEeCmpu-HRutBsg">
+        <body>Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Within X there is a sequence of constructs along L (such constructs are CombinedFragments, InteractionUse and (plain) OccurrenceSpecifications). Then a corresponding sequence of constructs must appear within D, matched one-to-one in the same order. i) CombinedFragment covering L are matched with an extra-global CombinedFragment in D ii) An InteractionUse covering L are matched with a global (i.e. covering all Lifelines) InteractionUse in D. iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqVzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_F_wqWDoZEeCmpu-HRutBsg" name="parts_of_internal_structures" constrainedElement="_F_wqUDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqWToZEeCmpu-HRutBsg" annotatedElement="_F_wqWDoZEeCmpu-HRutBsg">
+        <body>PartDecompositions apply only to Parts that are Parts of Internal Structures not to Parts of Collaborations.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_F_wqWjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>true</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqWzoZEeCmpu-HRutBsg" general="_F_wpxDoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F_wqXDoZEeCmpu-HRutBsg" name="StateInvariant">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqXToZEeCmpu-HRutBsg" annotatedElement="_F_wqXDoZEeCmpu-HRutBsg">
+      <body>A StateInvariant is a runtime constraint on the participants of the Interaction. It may be used to specify a variety of different kinds of Constraints, such as values of Attributes or Variables, internal or external States, and so on. A StateInvariant is an InteractionFragment and it is placed on a Lifeline.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_F_wqXjoZEeCmpu-HRutBsg" general="_F_njLzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqXzoZEeCmpu-HRutBsg" name="covered" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" redefinedProperty="_F_njMjoZEeCmpu-HRutBsg" association="_F_wqmDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqYDoZEeCmpu-HRutBsg" annotatedElement="_F_wqXzoZEeCmpu-HRutBsg">
+        <body>References the Lifeline on which the StateInvariant appears.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F_wqYToZEeCmpu-HRutBsg" name="invariant" visibility="public" aggregation="composite" association="_F_wqlToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqYjoZEeCmpu-HRutBsg" annotatedElement="_F_wqYToZEeCmpu-HRutBsg">
+        <body>A Constraint that should hold at runtime for this StateInvariant</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_F_wqYzoZEeCmpu-HRutBsg" name="InteractionOperatorKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqZDoZEeCmpu-HRutBsg" annotatedElement="_F_wqYzoZEeCmpu-HRutBsg">
+      <body>InteractionOperatorKind is an enumeration designating the different kinds of operators of CombinedFragments. The InteractionOperand defines the type of operator of a CombinedFragment.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqZToZEeCmpu-HRutBsg" name="seq" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqZjoZEeCmpu-HRutBsg" annotatedElement="_F_wqZToZEeCmpu-HRutBsg">
+        <body>The interactionOperator seq designates that the CombinedFragment represents a weak sequencing between the behaviors of the operands.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqZzoZEeCmpu-HRutBsg" name="alt" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqaDoZEeCmpu-HRutBsg" annotatedElement="_F_wqZzoZEeCmpu-HRutBsg">
+        <body>The interactionOperator alt designates that the CombinedFragment represents a choice of behavior. At most one of the operands will be chosen. The chosen operand must have an explicit or implicit guard expression that evaluates to true at this point in the interaction. An implicit true guard is implied if the operand has no guard.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqaToZEeCmpu-HRutBsg" name="opt" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqajoZEeCmpu-HRutBsg" annotatedElement="_F_wqaToZEeCmpu-HRutBsg">
+        <body>The interactionOperator opt designates that the CombinedFragment represents a choice of behavior where either the (sole) operand happens or nothing happens. An option is semantically equivalent to an alternative CombinedFragment where there is one operand with non-empty content and the second operand is empty.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqazoZEeCmpu-HRutBsg" name="break" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqbDoZEeCmpu-HRutBsg" annotatedElement="_F_wqazoZEeCmpu-HRutBsg">
+        <body>The interactionOperator break designates that the CombinedFragment represents a breaking scenario in the sense that the operand is a scenario that is performed instead of the remainder of the enclosing InteractionFragment. A break operator with a guard is chosen when the guard is true and the rest of the enclosing Interaction Fragment is ignored. When the guard of the break operand is false, the break operand is ignored and the rest of the enclosing InteractionFragment is chosen. The choice between a break operand without a guard and the rest of the enclosing InteractionFragment is done non-deterministically.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqbToZEeCmpu-HRutBsg" name="par" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqbjoZEeCmpu-HRutBsg" annotatedElement="_F_wqbToZEeCmpu-HRutBsg">
+        <body>The interactionOperator par designates that the CombinedFragment represents a parallel merge between the behaviors of the operands. The OccurrenceSpecifications of the different operands can be interleaved in any way as long as the ordering imposed by each operand as such is preserved.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqbzoZEeCmpu-HRutBsg" name="strict" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqcDoZEeCmpu-HRutBsg" annotatedElement="_F_wqbzoZEeCmpu-HRutBsg">
+        <body>The interactionOperator strict designates that the CombinedFragment represents a strict sequencing between the behaviors of the operands. The semantics of strict sequencing defines a strict ordering of the operands on the first level within the CombinedFragment with interactionOperator strict. Therefore OccurrenceSpecifications within contained CombinedFragment will not directly be compared with other OccurrenceSpecifications of the enclosing CombinedFragment.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqcToZEeCmpu-HRutBsg" name="loop" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqcjoZEeCmpu-HRutBsg" annotatedElement="_F_wqcToZEeCmpu-HRutBsg">
+        <body>The interactionOperator loop designates that the CombinedFragment represents a loop. The loop operand will be repeated a number of times.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqczoZEeCmpu-HRutBsg" name="critical" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqdDoZEeCmpu-HRutBsg" annotatedElement="_F_wqczoZEeCmpu-HRutBsg">
+        <body>The interactionOperator critical designates that the CombinedFragment represents a critical region. A critical region means that the traces of the region cannot be interleaved by other OccurrenceSpecifications (on those Lifelines covered by the region). This means that the region is treated atomically by the enclosing fragment when determining the set of valid traces. Even though enclosing CombinedFragments may imply that some OccurrenceSpecifications may interleave into the region, such as e.g. with par-operator, this is prevented by defining a region.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqdToZEeCmpu-HRutBsg" name="neg" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqdjoZEeCmpu-HRutBsg" annotatedElement="_F_wqdToZEeCmpu-HRutBsg">
+        <body>The interactionOperator neg designates that the CombinedFragment represents traces that are defined to be invalid.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqdzoZEeCmpu-HRutBsg" name="assert" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqeDoZEeCmpu-HRutBsg" annotatedElement="_F_wqdzoZEeCmpu-HRutBsg">
+        <body>The interactionOperator assert designates that the CombinedFragment represents an assertion. The sequences of the operand of the assertion are the only valid continuations. All other continuations result in an invalid trace.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqeToZEeCmpu-HRutBsg" name="ignore" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqejoZEeCmpu-HRutBsg" annotatedElement="_F_wqeToZEeCmpu-HRutBsg">
+        <body>The interacionOperator ignore designates that there are some message types that are not shown within this combined fragment. These message types can be considered insignificant and are implicitly ignored if they appear in a corresponding execution. Alternatively, one can understand ignore to mean that the message types that are ignored can appear anywhere in the traces.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqezoZEeCmpu-HRutBsg" name="consider" classifier="_F_wqYzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqfDoZEeCmpu-HRutBsg" annotatedElement="_F_wqezoZEeCmpu-HRutBsg">
+        <body>The interactionOperator consider designates which messages should be considered within this combined fragment. This is equivalent to defining every other message to be ignored.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_F_wqfToZEeCmpu-HRutBsg" name="MessageKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqfjoZEeCmpu-HRutBsg" annotatedElement="_F_wqfToZEeCmpu-HRutBsg">
+      <body>This is an enumerated type that identifies the type of Message.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqfzoZEeCmpu-HRutBsg" name="complete" classifier="_F_wqfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqgDoZEeCmpu-HRutBsg" annotatedElement="_F_wqfzoZEeCmpu-HRutBsg">
+        <body>sendEvent and receiveEvent are present</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqgToZEeCmpu-HRutBsg" name="lost" classifier="_F_wqfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqgjoZEeCmpu-HRutBsg" annotatedElement="_F_wqgToZEeCmpu-HRutBsg">
+        <body>sendEvent present and receiveEvent absent</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqgzoZEeCmpu-HRutBsg" name="found" classifier="_F_wqfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqhDoZEeCmpu-HRutBsg" annotatedElement="_F_wqgzoZEeCmpu-HRutBsg">
+        <body>sendEvent absent and receiveEvent present</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqhToZEeCmpu-HRutBsg" name="unknown" classifier="_F_wqfToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqhjoZEeCmpu-HRutBsg" annotatedElement="_F_wqhToZEeCmpu-HRutBsg">
+        <body>sendEvent and receiveEvent absent (should not appear)</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_F_wqhzoZEeCmpu-HRutBsg" name="MessageSort">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqiDoZEeCmpu-HRutBsg" annotatedElement="_F_wqhzoZEeCmpu-HRutBsg">
+      <body>This is an enumerated type that identifies the type of communication action that was used to generate the Message.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqiToZEeCmpu-HRutBsg" name="synchCall" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqijoZEeCmpu-HRutBsg" annotatedElement="_F_wqiToZEeCmpu-HRutBsg">
+        <body>The message was generated by a synchronous call to an operation.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqizoZEeCmpu-HRutBsg" name="asynchCall" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqjDoZEeCmpu-HRutBsg" annotatedElement="_F_wqizoZEeCmpu-HRutBsg">
+        <body>The message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous = false.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqjToZEeCmpu-HRutBsg" name="asynchSignal" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqjjoZEeCmpu-HRutBsg" annotatedElement="_F_wqjToZEeCmpu-HRutBsg">
+        <body>The message was generated by an asynchronous send action.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqjzoZEeCmpu-HRutBsg" name="createMessage" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqkDoZEeCmpu-HRutBsg" annotatedElement="_F_wqjzoZEeCmpu-HRutBsg">
+        <body>The message designating the creation of another lifeline object.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqkToZEeCmpu-HRutBsg" name="deleteMessage" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqkjoZEeCmpu-HRutBsg" annotatedElement="_F_wqkToZEeCmpu-HRutBsg">
+        <body>The message designating the termination of another lifeline.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F_wqkzoZEeCmpu-HRutBsg" name="reply" classifier="_F_wqhzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqlDoZEeCmpu-HRutBsg" annotatedElement="_F_wqkzoZEeCmpu-HRutBsg">
+        <body>The message is a reply message to an operation call.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqlToZEeCmpu-HRutBsg" name="A_invariant_stateInvariant" memberEnd="_F_wqYToZEeCmpu-HRutBsg _F_wqljoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqljoZEeCmpu-HRutBsg" name="stateInvariant" visibility="public" type="_F_wqXDoZEeCmpu-HRutBsg" association="_F_wqlToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqlzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqmDoZEeCmpu-HRutBsg" name="A_covered_stateInvariant" memberEnd="_F_wqXzoZEeCmpu-HRutBsg _F_wqmToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqmToZEeCmpu-HRutBsg" name="stateInvariant" visibility="public" type="_F_wqXDoZEeCmpu-HRutBsg" subsettedProperty="_F_wp9ToZEeCmpu-HRutBsg" association="_F_wqmDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqmjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqmzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqnDoZEeCmpu-HRutBsg" name="A_covered_events" memberEnd="_F_wqRjoZEeCmpu-HRutBsg _F_wqnToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqnToZEeCmpu-HRutBsg" name="events" visibility="public" type="_F_wqQzoZEeCmpu-HRutBsg" isOrdered="true" subsettedProperty="_F_wp9ToZEeCmpu-HRutBsg" association="_F_wqnDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqnjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqnzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqoDoZEeCmpu-HRutBsg" name="A_toBefore_after" memberEnd="_F_wqTDoZEeCmpu-HRutBsg _F_ni-DoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqoToZEeCmpu-HRutBsg" name="A_message_messageEnd" memberEnd="_F_wqPDoZEeCmpu-HRutBsg _F_wqojoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqojoZEeCmpu-HRutBsg" name="messageEnd" visibility="public" type="_F_wqOToZEeCmpu-HRutBsg" association="_F_wqoToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqozoZEeCmpu-HRutBsg" value="2"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqpDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqpToZEeCmpu-HRutBsg" name="A_signature_message" memberEnd="_F_wqMToZEeCmpu-HRutBsg _F_wqpjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqpjoZEeCmpu-HRutBsg" name="message" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" association="_F_wqpToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqpzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqqDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqqToZEeCmpu-HRutBsg" name="A_connector_message" memberEnd="_F_wqIDoZEeCmpu-HRutBsg _F_wqqjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqqjoZEeCmpu-HRutBsg" name="message" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" association="_F_wqqToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqqzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqrDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqrToZEeCmpu-HRutBsg" name="A_receiveEvent_endMessage" memberEnd="_F_wqKzoZEeCmpu-HRutBsg _F_wqrjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqrjoZEeCmpu-HRutBsg" name="endMessage" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" subsettedProperty="_F_wqPDoZEeCmpu-HRutBsg" association="_F_wqrToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqrzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqsDoZEeCmpu-HRutBsg" name="A_sendEvent_endMessage" memberEnd="_F_wqLjoZEeCmpu-HRutBsg _F_wqsToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqsToZEeCmpu-HRutBsg" name="endMessage" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" subsettedProperty="_F_wqPDoZEeCmpu-HRutBsg" association="_F_wqsDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqsjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqszoZEeCmpu-HRutBsg" name="A_argument_message" memberEnd="_F_wqHDoZEeCmpu-HRutBsg _F_wqtDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqtDoZEeCmpu-HRutBsg" name="message" visibility="public" type="_F_wqBDoZEeCmpu-HRutBsg" association="_F_wqszoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqtToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqtjoZEeCmpu-HRutBsg" name="A_selector_lifeline" memberEnd="_F_wqAToZEeCmpu-HRutBsg _F_wqtzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqtzoZEeCmpu-HRutBsg" name="lifeline" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" association="_F_wqtjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wquDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wquToZEeCmpu-HRutBsg" name="A_decomposedAs_lifeline" memberEnd="_F_wp-ToZEeCmpu-HRutBsg _F_wqujoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqujoZEeCmpu-HRutBsg" name="lifeline" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" association="_F_wquToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wquzoZEeCmpu-HRutBsg" name="A_represents_lifeline" memberEnd="_F_wp_joZEeCmpu-HRutBsg _F_wqvToZEeCmpu-HRutBsg">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wqvDoZEeCmpu-HRutBsg" annotatedElement="_F_wquzoZEeCmpu-HRutBsg">
+      <body>If a Part has multiplicity, multiple lifelines might be used to show it.</body>
+    </ownedComment>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqvToZEeCmpu-HRutBsg" name="lifeline" visibility="public" type="_F_wp6ToZEeCmpu-HRutBsg" association="_F_wquzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqvjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqvzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqwDoZEeCmpu-HRutBsg" name="A_returnValueRecipient_interactionUse" memberEnd="_F_wp5joZEeCmpu-HRutBsg _F_wqwToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqwToZEeCmpu-HRutBsg" name="interactionUse" visibility="public" type="_F_wpxDoZEeCmpu-HRutBsg" association="_F_wqwDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqwjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqwzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqxDoZEeCmpu-HRutBsg" name="A_refersTo_interactionUse" memberEnd="_F_wp4ToZEeCmpu-HRutBsg _F_wqxToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqxToZEeCmpu-HRutBsg" name="interactionUse" visibility="public" type="_F_wpxDoZEeCmpu-HRutBsg" association="_F_wqxDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wqxjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqxzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqyDoZEeCmpu-HRutBsg" name="A_returnValue_interactionUse" memberEnd="_F_wp4zoZEeCmpu-HRutBsg _F_wqyToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqyToZEeCmpu-HRutBsg" name="interactionUse" visibility="public" type="_F_wpxDoZEeCmpu-HRutBsg" association="_F_wqyDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqyjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqyzoZEeCmpu-HRutBsg" name="A_argument_interactionUse" memberEnd="_F_wp3ToZEeCmpu-HRutBsg _F_wqzDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqzDoZEeCmpu-HRutBsg" name="interactionUse" visibility="public" type="_F_wpxDoZEeCmpu-HRutBsg" association="_F_wqyzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wqzToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wqzjoZEeCmpu-HRutBsg" name="A_actualGate_interactionUse" memberEnd="_F_wp2ToZEeCmpu-HRutBsg _F_wqzzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wqzzoZEeCmpu-HRutBsg" name="interactionUse" visibility="public" type="_F_wpxDoZEeCmpu-HRutBsg" association="_F_wqzjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq0DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq0ToZEeCmpu-HRutBsg" name="A_fragment_enclosingOperand" memberEnd="_F_wpvToZEeCmpu-HRutBsg _F_njOToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq0joZEeCmpu-HRutBsg" name="A_guard_interactionOperand" memberEnd="_F_wpwToZEeCmpu-HRutBsg _F_wq0zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq0zoZEeCmpu-HRutBsg" name="interactionOperand" visibility="public" type="_F_wpszoZEeCmpu-HRutBsg" association="_F_wq0joZEeCmpu-HRutBsg">
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq1DoZEeCmpu-HRutBsg" name="A_generalOrdering_interactionFragment" memberEnd="_F_njPDoZEeCmpu-HRutBsg _F_wq1ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq1ToZEeCmpu-HRutBsg" name="interactionFragment" visibility="public" type="_F_njLzoZEeCmpu-HRutBsg" association="_F_wq1DoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq1joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq1zoZEeCmpu-HRutBsg" name="A_covered_coveredBy" memberEnd="_F_njMjoZEeCmpu-HRutBsg _F_wp9ToZEeCmpu-HRutBsg">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wq2DoZEeCmpu-HRutBsg" annotatedElement="_F_wq1zoZEeCmpu-HRutBsg">
+      <body>This association shows the lifelines that make up an interaction. A lifeline may be part of more than one interaction use.</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq2ToZEeCmpu-HRutBsg" name="A_minint_interactionConstraint" memberEnd="_F_njLDoZEeCmpu-HRutBsg _F_wq2joZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq2joZEeCmpu-HRutBsg" name="interactionConstraint" visibility="public" type="_F_njFDoZEeCmpu-HRutBsg" association="_F_wq2ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq2zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq3DoZEeCmpu-HRutBsg" name="A_maxint_interactionConstraint" memberEnd="_F_njKToZEeCmpu-HRutBsg _F_wq3ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq3ToZEeCmpu-HRutBsg" name="interactionConstraint" visibility="public" type="_F_njFDoZEeCmpu-HRutBsg" association="_F_wq3DoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq3joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq3zoZEeCmpu-HRutBsg" name="A_action_interaction" memberEnd="_F_njADoZEeCmpu-HRutBsg _F_wq4DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq4DoZEeCmpu-HRutBsg" name="interaction" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wq3zoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq4ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq4joZEeCmpu-HRutBsg" name="A_formalGate_interaction" memberEnd="_F_njBDoZEeCmpu-HRutBsg _F_wq4zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq4zoZEeCmpu-HRutBsg" name="interaction" visibility="public" type="_F_ni_DoZEeCmpu-HRutBsg" association="_F_wq4joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq5DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq5ToZEeCmpu-HRutBsg" name="A_lifeline_interaction" memberEnd="_F_njDDoZEeCmpu-HRutBsg _F_wp_DoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq5joZEeCmpu-HRutBsg" name="A_fragment_enclosingInteraction" memberEnd="_F_njCDoZEeCmpu-HRutBsg _F_njNjoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq5zoZEeCmpu-HRutBsg" name="A_message_interaction" memberEnd="_F_njEDoZEeCmpu-HRutBsg _F_wqIzoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq6DoZEeCmpu-HRutBsg" name="A_before_toAfter" memberEnd="_F_ni-joZEeCmpu-HRutBsg _F_wqSDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq6ToZEeCmpu-HRutBsg" name="A_finish_executionSpecification" memberEnd="_F_ni5ToZEeCmpu-HRutBsg _F_wq6zoZEeCmpu-HRutBsg">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wq6joZEeCmpu-HRutBsg" annotatedElement="_F_wq6ToZEeCmpu-HRutBsg">
+      <body>The event shows the time point at which the action completes execution.</body>
+    </ownedComment>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq6zoZEeCmpu-HRutBsg" name="executionSpecification" visibility="public" type="_F_ni3zoZEeCmpu-HRutBsg" association="_F_wq6ToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wq7DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq7ToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq7joZEeCmpu-HRutBsg" name="A_start_executionSpecification" memberEnd="_F_ni5zoZEeCmpu-HRutBsg _F_wq8DoZEeCmpu-HRutBsg">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_F_wq7zoZEeCmpu-HRutBsg" annotatedElement="_F_wq7joZEeCmpu-HRutBsg">
+      <body>The event shows the time point at which the action begins execution.</body>
+    </ownedComment>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq8DoZEeCmpu-HRutBsg" name="executionSpecification" visibility="public" type="_F_ni3zoZEeCmpu-HRutBsg" association="_F_wq7joZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wq8ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq8joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq8zoZEeCmpu-HRutBsg" name="A_execution_executionOccurrenceSpecification" memberEnd="_F_ni3ToZEeCmpu-HRutBsg _F_wq9DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq9DoZEeCmpu-HRutBsg" name="executionOccurrenceSpecification" visibility="public" type="_F_ni2joZEeCmpu-HRutBsg" association="_F_wq8zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wq9ToZEeCmpu-HRutBsg" value="2"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq9joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq9zoZEeCmpu-HRutBsg" name="A_message_considerIgnoreFragment" memberEnd="_F_niwToZEeCmpu-HRutBsg _F_wq-DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq-DoZEeCmpu-HRutBsg" name="considerIgnoreFragment" visibility="public" type="_F_niuDoZEeCmpu-HRutBsg" association="_F_wq9zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wq-ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq-joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq-zoZEeCmpu-HRutBsg" name="A_cfragmentGate_combinedFragment" memberEnd="_F_nirjoZEeCmpu-HRutBsg _F_wq_DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq_DoZEeCmpu-HRutBsg" name="combinedFragment" visibility="public" type="_F_ninzoZEeCmpu-HRutBsg" association="_F_wq-zoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wq_ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wq_joZEeCmpu-HRutBsg" name="A_operand_combinedFragment" memberEnd="_F_nitToZEeCmpu-HRutBsg _F_wq_zoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wq_zoZEeCmpu-HRutBsg" name="combinedFragment" visibility="public" type="_F_ninzoZEeCmpu-HRutBsg" association="_F_wq_joZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wrADoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wrAToZEeCmpu-HRutBsg" name="A_behavior_behaviorExecutionSpecification" memberEnd="_F_ninDoZEeCmpu-HRutBsg _F_wrAjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wrAjoZEeCmpu-HRutBsg" name="behaviorExecutionSpecification" visibility="public" type="_F_nimToZEeCmpu-HRutBsg" association="_F_wrAToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wrAzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wrBDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_F_wrBToZEeCmpu-HRutBsg" name="A_action_actionExecutionSpecification" memberEnd="_F_nilzoZEeCmpu-HRutBsg _F_wrBjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_F_wrBjoZEeCmpu-HRutBsg" name="actionExecutionSpecification" visibility="public" type="_F_nikToZEeCmpu-HRutBsg" association="_F_wrBToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F_wrBzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F_wrCDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

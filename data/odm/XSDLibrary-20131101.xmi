@@ -1,0 +1,1003 @@
+<?xml version='1.0' ?>
+<xmi:XMI xmlns:RDFProfile="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:StandardProfileL3="http://www.omg.org/spec/UML/20110701/StandardProfileL3">
+  <xmi:documentation xmi:type="xmi:Documentation">
+    <exporter>MagicDraw Clean XMI Exporter</exporter>
+    <exporterVersion>17.0.4</exporterVersion>
+  </xmi:documentation>
+  <uml:Package xmi:id="_16_0_1_2780137_1234909558376_738774_2777" name="xsd" URI="http://www.omg.org/spec/ODM/20130801/XSDLibrary.xmi">
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RDFProfile-Application">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xml#_12_5_1_137b03ac_1193948135234_354269_2454"/>
+    </profileApplication>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1288140237484_322957_1981" body="This library models the elements in the XML schema namespace, http://www.w3.org/2001/XMLSchema, for use in vocabulary development.">
+      <annotatedElement xmi:idref="_16_0_1_2780137_1234909558376_738774_2777"/>
+    </ownedComment>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357274731_742760_1707" name="nonNegativeInteger">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243438906283_221232_1748" body="nonNegativeInteger is derived from integer by setting the value of minInclusive to be 0.  This results in the standard mathematical concept of the non-negative integers. The value space of nonNegativeInteger is the infinite set {0,1,2,...}.  The base type of nonNegativeInteger is integer.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357274731_742760_1707"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517831624_39462_1277" general="_16_0_1_630020f_1243357082103_702959_1574"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_8_e980341_1287692541979_625304_2406" name="atomic">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287766296136_584265_3107" body="Atomic datatypes are those having values which are regarded by XML Schema as being indivisible.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287692541979_625304_2406"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1287692590760_887773_2435">
+        <general href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243275028082_972619_2008" name="hexBinary">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243370042119_619253_1394" body="hexBinary represents arbitrary hex-encoded binary data.&#xA;&#xA;The value space of hexBinary is the set of finite-length sequences of zero or more binary octets.  The length of a value is the number of octets.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243275028082_972619_2008"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806351338_566507_2307">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243275247113_339502_2027" name="time">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243370706238_995299_1674" body="time represents instants of time that recur at the same point in each calendar day, or that occur in some arbitrary calendar day.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243275247113_339502_2027"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806004255_303844_2256">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357389485_498942_1764" name="unsignedInt">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243459819637_61603_2230" body="unsignedInt is derived from unsignedLong by setting the value of maxInclusive to be 4294967295.  The base type of unsignedInt is unsignedLong.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357389485_498942_1764"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517882889_394809_1301" general="_16_0_1_630020f_1243357365009_480985_1745"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287862871957_364425_4417" name="length">
+      <memberEnd xmi:idref="_16_8_e980341_1287862871961_422965_4421"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287862871960_627470_4418"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287862871960_350391_4419" body="length is the number of units of length, where units of length varies depending on the type that is being derived from. The value of length must be a nonNegativeInteger. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287862871957_364425_4417"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862871960_627470_4418" visibility="public" association="_16_8_e980341_1287862871957_364425_4417">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243270389528_684388_1370" name="float">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243270786556_552622_1389" body="The float datatype is patterned after the IEEE single-precision 32-bit floating point datatype [IEEE 754-2008].  Its value space is a subset of the rational numbers.  Floating point numbers are often used to approximate arbitrary real numbers.&#xA;&#xA;The value space of float contains the non-zero numbers m times 2 (to the power of) e , where m is an integer whose absolute value is less than 224, and e is an integer between -149 and 104, inclusive.  In addition to these values, the value space of float also contains the following special values: positiveZero, negativeZero, positiveInfinity, negativeInfinity, and notANumber.&#xA;&#xA;The lexical space of float is the set of all decimal numerals with or without a decimal point, numerals in scientific (exponential) notation, and the literals INF, +INF, -INF, and NaN.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243270389528_684388_1370"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806251156_338155_2285">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274560355_79990_1875" name="dateTime">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243312879733_935855_2943" body="dateTime represents instants of time, optionally marked with a particular time zone offset.  Values representing the same instant but having different time zone offsets are equal but not identical.&#xA;&#xA;dateTime uses the date timeSevenPropertyModel, with no properties except timezoneOffset permitted to be absent. The timezoneOffset property remains optional.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274560355_79990_1875"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290805955807_223625_2249">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274798492_531760_1913" name="gDay">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243313578428_299504_3012" body="gDay represents whole days within an arbitrary month - days that recur at the same point in each (Gregorian) month. This datatype is used to represent a specific day of the month. To indicate, for example, that an employee gets a paycheck on the 15th of each month.  (Obviously, days beyond 28 cannot occur in all months; they are nonetheless permitted, up to 31.)&#xA;&#xA;gDay uses the date timeSevenPropertyModel, with year, month, hour, minute, and second required to be absent.  timezoneOffset remains optional and day must be between 1 and 31 inclusive.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274798492_531760_1913"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806164022_250501_2276">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287765194572_390173_3006" name="numeric">
+      <memberEnd xmi:idref="_16_8_e980341_1287765194573_812437_3007"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287765194573_692876_3008"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1287765194573_812437_3007"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287765387020_738709_3047" body="A datatype is said to be numeric if its values are conceptually quantities (in some mathematical number system).  A datatype whose values are not numeric is said to be non-numeric. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287765194572_390173_3006"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287765194573_812437_3007" name="numeric" visibility="public" type="_16_0_1_630020f_1243269265288_102075_1113" association="_16_8_e980341_1287765194572_390173_3006">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287765287823_752933_3043"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287765194573_692876_3008" visibility="public" association="_16_8_e980341_1287765194572_390173_3006">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274369378_175606_1819" name="anyURI">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243284817324_478007_2521" body="anyURI represents an Internationalized Resource Identifier Reference (IRI).  An anyURI value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be an IRI Reference).  This type should be used when the value fulfills the role of an IRI, as defined in [RFC 3987] or its successor(s) in the IETF Standards Track.&#xA;&#xA;The value space of anyURI is the set of finite-length sequences of zero or more characters (as defined in [XML]) that match the Char production from [XML].&#xA;&#xA;The lexical space of anyURI is the set of finite-length sequences of zero or more characters (as defined in [XML]) that match the Char production from [XML].">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274369378_175606_1819"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806369225_725985_2310">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357244873_859149_1688" name="byte">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243438654857_764659_1648" body="byte is derived from short by setting the value of maxInclusive to be 127 and minInclusive to be -128. The base type of byte is short.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357244873_859149_1688"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517858443_269816_1286" general="_16_0_1_630020f_1243357224000_900370_1669"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357224000_900370_1669" name="short">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243438381345_921_1580" body="short is derived from int by setting the value of maxInclusive to be 32767 and minInclusive to be -32768.  The base type of short is int.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357224000_900370_1669"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517862808_251062_1289" general="_16_0_1_630020f_1243357204594_208424_1650"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357082103_702959_1574" name="integer">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243375633103_954194_2752" body="integer is derived from decimal by fixing the value of fractionDigits to be 0 and disallowing the trailing decimal point.  This results in the standard mathematical concept of the integer numbers. &#xA;&#xA;The value space of integer is the infinite set {...,-2,-1,0,1,2,...}.  The base type of integer is decimal.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357082103_702959_1574"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517797632_77263_1268" general="_16_0_1_630020f_1243270096900_974208_1242"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274887453_820877_1970" name="gYear">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243361821300_318183_2257" body="gYear represents Gregorian calendar years.&#xA;&#xA;gYear uses the date timeSevenPropertyModel, with month, day, hour, minute, and second required to be absent.  timezoneOffset remains optional.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274887453_820877_1970"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806104000_165996_2267">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357032510_182530_1536" name="Name">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243373521961_902931_2471" body="Name represents XML Names. &#xA;&#xA;The value space of Name is the set of all strings which match the Name production of [XML]. &#xA;The lexical space of Name is the set of all strings which match the Name production of [XML]. The base type of Name is token.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357032510_182530_1536"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517736328_816473_1259" general="_16_0_1_630020f_1243356899037_931904_1479"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274857915_58775_1951" name="gMonthDay">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243361435693_913246_2126" body="gMonthDay represents whole calendar days that recur at the same point in each calendar year, or that occur in some arbitrary calendar year.  (Obviously, days beyond 28 cannot occur in all Februaries; 29 is nonetheless permitted.)&#xA;&#xA;This datatype can be used, for example, to record birthdays; an instance of the datatype could be used to say that someone&apos;s birthday occurs on the 14th of September every year.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274857915_58775_1951"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806117049_487262_2270">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287764956535_209397_2960" name="cardinality">
+      <memberEnd xmi:idref="_16_8_e980341_1287764956535_11028_2961"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287764956536_725554_2962"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1287764956535_11028_2961"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287765087694_149089_3001" body="Cardinality from an XML Schema perspective.  Value depends on variety, facets and member type definitions in the Simple Type Definition component in which a cardinality component appears as a member of fundamental facets. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287764956535_209397_2960"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287764956535_11028_2961" name="cardinality" visibility="public" type="_16_8_e980341_1287763631789_559651_2872" association="_16_8_e980341_1287764956535_209397_2960">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287764984779_563082_2993"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287764956536_725554_2962" visibility="public" association="_16_8_e980341_1287764956535_209397_2960">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_6_2_15100de_1277249845474_466128_981" name="false">
+      <classifier xmi:idref="_16_0_1_630020f_1243269265288_102075_1113"/>
+      <specification xmi:type="uml:LiteralString" xmi:id="_16_6_2_15100de_1277249845475_660343_983" value="false"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287762995188_597798_2571" name="bounded">
+      <memberEnd xmi:idref="_16_8_e980341_1287762995188_294897_2572"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287762995189_356081_2573"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1287762995188_294897_2572"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287763330285_337285_2643" body="A datatype is bounded if its value space has either an inclusive upper bound or an exclusive upper bound and either an inclusive lower bound or an exclusive lower bound.&#xA;&#xA;bounded provides for indicating whether a value space is bounded.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287762995188_597798_2571"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287762995188_294897_2572" name="bounded" visibility="public" type="_16_0_1_630020f_1243269265288_102075_1113" association="_16_8_e980341_1287762995188_597798_2571">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287763058095_495386_2633"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287762995189_356081_2573" visibility="public" association="_16_8_e980341_1287762995188_597798_2571">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357184907_308652_1631" name="long">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243437970849_763876_1444" body="long is derived from integer by setting the value of maxInclusive to be 9223372036854775807 and minInclusive to be -9223372036854775808. The base type of long is integer. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357184907_308652_1631"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517816760_846681_1271" general="_16_0_1_630020f_1243357082103_702959_1574"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357452197_55674_1802" name="unsignedByte">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243459920500_738578_2232" body="unsignedByte is derived from unsignedShort by setting the value of maxInclusive to be 255.  The base type of unsignedByte is unsignedShort.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357452197_55674_1802"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517870928_750711_1295" general="_16_0_1_630020f_1243357423805_211723_1783"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_16_8_e980341_1287695883630_596794_2087" name="ordering">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287696095045_592579_2151" body="An order relation on a value space is a mathematical relation that imposes a total order or a partial order on the members of the value space.&#xA;&#xA;A value space, and hence a datatype, is said to be ordered if there exists an order-relation defined for that value space. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287695883630_596794_2087"/>
+      </ownedComment>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_16_8_e980341_1287695917477_239157_2117" name="false"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_16_8_e980341_1287695941255_131860_2127" name="partial"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_16_8_e980341_1287695957879_87998_2137" name="total"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287762520387_916767_1885" name="ordered">
+      <memberEnd xmi:idref="_16_8_e980341_1287762520411_830287_1886"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287762520414_17407_1887"/>
+      <navigableOwnedEnd xmi:idref="_16_8_e980341_1287762520411_830287_1886"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287762749758_749907_2007" body="An order relation on a value space is a mathematical relation that imposes a total order or a partial order on the members of the value space.&#xA;&#xA;A value space, and hence a datatype, is said to be ordered if there exists an order-relation defined for that value space.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287762520387_916767_1885"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287762520411_830287_1886" name="ordered" visibility="public" type="_16_8_e980341_1287695883630_596794_2087" association="_16_8_e980341_1287762520387_916767_1885">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287762576819_278463_1941"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287762520414_17407_1887" visibility="public" association="_16_8_e980341_1287762520387_916767_1885">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287762590200_388963_1948"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_8_e980341_1287762590200_105882_1949" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_8_e980341_1287692637448_79815_2494" name="union">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287766385808_601039_3109" body="Union datatypes are those whose value spaces and lexical spaces are the union of the value spaces and lexical spaces of one or more other datatypes. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287692637448_79815_2494"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1287692678133_811465_2552">
+        <general href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287767253915_540145_3277" name="memberType" visibility="public" association="_16_8_e980341_1287767253912_868567_3273">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_8_e980341_1287767253921_839031_3281" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357056659_219398_1555" name="NCName">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243374318550_917241_2574" body="NCName represents XML non-colonized Names.  &#xA;&#xA;The value space of NCName is the set of all strings which match the NCName production of [Namespaces in XML].  &#xA;&#xA;The lexical space of NCName is the set of all strings which match the NCName production of [Namespaces in XML].  The base type of NCName is Name. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357056659_219398_1555"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517756866_157725_1265" general="_16_0_1_630020f_1243357032510_182530_1536"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357328910_343362_1726" name="positiveInteger">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243439833738_571641_1816" body="positiveInteger is derived from nonNegativeInteger by setting the value of minInclusive to be 1.  This results in the standard mathematical concept of the positive integer numbers.  The value space of positiveInteger is the infinite set {1,2,...}.  The base type of positiveInteger is nonNegativeInteger.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357328910_343362_1726"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517848937_344668_1283" general="_16_0_1_630020f_1243357274731_742760_1707"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243356926711_754467_1498" name="language">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243372542193_156718_2319" body="language represents formal natural language identifiers, as defined by [BCP 47] (currently represented by [RFC 4646] and [RFC 4647]) or its successor(s).">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243356926711_754467_1498"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517723032_592702_1256" general="_16_0_1_630020f_1243356899037_931904_1479"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_6_2_15100de_1277249308171_766435_970" name="true">
+      <classifier xmi:idref="_16_0_1_630020f_1243269265288_102075_1113"/>
+      <specification xmi:type="uml:LiteralString" xmi:id="_16_6_2_15100de_1277249724003_971252_977" value="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243356864639_937685_1460" name="normalizedString">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243371844848_877131_2217" body="normalizedString represents white space normalized strings.  &#xA;&#xA;The value space of normalizedString is the set of strings that do not contain the carriage return, line feed nor tab characters.  The lexical space of normalizedString is the set of strings that do not contain the carriage return, line feed nor tab characters.  The base type of normalizedString is string. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243356864639_937685_1460"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517706616_459854_1250" general="_16_0_1_630020f_1243218333088_989061_501"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287767253912_868567_3273" name="memberType">
+      <memberEnd xmi:idref="_16_8_e980341_1287767253915_540145_3277"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287767253914_52281_3275"/>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_16_8_e980341_1287767253914_502996_3274" name="unnamed5">
+        <constrainedElement xmi:idref="_16_8_e980341_1287767253912_868567_3273"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1287767253919_523025_3278">
+          <body>ordered</body>
+        </specification>
+      </ownedRule>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287767253914_52281_3275" visibility="public" type="_16_8_e980341_1287692637448_79815_2494" association="_16_8_e980341_1287767253912_868567_3273">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_16_8_e980341_1287767253920_947489_3279" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274829229_721749_1932" name="gMonth">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243361024501_165078_2058" body="gMonth uses the date timeSevenPropertyModel, with year, day, hour, minute, and second required to be absent.  timezoneOffset remains optional.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274829229_721749_1932"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806151573_436115_2273">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287862881469_379638_4431" name="maxLength">
+      <memberEnd xmi:idref="_16_8_e980341_1287862881470_890597_4435"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287862881469_422999_4432"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287862881470_584910_4433" body="maxLength is the maximum number of units of length, where units of length varies depending on the type that is being derived from. The value of maxLength  must be a nonNegativeInteger. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287862881469_379638_4431"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862881469_422999_4432" visibility="public" association="_16_8_e980341_1287862881469_379638_4431">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357144300_79554_1612" name="negativeInteger">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243376830938_142421_2886" body="negativeInteger is derived from nonPositiveInteger by setting the value of maxInclusive to be -1.  This results in the standard mathematical concept of the negative integers.  &#xA;&#xA;The value space of negativeInteger is the infinite set {...,-2,-1}.  The base type of negativeInteger is nonPositiveInteger.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357144300_79554_1612"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517844977_494900_1280" general="_16_0_1_630020f_1243357112351_474262_1593"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357365009_480985_1745" name="unsignedLong">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243459772132_688907_2229" body="unsignedLong is derived from nonNegativeInteger by setting the value of maxInclusive to be 18446744073709551615.  The base type of unsignedLong is nonNegativeInteger. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357365009_480985_1745"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517897120_898544_1304" general="_16_0_1_630020f_1243357274731_742760_1707"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287785461157_248377_4384" name="pattern">
+      <memberEnd xmi:idref="_16_8_e980341_1287785461159_374603_4388"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287785461158_906634_4385"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287785461159_277823_4386" body="The XML representation for a pattern schema component is a pattern element information item.  Patterns are essentially strings containing regular expressions in XML Schema.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287785461157_248377_4384"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287785461158_906634_4385" visibility="public" association="_16_8_e980341_1287785461157_248377_4384">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243356958348_26359_1517" name="NMTOKEN">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243372935676_787665_2403" body="NMTOKEN represents the NMTOKEN attribute type from [XML]. &#xA;&#xA;The value space of NMTOKEN is the set of tokens that match the Nmtoken production in [XML]. &#xA;&#xA;The lexical space of NMTOKEN is the set of strings that match the Nmtoken production in [XML].  The base type of NMTOKEN is token. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243356958348_26359_1517"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517751600_647470_1262" general="_16_0_1_630020f_1243356899037_931904_1479"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243272307303_276893_1629" name="precisionDecimal">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243272575566_851079_1760" body="The precisionDecimal datatype represents the numeric value and (arithmetic) precision of decimal numbers which retain precision; it also includes values for positive and negative infinity and for not a number, and it differentiates between positive zero and negative zero.  This datatype is introduced to provide a variant of decimal that closely corresponds to the floating-point decimal datatypes described by [IEEE 754-2008].  Precision of values is retained and values are included for two zeroes, two infinities, and not-a-number.&#xA;&#xA;Note: as of 30 April 2009, this datatype is considered at risk, and may be restructured or withdrawn after the end of the CR period for XML Schema Datatypes v1.1.&#xA;">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243272307303_276893_1629"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806274141_99645_2293">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287862877995_163137_4424" name="minLength">
+      <memberEnd xmi:idref="_16_8_e980341_1287862877997_599928_4428"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287862877996_319436_4425"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287862877996_721008_4426" body="minLength is the minimum number of units of length, where units of length varies depending on the type that is being derived from. The value of minLength  must be a nonNegativeInteger.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287862877995_163137_4424"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862877996_319436_4425" visibility="public" association="_16_8_e980341_1287862877995_163137_4424">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357423805_211723_1783" name="unsignedShort">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243459876110_726254_2231" body="unsignedShort is derived from unsignedInt by setting the value of maxInclusive to be 65535.  The base type of unsignedShort is unsignedInt.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357423805_211723_1783"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517877432_907167_1298" general="_16_0_1_630020f_1243357389485_498942_1764"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243271257350_418994_1500" name="double">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243271555722_383231_1518" body="The double datatype is patterned after the IEEE double-precision 64-bit floating point datatype [IEEE 754-2008].  Each floating point datatype has a value space that is a subset of the rational numbers.  Floating point numbers are often used to approximate arbitrary real numbers.&#xA;&#xA;The value space of double contains the non-zero numbers m times 2 (to the power of) e , where m is an integer whose absolute value is less than 253, and e is an integer between -1074 and 971, inclusive.  In addition to these values, the value space of double also contains the following special values:  positiveZero, negativeZero, positiveInfinity, negativeInfinity, and notANumber.&#xA;&#xA;The lexical space of double is the set of all decimal numerals with or without a decimal point, numerals in scientific (exponential) notation, and the literals INF, +INF, -INF, and NaN.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243271257350_418994_1500"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806196608_539800_2282">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243270096900_974208_1242" name="decimal">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243270547041_592741_1388" body="decimal represents a subset of the real numbers, which can be represented by decimal numerals. The value space of decimal is the set of numbers that can be obtained by dividing an integer by a non-negative power of ten, i.e., expressible as i divided by10 (to the power of) n, where i and n are integers and n is greater than or equal to 0. Precision is not reflected in this value space; the number 2.0 is not distinct from the number 2.00. (The datatype precisionDecimal may be used for values in which precision is significant.) The order relation on decimal is the order relation on real numbers, restricted to this subset.&#xA;&#xA;decimal has a lexical representation consisting of a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator.  An optional leading sign is allowed.  If the sign is omitted, plus is assumed.  Leading and trailing zeroes are optional.  If the fractional part is zero, the period and following zero(es) can be omitted.&#xA;&#xA;">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243270096900_974208_1242"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806178971_64194_2279">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357204594_208424_1650" name="int">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243438179927_191583_1512" body="int is derived from long by setting the value of maxInclusive to be 2147483647 and minInclusive to be -2147483648.  The base type of int is long.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357204594_208424_1650"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517865897_317516_1292" general="_16_0_1_630020f_1243357184907_308652_1631"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_16_8_e980341_1287781278082_530055_4110" name="Auxiliary Elements">
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_0_1_630020f_1243640921346_735469_1111" name="URI References">
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288153150175_539688_3086" name="http://www.w3.org/2001/XMLSchema#byte">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288153248118_956919_3097">
+            <body>http://www.w3.org/2001/XMLSchema#byte</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288217027204_932799_2413" name="http://www.w3.org/2001/XMLSchema#minExclusive">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288217066673_338556_2424">
+            <body>http://www.w3.org/2001/XMLSchema#minExclusive</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288152679236_80492_3029" name="http://www.w3.org/2001/XMLSchema#unsignedInt">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288152752891_470902_3040">
+            <body>http://www.w3.org/2001/XMLSchema#unsignedInt</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288142181405_79024_2544" name="http://www.w3.org/2001/XMLSchema#gMonth">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288142191289_627044_2554">
+            <body>http://www.w3.org/2001/XMLSchema#gMonth</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288219071555_630027_2437" name="http://www.w3.org/2001/XMLSchema#maxExclusive">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288219148492_35125_2448">
+            <body>http://www.w3.org/2001/XMLSchema#maxExclusive</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:LiteralString" xmi:id="_16_8_e980341_1288817388026_75475_2035" value="http://www.w3.org/2001/XMLSchema"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288141610574_561773_2449" name="http://www.w3.org/2001/XMLSchema#date">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141631011_296638_2460">
+            <body>http://www.w3.org/2001/XMLSchema#date</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288143947316_47992_2677" name="http://www.w3.org/2001/XMLSchema#base64Binary">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288143955599_541328_2687">
+            <body>http://www.w3.org/2001/XMLSchema#base64Binary</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288151047651_316675_2924" name="http://www.w3.org/2001/XMLSchema#nonPositiveInteger">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288151095269_80962_2935">
+            <body>http://www.w3.org/2001/XMLSchema#nonPositiveInteger</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288148807095_390520_2829" name="http://www.w3.org/2001/XMLSchema#NMTOKEN">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288148860089_507572_2840">
+            <body>http://www.w3.org/2001/XMLSchema#NMTOKEN</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288140683641_544937_2385" name="http://www.w3.org/2001/XMLSchema#anySimpleType">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288140732989_667670_2396">
+            <body>http://www.w3.org/2001/XMLSchema#anySimpleType</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288154642152_225882_3174" name="http://www.w3.org/2001/XMLSchema#minLength">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288154684029_706627_3185">
+            <body>http://www.w3.org/2001/XMLSchema#minLength</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288142792978_891297_2563" name="http://www.w3.org/2001/XMLSchema#gDay">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288142802625_197201_2573">
+            <body>http://www.w3.org/2001/XMLSchema#gDay</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288154521136_48684_3158" name="http://www.w3.org/2001/XMLSchema#maxLength">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288154598782_250641_3169">
+            <body>http://www.w3.org/2001/XMLSchema#maxLength</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288141881856_846392_2487" name="http://www.w3.org/2001/XMLSchema#gYearMonth">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141896927_44766_2497">
+            <body>http://www.w3.org/2001/XMLSchema#gYearMonth</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288155350678_929239_3230" name="http://www.w3.org/2001/XMLSchema#minInclusive">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288155429094_746652_3241">
+            <body>http://www.w3.org/2001/XMLSchema#minInclusive</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288148678327_809581_2810" name="http://www.w3.org/2001/XMLSchema#Name">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288148745383_964409_2821">
+            <body>http://www.w3.org/2001/XMLSchema#Name</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288216860025_799131_2389" name="http://www.w3.org/2001/XMLSchema#maxInclusive">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288216903361_113157_2400">
+            <body>http://www.w3.org/2001/XMLSchema#maxInclusive</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288142091271_664136_2525" name="http://www.w3.org/2001/XMLSchema#gMonthDay">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288142103806_34494_2535">
+            <body>http://www.w3.org/2001/XMLSchema#gMonthDay</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288152044569_412806_2962" name="http://www.w3.org/2001/XMLSchema#positiveInteger">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288152160264_315775_2973">
+            <body>http://www.w3.org/2001/XMLSchema#positiveInteger</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288150762785_5842_2886" name="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288150844659_76142_2897">
+            <body>http://www.w3.org/2001/XMLSchema#nonNegativeInteger</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288145965993_298112_2734" name="http://www.w3.org/2001/XMLSchema#normalizedString">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288145996738_229648_2745">
+            <body>http://www.w3.org/2001/XMLSchema#normalizedString</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288154087513_602683_3134" name="http://www.w3.org/2001/XMLSchema#length">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288154137493_666544_3145">
+            <body>http://www.w3.org/2001/XMLSchema#length</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288148245072_564594_2772" name="http://www.w3.org/2001/XMLSchema#integer">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288148284705_334235_2783">
+            <body>http://www.w3.org/2001/XMLSchema#integer</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288141976326_480679_2506" name="http://www.w3.org/2001/XMLSchema#gYear">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141985523_579303_2516">
+            <body>http://www.w3.org/2001/XMLSchema#gYear</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288155192750_622740_3206" name="http://www.w3.org/2001/XMLSchema#pattern">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288155252694_395077_3217">
+            <body>http://www.w3.org/2001/XMLSchema#pattern</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288148941149_724728_2848" name="http://www.w3.org/2001/XMLSchema#language">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288148988822_128807_2859">
+            <body>http://www.w3.org/2001/XMLSchema#language</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288153308642_482022_3105" name="http://www.w3.org/2001/XMLSchema#unsignedByte">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288153376218_390075_3116">
+            <body>http://www.w3.org/2001/XMLSchema#unsignedByte</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288140627058_868201_2370" name="http://www.w3.org/2001/XMLSchema#string">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141151053_661970_2422">
+            <body>http://www.w3.org/2001/XMLSchema#string</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288140389566_829885_2354" name="http://www.w3.org/2001/XMLSchema#anyType">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288140594319_182198_2365">
+            <body>http://www.w3.org/2001/XMLSchema#anyType</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288152243931_923990_2981" name="http://www.w3.org/2001/XMLSchema#int">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288152326964_718180_2992">
+            <body>http://www.w3.org/2001/XMLSchema#int</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288149250903_723059_2867" name="http://www.w3.org/2001/XMLSchema#NCName">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288149338621_59289_2878">
+            <body>http://www.w3.org/2001/XMLSchema#NCName</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288143175017_774913_2639" name="http://www.w3.org/2001/XMLSchema#precisionDecimal">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288143190037_247964_2649">
+            <body>http://www.w3.org/2001/XMLSchema#precisionDecimal</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288141522840_903902_2430" name="http://www.w3.org/2001/XMLSchema#dateTime">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141544680_762258_2441">
+            <body>http://www.w3.org/2001/XMLSchema#dateTime</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288152828034_311931_3048" name="http://www.w3.org/2001/XMLSchema#short">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288152873350_963365_3059">
+            <body>http://www.w3.org/2001/XMLSchema#short</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1287686923179_558499_1923" name="xsd">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287687155457_418917_1946" body="The built-in datatypes defined by the XML Schema Datatypes specification are designed to be used with the XML Schema definition language as well as other XML specifications. To facilitate usage within the XML Schema definition language, the built-in datatypes have the namespace name:  http://www.w3.org/2001/XMLSchema.">
+            <annotatedElement xmi:idref="_16_8_e980341_1287686923179_558499_1923"/>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288814175916_241536_2029" name="http://www.w3.org/2001/XMLSchema">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288814232787_175858_2033">
+            <body>http://www.w3.org/2001/XMLSchema</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288148405152_393206_2791" name="http://www.w3.org/2001/XMLSchema#token">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288148457443_102863_2802">
+            <body>http://www.w3.org/2001/XMLSchema#token</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288140800834_217037_2404" name="http://www.w3.org/2001/XMLSchema#anyAtomicType">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288140837408_216942_2415">
+            <body>http://www.w3.org/2001/XMLSchema#anyAtomicType</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288151885240_240400_2943" name="http://www.w3.org/2001/XMLSchema#unsignedLong">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288151957497_865167_2954">
+            <body>http://www.w3.org/2001/XMLSchema#unsignedLong</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288152430349_454369_3010" name="http://www.w3.org/2001/XMLSchema#negativeInteger">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288152571930_775829_3021">
+            <body>http://www.w3.org/2001/XMLSchema#negativeInteger</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288145166371_763764_2696" name="http://www.w3.org/2001/XMLSchema#hexBinary">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288145196133_838487_2707">
+            <body>http://www.w3.org/2001/XMLSchema#hexBinary</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288143419797_178745_2658" name="http://www.w3.org/2001/XMLSchema#boolean">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288143457252_218826_2669">
+            <body>http://www.w3.org/2001/XMLSchema#boolean</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288146048771_342457_2753" name="http://www.w3.org/2001/XMLSchema#dateTimeStamp">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288146079549_921364_2764">
+            <body>http://www.w3.org/2001/XMLSchema#dateTimeStamp</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288145246541_834952_2715" name="http://www.w3.org/2001/XMLSchema#anyURI">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288145282080_805040_2726">
+            <body>http://www.w3.org/2001/XMLSchema#anyURI</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288142915754_168715_2582" name="http://www.w3.org/2001/XMLSchema#decimal">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288142924125_460347_2592">
+            <body>http://www.w3.org/2001/XMLSchema#decimal</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288150914044_982525_2905" name="http://www.w3.org/2001/XMLSchema#long">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288150984917_924468_2916">
+            <body>http://www.w3.org/2001/XMLSchema#long</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288143084684_734513_2620" name="http://www.w3.org/2001/XMLSchema#float">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288143094905_252128_2630">
+            <body>http://www.w3.org/2001/XMLSchema#float</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288141759911_844079_2468" name="http://www.w3.org/2001/XMLSchema#time">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288141799349_78142_2479">
+            <body>http://www.w3.org/2001/XMLSchema#time</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288142990763_441766_2601" name="http://www.w3.org/2001/XMLSchema#double">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288143000172_867077_2611">
+            <body>http://www.w3.org/2001/XMLSchema#double</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_16_8_e980341_1288153033269_67782_3067" name="http://www.w3.org/2001/XMLSchema#unsignedShort">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_16_8_e980341_1288153078854_343172_3078">
+            <body>http://www.w3.org/2001/XMLSchema#unsignedShort</body>
+            <language>English</language>
+          </specification>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_6_630020f_1262283762504_513102_1348" name="Comments">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287765859090_301009_3057" body="A facet is a single defining aspect of a value space. Generally speaking, each facet characterizes a value space along independent axes or dimensions.&#xA;&#xA;The facets of a datatype serve to distinguish those aspects of one datatype which differ from other datatypes. Rather than being defined solely in terms of a prose description, XML Schema datatypes are defined in terms of the synthesis of facet values which together determine the value space and properties of the datatype.&#xA;&#xA;Facets are of two types - fundamental facets that define the datatype and non-fundamental or constraining facets that constrain the permitted values of a datatype. &#xA;&#xA;A fundamental facet is an abstract property which serves to semantically characterize the values in a value space. "/>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287862308445_97626_4407" body="Note: only those constraining facets considered normative in the OWL 2 specifications are modeled here.&#xA;&#xA;Also, note that at present, we have not modeled the set of length facets and inclusive/exclusive facets as tuples (including the fixed argument), which may be added in a future release."/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_16_0_1_630020f_1243640875752_330134_1110" name="Labels"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_16_8_e980341_1287692599553_211909_2447" name="list">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287766331287_960678_3108" body="List datatypes are those having values each of which consists of a finite-length (possibly empty) sequence of values of an atomic datatype. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287692599553_211909_2447"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1287692631257_272493_2484">
+        <general href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287767531280_894380_3288" name="itemType" visibility="public" association="_16_8_e980341_1287767531279_430655_3287">
+        <type href="RDFLibrary.xmi#_16_6_1_15100de_1266443292149_412607_762"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287767592918_521938_3324"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287785461159_374603_4388" name="pattern" visibility="public" type="_16_0_1_630020f_1243218333088_989061_501" association="_16_8_e980341_1287785461157_248377_4384">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287785461160_141052_4390"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862871961_422965_4421" name="length" visibility="public" type="_16_0_1_630020f_1243357274731_742760_1707" association="_16_8_e980341_1287862871957_364425_4417">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287862871962_507804_4423"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862877997_599928_4428" name="minLength" visibility="public" type="_16_0_1_630020f_1243357274731_742760_1707" association="_16_8_e980341_1287862877995_163137_4424">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287862877998_848615_4430"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_16_8_e980341_1287862881470_890597_4435" name="maxLength" visibility="public" type="_16_0_1_630020f_1243357274731_742760_1707" association="_16_8_e980341_1287862881469_379638_4431">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_16_8_e980341_1287862881471_386714_4437"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274596341_101902_1894" name="dateTimeStamp">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243313031027_166368_2944" body="The dateTimeStamp datatype is derived from dateTime by giving the value required to its explicitTimezone facet. The result is that all values of dateTimeStamp are required to have explicit time zone offsets and the datatype is totally ordered.&#xA;&#xA;As a consequence of requiring an explicit time zone offset, the lexical space of dateTimeStamp is reduced from that of dateTime by requiring a timezoneFrag fragment in the lexical representations.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274596341_101902_1894"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517580856_7337_1226" general="_16_0_1_630020f_1243274560355_79990_1875"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243218333088_989061_501" name="string">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243268988056_280352_1107" body="The string datatype represents character strings in XML.&#xA;&#xA;The value space of string is the set of finite-length sequences of zero or more characters (as defined in [XML]) that match the Char production from [XML]. A character is an atomic unit of communication; it is not further specified except to note that every character has a corresponding Universal Character Set (UCS) code point, which is an integer.&#xA;&#xA;Equality for string is identity. No order is prescribed.&#xA;&#xA;The lexical space of string is the set of finite-length sequences of zero or more characters (as defined in [XML]) that ·match· the Char production from [XML].">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243218333088_989061_501"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290805723730_569061_2246">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_16_8_e980341_1287763631789_559651_2872" name="countability">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287764938113_701168_2955" body="Cardinality from an XML Schema perspective.  Value depends on variety, facets and member type definitions in the Simple Type Definition component in which a cardinality component appears as a member of fundamental facets. ">
+        <annotatedElement xmi:idref="_16_8_e980341_1287763631789_559651_2872"/>
+      </ownedComment>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_16_8_e980341_1287763725783_134238_2905" name="finite"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_16_8_e980341_1287763772593_654540_2912" name="countablyInfinite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_16_8_e980341_1287767531279_430655_3287" name="itemType">
+      <memberEnd xmi:idref="_16_8_e980341_1287767531280_894380_3288"/>
+      <memberEnd xmi:idref="_16_8_e980341_1287767531280_16765_3289"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_8_e980341_1287767876120_869241_3328" body="The atomic or union datatype that participates in the definition of a list datatype is known as the itemType of that list datatype.">
+        <annotatedElement xmi:idref="_16_8_e980341_1287767531279_430655_3287"/>
+      </ownedComment>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_16_8_e980341_1287767531280_16765_3289" visibility="public" type="_16_8_e980341_1287692599553_211909_2447" association="_16_8_e980341_1287767531279_430655_3287"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243357112351_474262_1593" name="nonPositiveInteger">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243376056290_404577_2820" body="nonPositiveInteger is derived from integer by setting the value of maxInclusive to be 0.  This results in the standard mathematical concept of the non-positive integers. &#xA;&#xA;The value space of nonPositiveInteger is the infinite set {...,-2,-1,0}.  The base type of nonPositiveInteger is integer.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243357112351_474262_1593"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517826560_40982_1274" general="_16_0_1_630020f_1243357082103_702959_1574"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243356899037_931904_1479" name="token">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243372458084_230349_2318" body="token represents tokenized strings. &#xA;&#xA;The value space of token is the set of strings that do not contain the carriage return, line feed nor tab characters, that have no leading or trailing spaces and that have no internal sequences of two or more spaces. &#xA;&#xA;The lexical space of token is the set of strings that do not contain the carriage return, line feed nor tab characters, that have no leading or trailing spaces and that have no internal sequences of two or more spaces. &#xA;&#xA;The base type of token is normalizedString. ">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243356899037_931904_1479"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_6_1_15100de_1266517713208_972306_1253" general="_16_0_1_630020f_1243356864639_937685_1460"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274964947_427701_1989" name="gYearMonth">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243361922623_891482_2259" body="gYearMonth represents specific whole Gregorian months in specific Gregorian years.&#xA;&#xA;gYearMonth uses the date timeSevenPropertyModel, with day, hour, minute, and second required to be absent.  timezoneOffset remains optional.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274964947_427701_1989"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806079489_437333_2264">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274537669_858773_1857" name="date">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243311390372_887555_2746" body="date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day.  For nontimezoned values, the top-open intervals disjointly cover the nontimezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap.&#xA;&#xA;date uses the date timeSevenPropertyModel, with hour, minute, and second required to be absent.  timezoneOffset remains optional.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274537669_858773_1857"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290805969206_892900_2253">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243269265288_102075_1113" name="boolean">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243269492160_527071_1229" body="boolean represents the values of two-valued logic.&#xA;&#xA;boolean has the value space of two-valued logic: true, false.  boolean&apos;s lexical space is a set of four literals: true, false, 1, 0.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243269265288_102075_1113"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806311552_177807_2301">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_16_0_1_630020f_1243274442123_588038_1838" name="base64Binary">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_16_0_1_630020f_1243310682451_609952_2677" body="base64Binary represents arbitrary Base64-encoded binary data.  For base64Binary data the entire binary stream is encoded using the Base64 Encoding defined in [RFC 3548], which is derived from the encoding described in [RFC 2045].&#xA;&#xA;The value space of base64Binary is the set of finite-length sequences of zero or more binary octets.  The length of a value is the number of octets.&#xA;&#xA;The lexical representations of base64Binary values are limited to the 65 characters of the Base64 Alphabet defined in [RFC 3548], i.e., a-z, A-Z, 0-9, the plus sign, the forward slash and the equal sign, together with the space character. No other characters are allowed.">
+        <annotatedElement xmi:idref="_16_0_1_630020f_1243274442123_588038_1838"/>
+      </ownedComment>
+      <generalization xmi:type="uml:Generalization" xmi:id="_16_8_e980341_1290806331352_563403_2304">
+        <general href="RDFLibrary.xmi#_16_5_4_630020f_1257990628394_116475_394"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_17_0_4_1_e980341_1379996415755_23326_4636">
+      <client xmi:idref="_16_0_1_2780137_1234909558376_738774_2777"/>
+      <supplier xmi:idref="_16_8_e980341_1288814175916_241536_2029"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_17_0_4_1_e980341_1380030536852_437486_4601">
+      <appliedProfile href="http://www.omg.org/spec/ODM/20131101/RDFProfile.xmi#_12_5_1_137b03ac_1193948135234_354269_2454"/>
+    </profileApplication>
+  </uml:Package>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288143006122_893215_2612" base_InstanceSpecification="_16_8_e980341_1288142990763_441766_2601"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288216888120_867048_2399" base_InstanceSpecification="_16_8_e980341_1288216860025_799131_2389"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288151906115_234109_2953" base_InstanceSpecification="_16_8_e980341_1288151885240_240400_2943"/>
+  <RDFProfile:rdfsClass base_Class="_16_8_e980341_1287692599553_211909_2447" xmi:id="_16_8_e980341_1287692620756_10132_2474"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287765272590_326605_3037" base_Association="_16_8_e980341_1287765194572_390173_3006"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288141778258_169333_2478" base_InstanceSpecification="_16_8_e980341_1288141759911_844079_2468"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288152089482_847898_2972" base_InstanceSpecification="_16_8_e980341_1288152044569_412806_2962"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288153327086_787099_3115" base_InstanceSpecification="_16_8_e980341_1288153308642_482022_3105"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287767253915_639823_3276" base_Association="_16_8_e980341_1287767253912_868567_3273"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288150802757_475510_2896" base_InstanceSpecification="_16_8_e980341_1288150762785_5842_2886"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274977331_985151_2006" base_DataType="_16_0_1_630020f_1243274964947_427701_1989" identifier="_16_8_e980341_1288141881856_846392_2487">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:gYearMonth</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288153168672_151969_3096" base_InstanceSpecification="_16_8_e980341_1288153150175_539688_3086"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288148956658_789495_2858" base_InstanceSpecification="_16_8_e980341_1288148941149_724728_2848"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274575577_477139_1892" base_DataType="_16_0_1_630020f_1243274560355_79990_1875" identifier="_16_8_e980341_1288141522840_903902_2430">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:dateTime</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243271274206_610087_1517" base_DataType="_16_0_1_630020f_1243271257350_418994_1500" identifier="_16_8_e980341_1288142990763_441766_2601">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:double</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288152718397_139146_3039" base_InstanceSpecification="_16_8_e980341_1288152679236_80492_3029"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243275041992_818117_2025" base_DataType="_16_0_1_630020f_1243275028082_972619_2008" identifier="_16_8_e980341_1288145166371_763764_2696">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:hexBinary</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:literal xmi:id="_16_6_2_15100de_1277249845475_439156_982" base_InstanceSpecification="_16_6_2_15100de_1277249845474_466128_981"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243356937366_507880_1515" base_DataType="_16_0_1_630020f_1243356926711_754467_1498" identifier="_16_8_e980341_1288148941149_724728_2848">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:language</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:identifier xmi:id="_17_0_4_1_e980341_1379996437447_181858_4638" base_Dependency="_17_0_4_1_e980341_1379996415755_23326_4636"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288142196927_14119_2555" base_InstanceSpecification="_16_8_e980341_1288142181405_79024_2544"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287762564388_873324_1934" base_Association="_16_8_e980341_1287762520387_916767_1885"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243275258632_345654_2044" base_DataType="_16_0_1_630020f_1243275247113_339502_2027" identifier="_16_8_e980341_1288141759911_844079_2468">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:time</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287763027103_638077_2621" base_Association="_16_8_e980341_1287762995188_597798_2571"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357411887_589125_1781" base_DataType="_16_0_1_630020f_1243357389485_498942_1764" identifier="_16_8_e980341_1288152679236_80492_3029">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:unsignedInt</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:literal xmi:id="_16_8_e980341_1287696184750_346718_2162" base_InstanceSpecification="_16_8_e980341_1287695957879_87998_2137"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288142932725_736119_2593" base_InstanceSpecification="_16_8_e980341_1288142915754_168715_2582"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288143100607_356593_2631" base_InstanceSpecification="_16_8_e980341_1288143084684_734513_2620"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288142810139_436995_2574" base_InstanceSpecification="_16_8_e980341_1288142792978_891297_2563"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288155387460_405382_3240" base_InstanceSpecification="_16_8_e980341_1288155350678_929239_3230"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357043929_284981_1553" base_DataType="_16_0_1_630020f_1243357032510_182530_1536" identifier="_16_8_e980341_1288148678327_809581_2810">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:Name</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288140949856_707284_2421" base_InstanceSpecification="_16_8_e980341_1288140627058_868201_2370"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357289629_961320_1724" base_DataType="_16_0_1_630020f_1243357274731_742760_1707" identifier="_16_8_e980341_1288150762785_5842_2886">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:nonNegativeInteger</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288143960426_56593_2688" base_InstanceSpecification="_16_8_e980341_1288143947316_47992_2677"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288148697999_981678_2820" base_InstanceSpecification="_16_8_e980341_1288148678327_809581_2810"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357436706_308300_1800" base_DataType="_16_0_1_630020f_1243357423805_211723_1783" identifier="_16_8_e980341_1288153033269_67782_3067">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:unsignedShort</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:literal xmi:id="_16_8_e980341_1287696130303_14833_2152" base_InstanceSpecification="_16_8_e980341_1287695917477_239157_2117"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243356911595_510115_1496" base_DataType="_16_0_1_630020f_1243356899037_931904_1479" identifier="_16_8_e980341_1288148405152_393206_2791">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:token</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288143193683_21395_2650" base_InstanceSpecification="_16_8_e980341_1288143175017_774913_2639"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288149295482_913887_2877" base_InstanceSpecification="_16_8_e980341_1288149250903_723059_2867"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243270113872_387370_1259" base_DataType="_16_0_1_630020f_1243270096900_974208_1242" identifier="_16_8_e980341_1288142915754_168715_2582">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:decimal</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288140699413_388396_2395" base_InstanceSpecification="_16_8_e980341_1288140683641_544937_2385"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288141992173_153573_2517" base_InstanceSpecification="_16_8_e980341_1288141976326_480679_2506"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243270403746_297254_1387" base_DataType="_16_0_1_630020f_1243270389528_684388_1370" identifier="_16_8_e980341_1288143084684_734513_2620">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:float</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288141902952_854600_2498" base_InstanceSpecification="_16_8_e980341_1288141881856_846392_2487"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288152843488_938594_3058" base_InstanceSpecification="_16_8_e980341_1288152828034_311931_3048"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288142112518_398370_2536" base_InstanceSpecification="_16_8_e980341_1288142091271_664136_2525"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243272324063_23301_1646" base_DataType="_16_0_1_630020f_1243272307303_276893_1629" identifier="_16_8_e980341_1288143175017_774913_2639">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:precisionDecimal</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287764997483_68371_2997" base_Association="_16_8_e980341_1287764956535_209397_2960"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288148824617_39770_2839" base_InstanceSpecification="_16_8_e980341_1288148807095_390520_2829"/>
+  <RDFProfile:rdfDocument namespaceDefinition="_16_8_e980341_1287686923179_558499_1923" xmi:id="_16_6_2_15100de_1267734621073_959764_934" defaultNamespace="_16_8_e980341_1288814175916_241536_2029" base_Package="_16_0_1_2780137_1234909558376_738774_2777" xmlBase="_16_8_e980341_1288814175916_241536_2029">
+    <label>XML Schema Datatypes Library</label>
+  </RDFProfile:rdfDocument>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357098717_422375_1591" base_DataType="_16_0_1_630020f_1243357082103_702959_1574" identifier="_16_8_e980341_1288148245072_564594_2772">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:integer</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243269282597_837094_1130" base_DataType="_16_0_1_630020f_1243269265288_102075_1113" identifier="_16_8_e980341_1288143419797_178745_2658">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:boolean</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274841089_548649_1949" base_DataType="_16_0_1_630020f_1243274829229_721749_1932" identifier="_16_8_e980341_1288142181405_79024_2544">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:gMonth</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357254639_107812_1705" base_DataType="_16_0_1_630020f_1243357244873_859149_1688" identifier="_16_8_e980341_1288153150175_539688_3086">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:byte</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:literal xmi:id="_16_8_e980341_1287696157405_842979_2157" base_InstanceSpecification="_16_8_e980341_1287695941255_131860_2127"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274907473_388727_1987" base_DataType="_16_0_1_630020f_1243274887453_820877_1970" identifier="_16_8_e980341_1288141976326_480679_2506">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:gYear</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243311116481_329905_2737" base_DataType="_16_0_1_630020f_1243274537669_858773_1857" identifier="_16_8_e980341_1288141610574_561773_2449">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:date</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288150947321_93834_2915" base_InstanceSpecification="_16_8_e980341_1288150914044_982525_2905"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357233953_789235_1686" base_DataType="_16_0_1_630020f_1243357224000_900370_1669" identifier="_16_8_e980341_1288152828034_311931_3048">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:short</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357377223_36645_1762" base_DataType="_16_0_1_630020f_1243357365009_480985_1745" identifier="_16_8_e980341_1288151885240_240400_2943">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:unsignedLong</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288141623966_296071_2459" base_InstanceSpecification="_16_8_e980341_1288141610574_561773_2449"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274406397_990052_1836" base_DataType="_16_0_1_630020f_1243274369378_175606_1819" identifier="_16_8_e980341_1288145246541_834952_2715">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:anyURI</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357067579_723483_1572" base_DataType="_16_0_1_630020f_1243357056659_219398_1555" identifier="_16_8_e980341_1288149250903_723059_2867">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:NCName</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288217052064_859652_2423" base_InstanceSpecification="_16_8_e980341_1288217027204_932799_2413"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243356881752_959040_1477" base_DataType="_16_0_1_630020f_1243356864639_937685_1460" identifier="_16_8_e980341_1288145965993_298112_2734">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:normalizedString</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287785461159_758030_4387" identifier="_16_8_e980341_1288155192750_622740_3206" base_Association="_16_8_e980341_1287785461157_248377_4384">
+    <label>xsd:pattern</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288148423624_919564_2801" base_InstanceSpecification="_16_8_e980341_1288148405152_393206_2791"/>
+  <RDFProfile:rdfsClass base_Class="_16_8_e980341_1287692637448_79815_2494" xmi:id="_16_8_e980341_1287692656438_178255_2521"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288151065484_867362_2934" base_InstanceSpecification="_16_8_e980341_1288151047651_316675_2924"/>
+  <RDFProfile:rdfsClass base_Class="_16_8_e980341_1287692541979_625304_2406" xmi:id="_16_8_e980341_1287692579096_13700_2432"/>
+  <RDFProfile:literal xmi:id="_16_6_2_15100de_1277249366557_329142_971" base_InstanceSpecification="_16_6_2_15100de_1277249308171_766435_970"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287767582703_616001_3318" base_Association="_16_8_e980341_1287767531279_430655_3287"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357157451_90351_1629" base_DataType="_16_0_1_630020f_1243357144300_79554_1612" identifier="_16_8_e980341_1288152430349_454369_3010">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:negativeInteger</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288219139988_548103_2447" base_InstanceSpecification="_16_8_e980341_1288219071555_630027_2437"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274869824_829830_1968" base_DataType="_16_0_1_630020f_1243274857915_58775_1951" identifier="_16_8_e980341_1288142091271_664136_2525">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:gMonthDay</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357341312_781237_1743" base_DataType="_16_0_1_630020f_1243357328910_343362_1726" identifier="_16_8_e980341_1288152044569_412806_2962">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:positiveInteger</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274811477_839485_1930" base_DataType="_16_0_1_630020f_1243274798492_531760_1913" identifier="_16_8_e980341_1288142792978_891297_2563">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:gDay</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288817404960_966357_2036" base_LiteralString="_16_8_e980341_1288817388026_75475_2035"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287862871960_627093_4420" identifier="_16_8_e980341_1288154087513_602683_3134" base_Association="_16_8_e980341_1287862871957_364425_4417">
+    <label>xsd:length</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243356970953_565449_1534" base_DataType="_16_0_1_630020f_1243356958348_26359_1517" identifier="_16_8_e980341_1288148807095_390520_2829">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:NMTOKEN</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357462867_818465_1819" base_DataType="_16_0_1_630020f_1243357452197_55674_1802" identifier="_16_8_e980341_1288153308642_482022_3105">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:unsignedByte</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288154537451_235208_3168" base_InstanceSpecification="_16_8_e980341_1288154521136_48684_3158"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357126266_632206_1610" base_DataType="_16_0_1_630020f_1243357112351_474262_1593" identifier="_16_8_e980341_1288151047651_316675_2924">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:nonPositiveInteger</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288148261182_161155_2782" base_InstanceSpecification="_16_8_e980341_1288148245072_564594_2772"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274612987_92728_1911" base_DataType="_16_0_1_630020f_1243274596341_101902_1894" identifier="_16_8_e980341_1288146048771_342457_2753">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:dateTimeStamp</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288814196313_956563_2030" base_InstanceSpecification="_16_8_e980341_1288814175916_241536_2029"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288140814242_145479_2414" base_InstanceSpecification="_16_8_e980341_1288140800834_217037_2404"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287862881470_671754_4434" identifier="_16_8_e980341_1288154521136_48684_3158" base_Association="_16_8_e980341_1287862881469_379638_4431">
+    <label>xsd:maxLength</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288145176928_956106_2706" base_InstanceSpecification="_16_8_e980341_1288145166371_763764_2696"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288155239437_996819_3216" base_InstanceSpecification="_16_8_e980341_1288155192750_622740_3206"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357195546_279849_1648" base_DataType="_16_0_1_630020f_1243357184907_308652_1631" identifier="_16_8_e980341_1288150914044_982525_2905">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:long</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:namespaceDefinition xmi:id="_16_8_e980341_1287686997359_811117_1939" namespacePrefix="xsd" namespaceIRI="_16_8_e980341_1288814175916_241536_2029" base_InstanceSpecification="_16_8_e980341_1287686923179_558499_1923"/>
+  <RDFProfile:literal xmi:id="_16_8_e980341_1287763745670_598306_2907" base_InstanceSpecification="_16_8_e980341_1287763725783_134238_2905"/>
+  <RDFProfile:rdfProperty xmi:id="_16_8_e980341_1287862877997_600909_4427" identifier="_16_8_e980341_1288154642152_225882_3174" base_Association="_16_8_e980341_1287862877995_163137_4424">
+    <label>xsd:minLength</label>
+  </RDFProfile:rdfProperty>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288141536212_342905_2440" base_InstanceSpecification="_16_8_e980341_1288141522840_903902_2430"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288143432795_812054_2668" base_InstanceSpecification="_16_8_e980341_1288143419797_178745_2658"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243274458145_636540_1855" base_DataType="_16_0_1_630020f_1243274442123_588038_1838" identifier="_16_8_e980341_1288143947316_47992_2677">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:base64Binary</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288154658402_692454_3184" base_InstanceSpecification="_16_8_e980341_1288154642152_225882_3174"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288140407162_205878_2364" base_InstanceSpecification="_16_8_e980341_1288140389566_829885_2354"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288146059656_578102_2763" base_InstanceSpecification="_16_8_e980341_1288146048771_342457_2753"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288145979072_832380_2744" base_InstanceSpecification="_16_8_e980341_1288145965993_298112_2734"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288154110779_926712_3144" base_InstanceSpecification="_16_8_e980341_1288154087513_602683_3134"/>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243357212643_854162_1667" base_DataType="_16_0_1_630020f_1243357204594_208424_1650" identifier="_16_8_e980341_1288152243931_923990_2981">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:int</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:rdfsDatatype xmi:id="_16_0_1_630020f_1243218348086_846380_518" base_DataType="_16_0_1_630020f_1243218333088_989061_501" identifier="_16_8_e980341_1288140627058_868201_2370">
+    <umlPrimitiveType href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    <label>xsd:string</label>
+  </RDFProfile:rdfsDatatype>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288152448683_425246_3020" base_InstanceSpecification="_16_8_e980341_1288152430349_454369_3010"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288153050085_853368_3077" base_InstanceSpecification="_16_8_e980341_1288153033269_67782_3067"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288145260094_328298_2725" base_InstanceSpecification="_16_8_e980341_1288145246541_834952_2715"/>
+  <RDFProfile:IRI xmi:id="_16_8_e980341_1288152285592_75699_2991" base_InstanceSpecification="_16_8_e980341_1288152243931_923990_2981"/>
+</xmi:XMI>

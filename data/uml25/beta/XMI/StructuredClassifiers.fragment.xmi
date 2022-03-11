@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_LPJfsDoZEeCmpu-HRutBsg" name="StructuredClassifiers">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_-D5tgCeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_BC84kCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Packages.fragment.xmi#_IHytMDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Er8_kCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="SimpleClassifiers.fragment.xmi#_JBJ-IDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_H_YfMCeGEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="CommonStructure.fragment.xmi#_D211YDoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPcd4ToZEeCmpu-HRutBsg" name="Association">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd4joZEeCmpu-HRutBsg" annotatedElement="_LPcd4ToZEeCmpu-HRutBsg">
+      <body>A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.&#xD;
+</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPcd5DoZEeCmpu-HRutBsg" name="specialized_end_number" constrainedElement="_LPcd4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd5ToZEeCmpu-HRutBsg" annotatedElement="_LPcd5DoZEeCmpu-HRutBsg">
+        <body>An Association specializing another Association has the same number of ends as the other Association.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPcd5joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>parents()->select(oclIsKindOf(Association)).oclAsType(Association)->forAll(p | p.memberEnd->size() = self.memberEnd->size())</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPcd5zoZEeCmpu-HRutBsg" name="specialized_end_types" constrainedElement="_LPcd4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd6DoZEeCmpu-HRutBsg" annotatedElement="_LPcd5zoZEeCmpu-HRutBsg">
+        <body>When an Association specializes another Association, every end of the specific Association corresponds to an end of the general Association, and the specific end reaches the same type or a subtype of the corresponding general end.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPcd6ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>Sequence{1..memberEnd->size()}->&#xD;&#xA;&#x9;forAll(i | general->select(oclIsKindOf(Association)).oclAsType(Association)->&#xD;&#xA;&#x9;&#x9;forAll(ga | self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPcd6joZEeCmpu-HRutBsg" name="binary_associations" constrainedElement="_LPcd4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd6zoZEeCmpu-HRutBsg" annotatedElement="_LPcd6joZEeCmpu-HRutBsg">
+        <body>Only binary Associations can be aggregations.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPcd7DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>memberEnd->exists(aggregation &lt;> AggregationKind::none) implies memberEnd->size() = 2</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPcd7ToZEeCmpu-HRutBsg" name="association_ends" constrainedElement="_LPcd4ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd7joZEeCmpu-HRutBsg" annotatedElement="_LPcd7ToZEeCmpu-HRutBsg">
+        <body>Ends of Associations with more than two ends must be owned by the Association itself.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPcd7zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>memberEnd->size() > 2 implies ownedEnd->includesAll(memberEnd)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPcd8DoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiFToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPcd8ToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPcd8joZEeCmpu-HRutBsg" name="endType" visibility="public" isOrdered="true" isReadOnly="true" isDerived="true" association="_LPmNSzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd8zoZEeCmpu-HRutBsg" annotatedElement="_LPcd8joZEeCmpu-HRutBsg">
+        <body>The Classifiers that are used as types of the ends of the Association.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPcd9DoZEeCmpu-HRutBsg" value="*"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiGDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPcd9ToZEeCmpu-HRutBsg" name="isDerived" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd9joZEeCmpu-HRutBsg" annotatedElement="_LPcd9ToZEeCmpu-HRutBsg">
+        <body>Specifies whether the Association is derived from other model elements such as other Associations.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPcd9zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPcd-DoZEeCmpu-HRutBsg" name="memberEnd" visibility="public" isOrdered="true" association="_LPmNSjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd-ToZEeCmpu-HRutBsg" annotatedElement="_LPcd-DoZEeCmpu-HRutBsg">
+        <body>Each end represents participation of instances of the Classifier connected to the end in links of the Association.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPcd-joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPcd-zoZEeCmpu-HRutBsg" value="2"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShqDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPcd_DoZEeCmpu-HRutBsg" name="navigableOwnedEnd" visibility="public" subsettedProperty="_LPceADoZEeCmpu-HRutBsg" association="_LPmNUDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPcd_ToZEeCmpu-HRutBsg" annotatedElement="_LPcd_DoZEeCmpu-HRutBsg">
+        <body>The navigable ends that are owned by the Association itself.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPcd_joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPcd_zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPceADoZEeCmpu-HRutBsg" name="ownedEnd" visibility="public" isOrdered="true" aggregation="composite" association="_LPmNTzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceAToZEeCmpu-HRutBsg" annotatedElement="_LPceADoZEeCmpu-HRutBsg">
+        <body>The ends that are owned by the Association itself.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPceAjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPceAzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_LPcd-DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPceBDoZEeCmpu-HRutBsg" name="endType" visibility="public" isQuery="true" bodyCondition="_LPceBjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceBToZEeCmpu-HRutBsg" annotatedElement="_LPceBDoZEeCmpu-HRutBsg">
+        <body>endType is derived from the types of the member ends.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPceBjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPceBDoZEeCmpu-HRutBsg _LPcd8joZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPceBzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>memberEnd->collect(type)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPceCDoZEeCmpu-HRutBsg" name="result" visibility="public" isOrdered="true" isUnique="false" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiejoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPceCToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPceCjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPceCzoZEeCmpu-HRutBsg" name="AssociationClass">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPceDDoZEeCmpu-HRutBsg" annotatedElement="_LPceCzoZEeCmpu-HRutBsg">
+      <body>A model element that has both Association and Class properties. An AssociationClass can be seen as an Association that also has Class properties, or as a Class that also has Association properties. It not only connects a set of Classifiers but also defines a set of Features that belong to the Association itself and not to any of the associated Classifiers.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPceDToZEeCmpu-HRutBsg" name="cannot_be_defined" constrainedElement="_LPceCzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceDjoZEeCmpu-HRutBsg" annotatedElement="_LPceDToZEeCmpu-HRutBsg">
+        <body>An AssociationClass cannot be defined between itself and something else.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPceDzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.endType()->excludes(self) and self.endType()->collect(et|et.oclAsType(Classifier).allParents())->flatten()->excludes(self)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPceEDoZEeCmpu-HRutBsg" name="disjoint_attributes_ends" constrainedElement="_LPceCzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceEToZEeCmpu-HRutBsg" annotatedElement="_LPceEDoZEeCmpu-HRutBsg">
+        <body>The owned attributes and owned ends of an AssociationClass are disjoint</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPceEjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>ownedAttribute->intersection(ownedEnd)->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPceEzoZEeCmpu-HRutBsg" general="_LPceFToZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPceFDoZEeCmpu-HRutBsg" general="_LPcd4ToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPceFToZEeCmpu-HRutBsg" name="Class">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPceFjoZEeCmpu-HRutBsg" annotatedElement="_LPceFToZEeCmpu-HRutBsg">
+      <body>A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.&#xD;
+</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPceGjoZEeCmpu-HRutBsg" name="passive_class" constrainedElement="_LPceFToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceGzoZEeCmpu-HRutBsg" annotatedElement="_LPceGjoZEeCmpu-HRutBsg">
+        <body>Only an active Class may own Receptions.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPceHDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>not isActive implies ownedReception->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPceHToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPceHjoZEeCmpu-HRutBsg" general="_LPmMhToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPceHzoZEeCmpu-HRutBsg" name="extension" visibility="public" isReadOnly="true" isDerived="true" association="_LPmNQjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceIDoZEeCmpu-HRutBsg" annotatedElement="_LPceHzoZEeCmpu-HRutBsg">
+        <body>This property is used when the Class is acting as a metaclass. It references the Extensions that specify additional properties of the metaclass. The property is derived from the Extensions whose memberEnds are typed by the Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Packages.fragment.xmi#_IH8frzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPceIToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPceIjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPceIzoZEeCmpu-HRutBsg" name="isAbstract" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceJDoZEeCmpu-HRutBsg" annotatedElement="_LPceIzoZEeCmpu-HRutBsg">
+        <body>If true, the Class does not provide a complete declaration and cannot be instantiated. An abstract Class is typically used as a target of Associations or Generalizations.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOnzoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPceJjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPceJzoZEeCmpu-HRutBsg" name="isActive" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPceKDoZEeCmpu-HRutBsg" annotatedElement="_LPceJzoZEeCmpu-HRutBsg">
+        <body>Determines whether an object specified by this Class is active or not. If true, then the owning Class is referred to as an active Class. If false, then such a Class is referred to as a passive Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPceKToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmLoDoZEeCmpu-HRutBsg" name="nestedClassifier" visibility="public" isOrdered="true" aggregation="composite" association="_LPmNRDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLoToZEeCmpu-HRutBsg" annotatedElement="_LPmLoDoZEeCmpu-HRutBsg">
+        <body>The Classifiers that are nested within the Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLojoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLozoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmLpDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" redefinedProperty="_LPmMzDoZEeCmpu-HRutBsg" association="_LPmNQzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLpToZEeCmpu-HRutBsg" annotatedElement="_LPmLpDoZEeCmpu-HRutBsg">
+        <body>The attributes (i.e. the Properties) owned by the Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLpjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLpzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmLqDoZEeCmpu-HRutBsg" name="ownedOperation" visibility="public" isOrdered="true" aggregation="composite" association="_LPmNPToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLqToZEeCmpu-HRutBsg" annotatedElement="_LPmLqDoZEeCmpu-HRutBsg">
+        <body>The Operations owned by the Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19GjoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLqjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLqzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmLrDoZEeCmpu-HRutBsg" name="ownedReception" visibility="public" aggregation="composite" association="_LPmNRzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLrToZEeCmpu-HRutBsg" annotatedElement="_LPmLrDoZEeCmpu-HRutBsg">
+        <body>The Receptions owned by the Class.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwoToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLrjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLrzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmLsDoZEeCmpu-HRutBsg" name="superClass" visibility="public" type="_LPceFToZEeCmpu-HRutBsg" isDerived="true" association="_LPmNPjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLsToZEeCmpu-HRutBsg" annotatedElement="_LPmLsDoZEeCmpu-HRutBsg">
+        <body>The superclasses of a Class, derived from its Generalizations.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLsjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLszoZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOkjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmLtDoZEeCmpu-HRutBsg" name="extension" visibility="public" isQuery="true" bodyCondition="_LPmLtjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLtToZEeCmpu-HRutBsg" annotatedElement="_LPmLtDoZEeCmpu-HRutBsg">
+        <body>Derivation for Class::/extension : Extension</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmLtjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmLtDoZEeCmpu-HRutBsg _LPceHzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmLtzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>Extension.allInstances()->select(ext | &#xD;&#xA;  let endTypes : Sequence(Classifier) = ext.memberEnd->collect(type.oclAsType(Classifier)) in&#xD;&#xA;  endTypes->includes(self) or endTypes.allParents()->includes(self) )</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmLuDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Packages.fragment.xmi#_IH8frzoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLuToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLujoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmLuzoZEeCmpu-HRutBsg" name="inherit" visibility="public" isQuery="true" bodyCondition="_LPmLvToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLvDoZEeCmpu-HRutBsg" annotatedElement="_LPmLuzoZEeCmpu-HRutBsg">
+        <body>The inherit operation is overridden to exclude redefined Properties.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmLvToZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmLuzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmLvjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>let excludedElements : Set(RedefinableElement) =&#xD;&#xA;  inhs->select(inh |&#xD;&#xA;     inh.oclIsKindOf(RedefinableElement) and &#xD;&#xA;        let redinh : RedefinableElement = inh.oclAsType(RedefinableElement) in&#xD;&#xA;           (self.ownedMember->select(oclIsKindOf(RedefinableElement)) ->collect(oclAsType(RedefinableElement).redefinedElement))->includes(redinh))->&#xD;&#xA;               collect(oclAsType(RedefinableElement))->asSet()&#xD;&#xA;  in &#xD;&#xA;  inhs -  excludedElements</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmLvzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLwDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLwToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmLwjoZEeCmpu-HRutBsg" name="inhs" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLwzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLxDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="Classification.fragment.xmi#_CHsO5ToZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmLxToZEeCmpu-HRutBsg" name="superClass" visibility="public" isQuery="true" bodyCondition="_LPmLxzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLxjoZEeCmpu-HRutBsg" annotatedElement="_LPmLxToZEeCmpu-HRutBsg">
+        <body>Derivation for Class::/superClass : Class</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmLxzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmLxToZEeCmpu-HRutBsg _LPmLsDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmLyDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.general()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmLyToZEeCmpu-HRutBsg" name="result" visibility="public" type="_LPceFToZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmLyjoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmLyzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmLzDoZEeCmpu-HRutBsg" name="Collaboration">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmLzToZEeCmpu-HRutBsg" annotatedElement="_LPmLzDoZEeCmpu-HRutBsg">
+      <body>A Collaboration describes a structure of collaborating elements (roles), each performing a specialized function, which collectively accomplish some desired functionality. </body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmLzjoZEeCmpu-HRutBsg" general="_LPmMxjoZEeCmpu-HRutBsg"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmLzzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTwOzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL0DoZEeCmpu-HRutBsg" name="collaborationRole" visibility="public" type="_LPmMKjoZEeCmpu-HRutBsg" subsettedProperty="_LPmM2DoZEeCmpu-HRutBsg" association="_LPmNOToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL0ToZEeCmpu-HRutBsg" annotatedElement="_LPmL0DoZEeCmpu-HRutBsg">
+        <body>References ConnectableElements (possibly owned by other Classifiers) which represent roles that instances may play in this Collaboration.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmL0joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmL0zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmL1DoZEeCmpu-HRutBsg" name="CollaborationUse">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL1ToZEeCmpu-HRutBsg" annotatedElement="_LPmL1DoZEeCmpu-HRutBsg">
+      <body>A CollaborationUse is used to specify the application of a pattern specified by a Collaboration to a specific situation.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmL1joZEeCmpu-HRutBsg" name="client_elements" constrainedElement="_LPmL1DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL1zoZEeCmpu-HRutBsg" annotatedElement="_LPmL1joZEeCmpu-HRutBsg">
+        <body>All the client elements of a roleBinding are in one Classifier and all supplier elements of a roleBinding are in one Collaboration.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmL2DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>roleBinding->collect(client)->forAll(ne1, ne2 |&#xD;&#xA;  ne1.oclIsKindOf(ConnectableElement) and ne2.oclIsKindOf(ConnectableElement) and&#xD;&#xA;    let ce1 : ConnectableElement = ne1.oclAsType(ConnectableElement), ce2 : ConnectableElement = ne2.oclAsType(ConnectableElement) in&#xD;&#xA;      ce1.structuredClassifier = ce2.structuredClassifier)&#xD;&#xA;and&#xD;&#xA;  roleBinding->collect(supplier)->forAll(ne1, ne2 |&#xD;&#xA;  ne1.oclIsKindOf(ConnectableElement) and ne2.oclIsKindOf(ConnectableElement) and&#xD;&#xA;    let ce1 : ConnectableElement = ne1.oclAsType(ConnectableElement), ce2 : ConnectableElement = ne2.oclAsType(ConnectableElement) in&#xD;&#xA;      ce1.collaboration = ce2.collaboration)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmL2ToZEeCmpu-HRutBsg" name="every_role" constrainedElement="_LPmL1DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL2joZEeCmpu-HRutBsg" annotatedElement="_LPmL2ToZEeCmpu-HRutBsg">
+        <body>Every collaborationRole in the Collaboration is bound within the CollaborationUse.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmL2zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>type.collaborationRole->forAll(role | roleBinding->exists(rb | rb.supplier->includes(role)))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmL3DoZEeCmpu-HRutBsg" name="connectors" constrainedElement="_LPmL1DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL3ToZEeCmpu-HRutBsg" annotatedElement="_LPmL3DoZEeCmpu-HRutBsg">
+        <body>Connectors in a Collaboration typing a CollaborationUse must have corresponding Connectors between elements bound in the context Classifier, and these corresponding Connectors must have the same or more general type than the Collaboration Connectors.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmL3joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>type.ownedConnector->forAll(connector |&#xD;&#xA;  let rolesConnectedInCollab : Set(ConnectableElement) = connector.end.role->asSet(),&#xD;&#xA;        relevantBindings : Set(Dependency) = roleBinding->select(rb | rb.supplier->intersection(rolesConnectedInCollab)->notEmpty()),&#xD;&#xA;        boundRoles : Set(ConnectableElement) = relevantBindings->collect(client.oclAsType(ConnectableElement))->asSet(),&#xD;&#xA;        contextClassifier : StructuredClassifier = boundRoles->any(true).structuredClassifier->any(true) in&#xD;&#xA;          contextClassifier.ownedConnector->exists( correspondingConnector | &#xD;&#xA;              correspondingConnector.end.role->forAll( role | boundRoles->includes(role) )&#xD;&#xA;              and (connector.type->notEmpty() and correspondingConnector.type->notEmpty()) implies connector.type.conformsTo(correspondingConnector.type) )&#xD;&#xA;)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmL3zoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL4DoZEeCmpu-HRutBsg" name="roleBinding" visibility="public" aggregation="composite" association="_LPmNNjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL4ToZEeCmpu-HRutBsg" annotatedElement="_LPmL4DoZEeCmpu-HRutBsg">
+        <body>A mapping between features of the Collaboration and features of the owning Classifier. This mapping indicates which ConnectableElement of the Classifier plays which role(s) in the Collaboration. A ConnectableElement may be bound to multiple roles in the same CollaborationUse (that is, it may play multiple roles).</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzGzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmL4joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmL4zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL5DoZEeCmpu-HRutBsg" name="type" visibility="public" type="_LPmLzDoZEeCmpu-HRutBsg" association="_LPmNMjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL5ToZEeCmpu-HRutBsg" annotatedElement="_LPmL5DoZEeCmpu-HRutBsg">
+        <body>The Collaboration which is used in this CollaborationUse. The Collaboration defines the cooperation between its roles which are mapped to ConnectableElements relating to the Classifier owning the CollaborationUse.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmL5joZEeCmpu-HRutBsg" name="Component">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL5zoZEeCmpu-HRutBsg" annotatedElement="_LPmL5joZEeCmpu-HRutBsg">
+      <body>A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.  </body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmL6ToZEeCmpu-HRutBsg" name="no_nested_classifiers" constrainedElement="_LPmL5joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL6joZEeCmpu-HRutBsg" annotatedElement="_LPmL6ToZEeCmpu-HRutBsg">
+        <body>A Component cannot nest Classifiers.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmL6zoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>nestedClassifier->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmL7DoZEeCmpu-HRutBsg" name="no_packaged_elements" constrainedElement="_LPmL5joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL7ToZEeCmpu-HRutBsg" annotatedElement="_LPmL7DoZEeCmpu-HRutBsg">
+        <body>A Component nested in a Class cannot have any packaged elements.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmL7joZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>nestingClass &lt;> null implies packagedElement->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmL7zoZEeCmpu-HRutBsg" general="_LPceFToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL8DoZEeCmpu-HRutBsg" name="isIndirectlyInstantiated" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL8ToZEeCmpu-HRutBsg" annotatedElement="_LPmL8DoZEeCmpu-HRutBsg">
+        <body>If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the Component is instantiated indirectly, through the instantiation of its realizing Classifiers or parts.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPmL8joZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL8zoZEeCmpu-HRutBsg" name="packagedElement" visibility="public" aggregation="composite" association="_LPmNKjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL9DoZEeCmpu-HRutBsg" annotatedElement="_LPmL8zoZEeCmpu-HRutBsg">
+        <body>The set of PackageableElements that a Component owns. In the namespace of a Component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, UseCases, Dependencies (e.g. mappings), and Artifacts.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmL9ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmL9joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL9zoZEeCmpu-HRutBsg" name="provided" visibility="public" isReadOnly="true" isDerived="true" association="_LPmNLjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL-DoZEeCmpu-HRutBsg" annotatedElement="_LPmL9zoZEeCmpu-HRutBsg">
+        <body>The Interfaces that the Component exposes to its environment. These Interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmL-ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmL-joZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL-zoZEeCmpu-HRutBsg" name="realization" visibility="public" type="_LPmMIToZEeCmpu-HRutBsg" aggregation="composite" association="_LPmNLToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmL_DoZEeCmpu-HRutBsg" annotatedElement="_LPmL-zoZEeCmpu-HRutBsg">
+        <body>The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmL_ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmL_joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si9ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmL_zoZEeCmpu-HRutBsg" name="required" visibility="public" isReadOnly="true" isDerived="true" association="_LPmNJjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMADoZEeCmpu-HRutBsg" annotatedElement="_LPmL_zoZEeCmpu-HRutBsg">
+        <body>The Interfaces that the Component requires from other Components in its environment in order to be able to offer its full set of provided functionality. These Interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMAToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMAjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMAzoZEeCmpu-HRutBsg" name="provided" visibility="public" isQuery="true" bodyCondition="_LPmMBToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMBDoZEeCmpu-HRutBsg" annotatedElement="_LPmMAzoZEeCmpu-HRutBsg">
+        <body>Derivation for Comppnent::/provided</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMBToZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMAzoZEeCmpu-HRutBsg _LPmL9zoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMBjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>let &#x9;ris : Set(Interface) = allRealizedInterfaces(),&#xD;&#xA;        realizingClassifiers : Set(Classifier) =  self.realization.realizingClassifier->union(self.allParents()->collect(realization.realizingClassifier))->asSet(),&#xD;&#xA;        allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents())->asSet(),&#xD;&#xA;        realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(c.allRealizedInterfaces())),&#xD;&#xA;        ports : Set(Port) = self.ownedPort->union(allParents()->collect(ownedPort))->asSet(),&#xD;&#xA;        providedByPorts : Set(Interface) = ports.provided->asSet()&#xD;&#xA;in     ris->union(realizingClassifierInterfaces) ->union(providedByPorts)->asSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMBzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMCDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMCToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMEjoZEeCmpu-HRutBsg" name="required" visibility="public" isQuery="true" bodyCondition="_LPmMFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMEzoZEeCmpu-HRutBsg" annotatedElement="_LPmMEjoZEeCmpu-HRutBsg">
+        <body>Derivation for Comppnent::/required</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMFDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMEjoZEeCmpu-HRutBsg _LPmL_zoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMFToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>let &#x9;uis : Set(Interface) = allUsedInterfaces(),&#xD;&#xA;        realizingClassifiers : Set(Classifier) = self.realization.realizingClassifier->union(self.allParents()->collect(realization.realizingClassifier))->asSet(),&#xD;&#xA;        allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents())->asSet(),&#xD;&#xA;        realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(c.allUsedInterfaces())),&#xD;&#xA;        ports : Set(Port) = self.ownedPort->union(allParents()->collect(ownedPort))->asSet(),&#xD;&#xA;        usedByPorts : Set(Interface) = ports.required->asSet()&#xD;&#xA;in&#x9;    uis->union(realizingClassifierInterfaces)->union(usedByPorts)->asSet()&#xD;&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMFjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMFzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMGDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMIToZEeCmpu-HRutBsg" name="ComponentRealization">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMIjoZEeCmpu-HRutBsg" annotatedElement="_LPmMIToZEeCmpu-HRutBsg">
+      <body>Realization is specialized to (optionally) define the Classifiers that realize the contract offered by a Component in terms of its provided and required Interfaces. The Component forms an abstraction from these various Classifiers.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMIzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiEjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMJDoZEeCmpu-HRutBsg" name="abstraction" visibility="public" type="_LPmL5joZEeCmpu-HRutBsg" association="_LPmNLToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMJToZEeCmpu-HRutBsg" annotatedElement="_LPmMJDoZEeCmpu-HRutBsg">
+        <body>The Component that owns this ComponentRealization and which is implemented by its realizing Classifiers.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzIjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMJzoZEeCmpu-HRutBsg" name="realizingClassifier" visibility="public" association="_LPmNIjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMKDoZEeCmpu-HRutBsg" annotatedElement="_LPmMJzoZEeCmpu-HRutBsg">
+        <body>The Classifiers that are involved in the implementation of the Component that owns this Realization.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMKToZEeCmpu-HRutBsg" value="*"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzHzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMKjoZEeCmpu-HRutBsg" name="ConnectableElement" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMKzoZEeCmpu-HRutBsg" annotatedElement="_LPmMKjoZEeCmpu-HRutBsg">
+      <body>ConnectableElement is an abstract metaclass representing a set of instances that play roles of a StructuredClassifier. ConnectableElements may be joined by attached Connectors and specify configurations of linked instances to be created within an instance of the containing StructuredClassifier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMLToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SihzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMLjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh_joZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMLzoZEeCmpu-HRutBsg" name="end" visibility="public" type="_LPmMaDoZEeCmpu-HRutBsg" isOrdered="true" isReadOnly="true" isDerived="true" association="_LPmNIToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMMDoZEeCmpu-HRutBsg" annotatedElement="_LPmMLzoZEeCmpu-HRutBsg">
+        <body>A set of ConnectorEnds that attach to this ConnectableElement.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMMToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMMjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMMzoZEeCmpu-HRutBsg" name="templateParameter" visibility="public" type="_LPmMPToZEeCmpu-HRutBsg" association="_LPmNIDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMNDoZEeCmpu-HRutBsg" annotatedElement="_LPmMMzoZEeCmpu-HRutBsg">
+        <body>The ConnectableElementTemplateParameter for this ConnectableElement parameter.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMNToZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiBDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMNjoZEeCmpu-HRutBsg" name="end" visibility="public" isQuery="true" bodyCondition="_LPmMODoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMNzoZEeCmpu-HRutBsg" annotatedElement="_LPmMNjoZEeCmpu-HRutBsg">
+        <body>Derivation for ConnectableElement::/end : ConnectorEnd</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMODoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMNjoZEeCmpu-HRutBsg _LPmMLzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMOToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ConnectorEnd.allInstances()->select(role = self)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMOjoZEeCmpu-HRutBsg" name="result" visibility="public" type="_LPmMaDoZEeCmpu-HRutBsg" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMOzoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMPDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMPToZEeCmpu-HRutBsg" name="ConnectableElementTemplateParameter">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMPjoZEeCmpu-HRutBsg" annotatedElement="_LPmMPToZEeCmpu-HRutBsg">
+      <body>A ConnectableElementTemplateParameter exposes a ConnectableElement as a formal parameter for a template.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMPzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiSToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMQDoZEeCmpu-HRutBsg" name="parameteredElement" visibility="public" type="_LPmMKjoZEeCmpu-HRutBsg" association="_LPmNIDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMQToZEeCmpu-HRutBsg" annotatedElement="_LPmMQDoZEeCmpu-HRutBsg">
+        <body>The ConnectableElement for this ConnectableElementTemplateParameter.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SiWDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMQjoZEeCmpu-HRutBsg" name="Connector">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMQzoZEeCmpu-HRutBsg" annotatedElement="_LPmMQjoZEeCmpu-HRutBsg">
+      <body>A Connector specifies links that enables communication between two or more instances. In contrast to Associations, which specify links between any instance of the associated Classifiers, Connectors specify links between instances playing the connected parts only.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMRToZEeCmpu-HRutBsg" name="types" constrainedElement="_LPmMQjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMRjoZEeCmpu-HRutBsg" annotatedElement="_LPmMRToZEeCmpu-HRutBsg">
+        <body>The types of the ConnectableElements that the ends of a Connector are attached to must conform to the types of the ends of the Association that types the Connector, if any.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMRzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>type&lt;>null implies &#xD;&#xA;  let noOfEnds : Integer = end->size() in &#xD;&#xA;  (type.memberEnd->size() = noOfEnds) and Sequence{1..noOfEnds}->forAll(i | end->at(i).role.type.conformsTo(type.memberEnd->at(i).type))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMSDoZEeCmpu-HRutBsg" name="roles" constrainedElement="_LPmMQjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMSToZEeCmpu-HRutBsg" annotatedElement="_LPmMSDoZEeCmpu-HRutBsg">
+        <body>The ConnectableElements attached as roles to each ConnectorEnd owned by a Connector must be roles of the Classifier that owned the Connector, or they must be Ports of such roles.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMSjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>structuredClassifier &lt;> null &#xD;&#xA;  and&#xD;&#xA;end->forAll( e | &#xD;&#xA;  structuredClassifier.role->includes(e.role)&#xD;&#xA;     or &#xD;&#xA;  e.role.oclIsKindOf(Port) and structuredClassifier.role->includes(e.partWithPort))</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMUToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsPIzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMUjoZEeCmpu-HRutBsg" name="contract" visibility="public" association="_LPmNGDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMUzoZEeCmpu-HRutBsg" annotatedElement="_LPmMUjoZEeCmpu-HRutBsg">
+        <body>The set of Behaviors that specify the valid interaction patterns across the Connector.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMVDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMVToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMVjoZEeCmpu-HRutBsg" name="end" visibility="public" type="_LPmMaDoZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_LPmNEjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMVzoZEeCmpu-HRutBsg" annotatedElement="_LPmMVjoZEeCmpu-HRutBsg">
+        <body>A Connector has at least two ConnectorEnds, each representing the participation of instances of the Classifiers typing the ConnectableElements attached to the end. The set of ConnectorEnds is ordered.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMWDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMWToZEeCmpu-HRutBsg" value="2"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMWjoZEeCmpu-HRutBsg" name="kind" visibility="public" type="_LPmM4zoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMWzoZEeCmpu-HRutBsg" annotatedElement="_LPmMWjoZEeCmpu-HRutBsg">
+        <body>Indicates the kind of Connector. This is derived: a Connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMXDoZEeCmpu-HRutBsg" name="redefinedConnector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" association="_LPmNFDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMXToZEeCmpu-HRutBsg" annotatedElement="_LPmMXDoZEeCmpu-HRutBsg">
+        <body>A Connector may be redefined when its containing Classifier is specialized. The redefining Connector may have a type that specializes the type of the redefined Connector. The types of the ConnectorEnds of the redefining Connector may specialize the types of the ConnectorEnds of the redefined Connector. The properties of the ConnectorEnds of the redefining Connector may be replaced.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMXjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMXzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-fDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMYDoZEeCmpu-HRutBsg" name="type" visibility="public" type="_LPcd4ToZEeCmpu-HRutBsg" association="_LPmNHDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMYToZEeCmpu-HRutBsg" annotatedElement="_LPmMYDoZEeCmpu-HRutBsg">
+        <body>An optional Association that classifies links corresponding to this Connector.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMYjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMYzoZEeCmpu-HRutBsg" name="kind" visibility="public" isQuery="true" bodyCondition="_LPmMZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMZDoZEeCmpu-HRutBsg" annotatedElement="_LPmMYzoZEeCmpu-HRutBsg">
+        <body>Derivation for Connector::/kind : ConnectorKind</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMZToZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMYzoZEeCmpu-HRutBsg _LPmMWjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMZjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if end->exists(&#xD;&#xA;&#x9;&#x9;role.oclIsKindOf(Port) &#xD;&#xA;&#x9;&#x9;and partWithPort->isEmpty()&#xD;&#xA;&#x9;&#x9;and not role.oclAsType(Port).isBehavior)&#xD;&#xA;then ConnectorKind::delegation &#xD;&#xA;else ConnectorKind::assembly &#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMZzoZEeCmpu-HRutBsg" name="result" visibility="public" type="_LPmM4zoZEeCmpu-HRutBsg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMaDoZEeCmpu-HRutBsg" name="ConnectorEnd">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMaToZEeCmpu-HRutBsg" annotatedElement="_LPmMaDoZEeCmpu-HRutBsg">
+      <body>A ConnectorEnd is an endpoint of a Connector, which attaches the Connector to a ConnectableElement.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMajoZEeCmpu-HRutBsg" name="role_and_part_with_port" constrainedElement="_LPmMaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMazoZEeCmpu-HRutBsg" annotatedElement="_LPmMajoZEeCmpu-HRutBsg">
+        <body>If a ConnectorEnd references a partWithPort, then the role must be a Port that is defined or inherited by the type of the partWithPort.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMbDoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>partWithPort->notEmpty() implies &#xD;&#xA;  (role.oclIsKindOf(Port) and partWithPort.type.oclAsType(Namespace).member->includes(role))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMbToZEeCmpu-HRutBsg" name="part_with_port_empty" constrainedElement="_LPmMaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMbjoZEeCmpu-HRutBsg" annotatedElement="_LPmMbToZEeCmpu-HRutBsg">
+        <body>If a ConnectorEnd is attached to a Port of the containing Classifier, partWithPort will be empty.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMbzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>(role.oclIsKindOf(Port) and role.owner = connector.owner) implies partWithPort->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMcDoZEeCmpu-HRutBsg" name="multiplicity" constrainedElement="_LPmMaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMcToZEeCmpu-HRutBsg" annotatedElement="_LPmMcDoZEeCmpu-HRutBsg">
+        <body>The multiplicity of the ConnectorEnd may not be more general than the multiplicity of the corresponding end of the Association typing the owning Connector, if any.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMcjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.compatibleWith(definingEnd)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMczoZEeCmpu-HRutBsg" name="self_part_with_port" constrainedElement="_LPmMaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMdDoZEeCmpu-HRutBsg" annotatedElement="_LPmMczoZEeCmpu-HRutBsg">
+        <body>The Property held in self.partWithPort must not be a Port.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMdToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>partWithPort->notEmpty() implies not partWithPort.oclIsKindOf(Port)</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMdjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzZToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMdzoZEeCmpu-HRutBsg" name="definingEnd" visibility="public" isReadOnly="true" isDerived="true" association="_LPmNDjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMeDoZEeCmpu-HRutBsg" annotatedElement="_LPmMdzoZEeCmpu-HRutBsg">
+        <body>A derived property referencing the corresponding end on the Association which types the Connector owing this ConnectorEnd, if any. It is derived by selecting the end at the same place in the ordering of Association ends as this ConnectorEnd.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMeToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMejoZEeCmpu-HRutBsg" name="partWithPort" visibility="public" association="_LPmNCjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMezoZEeCmpu-HRutBsg" annotatedElement="_LPmMejoZEeCmpu-HRutBsg">
+        <body>Indicates the role of the internal structure of a Classifier with the Port to which the ConnectorEnd is attached.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMfDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMfToZEeCmpu-HRutBsg" name="role" visibility="public" type="_LPmMKjoZEeCmpu-HRutBsg" association="_LPmNIToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMfjoZEeCmpu-HRutBsg" annotatedElement="_LPmMfToZEeCmpu-HRutBsg">
+        <body>The ConnectableElement attached at this ConnectorEnd. When an instance of the containing Classifier is created, a link may (depending on the multiplicities) be created to an instance of the Classifier that types this ConnectableElement.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMfzoZEeCmpu-HRutBsg" name="definingEnd" visibility="public" isQuery="true" bodyCondition="_LPmMgToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMgDoZEeCmpu-HRutBsg" annotatedElement="_LPmMfzoZEeCmpu-HRutBsg">
+        <body>Derivation for ConnectorEnd::/definingEnd : Property</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMgToZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMfzoZEeCmpu-HRutBsg _LPmMdzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMgjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if connector.type = null &#xD;&#xA;then&#xD;&#xA;  null &#xD;&#xA;else&#xD;&#xA;  let index : Integer = connector.end->indexOf(self) in&#xD;&#xA;    connector.type.memberEnd->at(index)&#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMgzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMhDoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMhToZEeCmpu-HRutBsg" name="EncapsulatedClassifier" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMhjoZEeCmpu-HRutBsg" annotatedElement="_LPmMhToZEeCmpu-HRutBsg">
+      <body>An EncapsulatedClassifier may own Ports to specify typed interaction points.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMhzoZEeCmpu-HRutBsg" general="_LPmMxjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMiDoZEeCmpu-HRutBsg" name="ownedPort" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" aggregation="composite" subsettedProperty="_LPmMzDoZEeCmpu-HRutBsg" association="_LPmNBzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMiToZEeCmpu-HRutBsg" annotatedElement="_LPmMiDoZEeCmpu-HRutBsg">
+        <body>The Ports owned by the EncapsulatedClassifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMijoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMizoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMjDoZEeCmpu-HRutBsg" name="ownedPort" visibility="public" isQuery="true" bodyCondition="_LPmMjjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMjToZEeCmpu-HRutBsg" annotatedElement="_LPmMjDoZEeCmpu-HRutBsg">
+        <body>Derivation for EncapsulatedClassifier::/ownedPort : Port</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMjjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMjDoZEeCmpu-HRutBsg _LPmMiDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMjzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedAttribute->select(oclIsKindOf(Port))->collect(oclAsType(Port))->asOrderedSet()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMkDoZEeCmpu-HRutBsg" name="result" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" isOrdered="true" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMkToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMkjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMkzoZEeCmpu-HRutBsg" name="Port">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMlDoZEeCmpu-HRutBsg" annotatedElement="_LPmMkzoZEeCmpu-HRutBsg">
+      <body>A Port is a property of an EncapsulatedClassifier that specifies a distinct interaction point between that EncapsulatedClassifier and its environment or between the (behavior of the) EncapsulatedClassifier and its internal parts. Ports are connected to Properties of the EncapsulatedClassifier by Connectors through which requests can be made to invoke BehavioralFeatures. A Port may specify the services an EncapsulatedClassifier provides (offers) to its environment as well as the services that an EncapsulatedClassifier expects (requires) of its environment.  A Port may have an associated ProtocolStateMachine.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMmToZEeCmpu-HRutBsg" name="port_aggregation" constrainedElement="_LPmMkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMmjoZEeCmpu-HRutBsg" annotatedElement="_LPmMmToZEeCmpu-HRutBsg">
+        <body>Port.aggregation must be composite.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMmzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>aggregation = AggregationKind::composite</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMnDoZEeCmpu-HRutBsg" name="default_value" constrainedElement="_LPmMkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMnToZEeCmpu-HRutBsg" annotatedElement="_LPmMnDoZEeCmpu-HRutBsg">
+        <body>A defaultValue for port cannot be specified when the type of the Port is an Interface</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMnjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>type.oclIsKindOf(Interface) implies defaultValue->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_N8wrgEdiEeGFBftQJP3kzw" name="encapsulated_owner" constrainedElement="_LPmMkzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_Xh2WcEdiEeGFBftQJP3kzw" annotatedElement="_N8wrgEdiEeGFBftQJP3kzw">
+        <body>All Ports are owned by an EncapsulatedClassifier</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_N9DmcEdiEeGFBftQJP3kzw">
+        <language>OCL</language>
+        <body>owner = encapsulatedClassifier</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMnzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMoDoZEeCmpu-HRutBsg" name="isBehavior" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMoToZEeCmpu-HRutBsg" annotatedElement="_LPmMoDoZEeCmpu-HRutBsg">
+        <body>Specifies whether requests arriving at this Port are sent to the classifier behavior of this EncapsulatedClassifier. Such a Port is referred to as a behavior Port. Any invocation of a BehavioralFeature targeted at a behavior Port will be handled by the instance of the owning EncapsulatedClassifier itself, rather than by any instances that it may contain.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPmMojoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMozoZEeCmpu-HRutBsg" name="isConjugated" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMpDoZEeCmpu-HRutBsg" annotatedElement="_LPmMozoZEeCmpu-HRutBsg">
+        <body>Specifies the way that the provided and required Interfaces are derived from the Port’s Type.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPmMpToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMpjoZEeCmpu-HRutBsg" name="isService" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMpzoZEeCmpu-HRutBsg" annotatedElement="_LPmMpjoZEeCmpu-HRutBsg">
+        <body>If true indicates that this Port is used to provide the published functionality of an EncapsulatedClassifier.  If false, this Port is used to implement the EncapsulatedClassifier but is not part of the essential externally-visible functionality of the EncapsulatedClassifier and can, therefore, be altered or deleted along with the internal implementation of the EncapsulatedClassifier and other properties that are considered part of its implementation.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_LPmMqDoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMqToZEeCmpu-HRutBsg" name="protocol" visibility="public" association="_LPmM9zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMqjoZEeCmpu-HRutBsg" annotatedElement="_LPmMqToZEeCmpu-HRutBsg">
+        <body>An optional ProtocolStateMachine which describes valid interactions at this interaction point.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="StateMachines.fragment.xmi#_Kq8AHToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMqzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMrDoZEeCmpu-HRutBsg" name="provided" visibility="public" isReadOnly="true" isDerived="true" association="_LPmNAzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMrToZEeCmpu-HRutBsg" annotatedElement="_LPmMrDoZEeCmpu-HRutBsg">
+        <body>The Interfaces specifying the set of Operations and Receptions that the EncapsulatedCclassifier offers to its environment via this Port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of Interfaces realized by the type of the port and its supertypes, or directly from the type of the Port if the Port is typed by an Interface. If isConjugated is true, it is derived as the union of the sets of Interfaces used by the type of the Port and its supertypes.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMrjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMrzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMsDoZEeCmpu-HRutBsg" name="redefinedPort" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" association="_LPmM_zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMsToZEeCmpu-HRutBsg" annotatedElement="_LPmMsDoZEeCmpu-HRutBsg">
+        <body>A Port may be redefined when its containing EncapsulatedClassifier is specialized. The redefining Port may have additional Interfaces to those that are associated with the redefined Port or it may replace an Interface by one of its subtypes.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMsjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMszoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-NDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMtDoZEeCmpu-HRutBsg" name="required" visibility="public" isReadOnly="true" isDerived="true" association="_LPmM-zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMtToZEeCmpu-HRutBsg" annotatedElement="_LPmMtDoZEeCmpu-HRutBsg">
+        <body>The Interfaces specifying the set of Operations and Receptions that the EncapsulatedCassifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of Interfaces used by the type of the Port and its supertypes. If isConjugated is true, it is derived as the union of the sets of Interfaces realized by the type of the Port and its supertypes, or directly from the type of the Port if the Port is typed by an Interface.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMtjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMtzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMuDoZEeCmpu-HRutBsg" name="provided" visibility="public" isQuery="true" bodyCondition="_LPmMujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMuToZEeCmpu-HRutBsg" annotatedElement="_LPmMuDoZEeCmpu-HRutBsg">
+        <body>Derivation for Port::/provided</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMujoZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMuDoZEeCmpu-HRutBsg _LPmMrDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMuzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if isConjugated then basicRequired() else basicProvided() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMvDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMvToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMvjoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmMvzoZEeCmpu-HRutBsg" name="required" visibility="public" isQuery="true" bodyCondition="_LPmMwToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMwDoZEeCmpu-HRutBsg" annotatedElement="_LPmMvzoZEeCmpu-HRutBsg">
+        <body>Derivation for Port::/required</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmMwToZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmMvzoZEeCmpu-HRutBsg _LPmMtDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmMwjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if isConjugated then basicProvided() else basicRequired() endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmMwzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMxDoZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMxToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mMYBcEKREeGK1-D_bj1nyQ" name="basicProvided" isQuery="true" bodyCondition="_usyjUEKREeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_4OlpsEKREeGK1-D_bj1nyQ" annotatedElement="_mMYBcEKREeGK1-D_bj1nyQ">
+        <body>The union of the sets of Interfaces realized by the type of the Port and its supertypes, or directly the type of the Port if the Port is typed by an Interface.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_usyjUEKREeGK1-D_bj1nyQ" name="spec" constrainedElement="_mMYBcEKREeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_us7tQEKREeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body>if type.oclIsKindOf(Interface) &#xD;&#xA;then type.oclAsType(Interface)->asSet() &#xD;&#xA;else type.oclAsType(Classifier).allRealizedInterfaces() &#xD;&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pIw6EEKREeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ses7IUKREeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ses7IEKREeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Cs4NgEKSEeGK1-D_bj1nyQ" name="basicRequired" isQuery="true" bodyCondition="_QAmGUEKSEeGK1-D_bj1nyQ">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_3zfMoEKSEeGK1-D_bj1nyQ" annotatedElement="_Cs4NgEKSEeGK1-D_bj1nyQ">
+        <body>The union of the sets of Interfaces used by the type of the Port and its supertypes.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_QAmGUEKSEeGK1-D_bj1nyQ" name="spec" constrainedElement="_Cs4NgEKSEeGK1-D_bj1nyQ">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_QAvQQEKSEeGK1-D_bj1nyQ">
+          <language>OCL</language>
+          <body> type.oclAsType(Classifier).allUsedInterfaces() </body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_E2pWYEKSEeGK1-D_bj1nyQ" name="result" direction="return">
+        <type xmi:type="uml:Class" href="SimpleClassifiers.fragment.xmi#_JBTweDoZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G3fMwUKSEeGK1-D_bj1nyQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G3fMwEKSEeGK1-D_bj1nyQ"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LPmMxjoZEeCmpu-HRutBsg" name="StructuredClassifier" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMxzoZEeCmpu-HRutBsg" annotatedElement="_LPmMxjoZEeCmpu-HRutBsg">
+      <body>StructuredClassifiers may contain an internal structure of connected elements each of which plays a role in the overall Behavior modeled by the StructuredClassifier.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmMyzoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="Classification.fragment.xmi#_CHsOcDoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmMzDoZEeCmpu-HRutBsg" name="ownedAttribute" visibility="public" isOrdered="true" aggregation="composite" association="_LPmM7zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmMzToZEeCmpu-HRutBsg" annotatedElement="_LPmMzDoZEeCmpu-HRutBsg">
+        <body>The Properties owned by the StructuredClassifier.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmMzjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmMzzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOhToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="#_LPmM2DoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmM0DoZEeCmpu-HRutBsg" name="ownedConnector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" aggregation="composite" association="_LPmM7DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM0ToZEeCmpu-HRutBsg" annotatedElement="_LPmM0DoZEeCmpu-HRutBsg">
+        <body>The connectors owned by the StructuredClassifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM0joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM0zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsOjToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1--joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShrDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmM1DoZEeCmpu-HRutBsg" name="part" visibility="public" isReadOnly="true" isDerived="true" association="_LPmM6ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM1ToZEeCmpu-HRutBsg" annotatedElement="_LPmM1DoZEeCmpu-HRutBsg">
+        <body>The Properties specifying instances that the StructuredClassifier owns by composition. This collection is derived, selecting those owned Properties where isComposite is true.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM1joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM1zoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LPmM2DoZEeCmpu-HRutBsg" name="role" visibility="public" type="_LPmMKjoZEeCmpu-HRutBsg" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_LPmM8zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM2ToZEeCmpu-HRutBsg" annotatedElement="_LPmM2DoZEeCmpu-HRutBsg">
+        <body>The roles that instances may play in this StructuredClassifier.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM2joZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM2zoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShqDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LPmM3DoZEeCmpu-HRutBsg" name="part" visibility="public" isQuery="true" bodyCondition="_LPmM3joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM3ToZEeCmpu-HRutBsg" annotatedElement="_LPmM3DoZEeCmpu-HRutBsg">
+        <body>Derivation for StructuredClassifier::/part</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_LPmM3joZEeCmpu-HRutBsg" name="spec" constrainedElement="_LPmM3DoZEeCmpu-HRutBsg _LPmM1DoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_LPmM3zoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>ownedAttribute->select(isComposite)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LPmM4DoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH192ToZEeCmpu-HRutBsg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM4ToZEeCmpu-HRutBsg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM4joZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_LPmM4zoZEeCmpu-HRutBsg" name="ConnectorKind">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM5DoZEeCmpu-HRutBsg" annotatedElement="_LPmM4zoZEeCmpu-HRutBsg">
+      <body>ConnectorKind is an enumeration that defines whether a Connector is an assembly or a delegation.</body>
+    </ownedComment>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_LPmM5ToZEeCmpu-HRutBsg" name="assembly" classifier="_LPmM4zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM5joZEeCmpu-HRutBsg" annotatedElement="_LPmM5ToZEeCmpu-HRutBsg">
+        <body>Indicates that the Connector is an assembly Connector.</body>
+      </ownedComment>
+    </ownedLiteral>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_LPmM5zoZEeCmpu-HRutBsg" name="delegation" classifier="_LPmM4zoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_LPmM6DoZEeCmpu-HRutBsg" annotatedElement="_LPmM5zoZEeCmpu-HRutBsg">
+        <body>Indicates that the Connector is a delegation Connector.</body>
+      </ownedComment>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM6ToZEeCmpu-HRutBsg" name="A_part_structuredClassifier" memberEnd="_LPmM1DoZEeCmpu-HRutBsg _LPmM6joZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM6joZEeCmpu-HRutBsg" name="structuredClassifier" visibility="public" type="_LPmMxjoZEeCmpu-HRutBsg" association="_LPmM6ToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM6zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM7DoZEeCmpu-HRutBsg" name="A_ownedConnector_structuredClassifier" memberEnd="_LPmM0DoZEeCmpu-HRutBsg _LPmM7ToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM7ToZEeCmpu-HRutBsg" name="structuredClassifier" visibility="public" type="_LPmMxjoZEeCmpu-HRutBsg" association="_LPmM7DoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM7joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-gDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM7zoZEeCmpu-HRutBsg" name="A_ownedAttribute_structuredClassifier" memberEnd="_LPmMzDoZEeCmpu-HRutBsg _LPmM8ToZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_LPmM8DoZEeCmpu-HRutBsg" general="_LPmM8zoZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM8ToZEeCmpu-HRutBsg" name="structuredClassifier" visibility="public" type="_LPmMxjoZEeCmpu-HRutBsg" redefinedProperty="_LPmM9DoZEeCmpu-HRutBsg" association="_LPmM7zoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM8joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_XToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM8zoZEeCmpu-HRutBsg" name="A_role_structuredClassifier" memberEnd="_LPmM2DoZEeCmpu-HRutBsg _LPmM9DoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM9DoZEeCmpu-HRutBsg" name="structuredClassifier" visibility="public" type="_LPmMxjoZEeCmpu-HRutBsg" association="_LPmM8zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM9ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM9joZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si0zoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM9zoZEeCmpu-HRutBsg" name="A_protocol_port" memberEnd="_LPmMqToZEeCmpu-HRutBsg _LPmM-DoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM-DoZEeCmpu-HRutBsg" name="port" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" association="_LPmM9zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM-ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM-joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM-zoZEeCmpu-HRutBsg" name="A_required_port" memberEnd="_LPmMtDoZEeCmpu-HRutBsg _LPmM_DoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmM_DoZEeCmpu-HRutBsg" name="port" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" association="_LPmM-zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmM_ToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmM_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmM_zoZEeCmpu-HRutBsg" name="A_redefinedPort_port" memberEnd="_LPmMsDoZEeCmpu-HRutBsg _LPmNADoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNADoZEeCmpu-HRutBsg" name="port" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" association="_LPmM_zoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNAToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNAjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_AzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNAzoZEeCmpu-HRutBsg" name="A_provided_port" memberEnd="_LPmMrDoZEeCmpu-HRutBsg _LPmNBDoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNBDoZEeCmpu-HRutBsg" name="port" visibility="public" type="_LPmMkzoZEeCmpu-HRutBsg" association="_LPmNAzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNBToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNBjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNBzoZEeCmpu-HRutBsg" name="A_ownedPort_encapsulatedClassifier" memberEnd="_LPmMiDoZEeCmpu-HRutBsg _LPmNCDoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNCDoZEeCmpu-HRutBsg" name="encapsulatedClassifier" visibility="public" type="_LPmMhToZEeCmpu-HRutBsg" subsettedProperty="_LPmM8ToZEeCmpu-HRutBsg" association="_LPmNBzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNCToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNCjoZEeCmpu-HRutBsg" name="A_partWithPort_connectorEnd" memberEnd="_LPmMejoZEeCmpu-HRutBsg _LPmNCzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNCzoZEeCmpu-HRutBsg" name="connectorEnd" visibility="public" type="_LPmMaDoZEeCmpu-HRutBsg" association="_LPmNCjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNDDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNDToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNDjoZEeCmpu-HRutBsg" name="A_definingEnd_connectorEnd" memberEnd="_LPmMdzoZEeCmpu-HRutBsg _LPmNDzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNDzoZEeCmpu-HRutBsg" name="connectorEnd" visibility="public" type="_LPmMaDoZEeCmpu-HRutBsg" association="_LPmNDjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNEDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNEToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNEjoZEeCmpu-HRutBsg" name="A_end_connector" memberEnd="_LPmMVjoZEeCmpu-HRutBsg _LPmNEzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNEzoZEeCmpu-HRutBsg" name="connector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" association="_LPmNEjoZEeCmpu-HRutBsg">
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNFDoZEeCmpu-HRutBsg" name="A_redefinedConnector_connector" memberEnd="_LPmMXDoZEeCmpu-HRutBsg _LPmNFToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNFToZEeCmpu-HRutBsg" name="connector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" association="_LPmNFDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNFjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNFzoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNGDoZEeCmpu-HRutBsg" name="A_contract_connector" memberEnd="_LPmMUjoZEeCmpu-HRutBsg _LPmNGToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNGToZEeCmpu-HRutBsg" name="connector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" association="_LPmNGDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNGjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNGzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNHDoZEeCmpu-HRutBsg" name="A_type_connector" memberEnd="_LPmMYDoZEeCmpu-HRutBsg _LPmNHToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNHToZEeCmpu-HRutBsg" name="connector" visibility="public" type="_LPmMQjoZEeCmpu-HRutBsg" association="_LPmNHDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNHjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNHzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNIDoZEeCmpu-HRutBsg" name="A_connectableElement_templateParameter_parameteredElement" memberEnd="_LPmMMzoZEeCmpu-HRutBsg _LPmMQDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNIToZEeCmpu-HRutBsg" name="A_end_role" memberEnd="_LPmMLzoZEeCmpu-HRutBsg _LPmMfToZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNIjoZEeCmpu-HRutBsg" name="A_realizingClassifier_componentRealization" memberEnd="_LPmMJzoZEeCmpu-HRutBsg _LPmNIzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNIzoZEeCmpu-HRutBsg" name="componentRealization" visibility="public" type="_LPmMIToZEeCmpu-HRutBsg" association="_LPmNIjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNJDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNJToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShYjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNJjoZEeCmpu-HRutBsg" name="A_required_component" memberEnd="_LPmL_zoZEeCmpu-HRutBsg _LPmNJzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNJzoZEeCmpu-HRutBsg" name="component" visibility="public" type="_LPmL5joZEeCmpu-HRutBsg" association="_LPmNJjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNKDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNKToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNKjoZEeCmpu-HRutBsg" name="A_packagedElement_component" memberEnd="_LPmL8zoZEeCmpu-HRutBsg _LPmNKzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNKzoZEeCmpu-HRutBsg" name="component" visibility="public" type="_LPmL5joZEeCmpu-HRutBsg" association="_LPmNKjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNLDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNLToZEeCmpu-HRutBsg" name="A_realization_abstraction_component" memberEnd="_LPmL-zoZEeCmpu-HRutBsg _LPmMJDoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNLjoZEeCmpu-HRutBsg" name="A_provided_component" memberEnd="_LPmL9zoZEeCmpu-HRutBsg _LPmNLzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNLzoZEeCmpu-HRutBsg" name="component" visibility="public" type="_LPmL5joZEeCmpu-HRutBsg" association="_LPmNLjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNMDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNMToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNMjoZEeCmpu-HRutBsg" name="A_type_collaborationUse" memberEnd="_LPmL5DoZEeCmpu-HRutBsg _LPmNMzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNMzoZEeCmpu-HRutBsg" name="collaborationUse" visibility="public" type="_LPmL1DoZEeCmpu-HRutBsg" association="_LPmNMjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNNDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNNToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNNjoZEeCmpu-HRutBsg" name="A_roleBinding_collaborationUse" memberEnd="_LPmL4DoZEeCmpu-HRutBsg _LPmNNzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNNzoZEeCmpu-HRutBsg" name="collaborationUse" visibility="public" type="_LPmL1DoZEeCmpu-HRutBsg" association="_LPmNNjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNODoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNOToZEeCmpu-HRutBsg" name="A_collaborationRole_collaboration" memberEnd="_LPmL0DoZEeCmpu-HRutBsg _LPmNOjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNOjoZEeCmpu-HRutBsg" name="collaboration" visibility="public" type="_LPmLzDoZEeCmpu-HRutBsg" subsettedProperty="_LPmM9DoZEeCmpu-HRutBsg" association="_LPmNOToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNOzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNPDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNPToZEeCmpu-HRutBsg" name="A_ownedOperation_class">
+    <memberEnd xmi:type="uml:Property" href="#_LPmLqDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH19KjoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNPjoZEeCmpu-HRutBsg" name="A_superClass_class" memberEnd="_LPmLsDoZEeCmpu-HRutBsg _LPmNPzoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNPzoZEeCmpu-HRutBsg" name="class" visibility="public" type="_LPceFToZEeCmpu-HRutBsg" association="_LPmNPjoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNQDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNQToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1_RzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNQjoZEeCmpu-HRutBsg" name="A_extension_metaclass" isDerived="true">
+    <memberEnd xmi:type="uml:Property" href="#_LPceHzoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Packages.fragment.xmi#_IH8fuzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNQzoZEeCmpu-HRutBsg" name="A_ownedAttribute_class">
+    <memberEnd xmi:type="uml:Property" href="#_LPmLpDoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-BzoZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNRDoZEeCmpu-HRutBsg" name="A_nestedClassifier_nestingClass" memberEnd="_LPmLoDoZEeCmpu-HRutBsg _LPmNRToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNRToZEeCmpu-HRutBsg" name="nestingClass" visibility="public" type="_LPceFToZEeCmpu-HRutBsg" association="_LPmNRDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNRjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-gDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNRzoZEeCmpu-HRutBsg" name="A_ownedReception_class" memberEnd="_LPmLrDoZEeCmpu-HRutBsg _LPmNSDoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNSDoZEeCmpu-HRutBsg" name="class" visibility="public" type="_LPceFToZEeCmpu-HRutBsg" association="_LPmNRzoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNSToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CHsPJjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3ShbDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNSjoZEeCmpu-HRutBsg" name="A_memberEnd_association">
+    <memberEnd xmi:type="uml:Property" href="#_LPcd-DoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-AToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNSzoZEeCmpu-HRutBsg" name="A_endType_association" memberEnd="_LPcd8joZEeCmpu-HRutBsg _LPmNTDoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNTDoZEeCmpu-HRutBsg" name="association" visibility="public" type="_LPcd4ToZEeCmpu-HRutBsg" association="_LPmNSzoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LPmNTToZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNTjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3SixzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNTzoZEeCmpu-HRutBsg" name="A_ownedEnd_owningAssociation">
+    <memberEnd xmi:type="uml:Property" href="#_LPceADoZEeCmpu-HRutBsg"/>
+    <memberEnd xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-LToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LPmNUDoZEeCmpu-HRutBsg" name="A_navigableOwnedEnd_association" memberEnd="_LPcd_DoZEeCmpu-HRutBsg _LPmNUToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LPmNUToZEeCmpu-HRutBsg" name="association" visibility="public" type="_LPcd4ToZEeCmpu-HRutBsg" association="_LPmNUDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LPmNUjoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="Classification.fragment.xmi#_CH1-LToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

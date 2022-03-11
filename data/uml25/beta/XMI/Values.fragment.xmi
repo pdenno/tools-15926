@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://schema.omg.org/spec/UML/2.2" xsi:schemaLocation="http://schema.omg.org/spec/UML/2.2 http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_MYJvIDoZEeCmpu-HRutBsg" name="Values">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_aqMN8CeFEeGIO7n8RMES3Q">
+    <importedPackage xmi:type="uml:Package" href="Classification.fragment.xmi#_CHPgADoZEeCmpu-HRutBsg"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTh9DoZEeCmpu-HRutBsg" name="Duration">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTh9ToZEeCmpu-HRutBsg" annotatedElement="_MYTh9DoZEeCmpu-HRutBsg">
+      <body>Duration defines a value specification that specifies the temporal distance between two time instants.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTh9joZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTh9zoZEeCmpu-HRutBsg" name="expr" visibility="public" type="_MYTjCToZEeCmpu-HRutBsg" aggregation="composite" association="_MYcqHjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTh-DoZEeCmpu-HRutBsg" annotatedElement="_MYTh9zoZEeCmpu-HRutBsg">
+        <body>The value of the Duration.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTh-ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTh-joZEeCmpu-HRutBsg" name="observation" visibility="public" type="_MYTikzoZEeCmpu-HRutBsg" association="_MYcqIToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTh-zoZEeCmpu-HRutBsg" annotatedElement="_MYTh-joZEeCmpu-HRutBsg">
+        <body>Refers to the time and duration observations that are involved in expr.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTh_DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTh_ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTh_joZEeCmpu-HRutBsg" name="DurationConstraint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTh_zoZEeCmpu-HRutBsg" annotatedElement="_MYTh_joZEeCmpu-HRutBsg">
+      <body>A duration constraint is a constraint that refers to a duration interval.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiADoZEeCmpu-HRutBsg" name="first_event_multiplicity" constrainedElement="_MYTh_joZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiAToZEeCmpu-HRutBsg" annotatedElement="_MYTiADoZEeCmpu-HRutBsg">
+        <body>The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiAjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>if (constrainedElement->size() =2)&#xD;&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0) &#xD;&#xA;endif</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiAzoZEeCmpu-HRutBsg" general="_MYTiMDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiBDoZEeCmpu-HRutBsg" name="firstEvent" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiBToZEeCmpu-HRutBsg" annotatedElement="_MYTiBDoZEeCmpu-HRutBsg">
+        <body>The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiBjoZEeCmpu-HRutBsg" value="2"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiBzoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiCDoZEeCmpu-HRutBsg" name="specification" visibility="public" type="_MYTiCjoZEeCmpu-HRutBsg" aggregation="composite" redefinedProperty="_MYTiMzoZEeCmpu-HRutBsg" association="_MYcqGjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiCToZEeCmpu-HRutBsg" annotatedElement="_MYTiCDoZEeCmpu-HRutBsg">
+        <body>The interval constraining the duration.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiCjoZEeCmpu-HRutBsg" name="DurationInterval">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiCzoZEeCmpu-HRutBsg" annotatedElement="_MYTiCjoZEeCmpu-HRutBsg">
+      <body>A duration interval defines the range between two durations.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiDDoZEeCmpu-HRutBsg" general="_MYTiKToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiDToZEeCmpu-HRutBsg" name="max" visibility="public" type="_MYTh9DoZEeCmpu-HRutBsg" redefinedProperty="_MYTiLDoZEeCmpu-HRutBsg" association="_MYcqEDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiDjoZEeCmpu-HRutBsg" annotatedElement="_MYTiDToZEeCmpu-HRutBsg">
+        <body>Refers to the Duration denoting the maximum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiDzoZEeCmpu-HRutBsg" name="min" visibility="public" type="_MYTh9DoZEeCmpu-HRutBsg" redefinedProperty="_MYTiLjoZEeCmpu-HRutBsg" association="_MYcqFToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiEDoZEeCmpu-HRutBsg" annotatedElement="_MYTiDzoZEeCmpu-HRutBsg">
+        <body>Refers to the Duration denoting the minimum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiEToZEeCmpu-HRutBsg" name="DurationObservation">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiEjoZEeCmpu-HRutBsg" annotatedElement="_MYTiEToZEeCmpu-HRutBsg">
+      <body>A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiEzoZEeCmpu-HRutBsg" name="first_event_multiplicity" constrainedElement="_MYTiEToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiFDoZEeCmpu-HRutBsg" annotatedElement="_MYTiEzoZEeCmpu-HRutBsg">
+        <body>The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiFToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>if (event->size() = 2)&#xD;&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0)&#xD;&#xA;endif</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiFjoZEeCmpu-HRutBsg" general="_MYTikzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiFzoZEeCmpu-HRutBsg" name="event" visibility="public" association="_MYTjbDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiGDoZEeCmpu-HRutBsg" annotatedElement="_MYTiFzoZEeCmpu-HRutBsg">
+        <body>The observation is determined by the entering or exiting of the event element during execution.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiGToZEeCmpu-HRutBsg" value="2"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiGjoZEeCmpu-HRutBsg" name="firstEvent" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiGzoZEeCmpu-HRutBsg" annotatedElement="_MYTiGjoZEeCmpu-HRutBsg">
+        <body>The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiHDoZEeCmpu-HRutBsg" value="2"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiHToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiHjoZEeCmpu-HRutBsg" name="Expression">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiHzoZEeCmpu-HRutBsg" annotatedElement="_MYTiHjoZEeCmpu-HRutBsg">
+      <body>An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
+An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiIToZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiIjoZEeCmpu-HRutBsg" name="operand" visibility="public" type="_MYTjCToZEeCmpu-HRutBsg" isOrdered="true" aggregation="composite" association="_MYTjaToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiIzoZEeCmpu-HRutBsg" annotatedElement="_MYTiIjoZEeCmpu-HRutBsg">
+        <body>Specifies a sequence of operands.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiJDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiJToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiJjoZEeCmpu-HRutBsg" name="symbol" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiJzoZEeCmpu-HRutBsg" annotatedElement="_MYTiJjoZEeCmpu-HRutBsg">
+        <body>The symbol associated with the node in the expression tree.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiKDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiKToZEeCmpu-HRutBsg" name="Interval">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiKjoZEeCmpu-HRutBsg" annotatedElement="_MYTiKToZEeCmpu-HRutBsg">
+      <body>An interval defines the range between two value specifications.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiKzoZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiLDoZEeCmpu-HRutBsg" name="max" visibility="public" type="_MYTjCToZEeCmpu-HRutBsg" association="_MYTjYToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiLToZEeCmpu-HRutBsg" annotatedElement="_MYTiLDoZEeCmpu-HRutBsg">
+        <body>Refers to the ValueSpecification denoting the maximum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiLjoZEeCmpu-HRutBsg" name="min" visibility="public" type="_MYTjCToZEeCmpu-HRutBsg" association="_MYTjZToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiLzoZEeCmpu-HRutBsg" annotatedElement="_MYTiLjoZEeCmpu-HRutBsg">
+        <body>Refers to the ValueSpecification denoting the minimum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiMDoZEeCmpu-HRutBsg" name="IntervalConstraint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiMToZEeCmpu-HRutBsg" annotatedElement="_MYTiMDoZEeCmpu-HRutBsg">
+      <body>An interval constraint is a constraint that refers to an interval.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiMjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3IzAzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiMzoZEeCmpu-HRutBsg" name="specification" visibility="public" type="_MYTiKToZEeCmpu-HRutBsg" aggregation="composite" association="_MYTjXToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiNDoZEeCmpu-HRutBsg" annotatedElement="_MYTiMzoZEeCmpu-HRutBsg">
+        <body>A condition that must be true when evaluated in order for the constraint to be satisfied.</body>
+      </ownedComment>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzGToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiNToZEeCmpu-HRutBsg" name="LiteralBoolean">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiNjoZEeCmpu-HRutBsg" annotatedElement="_MYTiNToZEeCmpu-HRutBsg">
+      <body>A literal Boolean is a specification of a Boolean value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiNzoZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiODoZEeCmpu-HRutBsg" name="value" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiOToZEeCmpu-HRutBsg" annotatedElement="_MYTiODoZEeCmpu-HRutBsg">
+        <body>The specified Boolean value.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_MYTiOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiOzoZEeCmpu-HRutBsg" name="booleanValue" visibility="public" isQuery="true" redefinedOperation="_MYTjDjoZEeCmpu-HRutBsg" bodyCondition="_MYTiPToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiPDoZEeCmpu-HRutBsg" annotatedElement="_MYTiOzoZEeCmpu-HRutBsg">
+        <body>The query booleanValue() gives the value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiPToZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiOzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiPjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>value</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiPzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiQDoZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiQjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiQToZEeCmpu-HRutBsg" annotatedElement="_MYTiQDoZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiQjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiQDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiQzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiRDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiRToZEeCmpu-HRutBsg" name="LiteralInteger">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiRjoZEeCmpu-HRutBsg" annotatedElement="_MYTiRToZEeCmpu-HRutBsg">
+      <body>A literal integer is a specification of an integer value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiRzoZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiSDoZEeCmpu-HRutBsg" name="value" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiSToZEeCmpu-HRutBsg" annotatedElement="_MYTiSDoZEeCmpu-HRutBsg">
+        <body>The specified Integer value.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiSjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiSzoZEeCmpu-HRutBsg" name="integerValue" visibility="public" isQuery="true" redefinedOperation="_MYTjFDoZEeCmpu-HRutBsg" bodyCondition="_MYTiTToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiTDoZEeCmpu-HRutBsg" annotatedElement="_MYTiSzoZEeCmpu-HRutBsg">
+        <body>The query integerValue() gives the value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiTToZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiSzoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiTjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>value</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiTzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiUDoZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiUjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiUToZEeCmpu-HRutBsg" annotatedElement="_MYTiUDoZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiUjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiUDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiUzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiVDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiVToZEeCmpu-HRutBsg" name="LiteralNull">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiVjoZEeCmpu-HRutBsg" annotatedElement="_MYTiVToZEeCmpu-HRutBsg">
+      <body>A literal null specifies the lack of a value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiVzoZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiWDoZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiWjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiWToZEeCmpu-HRutBsg" annotatedElement="_MYTiWDoZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiWjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiWDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiWzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiXDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiXToZEeCmpu-HRutBsg" name="isNull" visibility="public" isQuery="true" redefinedOperation="_MYTjJToZEeCmpu-HRutBsg" bodyCondition="_MYTiXzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiXjoZEeCmpu-HRutBsg" annotatedElement="_MYTiXToZEeCmpu-HRutBsg">
+        <body>The query isNull() returns true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiXzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiXToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiYDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiYToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiYjoZEeCmpu-HRutBsg" name="LiteralReal">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiYzoZEeCmpu-HRutBsg" annotatedElement="_MYTiYjoZEeCmpu-HRutBsg">
+      <body>A literal real is a specification of a real value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiZDoZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiZToZEeCmpu-HRutBsg" name="value" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiZjoZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiaDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiZzoZEeCmpu-HRutBsg" annotatedElement="_MYTiZjoZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiaDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiZjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiaToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiajoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiazoZEeCmpu-HRutBsg" name="realValue" visibility="public" isQuery="true" redefinedOperation="_MYTjKjoZEeCmpu-HRutBsg" bodyCondition="_MYTibToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTibDoZEeCmpu-HRutBsg" annotatedElement="_MYTiazoZEeCmpu-HRutBsg">
+        <body>The query realValue() gives the value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTibToZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiazoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTibjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>value</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTibzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTicDoZEeCmpu-HRutBsg" name="LiteralSpecification" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTicToZEeCmpu-HRutBsg" annotatedElement="_MYTicDoZEeCmpu-HRutBsg">
+      <body>A literal specification identifies a literal constant being modeled.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTicjoZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiczoZEeCmpu-HRutBsg" name="LiteralString">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTidDoZEeCmpu-HRutBsg" annotatedElement="_MYTiczoZEeCmpu-HRutBsg">
+      <body>A literal string is a specification of a string value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTidToZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTidjoZEeCmpu-HRutBsg" name="value" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTidzoZEeCmpu-HRutBsg" annotatedElement="_MYTidjoZEeCmpu-HRutBsg">
+        <body>The specified String value.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTieDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTieToZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiezoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiejoZEeCmpu-HRutBsg" annotatedElement="_MYTieToZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiezoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTieToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTifDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTifToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTifjoZEeCmpu-HRutBsg" name="stringValue" visibility="public" isQuery="true" redefinedOperation="_MYTjMDoZEeCmpu-HRutBsg" bodyCondition="_MYTigDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTifzoZEeCmpu-HRutBsg" annotatedElement="_MYTifjoZEeCmpu-HRutBsg">
+        <body>The query stringValue() gives the value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTigDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTifjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTigToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>value</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTigjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTigzoZEeCmpu-HRutBsg" name="LiteralUnlimitedNatural">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTihDoZEeCmpu-HRutBsg" annotatedElement="_MYTigzoZEeCmpu-HRutBsg">
+      <body>A literal unlimited natural is a specification of an unlimited natural number.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTihToZEeCmpu-HRutBsg" general="_MYTicDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTihjoZEeCmpu-HRutBsg" name="value" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTihzoZEeCmpu-HRutBsg" annotatedElement="_MYTihjoZEeCmpu-HRutBsg">
+        <body>The specified UnlimitedNatural value.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiiDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiiToZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" redefinedOperation="_MYTjIDoZEeCmpu-HRutBsg" bodyCondition="_MYTiizoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiijoZEeCmpu-HRutBsg" annotatedElement="_MYTiiToZEeCmpu-HRutBsg">
+        <body>The query isComputable() is redefined to be true.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiizoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiiToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTijDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTijToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTijjoZEeCmpu-HRutBsg" name="unlimitedValue" visibility="public" isQuery="true" redefinedOperation="_MYTjNjoZEeCmpu-HRutBsg" bodyCondition="_MYTikDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTijzoZEeCmpu-HRutBsg" annotatedElement="_MYTijjoZEeCmpu-HRutBsg">
+        <body>The query unlimitedValue() gives the value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTikDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTijjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTikToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>value</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTikjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTikzoZEeCmpu-HRutBsg" name="Observation" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTilDoZEeCmpu-HRutBsg" annotatedElement="_MYTikzoZEeCmpu-HRutBsg">
+      <body>Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTilToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTiljoZEeCmpu-HRutBsg" name="OpaqueExpression">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTilzoZEeCmpu-HRutBsg" annotatedElement="_MYTiljoZEeCmpu-HRutBsg">
+      <body>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
+Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTimToZEeCmpu-HRutBsg" name="language_body_size" constrainedElement="_MYTiljoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTimjoZEeCmpu-HRutBsg" annotatedElement="_MYTimToZEeCmpu-HRutBsg">
+        <body>If the language attribute is not empty, then the size of the body and language arrays must be the same.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTimzoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>language->notEmpty() implies (_'body'->size() = language->size())</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTinDoZEeCmpu-HRutBsg" name="one_return_result_parameter" constrainedElement="_MYTiljoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTinToZEeCmpu-HRutBsg" annotatedElement="_MYTinDoZEeCmpu-HRutBsg">
+        <body>The behavior must have exactly one return result parameter.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTinjoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>self.behavior &lt;> null implies&#xD;&#xA;  self.behavior.ownedParameter->select(direction=ParameterDirectionKind::return)->size() = 1</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTinzoZEeCmpu-HRutBsg" name="only_return_result_parameters" constrainedElement="_MYTiljoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTioDoZEeCmpu-HRutBsg" annotatedElement="_MYTinzoZEeCmpu-HRutBsg">
+        <body>The behavior may only have return result parameters.</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTioToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>behavior &lt;> null implies behavior.ownedParameter->select(direction&lt;>ParameterDirectionKind::return)->isEmpty()</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTiojoZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiozoZEeCmpu-HRutBsg" name="behavior" visibility="public" association="_MYTjWToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTipDoZEeCmpu-HRutBsg" annotatedElement="_MYTiozoZEeCmpu-HRutBsg">
+        <body>Specifies the behavior of the opaque expression.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonBehavior.fragment.xmi#_DF0rXzoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTipToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTipjoZEeCmpu-HRutBsg" name="body" visibility="public" isOrdered="true" isUnique="false">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTipzoZEeCmpu-HRutBsg" annotatedElement="_MYTipjoZEeCmpu-HRutBsg">
+        <body>The text of the expression, possibly in multiple languages.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTiqDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiqToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTiqjoZEeCmpu-HRutBsg" name="language" visibility="public" isOrdered="true">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiqzoZEeCmpu-HRutBsg" annotatedElement="_MYTiqjoZEeCmpu-HRutBsg">
+        <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTirDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTirToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTirjoZEeCmpu-HRutBsg" name="result" visibility="public" isReadOnly="true" isDerived="true" association="_MYTjVToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTirzoZEeCmpu-HRutBsg" annotatedElement="_MYTirjoZEeCmpu-HRutBsg">
+        <body>Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19kjoZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTisDoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTisToZEeCmpu-HRutBsg" name="isIntegral" visibility="public" isQuery="true" bodyCondition="_MYTiszoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTisjoZEeCmpu-HRutBsg" annotatedElement="_MYTisToZEeCmpu-HRutBsg">
+        <body>The query isIntegral() tells whether an expression is intended to produce an integer.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiszoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTisToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTitDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTitToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTitjoZEeCmpu-HRutBsg" name="isNonNegative" visibility="public" isQuery="true" precondition="_MYTiuDoZEeCmpu-HRutBsg" bodyCondition="_MYTiujoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTitzoZEeCmpu-HRutBsg" annotatedElement="_MYTitjoZEeCmpu-HRutBsg">
+        <body>The query isNonNegative() tells whether an integer expression has a non-negative value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiuDoZEeCmpu-HRutBsg" name="pre" constrainedElement="_MYTitjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiuToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.isIntegral()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiujoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTitjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiuzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTivDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTivToZEeCmpu-HRutBsg" name="isPositive" visibility="public" isQuery="true" precondition="_MYTiwToZEeCmpu-HRutBsg" bodyCondition="_MYTivzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTivjoZEeCmpu-HRutBsg" annotatedElement="_MYTivToZEeCmpu-HRutBsg">
+        <body>The query isPositive() tells whether an integer expression has a positive value.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTivzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTivToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiwDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTiwToZEeCmpu-HRutBsg" name="pre" constrainedElement="_MYTivToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTiwjoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.isIntegral()</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiwzoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTixDoZEeCmpu-HRutBsg" name="result" visibility="public" isQuery="true" bodyCondition="_MYTixjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTixToZEeCmpu-HRutBsg" annotatedElement="_MYTixDoZEeCmpu-HRutBsg">
+        <body>Missing derivation for OpaqueExpression::/result : Parameter</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTixjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTixDoZEeCmpu-HRutBsg _MYTirjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTixzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTiyDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="Classification.fragment.xmi#_CH19kjoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTiyToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTiyjoZEeCmpu-HRutBsg" name="value" visibility="public" isQuery="true" precondition="_MYTizDoZEeCmpu-HRutBsg" bodyCondition="_MYTizjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTiyzoZEeCmpu-HRutBsg" annotatedElement="_MYTiyjoZEeCmpu-HRutBsg">
+        <body>The query value() gives an integer value for an expression intended to produce one.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTizDoZEeCmpu-HRutBsg" name="pre" constrainedElement="_MYTiyjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTizToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>self.isIntegral()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTizjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTiyjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTizzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>0</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTi0DoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTi0ToZEeCmpu-HRutBsg" name="StringExpression">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi0joZEeCmpu-HRutBsg" annotatedElement="_MYTi0ToZEeCmpu-HRutBsg">
+      <body>An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTi0zoZEeCmpu-HRutBsg" name="operands" constrainedElement="_MYTi0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi1DoZEeCmpu-HRutBsg" annotatedElement="_MYTi0zoZEeCmpu-HRutBsg">
+        <body>All the operands of a StringExpression must be LiteralStrings</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTi1ToZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>operand->forAll (oclIsKindOf (LiteralString))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTi1joZEeCmpu-HRutBsg" name="subexpressions" constrainedElement="_MYTi0ToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi1zoZEeCmpu-HRutBsg" annotatedElement="_MYTi1joZEeCmpu-HRutBsg">
+        <body>If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to define a collating sequence between operands and subexpressions).</body>
+      </ownedComment>
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTi2DoZEeCmpu-HRutBsg">
+        <language>OCL</language>
+        <body>if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty() endif</body>
+      </specification>
+    </ownedRule>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTi2ToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SiIjoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTi2joZEeCmpu-HRutBsg" general="_MYTiHjoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi2zoZEeCmpu-HRutBsg" name="owningExpression" visibility="public" type="_MYTi0ToZEeCmpu-HRutBsg" isOrdered="true" association="_MYTjVDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi3DoZEeCmpu-HRutBsg" annotatedElement="_MYTi2zoZEeCmpu-HRutBsg">
+        <body>The string expression of which this expression is a substring.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTi3ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi3joZEeCmpu-HRutBsg" name="subExpression" visibility="public" type="_MYTi0ToZEeCmpu-HRutBsg" aggregation="composite" association="_MYTjVDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi3zoZEeCmpu-HRutBsg" annotatedElement="_MYTi3joZEeCmpu-HRutBsg">
+        <body>The StringExpressions that constitute this StringExpression.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTi4DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTi4ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTi4joZEeCmpu-HRutBsg" name="stringValue" visibility="public" isQuery="true" redefinedOperation="_MYTjMDoZEeCmpu-HRutBsg" bodyCondition="_MYTi5DoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi4zoZEeCmpu-HRutBsg" annotatedElement="_MYTi4joZEeCmpu-HRutBsg">
+        <body>The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTi5DoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTi4joZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTi5ToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>if subExpression->notEmpty()&#xA;then subExpression->iterate(se; stringValue: String = '' | stringValue.concat(se.stringValue()))&#xA;else operand->iterate(op; stringValue: String = '' | stringValue.concat(op.stringValue()))&#xA;endif</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTi5joZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTi5zoZEeCmpu-HRutBsg" name="TimeConstraint">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi6DoZEeCmpu-HRutBsg" annotatedElement="_MYTi5zoZEeCmpu-HRutBsg">
+      <body>A time constraint is a constraint that refers to a time interval.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTi6ToZEeCmpu-HRutBsg" general="_MYTiMDoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi6joZEeCmpu-HRutBsg" name="firstEvent" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi6zoZEeCmpu-HRutBsg" annotatedElement="_MYTi6joZEeCmpu-HRutBsg">
+        <body>The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTi7DoZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_MYTi7ToZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi7joZEeCmpu-HRutBsg" name="specification" visibility="public" type="_MYTi-joZEeCmpu-HRutBsg" aggregation="composite" redefinedProperty="_MYTiMzoZEeCmpu-HRutBsg" association="_MYTjUDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi7zoZEeCmpu-HRutBsg" annotatedElement="_MYTi7joZEeCmpu-HRutBsg">
+        <body>A condition that must be true when evaluated in order for the constraint to be satisfied.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTi8DoZEeCmpu-HRutBsg" name="TimeExpression">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi8ToZEeCmpu-HRutBsg" annotatedElement="_MYTi8DoZEeCmpu-HRutBsg">
+      <body>A time expression defines a value specification that represents a time value.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTi8joZEeCmpu-HRutBsg" general="_MYTjCToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi8zoZEeCmpu-HRutBsg" name="expr" visibility="public" type="_MYTjCToZEeCmpu-HRutBsg" aggregation="composite" association="_MYTjSjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi9DoZEeCmpu-HRutBsg" annotatedElement="_MYTi8zoZEeCmpu-HRutBsg">
+        <body>The value of the time expression.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTi9ToZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzOjoZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi9joZEeCmpu-HRutBsg" name="observation" visibility="public" type="_MYTikzoZEeCmpu-HRutBsg" association="_MYTjTToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi9zoZEeCmpu-HRutBsg" annotatedElement="_MYTi9joZEeCmpu-HRutBsg">
+        <body>Refers to the time and duration observations that are involved in expr.</body>
+      </ownedComment>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTi-DoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTi-ToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTi-joZEeCmpu-HRutBsg" name="TimeInterval">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi-zoZEeCmpu-HRutBsg" annotatedElement="_MYTi-joZEeCmpu-HRutBsg">
+      <body>A time interval defines the range between two time expressions.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTi_DoZEeCmpu-HRutBsg" general="_MYTiKToZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi_ToZEeCmpu-HRutBsg" name="max" visibility="public" type="_MYTi8DoZEeCmpu-HRutBsg" redefinedProperty="_MYTiLDoZEeCmpu-HRutBsg" association="_MYTjQDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTi_joZEeCmpu-HRutBsg" annotatedElement="_MYTi_ToZEeCmpu-HRutBsg">
+        <body>Refers to the TimeExpression denoting the maximum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTi_zoZEeCmpu-HRutBsg" name="min" visibility="public" type="_MYTi8DoZEeCmpu-HRutBsg" redefinedProperty="_MYTiLjoZEeCmpu-HRutBsg" association="_MYTjRToZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjADoZEeCmpu-HRutBsg" annotatedElement="_MYTi_zoZEeCmpu-HRutBsg">
+        <body>Refers to the TimeExpression denoting the minimum value of the range.</body>
+      </ownedComment>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTjAToZEeCmpu-HRutBsg" name="TimeObservation">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjAjoZEeCmpu-HRutBsg" annotatedElement="_MYTjAToZEeCmpu-HRutBsg">
+      <body>A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjAzoZEeCmpu-HRutBsg" general="_MYTikzoZEeCmpu-HRutBsg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTjBDoZEeCmpu-HRutBsg" name="event" visibility="public" association="_MYTjPDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjBToZEeCmpu-HRutBsg" annotatedElement="_MYTjBDoZEeCmpu-HRutBsg">
+        <body>The observation is determined by the entering or exiting of the event element during execution.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3ShVToZEeCmpu-HRutBsg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MYTjBjoZEeCmpu-HRutBsg" name="firstEvent" visibility="public">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjBzoZEeCmpu-HRutBsg" annotatedElement="_MYTjBjoZEeCmpu-HRutBsg">
+        <body>The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_MYTjCDoZEeCmpu-HRutBsg" value="true"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MYTjCToZEeCmpu-HRutBsg" name="ValueSpecification" isAbstract="true">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjCjoZEeCmpu-HRutBsg" annotatedElement="_MYTjCToZEeCmpu-HRutBsg">
+      <body>ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
+A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.</body>
+    </ownedComment>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjDDoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3SihzoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjDToZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh6DoZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjDjoZEeCmpu-HRutBsg" name="booleanValue" visibility="public" isQuery="true" bodyCondition="_MYTjEDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjDzoZEeCmpu-HRutBsg" annotatedElement="_MYTjDjoZEeCmpu-HRutBsg">
+        <body>The query booleanValue() gives a single Boolean value when one can be computed.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjEDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjDjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjEToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjEjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjEzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjFDoZEeCmpu-HRutBsg" name="integerValue" visibility="public" isQuery="true" bodyCondition="_MYTjFjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjFToZEeCmpu-HRutBsg" annotatedElement="_MYTjFDoZEeCmpu-HRutBsg">
+        <body>The query integerValue() gives a single Integer value when one can be computed.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjFjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjFDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjFzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjGDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjGToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjGjoZEeCmpu-HRutBsg" name="isCompatibleWith" visibility="public" isQuery="true" bodyCondition="_MYTjHDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjGzoZEeCmpu-HRutBsg" annotatedElement="_MYTjGjoZEeCmpu-HRutBsg">
+        <body>The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjHDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjGjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjHToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>p.oclIsKindOf(self.oclType()) and self.type.conformsTo(p.oclAsType(TypedElement).type)</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjHjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjHzoZEeCmpu-HRutBsg" name="p" visibility="public">
+        <type xmi:type="uml:Class" href="CommonStructure.fragment.xmi#_D3Sh_joZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+      <redefinedOperation xmi:type="uml:Operation" href="CommonStructure.fragment.xmi#_D3SiBzoZEeCmpu-HRutBsg"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjIDoZEeCmpu-HRutBsg" name="isComputable" visibility="public" isQuery="true" bodyCondition="_MYTjIjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjIToZEeCmpu-HRutBsg" annotatedElement="_MYTjIDoZEeCmpu-HRutBsg">
+        <body>The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjIjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjIDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjIzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjJDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjJToZEeCmpu-HRutBsg" name="isNull" visibility="public" isQuery="true" bodyCondition="_MYTjJzoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjJjoZEeCmpu-HRutBsg" annotatedElement="_MYTjJToZEeCmpu-HRutBsg">
+        <body>The query isNull() returns true when it can be computed that the value is null.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjJzoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjJToZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjKDoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>false</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjKToZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic1ToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjKjoZEeCmpu-HRutBsg" name="realValue" visibility="public" isQuery="true" bodyCondition="_MYTjLDoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjKzoZEeCmpu-HRutBsg" annotatedElement="_MYTjKjoZEeCmpu-HRutBsg">
+        <body>The query realValue() gives a single Real value when one can be computed.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjLDoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjKjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjLToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjLjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjLzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjMDoZEeCmpu-HRutBsg" name="stringValue" visibility="public" isQuery="true" bodyCondition="_MYTjMjoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjMToZEeCmpu-HRutBsg" annotatedElement="_MYTjMDoZEeCmpu-HRutBsg">
+        <body>The query stringValue() gives a single String value when one can be computed.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjMjoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjMDoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjMzoZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjNDoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic2zoZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjNToZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MYTjNjoZEeCmpu-HRutBsg" name="unlimitedValue" visibility="public" isQuery="true" bodyCondition="_MYTjODoZEeCmpu-HRutBsg">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_MYTjNzoZEeCmpu-HRutBsg" annotatedElement="_MYTjNjoZEeCmpu-HRutBsg">
+        <body>The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.</body>
+      </ownedComment>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_MYTjODoZEeCmpu-HRutBsg" name="spec" constrainedElement="_MYTjNjoZEeCmpu-HRutBsg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_MYTjOToZEeCmpu-HRutBsg">
+          <language>OCL</language>
+          <body>null</body>
+        </specification>
+      </ownedRule>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MYTjOjoZEeCmpu-HRutBsg" name="result" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#_PSic3ToZEeCmpu-HRutBsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjOzoZEeCmpu-HRutBsg"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjPDoZEeCmpu-HRutBsg" name="A_event_timeObservation" memberEnd="_MYTjBDoZEeCmpu-HRutBsg _MYTjPToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjPToZEeCmpu-HRutBsg" name="timeObservation" visibility="public" type="_MYTjAToZEeCmpu-HRutBsg" association="_MYTjPDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjPjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjPzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjQDoZEeCmpu-HRutBsg" name="A_max_timeInterval" memberEnd="_MYTi_ToZEeCmpu-HRutBsg _MYTjQjoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjQToZEeCmpu-HRutBsg" general="_MYTjYToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjQjoZEeCmpu-HRutBsg" name="timeInterval" visibility="public" type="_MYTi-joZEeCmpu-HRutBsg" redefinedProperty="_MYTjYjoZEeCmpu-HRutBsg" association="_MYTjQDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjQzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjRDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjRToZEeCmpu-HRutBsg" name="A_min_timeInterval" memberEnd="_MYTi_zoZEeCmpu-HRutBsg _MYTjRzoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjRjoZEeCmpu-HRutBsg" general="_MYTjZToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjRzoZEeCmpu-HRutBsg" name="timeInterval" visibility="public" type="_MYTi-joZEeCmpu-HRutBsg" redefinedProperty="_MYTjZjoZEeCmpu-HRutBsg" association="_MYTjRToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjSDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjSToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjSjoZEeCmpu-HRutBsg" name="A_expr_timeExpression" memberEnd="_MYTi8zoZEeCmpu-HRutBsg _MYTjSzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjSzoZEeCmpu-HRutBsg" name="timeExpression" visibility="public" type="_MYTi8DoZEeCmpu-HRutBsg" association="_MYTjSjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjTDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjTToZEeCmpu-HRutBsg" name="A_observation_timeExpression" memberEnd="_MYTi9joZEeCmpu-HRutBsg _MYTjTjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjTjoZEeCmpu-HRutBsg" name="timeExpression" visibility="public" type="_MYTi8DoZEeCmpu-HRutBsg" association="_MYTjTToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjTzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjUDoZEeCmpu-HRutBsg" name="A_specification_timeConstraint" memberEnd="_MYTi7joZEeCmpu-HRutBsg _MYTjUjoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjUToZEeCmpu-HRutBsg" general="_MYTjXToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjUjoZEeCmpu-HRutBsg" name="timeConstraint" visibility="public" type="_MYTi5zoZEeCmpu-HRutBsg" redefinedProperty="_MYTjXzoZEeCmpu-HRutBsg" association="_MYTjUDoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjUzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjVDoZEeCmpu-HRutBsg" name="A_subExpression_owningExpression" memberEnd="_MYTi3joZEeCmpu-HRutBsg _MYTi2zoZEeCmpu-HRutBsg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjVToZEeCmpu-HRutBsg" name="A_result_opaqueExpression" memberEnd="_MYTirjoZEeCmpu-HRutBsg _MYTjVjoZEeCmpu-HRutBsg" isDerived="true">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjVjoZEeCmpu-HRutBsg" name="opaqueExpression" visibility="public" type="_MYTiljoZEeCmpu-HRutBsg" association="_MYTjVToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjVzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjWDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjWToZEeCmpu-HRutBsg" name="A_behavior_opaqueExpression" memberEnd="_MYTiozoZEeCmpu-HRutBsg _MYTjWjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjWjoZEeCmpu-HRutBsg" name="opaqueExpression" visibility="public" type="_MYTiljoZEeCmpu-HRutBsg" association="_MYTjWToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjWzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjXDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjXToZEeCmpu-HRutBsg" name="A_specification_intervalConstraint" memberEnd="_MYTiMzoZEeCmpu-HRutBsg _MYTjXzoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYTjXjoZEeCmpu-HRutBsg">
+      <general xmi:type="uml:Association" href="CommonStructure.fragment.xmi#_D3Si_ToZEeCmpu-HRutBsg"/>
+    </generalization>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjXzoZEeCmpu-HRutBsg" name="intervalConstraint" visibility="public" type="_MYTiMDoZEeCmpu-HRutBsg" association="_MYTjXToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjYDoZEeCmpu-HRutBsg"/>
+      <redefinedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3Si_joZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjYToZEeCmpu-HRutBsg" name="A_max_interval" memberEnd="_MYTiLDoZEeCmpu-HRutBsg _MYTjYjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjYjoZEeCmpu-HRutBsg" name="interval" visibility="public" type="_MYTiKToZEeCmpu-HRutBsg" association="_MYTjYToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjYzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjZDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjZToZEeCmpu-HRutBsg" name="A_min_interval" memberEnd="_MYTiLjoZEeCmpu-HRutBsg _MYTjZjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjZjoZEeCmpu-HRutBsg" name="interval" visibility="public" type="_MYTiKToZEeCmpu-HRutBsg" association="_MYTjZToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjZzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjaDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjaToZEeCmpu-HRutBsg" name="A_operand_expression" memberEnd="_MYTiIjoZEeCmpu-HRutBsg _MYTjajoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjajoZEeCmpu-HRutBsg" name="expression" visibility="public" type="_MYTiHjoZEeCmpu-HRutBsg" association="_MYTjaToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjazoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYTjbDoZEeCmpu-HRutBsg" name="A_event_durationObservation" memberEnd="_MYTiFzoZEeCmpu-HRutBsg _MYTjbToZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYTjbToZEeCmpu-HRutBsg" name="durationObservation" visibility="public" type="_MYTiEToZEeCmpu-HRutBsg" association="_MYTjbDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYTjbjoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYTjbzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYcqEDoZEeCmpu-HRutBsg" name="A_max_durationInterval" memberEnd="_MYTiDToZEeCmpu-HRutBsg _MYcqEjoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYcqEToZEeCmpu-HRutBsg" general="_MYTjYToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYcqEjoZEeCmpu-HRutBsg" name="durationInterval" visibility="public" type="_MYTiCjoZEeCmpu-HRutBsg" redefinedProperty="_MYTjYjoZEeCmpu-HRutBsg" association="_MYcqEDoZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYcqEzoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYcqFDoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYcqFToZEeCmpu-HRutBsg" name="A_min_durationInterval" memberEnd="_MYTiDzoZEeCmpu-HRutBsg _MYcqFzoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYcqFjoZEeCmpu-HRutBsg" general="_MYTjZToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYcqFzoZEeCmpu-HRutBsg" name="durationInterval" visibility="public" type="_MYTiCjoZEeCmpu-HRutBsg" redefinedProperty="_MYTjZjoZEeCmpu-HRutBsg" association="_MYcqFToZEeCmpu-HRutBsg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MYcqGDoZEeCmpu-HRutBsg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYcqGToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYcqGjoZEeCmpu-HRutBsg" name="A_specification_durationConstraint" memberEnd="_MYTiCDoZEeCmpu-HRutBsg _MYcqHDoZEeCmpu-HRutBsg">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MYcqGzoZEeCmpu-HRutBsg" general="_MYTjXToZEeCmpu-HRutBsg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYcqHDoZEeCmpu-HRutBsg" name="durationConstraint" visibility="public" type="_MYTh_joZEeCmpu-HRutBsg" redefinedProperty="_MYTjXzoZEeCmpu-HRutBsg" association="_MYcqGjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYcqHToZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYcqHjoZEeCmpu-HRutBsg" name="A_expr_duration" memberEnd="_MYTh9zoZEeCmpu-HRutBsg _MYcqHzoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYcqHzoZEeCmpu-HRutBsg" name="duration" visibility="public" type="_MYTh9DoZEeCmpu-HRutBsg" association="_MYcqHjoZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYcqIDoZEeCmpu-HRutBsg"/>
+      <subsettedProperty xmi:type="uml:Property" href="CommonStructure.fragment.xmi#_D3IzPjoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MYcqIToZEeCmpu-HRutBsg" name="A_observation_duration" memberEnd="_MYTh-joZEeCmpu-HRutBsg _MYcqIjoZEeCmpu-HRutBsg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MYcqIjoZEeCmpu-HRutBsg" name="duration" visibility="public" type="_MYTh9DoZEeCmpu-HRutBsg" association="_MYcqIToZEeCmpu-HRutBsg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MYcqIzoZEeCmpu-HRutBsg"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

@@ -1,0 +1,145 @@
+<queryResponse>
+  <answer result='yes' number='1'>
+    <bindingSet type='definite'>
+      <binding>
+        <var name='?X' value='AbsoluteValueFn'/>
+      </binding>
+    </bindingSet>
+    <proof>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='1892'>
+            (holds instance AbsoluteValueFn TotalValuedRelation)
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='1892'>
+              (holds instance AbsoluteValueFn TotalValuedRelation)
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='9580'>
+            (holds instance AbsoluteValueFn TotalValuedRelation)
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='59'>
+            (&lt;=&gt; (holds instance ?X76 TotalValuedRelation)
+                 (exists ( ?X77)
+                   (and (holds instance ?X76 Relation)
+                        (holds valence ?X76 ?X77)
+                        (=&gt; (forall ( ?X14 ?X78 ?X11)
+                              (=&gt; (and (&lt; ?X14 ?X77)
+                                       (holds domain ?X76 ?X14 ?X11)
+                                       (equal ?X78 (holds ListOrderFn (holds ListFn ?X79 ?X80 ?X81 ?X82 ?X83 ?X84 ?X85) ?X14)))
+                                  (holds instance ?X78 ?X11)))
+                            (exists ( ?X20)
+                              (holds ?X76 ?X79 ?X80 ?X81 ?X82 ?X83 ?X84 ?X85 ?X20))))))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='59'>
+              (&lt;=&gt; (holds instance ?X76 TotalValuedRelation)
+                   (exists ( ?X77)
+                     (and (holds instance ?X76 Relation)
+                          (holds valence ?X76 ?X77)
+                          (=&gt; (forall ( ?X14 ?X78 ?X11)
+                                (=&gt; (and (&lt; ?X14 ?X77)
+                                         (holds domain ?X76 ?X14 ?X11)
+                                         (equal ?X78 (holds ListOrderFn (holds ListFn ?X79 ?X80 ?X81 ?X82 ?X83 ?X84 ?X85) ?X14)))
+                                    (holds instance ?X78 ?X11)))
+                              (exists ( ?X20)
+                                (holds ?X76 ?X79 ?X80 ?X81 ?X82 ?X83 ?X84 ?X85 ?X20))))))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='12308'>
+            (or (holds instance ?X0 Relation)
+                (not (holds instance ?X0 TotalValuedRelation)))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+        </premises>
+        <conclusion>
+          <formula number='12298'>
+            (not (holds instance ?X572 Relation))
+          </formula>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <formula number='12298'>
+              (not (holds instance ?X572 Relation))
+            </formula>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='12309'>
+            (or (not (holds instance ?X0 Relation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='12308'>
+              (or (holds instance ?X0 Relation)
+                  (not (holds instance ?X0 TotalValuedRelation)))
+            </clause>
+          </premise>
+          <premise>
+            <clause number='12309'>
+              (or (not (holds instance ?X0 Relation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='12310'>
+            (or (not (holds instance ?X0 TotalValuedRelation))
+                ($answer ?X0))
+          </clause>
+        </conclusion>
+      </proofStep>
+      <proofStep>
+        <premises>
+          <premise>
+            <clause number='9580'>
+              (holds instance AbsoluteValueFn TotalValuedRelation)
+            </clause>
+          </premise>
+          <premise>
+            <clause number='12310'>
+              (or (not (holds instance ?X0 TotalValuedRelation))
+                  ($answer ?X0))
+            </clause>
+          </premise>
+        </premises>
+        <conclusion>
+          <clause number='12311'>
+            ($answer AbsoluteValueFn)
+          </clause>
+        </conclusion>
+      </proofStep>
+    </proof>
+  </answer>
+  <summary proofs='1'/>
+</queryResponse>

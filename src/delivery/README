@@ -1,0 +1,12 @@
+
+The NIST Validator MS Windows executable is experimental software. 
+It is available at http://syseng.nist.gov/se-interop/get-validator. 
+I will try to update this code with every update of the server at syseng.nist.gov. 
+If interest in this code develops, and time permits, I'll develop more automated
+means to update the code, but for the time being, you should manually pick up
+new executables with every announced enhancement. Enhancements are announced
+on the  MIWG mailing list. 
+
+Send bug reports to peter.denno@nist.gov
+
+This software was developed at the National Institute of Standards and Technology by employees of the Federal Government in the course of their official duties. Pursuant to title 17 Section 105 of the United States Code this software is not subject to copyright protection and is in the public domain. It is an experimental system. NIST assumes no responsibility whatsoever for its use by other parties, and makes no guarantees, expressed or implied, about its quality, reliability, or any other characteristic. We would appreciate acknowledgement if the software is used. This software can be redistributed and/or modified freely provided that any derivative works bear some notice that they are derived from it, and any modified versions bear some notice that they have been modified.

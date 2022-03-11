@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.omg.org/spec/UML/20100901" xmlns:cmof="http://schema.omg.org/spec/MOF/2.4/cmof.xml" xmi:version="2.1" xmi:id="_0" name="StandardProfileL2" URI="http://www.omg.org/spec/UML/20100901/StandardProfileL2">
+  <packagedElement xmi:type="uml:Extension" xmi:id="Abstraction_Derive" name="Abstraction_Derive" memberEnd="Derive-base_Abstraction Abstraction_Derive-extension_Derive">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Abstraction_Derive-extension_Derive" name="extension_Derive" visibility="public" type="Derive" aggregation="composite" association="Abstraction_Derive">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Abstraction_Derive-extension_Derive-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Abstraction_Refine" name="Abstraction_Refine" memberEnd="Refine-base_Abstraction Abstraction_Refine-extension_Refine">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Abstraction_Refine-extension_Refine" name="extension_Refine" visibility="public" type="Refine" aggregation="composite" association="Abstraction_Refine">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Abstraction_Refine-extension_Refine-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Abstraction_Trace" name="Abstraction_Trace" memberEnd="Trace-base_Abstraction Abstraction_Trace-extension_Trace">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Abstraction_Trace-extension_Trace" name="extension_Trace" visibility="public" type="Trace" aggregation="composite" association="Abstraction_Trace">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Abstraction_Trace-extension_Trace-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_Document" name="Artifact_Document" memberEnd="Artifact_Document-extension_Document Document-base_Artifact">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_Document-extension_Document" name="extension_Document" visibility="public" type="Document" aggregation="composite" association="Artifact_Document">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_Document-extension_Document-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_Executable" name="Artifact_Executable" memberEnd="Executable-base_Artifact Artifact_Executable-extension_Executable">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_Executable-extension_Executable" name="extension_Executable" visibility="public" type="Executable" aggregation="composite" association="Artifact_Executable">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_Executable-extension_Executable-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_File" name="Artifact_File" memberEnd="File-base_Artifact Artifact_File-extension_File">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_File-extension_File" name="extension_File" visibility="public" type="File" aggregation="composite" association="Artifact_File">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_File-extension_File-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_Library" name="Artifact_Library" memberEnd="Library-base_Artifact Artifact_Library-extension_Library">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_Library-extension_Library" name="extension_Library" visibility="public" type="Library" aggregation="composite" association="Artifact_Library">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_Library-extension_Library-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_Script" name="Artifact_Script" memberEnd="Artifact_Script-extension_Script Script-base_Artifact">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_Script-extension_Script" name="extension_Script" visibility="public" type="Script" aggregation="composite" association="Artifact_Script">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_Script-extension_Script-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Artifact_Source" name="Artifact_Source" memberEnd="Source-base_Artifact Artifact_Source-extension_Source">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Artifact_Source-extension_Source" name="extension_Source" visibility="public" type="Source" aggregation="composite" association="Artifact_Source">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact_Source-extension_Source-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="BehavioralFeature_Create" name="BehavioralFeature_Create" memberEnd="Create-base_BehavioralFeature BehavioralFeature_Create-extension_Create">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="BehavioralFeature_Create-extension_Create" name="extension_Create" visibility="public" type="Create" aggregation="composite" association="BehavioralFeature_Create">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="BehavioralFeature_Create-extension_Create-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="BehavioralFeature_Destroy" name="BehavioralFeature_Destroy" memberEnd="Destroy-base_BehavioralFeature BehavioralFeature_Destroy-extension_Destroy">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="BehavioralFeature_Destroy-extension_Destroy" name="extension_Destroy" visibility="public" type="Destroy" aggregation="composite" association="BehavioralFeature_Destroy">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="BehavioralFeature_Destroy-extension_Destroy-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_Auxiliary" name="Class_Auxiliary" memberEnd="Auxiliary-base_Class Class_Auxiliary-extension_Auxiliary">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_Auxiliary-extension_Auxiliary" name="extension_Auxiliary" visibility="public" type="Auxiliary" aggregation="composite" association="Class_Auxiliary">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Auxiliary-extension_Auxiliary-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_Focus" name="Class_Focus" memberEnd="Class_Focus-extension_Focus Focus-base_Class">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_Focus-extension_Focus" name="extension_Focus" visibility="public" type="Focus" aggregation="composite" association="Class_Focus">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Focus-extension_Focus-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_ImplementationClass" name="Class_ImplementationClass" memberEnd="ImplementationClass-base_Class Class_ImplementationClass-extension_ImplementationClass">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_ImplementationClass-extension_ImplementationClass" name="extension_ImplementationClass" visibility="public" type="ImplementationClass" aggregation="composite" association="Class_ImplementationClass">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_ImplementationClass-extension_ImplementationClass-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_Metaclass" name="Class_Metaclass" memberEnd="Class_Metaclass-extension_Metaclass Metaclass-base_Class">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_Metaclass-extension_Metaclass" name="extension_Metaclass" visibility="public" type="Metaclass" aggregation="composite" association="Class_Metaclass">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Metaclass-extension_Metaclass-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_Type" name="Class_Type" memberEnd="Class_Type-extension_Type Type-base_Class">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_Type-extension_Type" name="extension_Type" visibility="public" type="Type" aggregation="composite" association="Class_Type">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Type-extension_Type-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Class_Utility" name="Class_Utility" memberEnd="Class_Utility-extension_Utility Utility-base_Class">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_Utility-extension_Utility" name="extension_Utility" visibility="public" type="Utility" aggregation="composite" association="Class_Utility">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Utility-extension_Utility-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Classifier_Realization" name="Classifier_Realization" memberEnd="Classifier_Realization-extension_Realization Realization-base_Classifier">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Classifier_Realization-extension_Realization" name="extension_Realization" visibility="public" type="Realization" aggregation="composite" association="Classifier_Realization">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier_Realization-extension_Realization-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Classifier_Specification" name="Classifier_Specification" memberEnd="Classifier_Specification-extension_Specification Specification-base_Classifier">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Classifier_Specification-extension_Specification" name="extension_Specification" visibility="public" type="Specification" aggregation="composite" association="Classifier_Specification">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier_Specification-extension_Specification-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_Entity" name="Component_Entity" memberEnd="Component_Entity-extension_Entity Entity-base_Component">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_Entity-extension_Entity" name="extension_Entity" visibility="public" type="Entity" aggregation="composite" association="Component_Entity">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_Entity-extension_Entity-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_Implement" name="Component_Implement" memberEnd="Component_Implement-extension_Implement Implement-base_Component">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_Implement-extension_Implement" name="extension_Implement" visibility="public" type="Implement" aggregation="composite" association="Component_Implement">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_Implement-extension_Implement-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_Process" name="Component_Process" memberEnd="Process-base_Component Component_Process-extension_Process">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_Process-extension_Process" name="extension_Process" visibility="public" type="Process" aggregation="composite" association="Component_Process">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_Process-extension_Process-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_Service" name="Component_Service" memberEnd="Component_Service-extension_Service Service-base_Component">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_Service-extension_Service" name="extension_Service" visibility="public" type="Service" aggregation="composite" association="Component_Service">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_Service-extension_Service-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_Subsystem" name="Component_Subsystem" memberEnd="Component_Subsystem-extension_Subsystem Subsystem-base_Component">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_Subsystem-extension_Subsystem" name="extension_Subsystem" visibility="public" type="Subsystem" aggregation="composite" association="Component_Subsystem">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_Subsystem-extension_Subsystem-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Package_Framework" name="Package_Framework" memberEnd="Package_Framework-extension_Framework Framework-base_Package">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Package_Framework-extension_Framework" name="extension_Framework" visibility="public" type="Framework" aggregation="composite" association="Package_Framework">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package_Framework-extension_Framework-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Package_ModelLibrary" name="Package_ModelLibrary" memberEnd="ModelLibrary-base_Package Package_ModelLibrary-extension_ModelLibrary">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Package_ModelLibrary-extension_ModelLibrary" name="extension_ModelLibrary" visibility="public" type="ModelLibrary" aggregation="composite" association="Package_ModelLibrary">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package_ModelLibrary-extension_ModelLibrary-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Usage_Call" name="Usage_Call" memberEnd="Usage_Call-extension_Call Call-base_Usage">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Usage_Call-extension_Call" name="extension_Call" visibility="public" type="Call" aggregation="composite" association="Usage_Call">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Usage_Call-extension_Call-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Usage_Create" name="Usage_Create" memberEnd="Usage_Create-extension_Create Create-base_Usage">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Usage_Create-extension_Create" name="extension_Create" visibility="public" type="Create" aggregation="composite" association="Usage_Create">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Usage_Create-extension_Create-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Usage_Instantiate" name="Usage_Instantiate" memberEnd="Instantiate-base_Usage Usage_Instantiate-extension_Instantiate">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Usage_Instantiate-extension_Instantiate" name="extension_Instantiate" visibility="public" type="Instantiate" aggregation="composite" association="Usage_Instantiate">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Usage_Instantiate-extension_Instantiate-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Usage_Responsibility" name="Usage_Responsibility" memberEnd="Responsibility-base_Usage Usage_Responsibility-extension_Responsibility">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Usage_Responsibility-extension_Responsibility" name="extension_Responsibility" visibility="public" type="Responsibility" aggregation="composite" association="Usage_Responsibility">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Usage_Responsibility-extension_Responsibility-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Usage_Send" name="Usage_Send" memberEnd="Send-base_Usage Usage_Send-extension_Send">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Usage_Send-extension_Send" name="extension_Send" visibility="public" type="Send" aggregation="composite" association="Usage_Send">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Usage_Send-extension_Send-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Auxiliary" name="Auxiliary">
+    <ownedAttribute xmi:id="Auxiliary-base_Class" name="base_Class" visibility="public" association="Class_Auxiliary">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Call" name="Call">
+    <ownedAttribute xmi:id="Call-base_Usage" name="base_Usage" visibility="public" association="Usage_Call">
+      <type xmi:type="uml:Class" href="UML.xmi#Usage"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Create" name="Create">
+    <ownedAttribute xmi:id="Create-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Create">
+      <type xmi:type="uml:Class" href="UML.xmi#BehavioralFeature"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="Create-base_Usage" name="base_Usage" visibility="public" association="Usage_Create">
+      <type xmi:type="uml:Class" href="UML.xmi#Usage"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Derive" name="Derive">
+    <ownedAttribute xmi:id="Derive-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Derive">
+      <type xmi:type="uml:Class" href="UML.xmi#Abstraction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Destroy" name="Destroy">
+    <ownedAttribute xmi:id="Destroy-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Destroy">
+      <type xmi:type="uml:Class" href="UML.xmi#BehavioralFeature"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Document" name="Document">
+    <ownedAttribute xmi:id="Document-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Document">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Entity" name="Entity">
+    <ownedAttribute xmi:id="Entity-base_Component" name="base_Component" visibility="public" association="Component_Entity">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Executable" name="Executable">
+    <ownedAttribute xmi:id="Executable-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Executable">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="File" name="File">
+    <ownedAttribute xmi:id="File-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_File">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Focus" name="Focus">
+    <ownedAttribute xmi:id="Focus-base_Class" name="base_Class" visibility="public" association="Class_Focus">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Framework" name="Framework">
+    <ownedAttribute xmi:id="Framework-base_Package" name="base_Package" visibility="public" association="Package_Framework">
+      <type xmi:type="uml:Class" href="UML.xmi#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Implement" name="Implement">
+    <ownedAttribute xmi:id="Implement-base_Component" name="base_Component" visibility="public" association="Component_Implement">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="ImplementationClass" name="ImplementationClass">
+    <ownedAttribute xmi:id="ImplementationClass-base_Class" name="base_Class" visibility="public" association="Class_ImplementationClass">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Instantiate" name="Instantiate">
+    <ownedAttribute xmi:id="Instantiate-base_Usage" name="base_Usage" visibility="public" association="Usage_Instantiate">
+      <type xmi:type="uml:Class" href="UML.xmi#Usage"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Library" name="Library">
+    <ownedAttribute xmi:id="Library-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Library">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Metaclass" name="Metaclass">
+    <ownedAttribute xmi:id="Metaclass-base_Class" name="base_Class" visibility="public" association="Class_Metaclass">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="ModelLibrary" name="ModelLibrary">
+    <ownedAttribute xmi:id="ModelLibrary-base_Package" name="base_Package" visibility="public" association="Package_ModelLibrary">
+      <type xmi:type="uml:Class" href="UML.xmi#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Process" name="Process">
+    <ownedAttribute xmi:id="Process-base_Component" name="base_Component" visibility="public" association="Component_Process">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Realization" name="Realization">
+    <ownedAttribute xmi:id="Realization-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Realization">
+      <type xmi:type="uml:Class" href="UML.xmi#Classifier"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Refine" name="Refine">
+    <ownedAttribute xmi:id="Refine-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Refine">
+      <type xmi:type="uml:Class" href="UML.xmi#Abstraction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Responsibility" name="Responsibility">
+    <ownedAttribute xmi:id="Responsibility-base_Usage" name="base_Usage" visibility="public" association="Usage_Responsibility">
+      <type xmi:type="uml:Class" href="UML.xmi#Usage"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Script" name="Script">
+    <ownedAttribute xmi:id="Script-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Script">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Send" name="Send">
+    <ownedAttribute xmi:id="Send-base_Usage" name="base_Usage" visibility="public" association="Usage_Send">
+      <type xmi:type="uml:Class" href="UML.xmi#Usage"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Service" name="Service">
+    <ownedAttribute xmi:id="Service-base_Component" name="base_Component" visibility="public" association="Component_Service">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Source" name="Source">
+    <ownedAttribute xmi:id="Source-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Source">
+      <type xmi:type="uml:Class" href="UML.xmi#Artifact"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Specification" name="Specification">
+    <ownedAttribute xmi:id="Specification-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Specification">
+      <type xmi:type="uml:Class" href="UML.xmi#Classifier"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Subsystem" name="Subsystem">
+    <ownedAttribute xmi:id="Subsystem-base_Component" name="base_Component" visibility="public" association="Component_Subsystem">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Trace" name="Trace">
+    <ownedAttribute xmi:id="Trace-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Trace">
+      <type xmi:type="uml:Class" href="UML.xmi#Abstraction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Type" name="Type">
+    <ownedAttribute xmi:id="Type-base_Class" name="base_Class" visibility="public" association="Class_Type">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Utility" name="Utility">
+    <ownedAttribute xmi:id="Utility-base_Class" name="base_Class" visibility="public" association="Class_Utility">
+      <type xmi:type="uml:Class" href="UML.xmi#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsPrefix" value="StandardProfileL2" element="_0"/>
+</uml:Profile>

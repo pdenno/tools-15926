@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.omg.org/spec/UML/20100901" xmlns:cmof="http://schema.omg.org/spec/MOF/2.4/cmof.xml" xmi:version="2.1" xmi:id="_0" name="StandardProfileL3" URI="http://www.omg.org/spec/UML/20100901/StandardProfileL3">
+  <packagedElement xmi:type="uml:Extension" xmi:id="Component_BuildComponent" name="Component_BuildComponent" memberEnd="BuildComponent-base_Component Component_BuildComponent-extension_BuildComponent">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Component_BuildComponent-extension_BuildComponent" name="extension_BuildComponent" visibility="public" type="BuildComponent" aggregation="composite" association="Component_BuildComponent">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Component_BuildComponent-extension_BuildComponent-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Model_Metamodel" name="Model_Metamodel" memberEnd="Model_Metamodel-extension_Metamodel Metamodel-base_Model">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Model_Metamodel-extension_Metamodel" name="extension_Metamodel" visibility="public" type="Metamodel" aggregation="composite" association="Model_Metamodel">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Model_Metamodel-extension_Metamodel-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="Model_SystemModel" name="Model_SystemModel" memberEnd="Model_SystemModel-extension_SystemModel SystemModel-base_Model">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Model_SystemModel-extension_SystemModel" name="extension_SystemModel" visibility="public" type="SystemModel" aggregation="composite" association="Model_SystemModel">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Model_SystemModel-extension_SystemModel-_lowerValue"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="BuildComponent" name="BuildComponent">
+    <ownedAttribute xmi:id="BuildComponent-base_Component" name="base_Component" visibility="public" association="Component_BuildComponent">
+      <type xmi:type="uml:Class" href="UML.xmi#Component"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="Metamodel" name="Metamodel">
+    <ownedAttribute xmi:id="Metamodel-base_Model" name="base_Model" visibility="public" association="Model_Metamodel">
+      <type xmi:type="uml:Class" href="UML.xmi#Model"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="SystemModel" name="SystemModel">
+    <ownedAttribute xmi:id="SystemModel-base_Model" name="base_Model" visibility="public" association="Model_SystemModel">
+      <type xmi:type="uml:Class" href="UML.xmi#Model"/>
+    </ownedAttribute>
+  </packagedElement>
+  <cmof:Tag xmi:id="_2" name="org.omg.xmi.nsPrefix" value="StandardProfileL3" element="_0"/>
+</uml:Profile>

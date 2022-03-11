@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+    <variable name="superclass"/>
+    <variable name="desig"/>
+  </head>
+  <results>
+    <result>
+      <binding name="superclass">
+        <uri>http://posccaesar.org/rdl/RDS279134</uri>
+      </binding>
+      <binding name="desig">
+        <literal>MECHANICAL SEPARATOR</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="superclass">
+        <uri>http://posccaesar.org/rdl/RDS13047965</uri>
+      </binding>
+      <binding name="desig">
+        <literal>SEPARATOR</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="superclass">
+        <uri>http://posccaesar.org/rdl/RDS905765431</uri>
+      </binding>
+      <binding name="desig">
+        <literal>FLUID TRANSFORM DEVICE</literal>
+      </binding>
+    </result>
+  </results>
+</sparql>
