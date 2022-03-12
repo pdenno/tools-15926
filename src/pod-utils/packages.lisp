@@ -6,8 +6,8 @@
 
 (defpackage pod-utils
   (:nicknames :pod)
-  (:use :cl)
-;2022  (:shadowing-import-from :cl-who #:str)
+  (:use :cl :cl-who)
+  (:shadowing-import-from :cl-who #:str)
   (:export 
    ;; from utils.lisp
    #:*null-stream* 

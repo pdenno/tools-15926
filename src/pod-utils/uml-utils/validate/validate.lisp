@@ -4,7 +4,7 @@
 ;;; Date : 2006-09-22
 (in-package :mofi)
 
-#+sei
+#+cre
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defvar *valpkg* :uml23 "UML package for the following 3 macros") 
   (defmacro usym (string) `(intern ,string *valpkg*))
@@ -28,7 +28,7 @@
 (defmethod validate ((model population) &key (collections-p t) run-cmof-p)
   "Toplevel function for validation."
   (dbg-message :time 1 "~%Start validate: ~A" (now))
-  #+sei(when (eql (find-model *valpkg*) (model-n+1 model))
+  #+cre(when (eql (find-model *valpkg*) (model-n+1 model))
 	 (validate-no-ownership-cycles model)) ; sets diffing-possible
   (dbg-message :time 1 "~%v-no-ownership-cycles: ~A" (now))
   (validate-not-abstract model)
@@ -172,7 +172,7 @@
 
 ;;; This is what uml::Element:no_own_self() should do, but instead that constraint
 ;;; causes a stack overflow while following the loop!
-#+sei
+#+cre
 (defun validate-no-ownership-cycles (model)
   "Check for cycles of uml::Element.ownedElement."
   (let (cycles)

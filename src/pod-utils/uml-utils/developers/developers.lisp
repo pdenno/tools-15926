@@ -18,7 +18,7 @@
 ;;; /scm/tools/developers
 (defun developers-dsp ()
   "Toplevel. Displays the 'developer page'."
-  (app-page-wrapper :sei (:view "Developers' Pages"
+  (app-page-wrapper :cre (:view "Developers' Pages"
 				:menu-pos '(:root :tools))
     (:h1 "Developers' Pages")
     "From the menu items here you can load files containing models and populations conforming 
@@ -78,7 +78,7 @@
 (defun devl-js-post-dsp ()
   (setf *zippy* *request*)
   (when-bind (post-data (safe-post-parameter "firstName")) ;; I've been using :name JS example uses :id
-    (app-page-wrapper :sei (:view "Developers' Pages"
+    (app-page-wrapper :cre (:view "Developers' Pages"
 				  :menu-pos '(:root :tools))
       (:h1 "Result")
       (str post-data))))
@@ -86,7 +86,7 @@
 
 ;;; http://syseng.nist.gov/se-interop/developers/load-models
 (defun devl-load-models-dsp ()
-  (app-page-wrapper :sei (:view "Developers' Pages"
+  (app-page-wrapper :cre (:view "Developers' Pages"
 				:menu-pos '(:root :miwg :tools :sysml :load-models))
     (:h1 "Load Models")
     (:p) "From this page you can load XMI containing CMOF::Class or UML::Class objects 
@@ -120,7 +120,7 @@
 (defun developer-handle-model-file (model-name file-path cmof-p)
   "Move the file from IN-PATH, (where the server placed it) to a place managed by us.
    Call process-uml/qvt-file2model with the file."
-  #+sei.exe(log-message :info "developer-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
+  #+cre.exe(log-message :info "developer-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
   (mofi:results-handler-bind (developer-handle-model-file)
     (case (usr-bin-file file-path)
       (:xml ;;This is for model.
@@ -143,7 +143,7 @@
 
 ;;; http://syseng.nist.gov/se-interop/developers/load-populations
 (defun devl-load-pops-dsp ()
-  (app-page-wrapper :sei (:view "Developers' Pages"
+  (app-page-wrapper :cre (:view "Developers' Pages"
 				:menu-pos '(:root :tools :load-pops))
     (:h1 "Load Populations")
     (:p) "From this page you can load XMI or QVT relational syntax containing a population
@@ -187,7 +187,7 @@
   "Call qvt-file2model or xmi2model-instance with the file (FILE-PATH) creating
    a population of MODEL-N+1."
   (declare (ignore model-name)) ; POD Investigate
-  #+sei.exe(log-message :info "developer-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
+  #+cre.exe(log-message :info "developer-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
   (setf *results* (make-instance 'processing-results))
   (mofi:results-handler-bind (developer-handle-pop-file)
     (with-vo (session-models mut)
@@ -205,7 +205,7 @@
 #+qvt
 (defun devl-parse-errors-dsp ()
   "Reports errors from parsing, then allows you to go back to the developers page."
-  (app-page-wrapper :sei (:view "Developers' Pages"
+  (app-page-wrapper :cre (:view "Developers' Pages"
 				:menu-pos '(:root :tools))
     (:h1 "Exceptional conditions while processing")
     (htm 
@@ -231,7 +231,7 @@
   (when-bind (model-arg (safe-get-parameter "model"))
     (when-bind (model (mofb:decode-for-url model-arg))
       (let ((name (string (mofi:model-name model))))
-	(app-page-wrapper :sei (:view (format nil "SCM: Model ~A" name) ; pod nice was fmt
+	(app-page-wrapper :cre (:view (format nil "SCM: Model ~A" name) ; pod nice was fmt
 				      :menu-pos '(:root :tools)
 				      :leaf (safe-leaf (elip name)))
 	  (if (typep model 'mofi:population)
@@ -286,7 +286,7 @@
 #+qvt
 (defun qvt-map-dsp ()
   "Toplevel. Displays the 'developer page' for mapping models."
-  (app-page-wrapper :sei (:view "Developers' Pages"
+  (app-page-wrapper :cre (:view "Developers' Pages"
 				:menu-pos '(:root :tools :qvt))
     (:h1 "QVT Mapping")
     "From here you can select source and target models for mapping, and name the output model, 

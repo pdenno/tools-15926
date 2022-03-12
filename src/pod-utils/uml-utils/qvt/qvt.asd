@@ -10,7 +10,7 @@
 	       :mof-post
 	       :essential-models 
 	       #+sei :validate
-	       #+sei :mof-browser)
+	       #+cre :mof-browser)
   :serial t
   :components
   ((:file "package")

@@ -17,7 +17,7 @@
 ;            do (if (eql c :eof) (return-from tryme2) (write-char c)))
     (let ((context (make-instance 'vampire-response-context)))
       (catch 'vampire-responds
-        (setf result (xmlp:document-parser pipe :construction-context context))))
+        (setf result (xml-utils:xml-document-parser pipe :construction-context context))))
     (format pipe "")
     (format pipe "")
     (format pipe "n")
@@ -33,7 +33,7 @@
             do (if (eql c :eof) (return-from tryme3) (write-char c)))
 ;    (let ((context (make-instance 'vampire-response-context)))
 ;      (catch 'vampire-responds
-;        (setf result (xmlp:document-parser "pipe" :construction-context context))))
+;        (setf result (xml-utils:xml-document-parser "pipe" :construction-context context))))
     (format pipe "")
     (format pipe "")
     (format pipe "n")

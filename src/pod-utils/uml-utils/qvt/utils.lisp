@@ -91,8 +91,8 @@
 	       (with-open-file (s (lpath :tmp "hunchentoot/anon-uploaded-qvt.lisp")
 				  :direction :output :if-exists :supersede)
 		 (qvt2lisp top-level :stream s))
-	       #+sei.exe(load (lpath :tmp "hunchentoot/anon-uploaded-qvt.lisp"))
-	       #-sei.exe(load (compile-file (lpath :tmp "hunchentoot/anon-uploaded-qvt.lisp"))))
+	       #+cre.exe(load (lpath :tmp "hunchentoot/anon-uploaded-qvt.lisp"))
+	       #-cre.exe(load (compile-file (lpath :tmp "hunchentoot/anon-uploaded-qvt.lisp"))))
     (error "Could not find QVTToplevel object in model."))
     model))
 

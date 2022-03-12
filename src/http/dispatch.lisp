@@ -43,9 +43,9 @@
   (setf *dispatch-table* 
 	(list 
 	 (create-folder-dispatcher-and-handler 
-	  "/cre/static/" (namestring (lpath :cre "http/static/")))
+	  "/cre/static/" (namestring (lpath :src "http/static/")))
 	 (create-folder-dispatcher-and-handler 
-	  "/cre/image/" (namestring (lpath :cre "http/image/")))
+	  "/cre/image/" (namestring (lpath :src "http/image/")))
 	 (create-prefix-dispatcher "/cre/uo" 'upper-ontology-dsp)
 	 (create-prefix-dispatcher "/cre/model-list" 'model-list-dsp)
 	 (create-prefix-dispatcher "/cre/odm-tree" 'odm-tree-dsp)

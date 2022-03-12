@@ -3,7 +3,7 @@
 
 (defpackage "DEVELOPERS"
   (:nicknames :devl)
-  (:use :cl :pod-utils :tbnl :cl-who :tr :mofi #+moss :views #+sei :mofb)
+  (:use :cl :pod-utils :tbnl :cl-who :tr :mofi #+moss :views #+cre :mofb)
   (:export #:developers-dsp
            #:devl-load-models-dsp
            #:devl-load-pops-dsp    

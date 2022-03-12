@@ -1,0 +1,266 @@
+
+transformation BPMN2UMLProfile( bpmn :  BPMN, uml :  UML, bpmnprofile : UML )
+//mapping from BPMN to UML profile for BPMN
+//the transformation takes three inputs:
+//	* ‘bpmn’ is a model conforming to the BPMN meta-model. This is the source model of 
+//	the transformation, and is not modified by the transformation
+//	* ‘uml’ is a model conforming to the UML meta-model. This is the target model of the 
+//	transformation, and is modified by the transformation rules.
+//	* ‘bpmnprofile’ is the UML profile for BPMN, conforming to the UML meta-model. The 
+//	stereotypes defined in the profile are applied to the elements of the output model. 
+{
+
+
+top relation DefinitionsToPackage
+// This relation maps BPMN Definitions to UML Package
+// The BPMN Definition is bound to the variable ‘d’. Its name is bound to the variable ‘dn’.
+// ‘checkonly’ semantics ensures there are no side effects in the BPMN model.
+// the ‘enforce’ semantics ensures that a corresponding Package is created in the uml model,
+// and the Definition stereotype is applied to it, and the ‘name’ is copied.
+// the ‘where’ clause calls the subsequent relations to transform the contained elements. 
+{ dn :  String;
+	checkonly domain bpmn d : Definitions{ 
+			name  =  dn,
+			rootElement  =  re : RootElement{ } };
+	enforce domain uml umlp : uml::Package{ 
+			name  =  dn,
+			packageableElement  =  pe : PackageableElement{ } };
+	//apply Definitions stereotype to umlp
+	enforce domain uml udef : bpmnprofile::Definition{
+			base_Package  =  umlp };
+	where { RootElementToPackageableElement(re, pe); }
+}
+
+relation RootElementToPackageablElement
+//map BPMN RootElement to UML PackageableElement
+{ checkonly domain bpmn re : RootElement{ 
+				name = ren, 
+				definition = d : Definition };
+	enforce domain uml pe : uml::PackageableElement{
+				name = ren,
+				owningPackage = p : Package };
+	when	{ DefinitionToPackage(d, p); }
+	where { ProcessToActivity(re, pe);
+ActivityToAction(re, pe); }
+}
+
+relation ProcessToActivity
+//map BPMN Process to UML Activity
+{ pn :  String;
+	checkonly domain bpmn p : Process{ 
+				name = pn,
+				processType = pt : ProcessType{ },
+				isClosed = ic : Boolean,
+				isExecutable = ie : Boolean };
+	enforce domain uml a : uml::Activity{ name = pn };
+	//apply Process stereotype to a and map properties
+	enforce domain uml umlp : bpmnprofile::Process {
+		base_Activity  =  a,
+		processType  =  pt,
+		isClosed = is,
+		isExecutable = ie };
+	where { PropertyToProperty(p, a); }
+}
+
+
+relation PropertyToProperty
+//map properties of Process to BPMNProperty stereotype
+{ pn :  String;
+	checkonly domain bpmn p : Process {
+				property  =  prop : Property{ name  =  pn }};
+	enforce domain uml a : uml::Activity { };
+	enforce domain uml umlprop : uml::Property{ name = pn };
+	//apply BPMNProperty stereotype to prop
+	enforce domain uml prop : bpmnprofile::BPMNProperty {
+				base_Property  =  umlprop };
+	when { ProcessToActivity( p, a ); }
+}
+
+
+relation GlobalScriptTaskToOpaqueBehavior
+//map GlobalScriptTask to OpaqueBehavior with GlobalScriptTask stereotype applied
+{ checkonly domain bpmn gst : GlobalScriptTask {
+				name  =  n : String,
+				scriptFormat  =  sf : String,
+				script = scr : String };
+	enforce domain uml umlOB : uml::OpaqueBehavior {
+				name = n,
+				language = sf,
+				body = scr };
+	//apply GlobalScriptTask  stereotype
+	enforce domain uml ugst : bpmnprofile::GlobalScriptTask {
+			base_OpaqueBehavior = umlOB };
+}
+
+
+relation GlobalUserTaskToOpaqueBehavior
+//map GlobalUserTask to OpaqueBehavior with GlobalUserTask applied
+{ checkonly domain bpmn gut : GlobalUserTask {
+				name  =  n : String,
+				implementation  =  i : String,
+				renderings = r : Image };
+	enforce domain uml umlOB : uml::OpaqueBehavior {
+				name = n,
+				body = i };
+	//apply GlobalUserTask stereotype
+	enforce domain uml ugut : bpmnprofile::GlobalUserTask {
+			base_OpaqueBehavior = umlOB,
+			icon = r };
+}
+
+
+relation GlobalBusinessRuleTaskToOpaqueBehavior
+//map BPMN GlobalBusinessRuleTask to UML OpaqueBehavior with GlobalbusinessRuleTask
+//stereotype applied
+{ checkonly domain bpmn gbrt : GlobalBusinessRuleTask {
+				name = n : String,
+				implementation = i : String };
+	enforce domain uml umlOB : uml::OpaqueBehavior  {
+				name = n,
+				body = i };
+	//apply GlobalBusniessRuleTask stereotype
+	enforce domain uml ugbrt : bpmnprofile::GlobalBusinessRuleTask {
+			base_OpaqueBehavior = umlOB };
+}
+
+
+relation ActivityToAction
+//map BPMN Activity to UML Action
+{ checkonly domain bpmn ba : Activity { };
+	enforce domain uml ua : uml::Action { }
+	where 
+{//map types of BPMN Actvity
+	CallActivityToCallBehaviorAction( ba, ua );
+	TaskToOpaqueAction( ba, ua );
+	ManualTaskToOpaqueAction( ba, ua );
+	ScriptTaskToOpaqueAction( ba, ua );
+UserTaskToOpaqueAction( ba, ua );
+	BusinessRuleTaskToOpaqueAction( ba, ua );
+}
+}
+
+relation CallActivityToCallBehaviorAction
+//map BPMN CallActivity to UML CallBehaviorAction
+{ checkonly domain bpmn ba : CallActivity { 
+			callableElementRef = ca : CallableElement { 
+			name = cen }};
+	enforce domain uml umlcba : uml::CallBehaviorAction {
+			behavior = b : Behavior{ name = cen }};
+	//apply CallActivity stereotype to ua
+	enforce domain uml uca : bpmnprofile::CallActivity {
+			base_CallBehaviorAction = umlcba };
+}
+	
+
+relation ScriptTaskToOpaqueAction
+//map BPMN ScriptTask to UML OpaqueAction
+{ checkonly domain bpmn st :  ScriptTask{ 
+					name = n : String;
+					scriptFormat = sf : String,
+					script = scr : String };
+	enforce domain uml umla : uml::OpaqueAction {
+					name = n,
+					language = sf,
+					body = scr } ;
+	//apply ScriptTask stereotype to umla
+	enforce domain uml ua : bpmnprofile::ScriptTask {
+				base_OpaqueAction  =  umla };
+}
+
+
+relation UserTaskToOpaqueAction
+//map BPMN UserTask to UML OpaqueAction
+{ checkonly domain bpmn ut :  UserTask{ 
+					name = n : String,
+					implementation = i : String,
+					renderings = r : Image };
+	enforce domain uml umla : uml::OpaqueAction {
+					name = n,
+					//map ‘implementation’ to ‘body’
+					body = i } ;
+	//apply UserTask stereotype to umla
+	enforce domain uml ua : bpmnprofile::UserTask {
+				base_OpaqueAction  =  umla,
+				//map ‘renderings’ to ‘icon’
+				icon = r };
+}
+
+
+relation BusinessRuleTaskToOpaqueAction
+//map BPMN BusinessRuleTask to UML OpaqueAction
+{ checkonly domain bpmn brt :  BusinessRuleTask { 
+					name = n : String,
+					implementation = i : String };
+	enforce domain uml umla : uml::OpaqueAction {
+					name = n,
+					//map ‘implementation’ to ‘body’
+					body = i } ;
+	//apply BusinessRuleTask stereotype to umla
+	enforce domain uml ua : bpmnprofile:: BusinessRuleTask{
+				base_OpaqueAction  =  umla };
+}
+
+
+relation SequenceFlowToControlFlow
+//map BPMN SequenceFlow to UMLControlFlow with SequenceFlow stereotype applied
+{ checkonly domain bpmn sf : SequenceFlow {
+				conditionExpression = ce:BPMNExpression,
+				sourceRef = sr:FlowNode,
+				targetRef = tr:FlowNode };
+	enforce domain uml umlCF : uml::ControlFlow {
+				guard = uce,
+				source = usr,
+				target = utr };
+	//apply SequenceFlow stereotype to umlCF
+	enforce domain uml usf : bpmnprofile::SequenceFlow {
+			base_ControlFlow = umlCF };
+	when 
+	{ //TBD: guard, source and target must already be mapped
+		BPMNExpressionToOpaqueExpression( ce, uce );
+		BPMNFlowNodeToActivityNode( sr, usr );
+		BPMNFlowNodeToActivityNode( tr, utr );
+	}
+}
+relation FlowNodeToActivityNode
+//map BPMNFlow Nodes to appropriate UML ActivityNodes
+{ checkonly domain bpmn fn : FlowNode { };
+	enforce domain uml an : uml::ActivityNode { };
+	where {
+		//map Events
+		StartEventToInitialNode( fn, an );
+		IntermediateCatchEventToAcceptEventAction( fn, an );
+		BoundaryEventToAcceptEventAction( fn, an );
+		//map Gateways
+		//map Activities
+	}
+}
+
+relation StartEventToInitialNode
+//map BPMN StartEvent with no EventDefinitions to UML InitialNode with StartEvent stereotype // applied.
+{ checkonly domain bpmn se : StartEvent {
+				isInterrupting = ii : Boolean };
+	enforce domain uml umlIN : uml::InitialNode { };
+	//apply StartEvent stereotype to umlIN
+	enforce domain uml usev : bpmnprofile::StartEvent {
+			base_InitialNode = umlIN,
+			isInterrupting = ii };
+}
+
+relation IntermediateCatchEventToAcceptEventAction
+//map BPMN IntermediateCatchEvent to UML AcceptEventAction 
+{ checkonly domain bpmn ice : IntermediateCatchEvent {
+				name = n : String,
+				//inherited attribute
+				parallelMultiple = pm : Boolean };
+	enforce domain uml umlAEA : uml::AcceptEventAction {
+				name = m };
+	//apply stereotype and copoy attributes
+	enforce domain uml uice : bpmnprofile::IntermediateCatchEvent {
+			base_AcceptEventAction = umlAEA
+			//does stereotype inherit attributes?
+			parallelMultiple = pm };
+	//TBD: copy event definitions…
+}
+
+
+} //transformation

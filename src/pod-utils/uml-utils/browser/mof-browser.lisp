@@ -66,7 +66,8 @@
 	      (esc (package-name (symbol-package (class-name slot-source))))
 	      (esc (encode-angle (string (class-name slot-source))))))))
 
-#+cre
+;;; 2022 This should be #+cre not #+nil
+#+nil
 (defmethod encode-for-url ((obj expo::express-effective-slot-definition))
   (macrolet ((esc (v) `(tbnl:url-encode (string ,v))))
     (let ((slot-name (string (expo::slot-definition-simple-name obj)))
@@ -77,9 +78,9 @@
 	      (esc (package-name (symbol-package (class-name slot-source))))
 	      (esc (encode-angle (string (class-name slot-source))))))))
 
-      ;; 2008-03-08: Problem here in that slot-details, when it sees only the 
-      ;; slot-definition-source, can't provide the effective slot details, like
-      ;; the actual derived union sources. 
+;;; 2008-03-08: Problem here in that slot-details, when it sees only the 
+;;; slot-definition-source, can't provide the effective slot details, like
+;;; the actual derived union sources. 
 (defmethod encode-for-url ((obj mofi::mm-direct-slot-definition))
   (macrolet ((esc (v) `(tbnl:url-encode (string ,v))))
     (let ((slot-name (slot-def-name obj))
@@ -772,7 +773,7 @@
     (htm
      (:h3 "Attributes:")
      (loop for slot in (remove-if #'mofi:slot-definition-xmi-hidden 
-				  (clos:class-slots (class2iclass class)))
+				  (#-sbcl clos:class-slots #+sbcl class-slots (class2iclass class)))
 	   for c = (expo::slot-definition-source slot) 
 	   do (format stream "~A" (expo-show-slot :class-browser slot c open-slots))))))
 

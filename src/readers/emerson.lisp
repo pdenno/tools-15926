@@ -30,7 +30,7 @@
   "Read emerson base templates in tlogic template objects. Pushes onto model.template slot. Returns (values)."
   (flet ((c2l (str) (intern (cl-ppcre:regex-replace-all " " (string-trim '(#\Space) str) "-"))))
     (setf *emerson-base-templates* nil)
-    (with-open-file (csv (lpath :cre "data/emerson-csv/base-template.csv") :direction :input)
+    (with-open-file (csv (lpath :data "emerson-csv/base-template.csv") :direction :input)
       (read-line csv nil :eof)
       (loop for line = (read-line csv nil :eof)
 	 until (eql line :eof)
@@ -120,7 +120,7 @@
   "Read information from the 'specialized individual template' tab and create templates.
    This should be performed after read-base-templates, because those are referenced here."
   (flet ((c2l (str) (intern (cl-ppcre:regex-replace-all " " (string-trim '(#\Space) str) "-"))))
-    (with-open-file (csv (lpath :cre "data/emerson-csv/specialized-individual-template.csv") :direction :input)
+    (with-open-file (csv (lpath :data "emerson-csv/specialized-individual-template.csv") :direction :input)
       (read-line csv nil :eof)
       (loop for line = (read-line csv nil :eof) with line-num = 2
 	 until (eql line :eof)
@@ -177,7 +177,7 @@
 (defun read-class-template-instance (&key pathname msg-type start-column)
   "Read the class template instance tab."
   (flet ((c2l (str) (intern (cl-ppcre:regex-replace-all " " (string-trim '(#\Space) str) "-"))))
-    (with-open-file (csv (lpath :cre "data/emerson-csv/class-template-instance.csv") :direction :input)
+    (with-open-file (csv (lpath :data "emerson-csv/class-template-instance.csv") :direction :input)
       (ensure-trie-db :emerson)
       (with-trie-db (:emerson)
 	(loop for line = (read-line csv nil :eof) with unique-ht = (make-hash-table)

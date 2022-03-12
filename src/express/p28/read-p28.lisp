@@ -60,7 +60,7 @@
   "Toplevel function to parse 10303-28 XML and instantiate a Mn+1 Model (MODEL-N+1) with 
    the population defined in FILE, returning the Mn Model object."
   (dbg-message :time 1 "~%Start process: ~A" (now))
-  (let ((doc (or instance-xqdm (xmlp:document-parser file)))
+  (let ((doc (or instance-xqdm (xml-utils:xml-document-parser file)))
 	(models-governing (list (mofi:model-name  model-n+1))))
     (setf *results* (make-instance 'processing-results))
     (setf *mmm* doc) ; for future execution, while debugging.
@@ -118,8 +118,8 @@
 
 (defun p28-read-doc (doc)
   "Read the document creating instances for the 'top-level' XML content."
-  (loop for elem in (xqdm:children (car (xqdm:children doc)))
-         when (xqdm:element-p elem) do
+  (loop for elem in (xml-utils:xml-children (car (xml-utils:xml-children doc)))
+         when (dom:element-p elem) do
           (when-bind (pclass (p28-elem-class elem))
 	    (p28-make-entity-instance pclass elem))))
 
@@ -221,23 +221,23 @@
 
 (declaim (inline elem-children))
 (defun elem-children (elem)
-  "Return the xqdm:elem-node children of ELEM."
+  "Return the dom:element-p children of ELEM."
   (remove-if
-   (complement #'(lambda (x) (typep x 'xqdm:elem-node)))
-   (xqdm:children elem)))
+   (complement #'(lambda (x) (dom:element-p x)))
+   (xml-utils:xml-children elem)))
 
 (defun xml-string (elem)
   "Return the node XML serialization."
   (with-output-to-string (s)
-    (let ((xmlp::*default-namespaces*
+    (let (#+nil(*default-namespaces*
 	   (append (list 
 		    (cons "ap233" 
 			  (find-package "http://www.tc184-sc4.org/10303/-233/tech/systems_engineering"))
-		    xmlp::*default-namespaces*))))
-      (xmlp:write-node elem s))))
+		    xmlp-ignore::*default-namespaces*))))
+      (xml-utils:xml-write-node elem s))))
 
 (defun p28-make-entity-instance (pclass entity-elem &key (warn-p t))
-  "Create an instance of PCLASS (a programmatic CLOS class object) from ELEM (xqdm:element-node). 
+  "Create an instance of PCLASS (a programmatic CLOS class object) from ELEM (dom:element-p). 
    Populate the slots of the instance from values found in the children of ELEM."
   (dbg-message :exp 3 "~2% entity-elem = ~A" (xml-string entity-elem))
   (let ((initargs (initarg-pairs entity-elem pclass))
@@ -276,7 +276,7 @@
         for typ = (and slot (slot-definition-range slot))
         for attr-name = (slot-definition-name slot) ; for debugging.
         when typ append (list (car (slot-definition-initargs slot))
-			      (p28-parse-content typ (xqdm:children c) attr-name))))
+			      (p28-parse-content typ (xml-utils:xml-children c) attr-name))))
 
 (defun p28-find-slot (pclass slot-name)
     "PCLASS is a instantable-express-entity-type-mo, SLOT-NAME is a string naming slot.
@@ -334,14 +334,14 @@
        (warn "I don't know this typ: ~A" typ))))
 
 (defmethod p28-parse-content ((typ express-defined-type-mo) content attr-name)
-  (setf content (remove-if-not #'(lambda (x) (typep x 'xqdm:elem-node)) content))
+  (setf content (remove-if-not #'(lambda (x) (dom:element-p x)) content))
   (when content
     (if-bind (ref (xml-get-attr (car content) "ref")) ; POD not much checking...
      (make-unresolved-entity-ref :-id ref)
      (p28-make-defined-type-value typ (car content)))))
 
 (defmethod p28-parse-content ((typ express-entity-type-mo) content attr-name)
-  (setf content (remove-if-not #'(lambda (x) (typep x 'xqdm:elem-node)) content))
+  (setf content (remove-if-not #'(lambda (x) (dom:element-p x)) content))
   (when content
     (if-bind (ref (xml-get-attr (car content) "ref")) ; POD not much checking...
       (make-unresolved-entity-ref :-id ref)
@@ -349,26 +349,26 @@
 
 (defun p28-make-defined-type-value (class elem)
   "CLASS is an express-defined-type-mo. ELEM is content."
-  (let ((val (car (xqdm:children elem)))
+  (let ((val (car (xml-utils:xml-children elem)))
 	(btypes (base-types class)))
     (make-one class
 	      (cond ((intersection btypes '(:number :integer :real))
 		     (setf val (read-from-string val))
-		     (if (numberp val) val (warn "Expected a number. Got ~A" (car (xqdm:children elem)))))
+		     (if (numberp val) val (warn "Expected a number. Got ~A" (car (xml-utils:xml-children elem)))))
 		    ((member :string btypes) val)
 		    ((intersection btypes '(:logical :boolean))
 		     (cond ((string-equal val "true") :t)
 			   ((string-equal val "false") :f)
 			   ((string-equal val "unknown") :u)
-			   (t (warn "Expected a logical. Got ~A" (car (xqdm:children elem))))))
+			   (t (warn "Expected a logical. Got ~A" (car (xml-utils:xml-children elem))))))
 		    (t (error "I don't know what to do with this type: ~A" btypes))))))
 
 ;;; Point of (list x) is that some calls expect multiple children ???
 (defmethod p28-parse-content ((typ aggregation-typ) content attr-name)
   (when content
-    (unless (some #'(lambda (x) (typep x 'xqdm:elem-node)) content)
+    (unless (some #'(lambda (x) (dom:element-p x)) content)
       (error "I don't know what to do with this aggregate: ~A" content)) ; POD NYI
-    (let ((agg-content (remove-if-not #'(lambda (x) (typep x 'xqdm:elem-node)) content))
+    (let ((agg-content (remove-if-not #'(lambda (x) (dom:element-p x)) content))
 	  (base-type (base-type typ)))
       (make-one typ (mapcar #'(lambda (x) (p28-parse-content base-type (list x) attr-name))
 				  agg-content)))))

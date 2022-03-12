@@ -6,10 +6,11 @@
  :features '(:always)
  :depends-on-models '(:ocl)
  :documentation "From XMI 08-09-08-owl-rdf-cmof-clean.xmi 
-                   (http://www.omg.org/cgi-bin/doc?ptc/2008-09-08). Created 2011-12-27."
- :model-class 'mofi:essential-compiled-model
- :classes-path (pod:lpath :lisplib "uml-utils/models/odm.lisp")
- :postload-path (pod:lpath :lisplib "uml-utils/models/odm-postload.lisp"))
+                   (http://www.omg.org/cgi-bin/doc?ptc/2008-09-08). Created 2011-12-27.
+                 2022: Might be newer, I see it was created in 2016."
+ :model-class 'mofi:essential-compiled-model ; 2022 was just models/odm.lis models/odm-postload.lisp
+ :classes-path  (pod:lpath :models "odm/2013-11-01/odm-2013-11-01.lisp")
+ :postload-path (pod:lpath :models "odm/2013-11-01/odm-2013-11-01-postload.lisp"))
 
 (ensure-model 
  :bpmn-p :force t  :verbose t
@@ -34,7 +35,7 @@
                  unnamed soft-opposite slots."
  :model-class 'mofi::profile
  :depends-on-models '(:ocl :uml241)
- :classes-path (pod:lpath :lisplib "uml-utils/models/bpmn-profile.lisp"))
+ :classes-path (pod:lpath :models "bpmn/bpmn-profile.lisp"))
 
 (push-last "http://www.nomagic.com/magicdraw/UML/2.4.1" (nicknames (find-model :uml241)))
 
@@ -49,9 +50,9 @@
  :ns-uri "http://www.omg.org/spec/UML/20090901/StandardProfileL2"      ; Use this one for xmlns
  :href-uri "http://www.omg.org/spec/UML/20090901/StandardProfileL2.xmi"
  :model-class 'mofi::profile
- :classes-path (pod:lpath :lisplib "uml-utils/models/uml-std-profile-l2-20090901.lisp"))
+ :classes-path (pod:lpath :models "uml/uml-std-profile-l2-20090901.lisp"))
 
-
+;;; 2022 Really??? (I need SysML and BPMN?)
 (ensure-model 
  :sysml12 :force t  :verbose t
  :features '(:cre)
@@ -64,10 +65,10 @@
  :documentation "Created from sysml1-2-ptc20100301-v5/sysml-profile.xmi." ; 20100301 is SysML 1.2.
  :model-class 'mofi::profile
  :depends-on-models '(:ocl :uml-profile-l2-20090901 :uml23 #|:qudv|#)
- :classes-path (pod:lpath :lisplib "uml-utils/models/sei/sysml-profile-12.lisp"))
+ :classes-path (pod:lpath :models "sysml/sysml-profile-12.lisp"))
 
-
-(ensure-model 
+;;; 2022 Temporary, probably
+#+nil(ensure-model 
   :MEXICO :force t
   :features '(:always)
   :nicknames '("exp"
@@ -116,7 +117,7 @@
 		      "NVL" "ODD" "ROLESOF" "SIN" "SIZEOF" "SQRT" "TAN" "TYPEOF" "USEDIN" 
 		      "VALUE" "VALUE_IN" "VALUE_UNIQUE" "IN" "LIKE" "OR" "XOR" "DIV" "MOD" 
 		      "AND" "INSERT" "REMOVE")
-  :classes-path (pod:lpath :lisplib "uml-utils/models/mexico.lisp"))
+  :classes-path (pod:lpath :models "step/mexico.lisp"))
 
 
 

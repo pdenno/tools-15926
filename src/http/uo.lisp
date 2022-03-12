@@ -29,7 +29,7 @@
 ;;; POD Consider using xpath some here. (It doesn't keep position very well, however). 
 (defun load-15926-ontology ()
   "Read the West/Price OWL ontology of 15926-2 (aka Epistle Core Model)."
-  (let ((doc (xmlp:document-parser #P"cre:data;ecm-nov-19-2004.owl")))
+  (let ((doc (xml-utils:xml-document-parser #P"cre:data;ecm-nov-19-2004.owl")))
     (when-bind (oelem (xml-find-child 'owl:|Ontology| doc))
       (let ((mofi:*population* (make-instance 'mofi:privileged-population
 					      :model-n+1 (mofi:find-model :odm)
@@ -41,8 +41,8 @@
 	  (when-bind (comment (xml-find-child 'rdfs:|comment| oelem))
 	    (setf |ODM-RDFBase|:|RDFScomment|
 		  (with-instance (|ODM-RDFBase|::|PlainLiteral|)
-		    (setf |ODM-RDFBase|:|lexicalForm| (car (xqdm:children comment))))))
-	  (loop for c in (xml-find-children 'owl:|Class| (xqdm:root doc)) do
+		    (setf |ODM-RDFBase|:|lexicalForm| (car (xml-utils:xml-children comment))))))
+	  (loop for c in (xml-find-children 'owl:|Class| (xml-utils:xml-root doc)) do
 	       (with-instance (|ODM-OWLBase|:|OWLClass|)
 		 (setf |ODM-OWLBase|:|ontology| onto)
 		 (when-bind (about (xml-get-attr c 'rdf:|about|))
@@ -54,7 +54,7 @@
 		       (setf ODM-RDFS:|RDFSsubClassOf| (list super-about)))))
 		 ;; comment
 		 (when-bind (comment-elem (xml-find-child 'rdfs:|comment| c))
-		   (setf |ODM-RDFBase|:|RDFScomment| (car (xqdm:children comment-elem)))))))))))
+		   (setf |ODM-RDFBase|:|RDFScomment| (car (xml-utils:xml-children comment-elem)))))))))))
 
 (defun upper-ontology-dsp ()
   "Display the West/Price 15926-2 upper ontology."

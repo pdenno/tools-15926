@@ -15,8 +15,7 @@
 (defclass cre-global ()
   ((gui :accessor gui :initform nil)
    (patches :initform nil)
-   ;(vampire-path :reader vampire-path :initform  (pod:lpath :cre "bin/linux/vampire.exe"))
-   (vampire-path :reader vampire-path :initform  "/local/vampire/vampire_lin64")
+   (vampire-path :reader vampire-path :initform  (pod:lpath :vampire "vampire.exe"))
    (vampire-stream :reader vampire-stream :initform nil)
    (vampire-tmp-file :reader vampire-tmp-file :initform (pod:lpath :tmp "vamp.out"))))
 ;  (:metaclass pod:singleton)) not worth the effort!
@@ -134,12 +133,12 @@
        - initial set"
   (let ((merged-file (pod:lpath :tmp "merged.kb")))
     (with-open-file (s merged-file :direction :output :if-exists :supersede)
-      (with-open-file (in (pod:lpath :cre "data/kb/base.kif") :direction :input)
+      (with-open-file (in (pod:lpath :models "cre/base.kif") :direction :input)
 	(loop for line = (read-line in nil nil)
 	   while line do (format s "~%~A" line)))
       (loop for template in p7:*initial-set* do 
 	   (format s "~% ~A" (p7:template-formal template)))
-      (with-open-file (in (pod:lpath :cre "data/kb/part2.kb") :direction :input)
+      (with-open-file (in (pod:lpath :models "cre/kb/part2.kb") :direction :input) ; 2022 as shown above 'axioms from Part 2'
 	(loop for line = (read-line in nil nil)
 	   while line do (format s "~%~A" line))))
     ;; This will create a file, vampire-tmp-file (/local/tmp/vamp.out).
@@ -185,8 +184,8 @@
               (response 
 	       (setq *zippy-response* 
 		     (catch 'vampire-responds
-		       (xmlp:document-parser stream :construction-context context)))))
-         (xqdm:element-p response)))))
+		       (xml-utils:xml-document-parser stream :construction-context context)))))
+         (dom:element-p response)))))
 
 
 (defun vampire-ok-p ()
@@ -201,8 +200,8 @@
        (let* ((context (make-instance 'vampire-response-context))
               (response 
 	       (catch 'vampire-responds
-		 (xmlp:document-parser vampire-stream :construction-context context))))
-         (xqdm:element-p response))))))
+		 (xml-utils:xml-document-parser vampire-stream :construction-context context))))
+         (dom:element-p response))))))
 
 #+diag
 (defun tryme (cmd)
@@ -238,7 +237,7 @@
 
 ;;; mystery , from ccts
 (defun null-document-parser (source &rest args)
-  (apply #'xmlp:document-parser source
+  (apply #'xml-utils:xml-document-parser source
          :construction-context (make-instance 'null-construction-context)
          args))
 
@@ -251,8 +250,9 @@
 (defclass vampire-response-context (null-construction-context)
   ())
 
-;;; Parse an elment. If it is the top node, throw. 
-(defmethod xmlp:|Element-Constructor| ((context vampire-response-context) (content* t) (etag t) (stag t))
+;;; Parse an elment. If it is the top node, throw.
+;;; 2022 commented out
+#+nil(defmethod xmlp-ignore:|Element-Constructor| ((context vampire-response-context) (content* t) (etag t) (stag t))
   (let ((elem (call-next-method)))
     (if (or (xml-typep elem "queryResponse")
             (xml-typep elem "assertionResponse"))
@@ -409,7 +409,7 @@
 
 (defun vampire-send (string &key (timeout 10))
   "Run two processes: One reads the response from vampire and write to a string stream.
-   The other xml reads (xmlp:document-parser) from the string stream."
+   The other xml reads (xml-utils:xml-document-parser) from the string stream."
   (when-bind (vstream (vampire-stream (app-globals)))
     (when (open-stream-p vstream)
       (let* ((pnum (incf *vampire-pnum*))
@@ -447,7 +447,7 @@
 		 ;;      do (format t "~%~A" line))
 		 (let ((response 
 			(catch 'vampire-responds
-			  (xmlp:document-parser pipe :construction-context context))))
+			  (xml-utils:xml-document-parser pipe :construction-context context))))
 		   (setf (gethash pnum *vampire-responses*) response))))))
 	pnum))))
 
@@ -469,7 +469,7 @@
 
 ;;; --------------------- Parse Response -------------------------------------------
 (defun clean-text-children (elem)
-  (loop for c in (xqdm:children elem)
+  (loop for c in (xml-utils:xml-children elem)
         with result = ""
         do (setf result (strcat result (string-trim '(#\Space #\Newline) c)))
      finally (return result)))
@@ -489,7 +489,7 @@
 
 (def-parse-vampire (:answer "result")
     (:self (cond ((xml-find-child "bindingSet" dself)
-                   (loop for c in (xqdm:children dself)
+                   (loop for c in (xml-utils:xml-children dself)
                       when (xml-typep c "bindingSet") append 
                         (parse-vampire :binding-set c :response response)))
                  (t (cond ((string= result "yes") (list :true))
@@ -539,7 +539,7 @@
        (substitute-string
         "<" "*LT;" text))) t)))
 (defun clause-formula-internal (elem)
-  (loop for c in (xqdm:children elem) ; only one of these... or FALSE
+  (loop for c in (xml-utils:xml-children elem) ; only one of these... or FALSE
      when (xml-typep c "clause") collect (parse-proof-preprocess :clause c)
      when (xml-typep c "formula") collect (parse-proof-preprocess :formula c)))
 

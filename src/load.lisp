@@ -5,10 +5,19 @@
 ;;;
 ;;; Peter Denno
 ;;;  Date: 2011-12-23
-;;;  Updated! 2022-03-10 borrowing from xmi-validator. 
+;;;  Updated! 2022-03-10 borrowing from xmi-validator.
+
+(pushnew :cre                *features*)
+(pushnew :injector           *features*)
+(pushnew :qvt                *features*)
+(pushnew :iface-http         *features*)
+(pushnew :hunchentoot-no-ssl *features*)
 
 (load "~/quicklisp/setup.lisp")
+(require :asdf)
 (require :quicklisp)
+(asdf:initialize-source-registry)
+
 (ql:quickload "cl-who")
 (ql:quickload "cl-ppcre")
 (ql:quickload "closer-mop")
@@ -29,11 +38,12 @@
 (defvar pod:*lpath-ht* (make-hash-table))
 
 ;;; Adapted from xmi-validator
-(loop for (key . val) in `((:cre     . ,(truename "."))
+(loop for (key . val) in `((:src     . ,(truename "."))
 			   (:expo    . ,(truename "."))
 			   (:lisplib . ,(truename "./pod-utils"))
 			   (:testlib . ,(truename "./pod-utils"))
 			   (:mylib   . ,(truename "./pod-utils"))
+			   (:vampire . ,(truename ".")) ; 2022 ToDo
 			   (:tmp     . "/usr/local/tmp/")
 			   (:data    . ,(truename "../data/"))
 			   (:models  . ,(truename "../models/")))
@@ -43,12 +53,6 @@
   (:use :cl :asdf :pod-utils))
 
 (in-package :user-system)
-
-(pushnew :cre *features*)
-(pushnew :injector *features*)
-(pushnew :qvt *features*)
-(pushnew :iface-http *features*)
-(push :hunchentoot-no-ssl *features*)
 
 #+SBCL
 (progn
@@ -64,64 +68,34 @@
 ;;;==================================================
 ;;; Load package files
 ;;;==================================================
-;;;ff #-:lispworks(lpath :lisplib "lw-compat/current/lw-compat-package.lisp")
-#+:lispworks(load (lpath :lisplib "closer/current/closer-mop-packages.lisp"))
-
-;;; Note some ediware .asd files define packages
-;;; 2022   See ~/quicklisp/dists/quicklisp/installed/systems. Show consequences of all the quickloads above
-;(load (lpath :lisplib "rfc2388/current/packages.lisp"))
-;(load (lpath :lisplib "url-rewrite/current/packages.lisp"))
-;(load (lpath :lisplib "cl-who/current/packages.lisp"))
-;(load (lpath :lisplib "cl-fad/current/packages.lisp"))
-;(load (lpath :lisplib "cl-ppcre/current/packages.lisp"))
-;(load (lpath :lisplib "trivial-gray-streams/current/trivial-gray-streams.asd"))
-;(load (lpath :lisplib "trivial-gray-streams/current/package.lisp"))
-;(load (lpath :lisplib "flexi-streams/current/packages.lisp"))
-;(load (lpath :lisplib "cl-fad/current/packages.lisp"))
-;(load (lpath :lisplib "chunga/current/packages.lisp"))
-;2022(load (lpath :lisplib "hunchentoot/current/hunchentoot.asd"))
-;2022(load (lpath :lisplib "hunchentoot/current/packages.lisp"))
-
-
 (load (lpath :lisplib "trie/package.lisp"))
 (load (lpath :lisplib "kif/packages.lisp"))
-;2012-03-03(load (lpath :lisplib "xpath/package.lisp"))
 (load (lpath :lisplib "uml-utils/ocl/package.lisp"))
 (load (lpath :lisplib "uml-utils/mof/package.lisp"))
-;;;2022(load (lpath :lisplib "uml-utils/models/packages.lisp"))
 (load (lpath :lisplib "uml-utils/browser/packages.lisp"))
-(load (lpath :models "sei/essential-models.asd"))     ; new for 2022
-(load (lpath :models "cre/cre-essential-models.asd"))     ; new for 2022
-(load (lpath :models "cre/cre-essential-load.lisp"))     ; new for 2022
+;(load (lpath :models "cre/essential-models.asd"))     ; new for 2022 Why aren't these just found?
+;(load (lpath :models "cre/cre-essential-models.asd")) ; new for 2022
 
-;(load (lpath :models "sei/sei-essential-models.asd")) ; new for 2022
+#+express(load (lpath :src "express/p11/package.lisp"))
+#+express(load (lpath :src "express/p21/package.lisp"))
+#+express(load (lpath :src "express/injector/package.lisp"))
 
-
-;;; Not sure why this is necessary
-;;;2022(load (lpath :lisplib "puri/current/puri.asd"))
-;;;2022(load (lpath :lisplib "cl-json/cl-json.asd"))
-
-#+alf(load (lpath :lisplib "uml-utils/alf/packages.lisp"))
-
-
-#+express(load (lpath :cre "express/p11/package.lisp"))
-;pod7(load "cre:express;p14;package.lisp") ; needed, though it isn't used
-#+express(load (lpath :cre "express/p21/package.lisp"))
-#+express(load (lpath :cre "express/injector/package.lisp"))
-
-(load (lpath :cre "http/packages.lisp"))
-(load (lpath :cre "express/expcore/packages.lisp"))
-(load (lpath :cre "express/projectcore/packages.lisp"))
-(load (lpath :cre "express/injector/package.lisp"))
-(load (lpath :cre "express/p11/package.lisp"))
+(load (lpath :src "http/packages.lisp"))
+(load (lpath :src "express/expcore/packages.lisp"))
+(load (lpath :src "express/projectcore/packages.lisp"))
+(load (lpath :src "express/injector/package.lisp"))
+(load (lpath :src "express/p11/package.lisp"))
 ;;; Don't load it if you don't need it; screws up ocl debugging.
 #+qvt(load (lpath :lisplib "uml-utils/qvt/package.lisp"))
-(load (lpath :cre "readers/packages.lisp"))
+(load (lpath :src "readers/packages.lisp"))
 
+;(ql:quickload :cre)
 
 (handler-bind ((style-warning #'muffle-warning))
   (asdf:oos 'asdf:load-op :cre))
-;  (asdf:oos 'asdf:load-op :injector)))
+;;;  (asdf:oos 'asdf:load-op :injector)))
+
+;(asdf:oos 'asdf:load-op :application-expresso-core)
 
 (in-package :mofi)
 (defvar *cmpkg* nil "Package for #. compiler directive -- determines whether processing

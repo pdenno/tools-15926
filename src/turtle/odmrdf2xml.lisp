@@ -83,28 +83,28 @@
 (defun write-rdf (odm-graph roots stream)
   "Write ODM-GRAPH, an ODM:RDFGraph object, to STREAM."
   (declare (ignore stream)) ; POD!
-  (let ((doc (xmlp:document-parser 
+  (let ((doc (xml-utils:xml-document-parser 
 	      "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'></rdf:RDF>")))
-    (setf (xqdm:namespaces (xqdm:root doc)) 
-	  (append (xqdm:namespaces (xqdm:root doc))
+    (setf (xml-utils:xml-namespaces (xml-utils:xml-root doc)) 
+	  (append (xml-utils:xml-namespaces (xml-utils:xml-root doc))
 		  (make-namespaces doc (mofi:%source-elem odm-graph))))
     (VARS roots)
-    (loop for r in roots do (add-node r (xqdm:root doc) doc))
+    (loop for r in roots do (add-node r (xml-utils:xml-root doc) doc))
     (format t "~3%")
     (usr-bin-xmllint :instring
 		     (with-output-to-string (str)
-		       (xqdm:write-node doc str)))))
+		       (xml-utils:xml-write-node doc str)))))
 
 ;;; Subject is an IRI or blank node
 ;;; Predicate is an IRI
 ;;; Object is an IRI, literal or blank node.
 (defun add-node (node parent doc)
-  (let ((elem (xqdm:make-elem-node :name '|rdf|::|Description| :parent parent :document doc))
+  (let ((elem (xml-utils:xml-create-elem doc "rdf" "Description")) ; 2022 was qdm:make-elem-node
 	leaves non-leaves)
     (mvs (leaves non-leaves) (leaf-objects node))
-    (push elem (xqdm:children parent))
+    (push elem (xml-utils:xml-children parent))
     ;; attributes
-    (setf (xqdm:attributes elem)
+    (setf (xml-utils:xml-attributes elem)
 	  (append
 	   (unless (typep node 'rdfb:|BlankNode|) 
 	     (list (mk-about-attr (odm:%name (odm:%uri (odm:%uri-ref node))) elem)))
@@ -115,13 +115,13 @@
     (loop for (pred . obj) in leaves
        when (typep obj 'rdfb:|Node|) do
 	 (push (mk-leaf-elem (pred2elem-name pred) obj elem doc)
-	       (xqdm:children elem))
+	       (xml-utils:xml-children elem))
 	 (setf (serialized-p pred) t))
     ;; Non-leaf objects
     (loop for (pred . obj) in non-leaves
-	  for child = (xqdm:make-elem-node :name (pred2elem-name pred) :parent elem :document doc) do
+	  for child = (xml-utils:xml-create-elem2 doc (pred2elem-name pred)) do ; 2022 was xqdm make-elem-node
 	  (add-node obj child doc) 
-	  (push-last child (xqdm:children elem)))
+	  (push-last child (xml-utils:xml-children elem)))
     elem))
 
 ;;; Purpose: element name of a predicate
@@ -147,43 +147,42 @@
 ;;;  <ex:homePage rdf:resource="http://purl.org/net/dajobe/" />
 (defun mk-leaf-elem (elem-name obj-node parent doc)
   (setf (serialized-p obj-node) t)
-  (let ((elem (xqdm:make-elem-node :name elem-name :parent parent :document doc))
+  (let ((elem (xml-utils:xml-create-elem2 doc elem-name)) ; 2022 was xqdm make-elem-node
 	(uri (odm:%name (odm:%uri (odm:%uri-ref obj-node)))))
-    (setf (xqdm:attributes elem)
-	  (list (xqdm:make-string-attr-node 
-		 :name '|rdf|::|resource|
-		 :value uri
-		 :children (list uri)
-		 :parent parent)))
+    (setf (xml-utils:xml-attributes elem)
+	  (list (xml-utils:make-string-attr-node "rdf" "resource" uri parent)))
     elem))
 
 (defun mk-leaf-attr (pred obj parent)
   "Make an XML attribute for a predicate with a terminal object."
-  (setf (serialized-p pred) t)
-  (xqdm:make-string-attr-node 
-   :name pred
-   :value obj
-   :children (list obj)
-   :parent parent))
+  (setf (serialized-p pred) t) ; 2022 needs work split name to prefix and local. 
+  (xml-utils:make-string-attr-node "" pred obj parent))
 
 (defun mk-about-attr (uri parent)
   "Make an rdf:about XML attribute."
-  (xqdm:make-string-attr-node 
-   :name '|rdf|:|about|
-   :value uri
-   :children (list uri)
-   :parent parent))
+;;;  (xqdm-ignore:make-string-attr-node 
+;;;   :name '|rdf|:|about|
+;;;   :value uri
+;;;   :children (list uri)
+;;;   :parent parent))
+  (make-instance 'rune-dom::attribute
+		 :name "about:rdf"
+		 :local-name "about"
+		 :prefix "rdf"
+		 :namespace-uri uri
+		 :owner-element parent
+		 :owner (xml-utils:xml-document parent)))
 
 (defun make-namespaces (doc ns-list)
-  "Make xqdm:ns-nodes for xqdm:document DOC. NS-LIST is (prefix . longstring)."
-  (loop for (prefix . ns) in (remove-if #'(lambda (x) (string= "rdf" (car x))) ns-list)
+  "Make xqdm-ignore:ns-nodes for xqdm-ignore:document DOC. NS-LIST is (prefix . longstring)."
+  #+nil(loop for (prefix . ns) in (remove-if #'(lambda (x) (string= "rdf" (car x))) ns-list)
         for namespace = (or (find-package ns) 
 			    (make-package ns 
 					  :nicknames (unless (find-package prefix) (list prefix))))
-        collect (xqdm:make-ns-node :prefix (intern prefix '|xmlns|)
+        collect (xqdm-ignore:make-ns-node :prefix "xmlns"
 				   :namespace namespace
 				   :document doc 
-				   :parent (xqdm:root doc))))
+				   :parent (xml-utils:xml-root doc))))
 
 
 ;;; When a predicate arc in an RDF graph points to an object node which has no further predicate arcs, 

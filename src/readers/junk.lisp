@@ -4,7 +4,7 @@
       (setf red-regex (format nil "(~A)" (string xmi-idref)))
       (strcat "<p/> "
 	      (cl-who:escape-string
-	       (with-output-to-string (str) (xmlp:write-node elem str)))))
+	       (with-output-to-string (str) (xml-utils:xml-write-node elem str)))))
   ""))
 
 
@@ -53,11 +53,11 @@
 
 (defun read-owl (&key file model mmm)
   "Read an XML file of OWL descriptions of templates."
-  (let ((doc (or mmm (xmlp:document-parser file))))
+  (let ((doc (or mmm (xml-utils:xml-document-parser file))))
     ;(setf *mmm* doc)
     (catalog-template-roles doc)
     (catalog-template-logic doc)
-    (loop for c in (xqdm:children (xqdm:root doc)) with i = 0 with result
+    (loop for c in (xml-utils:xml-children (xml-utils:xml-root doc)) with i = 0 with result
        when (and (xml-typep c 'owl::|Thing|) (template-desc-p c)) do
 	 (if-bind (temp-ref (xml-find-child 'p7tm::|hasTemplate| c)) ; attr is #:resource not rdf::resource. NI.
 		  (let* ((name (rdf-resource temp-ref))
@@ -86,13 +86,13 @@
   (with-xml-attrs ((role p7tm::|hasRole|) (index p7tm::|valRoleIndex|) (type p7tm::|hasRoleFillerType|)
 		   (comment rdfs::|label|)) elem
     (when comment
-      (setf comment (string-trim '(#\Space) (car (xqdm:children comment))))
+      (setf comment (string-trim '(#\Space) (car (xml-utils:xml-children comment))))
       (mvb (success vec)
 	  (cl-ppcre:scan-to-strings "^\\(\\d+\\)\\s+\\w+\\s+(.*)$" comment)
 	(if success (setf comment (svref vec 0)) (setf comment ""))))
       (make-instance 'template-role
 		     :name (subseq (rdf-resource role) 1)
-		     :index (read-from-string (car (xqdm:children index)))
+		     :index (read-from-string (car (xml-utils:xml-children index)))
 		     :type (or (translate-type (rdf-resource type)) (find-class 'p2::thing))
 		     :comment comment)))
 |#
@@ -102,20 +102,20 @@
 (defun catalog-template-logic (doc)
   "Populate a hash table of template logic text, indexed by template-name."
   (clrhash *tmpl-logic-ht*)
-  (loop for cl in (remove-if-not #'(lambda (x) (xml-typep x 'owl::|Class|)) (xqdm:children (xqdm:root doc)))
-        for la = (xml-find-child 'rdfs::|label| (xqdm:children cl)) do
+  (loop for cl in (remove-if-not #'(lambda (x) (xml-typep x 'owl::|Class|)) (xml-utils:xml-children (xml-utils:xml-root doc)))
+        for la = (xml-find-child 'rdfs::|label| (xml-utils:xml-children cl)) do
         (if la
-	    (let ((label (string-trim '(#\Space) (car (xqdm:children la)))))
+	    (let ((label (string-trim '(#\Space) (car (xml-utils:xml-children la)))))
 	      (if-bind (t-desc 
 			(find-if #'(lambda (x)
-				     (and (xqdm:element-p x)
+				     (and (dom:element-p x)
 					  (xml-typep x 'owl::|Thing|)
 					  (string= (format nil "TemplateDescription_of_~A" label)
 						   (xml-get-attr-value x 'rdf::ID))))
-				 (member cl (xqdm:children (xqdm:root doc)))))
+				 (member cl (xml-utils:xml-children (xml-utils:xml-root doc)))))
 		       (if-bind (logic (xml-find-child 'p7tpl::|valFOLCode| t-desc))
 			  (if-bind (text (xml-find-child 'p7tpl::|script| logic))
-			      (setf (gethash label *tmpl-logic-ht*) (second (xqdm:children text)))
+			      (setf (gethash label *tmpl-logic-ht*) (second (xml-utils:xml-children text)))
 			      (warn "Cannot find p7tpl:text."))
 			  (warn "Cannot find p7tpl:ValFOLCode"))
 		       (warn "Cannot find Template desc for ~A" label)))
@@ -126,13 +126,13 @@
   "Populate a hash table of roles (xml elements), indexed by template-name."
   (clrhash *tmpl-roles-ht*)
   (depth-first-search
-   (xqdm:root doc)
+   (xml-utils:xml-root doc)
    #'fail
-   #'xqdm:children
+   #'xml-utils:xml-children
    :do
    #'(lambda (x)
        (when (and (xml-typep x 'owl:|Thing|) (template-role-desc-p x))
-	 (push x (gethash (xml-get-attr (xml-find-child 'p7tm::|hasTemplate| (xqdm:children x)) "resource")
+	 (push x (gethash (xml-get-attr (xml-find-child 'p7tm::|hasTemplate| (xml-utils:xml-children x)) "resource")
 			  *tmpl-roles-ht*))))))
 
 
@@ -145,7 +145,7 @@
 		      #.(strcat "http://standards.iso.org/iso/ts/15926/-8/ed-1/"
 				"tech/reference-data/p7tm#TemplateDescription")
 		      (xml-get-attr-value x 'rdf::|resource|))))
-	    (xqdm:children node)))
+	    (xml-utils:xml-children node)))
 
 (defun template-role-desc-p (node)
    "NODE should be a owl:Thing element. 
@@ -156,7 +156,7 @@
 		      #.(strcat "http://standards.iso.org/iso/ts/15926/-8/ed-1/"
 				"tech/reference-data/p7tm#TemplateRoleDescription")
 		      (xml-get-attr-value x 'rdf::|resource|))))
-	    (xqdm:children node)))
+	    (xml-utils:xml-children node)))
 
 
 
@@ -164,13 +164,13 @@
 (defun catalog-template-logic (doc)
   "Populate a hash table of template logic text, indexed by template-name."
   (clrhash *tmpl-logic-ht*)
-  (loop for cl in (remove-if-not #'(lambda (x) (xml-typep x '#:|Class|)) (xqdm:children (xqdm:root doc)))
-        for ch = (xqdm:children cl)
+  (loop for cl in (remove-if-not #'(lambda (x) (xml-typep x '#:|Class|)) (xml-utils:xml-children (xml-utils:xml-root doc)))
+        for ch = (xml-utils:xml-children cl)
         for la = (xml-find-child 'rdfs::|label| ch)
         for co = (xml-find-child 'rdfs::|comment| ch) do
         (if (and la co) 
-	    (setf (gethash (string-trim '(#\Space) (car (xqdm:children la))) *tmpl-logic-ht*)
-		  (car (xqdm:children co)))
+	    (setf (gethash (string-trim '(#\Space) (car (xml-utils:xml-children la))) *tmpl-logic-ht*)
+		  (car (xml-utils:xml-children co)))
 	    (warn "Cannot find label or comment for ~A" cl))))|#
 
 

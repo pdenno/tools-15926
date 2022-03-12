@@ -74,7 +74,7 @@
   ;; Read the demo CHL system SysML file. 
   (handler-bind ((simple-warning #'(lambda (c) (declare (ignore c)) (muffle-warning))))
     (with-debugging (:readers 0) 
-      (let ((pop (mofi:xmi2model-instance :file (lpath :cre "models/ccw-sysml/DemoCHLSystem.mdxml")
+      (let ((pop (mofi:xmi2model-instance :file (lpath :models "ccw-sysml/DemoCHLSystem.mdxml")
 					  :clone-p nil :force t)))
 	  (change-class pop 'mofi:privileged-population)
 	  (setf *demo-mut* pop)))))
@@ -140,7 +140,7 @@
 ;;;==================================================
 (defun cre-homepage ()
   (app-page-wrapper :cre (:menu-pos '(:root :site-overview))
-    (with-open-file (s (lpath :cre "http/static/homepage.html"))
+    (with-open-file (s (lpath :src "http/static/homepage.html"))
       (loop for line = (read-line s nil nil)
 	    while line do (princ line) (terpri)))))
 

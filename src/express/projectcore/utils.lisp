@@ -93,7 +93,7 @@
           when (eql line :eof) return nil
           finally (return line))))
 
-(defmacro big-stack ((&key (name (format nil "Big Stack ~A" (string (gensym))))) &body body)
+#+lispworks(defmacro big-stack ((&key (name (format nil "Big Stack ~A" (string (gensym))))) &body body)
   "Runs the body in a big stack process, waiting for completion."
   (with-gensyms (pname result)
     `(with-stack-size (256000) ; LW default is only 16000!

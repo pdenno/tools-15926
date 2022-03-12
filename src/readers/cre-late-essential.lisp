@@ -15,7 +15,7 @@
  :nicknames '(:part2-mexico)
  :model-class 'mexico-schema
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
- :source-file (lpath :lisplib "pod-utils/uml-utils/models/cre/15926-2.exp"))
+ :source-file (lpath :lisplib "uml-utils/models/cre/15926-2.exp"))
 
 (ensure-model 
  :part2
@@ -24,7 +24,7 @@
  :nicknames '(:part2)
  :model-class 'expresso-lisp
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
- :source-file (lpath :lisplib "pod-utils/uml-utils/models/cre/15926-2.lisp"))
+ :source-file (lpath :lisplib "uml-utils/models/cre/15926-2.lisp"))
 
 (mofi:ensure-model 
  :mmt-templates :force t :verbose t
@@ -32,8 +32,9 @@
  :model-class 'mofi:privileged-template-population
  :documentation "Created by parsing templates retrieved from 
                  <a href='http://15926.org/15926_template_specs.php?mode=owl'>
-                 http://15926.org/15926_template_specs.php?mode=owl</a> on 2013-07-25." 
- :source-file (lpath :cre "data/mmt-templates-owl-2013-07-25.xml"))
+                 http://15926.org/15926_template_specs.php?mode=owl</a> on 2013-07-25.
+                 2022: See readers/owl-templates.lisp"
+ :source-file (lpath :data "data/mmt-templates-owl-2013-07-25.xml"))
 		          ;"data/mmt-templates-owl-2013-04-17.xml"))
 
 (mofi:ensure-model 
@@ -43,9 +44,10 @@
  :model-class 'mofi:essential-compiled-model
  :depends-on-models '(:mmt-templates)
  :documentation "Created from tlogic generator 2013-04-17 using templates retrieved that day." 
- :classes-path (lpath :cre "data/mmt-template-classes.lisp"))
+ :classes-path (lpath :data "mmt-template-classes.lisp"))
 
-(mofi:ensure-model
+;;; 2022 commented out
+#+nil(mofi:ensure-model
  :em-templates :force t :verbose t
  :features '(:cre)
  :model-class 'mofi:privileged-template-population
@@ -85,7 +87,7 @@
  :model-class 'mofi:privileged-population
  :model-n+1 (mofi:find-model :mexico)
  :read-args '(:force t :sort-names nil :clone-p nil :linenums-p nil)
- :source-file (pod:lpath :lisplib "pod-utils/uml-utils/models/cre/15926-2.xmi"))
+ :source-file (pod:lpath :lisplib "uml-utils/models/cre/15926-2.xmi"))
 |#
 
 

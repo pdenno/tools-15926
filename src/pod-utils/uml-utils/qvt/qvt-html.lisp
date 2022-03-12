@@ -89,7 +89,7 @@
 #+nil
 (defun devl-js-post-dsp ()
   (when-bind (post-data (safe-post-parameter "firstName")) ;; I've been using :name JS example uses :id
-    (app-page-wrapper :sei (:view "QVT Pages"
+    (app-page-wrapper :cre (:view "QVT Pages"
 				  :menu-pos '(:root :tools))
       (:h1 "Result")
       (str post-data))))
@@ -121,7 +121,7 @@
 (defun qvt-handle-metamodel-file (file-path)
   "Move the file from IN-PATH, (where the server placed it) to a place managed by us.
    Call process-uml/qvt-file2model with the file."
-  #+sei.exe(log-message :info "qvt called from IP address ~A" (header-in "remote-ip-addr"))
+  #+cre.exe(log-message :info "qvt called from IP address ~A" (header-in "remote-ip-addr"))
   (case (usr-bin-file file-path)
     (:xml (with-vo (session-models user-id)
 	    (let ((model-name (intern (format nil "~A-~A" (string-upcase user-id) (string (gensym)))
@@ -173,7 +173,7 @@
 (defun qvt-handle-qvtr-file (file-path)
   "Call qvt-file2model or xmi2model-instance with the file (FILE-PATH) creating
    a population of MODEL-N+1."
-  #+sei.exe(log-message :info "qvt-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
+  #+cre.exe(log-message :info "qvt-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
     (setf mofi:*results* (make-instance 'processing-results))
 ;      (mofi:results-handler-bind (qvt-handle-qvtr-file)
       (with-vo (session-models mut)
@@ -217,7 +217,7 @@
   "Call xmi2model-instance with the file (FILE-PATH) creating
    a population of MODEL-N+1 -- no validation."
   (declare (ignore model-name)) ; POD Investigate
-  #+sei.exe(log-message :info "qvt-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
+  #+cre.exe(log-message :info "qvt-handle-file called from IP address ~A" (header-in "remote-ip-addr"))
   (setf mofi:*results* (make-instance 'processing-results))
   (handler-bind ((simple-warning #'(lambda (c) (declare (ignore c)) (muffle-warning))))
     (with-vo (session-models mut)

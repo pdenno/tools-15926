@@ -3,8 +3,9 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (setf sb-ext:*on-package-variance* '(:warn t)))
 
-(defpackage qvt                                       
-  (:use cl closer-mop pod #|mofi ptypes ocl|# trie) ; 2011-09-12 :mofi, ptypes, ocl: a mistake to use these!
+(defpackage qvt                                     
+;;;(:use cl closer-mop pod #|mofi ptypes ocl|# trie) ; 2011-09-12 :mofi, ptypes, ocl: a mistake to use these!
+   (:use cl closer-mop pod  mofi  ptypes ocl   trie) ; 2022 I put them back for CRE  
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
 			  #:defgeneric #:standard-generic-function #:defclass #:defmethod)
   (:shadowing-import-from :mofi #:owner #:%of-model #:%defined-at #:%token-position #:%source-elem #:%debug-id

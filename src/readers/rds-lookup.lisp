@@ -75,22 +75,22 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
 (defmethod rds-parse ((encoding (eql :xml)) vars content)
   "Return list of sublists to all bindings to VARs."
   (setf content (xml-squeeze content))
-  (when-bind (sparql (car (xqdm:children content)))
-    (when-bind (head (xml-find-child "head" (xqdm:children sparql)))
+  (when-bind (sparql (car (xml-utils:xml-children content)))
+    (when-bind (head (xml-find-child "head" (xml-utils:xml-children sparql)))
       (let ((head-vars (mapcar #'(lambda (x) (xml-get-attr x "name"))
 			       (remove-if-not #'(lambda (x) (xml-typep x 'sparqlr::|variable|))
-					      (xqdm:children head)))))
+					      (xml-utils:xml-children head)))))
 	(loop for v in vars
 	   unless (find v head-vars :test #'string=)
 	   do (error "SPARQL Results: ~A is not a variable bound by the query." v))
-	(when-bind (results (xml-find-child "results" (xqdm:children (car (xqdm:children content)))))
-	  (loop for r in (xqdm:children results)
+	(when-bind (results (xml-find-child "results" (xml-utils:xml-children (car (xml-utils:xml-children content)))))
+	  (loop for r in (xml-utils:xml-children results)
 	       collect
 	       (loop for v in vars
-		  for b in (xqdm:children r) do
+		  for b in (xml-utils:xml-children r) do
 		    (unless (string= (xml-get-attr b "name") v) 
 		      (error "SPARQL results bindings out of order."))
-		  collect (car (xqdm:children (car (xqdm:children b)))))))))))
+		  collect (car (xml-utils:xml-children (car (xml-utils:xml-children b)))))))))))
 
 
 (declaim (inline key2endpoint))
@@ -120,7 +120,7 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
       #-cre.exe(format t "~% HIT!") 
 	(when-debugging (:query 3)
 	   (with-output-to-string (str)
-	     (xmlp:write-node hit *standard-output*)))
+	     (xml-utils:xml-write-node hit *standard-output*)))
       (return-from sparql-query (if (eql hit :no-value) nil hit)))
     ;; Otherwise make a query
     (let ((uri (strcat (key2endpoint ep-key)
@@ -133,13 +133,13 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
 	#-cre.exe(format t "~%....no hit")
 	(if (= 200 status)
 	    (setf (gethash query ht) 
-		  (xmlp:document-parser
+		  (xml-utils:xml-document-parser
 		   (with-output-to-string (str)
 		     (loop for code across reply do (write-char (code-char code) str)))))
 	    (setf (gethash query ht) :no-value))
 	(when-debugging (:query 3)
 	   (with-output-to-string (str)
-	     (xmlp:write-node (gethash query ht) *standard-output*)))
+	     (xml-utils:xml-write-node (gethash query ht) *standard-output*)))
 	(gethash query ht)))))
 
 ;;;======================================================
@@ -185,7 +185,7 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
 "SELECT ?class { 
   ?class a p2:ClassOfInanimatePhysicalObject . 
   ?class RDL:hasDesignation \"ACTUATOR\" . } ")))
-    (xmlp:write-node result *standard-output*)))
+    (xml-utils:xml-write-node result *standard-output*)))
 
 
 (defun ptryme ()
@@ -195,7 +195,7 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
  "SELECT ?class { 
   \"RDS364686618?class a ?class . }")
   ?class RDL:hasDesignation \"ACTUATOR\" . } ")))
-    (xmlp:write-node result *standard-output*)))
+    (xml-utils:xml-write-node result *standard-output*)))
 
 
 
@@ -208,7 +208,7 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
   ?class a p2:ClassOfInanimatePhysicalObject . 
   ?class RDL:hasDesignation \"ACTUATOR\" .
   ?class p2:hasSuperclass ?sup . }")))
-    (xmlp:write-node result *standard-output*)))
+    (xml-utils:xml-write-node result *standard-output*)))
 
 
 
@@ -222,7 +222,7 @@ PREFIX rds: <http://rdl.rdlfacade.org/data#>
    ?class a p2:ClassOfClassOfIndividual . 
    ?class RDL:hasDesignation \"ACTUATOR CLA\" . 
    ?class p2:hasSuperclass ?sup . }")))
-    (xmlp:write-node result *standard-output*)))
+    (xml-utils:xml-write-node result *standard-output*)))
 |#
 
 

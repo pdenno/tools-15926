@@ -128,7 +128,7 @@
   (with-slots (xml red-regex) c
     (if xml
 	(with-output-to-string (out)
-	  (let* ((str (with-output-to-string (s) (xmlp:write-node xml s)))
+	  (let* ((str (with-output-to-string (s) (xml-utils:xml-write-node xml s)))
 		 (len (length str))
 		 (textlen (if-bind (len (safe-get-parameter "text-length")) 
 				   (read-from-string len) 512))

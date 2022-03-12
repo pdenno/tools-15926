@@ -67,18 +67,23 @@
     (make-package* "http://www.omg.org/spec/EXPRESS/1.0") ; 2012 was http://www.omg.org/MEXICO/EXPRESS_v2
     (make-package* "http://www.omg.org/XMI")))
 
-(defmemo uml-package2namespace (name)
+(defun uml-package2namespace (name)
   (if (eql name '|Errors|)
-      (xqdm:find-namespace "http://www.omg.org/MEXICO/Errors")
-    (xqdm:find-namespace "http://www.omg.org/spec/EXPRESS/1.0")))
+      "http://www.omg.org/MEXICO/Errors"
+      "http://www.omg.org/spec/EXPRESS/1.0"))
+
+#+nil(defmemo uml-package2namespace (name) ; 2022 replaced with the above
+  (if (eql name '|Errors|)
+      (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Errors")
+    (xqdm-ignore:find-namespace "http://www.omg.org/spec/EXPRESS/1.0")))
 #| The old way (see xmi-template-old.xml)
   (ecase name
-    (|Core| (xqdm:find-namespace "http://www.omg.org/MEXICO/Core"))
-    (|Expressions| (xqdm:find-namespace "http://www.omg.org/MEXICO/Expressions"))
-    (|Rules| (xqdm:find-namespace "http://www.omg.org/MEXICO/Rules"))
-    (|Algorithms| (xqdm:find-namespace "http://www.omg.org/MEXICO/Algorithms"))
-    (|Instances| (xqdm:find-namespace "http://www.omg.org/MEXICO/Instances"))
-    (|Errors| (xqdm:find-namespace "http://www.omg.org/MEXICO/Errors"))))
+    (|Core| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Core"))
+    (|Expressions| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Expressions"))
+    (|Rules| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Rules"))
+    (|Algorithms| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Algorithms"))
+    (|Instances| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Instances"))
+    (|Errors| (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO/Errors"))))
 |#
 
 ;;;===================
@@ -86,25 +91,25 @@
 ;;;===================
 (defmethod map-xmi ((version (eql :two-one)) &key (pathname (lpath :tmp "mexico/xmi-pre-reflow.xmi")) indent-p)
   (xmi-clear-registry)
-  (let* ((doc (xmlp::parse-document (lpath :cre "express/injector/xmi-template.xmi")))
-	 (root (xqdm:root doc))
+  (let* ((doc (xml-utils:xml-parse-document (lpath :src "express/injector/xmi-template.xmi")))
+	 (root (xml-utils:xml-root doc))
 	 (content root)
 	 (schema-obj (p11p::schema-scope *scope*)) ; pod7 added *scope* argument
 	 schema)
-    ;(setf *ns* (xqdm:find-namespace "http://www.omg.org/MEXICO"))
+    ;(setf *ns* (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO"))
     (map-prologue doc root)
     ;; Map the single top-level object -- XMI uses that term 'top-level' but doesn't define it. 
-    (setf (xqdm:children content) ;; Schema is the ONLY "top-level object" 
+    (setf (xml-utils:xml-children content) ;; Schema is the ONLY "top-level object" 
 	  (list (setf schema (map-element :two-one root doc (xmi-class-name schema-obj) schema-obj 
 					  #| 2012 :recurse nil|#))))
     ;; But in rule 2a it partitions things into "top-level objects" and 
     ;; "objects that are the value of an attribute or reference"
     ;; The example use of 2a is ownedMember of Package in MOF...can't find it.
     ;; Perhaps 'top-level' doesn't means anything you can't reach through navigation. 
-    (setf (xqdm:children schema) ; here "top-level" refers to my mexico notion.
+    (setf (xml-utils:xml-children schema) ; here "top-level" refers to my mexico notion.
 	  (loop for obj in (%schema-elements (p11p::schema-scope *scope*)) 
 		collect (string #\Newline)
-		collect (xml-make-node doc root nil (format nil "~A" (xmi-name obj)) :type 'xqdm:comment-node)
+		collect (xml-make-node doc root nil (format nil "~A" (xmi-name obj)) :type 'rune-dom::comment) ; 2022 such a thing?
 		collect (map-element :two-one root doc "defined-in" obj)))
     ;(when indent-p (big-stack (:name "Indenting") (xml-indent root)))
     (with-open-file (s pathname :direction :output :if-exists :supersede)
@@ -121,8 +126,8 @@
   (when (xmi-string-p obj) (return-from map-element (format nil "~A" obj))) ; content is a string
   (xmi21-register-obj obj)
   (setf (xmi-mapped-p obj) t)
-  (let ((node (xml-make-node doc root tag-name nil :type 'xqdm:elem-node)))
-    (setf (xqdm:attributes node) 
+  (let ((node (xml-make-node doc root tag-name nil :type 'rune-dom::element)))
+    (setf (xml-utils:xml-attributes node) 
 	  (append
 	   (list (xml-make-node doc root "xmi:type" (xmi-class-name obj))
 		 (xml-make-node doc root "xmi:id" (obj2xmi-id obj)))
@@ -136,7 +141,7 @@
 		 (loop for c in (mklist slot-val) when c
 ;		       do (VARS c)
 		       collect (xml-make-node doc root (slot2attr-name slot) (xmi21-name c))))))
-    (setf (xqdm:children node)
+    (setf (xml-utils:xml-children node)
 	   (loop for slot in (reverse (closer-mop:class-slots (class-of obj)))
 		 for slot-val = (slot-value obj (closer-mop:slot-definition-name slot))
 		 when (and slot-val
@@ -156,17 +161,17 @@
 
 (defun map-prologue (doc root)
   (flet ((mk-comment (text)
-	    (xml-make-node doc root nil text :type 'xqdm:comment-node))
+	    (xml-make-node doc root nil text :type 'rune-dom::comment))
 	 (mk-newline (&optional (n 1))
             (loop for i from 1 to n collect (string #\Newline))))
-    (setf (xqdm:children root)
+    (setf (xml-utils:xml-children root)
 	  (append
 	   (flatten
 	    (list 
 	     (mk-newline) (mk-comment (format nil " Created on ~A" (now)))
 	     (mk-newline) (mk-comment (format nil" ~A" (expo:ee-version)))
 	     (mk-newline 2)))
-	   (xqdm:children root)))))
+	   (xml-utils:xml-children root)))))
 
 ;;;========================================================
 ;;; Utilities ...

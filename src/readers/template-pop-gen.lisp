@@ -17,14 +17,14 @@
 ;;; (write-template-classes :mmtc (mut *spare-session-model*))
 (defun write-template-classes (tpkg model)
   "Toplevel function to generate mofi classes for templates."
-  (with-open-file (out (lpath :cre "data/tryme.lisp") :direction :output :if-exists :supersede)
+  (with-open-file (out (lpath :src "tryme.lisp") :direction :output :if-exists :supersede)
     (with-slots (mofi:source-file) model
       (format out ";;; Created ~A from file ~A." (now) mofi:source-file)
       (format out "~2%(in-package ~S)" tpkg)
       (let ((*package* (find-package tpkg)))
 	(declare (special *package*))
 	(gen-tclasses tpkg model  :stream out))
-      (lpath :cre "data/tryme.lisp"))))
+      (lpath :src "tryme.lisp"))))
 
 (defun gen-tclasses (tpkg model &key (stream *standard-output*))
   "Generate def-mm-class forms for template definitions."

@@ -189,6 +189,18 @@
     (setf (xml-attributes owner) (append (xml-attributes owner) (list attr)))
     owner))
 
+;;; New for 2022
+(defun xml-make-string-attr-node (prefix local-name value owner)
+  "Replaces xqdm-ignore:make-string-attr-node"
+  (let ((attr (make-instance 'rune-dom::attribute
+			     :name (strcat prefix ":" name)
+			     :local-name name
+			     :prefix prefix
+			     :namespace-uri nil
+			     :owner-element owner
+			     :owner (xml-document owner))))
+    (setf (xml-value attr) value)))
+
 ;;; This is re-factored out of xml-create-elem, which was in canon-xmi-gen.lisp. 
 (defun xml-add-elem (owner elem)
   (setf (slot-value owner 'rune-dom::children) 
@@ -214,6 +226,12 @@
 			 :element result))
     ;(rune-dom::add-default-attributes result) ; Need a DTD for this.
     result))
+
+;;; For 2022
+(defun xml-create-elem2 (doc name)
+  (let ((local-name (foo name))
+	(prefix (bar name)))
+    (xml-create-elem doc prefix local-name)))
 
 ;;; Was in canon-xmi-gen.lisp
 #+nil(defun xml-set-content (elem value)
@@ -294,6 +312,8 @@
 	     (when-bind (more (xml-find-attrs x #'(lambda (y) (string= (dom:prefix y) "xmlns"))))
 		 (setf attrs (append attrs more)))))
     (mapcar #'(lambda (x) (cons (dom:local-name x) (dom:value x))) attrs)))
+
+
 
 (defun xml-prefix2uri (prefix namespaces)
   "Return the URI string associated with PREFIX. NAMESPACES is an alist such as produced by xml-namespaces."
