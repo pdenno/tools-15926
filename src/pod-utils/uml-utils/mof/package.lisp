@@ -219,11 +219,17 @@
 	   #:%debug-id  
 	   #:|debug-id|
 	   #:%defined-at
-	   #:|defined-at| 
-	   #:%obj-id
-	   #:|obj-id| 
+	   #:|defined-at|
+	   #:|includes-remarks| ; 2022
+	   #:%includes-remarks  ; 2022	   
+	   #:|local-name|       ; 2022
+	   #:%local-name        ; 2022
+	   #:|named-elements|       ; 2022
+	   #:%named-elements        ; 2022	   
 	   #:%mapped-slots
 	   #:|mapped-slots|
+	   #:%obj-id
+	   #:|obj-id| 
 	   #:%of-model
 	   #:|of-model| 
 	   #:%sort-name

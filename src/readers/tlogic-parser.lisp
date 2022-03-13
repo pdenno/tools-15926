@@ -1,15 +1,13 @@
+;;; Purpose: An parser for 'template logic' -- a KIF-like bi-conditional.
 
-;;; Purpose: An parser for 'template logic' -- a KIF-like bi-conditional. 
-
-;;; ToDo: 
+;;; ToDo:
 ;;;   - Enclose the toplevel in a universal quantification.
-;;;   - Check that all variables declared (in universal and existential quantifications) are used. 
+;;;   - Check that all variables declared (in universal and existential quantifications) are used.
 
 (in-package :tlogic)
 
 (defclass tlogic-stream (token-stream)
   ((read-fn :initform 'tlogic-read)))
-
 
 ;;; For now, I can't use assert-token. (I have no idea why.)
 (defmethod assert-token (token (stream-obj tlogic-stream))
@@ -17,9 +15,9 @@
   (let ((*token-stream* stream-obj))
     (let ((tkn (read-token stream-obj)))
       (unless (eql tkn token)
-	(error 'axiom-parse-token-error 
-	       :tag (car *tags-trace*) 
-	       :tags *tags-trace* 
+	(error 'axiom-parse-token-error
+	       :tag (car *tags-trace*)
+	       :tags *tags-trace*
 	       :expected token
 	       :actual tkn
 	       :line-number *line-number*))
@@ -39,10 +37,10 @@
   (when debug-p (format t "~%Testcase: ~S~%" str))
   (let ((string-stream (make-string-input-stream (strcat str " ")))
 	(*package* (find-package :tlogic)))
-    (with-open-stream (stream (setf *token-stream* 
+    (with-open-stream (stream (setf *token-stream*
 				    (make-instance 'tlogic-stream :stream string-stream)))
       (let ((result (tlogic2lisp stream)))
-        (if (eql :eof (peek-token stream))
+	(if (eql :eof (peek-token stream))
 	    result
 	  (error 'axiom-parse-incomplete :actual (peek-token stream)))))))
 
@@ -63,8 +61,8 @@
 
 ;;; This IS NOT a candidate for pod-utils. Each impementation differs (See the EXPRESS one.)
 (defmacro with-instance ((type &rest init-args) &body body)
-  "A macro that creates an object and provides with-slots to use it." 
-  (let ((slot-names (mapcar #'clos:slot-definition-name (clos:class-slots (find-class type)))))
+  "A macro that creates an object and provides with-slots to use it."
+  (let ((slot-names (mapcar #'slot-definition-name (class-slots (find-class type)))))
     `(let* ((*def* (make-instance ',type ,@init-args)))
       (with-slots ,slot-names *def*
 	(declare (ignorable ,@slot-names))
@@ -73,7 +71,7 @@
 	*def*))))
 
 ;;;======================== The Grammar ==============================
-;;; TlogicSentence ::= TemplateSentence '<->' BooleanSentence . 
+;;; TlogicSentence ::= TemplateSentence '<->' BooleanSentence .
 ;;; TemplateSentence ::= AtomicSentence                              -- Hack for universal quantification
 ;;; BooleanSentence ::= Conjunction                                  -- would be more.
 ;;; Conjuction ::= (QuantifiedSentence | AtomicSentence) ('&' (QuantifiedSentence | AtomicSentence))*
@@ -81,21 +79,22 @@
 ;;; ExistentialQuantification ::= ('exists' Name)+ '(' Conjunction ')'
 ;;; Atom ::= AtomicSentence                                          -- would be more.
 ;;; AtomicSentence ::= Predicate '(' Term (, Term)* ')'
-;;; Term ::= Name  | number | string-constant                        -- would be more. 
+;;; Term ::= Name  | number | string-constant                        -- would be more.
 ;;; Predicate ::= string
 ;;; Name ::= string
 
 (defvar *scopes* nil "A list of scope objects, closest first")
 (defstruct scope (-vars nil))
 
-#.(unintern 'ocl:|body|)
-#.(import 'odm-cl::|body|)
+;;; 2022 Really!?! (The stuff below is old code.)
+;;;#.(unintern 'ocl:|body|)
+;;;#.(import 'odm-cl::|body|)
 
-;;; TlogicSentence ::= TemplateSentence '<->' BooleanSentence . 
+;;; TlogicSentence ::= TemplateSentence '<->' BooleanSentence .
 (defparse |TlogicSentence| ()
-    (setf *line-number* 1) 
+    (setf *line-number* 1)
     (setf *scopes* nil)
-    (let ((body 
+    (let ((body
 	   (with-instance (|Biconditional|)
 	     (setf |lvalue| (parse |TemplateSentence| :parent *def*))
 	     (assert-token :<-> stream)
@@ -116,11 +115,11 @@
       (error 'axiom-duplicate-variable-lhs :vars new-vars))
     result))
 
-;;; BooleanSentence ::= Conjunction 
+;;; BooleanSentence ::= Conjunction
 (defparse |BooleanSentence| (parent)
   (parse |Conjunction| :parent parent))
 
-;;; QuantifiedSentence ::= ExistentialQuantification                 
+;;; QuantifiedSentence ::= ExistentialQuantification
 (defparse |QuantifiedSentence| (parent)
   (parse |ExistentialQuantification| :parent parent))
 
@@ -133,12 +132,12 @@
 	  (cons (parse |Term| :error-p (not new-vars))
 		(loop while (eql #\, (peek-token stream))
 		      do (read-token stream)
-                      collect (parse |Term| :error-p (not new-vars)))))
+		      collect (parse |Term| :error-p (not new-vars)))))
     (when new-vars (push (make-scope :-vars |argument|) *scopes*))
     (setf mofi:|source-elem| parent)
     (assert-token #\) stream)))
 
-;;; BooleanSentence ::= Conjunction       
+;;; BooleanSentence ::= Conjunction
 (defparse |BooleanSentence| (parent)
   (parse |Conjunction| :parent parent))
 
@@ -151,7 +150,7 @@
 		    (parse |AtomicSentence| :parent *def*))
 		(loop while (eql #\& (peek-token stream))
 		      do (read-token stream)
-                      collect (if (eql (peek-token stream) :exists)
+		      collect (if (eql (peek-token stream) :exists)
 				  (parse |QuantifiedSentence| :parent *def*)
 				  (parse |AtomicSentence| :parent *def*)))))
     (setf mofi:|source-elem| parent)))
@@ -171,19 +170,19 @@
     (setf mofi:|source-elem| parent)
     (pop *scopes*)))
 
-;;; Term ::= Name  | number | string-constant   
+;;; Term ::= Name  | number | string-constant
 (defparse |Term| ((error-p t))
     (let ((term (read-token stream)))
       (typecase term
 	(string (if (find-if #'(lambda (x) (member term x :test #'string=)) *scopes* :key #'scope--vars )
 		    term
-		    (if error-p 
+		    (if error-p
 			(error 'axiom-unbound-variable :var term)
 			term)))
 	(number term)
 	(string-constant term)
-	(t (error 'axiom-parse-token-error 
-		  :expected "a variable, number, or string constant" 
+	(t (error 'axiom-parse-token-error
+		  :expected "a variable, number, or string constant"
 		  :actual term)))))
 
 (defparse |Name| ()
@@ -197,7 +196,3 @@
     (unless (stringp pred)
       (error 'axiom-parse-token-error :expected "a predicate symbol" :actual pred))
     pred))
-    
-
-
-

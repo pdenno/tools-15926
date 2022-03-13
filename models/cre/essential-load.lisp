@@ -130,7 +130,9 @@
 ;;;             For motivation, see miwg/validator.lisp/coverage statistics.
 ;;; 2010-07-30: New rule: The second nickname shall be the one used in XMI serialization. 
 ;;; 2011-06-20: (Salt Lake City) Changed nickname UML.xmi to UML.xml (ONLY FOR 2.3). NOPE
-(mofi:ensure-model 
+;;; 2022 :uml241 is enough for CRE???
+
+#+nil(mofi:ensure-model 
  :uml23 :force t  :verbose t
  :model-class 'mofi:essential-compiled-model
  :nicknames '("UML 2.3" 

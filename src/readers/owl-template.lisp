@@ -1,5 +1,4 @@
-
-;;; Purpose: Read OWL-encoded template definitions into internal form. 
+;;; Purpose: Read OWL-encoded template definitions into internal form.
 ;;;          Toplevel function, read-owl
 
 ;;; ToDo:
@@ -8,8 +7,8 @@
 ;;;        - Store conditions on instances
 ;;;        - Create classes for template defs "on the fly."
 ;;; ABOVE TWO BEFORE FIATECH DEMO!
-;;;        - Must allow non-standard namespaces for sources of templates. 
-;;;        - don't warn no axiom on prototemplates (or where you can find axiom) 
+;;;        - Must allow non-standard namespaces for sources of templates.
+;;;        - don't warn no axiom on prototemplates (or where you can find axiom)
 ;;;        - Report on what nspaces were used, and which should have been used.
 
 (in-package :tlogic)
@@ -17,7 +16,7 @@
 (defun type-symbol (obj)
   "Return a symbol representing the type (not like cl:type-of)."
   (cond ((symbolp obj) obj)
-	((expo:ientity-mo-p obj) 
+	((expo:ientity-mo-p obj)
 	 (car (expo::relative-leaves (mapcar #'class-name (cdr (class-precedence-list obj))))))))
 
 (declaim (inline rdf-resource rdf-datatype))
@@ -51,10 +50,10 @@
 	 (name (puri:uri-fragment uri)))
     (or
      (gethash name *templates*)
-     (let ((new (make-instance 'template 
-			       :name name 
-			       :uri (and (puri:uri-host uri) 
-					 (puri-string uri)) 
+     (let ((new (make-instance 'template
+			       :name name
+			       :uri (and (puri:uri-host uri)
+					 (puri-string uri))
 			       :of-model model)))
        (setf (gethash name *templates*) new)
        (push new (mofi:templates model))
@@ -88,36 +87,36 @@
    (when-bind (type-elem (find-if #'(lambda (x) (xml-typep-3 x 'rdf:|type|)) (xml-utils:xml-children elem)))
      (when-bind (rdf-type (xml-get-attr-value type-elem 'rdf:|resource|))
        (string= rdf-type (sym2rdf type))))))
-  
+
 (defmacro def-parse! (method-name pass-downward (type &rest binds) &body body)
   (let* ((aux (cdr (member '&aux binds))) ; can't use dbind, not same idea.
-         (keys (cdr (member '&key binds)))
-         (keys (subseq keys 0 (position '&aux keys)))
-         (attrs (subseq binds 0 (position '&key binds))) action)
+	 (keys (cdr (member '&key binds)))
+	 (keys (subseq keys 0 (position '&aux keys)))
+	 (attrs (subseq binds 0 (position '&key binds))) action)
     (with-gensyms (chilun c sint?)
       `(defmethod ,method-name ((elem-type (eql ,type)) dself &key ,pass-downward ,@keys)
-         (declare (ignorable dself ,pass-downward))
-         (let* ((,sint? nil)
+	 (declare (ignorable dself ,pass-downward))
+	 (let* ((,sint? nil)
 		(,chilun (xml-utils:xml-children dself))
-                ,@(loop for (vname aname) in attrs collect
+		,@(loop for (vname aname) in attrs collect
 			`(,vname (xml-get-attr-value dself ,aname)))
-                ,@aux)
-           (declare (ignorable ,chilun ,sint?))
-           ,@(loop for bod in body collect
-                  (dbind (term &rest action/args) bod
-                    (setf action 'do)
-                    (cond ((eql :self term)
+		,@aux)
+	   (declare (ignorable ,chilun ,sint?))
+	   ,@(loop for bod in body collect
+		  (dbind (term &rest action/args) bod
+		    (setf action 'do)
+		    (cond ((eql :self term)
 			   `(progn ,@action/args))
-                          (t
+			  (t
 			   (cond ((eql term :collect) (setq action 'collect))
 				 ((eql term :append)  (setq action 'append))
 				 ((symbolp term) (setf action term))
 				 ((listp term) (first action/args) action/args (second action/args))
 				 (t (error "Unknown def-parse action: ~A" term)))
-                            `(loop for ,c in ,chilun 
+			    `(loop for ,c in ,chilun
 				   when (xml-typep-3 ,c ,term) ,action
-                                  (,method-name ,term ,c 
-                                                ,(kintern pass-downward) ,pass-downward ,@action/args)))))))))))
+				  (,method-name ,term ,c
+						,(kintern pass-downward) ,pass-downward ,@action/args)))))))))))
 
 (defgeneric parse-tmpl (elem-type dself &key model &allow-other-keys))
 
@@ -133,11 +132,11 @@
     (let ((*error-output* *null-stream*))
       (setf mofi:*mm-debug-id* 0)
       (with-vo (mut) (setf mut model)
-        (with-slots (mofi:general-errors mofi:source-file) model
+	(with-slots (mofi:general-errors mofi:source-file) model
 	  (when file (setf mofi:source-file file))
 	  (handler-bind (#+cre.exe
 			 (error #'(lambda (c) (push c mofi:general-errors) (return-from read-owl model)))
-			 (simple-warning #'(lambda (c) 
+			 (simple-warning #'(lambda (c)
 					     (cond (*tmpl* (push c (conditions *tmpl*)))
 						   (*inst* (push c (mofi:%conditions *inst*)))
 						   (t (push c mofi:general-errors)))
@@ -171,7 +170,7 @@
     model)
 
 (defun transform-owl-thing (doc)
-  "Transform <owl:Thing <rdf:type rdf:resource='xyz'/> ...</owl:Thing> (Onno form) to  <xyz ..../>" 
+  "Transform <owl:Thing <rdf:type rdf:resource='xyz'/> ...</owl:Thing> (Onno form) to  <xyz ..../>"
   (depth-first-search
    (xml-utils:xml-root doc)
    #'fail
@@ -189,43 +188,43 @@
 (defun find-namespace (elem ns)
   "Return the namespace NS, a symbol naming a package."
   (let ((pname (package-name (find-package ns))))
-    (breadth-first-search 
+    (breadth-first-search
      elem
      #'(lambda (x) (and (dom:element-p x)
 			(find pname (xml-utils:xml-namespaces x) :test #'string= :key #'rune-dom::value)))
-     #'xml-utils:xml-children 
+     #'xml-utils:xml-children
      :on-fail nil)))
 
 ;;; POD The use of def-parse macro-ology here isn't very effective.
-;;; That approach is more useful when the XML structure is deep (like XMI). 
+;;; That approach is more useful when the XML structure is deep (like XMI).
 (def-parse-tmpl ('rdf:RDF)
     ('owl:|Ontology|)
     ('owl:|ObjectProperty|)
     ('owl:|DataTypeProperty|)
     ('owl:|Class|)
-    ('p7tm:|TemplateRoleDescription|) 
+    ('p7tm:|TemplateRoleDescription|)
     ('p7tm:|TemplateDescription|)
     ('p7tm:|TemplateSpecialization|))
 
 (def-parse-tmpl ('owl:|Ontology|)
     (:self ; just set the documentation, if any...
-     (when-bind (comment (find-if #'(lambda (x) (xml-typep-3 x 'rdfs:|comment|)) 
+     (when-bind (comment (find-if #'(lambda (x) (xml-typep-3 x 'rdfs:|comment|))
 				  (xml-utils:xml-children dself)))
-       (setf (slot-value model 'mofi::documentation) 
+       (setf (slot-value model 'mofi::documentation)
 	     (car (xml-utils:xml-children comment))))))
 
 ;;; These are stored for processing after template is made. See  "Post-process owl:Class"
 (def-parse-tmpl ('owl:|Class|
 		      (resource1 'rdf:|about|)
 		      (resource2 'rdf:id))
-    (:self 
+    (:self
      (when-bind (id (or resource1 resource2))
        (when (gethash id (mofi:owl-classes model))
 	 (warn "OWL class ~A encountered multiple." id))
        (setf (gethash id (mofi:owl-classes model)) dself))))
 
 (def-parse-tmpl ('p7tm:|TemplateRoleDescription|)
-    (:self 
+    (:self
      (process-role dself :model model)))
 
 (def-parse-tmpl ('p7tm:|TemplateDescription|)
@@ -247,11 +246,11 @@
 	       (setf number-of-roles n))))))))
 
 ; 2013-04-16
-;(def-parse-tmpl ('p7tpl:|valFOLCode| 
+;(def-parse-tmpl ('p7tpl:|valFOLCode|
 ;			&key tmpl)
 ;    ('p7tpl:|script| :tmpl tmpl))
 
-;(def-parse-tmpl ('p7tpl:|script| 
+;(def-parse-tmpl ('p7tpl:|script|
 ;			&key tmpl)
 (def-parse-tmpl ('p7tm:|valFOLCode| &key tmpl)
     (:self
@@ -265,7 +264,7 @@
 (def-parse-tmpl ('p7tm:|TemplateSpecialization|)
     (:self
      (setf *tmpl* nil)
-     (with-xml-attrs ((sub-elem p7tm:|hasSubTemplate|) 
+     (with-xml-attrs ((sub-elem p7tm:|hasSubTemplate|)
 		      (sup-elem p7tm:|hasSuperTemplate|)) dself
        (when-bind (sub-uri (rdf-resource sub-elem))
 	 (when-bind (sup-uri (rdf-resource sup-elem))
@@ -275,7 +274,7 @@
 	       (setf parent-template sup))))))))
 
 
-(def-parse-tmpl ('owl:|ObjectProperty| 
+(def-parse-tmpl ('owl:|ObjectProperty|
 		       (about 'rdf:|about|))
     (:self
      (if about
@@ -295,8 +294,8 @@
     (when-bind (name (rdf-resource tmpl-elem))
       (let ((*tmpl* (ensure-template name :model model)))
 	(declare (special *tmpl*))
-	(with-xml-attrs ((role    p7tm:|hasRole|) 
-			 (index   p7tm:|valRoleIndex|) 
+	(with-xml-attrs ((role    p7tm:|hasRole|)
+			 (index   p7tm:|valRoleIndex|)
 			 (type    p7tm:|hasRoleFillerType|)
 			 (comment rdfs:|label|)) elem
 	  (when comment
@@ -317,7 +316,7 @@
 
 (defun translate-type (str xml)
   "Use the str to identify an EXPRESS entity type, or datatype (lisp symbol 'string, 'integer etc)."
-  (if (null str) 
+  (if (null str)
       (find-class 'p2::thing)
       (let* ((uri (puri:parse-uri str))
 	     (frag (puri:uri-fragment uri)))
@@ -341,12 +340,12 @@
 
 (defun translate-type-dm (frag xml)
   "Translate a type for DM entities. Frag can be 'type1ANDtype2'."
-  (if (cl-ppcre:scan "AND" frag) ; POD only works for two. 
+  (if (cl-ppcre:scan "AND" frag) ; POD only works for two.
       (mvb (success vec) (cl-ppcre:scan-to-strings "(.*)AND(.*)" frag)
 	(declare (ignore success)) ; Buddhist...
 	(let ((r1 (intern (p7name2p2name (svref vec 0)) :part2))
 	      (r2 (intern (p7name2p2name (svref vec 1)) :part2)))
-	  (or 
+	  (or
 	   (expo::find-programmatic-class (list r1 r2) :error-p nil)
 	   (warn 'template-unknown-type :type-name frag :xml xml))))
       (or
@@ -360,17 +359,17 @@
 	       `(setf line (cl-ppcre:regex-replace ,from line ,to))))
     (with-open-file (in in-path :direction :input)
       (with-open-file (out out-path :direction :output :if-exists :supersede)
-	(loop for line = (read-line in nil nil) 
+	(loop for line = (read-line in nil nil)
 	   while line do
 	     ;; p7tm
-	     (from-to 
-	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/template-model#" 
+	     (from-to
+	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/template-model#"
 	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tm#")
 	     (from-to
 	      "http://standards.iso.org/iso/15926/tm#"
 	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tm#")
-	     ;; p7tpl -- prototypes, etc. 
-	     (from-to 
+	     ;; p7tpl -- prototypes, etc.
+	     (from-to
 	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/template#"
 	      "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tpl#")
 	     (from-to
@@ -390,14 +389,14 @@
 
 
 ;;;=======================================================
-;;; Post-process owl:Class objects for each template, 
+;;; Post-process owl:Class objects for each template,
 ;;; Pick up cardinality of roles, check for no new roles.
 ;;;=======================================================
 (defun pp-owl-class (model)
   "Add information about templates from their associated owl:Class objects."
   (with-slots (mofi:owl-classes mofi:templates) model
     (loop for key being the hash-key of mofi:owl-classes using (hash-value class)
-          for tmpl = (find key mofi:templates :test #'string= :key #'name) do
+	  for tmpl = (find key mofi:templates :test #'string= :key #'name) do
 	 (if tmpl
 	     (loop for sc in (remove-if-not #'(lambda (x) (xml-typep-3 x 'rdfs:|subClassOf|))
 					    (xml-utils:xml-children class)) do
@@ -405,15 +404,14 @@
 		  (parse-tmpl 'rdfs:|subClassOf| sc :model model :tmpl tmpl))
 	     (warn "No tmpl: ~A" key)))))
 
-
-(def-parse-tmpl ('rdfs:|subClassOf| 
+(def-parse-tmpl ('rdfs:|subClassOf|
 		       (resource 'rdf:|resource|)
 		       &key tmpl)
-    (:self 
+    (:self
      (if resource ; then it declaring metatype, not a property restriction...
        (let ((uri (puri:parse-uri resource)))
-	 (unless (puri:uri-host uri)
-	   (setf uri (puri:parse-uri 
+	 #+nil(unless (puri:uri-host uri) ; 2022 commented out what is dself here!
+	   (setf uri (puri:parse-uri
 		      (format nil "~A~A" ; not strcat
 			      (pod:base-namespace (xml-utils:xml-document dself))
 			      (puri:uri-fragment uri)))))
@@ -429,7 +427,7 @@
        (when-bind (class (find-if #'(lambda (x) (xml-typep-3 x 'owl:|Class|))
 				  (xml-utils:xml-children dself)))
 	 (loop for insec in (remove-if-not #'(lambda (x) (xml-typep-3 x 'owl:|intersectionOf|))
-					   (xml-utils:xml-children class)) 
+					   (xml-utils:xml-children class))
 	    do (parse-tmpl 'owl:|intersectionOf| insec :model model :tmpl tmpl))))))
 
 (def-parse-tmpl ('owl:|intersectionOf| &key tmpl)
@@ -437,7 +435,7 @@
   ('owl:|Restriction| :tmpl tmpl))
 
 (def-parse-tmpl ('owl:|Restriction| &key tmpl &aux role)
-    (:self 
+    (:self
      (when-bind (prop (xml-find-child 'owl:|onProperty| dself))
        (setf role (find (rdf-resource prop) (roles tmpl) :key #'name :test #'string=))
        (unless role (warn 'template-no-such-role :role-name (rdf-resource prop) :xml dself))))
@@ -445,20 +443,20 @@
   ('owl:|qualifiedCardinality| :role role))
 
 (def-parse-tmpl ('owl:|allValuesFrom| &key role xml)
-    (:self 
+    (:self
      (when role
        (when-bind (str (rdf-resource dself))
 	 (with-slots (type) role
 	   (let ((type-here (translate-type str xml)))
 	     (unless (eql type-here type)
 	       (unless (null type-here) ; this is warned earlier.
-		 (warn 'template-type-mismatch 
-		       :from-owl (type-symbol type-here) 
+		 (warn 'template-type-mismatch
+		       :from-owl (type-symbol type-here)
 		       :from-role-spec (type-symbol type))))))))))
 
 (def-parse-tmpl ('owl:|qualifiedCardinality| &key role)
-    (:self 
-     (when role ; I'd use 'xsd:: here but James Anderson already defined the package. 
+    (:self
+     (when role ; I'd use 'xsd:: here but James Anderson already defined the package.
        (let ((n? (read-from-string (car (xml-utils:xml-children dself)))))
 	 (when (numberp n?)
 	   (with-slots (cardinality) role
@@ -486,7 +484,7 @@
 ; (condition-file (lpath :data "mmt-templates-owl-2013-04-15-1.xml"))
 #-cre.exe
 (defun condition-file (file)
-  "Diagnostic - translate nspaces, format, transform owl:thing" 
+  "Diagnostic - translate nspaces, format, transform owl:thing"
   (translate-legacy-ns file (lpath :tmp "namespace-fixed.xml"))
   (usr-bin-xmllint :infile (lpath :tmp "namespace-fixed.xml") :outfile (lpath :tmp "ns-and-formatted.xml"))
   (let ((doc (xml-utils:xml-document-parser (lpath :tmp "ns-and-formatted.xml"))))
@@ -495,15 +493,15 @@
       (xml-utils:xml-write-node doc out))))
 
 
-#+nil  
+#+nil
 (defun fixheed ()
   (let ((doc (xml-utils:xml-document-parser (lpath :data "part8-tests/heed-rough.xml"))))
-    (depth-first-search 
+    (depth-first-search
      (xml-utils:xml-root doc)
      #'fail
      #'xml-utils:xml-children
-     :do 
-     #'(lambda (x) 
+     :do
+     #'(lambda (x)
 	 (when (dom:element-p x)
 	   (setf (xml-utils:xml-children x)
 		 (remove-if #'(lambda (y)
@@ -515,7 +513,7 @@
 
 
 ;;;======================================================================
-;;; Instance processing 
+;;; Instance processing
 ;;;======================================================================
 
 (defun process-instances (mut)
@@ -525,7 +523,7 @@
   (with-slots ((user-doc mofi:user-doc)) mut
     (when user-doc
       ;; Process DM content; instances are template role fillers.
-      (loop for elem in (xml-utils:xml-children (xml-utils:xml-root user-doc)) 
+      (loop for elem in (xml-utils:xml-children (xml-utils:xml-root user-doc))
 	 for class = (dm-obj-p elem)
 	 when class do (dm-parse-obj elem class mut))
       ;; Process template content
@@ -548,19 +546,19 @@
    string, replace with the object. If no object exists with that ID, warn."
   (with-slots ((instances mofi:instances)) mut
     (loop for inst being the hash-value of instances
-          when (typep inst 'mofi:mm-root-supertype) do ; templates. (Entities are expo:entity-root-supertype.)
+	  when (typep inst 'mofi:mm-root-supertype) do ; templates. (Entities are expo:entity-root-supertype.)
 	 (let ((*inst* inst))
 	   (loop for s in (mofi:mapped-slots (class-of inst))
-	         for sname = (slot-definition-name s)
-	         for ref = (slot-value inst sname)
- 	         when (dm-obj-ref-p s) do
+		 for sname = (slot-definition-name s)
+		 for ref = (slot-value inst sname)
+		 when (dm-obj-ref-p s) do
 		(cond ((non-local-ref-p ref)) ; NYI, but these can deref to P2 objects too.
 		      ((typep ref 'expo:entity-root-supertype)) ; already processed. (Why?)
 		      (t (if-bind (val (gethash ref instances))
 				  (setf (slot-value inst sname) val)
-				  (warn 'instance-local-deref-failure 
+				  (warn 'instance-local-deref-failure
 					:ref ref :inst inst :tmpl (class-of inst) :role sname)))))))))
-		      
+
 ;;; ------------ Process Template Instance Content --------------
 (declaim (inline add-frag))
 (defun add-frag (id)
@@ -579,7 +577,7 @@
 
 (defun class2tmpl-desc (class)
   "Return the template description from which the class CLASS was created."
-  (find (class-name class) 
+  (find (class-name class)
 	(mofi:templates (car (mofi:depends-on-models (mofi:of-model class))))
 	:key #'tlog:name
 	:test #'string=))
@@ -611,7 +609,7 @@
   "Return the slot-name (symbol) for the slot in CLASS, or nil if none."
   (when-bind (slot (find attr-name (class-slots class) :test #'string= :key #'slot-definition-name))
     (slot-definition-name slot)))
-  
+
 (defun p7-tmpl-inst-p (elem)
   "Returns the template class object if ELEM  represents a template."
   (let ((name (dom:local-name elem)))
@@ -665,8 +663,8 @@
 (defun dm-find-attr (str iclass)
   "Return the slot-name of CLASS matching STR (transformed to express names) or nil if not a slot."
   (when-bind (slot (find (string-downcase (p7name2p2name str))
-			 (mofi:mapped-slots iclass) 
-			 :test #'string= 
+			 (mofi:mapped-slots iclass)
+			 :test #'string=
 			 :key #'(lambda (x) (string (slot-value x 'expo::simple-name)))))
     (slot-definition-name slot)))
 
@@ -680,7 +678,7 @@
 	       (eql p2 (mofi:of-model c)))
       c)))
 
-;;; ------------ 
+;;; ------------
 
 ; p7tpl:hasIdentificationType
 ; p7tpl:hasCardinalityOfPossessorType
@@ -704,14 +702,3 @@
 			     (host+path (and host path (strcat host path))))
 			(pushnew (or host+path host path) paths :test #'string=)))))))
     paths))
-	       
-  
-
-
-
-
-
-
-
-
-    

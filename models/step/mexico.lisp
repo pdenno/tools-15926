@@ -1,34 +1,33 @@
-
 ;;; Automatically generated from the UML Metamodel by UML Testbed tools on 2008-03-21 19:15:41
 ;;; Load this file with ensure-model and load-model, not load
 ;;; Before editing, consider whether edits belong in the generator rather than here.
 
 (in-package :MEXICO)
 
-;;; POD 2009-06-12: I'm changing all |Integer| to |IntegerValue| (18 places). 
+;;; POD 2009-06-12: I'm changing all |Integer| to |IntegerValue| (18 places).
 
 ; pod7 will have fix problem with forward-ref-class before changing to primitive types
 (def-mm-class |BooleanType| :mexico (|LogicType|)
     "Not part of MEXICO. Added for use in Injector implementation."
-    ())	    
+    ())
 
-(def-mm-class |IntegerType| :MEXICO (|NumericType|)
+(def-mm-class |IntegerType| :mexico (|NumericType|)
      "POD added this."
   ())
 
 (def-mm-class |ABSTRACTConstraint| :mexico (|SubtypeConstraint|)
   "Not part of MEXICO. Added for use in Injector implementation."
-    ())	    
+    ())
 
 (def-mm-class unresolved-attribute-ref :mexico ()
    "Not part of MEXICO. Added for use in Injector implementation."
-  ((|local-name| :RANGE T :MULTIPLICITY (0 1))
+  ((|local-name| :RANGE T :MULTIPLICITY (0 1)) ; 2022 Problem exporting this; mof has |local-name| too.
    (|entity-instance| :RANGE T :MULTIPLICITY (0 1))
-   (|%scope| :RANGE T :MULTIPLICITY (0 1) :initarg :%scope 
+   (|%scope| :RANGE T :MULTIPLICITY (0 1) :initarg :%scope
 	   :xmi-hidden t))) ; 2012 added :xmi-hidden t, initarg
 
 ;;; These are used because the Scope object needed to create a ScopeId
-;;; may not exist yet. (And resolving it without the defining-entity is impossible). 
+;;; may not exist yet. (And resolving it without the defining-entity is impossible).
 ;;; They are used in :redeclared_attribute and UNIQUE Rules
 (def-mm-class unresolved-attribute :mexico ()
    "Not part of MEXICO. Added for use in Injector implementation."
@@ -50,7 +49,7 @@
    "Not part of MEXICO. Added for use in Injector implementation."
    ())
 
-(def-mm-class |RepeatIncrementControl| :mexico (|RepeatControl|) 
+(def-mm-class |RepeatIncrementControl| :mexico (|RepeatControl|)
    "Not part of MEXICO. Added for use in Injector implementation."
    ((|variable| :range |Variable|  :multiplicity (1 1) :xmi-hidden t)
     (|lbound|  :range |Expression| :multiplicity (1 1) :xmi-hidden t)
@@ -72,7 +71,7 @@
 
 
 (def-mm-primitive |EntityName|
- :MEXICO NIL 
+ :MEXICO NIL
    "  represents the unique underlying identity of an entity instance, expressed
   as some kind of identifier.  The nature of this identifier is not defined
   in EXPRESS, but it is stated that this identifier is not necessarily constructed
@@ -81,62 +80,62 @@
   in Part 11.<note>See clause 5 of ISO 10303-11:2004.</note>")
 
 (def-mm-primitive |ExpressText|
- :MEXICO NIL 
+ :MEXICO NIL
    "  Represents any EXPRESS language text, including both unparsed text and
   specific syntactic elements..<note>See clause 7 of ISO 10303-11:2004.</note>")
 
 (def-mm-primitive |Identifier|
- :MEXICO (|ExpressText|) 
+ :MEXICO (|ExpressText|)
    "  EXPRESS language element used for naming NamedElements.<note>See
   7.4 of ISO 10303-11:2004.</note>")
 
 (def-mm-primitive |Keyword|
- :MEXICO (|ExpressText|) 
+ :MEXICO (|ExpressText|)
    "  EXPRESS language element used for names of built-in data types.<note>See
   7.2.1 of ISO 10303-11:2004.</note>")
 
 ;;; PODTT was -enum
 #|
 (def-mm-enum |BinaryOperator|
- :MEXICO () (AND |Add| |BagAdd| |BagRemove| 
-   |BagUnion| |BinaryAppend| DIV |Difference| |Divide| 
-   |EntityConstructor| |EntityValueEqual| |EntityValueNotEqual| |Equal| |Exponent| 
-   |Greater| IN |InstanceEqual| |InstanceNotEqual| |Intersection| 
-   LIKE |Less| |ListAddFirst| |ListAddLast| |ListAppend| 
-   MOD |Multiply| NVL |NotEqual| |NotGreater| 
-   |NotLess| OR |SetAdd| |SetUnion| |StringAppend| 
+ :MEXICO () (AND |Add| |BagAdd| |BagRemove|
+   |BagUnion| |BinaryAppend| DIV |Difference| |Divide|
+   |EntityConstructor| |EntityValueEqual| |EntityValueNotEqual| |Equal| |Exponent|
+   |Greater| IN |InstanceEqual| |InstanceNotEqual| |Intersection|
+   LIKE |Less| |ListAddFirst| |ListAddLast| |ListAppend|
+   MOD |Multiply| NVL |NotEqual| |NotGreater|
+   |NotLess| OR |SetAdd| |SetUnion| |StringAppend|
    |Subset| |Subtract| |ValueIn| XOR )
     "  Conceptual EXPRESS language element representing the interpretation
-  of a binary operation symbol in the context of the operand datatypes. 
+  of a binary operation symbol in the context of the operand datatypes.
    Instances of this class are distinct operations, such as number-addition,
   set-union, string-compare-equal, etc.   Some BinaryOperators are denoted
   by 'built-in functions' in EXPRESS syntax. <note>See ISO 10303-11.2:2004
   clause 12 and some elements of clause 15.</note>")
 |#
 
-(def-mm-class |BinaryOperator|  :MEXICO () 
+(def-mm-class |BinaryOperator|  :mexico ()
     "  Conceptual EXPRESS language element representing the interpretation
-  of a binary operation symbol in the context of the operand datatypes. 
+  of a binary operation symbol in the context of the operand datatypes.
    Instances of this class are distinct operations, such as number-addition,
   set-union, string-compare-equal, etc.   Some BinaryOperators are denoted
   by 'built-in functions' in EXPRESS syntax. <note>See ISO 10303-11.2:2004
   clause 12 and some elements of clause 15.</note>"
     ((|id| :xmi-hidden T :range T :multiplicity (1 1)
      :documentation "POD The requirements on enumerations are more extensive
-     in MEXICO than in my UML-based specs. Instances carry the type info. 
+     in MEXICO than in my UML-based specs. Instances carry the type info.
      keywords won't cut it.")))
 
 #| 2012-01-02
 (setf (slot-value (find-class '|BinaryOperator|) 'class-p) nil)
 (setf (slot-value (find-class '|BinaryOperator|) 'enum-p) t)
 (setf (slot-value (find-class '|BinaryOperator|) 'enum-values)
-      '(:AND :|Add| :|BagAdd| :|BagRemove| 
-	:|BagUnion| :|BinaryAppend| :DIV :|Difference| :|Divide| 
-	:|EntityConstructor| :|EntityValueEqual| :|EntityValueNotEqual| :|Equal| :|Exponent| 
-	:|Greater| :|IN| :|InstanceEqual| :|InstanceNotEqual| :|Intersection| 
-	:LIKE :|Less| :|ListAddFirst| :|ListAddLast| :|ListAppend| 
-	:MOD :|Multiply| :NVL :|NotEqual| :|NotGreater| 
-	:|NotLess| :OR :|SetAdd| :|SetUnion| :|StringAppend| 
+      '(:AND :|Add| :|BagAdd| :|BagRemove|
+	:|BagUnion| :|BinaryAppend| :DIV :|Difference| :|Divide|
+	:|EntityConstructor| :|EntityValueEqual| :|EntityValueNotEqual| :|Equal| :|Exponent|
+	:|Greater| :|IN| :|InstanceEqual| :|InstanceNotEqual| :|Intersection|
+	:LIKE :|Less| :|ListAddFirst| :|ListAddLast| :|ListAppend|
+	:MOD :|Multiply| :NVL :|NotEqual| :|NotGreater|
+	:|NotLess| :OR :|SetAdd| :|SetUnion| :|StringAppend|
 	:|Subset| :|Subtract| :|ValueIn| :XOR :|LessEqual| :|UnEqual|)) ; POD added LessEqual
 |#
 
@@ -146,11 +145,11 @@
     "")
 |#
 
-(def-mm-class |OrderingKind|  :MEXICO () 
+(def-mm-class |OrderingKind|  :MEXICO ()
     ""
     ((|id| :xmi-hidden T :range T :multiplicity (1 1)
      :documentation "POD The requirements on enumerations are more extensive
-     in MEXICO than in my UML-based specs. Instances carry the type info. 
+     in MEXICO than in my UML-based specs. Instances carry the type info.
      keywords won't cut it.")))
 
 #| 2012-01-03
@@ -162,11 +161,11 @@
 
 #|
 (def-mm-enum |UnaryOperator|
- :MEXICO () (ABS ACOS ASIN ATAN 
-   |BinaryLength| COS EXISTS EXP |HiBound| 
-   |HiIndex| |Identity| LOG LOG10 LOG2 
-   |LoBound| |LoIndex| NOT |Negate| ODD 
-   |RolesOf| SIN SQRT |SizeOf| |StringLength| 
+ :MEXICO () (ABS ACOS ASIN ATAN
+   |BinaryLength| COS EXISTS EXP |HiBound|
+   |HiIndex| |Identity| LOG LOG10 LOG2
+   |LoBound| |LoIndex| NOT |Negate| ODD
+   |RolesOf| SIN SQRT |SizeOf| |StringLength|
    TAN |TypeOf| VALUE |ValueUnique| )
     "  Conceptual EXPRESS language element representing the interpretation
   of a unary operation symbol in the context of the operand datatype.   Instances
@@ -176,7 +175,7 @@
   clause 12 and some elements of clause 15.</note>")
 |#
 
-(def-mm-class |UnaryOperator|  :MEXICO () 
+(def-mm-class |UnaryOperator|  :MEXICO ()
     "  Conceptual EXPRESS language element representing the interpretation
   of a unary operation symbol in the context of the operand datatype.   Instances
   of this class are distinct operations, such as numeric-negation, boolean-negation,
@@ -185,18 +184,18 @@
   clause 12 and some elements of clause 15.</note>"
     ((|id| :xmi-hidden T :range T :multiplicity (1 1)
      :documentation "POD The requirements on enumerations are more extensive
-     in MEXICO than in my UML-based specs. Instances carry the type info. 
+     in MEXICO than in my UML-based specs. Instances carry the type info.
      keywords won't cut it.")))
 
 #| 2012-01-03
 (setf (slot-value (find-class '|UnaryOperator|) 'class-p) nil)
 (setf (slot-value (find-class '|UnaryOperator|) 'enum-p) t)
 (setf (slot-value (find-class '|UnaryOperator|) 'enum-values)
-      '(:ABS :ACOS :ASIN :ATAN 
-	:|BinaryLength| :COS :EXISTS :EXP :|HiBound| 
-	:|HiIndex| :|Identity| :LOG :LOG10 :LOG2 
-	:|LoBound| :|LoIndex| :NOT :|Negate| :ODD 
-	:|RolesOf| :SIN :SQRT :|SizeOf| :|StringLength| 
+      '(:ABS :ACOS :ASIN :ATAN
+	:|BinaryLength| :COS :EXISTS :EXP :|HiBound|
+	:|HiIndex| :|Identity| :LOG :LOG10 :LOG2
+	:|LoBound| :|LoIndex| :NOT :|Negate| :ODD
+	:|RolesOf| :SIN :SQRT :|SizeOf| :|StringLength|
 	:TAN :|TypeOf| :VALUE :|ValueUnique|))
 |#
 
@@ -539,7 +538,7 @@
   (the .matching-type) must be compatible.")
    ;; PODTT  POD added back this slot (was in 060301)
    (|for-function| :RANGE |Algorithm| :MULTIPLICITY (1 1)
-   :documentation 
+   :documentation
    " represents the relationship between an ActualTypeConstraint and the
      Algorithm to which it applies.")))
 
@@ -808,7 +807,7 @@
   in which the attribute-value (expression) is bound to the Attribute.  The
   AttributeValue is an .attribute-of a unique SingleEntityValue.When the
   PartialEntityConstructor (expression) is evaluated, the PartialEntityValue
-  equivalent to that SingleEntityValue is the result of the expression. 
+  equivalent to that SingleEntityValue is the result of the expression.
   If the expression can be evaluated without regard to any actual population
   ('compile time'), this value shall be present, but not otherwise.")))
 
@@ -1004,7 +1003,7 @@
   is true, if any, is taken; otherwise, no action is taken.<note>See
   Clause 13.4 of ISO 10303-11:2004.</note>"
   ((|cases| :range |CaseAction| :multiplicity (1 -1)
-  :is-ordered-p t 
+  :is-ordered-p t
   :documentation
    "  represents the possible actions to be taken, in order of consideration,
   each labeled by one or more values.  ")
@@ -1192,12 +1191,12 @@
 "  a role representing the behavior of the entity instances that is designated
   the 'domain' of the relationship"
   ((|domain| :range |EntityType| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the (single) entity data type common to all instances that
   play the Domain Role.  ")
    (|id| :range |ScopedId| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  Represents the 'complete' identifier for the Role.The identifier for
   the DomainRole is derived from the identifier for the InverseAttribute,
@@ -1277,7 +1276,7 @@
   ;of that EntityType, including those in the entity declaration and those
   ;inherited from supertypes.<note>See 9.2 of ISO 10303-11:2004.</note>")
    (|attributes| :range |Attribute| :multiplicity (1 -1)
-;2012   :is-derived-p t 
+;2012   :is-derived-p t
   :documentation
    "  represents the relationship between an EntityType and the declared Attributes
   of that EntityType, including those in the entity declaration and those
@@ -1307,7 +1306,7 @@
   as a constraint on the usage of the EntityType in that context.<note>See
   9.2.4 and 9.2.5.1 of ISO 10303-11:2004.</note>")
    (|plays-domain-role| :range |DomainRole| :multiplicity (1 -1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship betwen an entity type and the domain roles
   that its instances play.  For each InvertibleAttribute of the EntityType,
@@ -1315,7 +1314,7 @@
   to play the DomainRole once for each member of an InvertibleAttribute whose
   data type is an AggregationType.")
    (|plays-range-role| :range |RangeRole| :multiplicity (1 -1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship betwen an entity type and the range roles
   that its instances play.  For each occurrence of the EntityType as the
@@ -1390,7 +1389,7 @@
    "  represents the relationship between an EnumerationItem and the EnumerationType
   whose declaration defines the item.")
    (|of-type| :range |EnumerationType| :multiplicity (1 -1)
-  ;PODTT :is-derived-p t 
+  ;PODTT :is-derived-p t
   :documentation
    "  represents the relationship between an EnumerationItem and the EnumerationTypes
   of which it is a value.An EnumerationItem is a value of every EnumerationType
@@ -1437,7 +1436,7 @@
   schema may be incomplete and be extended by other EnumerationTypes for
   which this is the base.<note>See 8.4.1 of ISO 10303-11:2004.</note>")
    (|values| :range |EnumerationItem| :multiplicity (1 -1)
-  ; PODTT :is-derived-p t 
+  ; PODTT :is-derived-p t
   :documentation
    "  represents the relationship between an EnumerationType and the EnumerationItems
   that are valid values of the type.  An EnumerationItem is a value of every
@@ -1530,7 +1529,7 @@
    "  represents the relationship between an Extent and the EntityType to
   which it corresponds.<note>See 9.6 of ISO 10303-11:2004.</note>")
    (|id| :range |ScopedId| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  the identifier for the EntityType, used as a name for the Extent within
   the body of the Rule.<note>See 9.6 of ISO 10303-11:2004.</note>")
@@ -1578,7 +1577,7 @@
    "  represents the relationship between the FunctionCall and the formal
   definition of the Function invoked.<note>See 12.8 of ISO 10303-11:2004.</note>")
    (|returns-result| :range |FunctionResult| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship between the FunctionCall and the formal
   definition of the FunctionResult, which describes the instance that results
@@ -1726,7 +1725,7 @@
   type component, treated as a ScopedId whose namespace is the Algorithm
   in which it is defined.")
    (|namespace| :range |Algorithm| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  the Algorithm that is the namespace of the ScopedId that is the label.
    This relationship is derived -- the namespace of a GenericElement is the
@@ -2000,7 +1999,7 @@
   defines one Relationship for each EntityType in the select-list.  <note>See
   ISO 10303-11.2:2004 clause 9.2.1.3</note>"
   ((|creates-relationship| :range |Relationship| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship between an InvertibleAttribute and the Relatiionship
   between EntityTypes that it models.")
@@ -2382,10 +2381,10 @@
   types of the corresponding actual parameter.<note>See 9.5.3.4 of ISO
   10303-11:2004.</note>")
    ;; POD added, older version of Parameter interited from LocalElement, which
-   ;; got this from NamedElement. 
+   ;; got this from NamedElement.
    (|id| :xmi-hidden t :range |ScopedId| :MULTIPLICITY (0 1)
      :documentation "Represents the identifier that uniquely identifies the NamedElement
-   within the Scope that is the .namespace.  
+   within the Scope that is the .namespace.
    Not all NamedElements are required to have identifiers.
    <note>See Clause 10 of ISO 10303-11:2004.</note>")))
 
@@ -2541,7 +2540,7 @@
    (|select-condition| :range |Expression| :multiplicity (1 1)
   :documentation
    "  represents the relationship between a Query expression and the Logical
-  Expression that defines admissibility of members in the Query result. 
+  Expression that defines admissibility of members in the Query result.
   This Expression is treated as a kind of 'function definition' having a
   single Parameter which is the Query variable.  The .select-condition 'function'
   is invoked once for each member value of the .aggregate-value.<note>See
@@ -2570,7 +2569,7 @@
    "  represents the relationship between a RangeRole and the InvertibleAttribute
   of the domain/referencing entity that models it.  ")
    (|id| :range |ScopedId| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  Represents the 'complete' identifier for the Role.  The identifier for
   a RangeRole is derived from the identifier for the ExplicitAttribute that
@@ -2581,7 +2580,7 @@
    "  represents the relationship between a Range Role and the (unique) Relationship
   in which it is defined")
    (|range| :range |EntityType| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the (single) entity data type common to all instances that
   play the Range Role.  Derivation: .range = .domain-view.attribute-type")))
@@ -2631,11 +2630,11 @@
    (|isMandatory| :range ptypes:|Boolean| :multiplicity (1 1)
   :documentation
    "  True if the entity instance is required to have a value for this attribute
-  in this subtype; False if it is permitted to have no specified value. 
+  in this subtype; False if it is permitted to have no specified value.
   This attribute is only present if isOptional is True for the original attribute.<note>See
   9.2.3.4 of ISO 10303-11:2004.</note>")
    (|lower-bound| :range |SizeConstraint| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents a restriction on the minimum cardinality of the role that
   is stated by the Redeclaration.  This is the case when the Redeclaration
@@ -2654,7 +2653,7 @@
   declarations in the entity declaration.By convention these follow all the
   new attribute declarations of each kind.")
    (|refined-role| :range |Role| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship between a Redeclaration and the Role represented
   by the .original-attribute.  If the Redeclaration redeclares an InvertibleAttribute,
@@ -2682,7 +2681,7 @@
   and all of its subtypes.  The .scope EntityType is the namespace of the
   .alias identifier, if present.<note>See 9.2.3.4 of ISO 10303-11:2004.</note>")
    (|upper-bound| :range |SizeConstraint| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents a restriction on the maximum cardinality of the role that
   is stated by the Redeclaration.  This is the case when the Redeclaration
@@ -2693,14 +2692,14 @@
 (def-mm-class |Relationship| :MEXICO NIL
 "  a 'distributive relationship' between entity data types.Every InvertibleAttribute
   creates a Relationship between two EntityTypes and creates two Roles --
-  one for each participating EntityType.All relationships are directed. 
+  one for each participating EntityType.All relationships are directed.
   The InvertibleAttribute is an explicit attribute of the EntityType that
   plays the DomainRole; the range-type of the InvertibleAttribute is the
   EntityType that plays the RangeRoleThe range-type may have an inverse attribute
   denoting the DomainRole; or the DomainRole may be referred to by the UsedIn
   function."
   ((|based-on| :range |InvertibleAttribute| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents the relationship between a Relationship and the InvertibleAttribute
   on which it is based, i.e. the Attribute that creates the Relationship.")
@@ -2821,7 +2820,7 @@
   involved in the relationship.Since all relationships in EXPRESS are directed,
   the two slots are nominally designated domain and range."
   ((|lower-bound| :range |SizeConstraint| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents a lower-bound on the number of Relationship instances in
   which a given EntityInstance can play this Role.  An explicit zero ('0')
@@ -2838,7 +2837,7 @@
   of the Relationship.  The Size constraint is on the count of pairs, not
   the count of distinct pairs.</note><note>See 9.2.1.3 of ISO 10303-11:2004.</note>")
    (|upper-bound| :range |SizeConstraint| :multiplicity (1 1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents an upper-bound on the number of Relationship instances in
   which a given EntityInstance can play the Role.  An explicit indeterminate
@@ -2921,7 +2920,7 @@
   the Schema is a named element of the EXPRESS language, but it has no defined
   Scope.</note>")
    (|interfaced-elements| :range |SchemaElement| :multiplicity (1 -1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  represents relationship between a Schema and the SchemaElements it interfaces
   from other Schemas. .interfaced-elements = .interfaces.refers-to")
@@ -2930,7 +2929,7 @@
    "  Definition: the InterfacedElements that the SchemaElements that the
   Schema imports/interfaces from other Schemas.<note>See clause 11 of
   ISO 10303-11:2004.</note>")
-   (|name| :range |Identifier| :multiplicity (1 1) 
+   (|name| :range |Identifier| :multiplicity (1 1)
   :documentation
    "  the name of the EXPRESS schema.<note>See clause 9.3 of ISO 10303-11:2004.</note>")
    (|id| :xmi-hidden t :range |Identifier| :multiplicity (1 1)) ; PODTT added
@@ -2960,7 +2959,7 @@
   one in which it is defined.  Only a SchemaElement whose scope is a Schema
   can be referenced as an InterfacedElement.")
    (|referenced-in| :range |Schema| :multiplicity (1 -1)
-  :is-derived-p t 
+  :is-derived-p t
   :documentation
    "  p>represents the relationship between a SchemaElement and the Schemas,
   if any, it is interfaced into.  .referenced-in = .referenced-as.interfacing-schema")))
@@ -2969,7 +2968,7 @@
 (def-mm-class |Scope| :MEXICO NIL
 "  any EXPRESS object that defines a namespace for the interpretation of
   identifiers.<note>See clause 10 of ISO 10303-11:2004.</note>"
-  ((|includes-remarks| :range |Remark| :multiplicity (1 -1)
+  ((|includes-remarks| :range |Remark| :multiplicity (1 -1) ; 2022 mofi also has includes-remarks
   :documentation
    "  represents the relationship between a Schema and the Remarks that appear
   in it.<note>See 7.1.6 of ISO 10303-11:2004.</note>")
@@ -2980,12 +2979,14 @@
    Not every kind of NamedElement can be defined in every kind of Scope.</note><note>See
    clause 10 of ISO 10303-11:2004.</note>")
    ;; These are for Expresso implementation (thus XMI-Hidden)
+   ;; 2022 I'm commenting these out. Is that what XMI-Hidden does?
    ; pod7 added pod:
-   (|%parent| :xmi-hidden t :range |Scope| :multiplicity (1 1))
-   (|%children| :xmi-hidden t :range |Scope| :multiplicity (0 -1))
+   ;2022(|%parent| :xmi-hidden t :range |Scope| :multiplicity (1 1))
+   ;2022(|%children| :xmi-hidden t :range |Scope| :multiplicity (0 -1))
    ;; ids - The keys in %%ids are P11UINTERNed (see add-type)
-   (|%ids| :xmi-hidden t :range t :multiplicity (1 1))
-   (|%inherited-objects| :xmi-hidden t :range |NamedType| :multiplicity (0 -1))))
+   ;2022(|%ids| :xmi-hidden t :range t :multiplicity (1 1))
+   ;2022(|%inherited-objects| :xmi-hidden t :range |NamedType| :multiplicity (0 -1))
+   ))
 
 
 (def-mm-class |SelectType| :MEXICO (|DefinedType|)
@@ -3016,7 +3017,7 @@
   NamedTypes in the select-list when it is interfaced into another Schema;
   False otherwise.<note>See 8.4.2 of ISO 10303-11:2004.</note>")
    (|select-list| :range |NamedType| :multiplicity (1 -1)
-  :is-ordered-p t 
+  :is-ordered-p t
   :documentation
    "  represents the appearance of the NamedType in the select list in the
   declaration of the SelectType.  For extended and extensible SelectTypes,
@@ -3087,7 +3088,7 @@
   to SingleEntityTypes, the PartialEntityType.includes relationship is the
   inverse of this relationship.")
    (|id| :range |ScopedId| :multiplicity (1 1)
-  ;PODTT :is-derived-p t 
+  ;PODTT :is-derived-p t
   :documentation
    "  Represents the EXPRESS Identifier for the SingleEntityType, which is
   the same as the Identifier for the corresponding EntityType")))
@@ -3210,7 +3211,7 @@
   sequences have the semantics of the StatementBlock.The BEGIN/END case is
   here modeled as .delimited = True.<note>See Clause 13.5 of ISO 10303-11:2004.</note>"
   ((|body-statements| :range |Statement| :multiplicity (1 -1)
-  :is-ordered-p t 
+  :is-ordered-p t
   :documentation
    "  represents the relationship of a StatementBlock to the Statements of
   which the sequence consists.<note>Every EXPRESS syntax whose semantics
@@ -3401,7 +3402,7 @@
 
 (def-mm-class |UsedInRef| :MEXICO (|Selector|)
 "  a Selector expression that returns the Set of EntityInstances for which
-  the given entity instance is in the range of the specified Attribute. 
+  the given entity instance is in the range of the specified Attribute.
   In effect, it returns the value of the corresponding inverse attribute
   for the given entity instance.<note>See clause 15.26 of ISO 10303-11:2004.</note>"
   ((|inverse-of| :range |Attribute| :multiplicity (1 1)
@@ -3522,6 +3523,6 @@
   ())
 
 (with-slots (mofi::abstract-classes) *model*
-    (setf mofi::abstract-classes '(|LocalElement| |Attribute| |DefinedType| |NamedType| |TypeElement| |ConcreteValue| |NamedVariable| |NamedElement| |IndexOperation| |AggregateValue| |CommonElement| |Operation| |ActualType| |Scope| |SchemaElement| |AggregationType| |Role| |SimpleValue| |VARExpression| |AnonymousType| |Primary| |ConcreteAggregationType| |Parameter| |GeneralAggregationType| |ActualAggregationType| |Selector| |TypedInstance| |VARVariable| |Instance| |VariableType| |InstantiableType| |ParameterType| |DomainConstraint| |ControlStatement| |SimpleType| |GeneralizedType| |GenericElement| |Variable| |Algorithm| |DataType| |AlgorithmScope| |LocalScope|))) 
+    (setf mofi::abstract-classes '(|LocalElement| |Attribute| |DefinedType| |NamedType| |TypeElement| |ConcreteValue| |NamedVariable| |NamedElement| |IndexOperation| |AggregateValue| |CommonElement| |Operation| |ActualType| |Scope| |SchemaElement| |AggregationType| |Role| |SimpleValue| |VARExpression| |AnonymousType| |Primary| |ConcreteAggregationType| |Parameter| |GeneralAggregationType| |ActualAggregationType| |Selector| |TypedInstance| |VARVariable| |Instance| |VariableType| |InstantiableType| |ParameterType| |DomainConstraint| |ControlStatement| |SimpleType| |GeneralizedType| |GenericElement| |Variable| |Algorithm| |DataType| |AlgorithmScope| |LocalScope|)))
 
 ;;; End of Output

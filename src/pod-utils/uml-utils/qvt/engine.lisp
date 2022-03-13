@@ -1,4 +1,3 @@
-
 (in-package :qvt)
 
 ;;; Purpose: Component necessary to run translated QVT transformations.
@@ -6,11 +5,14 @@
 
 ;;; 2013-04-18: "A Set of QVT Relations to Assure the Correctness of Data Warehouses"
 ;;; (Mazon, Trujilo, Lechtenborger) considers The WHEN clause a precondition and the
-;;; WHERE clause a post condition. 
+;;; WHERE clause a post condition.
 
-(defvar *zippy* nil "diagnostics")
-
-(defconstant +qvt-unbound+ (make-qvt-unbound))
+;;; 2022 Added eval-when. No help!
+#+nil(eval-when (:compile-toplevel :load-toplevel :execute)
+  (when (boundp '+qvt-unbound+)
+    (unintern '+qvt-unbound+)))
+;;; 2022 (defconstant +qvt-unbound+ (make-qvt-unbound))
+(defvar +qvt-unbound+ (make-qvt-unbound))
 
 (declaim (inline qvt-boundp qvt-unboundp))
 (defun qvt-boundp (val) (not (eql val +qvt-unbound+)))
@@ -20,8 +22,8 @@
   "Map an instance to tries. *package* should be population.model-n+1.lisp-package."
   (let* ((class (class-of inst))
 	 (class-list (closer-mop:class-precedence-list class)))
-    (loop for c in (subseq class-list 
-			   0 
+    (loop for c in (subseq class-list
+			   0
 			   (position 'mm-root-supertype class-list :key #'class-name)) do
 	 (trie-add `(,(class-name c) ,inst))
 	 (dbg-message :qvt 6 "~%Adding ~A" `(,(class-name c) ,inst))
@@ -48,7 +50,7 @@
 (defun preds2collections (db) ; 2014 This was once called flush-model, a misnomer recognized as such long ago.
   "Iterate through all the two-place predicates in DB, a symbol, setting values."
     ;; POD! It may be the case that the target and the source are the same models, in which
-    ;; case I'm arbitrarily choosing the first nickname here. 
+    ;; case I'm arbitrarily choosing the first nickname here.
   (with-trie-db (db)
     (loop for pred being the hash-key of (db-predicates)
        when (trie-query `(,pred ?x ?y)) do ; then it is two-place
@@ -57,7 +59,7 @@
 	   (setf sname (intern sname (symbol-package pred)))
 	   (let ((-typ (mofi::slot-typ (list cname sname))))
 	     ;; POD This needs to make collections, and where necessary add to them...
-	     (loop for f = (trie-query `(,pred ?x ?y)) then (trie-query-next) 
+	     (loop for f = (trie-query `(,pred ?x ?y)) then (trie-query-next)
 		while f do
 		  (dbind (ignore obj val) f
 		    (declare (ignore ignore))
@@ -113,7 +115,7 @@
     result))
 
 (defun binds2keyargs (binding-set)
-  "Return a list of (:var1 val1 ...:varN valN) suitable for apply. 
+  "Return a list of (:var1 val1 ...:varN valN) suitable for apply.
    Argument BINDING-SET is a of the form ((<varname1> . val1) ...(<varrnameN> . valN))
    such as returned from qvt-query-aux."
   (loop for (var . val) in binding-set
@@ -153,7 +155,7 @@
     (append args1 args2)))
 
 (defun append-binds-aux (bind-set1 &optional bind-set2 &key keep-set)
-  "Merge two bindings sets, checking for consistent bindings (if duplicate keys). 
+  "Merge two bindings sets, checking for consistent bindings (if duplicate keys).
    If KEEP-SET is specified, only those bindings are returned."
   (setf bind-set1 (remove-if #'qvt-unboundp bind-set1 :key #'cdr))
   (setf bind-set2 (remove-if #'qvt-unboundp bind-set2 :key #'cdr))
@@ -162,7 +164,7 @@
       (progn
 	(loop for b1 in bind-set1
 	      for b2 = (find (car b1) bind-set2 :key #'car)
-	      when (and b2 
+	      when (and b2
 			(eql (car b2) (car b1))
 			(not (equal (cdr b2) (cdr b1))))
 	      do (error "Two values for binding: ~A ~A." b1 b2))
@@ -185,13 +187,13 @@
 (defparameter *proxy-obj-ht* (make-hash-table :test #'equal))
 
 (defun ensure-proxy-obj (&key class properties values)
-  "Create and return or just return a proxy-object for the CLASS 
+  "Create and return or just return a proxy-object for the CLASS
    key PROPERTIES and key VALUES."
   (unless (= (length properties) (length values))
     (error "Malformed args to ensure-proxy-obj"))
   (let ((key (cons class (append properties values))))
     (if-bind (result (gethash key *proxy-obj-ht*))
-	     (progn 
+	     (progn
 	       (dbg-message :qvt 5 "~2%  *****Retrieving target object ~S" result)
 	       result)
 	     (let ((result
@@ -204,7 +206,7 @@
 	       result))))
 
 (defun find-proxy-obj (&key class properties values (error-p t))
-  "Like ensure-proxy-object but gets an error if ERROR-P T and does 
+  "Like ensure-proxy-object but gets an error if ERROR-P T and does
    not already exist."
   (or (gethash (cons class (append properties values)) *proxy-obj-ht*)
       (and error-p (error "No such proxy-obj: Class ~S, Properties ~S, Values ~S."
@@ -219,13 +221,13 @@
   (let ((result (apply #'qvt-query-aux formulas)))
     (cond ((null result) :fail)
 	  ((eql result :fail) nil)
-	  (t 
+	  (t
 	   (loop for bset in result
-		 collect 
+		 collect
 		 (append-binds
 		  bindings
 		  (remove-if #'(lambda (e) (eql (car e) (cdr e))) bset)))))))
-    
+
 (defun qvt-query-aux (&rest formulas)
   "FORMULAS is a conjunctive list of formulas. This was built from lt-query-aux, it remains
    trie-specific, still used to to unify, just doesn't need the variable binding syntax and AND,
@@ -234,12 +236,12 @@
 	   (let ((result (apply #'tr::unify-equal args)))
 	     (if (eql result :fail) (return-from qvt-query-aux :fail) result))))
      (loop for s-query in formulas
-	   for new-binds = (loop for result in (trie-query-all s-query) 
+	   for new-binds = (loop for result in (trie-query-all s-query)
 				 collect (unify* s-query result)) then
 				 (loop for bset in new-binds
 				       for query = s-query do
 				       (loop for b in bset do (setf query (subst (cdr b) (car b) query)))
-				       append (loop for new-bset in (loop for result in (trie-query-all query) 
+				       append (loop for new-bset in (loop for result in (trie-query-all query)
 									  collect (unify* query result))
 						    collect (append new-bset bset)))
 				 finally (return new-binds))))
@@ -255,7 +257,7 @@
 
 (defun find-binding (var bindings &key (action :error))
   (let ((val (cdr (assoc var bindings))))
-    (or 
+    (or
      val
      (case action
        (:symbol var)
@@ -285,20 +287,20 @@
 (defun bs-dup-p (bset1 bset2)
   "Return T if the two binding sets are identical."
   (when (= (length bset1) (length bset2))
-    (loop for b1 in bset1 
+    (loop for b1 in bset1
 	  for (var . val) = b1
 	  for b2 = (assoc var bset2)
 	  unless (and b2 (equal val (cdr b2))) return nil
-	  finally return t)))
-	
+	  finally (return t)))) ; 2022 Screwed around here with return. Okay?
+
 (defmacro qvt-setq-when ((&rest vars) form-returning-dotted)
   "Macro to setf binding of variables VARS lexically bound outside of BODY.
    Only to be used with calls to RelationCallExp, since it throws."
   (with-gensyms (result new-value)
     `(let ((,result (remove-duplicates ,form-returning-dotted :test #'bs-dup-p)))
-      (when (cdr ,result) 
+      (when (cdr ,result)
 	(error "Evaluation of a RelationCallExp (in WHEN) resulted in multiple binding sets."))
-      ,@(mapcar #'(lambda (v) 
+      ,@(mapcar #'(lambda (v)
 		    `(let ((,new-value (find-binding ',(second v) (car ,result) :action :throw)))
 		      (unless (eql ,new-value +qvt-unbound+)
 			(setf ,(first v)  ,new-value))))
@@ -310,9 +312,9 @@
    Only to be used with calls to RelationCallExp, since it throws."
   (with-gensyms (result new-value)
     `(let ((,result (remove-duplicates ,form-returning-dotted :test #'bs-dup-p)))
-      (when (cdr ,result) 
+      (when (cdr ,result)
 	(error "Evaluation of a RelationCallExp (in WHERE) resulted in multiple binding sets."))
-      ,@(mapcar #'(lambda (v) 
+      ,@(mapcar #'(lambda (v)
 		    `(let ((,new-value (find-binding ',(second v) (car ,result) :action :unbound)))
 		      (unless (eql ,new-value +qvt-unbound+)
 			(setf ,(first v)  ,new-value))))
@@ -323,23 +325,23 @@
    Only to be used with calls to RelationCallExp, since it throws."
   (with-gensyms (binding-form some-var)
     `(let ((,binding-form ,bindings))
-      ,@(mapcar #'(lambda (v) 
+      ,@(mapcar #'(lambda (v)
 		    `(when-bind (,some-var (find-binding ',v ,binding-form :action :nil))
 		      (setf ,v ,some-var)))
 		vars)
       ,@body)))
 
 
-(defmacro with-when  ((rel-name) &body body)  
+(defmacro with-when  ((rel-name) &body body)
   "Does nothing but provide visual structuring and hide debugging."
-  `(progn 
+  `(progn
     (dbg-message :qvt 5 ,(format nil "~~% ---- Entering WHEN of ~A  ----" rel-name))
     ,@body
     (dbg-message :qvt 5 ,(format nil "~~% ---- Exiting WHEN of ~A  ----" rel-name))))
 
-(defmacro with-where ((rel-name) &body body) 
+(defmacro with-where ((rel-name) &body body)
   "Does nothing but provide visual structuring and hide debugging."
-  `(progn 
+  `(progn
     (dbg-message :qvt 5 ,(format nil "~~% ---- Entering WHERE of ~A  ----" rel-name))
     ,@body
     (dbg-message :qvt 5 ,(format nil "~~% ---- Exiting WHERE of ~A  ----" rel-name))))
@@ -353,20 +355,10 @@
   (dbind (pred obj) rel
     (unless (typep obj pred)
       (if-bind (up-class (find-class pred nil))
-	 (let ((cpl (clos:class-precedence-list up-class))
+	 (let ((cpl (class-precedence-list up-class))
 	       (current (class-of obj)))
 	   (unless (member current cpl)
 	     (error "Cannot specialize a ~A to class ~A. ~%Perhaps object keys are not unique." obj pred))
 	   (unless (eql current (car cpl))
 	     (change-class obj up-class)))
 	 (error "While attempting to specialize, ~A is not a class." pred)))))
-
-
-
-
-
-		    
-	  
-  
-  
-      

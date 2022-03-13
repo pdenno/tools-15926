@@ -17,7 +17,7 @@
      (:file "homepage")
      (:file "http-utils")
      (:file "object-inventory")
-     (:file "demo")
+     ;(:file "demo") ; 2022 emerson demo
      (:file "uo")
      (:file "validate-templates")))
 

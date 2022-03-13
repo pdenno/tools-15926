@@ -2,16 +2,14 @@
 
 (in-package :project-http)
 
-(defvar *zippy* nil)
-
 (defvar *hunchentoot-server* nil "Bound to the acceptor object.")
 
-;;; This session-specific object contains information generated as part of a validation. 
+;;; This session-specific object contains information generated as part of a validation.
 (defclass cre-session-vo (session-vo)
   ((app-name :initform :cre) ; already defined in session-vo, add value
    ;; Object used to describe qvt map
    (qvt-map-info :initform nil)
-   ;; A hash-table indexed by the names of conditions, containing 
+   ;; A hash-table indexed by the names of conditions, containing
    ;; the unique-ht (see mof/conditions.lisp)
    (error-reports :initform (make-hash-table))
    ;; nil if, for example, cycles are found
@@ -71,9 +69,9 @@
 
 (defun load-demo-sysml-file ()
   #+lispworks(lw:set-default-character-element-type 'lw:simple-char)
-  ;; Read the demo CHL system SysML file. 
+  ;; Read the demo CHL system SysML file.
   (handler-bind ((simple-warning #'(lambda (c) (declare (ignore c)) (muffle-warning))))
-    (with-debugging (:readers 0) 
+    (with-debugging (:readers 0)
       (let ((pop (mofi:xmi2model-instance :file (lpath :models "ccw-sysml/DemoCHLSystem.mdxml")
 					  :clone-p nil :force t)))
 	  (change-class pop 'mofi:privileged-population)
@@ -88,25 +86,25 @@
   "The handler that serves the request if no other handler is called."
   (log-message :info "Default handler called for script ~A" (script-name tbnl:*request*))
   "<html><head><title>CRE</title></head><body><h2>CRE Default Page</h2>
-          <p>The resource you sought was not found on this server.</p>
-          <hr>
-          <address><a href='mailto:syseng@nist.gov'>syseng@nist.gov</a></address>
+	  <p>The resource you sought was not found on this server.</p>
+	  <hr>
+	  <address><a href='mailto:syseng@nist.gov'>syseng@nist.gov</a></address>
   </body></html>")
 
-(defmacro show-it (&body body) 
+(defmacro show-it (&body body)
   `(show-html-expansion (*standard-output* nil :indent t)
 			,@body))
 
 (defun pod-load-lisp ()
   "Handler to load a fasl file. I hope I'm not going to regret this!"
-  (app-page-wrapper :cre (:view "SysML / UML Validator" 
+  (app-page-wrapper :cre (:view "SysML / UML Validator"
 				:menu-pos '(:root :plugfest :sysml :tools :validator))
     (:h1 "Diagnostic")
     (:form :method :post :enctype "multipart/form-data"
 	   (:table :border 0 :cellpadding 10 :cellspacing 0
 		   :bgcolor "#FDFDD8"
 		   (:tr (:td "File: ") (:td (:input :type :file :name "file")))
-		   (:tr (:td :colspan 2 :align "center" 
+		   (:tr (:td :colspan 2 :align "center"
 			     (:input :type :submit :value "Upload and Process")))))
     (when-bind (lisp-file (car (safe-post-parameter "file")))
       (load lisp-file :verbose nil)
@@ -114,20 +112,22 @@
 
 ;;;==================================================================
 ;;; Override TBNL process-run-function so that may timeout when hung.
-;;; This is only used in debugging. 
+;;; This is only used in debugging.
 ;;;==================================================================
 (defparameter *pod-worker-process-timeout* 0 "Number of seconds to wait before killing the request.")
 
-(defun tbnl::process-run-function (name function &rest args)
+;;; 2022 Commented out
+#+nil(defun tbnl::process-run-function (name function &rest args)
   (let ((p (apply #'mp:process-run-function name nil function args)))
     (start-reaper-process p)
     p))
 
-(defun start-reaper-process (p &key (timeout *pod-worker-process-timeout*))
-  "Start a process that waits for TIMEOUT seconds, then kills a process P, 
+;;; 2022 Commented out
+#+nil(defun start-reaper-process (p &key (timeout *pod-worker-process-timeout*))
+  "Start a process that waits for TIMEOUT seconds, then kills a process P,
    if P still exists."
   (unless (zerop *pod-worker-process-timeout*)
-    (mp:process-run-function 
+    (mp:process-run-function
      (format nil "Reaper Process for ~A" (mp:process-name p)) nil
      #'(lambda ()
 	 (mp:process-wait-with-timeout (format nil "Waiting to kill ~A" (mp:process-name p)) timeout)
@@ -147,21 +147,21 @@
 (defun cre-software-disclaimer ()
   (app-page-wrapper :cre ()
    (:h2 "Disclaimer")
-   "This software was developed at the National Institute of Standards and Technology by 
-    employees of the Federal Government in the course of their official duties. Pursuant 
-    to title 17 Section 105 of the United States Code this software is not subject to copyright 
-    protection and is in the public domain. It is an experimental system. NIST assumes no 
-    responsibility whatsoever for its use by other parties, and makes no guarantees, expressed 
-    or implied, about its quality, reliability, or any other characteristic. We would appreciate 
-    acknowledgement if the software is used. This software can be redistributed and/or modified 
-    freely provided that any derivative works bear some notice that they are derived from it, 
+   "This software was developed at the National Institute of Standards and Technology by
+    employees of the Federal Government in the course of their official duties. Pursuant
+    to title 17 Section 105 of the United States Code this software is not subject to copyright
+    protection and is in the public domain. It is an experimental system. NIST assumes no
+    responsibility whatsoever for its use by other parties, and makes no guarantees, expressed
+    or implied, about its quality, reliability, or any other characteristic. We would appreciate
+    acknowledgement if the software is used. This software can be redistributed and/or modified
+    freely provided that any derivative works bear some notice that they are derived from it,
     and any modified versions bear some notice that they have been modified."))
 
 
 (defmethod pod:div-header ((app (eql :cre)))
   "Emit html for the banner. "
   (with-html-output (*standard-output*)
-    (:img :src  "/cre/image/heading.gif" ; "/cre/image/NIST_ISO_159268_Validator.gif" 
+    (:img :src  "/cre/image/heading.gif" ; "/cre/image/NIST_ISO_159268_Validator.gif"
 	  :width 903 :height 108 :border 0
 	  :usemap "#index_02_Map")
     (:map :name "#index_02_Map"
@@ -186,7 +186,7 @@
      (:li (:strong "2013-03-07:")
 	  (:ul
 	   (:li "Templates: Report where role type in owl:allValuesFrom and p7tm:hasRoleFillerType do not match.")
-           (:li "Templates: Report when template 'metatype' isn't one of p7tm:BaseTemplateStatement, 
+	   (:li "Templates: Report when template 'metatype' isn't one of p7tm:BaseTemplateStatement,
 		p7tpl:InitialSetTemplateStatement, p7tpl:ProtoTemplateStatement.")
 	   (:li "Templates: Report when owl:onProperty references a non-existent role.")))
      (:li (:strong "2013-02-14:")
@@ -215,7 +215,3 @@
      (:li (:strong "2012-10-04:")
 	  (:ul
 	   (:li "Deployed initial version."))))))
-
-
-
-

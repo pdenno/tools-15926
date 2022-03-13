@@ -1,9 +1,9 @@
 (in-package :qvt)
 
-;;; Purpose : Parse QVT to meta-object instances. 
+;;; Purpose : Parse QVT to meta-object instances.
 ;;; Date : 2007-10-10
 
-;;; To do: RelationCallExp is presumably referenced in OCL. I'll need to work it in. 
+;;; To do: RelationCallExp is presumably referenced in OCL. I'll need to work it in.
 
 (defmacro defparse (tag (&rest keys) &body body)
    "Defines a parse-data eql method on TAG. The method macrolets parse."
@@ -18,14 +18,12 @@
 (defclass qvt-stream (oclp::ocl-stream) ; because it has to read ocl ??? Proabably not necessary
   ((read-fn :initform 'qvt-read)))
 
-(defvar *zippy* nil "diagnostics")
-      
 (defmethod parse-data :around ((stream qvt-stream) tag &rest args)
   (push tag *tags-trace*)
   (dbg-message :parser 5 "~%Entering ~S(~S) peek=~S line=~A~%" tag args (peek-token stream) *line-number*)
   (let ((result (call-next-method)))
     (dbg-message :parser 5 "~%Exiting ~S with value ~S line=~A~%" tag result *line-number*)
-    (pop *tags-trace*) 
+    (pop *tags-trace*)
     (force-output *debug-stream*)
     result))
 
@@ -33,8 +31,8 @@
 
 ;;; This IS NOT a candidate for pod-utils. Each impementation differs (See the EXPRESS one.)
 (defmacro with-instance ((type &rest init-args) &body body)
-  "A macro that creates an object and provides with-slots to use it." 
-  (let ((slot-names (mapcar #'clos:slot-definition-name (clos:class-slots (find-class type)))))
+  "A macro that creates an object and provides with-slots to use it."
+  (let ((slot-names (mapcar #'slot-definition-name (class-slots (find-class type)))))
     ;; mofi:*population* will be bound, causing this to be pushed into *population*.members
     `(let* ((*def* (make-instance ',type ,@init-args)))
       (with-slots ,slot-names *def*
@@ -51,18 +49,18 @@
   (with-instance (|QVTToplevel|)
     (setf |importUnit|
 	  (loop while (eql (peek-token stream) '|import|)
-		do (read-token stream) 
+		do (read-token stream)
 		collect (parse |unit|)
 		do (assert-token #\; stream)))
     (setf |transformation| (parse |transformation| :owner *def*))))
 
 ;;; <unit> ::= <identifier> ('.' <identifier>)*
-(defparse |unit| () 
+(defparse |unit| ()
   (with-instance (|ImportUnit|)
     (setf |referencer|
 	  (loop until (eql #\; (peek-token stream))
 		collect (read-token stream)
-		when (eql #\. (peek-token stream)) 
+		when (eql #\. (peek-token stream))
 		do (read-token stream)))))
 
 ;;; <transformation> ::= 'transformation' <identifier>
@@ -88,12 +86,12 @@
 	  (loop while (eql '|key| (peek-token stream))
 		collect (parse |keyDecl| :owner *def*)))
     (loop for peek = (peek-token stream)
-          until (or (eql #\} peek) (eql :eof peek))
-	  if (or (eql '|top| peek) (eql '|relation| peek)) 
+	  until (or (eql #\} peek) (eql :eof peek))
+	  if (or (eql '|top| peek) (eql '|relation| peek))
 	  collect (parse |relation| :owner *def*) into rule
-	  else if (eql '|query| peek) 
+	  else if (eql '|query| peek)
 	  collect (parse |queryDecl| :owner *def*) into function
-	  finally do (setf |rule| rule) (setf |function| function))
+	  finally (setf |rule| rule) (setf |function| function)) ; 2022 do here
     (read-token stream)))
 
 ;;; Example: transformation umlToRdbms (uml:SimpleUML, rdbms:SimpleRDBMS)
@@ -102,7 +100,7 @@
 (defparse |modelDecl| (owner)
   (with-instance (|TypedModel|)
     (setf |owner| owner)
-    (setf |name| (parse |modelId|)) 
+    (setf |name| (parse |modelId|))
     (assert-token #\: stream)
     (if (eql #\{ (peek-token stream)) ; POD Not sure about this interpretation.
 	(progn
@@ -133,17 +131,17 @@
     (setf |part|
 	  (loop until (eql #\) (peek-token stream))
 		collect (parse |keyProperty|)
-		when (eql #\, (peek-token stream)) 
+		when (eql #\, (peek-token stream))
 		do (read-token stream)))
     (read-token stream)
     (assert-token #\; stream)))
 
 ;;; <classId> ::= <PathNameCS>
-(defparse |classId| (model) 
+(defparse |classId| (model)
   (let ((class (read-token stream)))
     ;(when model (find-class (intern (string class) (mofi:lisp-package model))))
     ;; 2014: ODM has packages within. Use a different method
-    (when model 
+    (when model
       (unless (find class (mofi:types (mofi:find-model :odm)) :test #'string= :key #'class-name)
 	(error "Cannot find class ~A in 'target' model." class)))
     class))
@@ -151,11 +149,11 @@
 ;;; <keyProperty> ::= <identifier> | 'opposite' '(' <classId> '.' <identifier> ')'
 (defparse |keyProperty| () (read-token stream))
 
-;;; <relation> ::= ['top'] 'relation' <identifier> 
+;;; <relation> ::= ['top'] 'relation' <identifier>
 ;;;                ['overrides' <identifier>]
-;;;                '{' <varDeclaration>* 
+;;;                '{' <varDeclaration>*
 ;;;                    (<domain> | <primitiveTypeDomain>)+
-;;;                    [<when>] 
+;;;                    [<when>]
 ;;;                    [<where>] '}'
 (defparse |relation| (owner)
   (with-instance (|Relation|)
@@ -221,7 +219,7 @@
       (when (eql '|default_values| (peek-token stream))
 	(read-token stream)
 	(assert-token #\{ stream)
-	(setf |defaultAssignment| 
+	(setf |defaultAssignment|
 	      (loop until (eql #\} (peek-token stream))
 		 collect (parse |assignmentExp|)))
 	(assert-token #\} stream))
@@ -236,7 +234,7 @@
     (assert-token '|domain| stream)
     (setf |variable| (read-token stream))
     (assert-token #\: stream)
-    (with-ocl-reader 
+    (with-ocl-reader
       (setf |typ| (parse oclp::|Type| :no-find-class t)))
     (assert-token #\; stream)))
 
@@ -250,18 +248,18 @@
 
 ;;; POD Bugs in QVT Grammar:
 ;;;
-;;;    (1) propertyTemplate should recurse through <template> 
+;;;    (1) propertyTemplate should recurse through <template>
 ;;;        (Related Problem: The grammar has no provision to allow collection template inside an object template.)
 ;;;    (2) propertyTemplateList can be an empty string.
 ;;;
 ;;;  <template>             ::= ( <objectTemplate> | <collectionTemplate> ) ['{' <OclExpressionCS> '}'] -- No change
 ;;;  <objectTemplate>       ::= [ <variable> ] ':' <PathNameCS> '{' [ <propertyTemplateList> ] '}' -- Change, optional propertyTemplateList
-;;;  <propertyTemplateList> ::= <propertyTemplate> (',' <propertyTemplate>)* 
+;;;  <propertyTemplateList> ::= <propertyTemplate> (',' <propertyTemplate>)*
 ;;;  <propertyTemplate> ::= <propertyName> '=' ( <template> | <oclExpression> )  -- Changed
 ;;;  <collectionTemplate>   ::= [ <variable> ] ':' <CollectionTypeIdentifierCS> '(' <TypeCS> ')' '{' [<memberSelection>] '}' -- No change
-;;;                           
+;;;
 
-;;; N.B. I use <variable> and <propertyName> rather than <identifier> to hint at the origin of these identifiers. 
+;;; N.B. I use <variable> and <propertyName> rather than <identifier> to hint at the origin of these identifiers.
 ;;;
 ;;; N.B. They may have intended for <metaModelId> in objectTemplate to be a path (e.g Table.key.name) but
 ;;;      this can be achieved as t:Table { key= Key{ name= whatever } } -- POD But OCL PathName isn't like Table.key.name !
@@ -270,7 +268,7 @@
 
 
 ;;; Example:
-;;;	enforce domain rdbms t:Table {schema=s:Schema {}, 
+;;;	enforce domain rdbms t:Table {schema=s:Schema {},
 ;;;                                   name=cn,
 ;;;                                   column=cl:Column {name=cn+'_tid', type='NUMBER'},
 ;;;                                   key=k:Key {name=cn+'_pk', column=cl}};
@@ -281,10 +279,10 @@
 (defparse |template| (owner)
   (let ((def
 	    (if
-	     (or (member (peek-token stream 2) 
+	     (or (member (peek-token stream 2)
 			 '("Collection" "Bag" "OrderedSet" "Sequence" "Set")
 			 :test #'string=)
-		 (member (peek-token stream 3) 
+		 (member (peek-token stream 3)
 			 '("Collection" "Bag" "OrderedSet" "Sequence" "Set")
 			 :test #'string=))
 		(parse |collectionTemplate| :owner owner)
@@ -292,7 +290,7 @@
     (when (eql #\{ (peek-token stream))
       (with-slots (|when|) def
 	(with-ocl-reader
-	  (setf |when| (parse oclp::|OclExpression|))))) 
+	  (setf |when| (parse oclp::|OclExpression|)))))
       def))
 
 ;;;  <objectTemplate>     ::= [ <variable> ] ':' <PathNameCS> '{' [ <propertyTemplateList> ] '}'  <--- SPEC
@@ -300,10 +298,10 @@
 (defparse |objectTemplate| (owner)
   (with-instance (|ObjectTemplateExp|)
     (setf |owner| owner)
-    (with-ocl-reader 
+    (with-ocl-reader
       (if (eql #\: (peek-token stream 2))
 	  (setf |bindsTo| (parse oclp::|VariableId|))
-          (setf |bindsTo| (parse oclp::|VariableId| :token (string (gensym "VAR")))))
+	  (setf |bindsTo| (parse oclp::|VariableId| :token (string (gensym "VAR")))))
       (assert-token #\: stream) ; always have the colon -- to disambiguate from OCL.
       (setf |referredClass| (parse oclp::|PathName| :symbol-only-p t)))
     (when (eql #\{ (peek-token stream))
@@ -346,17 +344,17 @@
 
 
 ;;; POD added this one for convenience. Returns an identifier.
-;;; <opposite> =  'opposite '(' <classId> . <identifier> ') 
+;;; <opposite> =  'opposite '(' <classId> . <identifier> ')
 (defparse |opposite| ()
   (let (class attr)
-    (assert-token '|opposite| stream) 
+    (assert-token '|opposite| stream)
     (assert-token #\( stream)
     (setf class (read-token stream))
     (assert-token #\. stream)
     (setf attr (read-token stream))
     (assert-token #\) stream)))
 
-;;; <collectionTemplate> ::= [<identifier>] ':' <CollectionTypeIdentifierCS> 
+;;; <collectionTemplate> ::= [<identifier>] ':' <CollectionTypeIdentifierCS>
 ;;;                         '(' <TypeCS> ')' '{' [<memberSelection>] '}'
 (defparse |collectionTemplate| (owner)
   (with-instance (|CollectionTemplateExp|)
@@ -371,7 +369,7 @@
 	    (parse oclp::|CollectionTypeIdentifier|)))
     (assert-token #\( stream)
     (with-ocl-reader
-      (setf |elementType| 
+      (setf |elementType|
 	    (parse oclp::|Type| :no-find-class t)))
     (assert-token #\) stream)
     (assert-token #\{ stream)
@@ -381,8 +379,8 @@
 	(setf |rest| rest)))
     (assert-token #\} stream)))
 
-;;; POD I'm making the ++ part optional.  	
-;;; XXX <memberSelection> ::= (<identifier> | <template> | '_') 
+;;; POD I'm making the ++ part optional.
+;;; XXX <memberSelection> ::= (<identifier> | <template> | '_')
 ;;; XXX                      (',' (<identifier> | <template> | '_'))* '++' (<identifier> | '_')
 ;;; POD Can the member really be another CollectionTemplateExp, or must it be a ObjectTemplateExp?
 ;;;     I guess that depends on whether OCL allows nesting of collections.
@@ -416,9 +414,9 @@
       (setf |valueExp| (parse oclp::|OclExpression|)))))
 
 ;;; POD They need to get real! This is a either a 'RelationCallExp'
-;;; or a OCLExpression. These RelationCall things aren't OCL. 
+;;; or a OCLExpression. These RelationCall things aren't OCL.
 ;;; N.B. This is where the first pass parser becomes necessary -- identifying
-;;;      which of the two is being parsed here. 
+;;;      which of the two is being parsed here.
 ;;; <when> ::= 'when' '{' (<OclExpressionCS> ';')* '}'
 (defparse |when| (owner)
   (with-instance (|WhenExpression|)
@@ -437,13 +435,13 @@
 	result exp)
     (cond ((and (eql #\= peek2)    ; 'var = <relation call>'
 		(or (typep owner '|WhereExpression|)
-		    (token-is (string peek3) :relation *scope*))) ; used to be (or token-is... 
+		    (token-is (string peek3) :relation *scope*))) ; used to be (or token-is...
 	   (let ((var (mk-logic-var (read-token stream))) exp)
 	     (read-token stream)
 	     (with-ocl-reader (setf exp (parse oclp::|OclExpression|)))
 	     (setf result (make-instance '|RelationDomainAssignment|
 					 :owner owner
-					 :variable var 
+					 :variable var
 					 :value-exp exp))))
 	  ((token-is (string peek1) :relation *scope*) ; '<relation call>'
 	   (setf result (make-instance '|RelationCallExp|
@@ -451,16 +449,16 @@
 				       :referred-relation (read-token stream)
 				       :argument (parse |callArgs|))))
 	  ;; 'var' = <ordinary ocl>
-	  (t  
+	  (t
 	   (with-ocl-reader (setf exp (parse oclp::|OclExpression|)))
 	      (setf  result (make-instance '|RelationDomainAssignment|
-					   :owner owner 
+					   :owner owner
 					   :variable :ordinary-ocl ; <========
 					   :value-exp exp))))
     (assert-token #\; stream)
     result))
 
-;;; POD Added this one. A question unanswered by the spec (I think. Check this.): 
+;;; POD Added this one. A question unanswered by the spec (I think. Check this.):
 ;;; Can these be RelationCallExp, and if so, what does a RelationCallExp return (Boolean, right?)
 ;;; <relationCallArgs> ::= '(' [ <OclExpressionCS> (',' <OclExpressionCS>)* ] ')
 (defparse |callArgs| ()
@@ -492,13 +490,13 @@
 
 ;;; Example function PrimitiveTypeToSqlType(primitiveType:String) : String;
 ;;; POD Request that the following be added to the spec?
-;;; <queryDecl>  ::= 'query' <identifier> 
-;;;                     '(' [ <identifier> ':' <OCLTypeCS> (',' <identifier> ':' <OCLTypeCS>)* ] ')' 
+;;; <queryDecl>  ::= 'query' <identifier>
+;;;                     '(' [ <identifier> ':' <OCLTypeCS> (',' <identifier> ':' <OCLTypeCS>)* ] ')'
 ;;;                     ':' <oclTypeCS> '{'  <OclExpressionCS> '}'
 (defparse |queryDecl| (owner)
   (with-instance (|Function|)
     (setf |owner| owner)
-    (assert-token 'qvt::|query| stream) 
+    (assert-token 'qvt::|query| stream)
     (setf |name| (read-token stream))
     (let ((*scope* (find-child-scope |name|)))
       (setf |ownedParameter| (parse |queryDeclParams|))
@@ -543,9 +541,9 @@
 	  ((eql tkn '|let|) (with-ocl-reader (setf result (parse oclp::|LetExp|))))
 	  ;; From ocl ConstantRef (parts of LiteralExpCS).
 	  ((eql tkn '|null|) (read-token stream))  ; <NullLiteralExp> -- result = nil
-	  ((eql tkn '|invalid|) (read-token stream) 
+	  ((eql tkn '|invalid|) (read-token stream)
 	   (setf result '(make-instance 'ocl::|OclInvalid|)))  ; <InvalidLiteralExp>
-	  ;; That concludes <LiteralExpCS> Now <PropertyCallExpCS> 
+	  ;; That concludes <LiteralExpCS> Now <PropertyCallExpCS>
 	  ((or (and (oclp::attribute-p tkn) (not (eql #\( tkn2)))
 	       (oclp::collection-operator-p tkn)
 	       (oclp::operator-p tkn))
@@ -554,8 +552,8 @@
 	  ((oclp::variable-p tkn) (with-ocl-reader (setf result (parse oclp::|VariableRef|))))
 	  ((or (eql #\: tkn) (eql #\: tkn2))
 	   (setf result (parse |template|)))
-	  (t (error 
-	      'qvt-parse-error 
+	  (t (error
+	      'qvt-parse-error
 	      :tags *tags-trace*
 	      :expected "PropertyCallExp VariableRef, Literal, LetExp, IfExp, ( '(' OclExpression ')' ) or Template"
 	      :actual tkn)))

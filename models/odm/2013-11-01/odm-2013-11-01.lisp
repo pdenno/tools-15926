@@ -16,6 +16,11 @@
 (defpackage "ODM-RDFS" (:use :pod-utils :ptypes :mofi :ocl :cl))
 (defpackage "ODM-TM" (:use :pod-utils :ptypes :mofi :ocl :cl))
 
+;;; 2022 This ODM-RDFBase stuff added. Then removed!
+;;;(defpackage "ODM-RDFBase" (:use :pod-utils :ptypes :mofi :ocl :cl))
+;;;(in-package "ODM-RDFBase")
+;;;(defvar |RDFScomment| nil)
+
 ;;; =========================================================
 ;;; ====================== ABox
 ;;; =========================================================

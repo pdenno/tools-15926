@@ -1,8 +1,6 @@
-
-;;; Purpose: Provide pages for template validation. 
+;;; Purpose: Provide pages for template validation.
 
 (in-package :phttp)
-
 
 ;;;========================================================
 ;;; Template and template list display
@@ -10,17 +8,17 @@
 (defun url-template (temp)
   "Provide a URL to the report page for the template, TEMP."
   (with-slots (tlog:name) temp
-    (format nil "<a href='~A/validate/tpage?name=~A&model=~A'>~A</a>" 
+    (format nil "<a href='~A/validate/tpage?name=~A&model=~A'>~A</a>"
 	    (app-url-prefix (find-http-app (safe-app-name)))
 	    tlog:name (mofi:model-name (mofi:%of-model temp)) tlog:name)))
 
 (defun url-template-instance (tempi)
   "Provide a URL to the report page for the template instance, TEMP."
   (let ((id (mofi:%obj-id tempi)))
-    (format nil "<a href='~A/validate/ipage?name=~A&model=~A'>&lt;~A id=~A&gt</a>" 
+    (format nil "<a href='~A/validate/ipage?name=~A&model=~A'>&lt;~A id=~A&gt</a>"
 	    (app-url-prefix (find-http-app (safe-app-name)))
 	    id
-	    (mofi:model-name (mofi:%of-model tempi)) 
+	    (mofi:model-name (mofi:%of-model tempi))
 	    (class-name (class-of tempi))
 	    (mofi:%debug-id tempi))))
 
@@ -29,7 +27,7 @@
   (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate))
     (htm
      (:h1 "Templates")
-     (:ul 
+     (:ul
       (:li (:a :href "/cre/validate/emerson" "Emerson templates"))
       (:li (:a :href "/cre/validate/results/mmt" "MMT templates"))))))
 
@@ -52,24 +50,24 @@
 (defun validate-show-user-list-dsp ()
   "Display the validation home page, listing templates and problems."
   (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate :upload))
-    (with-vo (mut) 
+    (with-vo (mut)
        (with-slots ((sfile mofi:source-file) (errs mofi:general-errors) (eps mofi:endpoints)
 		    (temps mofi:templates) (insts mofi:instances)) mut
 	 (htm
-	  (:h1 (str (format nil "Results for file ~A.~A" 
-			    (pathname-name sfile) 
+	  (:h1 (str (format nil "Results for file ~A.~A"
+			    (pathname-name sfile)
 			    (pathname-type sfile))))
 	  (:h2 "Summary")
 	  "Template definitions: " (str (format nil "~A" (length (mofi:templates mut))))
 	  (:br) "Template instances: " (str (format nil "~A" (hash-table-count (mofi:instances mut))))
-	  (:br) "Total errors: " 
+	  (:br) "Total errors: "
 	  (str (format nil "~A"
-		       (+ (length errs) 
+		       (+ (length errs)
 			  (loop for tt in temps sum (length (tlog:conditions tt)))
-			  (loop for ii being the hash-value of insts 
+			  (loop for ii being the hash-value of insts
 			       when (typep ii 'mofi:mm-root-supertype) ; not dm POD might merge these
 			       sum (length (mofi:%conditions ii))))))
-	  (:br) "Referenced endpoints: " 
+	  (:br) "Referenced endpoints: "
 	  (str (if eps (format nil "<ul>~{<li>~A</li>~}</ul>" eps) " none"))
 	  (str (errors-by-type-report))
 	  (if mut
@@ -84,7 +82,7 @@
 		(unless (zerop (hash-table-count insts))
 		  (htm
 		   (:h2 "Instance Data")
-		    (str (show-instance-list-internal 
+		    (str (show-instance-list-internal
 			  (sort (ht2list insts) #'< :key #'mofi:%debug-id))))))
 	      (htm "An error occurred in reading the file.")))))))
 
@@ -94,7 +92,7 @@
     (append
      (slot-value mut 'mofi:general-errors)
      (mapappend #'(lambda (x) (tlog:conditions x)) (mofi:templates mut))
-     (loop for i being the hash-value of (mofi:instances mut) 
+     (loop for i being the hash-value of (mofi:instances mut)
 	for val = (mofi:%conditions i)
 	when (listp val) append val))))
 
@@ -104,10 +102,10 @@
    COUNT-CONDITIONS - a small hash table for those conditions that are only counted.
    Calls mofi:validation-details to do most of the work."
   (let ((conditions (all-conditions))
-	(cond-classes 
-	 (mapappend 
+	(cond-classes
+	 (mapappend
 	  #'(lambda (x) (closer-mop:class-direct-subclasses (find-class x)))
-	  '(tlog:template-warning tlog:instance-warning  tlog:template-error 
+	  '(tlog:template-warning tlog:instance-warning  tlog:template-error
 	    tlog:instance-error tlog:tlogic-parse-error))))
     (flet ((select-sort (pred)
 	     (sort (remove-if-not #'(lambda (x) (and x (funcall pred x))) cond-classes
@@ -119,7 +117,7 @@
 		      (format out "<ul>")
 		      (loop for c in (select-sort ,pred)
 			 for class-name = (class-name c)
-			 do (format out "~%<li><a href='~A'>~A</a>: ~A</li>" 
+			 do (format out "~%<li><a href='~A'>~A</a>: ~A</li>"
 				    (url-explanation class-name)
 				    (documentation c 'type)
 				    (count-if #'(lambda (c) (typep c class-name)) conditions)))
@@ -143,7 +141,7 @@
        (str text)
        (:h2 "Objects exhibiting this error:")
        (htm
-	(with-vo (mut) 
+	(with-vo (mut)
 	  (str
 	   (with-output-to-string (out)
 	     (let ((exhibiting
@@ -157,7 +155,7 @@
 		   (progn
 		     (format out "<ul>")
 		     (loop for ex in exhibiting do
-			  (format out "<li>~A</li>" 
+			  (format out "<li>~A</li>"
 				  (typecase ex
 				    (mofi:mm-root-supertype (url-template-instance ex))
 					(tlog:template (url-template ex)))))
@@ -171,7 +169,7 @@
     (format s "<ul>")
     (loop for tt in temps do
 	 (with-slots (tlog:conditions) tt
-	   (if (null tlog:conditions) 
+	   (if (null tlog:conditions)
 	       (format s "<li>~A</li>" (url-template tt))
 	       (format s "<li>~A ---  (~A)</li>" (url-template tt) (length tlog:conditions)))))
     (format s "</ul>")))
@@ -186,8 +184,8 @@
 	     (with-slots ((errs mofi:|conditions|)) inst
 	       (if (null errs)
 		   (format s "<li>~A</li>" (url-template-instance inst))
-		   (format s "<li>~A --- (~A)</li>" 
-			   (url-template-instance inst) 
+		   (format s "<li>~A --- (~A)</li>"
+			   (url-template-instance inst)
 			   (length errs)))))))
     (format s "</ul>")))
 
@@ -207,7 +205,7 @@
 	  (str (with-output-to-string (s)
 		 (loop for tt in temps do
 		      (with-slots (tlog:conditions) tt
-			(if (null tlog:conditions) 
+			(if (null tlog:conditions)
 			    (format s "<li>~A</li>" (url-template tt))
 			    (format s "<li>~A ---  (~A)</li>" (url-template tt) (length tlog:conditions)))))))))))))
 
@@ -227,9 +225,9 @@
 	       (:h1 (str (format nil "Template ~A" name)))
 	       (:h2 "Description")
 	       (cond ((eql model (mofi:find-model :mmt-templates))
-		      (htm "See " 
-			   (:a :href 
-			       "http://15926.org/15926_template_specs.php" 
+		      (htm "See "
+			   (:a :href
+			       "http://15926.org/15926_template_specs.php"
 			       "15926.org")))
 		     ((or (null tlog:comment) (string= "" tlog:comment)) (str "None provided"))
 		     (t (str tlog:comment)))
@@ -239,22 +237,22 @@
 	       (:p)
 	       (:table :border 1 :cellpadding 2 :cellspacing 0
 		       (htm
-			(:tr 
+			(:tr
 			 (:td :align "center" :bgcolor "#FFF159" "Role Number")
 			 (:td :align "center" :bgcolor "#FFF159" "Role Name")
 			 (:td :align "center" :bgcolor "#FFF159" "Role Object Type")
 			 (:td :align "center" :bgcolor "#FFF159" "Remarks & Examples")
 			 (str (with-output-to-string (str)
 				(loop for r in (tlog:roles temp) do
-				     (with-slots ((i tlog:index) (n tlog:name) 
+				     (with-slots ((i tlog:index) (n tlog:name)
 						  (y tlog:type) (c tlog:comment)) r
-				       (format str "<tr><td align='center'>~A</td><td>~A</td><td>~A</td><td>~A</td></tr>" 
-					       i 
-					       n 
-					       (cond ((typep y 'class) 
-						      (mofb:url-class-browser 
-						       y 
-						       :force-text (tlog:p2name2p7name 
+				       (format str "<tr><td align='center'>~A</td><td>~A</td><td>~A</td><td>~A</td></tr>"
+					       i
+					       n
+					       (cond ((typep y 'class)
+						      (mofb:url-class-browser
+						       y
+						       :force-text (tlog:p2name2p7name
 								    (if (expo:ientity-mo-p y)
 									(tlog:type-symbol y)
 									(class-name y)))))
@@ -272,10 +270,10 @@
 	       (str (if-bind (logic (tlog:logic temp))
 			     (with-output-to-string (str) (tlog:stringify logic str))
 			     (tlog:logic-text temp)))))))))))
-  
+
 (defun name-for-tpage (obj)
 "Return a text string naming OBJ."
-  (if (typep obj 'class) 
+  (if (typep obj 'class)
       (dash-to-camel (string-downcase (string (class-name obj))))
       (format nil "~A" obj)))
 
@@ -291,15 +289,15 @@
 	    (let* ((class (class-of inst))
 		   (slots (mofi:mapped-slots class)))
 	      (htm
-	       (:h1 (str (format nil "Instance &lt;~A id=~A&gt;" 
+	       (:h1 (str (format nil "Instance &lt;~A id=~A&gt;"
 				 (class-name class) (mofi:%debug-id inst))))
 	       (:h3 "Properties")
 	       (str
 		 (with-output-to-string (out)
 		   (format out "rdf:ID: ~A<br/>" (mofi:%obj-id inst))
-		   (loop for s in slots 
-			 for name = (hcl:slot-definition-name s) do
-			(format out "~A : ~A<br/>" 
+		   (loop for s in slots
+			 for name = (slot-definition-name s) do
+			(format out "~A : ~A<br/>"
 				(string name)
 				(if-bind (val (slot-value inst name)) val "[not specified]"))))))
 	      (with-slots ((errs mofi:|conditions|)) inst
@@ -318,17 +316,17 @@
 ;;;========================================================
 (defun template-validator-dsp ()
   "Upload an XMI 2.1 file (uncompressed) of UML or SysML. Perform validation. Report results."
-  (app-page-wrapper :cre (:view "NIST ISO 15925 Part 7/8 Validator" 
+  (app-page-wrapper :cre (:view "NIST ISO 15925 Part 7/8 Validator"
 			  :menu-pos '(:root :validate)
 			  :force-new-session nil) ; POD turned off for profile use
    (:h1 "NIST ISO 15925 Part 7/8 Validator")
    "The NIST Part 7/8 Validator is an experimental tool to assess the well-formedness
-    of ISO 15926-7 templates and template-based information. The tool accepts template 
+    of ISO 15926-7 templates and template-based information. The tool accepts template
     specifications and template instances in ISO 15926-8 OWL format
     and provides a report of structural and type-consistency issues against the templates. "
 ;   (:p)
 ;   "Effective use of the tool requires that the template definitions specify the biconditional logical
-;    expansion of the signature. This is primarily what is checked. An example of such 
+;    expansion of the signature. This is primarily what is checked. An example of such
 ;    a file can be found " (:a :href "/cre/static/example-templates.xml" "here")"."
     (:p)
     "You can allow the validator to accept 'legacy xml namespaces'"
@@ -336,14 +334,14 @@
     (:h3 "Enter below a file to upload and process:")
     (:form :method :post :enctype "multipart/form-data"
 	   (:table :border 0 :cellpadding 10 :cellspacing 0 :bgcolor "#FDFDD8"
-	     (:tr (:td "Part 8 file: ") 
-                  (:td (:input :type :file :name "uml-file")))
+	     (:tr (:td "Part 8 file: ")
+		  (:td (:input :type :file :name "uml-file")))
 	     (:tr (:td "<input type='radio' name='legacy-y/n' value='no-leg'> Typical usage")
 		  (:td "<input type='radio' name='legacy-y/n' value='leg' CHECKED> Allow legacy XML namespaces"))
-	     (:tr (:td :colspan 3 :align "center" 
+	     (:tr (:td :colspan 3 :align "center"
 		       (:input :type :submit :value "Upload and Process")))))
     (when-bind (post-map-data (safe-post-parameter "uml-file"))
-      (dbind (in-path in-file &rest ignore) post-map-data 
+      (dbind (in-path in-file &rest ignore) post-map-data
 	(declare (ignore ignore))
 	(let (allow-legacy-p)
 	  (when (string= (safe-post-parameter "legacy-y/n") "leg") (setf allow-legacy-p t))
@@ -359,7 +357,7 @@
    Pass the file to the validator."
   ;(log-message :info "NIST Validator called from remote IP address ~A" (header-in "remote-ip-addr"))
   (validator-clear-for-new-run)
-  (let ((new-path (make-pathname :name (pathname-name in-file) 
+  (let ((new-path (make-pathname :name (pathname-name in-file)
 				 :type (pathname-type in-file)
 				 :defaults *uploaded-files-dir*)))
     (rename-file in-path (ensure-directories-exist new-path))
@@ -371,7 +369,7 @@
     (with-vo (filename mut session-models)
       (setf session-models nil)
       (setf filename (format nil "~A.~A" (pathname-name in-file) (pathname-type in-file)))
-      ;; POD You can comment out results-handler-bind if (tbnl settings notwithstanding) 
+      ;; POD You can comment out results-handler-bind if (tbnl settings notwithstanding)
       ;; you are not getting error at listener.
       (unless (eql :xml (usr-bin-file new-path))
 	(error "The file supplied appears not to be XML format."))
@@ -382,9 +380,9 @@
       (push mut session-models))))
 
 (defun explain-legacy-xml-dsp ()
-  (app-page-wrapper :cre (:view "NIST Template Validator" 
+  (app-page-wrapper :cre (:view "NIST Template Validator"
 			  :menu-pos '(:root :validate))
-    (htm 
+    (htm
      (:h2 "Use of 'Legacy XML Namespaces")
      "Some draft version of Part 8 (prior to the  2011-10-15 Technical Specification) used:"
 	 (:ul
@@ -395,11 +393,11 @@
 	  (:li "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tpl#")
 	  (:li "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tm#"))
 	 "When you select to validate with 'legacy XML namespaces,' the validator translates
-          the use of the former namespaces to the latter ones.")))
+	  the use of the former namespaces to the latter ones.")))
 
 (defun validator-clear-for-new-run ()
   "Clear view objects and other memory related to past work."
-  (with-vo (pod-utils::view-objects mut) 
+  (with-vo (pod-utils::view-objects mut)
     (setf mut nil)
     (clrhash pod-utils::view-objects)))
 
@@ -410,17 +408,11 @@
     (when-bind (ep (safe-get-parameter "endpoint"))
       (when-bind (rds-num (safe-get-parameter "class"))
 	(cond ((eql :jord (kintern ep)))
-	      (let ((result 
-		     (tlogic:sparql-query 
+	      (let ((result
+		     (tlogic:sparql-query
 		      :jord
 		      (format nil "SELECT ?sc WHERE {http://jord-dev.org/rdl/hasSubclass#~A RDL:hasSubclass ?sc .}"
 			      str))))
 		;; UNFINISHED
 		))))))
 |#
-
-
-
-
-
-     

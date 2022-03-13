@@ -98,16 +98,16 @@
 	 schema)
     ;(setf *ns* (xqdm-ignore:find-namespace "http://www.omg.org/MEXICO"))
     (map-prologue doc root)
-    ;; Map the single top-level object -- XMI uses that term 'top-level' but doesn't define it. 
-    (setf (xml-utils:xml-children content) ;; Schema is the ONLY "top-level object" 
-	  (list (setf schema (map-element :two-one root doc (xmi-class-name schema-obj) schema-obj 
+    ;; Map the single top-level object -- XMI uses that term 'top-level' but doesn't define it.
+    (setf (xml-utils:xml-children content) ;; Schema is the ONLY "top-level object"
+	  (list (setf schema (map-element :two-one root doc (xmi-class-name schema-obj) schema-obj
 					  #| 2012 :recurse nil|#))))
-    ;; But in rule 2a it partitions things into "top-level objects" and 
+    ;; But in rule 2a it partitions things into "top-level objects" and
     ;; "objects that are the value of an attribute or reference"
     ;; The example use of 2a is ownedMember of Package in MOF...can't find it.
-    ;; Perhaps 'top-level' doesn't means anything you can't reach through navigation. 
+    ;; Perhaps 'top-level' doesn't means anything you can't reach through navigation.
     (setf (xml-utils:xml-children schema) ; here "top-level" refers to my mexico notion.
-	  (loop for obj in (%schema-elements (p11p::schema-scope *scope*)) 
+	  (loop for obj in (%schema-elements (p11p::schema-scope *scope*))
 		collect (string #\Newline)
 		collect (xml-make-node doc root nil (format nil "~A" (xmi-name obj)) :type 'rune-dom::comment) ; 2022 such a thing?
 		collect (map-element :two-one root doc "defined-in" obj)))
@@ -119,7 +119,7 @@
 		       :outfile (pod:lpath :tmp "mexico/mexico-xmi.xmi"))))
 
 
-;;; Everything mapped with this is "the value of an attribute or reference." 
+;;; Everything mapped with this is "the value of an attribute or reference."
 ;;; Hence the tag is named by the name of the attribute or reference (rule 2a).
 (defmethod map-element ((version (eql :two-one)) root doc tag-name obj &key)
   (VARS obj) (setf *zippy* obj) (break "here")
@@ -127,13 +127,13 @@
   (xmi21-register-obj obj)
   (setf (xmi-mapped-p obj) t)
   (let ((node (xml-make-node doc root tag-name nil :type 'rune-dom::element)))
-    (setf (xml-utils:xml-attributes node) 
+    (setf (xml-utils:xml-attributes node)
 	  (append
 	   (list (xml-make-node doc root "xmi:type" (xmi-class-name obj))
 		 (xml-make-node doc root "xmi:id" (obj2xmi-id obj)))
-	   (loop for slot in (reverse (closer-mop:class-slots (class-of obj))) 
-		 for slot-val = (slot-value obj (closer-mop:slot-definition-name slot)) 
-		 when (and slot-val 
+	   (loop for slot in (reverse (closer-mop:class-slots (class-of obj)))
+		 for slot-val = (slot-value obj (closer-mop:slot-definition-name slot))
+		 when (and slot-val
 			   (progn (VARS slot) (break "slot") t)
 			   (not (mofi:slot-definition-xmi-hidden slot))
 			   (not (xmi21-requires-elem-p slot-val)))
@@ -153,7 +153,7 @@
     node))
 
 (defun xmi21-requires-elem-p (obj)
-  (not 
+  (not
    (or (xmi-string-p obj)
        (xmi-mapped-p obj))))
 ;       (member obj (%schema-elements (p11p::schema-scope *scope*))))))
@@ -163,11 +163,11 @@
   (flet ((mk-comment (text)
 	    (xml-make-node doc root nil text :type 'rune-dom::comment))
 	 (mk-newline (&optional (n 1))
-            (loop for i from 1 to n collect (string #\Newline))))
+	    (loop for i from 1 to n collect (string #\Newline))))
     (setf (xml-utils:xml-children root)
 	  (append
 	   (flatten
-	    (list 
+	    (list
 	     (mk-newline) (mk-comment (format nil " Created on ~A" (now)))
 	     (mk-newline) (mk-comment (format nil" ~A" (expo:ee-version)))
 	     (mk-newline 2)))
@@ -186,7 +186,7 @@
 
 (defmethod xmi-class-name ((obj number)) obj)
 (defmethod xmi-class-name ((obj string)) obj)
-(defmethod xmi-class-name ((obj symbol)) 
+(defmethod xmi-class-name ((obj symbol))
   (if (keywordp obj) obj :error))
 (defmethod xmi-class-name ((obj t)) (break "Obj = ~A" obj))
 
@@ -205,7 +205,7 @@
     (intern
      (if name-only
 	 (format nil "~A" (mofi:slot-definition-source slot))
-       (format nil "~A.~A" 
+       (format nil "~A.~A"
 	       (class-name (mofi:slot-definition-source slot))
 	       (closer-mop:slot-definition-name slot)))
      package)))
@@ -255,7 +255,7 @@
 (defmethod xmi21-name ((obj T))
   "NYI-default=~A" (format nil "~A" obj))
 
-;;; POD this could be done more elegantly with handler-bind around warning. 
+;;; POD this could be done more elegantly with handler-bind around warning.
 (defun mm-warn (message &rest args)
   (let ((msg (apply #'format  nil message args)))
     (unless (member msg *mm-warnings* :test #'equal) (push msg *mm-warnings*))
@@ -274,7 +274,7 @@
 ;;;===========================================================================================
 ;;; Setf :after methods that will be pprinted to emm.lisp -- any place where a ref can appear,
 ;;; these are defined on slots of the the emm.lisp metaobjects, and push the values in instances
-;;; of those slots into *unresolved-attribute-refs*. 
+;;; of those slots into *unresolved-attribute-refs*.
 ;;;===========================================================================================
 (defun mm-subtypes-of (in-class-name &key self)
   (append (when self (list in-class-name))

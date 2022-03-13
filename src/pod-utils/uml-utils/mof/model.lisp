@@ -380,15 +380,17 @@
 
 (defun load-model-compiled-finalize-classes (m)
   "Sets Model.types Finalize classes."
+  (setf *zippy* m)
   (with-slots (types abstract-classes) m
     (loop for class across types
-       do (class-finalize-slots class))
+       do (setf *z1* class) (class-finalize-slots class))
     (loop for class across types do
+         (setf *z2* class)
 	 (update-subsetted-properties-from-redefinition class) ; 2009-07-27
 	 (compute-derived-union-sources class))
     ;; pod7 can't this go away? Replace with abstract-p on the class?
     (loop for cname in abstract-classes
-       do (setf (abstract-p (find-class cname)) t))))
+       do (setf *z3* cname) (setf (abstract-p (find-class cname)) t))))
 
 (defun load-model-compiled-import-readers (m inherit-from)
   "Import reader methods from Models this Model inherits from."

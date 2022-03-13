@@ -109,7 +109,7 @@
 		     (char<= #\0 ch #\9)
 		     (char= ch #\_))
 	do (vector-push-extend ch string)
-	finally return 
+	finally ; 2022 return here
 	(progn 
 	  (unread-char-buffered ch stream) 
 	  ;; Check for reserved words. (intern only those).

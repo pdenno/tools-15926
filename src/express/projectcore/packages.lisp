@@ -16,7 +16,7 @@
 
 (defpackage EXPO
   (:nicknames expresso exp)
-  (:use cl pod pcore  closer-mop) ; 2012 removed mofi
+  (:use cl pod pcore closer-mop) ; 2012 removed mofi
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
 			  #:defgeneric #:standard-generic-function #:defclass #:defmethod)
   (:shadowing-import-from :mexico

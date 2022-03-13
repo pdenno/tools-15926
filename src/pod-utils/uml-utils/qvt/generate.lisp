@@ -294,7 +294,7 @@
      (remove-duplicates 
       (loop for c in (mapcar #'class-name
 			     (reverse (cdr (member (find-class 'mofi::mm-root-supertype) 
-						   (reverse (clos:class-precedence-list (find-class class-name)))))))
+						   (reverse (class-precedence-list (find-class class-name)))))))
 	 append (loop for k in |ownedKey| 
 		   when (string= (string c) (%identifies k))
 		   collect (mapcar #'(lambda (x) (intern x (home-pkg))) (%part k))))
