@@ -86,7 +86,7 @@
 ;;; This IS NOT a candidate for pod-utils. Each impementation differs (See the EXPRESS one.)
 (defmacro with-instance ((type &rest init-args) &body body)
   "A macro that creates an object and provides with-slots to use it." 
-  (let ((slot-names (mapcar #'clos:slot-definition-name (clos:class-slots (find-class type)))))
+  (let ((slot-names (mapcar #'slot-definition-name (class-slots (find-class type)))))
     `(let* ((*def* (make-instance ',type ,@init-args)))
       (with-slots ,slot-names *def*
 	(declare (ignorable ,@slot-names))

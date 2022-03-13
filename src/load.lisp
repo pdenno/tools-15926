@@ -103,5 +103,5 @@
     (setf *cmpkg* :uml241)
     (load (compile-file po.lisp))))
 
-(when (member *features* :cre-ready)
+(when (member :cre-ready *features*)
   (project-http:cre-start))

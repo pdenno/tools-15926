@@ -1,6 +1,16 @@
 
 (in-package :turtle)
 
+;;; 2022 I add this from readers/conditions.lisp
+(defmacro defcondition (name superclasses slots &rest options)
+  `(progn
+     (define-condition ,name ,superclasses ,slots
+       (:documentation ,(cadr (assoc :documentation options)))
+       (:report ,(cadr (assoc :report options))))
+     (setf (get :title ',name) ,(cadr (assoc :title options)))
+     (setf (get :id-num ',name) ,(or (cadr (assoc :id-num options)) 1000))
+     (setf (get :explanation ',name) ,(cadr (assoc :explanation options)))
+     (export ',name)))
 
 ;;;==== Lexer ====
 
@@ -36,8 +46,8 @@
 			  got
 			  *tags-trace*)))))
 
-
-(define-condition turtle-parse-incomplete (tlogic-parse-error)
+;;; 2022 not investigated
+#+nil(define-condition turtle-parse-incomplete (tlogic-parse-error)
   ((actual :initarg :actual))
   (:report 
     (lambda (err stream)

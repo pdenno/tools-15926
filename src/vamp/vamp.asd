@@ -7,8 +7,9 @@
   :depends-on (:pod-utils :xml-utils :trie :kif :cl-ppcre)
   :components
   ((:file "packages")
-   (:file "pipe")
-   (:file "vampire")))
+   ;2022 todo (:file "pipe")
+   (:file "vampire")
+   ))
 
 
 

@@ -1,11 +1,12 @@
 (in-package :V)
 
-(defconstant +relation-symbols+ '(ku:|equal| ku:|lessThan| ku:|greaterThan| ku:|lessThanOrEqualTo|
+;;; 2022 I don't use defconstant in sbcl
+(defvar +relation-symbols+ '(ku:|equal| ku:|lessThan| ku:|greaterThan| ku:|lessThanOrEqualTo|
 				  ku:|greaterThanOrEqualTo|))
-(defconstant +inequality-symbols+ '(ku:|lessThan| ku:|greaterThan| ku:|lessThanOrEqualTo|
+(defvar +inequality-symbols+ '(ku:|lessThan| ku:|greaterThan| ku:|lessThanOrEqualTo|
 				    ku:|greaterThanOrEqualTo|))
-(defconstant +logical-symbols+ '(ku:|and| ku:|or| ku:|not| ku:|exists| ku:|forall| ku:=> ku:<=>))
-(defconstant +arithmetic-symbols+ '(ku:|AdditionFn| ku:|SubtractionFn| ku:|MultiplicationFn| ku:|DivisionFn|))
+(defvar +logical-symbols+ '(ku:|and| ku:|or| ku:|not| ku:|exists| ku:|forall| ku:=> ku:<=>))
+(defvar +arithmetic-symbols+ '(ku:|AdditionFn| ku:|SubtractionFn| ku:|MultiplicationFn| ku:|DivisionFn|))
 
 (defvar *proof-stream* *standard-output*)
 
@@ -29,8 +30,6 @@
 (defclass null-construction-context ()
   ())
 ;;;========= End stuff from miv/project ==============
-
-(defvar *zippy* nil)
 
 ;;; This became necessary in LW 5.0???
 (defmacro pf-format (control-string &rest args)
@@ -84,7 +83,6 @@
 ;;; what to backquote.
 (defun vampire-compile-ontology (&key in-file)
   (let ((kif-forms (make-instance 'k:kif-forms)))
-    (setf *zippy* kif-forms)
     (flet ((lo-aux () ;this does trie stuff to find Formula domains, used by output-for-vampire
 	     (setf (fill-pointer k:*clause-container*) 0) ; 2007
 	     (k:kif-forms-clausify kif-forms)
@@ -143,7 +141,8 @@
     ;; This will create a file, vampire-tmp-file (/local/tmp/vamp.out).
     (vampire-compile-ontology :in-file merged-file)))
 
-(defun vampire-start ()
+;;; 2022 todo
+#+nil(defun vampire-start ()
   (set-app-globals)
   (vampire-stop)
   (with-slots (vampire-stream vampire-path vampire-tmp-file) (app-globals)
@@ -161,12 +160,12 @@
 	    (error "Vampire failed to start."))))))
 
 ;;; POD I'm guessing, based on what is in /local/lisp/cl-xml/cl-xml/code/base/utils.lisp
-(defmethod xml-utils::stream-position ((stream system::pty-stream) &optional new)
+;;; 2022 ToDo
+#+nil(defmethod xml-utils::stream-position ((stream system::pty-stream) &optional new)
   (if new
     (file-position stream new)
     (file-position stream)))
 
-(defvar *zippy-response* nil)
 
 #+nil
 (defun xml-ok-p ()
@@ -222,8 +221,8 @@
      (loop for c = (read-char-no-hang vampire-stream nil)
 	   when c do (format t "~A" c)))))
 
-
-(defun vampire-kill-processes ()
+;;; 2022 ToDo
+#+nil(defun vampire-kill-processes ()
   "Clean up old processes, if any."
   (loop for p in (mp:list-all-processes)
 	when (or (search "Vampire IO" (mp:process-name p))
@@ -275,7 +274,8 @@
   "Compile ontology and restart if an ontology file changed."
     (asdf:operate 'asdf:load-op :kb))
 
-(defun vampire-tell (orig-form &key (blocking t))
+;;; 2022 ToDo
+#+nil(defun vampire-tell (orig-form &key (blocking t))
   (vampire-oos)
   (pf-format "~%~A" orig-form)
   (let ((form (kif2vampire (vampire-qvar-it orig-form))))
@@ -322,7 +322,8 @@
       (if debug-p (values bindings pnum) (values)))))
 
 
-(defun vampire-ask-internal (form &key timeout bindings-limit)
+;;; 2022 ToDo
+#+nil(defun vampire-ask-internal (form &key timeout bindings-limit)
   "Call vampire-send with XML <query/>. Wait for response at pnum. Parse result."
   (let ((pnum (vampire-send (format nil "<query timeLimit='~A' bindingsLimit='~A'> ~A </query>"
 				    timeout bindings-limit form) :timeout timeout)))
@@ -403,10 +404,12 @@
 		     (terpri pipe)
 		     (incf iptr))))))))
 
-(defun vampire-io-not-running-p ()
+;;; 2022  ToDo
+#+nil(defun vampire-io-not-running-p ()
   (not (find "Vampire IO" (mp:list-all-processes) :test #'search :key #'mp:process-name)))
 
-(defun vampire-send (string &key (timeout 10))
+;;; 2022  ToDo
+#+nil(defun vampire-send (string &key (timeout 10))
   "Run two processes: One reads the response from vampire and write to a string stream.
    The other xml reads (xml-utils:xml-document-parser) from the string stream."
   (when-bind (vstream (vampire-stream (app-globals)))
@@ -450,7 +453,8 @@
 		   (setf (gethash pnum *vampire-responses*) response))))))
 	pnum))))
 
-(defun start-reaper-process (pnum timeout)
+;;; 2022  ToDo
+#+nil(defun start-reaper-process (pnum timeout)
   (mp:process-run-function  ; Name with subseq so not seen as a V/IO itself
    (format nil "Reaper of process P-~A" pnum) nil
    #'(lambda ()
@@ -718,7 +722,6 @@
     (set-pprint-dispatch 'string nil)))
 
 (defmethod output-for-vampire ((forms k:kif-forms) &key file)
-  (VARS file)
   (mapcar #'clear-memoize '(bq-position kif-superrelations kif-subrelations kif-superclasses))
   (setf *domain-is-formula*
 	  (remove-if #'(lambda (x) (member (second x) +logical-symbols+))
@@ -753,8 +756,9 @@
 	     until (eql line :eof) do
 	     (format t "~% ~A" line))))))
 
-#+sbcl(defvar *buffer-lock* (make-mutex :name "reasoner buffer lock"))
-#+sbcl(defvar *buffer-queue* (make-waitqueue))
+;;; 2022 something in sbcl changed? (Next was #+sbcl
+#+sbcl(defvar *buffer-lock*  nil #+nil(make-mutex :name "reasoner buffer lock"))
+#+sbcl(defvar *buffer-queue* nil #+nil(make-waitqueue))
 
 #+sbcl
 (import '(sb-gray:fundamental-character-input-stream
@@ -762,8 +766,8 @@
 	  sb-gray:stream-listen))
 
 #+sbcl
-(defclass reasoner-stream (fundamental-character-input-stream
-			   fundamental-character-output-stream)
+(defclass reasoner-stream (sb-gray:fundamental-character-input-stream
+			   sb-gray:fundamental-character-output-stream)
   ((cbuf :reader cbuf :initform (make-array 1024 :element-type 'character :adjustable t))
    (read-ptr :accessor read-ptr :initform 0)
    (write-ptr :accessor write-ptr :initform 0)))
@@ -772,9 +776,9 @@
 (defmethod sb-gray:stream-read-char ((s reasoner-stream))
   (with-slots (read-ptr write-ptr) s
     (with-mutex (*buffer-lock*)
-      (when (= read-ptr write-ptr) (return))
+      (when (= read-ptr write-ptr) nil)
       (with-slots (cbuf) s
-	(princ ; debuggin
+	(princ ; debugging
 	 (prog1 (char cbuf read-ptr)
 	   (if (= read-ptr 1023) (setf read-ptr 0) (incf read-ptr))))))))
 
@@ -791,8 +795,6 @@
   (with-slots (read-ptr write-ptr) s
     (with-mutex (*buffer-lock*)
       (not (= read-ptr write-ptr)))))
-
-
 
 ;;; 2012 Here is what the call to ASK looks like in MIV:
 #+nil

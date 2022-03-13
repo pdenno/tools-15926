@@ -10,7 +10,8 @@
     ((:file "packages")
      (:file "conditions")
      (:file "turtle-token")
-     (:file "turtle-parser")))
+     ;; 2022 commented out (need a few models, for their namespaces, at least.)
+     #+nil(:file "turtle-parser")))
 
 
 
