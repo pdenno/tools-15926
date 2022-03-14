@@ -128,9 +128,11 @@
 	     (cond ((cl-ppcre:scan "^/se-interop" uri) :sei)
 		   ((cl-ppcre:scan "^/moss" uri) :moss)
 		   ((cl-ppcre:scan "^/exports" uri) :et)
+		   ((cl-ppcre:scan "^/cre" uri) :cre)
 		   ((cl-ppcre:scan "^/scm" uri) :scm))))
 	  ((and (not (member :moss.exe *features*))
 		(not (member :sei.exe *features*))
+		(not (member :cre.exe *features*))
 		(not (member :scm.exe *features*))
 		(app-name (first (http-apps)))))
 	  (t (error "Cannot determine application."))))
@@ -190,7 +192,7 @@
 (defun app-epilogue ()
   (cl-who:with-html-output (*standard-output*)
    "<br/><br/><br/><hr/><p/>Send questions or comments to
-    <a href='mailto:xmi-interop@omg.org'>xmi-interop@omg.org</a>.<br/>"))
+    <a href='mailto:podenno@gmail.com'>podenno@gmail.com</a>.<br/>"))
 
 (defun div-top ()
   (cl-who:with-html-output (*standard-output*)
@@ -357,8 +359,6 @@
       else objImg.src = closedImg.src;
    }")
   (format out "~%</script>")))
-
-
 
 ;;; This one doesn't work! ... :href (str ....))
 (defmethod div-disclaimers ((app t))

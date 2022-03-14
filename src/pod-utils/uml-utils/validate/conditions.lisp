@@ -647,7 +647,7 @@
     by that OCL code, your model isn't. Identifying what it is about your exchange file
     that the the OCL is objecting to is a typical debugging exercise, and due to the 
     lack of debugging tools, can be hard to grasp. If you can't see the problem, send a note 
-    to xmi-interop@omg.org.
+    to podenno@gmail.com.
     <p/>
     Whether or not processors will behave 
     properly when faced with OCL constraint violations depends on the details of the constraint. 
@@ -682,7 +682,7 @@
     bug in the metamodel's (or profile's) OCL code. It might even be due to a fault in the
     XMI exchange file being processed. (Every effort has been made to eliminate this last source.)
     Detailed explanation of these errors in not yet provided because the explanations are so various
-    and can be complex. If you are really interested, ask xmi-interop@omg.org.")
+    and can be complex. If you are really interested, ask podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (object constraint lisp-error) c
@@ -722,7 +722,7 @@
     bug in the metamodel's (or profile's) OCL code. It might even be due to a fault in the
     XMI exchange file being processed. (Every effort has been made to eliminate this last source.)
     Detailed explanation of these errors in not yet provided because the explanations are so various
-    and can be complex. If you are really interested, send email to xmi-interop@omg.org.")
+    and can be complex. If you are really interested, send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (object class-name reader-name lisp-error) c
@@ -1017,12 +1017,12 @@
   (:documentation "The user indicated that the file is a MIWG test case. Two objects that 
                    seemed to match each other in many respects are nonetheless of differing type.
                    The validator isn't currently implementing MIWG test cases.
-                   If you need this, send email to xmi-interop@omg.org.")
+                   If you need this, send email to podenno@gmail.com.")
   (:explanation "The user stated that the file he is uploading is a MIWG Test Case. The validator 
     compared objects in the two files, seeking corresponding objects. The corresponding objects
     that are the subject of this report are not of identical types. No further matching into
     these objects was performed. The validator isn't currently implementing MIWG test cases.
-    If you need this, send email to xmi-interop@omg.org.")
+    If you need this, send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (uobj vobj) c
@@ -1050,7 +1050,7 @@
     canonical form of his XMI (the XML shown at the link) with a stored Canonical XMI file 
     generated from valid.xmi.<p/> Each error report of this type describes a significant
     difference between the generated canonical XMI and the stored valid canonical XMI.
-    The validator isn't currently implementing MIWG test cases. If you need this, send email to xmi-interop@omg.org.")
+    The validator isn't currently implementing MIWG test cases. If you need this, send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (velem vobj red-regex) c
@@ -1078,7 +1078,7 @@
   (:documentation "The user indicated that the file is a MIWG test case; the user's (canonical XMI-transformed) file
                    contains an element not found in valid.xmi
  		   The validator isn't currently implementing MIWG test cases. If you need this,
-                   send email to xmi-interop@omg.org.")
+                   send email to podenno@gmail.com.")
   (:explanation "The Validator generates canonical XMI; you can see it by navigating the link on
     the validator report called 'Canonical XMI'. (See the MIWG Wiki for discussion of the notion of Canonical XMI).
     The user stated that the file he is uploading is a MIWG Test Case. The validator compared the
@@ -1088,7 +1088,7 @@
     <p/>NOTE: This error will be reported for each instance where the user file serializes
     a default or derived value. It is easiest to fix those errors before studying these.
     The validator isn't currently implementing MIWG test cases. If you need this,
-    send email to xmi-interop@omg.org.")
+    send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (uelem red-regex uobj) c
@@ -1117,12 +1117,12 @@
   (:documentation "The user indicated that the file is a MIWG test case. An object property
                    in the user's file differs from that of the corresponding object in 
                    valid.xmi. The validator isn't currently implementing MIWG test cases.
-                   If you need this, send email to xmi-interop@omg.org.")
+                   If you need this, send email to podenno@gmail.com.")
   (:explanation " The user stated that the file he is uploading is a MIWG Test Case. 
     The validator compared the user's XMI with a stored Canonical XMI file (valid.xmi)
     Each error report of this type describes a significant difference between user's
     file and the valid canonical XMI. The validator isn't currently implementing MIWG test cases.
-    If you need this, send email to xmi-interop@omg.org.")
+    If you need this, send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (uobj vobj prop-name uval vval red-regex uelem) c
@@ -1165,12 +1165,12 @@
   (:documentation "The user indicated that the file is a MIWG test case. An object property
                    in the user's file does not specify a value where valid.xmi does.
   		   The validator isn't currently implementing MIWG test cases.
-                   If you need this, send email to xmi-interop@omg.org.")
+                   If you need this, send email to podenno@gmail.com.")
   (:explanation " The user stated that the file he is uploading is a MIWG Test Case. 
     The validator compared the user's XMI with a stored Canonical XMI file (valid.xmi)
     Each error report of this type describes a significant difference between user's
     file and the valid canonical XMI. The validator isn't currently implementing MIWG test cases.
-    If you need this, send email to xmi-interop@omg.org.")
+    If you need this, send email to podenno@gmail.com.")
   (:report
    (lambda (c stream)
      (with-slots (uobj vobj prop-name vval) c

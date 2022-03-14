@@ -1,0 +1,4283 @@
+%
+%  All templates - 2022-03-14T17:58:07Z
+%
+
+%
+% Proto-templates
+%
+
+ApprovalTriple(x,y,z) <-> Approval(x) & hasApproved(x,y) & hasApprover(x,z) .
+ApprovalTemplate(x,y) <-> exists z(ApprovalTriple(z,x,y)) .
+
+ArrangementOfIndividualTriple(x,y,z) <-> ArrangementOfIndividual(x) & hasPart(x,y) & hasWhole(x,z) .
+ArrangementOfIndividualTemplate(x,y) <-> exists z(ArrangementOfIndividualTriple(z,x,y)) .
+
+AssemblyOfIndividualTriple(x,y,z) <-> AssemblyOfIndividual(x) & hasPart(x,y) & hasWhole(x,z) .
+AssemblyOfIndividualTemplate(x,y) <-> exists z(AssemblyOfIndividualTriple(z,x,y)) .
+
+BeginningTriple(x,y,z) <-> Beginning(x) & hasPart(x,y) & hasWhole(x,z) .
+BeginningTemplate(x,y) <-> exists z(BeginningTriple(z,x,y)) .
+
+BoundaryOfNumberSpaceTriple(x,y,z) <-> BoundaryOfNumberSpace(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+BoundaryOfNumberSpaceTemplate(x,y) <-> exists z(BoundaryOfNumberSpaceTriple(z,x,y)) .
+
+BoundaryOfPropertySpaceTriple(x,y,z) <-> BoundaryOfPropertySpace(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+BoundaryOfPropertySpaceTemplate(x,y) <-> exists z(BoundaryOfPropertySpaceTriple(z,x,y)) .
+
+CauseOfEventTriple(x,y,z) <-> CauseOfEvent(x) & hasCaused(x,y) & hasCauser(x,z) .
+CauseOfEventTemplate(x,y) <-> exists z(CauseOfEventTriple(z,x,y)) .
+
+ClassificationTriple(x,y,z) <-> Classification(x) & hasClassified(x,y) & hasClassifier(x,z) .
+ClassificationTemplate(x,y) <-> exists z(ClassificationTriple(z,x,y)) .
+
+ClassOfApprovalTriple(x,y,z) <-> ClassOfApproval(x) & hasClassOfApproved(x,y) & hasClassOfApprover(x,z) .
+ClassOfApprovalTemplate(x,y) <-> exists z(ClassOfApprovalTriple(z,x,y)) .
+
+ClassOfArrangementOfIndividualTriple(x,y,z) <-> ClassOfArrangementOfIndividual(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfArrangementOfIndividualTemplate(x,y) <-> exists z(ClassOfArrangementOfIndividualTriple(z,x,y)) .
+
+ClassOfAssemblyOfIndividualTriple(x,y,z) <-> ClassOfAssemblyOfIndividual(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfAssemblyOfIndividualTemplate(x,y) <-> exists z(ClassOfAssemblyOfIndividualTriple(z,x,y)) .
+
+ClassOfCauseOfBeginningOfClassOfIndividualTriple(x,y,z) <-> ClassOfCauseOfBeginningOfClassOfIndividual(x) & hasClassOfBegun(x,y) & hasClassOfCauser(x,z) .
+ClassOfCauseOfBeginningOfClassOfIndividualTemplate(x,y) <-> exists z(ClassOfCauseOfBeginningOfClassOfIndividualTriple(z,x,y)) .
+
+ClassOfCauseOfEndingOfClassOfIndividualTriple(x,y,z) <-> ClassOfCauseOfEndingOfClassOfIndividual(x) & hasClassOfCauser(x,y) & hasClassOfEnded(x,z) .
+ClassOfCauseOfEndingOfClassOfIndividualTemplate(x,y) <-> exists z(ClassOfCauseOfEndingOfClassOfIndividualTriple(z,x,y)) .
+
+ClassOfClassificationTriple(x,y,z) <-> ClassOfClassification(x) & hasClassOfClassified(x,y) & hasClassOfClassifier(x,z) .
+ClassOfClassificationTemplate(x,y) <-> exists z(ClassOfClassificationTriple(z,x,y)) .
+
+ClassOfClassOfCompositionTriple(x,y,z) <-> ClassOfClassOfComposition(x) & hasClassOfClassOfPart(x,y) & hasClassOfClassOfWhole(x,z) .
+ClassOfClassOfCompositionTemplate(x,y) <-> exists z(ClassOfClassOfCompositionTriple(z,x,y)) .
+
+ClassOfClassOfDefinitionTriple(x,y,z) <-> ClassOfClassOfDefinition(x) & hasClassOfPattern(x,y) & hasClassOfRepresented(x,z) .
+ClassOfClassOfDefinitionTemplate(x,y) <-> exists z(ClassOfClassOfDefinitionTriple(z,x,y)) .
+
+ClassOfClassOfDescriptionTriple(x,y,z) <-> ClassOfClassOfDescription(x) & hasClassOfPattern(x,y) & hasClassOfRepresented(x,z) .
+ClassOfClassOfDescriptionTemplate(x,y) <-> exists z(ClassOfClassOfDescriptionTriple(z,x,y)) .
+
+ClassOfClassOfIdentificationTriple(x,y,z) <-> ClassOfClassOfIdentification(x) & hasClassOfPattern(x,y) & hasClassOfRepresented(x,z) .
+ClassOfClassOfIdentificationTemplate(x,y) <-> exists z(ClassOfClassOfIdentificationTriple(z,x,y)) .
+
+ClassOfClassOfRelationshipWithSignatureTriple(x,y,z) <-> ClassOfClassOfRelationshipWithSignature(x) & hasClassOfEnd1(x,y) & hasClassOfEnd2(x,z) .
+ClassOfClassOfRelationshipWithSignatureTemplate(x,y) <-> exists z(ClassOfClassOfRelationshipWithSignatureTriple(z,x,y)) .
+
+ClassOfClassOfRepresentationTriple(x,y,z) <-> ClassOfClassOfRepresentation(x) & hasClassOfPattern(x,y) & hasClassOfRepresented(x,z) .
+ClassOfClassOfRepresentationTemplate(x,y) <-> exists z(ClassOfClassOfRepresentationTriple(z,x,y)) .
+
+ClassOfClassOfRepresentationTranslationTriple(x,y,z) <-> ClassOfClassOfRepresentationTranslation(x) & hasClassOfFirst(x,y) & hasClassOfSecond(x,z) .
+ClassOfClassOfRepresentationTranslationTemplate(x,y) <-> exists z(ClassOfClassOfRepresentationTranslationTriple(z,x,y)) .
+
+ClassOfClassOfResponsibilityForRepresentationTriple(x,y,z) <-> ClassOfClassOfResponsibilityForRepresentation(x) & hasClassOfClassOfControlled(x,y) & hasController(x,z) .
+ClassOfClassOfResponsibilityForRepresentationTemplate(x,y) <-> exists z(ClassOfClassOfResponsibilityForRepresentationTriple(z,x,y)) .
+
+ClassOfClassOfUsageOfRepresentationTriple(x,y,z) <-> ClassOfClassOfUsageOfRepresentation(x) & hasClassOfClassOfUsed(x,y) & hasUser(x,z) .
+ClassOfClassOfUsageOfRepresentationTemplate(x,y) <-> exists z(ClassOfClassOfUsageOfRepresentationTriple(z,x,y)) .
+
+ClassOfCompositionOfIndividualTriple(x,y,z) <-> ClassOfCompositionOfIndividual(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfCompositionOfIndividualTemplate(x,y) <-> exists z(ClassOfCompositionOfIndividualTriple(z,x,y)) .
+
+ClassOfConnectionOfIndividualTriple(x,y,z) <-> ClassOfConnectionOfIndividual(x) & hasClassOfSide1(x,y) & hasClassOfSide2(x,z) .
+ClassOfConnectionOfIndividualTemplate(x,y) <-> exists z(ClassOfConnectionOfIndividualTriple(z,x,y)) .
+
+ClassOfContainmentOfIndividualTriple(x,y,z) <-> ClassOfContainmentOfIndividual(x) & hasClassOfLocated(x,y) & hasClassOfLocator(x,z) .
+ClassOfContainmentOfIndividualTemplate(x,y) <-> exists z(ClassOfContainmentOfIndividualTriple(z,x,y)) .
+
+ClassOfDefinitionTriple(x,y,z) <-> ClassOfDefinition(x) & hasPattern(x,y) & hasRepresented(x,z) .
+ClassOfDefinitionTemplate(x,y) <-> exists z(ClassOfDefinitionTriple(z,x,y)) .
+
+ClassOfDescriptionTriple(x,y,z) <-> ClassOfDescription(x) & hasPattern(x,y) & hasRepresented(x,z) .
+ClassOfDescriptionTemplate(x,y) <-> exists z(ClassOfDescriptionTriple(z,x,y)) .
+
+ClassOfDimensionForShapeTriple(x,y,z) <-> ClassOfDimensionForShape(x) & hasClassOfDimension(x,y) & hasClassOfShape(x,z) .
+ClassOfDimensionForShapeTemplate(x,y) <-> exists z(ClassOfDimensionForShapeTriple(z,x,y)) .
+
+ClassOfDirectConnectionTriple(x,y,z) <-> ClassOfDirectConnection(x) & hasClassOfSide1(x,y) & hasClassOfSide2(x,z) .
+ClassOfDirectConnectionTemplate(x,y) <-> exists z(ClassOfDirectConnectionTriple(z,x,y)) .
+
+ClassOfFeatureWholePartTriple(x,y,z) <-> ClassOfFeatureWholePart(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfFeatureWholePartTemplate(x,y) <-> exists z(ClassOfFeatureWholePartTriple(z,x,y)) .
+
+ClassOfFunctionalMappingTriple(x,y,z) <-> ClassOfFunctionalMapping(x) & hasCodomain(x,y) & hasDomain(x,z) .
+ClassOfFunctionalMappingTemplate(x,y) <-> exists z(ClassOfFunctionalMappingTriple(z,x,y)) .
+
+ClassOfIdentificationTriple(x,y,z) <-> ClassOfIdentification(x) & hasPattern(x,y) & hasRepresented(x,z) .
+ClassOfIdentificationTemplate(x,y) <-> exists z(ClassOfIdentificationTriple(z,x,y)) .
+
+ClassOfIndirectConnectionTriple(x,y,z) <-> ClassOfIndirectConnection(x) & hasClassOfSide1(x,y) & hasClassOfSide2(x,z) .
+ClassOfIndirectConnectionTemplate(x,y) <-> exists z(ClassOfIndirectConnectionTriple(z,x,y)) .
+
+ClassOfIndirectPropertyTriple(x,y,z) <-> ClassOfIndirectProperty(x) & hasClassOfPossessor(x,y) & hasPropertySpace(x,z) .
+ClassOfIndirectPropertyTemplate(x,y) <-> exists z(ClassOfIndirectPropertyTriple(z,x,y)) .
+
+ClassOfIndividualUsedInConnectionTriple(x,y,z) <-> ClassOfIndividualUsedInConnection(x) & hasClassOfConnection(x,y) & hasClassOfUsage(x,z) .
+ClassOfIndividualUsedInConnectionTemplate(x,y) <-> exists z(ClassOfIndividualUsedInConnectionTriple(z,x,y)) .
+
+ClassOfIntendedRoleAndDomainTriple(x,y,z) <-> ClassOfIntendedRoleAndDomain(x) & hasClassOfPlayer(x,y) & hasPlayed(x,z) .
+ClassOfIntendedRoleAndDomainTemplate(x,y) <-> exists z(ClassOfIntendedRoleAndDomainTriple(z,x,y)) .
+
+ClassOfInvolvementByReferenceTriple(x,y,z) <-> ClassOfInvolvementByReference(x) & hasClassOfInvolved(x,y) & hasClassOfInvolver(x,z) .
+ClassOfInvolvementByReferenceTemplate(x,y) <-> exists z(ClassOfInvolvementByReferenceTriple(z,x,y)) .
+
+ClassOfIsomorphicFunctionalMappingTriple(x,y,z) <-> ClassOfIsomorphicFunctionalMapping(x) & hasCodomain(x,y) & hasDomain(x,z) .
+ClassOfIsomorphicFunctionalMappingTemplate(x,y) <-> exists z(ClassOfIsomorphicFunctionalMappingTriple(z,x,y)) .
+
+ClassOfLeftNamespaceTriple(x,y,z) <-> ClassOfLeftNamespace(x) & hasClassOfClassOfWhole(x,y) & hasClassOfPart(x,z) .
+ClassOfLeftNamespaceTemplate(x,y) <-> exists z(ClassOfLeftNamespaceTriple(z,x,y)) .
+
+ClassOfNamespaceTriple(x,y,z) <-> ClassOfNamespace(x) & hasClassOfClassOfWhole(x,y) & hasClassOfPart(x,z) .
+ClassOfNamespaceTemplate(x,y) <-> exists z(ClassOfNamespaceTriple(z,x,y)) .
+
+ClassOfParticipationTriple(x,y,z) <-> ClassOfParticipation(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfParticipationTemplate(x,y) <-> exists z(ClassOfParticipationTriple(z,x,y)) .
+
+ClassOfPossibleRoleAndDomainTriple(x,y,z) <-> ClassOfPossibleRoleAndDomain(x) & hasClassOfPlayer(x,y) & hasPlayed(x,z) .
+ClassOfPossibleRoleAndDomainTemplate(x,y) <-> exists z(ClassOfPossibleRoleAndDomainTriple(z,x,y)) .
+
+ClassOfRecognitionTriple(x,y,z) <-> ClassOfRecognition(x) & hasClassOfRecognized(x,y) & hasClassOfRecognizing(x,z) .
+ClassOfRecognitionTemplate(x,y) <-> exists z(ClassOfRecognitionTriple(z,x,y)) .
+
+ClassOfRelationshipTriple(x,y,z) <-> ClassOfRelationship(x) & hasEnd1Cardinality(x,y) & hasEnd2Cardinality(x,z) .
+ClassOfRelationshipTemplate(x,y) <-> exists z(ClassOfRelationshipTriple(z,x,y)) .
+
+ClassOfRelationshipWithSignatureTriple(x,y,z) <-> ClassOfRelationshipWithSignature(x) & hasClassOfEnd1(x,y) & hasClassOfEnd2(x,z) .
+ClassOfRelationshipWithSignatureTemplate(x,y) <-> exists z(ClassOfRelationshipWithSignatureTriple(z,x,y)) .
+
+ClassOfRelativeLocationTriple(x,y,z) <-> ClassOfRelativeLocation(x) & hasClassOfLocated(x,y) & hasClassOfLocator(x,z) .
+ClassOfRelativeLocationTemplate(x,y) <-> exists z(ClassOfRelativeLocationTriple(z,x,y)) .
+
+ClassOfRepresentationOfThingTriple(x,y,z) <-> ClassOfRepresentationOfThing(x) & hasPattern(x,y) & hasRepresented(x,z) .
+ClassOfRepresentationOfThingTemplate(x,y) <-> exists z(ClassOfRepresentationOfThingTriple(z,x,y)) .
+
+ClassOfRepresentationTranslationTriple(x,y,z) <-> ClassOfRepresentationTranslation(x) & hasClassOfFirst(x,y) & hasClassOfSecond(x,z) .
+ClassOfRepresentationTranslationTemplate(x,y) <-> exists z(ClassOfRepresentationTranslationTriple(z,x,y)) .
+
+ClassOfResponsibilityForRepresentationTriple(x,y,z) <-> ClassOfResponsibilityForRepresentation(x) & hasClassOfControlled(x,y) & hasController(x,z) .
+ClassOfResponsibilityForRepresentationTemplate(x,y) <-> exists z(ClassOfResponsibilityForRepresentationTriple(z,x,y)) .
+
+ClassOfRightNamespaceTriple(x,y,z) <-> ClassOfRightNamespace(x) & hasClassOfClassOfWhole(x,y) & hasClassOfPart(x,z) .
+ClassOfRightNamespaceTemplate(x,y) <-> exists z(ClassOfRightNamespaceTriple(z,x,y)) .
+
+ClassOfScaleConversionTriple(x,y,z) <-> ClassOfScaleConversion(x) & hasCodomain(x,y) & hasDomain(x,z) .
+ClassOfScaleConversionTemplate(x,y) <-> exists z(ClassOfScaleConversionTriple(z,x,y)) .
+
+ClassOfSpecializationTriple(x,y,z) <-> ClassOfSpecialization(x) & hasClassOfSubclass(x,y) & hasClassOfSuperclass(x,z) .
+ClassOfSpecializationTemplate(x,y) <-> exists z(ClassOfSpecializationTriple(z,x,y)) .
+
+ClassOfTemporalSequenceTriple(x,y,z) <-> ClassOfTemporalSequence(x) & hasClassOfPredecessor(x,y) & hasClassOfSuccessor(x,z) .
+ClassOfTemporalSequenceTemplate(x,y) <-> exists z(ClassOfTemporalSequenceTriple(z,x,y)) .
+
+ClassOfTemporalWholePartTriple(x,y,z) <-> ClassOfTemporalWholePart(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+ClassOfTemporalWholePartTemplate(x,y) <-> exists z(ClassOfTemporalWholePartTriple(z,x,y)) .
+
+ClassOfUsageOfRepresentationTriple(x,y,z) <-> ClassOfUsageOfRepresentation(x) & hasClassOfUsed(x,y) & hasUser(x,z) .
+ClassOfUsageOfRepresentationTemplate(x,y) <-> exists z(ClassOfUsageOfRepresentationTriple(z,x,y)) .
+
+ComparisonOfPropertyTriple(x,y,z) <-> ComparisonOfProperty(x) & hasGreaterElement(x,y) & hasLesserElement(x,z) .
+ComparisonOfPropertyTemplate(x,y) <-> exists z(ComparisonOfPropertyTriple(z,x,y)) .
+
+CompositionOfIndividualTriple(x,y,z) <-> CompositionOfIndividual(x) & hasPart(x,y) & hasWhole(x,z) .
+CompositionOfIndividualTemplate(x,y) <-> exists z(CompositionOfIndividualTriple(z,x,y)) .
+
+ConnectionOfIndividualTriple(x,y,z) <-> ConnectionOfIndividual(x) & hasSide1(x,y) & hasSide2(x,z) .
+ConnectionOfIndividualTemplate(x,y) <-> exists z(ConnectionOfIndividualTriple(z,x,y)) .
+
+ContainmentOfIndividualTriple(x,y,z) <-> ContainmentOfIndividual(x) & hasLocated(x,y) & hasLocator(x,z) .
+ContainmentOfIndividualTemplate(x,y) <-> exists z(ContainmentOfIndividualTriple(z,x,y)) .
+
+CoordinateSystemTriple(x,y,z) <-> CoordinateSystem(x) & hasCodomain(x,y) & hasDomain(x,z) .
+CoordinateSystemTemplate(x,y) <-> exists z(CoordinateSystemTriple(z,x,y)) .
+
+DefinitionTriple(x,y,z) <-> Definition(x) & hasRepresented(x,y) & hasSign(x,z) .
+DefinitionTemplate(x,y) <-> exists z(DefinitionTriple(z,x,y)) .
+
+DescriptionTriple(x,y,z) <-> Description(x) & hasRepresented(x,y) & hasSign(x,z) .
+DescriptionTemplate(x,y) <-> exists z(DescriptionTriple(z,x,y)) .
+
+DifferenceOfSetOfClassTriple(x,y,z) <-> DifferenceOfSetOfClass(x) & hasInput(x,y) & hasResult(x,z) .
+DifferenceOfSetOfClassTemplate(x,y) <-> exists z(DifferenceOfSetOfClassTriple(z,x,y)) .
+
+DimensionOfIndividualTriple(x,y,z) <-> DimensionOfIndividual(x) & hasIndividual(x,y) & hasIndividualDimension(x,z) .
+DimensionOfIndividualTemplate(x,y) <-> exists z(DimensionOfIndividualTriple(z,x,y)) .
+
+DimensionOfShapeTriple(x,y,z) <-> DimensionOfShape(x) & hasDimension(x,y) & hasShape(x,z) .
+DimensionOfShapeTemplate(x,y) <-> exists z(DimensionOfShapeTriple(z,x,y)) .
+
+DirectConnectionTriple(x,y,z) <-> DirectConnection(x) & hasSide1(x,y) & hasSide2(x,z) .
+DirectConnectionTemplate(x,y) <-> exists z(DirectConnectionTriple(z,x,y)) .
+
+EndingTriple(x,y,z) <-> Ending(x) & hasPart(x,y) & hasWhole(x,z) .
+EndingTemplate(x,y) <-> exists z(EndingTriple(z,x,y)) .
+
+FeatureWholePartTriple(x,y,z) <-> FeatureWholePart(x) & hasPart(x,y) & hasWhole(x,z) .
+FeatureWholePartTemplate(x,y) <-> exists z(FeatureWholePartTriple(z,x,y)) .
+
+FunctionalMappingTriple(x,y,z) <-> FunctionalMapping(x) & hasInput(x,y) & hasResult(x,z) .
+FunctionalMappingTemplate(x,y) <-> exists z(FunctionalMappingTriple(z,x,y)) .
+
+IdentificationTriple(x,y,z) <-> Identification(x) & hasRepresented(x,y) & hasSign(x,z) .
+IdentificationTemplate(x,y) <-> exists z(IdentificationTriple(z,x,y)) .
+
+IndirectConnectionTriple(x,y,z) <-> IndirectConnection(x) & hasSide1(x,y) & hasSide2(x,z) .
+IndirectConnectionTemplate(x,y) <-> exists z(IndirectConnectionTriple(z,x,y)) .
+
+IndirectPropertyTriple(x,y,z) <-> IndirectProperty(x) & hasPossessor(x,y) & hasProperty(x,z) .
+IndirectPropertyTemplate(x,y) <-> exists z(IndirectPropertyTriple(z,x,y)) .
+
+IndividualUsedInConnectionTriple(x,y,z) <-> IndividualUsedInConnection(x) & hasConnection(x,y) & hasUsage(x,z) .
+IndividualUsedInConnectionTemplate(x,y) <-> exists z(IndividualUsedInConnectionTriple(z,x,y)) .
+
+IntendedRoleAndDomainTriple(x,y,z) <-> IntendedRoleAndDomain(x) & hasPlayed(x,y) & hasPlayer(x,z) .
+IntendedRoleAndDomainTemplate(x,y) <-> exists z(IntendedRoleAndDomainTriple(z,x,y)) .
+
+IntersectionOfSetOfClassTriple(x,y,z) <-> IntersectionOfSetOfClass(x) & hasInput(x,y) & hasResult(x,z) .
+IntersectionOfSetOfClassTemplate(x,y) <-> exists z(IntersectionOfSetOfClassTriple(z,x,y)) .
+
+InvolvementByReferenceTriple(x,y,z) <-> InvolvementByReference(x) & hasInvolved(x,y) & hasInvolver(x,z) .
+InvolvementByReferenceTemplate(x,y) <-> exists z(InvolvementByReferenceTriple(z,x,y)) .
+
+LeftNamespaceTriple(x,y,z) <-> LeftNamespace(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+LeftNamespaceTemplate(x,y) <-> exists z(LeftNamespaceTriple(z,x,y)) .
+
+LifecycleStageTriple(x,y,z) <-> LifecycleStage(x) & hasInterest(x,y) & hasInterested(x,z) .
+LifecycleStageTemplate(x,y) <-> exists z(LifecycleStageTriple(z,x,y)) .
+
+LowerBoundOfNumberRangeTriple(x,y,z) <-> LowerBoundOfNumberRange(x) & hasClassified(x,y) & hasClassifier(x,z) .
+LowerBoundOfNumberRangeTemplate(x,y) <-> exists z(LowerBoundOfNumberRangeTriple(z,x,y)) .
+
+LowerBoundOfPropertyRangeTriple(x,y,z) <-> LowerBoundOfPropertyRange(x) & hasClassified(x,y) & hasClassifier(x,z) .
+LowerBoundOfPropertyRangeTemplate(x,y) <-> exists z(LowerBoundOfPropertyRangeTriple(z,x,y)) .
+
+MultidimensionalScaleTriple(x,y,z) <-> MultidimensionalScale(x) & hasCodomain(x,y) & hasDomain(x,z) .
+MultidimensionalScaleTemplate(x,y) <-> exists z(MultidimensionalScaleTriple(z,x,y)) .
+
+NamespaceTriple(x,y,z) <-> Namespace(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+NamespaceTemplate(x,y) <-> exists z(NamespaceTriple(z,x,y)) .
+
+OtherRelationshipTriple(x,y,z) <-> OtherRelationship(x) & hasEnd1(x,y) & hasEnd2(x,z) .
+OtherRelationshipTemplate(x,y) <-> exists z(OtherRelationshipTriple(z,x,y)) .
+
+ParticipationTriple(x,y,z) <-> Participation(x) & hasPart(x,y) & hasWhole(x,z) .
+ParticipationTemplate(x,y) <-> exists z(ParticipationTriple(z,x,y)) .
+
+PossibleRoleAndDomainTriple(x,y,z) <-> PossibleRoleAndDomain(x) & hasPlayed(x,y) & hasPlayer(x,z) .
+PossibleRoleAndDomainTemplate(x,y) <-> exists z(PossibleRoleAndDomainTriple(z,x,y)) .
+
+PropertyForShapeDimensionTriple(x,y,z) <-> PropertyForShapeDimension(x) & hasProperty(x,y) & hasShapeDimension(x,z) .
+PropertyForShapeDimensionTemplate(x,y) <-> exists z(PropertyForShapeDimensionTriple(z,x,y)) .
+
+PropertyQuantificationTriple(x,y,z) <-> PropertyQuantification(x) & hasInput(x,y) & hasResult(x,z) .
+PropertyQuantificationTemplate(x,y) <-> exists z(PropertyQuantificationTriple(z,x,y)) .
+
+PropertySpaceForClassOfShapeDimensionTriple(x,y,z) <-> PropertySpaceForClassOfShapeDimension(x) & hasClassOfShapeDimension(x,y) & hasPropertySpace(x,z) .
+PropertySpaceForClassOfShapeDimensionTemplate(x,y) <-> exists z(PropertySpaceForClassOfShapeDimensionTriple(z,x,y)) .
+
+RecognitionTriple(x,y,z) <-> Recognition(x) & hasRecognized(x,y) & hasRecognizing(x,z) .
+RecognitionTemplate(x,y) <-> exists z(RecognitionTriple(z,x,y)) .
+
+RelativeLocationTriple(x,y,z) <-> RelativeLocation(x) & hasLocated(x,y) & hasLocator(x,z) .
+RelativeLocationTemplate(x,y) <-> exists z(RelativeLocationTriple(z,x,y)) .
+
+RepresentationOfThingTriple(x,y,z) <-> RepresentationOfThing(x) & hasRepresented(x,y) & hasSign(x,z) .
+RepresentationOfThingTemplate(x,y) <-> exists z(RepresentationOfThingTriple(z,x,y)) .
+
+ResponsibilityForRepresentationTriple(x,y,z) <-> ResponsibilityForRepresentation(x) & hasControlled(x,y) & hasController(x,z) .
+ResponsibilityForRepresentationTemplate(x,y) <-> exists z(ResponsibilityForRepresentationTriple(z,x,y)) .
+
+RightNamespaceTriple(x,y,z) <-> RightNamespace(x) & hasClassOfPart(x,y) & hasClassOfWhole(x,z) .
+RightNamespaceTemplate(x,y) <-> exists z(RightNamespaceTriple(z,x,y)) .
+
+ScaleTriple(x,y,z) <-> Scale(x) & hasCodomain(x,y) & hasDomain(x,z) .
+ScaleTemplate(x,y) <-> exists z(ScaleTriple(z,x,y)) .
+
+SpecializationTriple(x,y,z) <-> Specialization(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+SpecializationTemplate(x,y) <-> exists z(SpecializationTriple(z,x,y)) .
+
+SpecializationByDomainTriple(x,y,z) <-> SpecializationByDomain(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+SpecializationByDomainTemplate(x,y) <-> exists z(SpecializationByDomainTriple(z,x,y)) .
+
+SpecializationByRoleTriple(x,y,z) <-> SpecializationByRole(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+SpecializationByRoleTemplate(x,y) <-> exists z(SpecializationByRoleTriple(z,x,y)) .
+
+SpecializationOfIndividualDimensionFromPropertyTriple(x,y,z) <-> SpecializationOfIndividualDimensionFromProperty(x) & hasSubclass(x,y) & hasSuperclass(x,z) .
+SpecializationOfIndividualDimensionFromPropertyTemplate(x,y) <-> exists z(SpecializationOfIndividualDimensionFromPropertyTriple(z,x,y)) .
+
+TemporalBoundingTriple(x,y,z) <-> TemporalBounding(x) & hasPart(x,y) & hasWhole(x,z) .
+TemporalBoundingTemplate(x,y) <-> exists z(TemporalBoundingTriple(z,x,y)) .
+
+TemporalSequenceTriple(x,y,z) <-> TemporalSequence(x) & hasPredecessor(x,y) & hasSuccessor(x,z) .
+TemporalSequenceTemplate(x,y) <-> exists z(TemporalSequenceTriple(z,x,y)) .
+
+TemporalWholePartTriple(x,y,z) <-> TemporalWholePart(x) & hasPart(x,y) & hasWhole(x,z) .
+TemporalWholePartTemplate(x,y) <-> exists z(TemporalWholePartTriple(z,x,y)) .
+
+UnionOfSetOfClassTriple(x,y,z) <-> UnionOfSetOfClass(x) & hasInput(x,y) & hasResult(x,z) .
+UnionOfSetOfClassTemplate(x,y) <-> exists z(UnionOfSetOfClassTriple(z,x,y)) .
+
+UpperBoundOfNumberRangeTriple(x,y,z) <-> UpperBoundOfNumberRange(x) & hasClassified(x,y) & hasClassifier(x,z) .
+UpperBoundOfNumberRangeTemplate(x,y) <-> exists z(UpperBoundOfNumberRangeTriple(z,x,y)) .
+
+UpperBoundOfPropertyRangeTriple(x,y,z) <-> UpperBoundOfPropertyRange(x) & hasClassified(x,y) & hasClassifier(x,z) .
+UpperBoundOfPropertyRangeTemplate(x,y) <-> exists z(UpperBoundOfPropertyRangeTriple(z,x,y)) .
+
+UsageOfRepresentationTriple(x,y,z) <-> UsageOfRepresentation(x) & hasUsed(x,y) & hasUser(x,z) .
+UsageOfRepresentationTemplate(x,y) <-> exists z(UsageOfRepresentationTriple(z,x,y)) .
+
+
+%
+% ENTITY TRIPLES
+%
+
+
+entityTriple(x,y,z) <-> (ApprovalTriple(x,y,z) | ArrangementOfIndividualTriple(x,y,z) | AssemblyOfIndividualTriple(x,y,z) | BeginningTriple(x,y,z) | BoundaryOfNumberSpaceTriple(x,y,z) | BoundaryOfPropertySpaceTriple(x,y,z) | CauseOfEventTriple(x,y,z) | ClassificationTriple(x,y,z) | ClassOfApprovalTriple(x,y,z) | ClassOfArrangementOfIndividualTriple(x,y,z) | ClassOfAssemblyOfIndividualTriple(x,y,z) | ClassOfCauseOfBeginningOfClassOfIndividualTriple(x,y,z) | ClassOfCauseOfEndingOfClassOfIndividualTriple(x,y,z) | ClassOfClassificationTriple(x,y,z) | ClassOfClassOfCompositionTriple(x,y,z) | ClassOfClassOfDefinitionTriple(x,y,z) | ClassOfClassOfDescriptionTriple(x,y,z) | ClassOfClassOfIdentificationTriple(x,y,z) | ClassOfClassOfRelationshipWithSignatureTriple(x,y,z) | ClassOfClassOfRepresentationTriple(x,y,z) | ClassOfClassOfRepresentationTranslationTriple(x,y,z) | ClassOfClassOfResponsibilityForRepresentationTriple(x,y,z) | ClassOfClassOfUsageOfRepresentationTriple(x,y,z) | ClassOfCompositionOfIndividualTriple(x,y,z) | ClassOfConnectionOfIndividualTriple(x,y,z) | ClassOfContainmentOfIndividualTriple(x,y,z) | ClassOfDefinitionTriple(x,y,z) | ClassOfDescriptionTriple(x,y,z) | ClassOfDimensionForShapeTriple(x,y,z) | ClassOfDirectConnectionTriple(x,y,z) | ClassOfFeatureWholePartTriple(x,y,z) | ClassOfFunctionalMappingTriple(x,y,z) | ClassOfIdentificationTriple(x,y,z) | ClassOfIndirectConnectionTriple(x,y,z) | ClassOfIndirectPropertyTriple(x,y,z) | ClassOfIndividualUsedInConnectionTriple(x,y,z) | ClassOfIntendedRoleAndDomainTriple(x,y,z) | ClassOfInvolvementByReferenceTriple(x,y,z) | ClassOfIsomorphicFunctionalMappingTriple(x,y,z) | ClassOfLeftNamespaceTriple(x,y,z) | ClassOfNamespaceTriple(x,y,z) | ClassOfParticipationTriple(x,y,z) | ClassOfPossibleRoleAndDomainTriple(x,y,z) | ClassOfRecognitionTriple(x,y,z) | ClassOfRelationshipTriple(x,y,z) | ClassOfRelationshipWithSignatureTriple(x,y,z) | ClassOfRelativeLocationTriple(x,y,z) | ClassOfRepresentationOfThingTriple(x,y,z) | ClassOfRepresentationTranslationTriple(x,y,z) | ClassOfResponsibilityForRepresentationTriple(x,y,z) | ClassOfRightNamespaceTriple(x,y,z) | ClassOfScaleConversionTriple(x,y,z) | ClassOfSpecializationTriple(x,y,z) | ClassOfTemporalSequenceTriple(x,y,z) | ClassOfTemporalWholePartTriple(x,y,z) | ClassOfUsageOfRepresentationTriple(x,y,z) | ComparisonOfPropertyTriple(x,y,z) | CompositionOfIndividualTriple(x,y,z) | ConnectionOfIndividualTriple(x,y,z) | ContainmentOfIndividualTriple(x,y,z) | CoordinateSystemTriple(x,y,z) | DefinitionTriple(x,y,z) | DescriptionTriple(x,y,z) | DifferenceOfSetOfClassTriple(x,y,z) | DimensionOfIndividualTriple(x,y,z) | DimensionOfShapeTriple(x,y,z) | DirectConnectionTriple(x,y,z) | EndingTriple(x,y,z) | FeatureWholePartTriple(x,y,z) | FunctionalMappingTriple(x,y,z) | IdentificationTriple(x,y,z) | IndirectConnectionTriple(x,y,z) | IndirectPropertyTriple(x,y,z) | IndividualUsedInConnectionTriple(x,y,z) | IntendedRoleAndDomainTriple(x,y,z) | IntersectionOfSetOfClassTriple(x,y,z) | InvolvementByReferenceTriple(x,y,z) | LeftNamespaceTriple(x,y,z) | LifecycleStageTriple(x,y,z) | LowerBoundOfNumberRangeTriple(x,y,z) | LowerBoundOfPropertyRangeTriple(x,y,z) | MultidimensionalScaleTriple(x,y,z) | NamespaceTriple(x,y,z) | OtherRelationshipTriple(x,y,z) | ParticipationTriple(x,y,z) | PossibleRoleAndDomainTriple(x,y,z) | PropertyForShapeDimensionTriple(x,y,z) | PropertyQuantificationTriple(x,y,z) | PropertySpaceForClassOfShapeDimensionTriple(x,y,z) | RecognitionTriple(x,y,z) | RelativeLocationTriple(x,y,z) | RepresentationOfThingTriple(x,y,z) | ResponsibilityForRepresentationTriple(x,y,z) | RightNamespaceTriple(x,y,z) | ScaleTriple(x,y,z) | SpecializationTriple(x,y,z) | SpecializationByDomainTriple(x,y,z) | SpecializationByRoleTriple(x,y,z) | SpecializationOfIndividualDimensionFromPropertyTriple(x,y,z) | TemporalBoundingTriple(x,y,z) | TemporalSequenceTriple(x,y,z) | TemporalWholePartTriple(x,y,z) | UnionOfSetOfClassTriple(x,y,z) | UpperBoundOfNumberRangeTriple(x,y,z) | UpperBoundOfPropertyRangeTriple(x,y,z) | UsageOfRepresentationTriple(x,y,z)) .
+
+
+%
+% Base Templates
+%
+
+
+%
+% TEMPLATES ABOUT CLASS - ACTIVITY
+%
+
+% ClassOfParticipationDefinition %
+
+ClassOfParticipationDefinition(hasActivityType, hasParticipantType, hasParticipantRole, hasDefined, hasCardinalityOfActivity, hasCardinalityOfParticipant) <->
+ClassOfActivity(hasActivityType) & 
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfParticipant) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfActivity(u1) &
+      ParticipatingRoleAndDomain(u2)
+      ClassOfTemporalWholePartTemplate(u3, hasParticipantType) &
+      ClassOfPhysicalObject(u3) &
+      SpecializationByDomainTemplate(u2, u3) &
+      SpecializationByRoleTemplate(u2, hasParticipantRole) &
+      ClassOfParticipationTriple(hasDefined, u2, u1) &
+          hasEnd1Cardinality(hasDefined, hasCardinalityOfActivity) &
+          hasEnd2Cardinality(hasDefined, hasCardinalityOfParticipant)) .
+
+% ClassOfDualParticipationDefinition %
+
+ClassOfDualParticipationDefinition(hasActivityType, hasParticipantType1, hasParticipantRole1, hasDefined1, hasParticipantType2, hasParticipantRole2, hasDefined2) <->
+ClassOfActivity(hasActivityType) & 
+ClassOfPhysicalObject(hasParticipantType1) &
+Role(hasParticipantRole1) &
+ClassOfParticipation(hasDefined1) &
+ClassOfPhysicalObject(hasParticipantType2) &
+Role(hasParticipantRole2) &  
+ClassOfParticipation(hasDefined2) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasParticipantType1) &
+      ClassOfPhysicalObject(u2) &
+      SpecializationByDomainTemplate(u3, u2) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, hasParticipantRole1) &
+      ClassOfParticipationTriple(hasDefined1, u3, u1) &
+      ClassOfTemporalWholePartTemplate(u4, hasParticipantType2) &
+      ClassOfPhysicalObject(u4) &
+      SpecializationByDomainTemplate(u5, u4) &
+      ParticipatingRoleAndDomain(u5) &
+      SpecializationByRoleTemplate(u5, hasParticipantRole2) &
+      ClassOfParticipationTriple(hasDefined2, u5, u1)) .
+
+% ClassOfParticipationNotApplicable %
+
+ClassOfParticipationNotApplicable(hasActivityType, hasParticipantType, hasParticipantRole) <->
+ClassOfActivity(hasActivityType) &
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+ClassOfAssertion(hasApplicableYesNo) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfParticipant) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      rdl_RDS2221035(u5) &
+      SpecializationTemplate(u2, u5) &
+      ClassOfParticipationTriple(u2, u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, hasParticipantRole) &
+      SpecializationByDomainTemplate(u3, u4) &
+      ClassOfPhysicalObject(u4) &
+      ClassOfTemporalWholePartTemplate(u4, hasParticipantType)) .
+
+% ClassOfParticipationAndInvolvementByReferenceDefinition %
+
+ClassOfParticipationAndInvolvementByReferenceDefinition(hasActivityType, hasParticipantType, hasParticipantRole, hasDefined1, hasInvolvedType, hasInvolvementRole, hasDefined2) <->
+ClassOfActivity(hasActivityType) & 
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+ClassOfParticipation(hasDefined1) &
+Class(hasInvolvedType) &
+Role(hasInvolvementRole) &  
+ClassOfParticipation(hasDefined2) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasParticipantType) &
+      ClassOfPhysicalObject(u2) &
+      SpecializationByDomainTemplate(u3, u2) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, hasParticipantRole) &
+      ClassOfParticipationTriple(hasDefined1, u3, u1) &
+      ClassOfTemporalWholePartTemplate(u4, hasInvolvedType) &
+      Class(u4) &
+      SpecializationByDomainTemplate(u5, u4) &
+      RoleAndDomain(u5) &
+      SpecializationByRoleTemplate(u5, hasInvolvementRole) &
+      ClassOfInvolvementByReferenceTriple(hasDefined2, u5, u1)) .
+
+% ClassOfInvolvementByReferenceDefinition %
+
+ClassOfInvolvementByReferenceDefinition(hasActivityType, hasInvolvedType, hasInvolvementRole, hasDefinition, hasCardinalityOfIActivity, hasCardinalityOfInvolved) <->
+ClassOfActivity(hasActivityType) &
+Class(hasInvolvedType) &
+Role(hasInvolvementRole) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfInvolved) &
+exists u1 exists u2 exists u3(
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfInvolvementByReferenceTriple(hasDefined, u2, u1)&
+      hasEnd1Cardinality(hasDefined, hasCardinalityOfActivity) &
+      hasEnd2Cardinality(hasDefined, hasCardinalityOfInvolved) &
+      RoleAndDomain(u2) &
+      SpecializationByRoleTemplate(u2, hasInvolvementRole) &
+      SpecializationByDomainTemplate(u2, u3) &
+      Class(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasInvolvedType)) .
+
+% ClassOfInvolvementByReferenceNotApplicable %
+
+ClassOfInvolvementByReferenceNotApplicable(hasActivityType, hasInvolvedType, hasInvolvementRole) <->
+ClassOfActivity(hasActivityType) &
+ClassOfPhysicalObject(hasInvolvedType) &
+Role(hasInvolvementRole) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      rdl_RDS2221035(u5) &
+      SpecializationTemplate(u2, u5) &
+      ClassOfParticipationTriple(u2, u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, hasInvolvementRole) &
+      SpecializationByDomainTemplate(u3, u4) &
+      ClassOfPhysicalObject(u4) &
+      ClassOfTemporalWholePartTemplate(u4, hasParticipantType)) .
+
+% ClassOfRecognitionDefinition %
+
+ClassOfRecognitionDefinition(hasActivityType, hasRecognized, hasDefined, hasCardinalityOfActivity, hasCardinalityOfRecognized) <->
+ClassOfActivity(hasActivityType) &
+dm:Class(hasRecognized) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfRecognized) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasActivityType) &
+      ClassOfActivity(u) &
+      ClassOfRecognitionTriple(hasDefined, hasRecognized, u) &
+      hasEnd1Cardinality(hasDefined, hasCardinalityOfActivity) &
+      hasEnd2Cardinality(hasDefined, hasCardinalityOfRecognized)) .
+
+% ClassOfCauseOfBeginningOfClassOfIndividualDefinition %
+
+ClassOfCauseOfBeginningOfClassOfIndividualDefinition(hasActivityType, hasIndividualType, hasDefined, hasCardinalityOfActivity, hasCardinalityOfIndividual) <->
+ClassOfActivity(hasActivityType) &
+ClassOfIndividual(hasIndividualType) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfIndividual) &
+exists u1 exists u2(
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfCauseOfBeginningOfClassOfIndividualTriple(hasDefined, u2, u1) &
+           hasEnd1Cardinality(hasDefined, hasCardinalityOfActivity) &
+           hasEnd2Cardinality(hasDefined, hasCardinalityOfIndividual)) .
+
+% ClassOfCauseOfEndingOfClassOfIndividualDefinition %
+
+ClassOfCauseOfEndingOfClassOfIndividualDefinition(hasActivityType, hasIndividualType, hasDefined, hasCardinalityOfActivity, hasCardinalityOfIndividual) <->
+ClassOfActivity(hasActivityType) &
+ClassOfIndividual(hasIndividualType) &
+Cardinality(hasCardinalityOfActivity) &
+Cardinality(hasCardinalityOfIndividual) &
+exists u1 exists u2(
+      ClassOfActivity(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasActivityType) &
+      ClassOfCauseOfEndingOfClassOfIndividualTriple(hasDefined, u1, u2) &
+         hasEnd2Cardinality(hasDefined, hasCardinalityOfActivity) &
+         hasEnd1Cardinality(hasDefined, hasCardinalityOfIndividual)) .
+
+%
+% TEMPLATES ABOUT CLASS - CLASSIFICATION
+%
+
+% ClassificationOfClassOfIndividual %
+
+ClassificationOfClassOfIndividual(hasClassified, hasClassifier) <->
+ClassOfIndividual(hasClassified) &
+ClassOfClassOfIndividual(hasClassifier) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasClassified) &
+      ClassOfIndividual(u) &
+      ClassOfClassificationTemplate(u, hasClassifier)) .
+
+% ClassificationOfClassOfIndividualNotApplicable %
+
+ClassificationOfClassOfIndividualNotApplicable(hasClassified, hasClassifier) <->
+ClassOfIndividual(hasClassified) & 
+ClassOfClassOf(hasClassifier) &
+exists u1 exists u2 exists u3(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasClassified) &
+      ClassificationTriple(u2, u1, hasClassifier) &
+      rdl_RDS2221035(u3) &
+      ClassificationTemplate(u2, u3)) .
+
+%
+% TEMPLATES ABOUT CLASS - DEFINITION
+%
+
+% DefinitionOfClassOfClass %
+
+DefinitionOfClassOfClass(hasDefined, hasDefinition) <->
+ClassOfClass(hasDefined) &
+ClassOfInformationRepresentation(hasDefinition) &
+ClassOfDefinitionTemplate(hasDefinition, hasDefined)) .
+
+% DefinitionOfClassOfIndividual %
+
+DefinitionOfClassOfIndividual(hasDefined, hasDefinition) <->
+ClassOfIndividual(hasDefined) &
+ClassOfInformationRepresentation(hasDefinition) &
+exists u(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasDefined) &
+      ClassOfDefinitionTemplate(hasDefinition, u1)) .
+
+% DefinitionOfClassOfIndividualWithInfoSet %
+
+DefinitionOfClassOfIndividualWithInfoSet(hasDefined, hasTemplateSet, hasInfoSet) <->
+ClassOfIndividual(hasDefined) &
+EnumeratedSetOfClass(hasTemplateSet) &
+ClassOfInformationRepresentation(hasInfoSet) &
+UnionOfSetOfClassTemplate(hasTemplateSet, hasInfoSet) &
+exists u(
+    ClassOfTemporalWholePartTemplate(u, hasDefined) &
+    ClassOfIndividual(u) &
+    ClassOfDefinitionTemplate(hasInfoSet, u)) .
+
+% DefinitionOfClassOfIndividualOnDocument %
+
+DefinitionOfClassOfIndividualOnDocument(hasClass, hasDefinition, hasDocument) <->
+ClassOfIndividual(hasClass) &
+ClassOfinformationRepresentation(hasDefinition) &
+ClassOfInformationObject(hasDocument) &
+exists u1 exists u2(
+     ClassOfTemporalWholePartTemplate(u1, hasClass) &
+     ClassOfIndividual(u1) &
+     ClassOfDefinitionTemplate(hasDefinition, u1) &
+     ClassOfTemporalWholePartTemplate(u2, hasDocument) &
+     ClassOfInformationObject(u2) &
+     SpecializationTemplate(u2, hasDefinition)) .
+
+% ClassifiedDefinitionOfClassOfRelationship %
+
+DefinitionOfClassOfRelationship(hasDefined, hasDefinition) <->
+ClassOfRelationship(hasDefined) &
+ClassOfInformationRepresentation(hasDefinition) &
+ClassOfDefinitionTriple(u, hasDefinition, hasDefined)) .
+
+% DefinitionOfClassOfIndividualWithClassifiedSign %
+
+DefinitionOfClassOfIndividualWithClassifiedSign(hasDefined, hasSign, hasSignType) <->
+ClassOfIndividual(hasDefined) &
+PossibleIndividual(hasSign) &
+ClassOfInformationObject(hasSignType) &
+exists u(
+      ClassOfIndividual(u) &
+      ClassOfTemporalWholePartTemplate(u, hasDefined) &
+      DefinitionTemplate(u, hasSign) &
+      ClassificationTemplate(hasSign, hasSignType)) .
+
+% DefinitionOfClassOfMultidimensionalObjectWith2Roles %
+
+DefinitionOfClassOfMultidimensionalObjectWith2Roles(hasDefined, hasRole1, hasDomain1, hasRole2, hasDomain2) <->
+ClassOfMultidimensionalObject(hasDefined) &
+Role(hasRole1) &
+Class(hasDomain1) &
+Role(hasRole2) &
+Class(hasDomain2) &
+ClassOfTemporalWholePartTemplate(hasRole1, hasDefined) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u3, hasDefined) &
+      RoleAndDomain(u1) &
+      hasFirstRole(u3, u1) &
+      SpecializationByRoleTemplate(u1, hasRole1) &
+      SpecializationByDomainTemplate(u1, hasDomain1) &
+      RoleAndDomain(u2) &
+      hasSecondRole(u3, u2) &
+      SpecializationByRoleTemplate(u2, hasRole2) &
+      SpecializationByDomainTemplate(u2, hasDomain2)) .
+
+% DefinitionOfRoleAndDomain %
+
+DefinitionOfRoleAndDomain(hasDomain, hasRole, hasDefined) <->
+Class(hasDomain) &
+Role(hasRole) &
+RoleAndDomain(hasDefined) &
+SpecializationByDomainTemplate(hasDefined, hasDomain) &
+SpecializationByRoleTemplate(hasDefined, hasRole)) .
+
+% DefinitionOfParticipatingRoleAndDomain %
+
+DefinitionOfParticipatingRoleAndDomain(hasDomain, hasRole, hasDefined) <->
+Class(hasDomain) &
+Role(hasRole) &
+ParticipatingRoleAndDomain(hasDefined) &
+SpecializationByDomainTemplate(hasDefined, hasDomain) &
+SpecializationByRoleTemplate(hasDefined, hasRole)) .
+
+%
+% TEMPLATES ABOUT CLASS - DESCRIPTION
+%
+
+% DescriptionOfClassOfIndividual %
+
+DescriptionOfClassOfIndividual(hasDescribed, hasDescriptor) <->
+ClassOfIndividual(hasDescribed) &
+ClassOfInformationRepresentation(hasDescriptor) &
+exists u1(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasDescribed) &
+      ClassOfDescriptionTemplatee(hasDescriptor, u1)) .
+
+% DescriptionOfClassOfIndividualWithClassifiedSign %
+
+DescriptionOfClassOfIndividualWithClassifiedSign(hasDescribed, hasSign, hasSignType) <->
+ClassOfIndividual(hasDescribed) &
+PossibleIndividual(hasSign) &
+ClassOfInformationObject(hasSignType) &
+exists u(
+      ClassOfIndividual(u) &
+      ClassOfTemporalWholePartemplate(u, hasDescribed) &
+      DescriptionTemplate(u, hasSign) &
+      ClassificationTemplate(hasSign, hasSignType)) .
+
+%
+% TEMPLATES ABOUT CLASS - DOCUMENT
+%
+
+% DocumentDefinitionByExample %
+
+DocumentDefinitionByExample(hasDefined, hasExample) <->
+DocumentDefinition(hasDefined) &
+ClassOfInformationObject(hasExample) &
+exists u1 exists u2(
+      ClassOfInformationRepresentation(u1) &
+      ClassOfDefinitionTemplate(u1, hasDefined) &
+      ClassOfInformationObject(u2) &
+      SpecializationTemplate(u2, u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasExample)) .
+
+% ClassOfInformationObjectWithPresentationAndRepresentation %
+
+ClassOfInformationObjectWithPresentationAndRepresentation(hasDocumentType, hasContents, hasPresentationType) <->
+ClassOfInformationObject(hasDocumentType) &
+ClassOfInformationRepresentation(hasContents) &
+ClassOfInformationPresentation(hasPresentationType) &
+exists u(
+     SpecializationTemplate(u, hasContents) &
+     ClassOfInformationObject(u) &
+     ClassOfTemporalWholePartTemplate(u2, hasDocumentType) &
+     SpecializationTemplate(u, hasPresentationType)) .
+
+% DefinitionOfDocumentByContentsType %
+
+DefinitionOfDocumentByContentsType(hasDocument, hasContentsType) <->
+ClassOfInformationObject(hasDocument) &
+DocumentDefinition(hasContentsType) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfExpressInformationRepresentation(u2) &
+      ClassificationTemplate(u2, u3) &
+      ClassOfClassOfInformationRepresentation(u3) &
+      SpecializationTemplate(u3, hasContentsType)) .
+
+% DefinitionOfDocumentContentsLanguage %
+
+DefinitionOfDocumentContentsLanguage(hasDocument, hasLanguage) <->
+ClassOfInformationObject(hasDocument) &
+Language(hasLanguage) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfExpressInformationRepresentation(u2) &
+      ClassificationTemplate(u2, u3) &
+      ClassOfClassOfInformationRepresentation(u3) &
+      SpecializationTemplate(u3, hasLanguage)) .
+
+% DefinitionOfDocumentContentsFormat %
+
+DefinitionOfDocumentContentsFileFormat(hasDocument, hasFormat) <->
+ClassOfInformationObject(hasDocument) &
+RepresentationForm(hasFormat) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfExpressInformationRepresentation(u2) &
+      ClassificationTemplate(u2, u3) &
+      ClassOfClassOfInformationRepresentation(u3) &
+      SpecializationTemplate(u3, hasFormat)) .
+
+% ClassOfInformationObjectHasFormatBeforeClassOfEvent %
+
+ClassOfInformationObjectHasFormatBeforeClassOfEvent(hasDocument, hasFormat, hasEventType) <->
+ClassOfInformationObject(hasDocument) &
+RepresentationForm(hasFormat) &
+ClassOfEvent(hasEventType) &
+exists u1 exists u2 exists u3(
+      ClassOfInformationObject(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasDocument) &
+      ClassOfTemporalSequenceTemplate(u1, hasEventType) &
+      ClassOfInformationRepresentation(u2) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfClassOfInformationRepresentation(u3) &
+      ClassificationTemplate(u2, u3) &
+      SpecializationTemplate(u3, hasFormat)) .
+
+% ClassOfInformationObjectHasFormatAfterClassOfEvent %
+
+ClassOfInformationObjectHasFormatAfterClassOfEvent(hasDocument, hasFormat, hasEventType) <->
+ClassOfInformationObject(hasDocument) &
+RepresentationForm(hasFormat) &
+ClassOfEvent(hasEventType) &
+exists u1 exists u2 exists u3(
+      ClassOfInformationObject(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasDocument) &
+      ClassOfTemporalSequenceTemplate(hasEventType, u1) &
+      ClassOfInformationRepresentation(u2) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfClassOfInformationRepresentation(u3) &
+      ClassificationTemplate(u2, u3) &
+      SpecializationTemplate(u3, hasFormat)) .
+
+% ContentsOfADocument %
+
+ContentsOfADocument(hasDocument, hasContents) <->
+ClassOfInformationObject(hasDocument) &
+ClassOfInformationRepresentation(hasContents) &
+exists u(
+      ClassOfInformationObject(u) &
+      ClassOfTemporalWholePartTemplate(u, hasDocument) &
+      SpecializationTemplate(u, hasContents) .
+
+% DocumentTypeNotApplicableForClassOfIndividual %
+
+DocumentTypeNotApplicableForClassOfIndividual(hasIndividualType, hasDocumentType) <->
+ClassOfIndividual(hasIndividualType) &
+ClassOfInformationObject(hasDocumentType) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasIndividualType) &
+      ClassOfClassOfInformationRepresentation(u2) &
+      ClassOfClassOfRepresentationTemplate(u2. u1) &
+      ClassOfInformationObject(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasDocumentType) &
+      ClassOfInformationRepresentation(u4) &
+      SpecializationTemplate(u4, u3) &
+      ClassificationTriple(u5, u4, u2) &
+      rdl_RDS2221035(u6) &
+      ClassificationTemplate(u5, u6)) .
+
+
+)) .
+
+
+
+      ClassificationTemplate(u3, u2) &
+
+% ReferenceToClassOfIndividualOnDocument %
+
+ReferenceToClassOfIndividualOnDocument(hasReferred, hasDocument) <->
+ClassOfIndividual(hasReferred) &
+ClassOfInformationObject(hasDocument) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasReferred) &
+      ClassOfIndividual(u1) &
+      ClassOfRepresentationofThingTemplate(u2, u1) &
+      ClassOfInformationRepresentation(u2) &
+      SpecializationTemplate(u3, u2) &
+      ClassOfInformationObject(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasDocument)) .
+
+% ReferenceToRepresentationOfClassOfIndividualOnDocument %
+
+ReferenceToRepresentationOfClassOfIndividualOnDocument(hasReferred, hasDocument, hasRepresentation) <->
+ClassOfIndividual(hasReferred) &
+ClassOfInformationObject(hasDocument) &
+ClassOfInformationRepresentation(hasRepresentation) &
+exists u1 exists u2(
+      ClassOfTemporalWholePartTemplate(u1, hasReferred) &
+      ClassOfIndividual(u1) &
+      ClassOfRepresentationofThingTemplate(hasRepresentation, u1) &
+      SpecializationTemplate(u2, hasRepresentation) &
+      ClassOfInformationObject(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasDocument)) .
+
+% DetailingOfInformationRepresentation %
+
+DetailingOfInformationRepresentation(hasRepresentation, valContents, hasContentsType, hasLanguage, hasFormat) <->
+ClassOfInformationRepresentation(hasRepresentation) &
+ClassOfExpressInformationRepresentation(valContents) &
+DocumentDefinition(hasContentsType) &
+Language(hasLanguage) & 
+RepresentationForm(hasFormat) &
+exist u1 exists u2{
+      ClassOfInformationRepresentation(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasRepresentation) &
+      SpecializationTemplate(valContents, u1) &
+      ClassOfClassOfInformationRepresentation(u2) &
+      ClassificationTemplate(valContents, u2) &
+      SpecializationTemplate(u2, hasContentsType) &
+      SpecializationTemplate(u2, hasLanguage) &
+      SpecializationTemplate(u2, hasFormat)) .
+
+% DefinitionOfDocumentContentWithSetOfClass %
+
+DefinitionOfDocumentContentWithSetOfClass(hasDocument, hasContent, hasSetOfClas) <->
+ClassOfInformationObject(hasDocument) &
+ClassOfInformationRepresentation(hasContent) &
+EnumeratedSetOfClass(hasSetOfClas) & 
+UnionOfSetOfClassTemplate(SetOfClas, hasContent) &
+exists u(
+     ClassOfInformationObject(u) &
+     ClassOfTemporalWholePartTemplate(u, hasDocument)) .
+
+% TranslationOfClassOfInformationRepresentation %
+
+TranslationOfClassOfInformationRepresentation(hasTranslationInput, hasContentsIn, hasTranslationType, hasTranslationResult, hasContentsOut) <->
+ClassOfInformationRepresentation(hasTranslationInput) &
+ClassOfInformationRepresentation(hasContentsIn) &
+ClassOfClassOfRepresentationTranslation(hasTranslationType) &
+ClassOfInformationRepresentation(hasTranslationResult) &
+ClassOfInformationRepresentation(hasContentsOut) &
+ClassOfTemporalWholePartTemplate(hasContentsIn, hasTranslationInput) &
+ClassOfTemporalWholePartTemplate(hasContentsOut, hasTranslationResult) &
+exists u(
+      ClassOfRepresentationTranslationTriple(u, hasContentsIn, hasContentsOut) &
+      ClassificationTemplate(u2, hasTranslationType)) .
+
+
+
+% TranslationOfClassOfInformationObjectRequiredYesNo %
+
+TranslationOfClassOfInformationObjectRequiredYesNo(hasTranslationInput, hasRequiredYesNo) <->
+ClassOfInformationObject(hasTranslationInput) &
+ClassOfAssertion(hasRequiredYesNo) &
+exists u1 exists u2 exists u3 exists u4(
+      ClassOfInformationObject(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasTranslationInput) &
+      ClassOfInformationRepresentation(u2) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfRepresentationTranslationTriple(u3, u2, u4) &
+      SpecializationTemplate(u3, hasRequiredYesNo) &
+      ClassOfInformationRepresentation(u4)) .
+
+% HardcopyOfDocumentRequiredYesNo %
+
+HardcopyOfDocumentRequiredYesNo(hasDocumentType, hasMaterial, hasRequiredYesNo) <->
+ClassOfInformationObject(hasDocumentType) &
+ClassOfCompositeMaterial(hasMaterial) &
+ClassOfAssertion(hasRequiredYesNo) &
+exists u1 exists u2(
+      ClassOfInformationObject(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasDocumentType) &
+      SpecializationTriple(u2, u1, hasMaterial) &
+      ClassificationTemplate(u2, hasRequiredYesNo)) .
+
+%
+% TEMPLATES ABOUT CLASS - EXISTENCE
+%
+
+% ClassOfTemporalWholePartDefinition %
+
+ClassOfTemporalWholePartDefinition(hasTemporalWhole, hasTemporalPart) <->
+ClassOfIndividual(hasTemporalWhole) &
+ClassOfIndividual(hasTemporalPart) &
+ClassOfTemporalWholePartTemplate(hasTemporalPart, hasTemporalWhole).
+
+% ActivityCausesEffectiveUrClassOfIndividual %
+
+ActivityCausesEffectiveUrClassOfIndividual(hasActivity, hasEffectiveClass) <->
+Activity(hasActivity) &
+ClassOfIndividual(hasEffectiveClass) &
+exists u1 exists u2 exists u4 exists u5 exists u6(
+      Activity(u1) &
+      TemporalWholePartTemplate(u1, hasActivity) &
+      InvolvementByReferenceTriple(u2, hasEffectiveClass, u1) &
+      rdl_RDS2220047(u3) &
+      SpecializationByRoleTemplate(u4, u3) &
+      RoleAndDomain(u4) &
+      SpecializationTemplate(hasEffectiveClass, u4) &
+      EndingTemplate(u5, u1) &
+      PointInTime(u5) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% ActivityCausesDeprecatedClassOfIndividual %
+
+ActivityCausesDeprecatedUrClassOfIndividual(hasActivity, x2) <->
+Activity(hasActivity) &
+ClassOfIndividual(hasDeprecatedClass) &
+exists u1 exists u2 exists u4 exists u5 exists u6(
+      Activity(u1) &
+      TemporalWholePartTemplate(u1, hasActivity) &
+      InvolvementByReferenceTriple(u2, hasDeprecatedClass, u1) &
+      rdl_RDS2226642(u3) &
+      SpecializationByRoleTemplate(u4, u3) &
+      RoleAndDomain(u4) &
+      SpecializationTemplate(hasDeprecatedClass, u4) &
+      EndingTemplate(u5, u1) &
+      PointInTime(u5) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+%
+% TEMPLATES ABOUT CLASS - FUNCTION
+%
+
+% FunctionalMappingOf2ExpressReals %
+
+FunctionalMappingOf2ExpressReals(hasInput1, hasInput2, hasResult, hasFunction) <-> 
+ExpressReal(hasInput1) &
+ExpressReal(hasInput2) &
+ExpressReal(hasResult) &
+ClassOfFunctionalMapping(hasFunction) &
+exists u1 exists u2(
+      MultidimensionalObject(u1) &
+      hasElement1(u1, hasInput1) &
+      hasElement2(u1, hasInput2) &
+      FunctionalMappingTriple(u2, u1, hasResult) &
+      ClassificationTemplate(u2, hasFunction)) .
+
+% FunctionalMappingOf3ExpressReals %
+
+FunctionalMappingOf3ExpressReals(hasInput1, hasInput2, hasInput3, hasResult, hasFunction) <-> 
+ArithmeticNumber (hasInput1) &
+ArithmeticNumber (hasInput2) &
+ArithmeticNumber (hasInput3) &
+ArithmeticNumber (hasResult) &
+ClassOfFunctionalMapping(hasFunction) &
+exists u1 exists u2(
+      MultidimensionalNumber(u1) &
+      hasElement1(u1, hasInput1) &
+      hasElement2(u1, hasInput2) &
+      hasElement3(u1, hasInput3) &
+      FunctionalMappingTriple(u2, u1, hasResult) &
+      ClassificationTemplate(u2, hasFunction)) .
+
+% FunctionalMappingOf4ExpressReals %
+
+FunctionalMappingOf4ExpressReals(hasInput1, hasInput2, hasResult, hasInput3, hasInput4, hasFunction) <-> 
+ExpressReal(hasInput1) &
+ExpressReal(hasInput2) &
+ExpressReal(hasInput3) &
+ExpressReal(hasInput4) &
+ExpressReal(hasResult) &
+ClassOfFunctionalMapping(hasFunction) &
+exists u1 exists u2(
+      MultidimensionalObject(u1) &
+      hasElement1(u1, hasInput1) &
+      hasElement2(u1, hasInput2) &
+      hasElement1(u1, hasInput3) &
+      hasElement2(u1, hasInput4) &
+      FunctionalMappingTriple(u2, u1, hasResult) &
+      ClassificationTemplate(u2, hasFunction)) .
+
+% FunctionalMappingOf5ExpressReals %
+
+FunctionalMappingOf5ExpressReals(valInput1, valInput2, valInput3, valInput4, valInput5, valResult, hasFunction) <-> 
+ExpressReal(valInput1) &
+ExpressReal(valInput2) &
+ExpressReal(valInput3) & 
+ExpressReal(valInput4) &
+ExpressReal(valInput5) &
+ExpressReal(valResult) &
+ClassOfFunctionalMapping(hasFunction) &
+exists u1 exists u2(
+      MultidimensionalObject(u1) &
+      hasElement1(u1, valInput1) &
+      hasElement2(u1, valInput2) &
+      hasElement2(u1, valInput3) &
+      hasElement2(u1, valInput4) &
+      hasElement2(u1, valInput5) &
+      FunctionalMappingTriple(u2, u1, valResult) &
+      ClassificationTemplate(u2, hasFunction)) .
+
+%
+% TEMPLATES ABOUT CLASS - IDENTIFICATION
+%
+
+% IdentificationOfClassOfIndividual %
+
+IdentificationOfClassOfIndividual(hasIdentified, hasIdentifier) <->
+ClassOfIndividual(hasIdentified) &
+ClassOfInformationRepresentation (hasIdentifier) &
+exists u1 exists u2(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasIdentified) &
+      ClassOfIdentificationTemplate(hasIdentifier, u1)) .
+
+%
+% TEMPLATES ABOUT CLASS - PROPERTY-INDIRECT
+%
+
+% ClassOfIndividualHasIndirectPropertyRange %
+
+ClassOfIndividualHasIndirectPropertyRange(hasPossessorType, hasPropertyType, valLowerBound, valUpperBound, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valLowerBound) &
+ClassOfExpressInformationRepresentation(valUpperBound) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndirectPropertyTemplate(u1, u2) &
+      PropertyRange(u2) &
+      ClassificationTemplate(u2, hasPropertyType) &
+      LowerBoundOfPropertyRangeTemplate(u3, u2) &
+      Property(u3) &
+      PropertyQuantificationTriple(u4, u3, u5) &
+      ClassificationTemplate(u4, hasScale) &
+      ArithmeticNumber(u5) &
+      ClassOfIdentificationTemplate(valLowerBound, u5) &
+      UpperBoundOfPropertyRangeTemplate(u6, u2) &
+      Property(u6) &
+      PropertyQuantificationTriple(u7, u6, u8) &
+      ClassificationTemplate(u7, hasScale) &
+      ArithmeticNumber(u8) &
+      ClassOfIdentificationTemplate(valUpperBound, u8)) .
+
+% ClassOfIndividualHasTwoDimensionalIndirectPropertyRange %
+
+ClassOfIndividualHasTwoDimensionalIndirectPropertyRange(hasPossessorType, has2DPropertyRangeType, hasPropertyType1, valLowerBound1, valUpperBound1, hasScale1, hasPropertyType2, valLowerBound2, valUpperBound2, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfMultidimensionalObject(has2DPropertySpaceType) &
+SinglePropertyDimension(hasPropertyType1) &
+ClassOfExpressInformationRepresentation(valLowerBound1) &
+ClassOfExpressInformationRepresentation(valUpperBound1) &
+Scale(hasScale1) &
+SinglePropertyDimension(hasPropertyType2) &
+ClassOfExpressInformationRepresentation(valLowerBound2) &
+ClassOfExpressInformationRepresentation(valUpperBound2) &
+Scale(hasScale2) &
+exists u1 exists u2 exists u3 exists u4 exists v1 exists v2 exists v3 exists w1 exists w2 exists p1 exists p2 exists p3 exists p4 exists q1 exists q2 exists q3(
+      ClassOfIndividual(w1)
+      ClassOfTemporalWholePartTemplate(w1, hasPossessorType) &
+      ClassOfIndirectPropertyTemplate(w1, w2) &
+      ClassificationTemplate(w2, has2DPropertySpaceType) &
+      MultidimensionalPropertySpace(w2) &
+      element1(w2, u4) &
+      PropertyRange(u4) &
+      SpecializationTemplate(u4, hasPropertyType1) &
+      Property(u1) &
+      LowerBoundOfPropertyRangeTemplate(u1, u4) &
+      PropertyQuantificationTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasScale1) &
+      ArithmeticNumber(u3) &
+      ClassOfIdentificationTemplate(valLowerBound1, u3) &
+      Property(v1) &
+      UpperBoundOfPropertyRangeTemplate(v1, u4) &
+      PropertyQuantificationTriple(v2, v1, v3) &
+      ClassificationTemplate(v2, hasScale1) &
+      ArithmeticNumber(v3) &
+      ClassOfIdentificationTemplate(valLowerBound1, v3) &
+      element1(w2, p4) &
+      PropertyRange(p4) &
+      SpecializationTemplate(p4, hasPropertyType2) &
+      Property(p1) &
+      LowerBoundOfPropertyRangeTemplate(p1, p4) &
+      PropertyQuantificationTriple(p2, p1, p3) &
+      ClassificationTemplate(p2, hasScale2) &
+      ArithmeticNumber(p3) &
+      ClassOfIdentificationTemplate(valLowerBound2, p3) &
+      Property(q1) &
+      UpperBoundOfPropertyRangeTemplate(q1, p4) &
+      PropertyQuantificationTriple(q2, q1, q3) &
+      ClassificationTemplate(q2, hasScale2) &
+      ArithmeticNumber(q3) &
+      ClassOfIdentificationTemplate(valLowerBound2, q3)) .
+
+% ClassOfIndividualHasIndirectPropertyWithMaximumValue %
+
+ClassOfIndividualHasIndirectPropertyWithMaximumValue(hasPossessorType, hasIndirectPropertyType, valMaximumValue, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ClassOfExpressInformationRepresentation(valMaximumValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndirectPropertyTriple(u2, u1, u3) &
+      SpecializationTemplate(u2, hasIndirectPropertyType) &
+      PropertyRange(u3) &
+      UpperBoundOfPropertyRangeTemplate(u4, u3) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      ArithmeticNumber(u6) &
+      ClassOfIdentificationTemplate(valMaximumValue, u6)) .
+
+% ClassOfIndividualHasIndirectPropertyWithValue %
+
+ClassOfIndividualHasIndirectPropertyWithValue(hasPossessorType, hasIndirectPropertyType, valPropertyValue, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndividual(u1) &
+      SpecializationTemplate(u2, hasIndirectPropertyType) &
+      ClassOfIndirectPropertyTriple(u2, hasPossessorType, u4) &
+      SpecializationTemplate(u3, u2) &
+      ClassOfRelationshipWithRelatedEnd2Triple(u3, u1, u5) &
+      SinglePropertyDimension(u4) &
+      ClassificationTemplate(u5, u4) &
+      Property(u5) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      ClassificationTemplate(u6, hasScale) &
+      ArithmeticNumber(u7) &
+      ClassOfIdentificationTemplate(valPropertyValue, u7)) .
+
+% ClassOfIndividualHasIndirectPropertyWithMinimumValue %
+
+ClassOfIndividualHasIndirectPropertyWithMinimumValue(hasPossessorType, hasIndirectPropertyType, valMinimumValue, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ClassOfExpressInformationRepresentation(valMaximumValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndirectPropertyTriple(u2, u1, u3) &
+      SpecializationTemplate(u2, hasIndirectPropertyType) &
+      PropertyRange(u3) &
+      LowerBoundOfPropertyRangeTemplate(u4, u3) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      ArithmeticNumber(u6) &
+      ClassOfIdentificationTemplate(valMaximumValue, u6)) .
+
+% ClassOfIndividualHasConditionalIndirectPropertyWithValue %
+
+ClassOfIndividualHasConditionalIndirectPropertyWithValue(hasMultidimensionalPropertyType, hasPossessorType, hasIndirectPropertyType, valPropertyValue, hasScale, hasConditionPossessorType, hasConditionPropertyType, valConditionPropertyValue, hasConditionScale) <->
+ClassOfMultidimensionalObject(hasMultidimensionalPropertyType) &
+ClassOfIndividual(hasPossessorType) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+ClassOfIndividual(hasConditionPossessorType) &
+SinglePropertyDimension(hasConditionPropertyType) &
+ClassOfExpressInformationRepresentation(valConditionPropertyValue) &
+Scale(hasConditionScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10 exists u11 exists u12 exists u13(
+      ClassificationTemplate(u1, hasMultidimensionalPropertyType) &
+      MultidimensionalProperty(u1) &
+         element1(u1, u6) &
+         element2(u1, u11) &
+      ClassOfTemporalWholePartTemplate(u2, hasPossessorType) &
+      ClassOfIndividual(u2) &
+      ClassOfIndirectPropertyTriple(u3, hasPossessorType, u5) &
+      SpecializationTemplate(u4, u3) &
+      ClassOfRelationshipWithRelatedEnd2Triple(u4, u2, u6) &
+      rdl_RDS222625(u14) &
+         end1Cardinality(u4, u14) &
+      SinglePropertyDimension(u5) &
+      ClassificationTemplate(u6, u5) &
+      Property(u6) &
+      PropertyQuantificationTriple(u7, u6, u8) &
+      ClassificationTemplate(u7, hasScale) &
+      ArithmeticNumber(u8) &
+      ClassOfIdentificationTemplate(valPropertyValue, u8) &
+      ClassOfTemporalWholePartTemplate(u9, hasConditionPossessorType) &
+      ClassOfIndividual(u9) &
+      ClassOfClassificationTriple(u10, u9, u11) &
+         end1Cardinality(u10, u14) &
+      ClassificationTemplate(u11, hasConditionPropertyType) &
+      Property(u11) &
+      PropertyQuantificationTriple(u12, u11, u13) &
+      ClassificationTemplate(u12, hasConditionScale) &
+      ArithmeticNumber(u13) &
+      ClassOfIdentificationTemplate(valConditionPropertyValue, u13)) .
+
+%
+% TEMPLATES ABOUT CLASS - LOCATION
+%
+
+% ClassOfContainmentDefinition %
+
+ClassOfContainmentDefinition(hasContainerType, hasContainedType, hasCardinalityOfContainer, hasCardinalityOfContained) <->
+ClassOfIndividual(hasContainerType) &
+ClassOfIndividual(hasContainedType) &
+Cardinality(hasCardinalityOfContainer) &
+Cardinality(x4) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasContainerType) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u3, hasContainedType) &
+      ClassOfIndividual(u3) &
+      ClassOfContainmentOfIndividualTriple(u2, u1, hasCardinalityOfContainer) &
+      end1Cardinality(u2, hasCardinalityOfContainer) &
+      end2Cardinality(u2, hasCardinalityOfContained)) .
+
+% ClassOfRelativeLocationDefinition %
+
+ClassOfRelativeLocationDefinition(hasLocatedType, hasLocatorType, hasLocationType, hasCardinalityOfLocated, hasCardinalityOfLocator) <->
+ClassOfIndividual(hasLocatedType) &
+ClassOfIndividual(hasLocatorType) &
+ClassOfRelativeLocation(hasLocationType) &
+Cardinality(hasCardinalityOfLocated) &
+Cardinality(hasCardinalityOfLocator) &
+exists u1 exists u2 exists u3(
+      ClassOfTemporalWholePartTemplate(u1, hasLocatedType) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u3, hasLocatorType) &
+      ClassOfIndividual(u3) &
+      ClassOfRelativeLocationTriple(u2, u1, u3) &
+      end1Cardinality(u2, hasCardinalityOfLocated) &
+      end2Cardinality(u2, hasCardinalityOfLocator) &
+      ClassificationTemplate(u2, hasLocationType)) .
+
+%
+% TEMPLATES ABOUT CLASS - MATERIAL
+%
+
+% SpecializationByCompoundType %
+
+SpecializationByCompoundType(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfCompound(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationByCrystallineStructureType %
+
+SpecializationByCrystallineStructureType(hasSubClass, hasSuperClass) <->
+ClassOfCompound(hasSubClass) &
+CrystallineStructure(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfCompound(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationByBiologicalMatterType %
+
+SpecializationByBiologicalMatterType(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfBiologicalMatter(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationByCompositeMaterialType %
+
+SpecializationByCompositeMaterialType(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfCompositeMaterial(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationByParticulateMaterialType %
+
+SpecializationByParticulateMaterialType(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfParticulateMaterial(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationByPhase %
+
+SpecializationByPhase(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+Phase(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+%
+% TEMPLATES ABOUT CLASS - NUMBER
+%
+
+% TwoDimensionalNumberDefinition %
+
+TwoDimensionalNumberDefinition(hasDefined, valFirstNumber, valSecondNumber) <->
+MultidimensionalNumber(hasDefined) &
+ClassOfExpressInformationRepresentation(valFirstNumber) &
+ClassOfExpressInformationRepresentation(valSecondNumber) &
+exists u1 exists u2 exists u3(
+      rdl_RDS2229339(u1) &
+      ClassificationTemplate(hasDefined, u1) &
+      ArithmeticNumber(u2) &
+      ArithmeticNumber(u3) &
+      hasElement1(hasDefined, u2) &
+      hasElement2(hasDefined, u3) &
+      ClassOfIdentificationTemplate(valFirstNumber, u2) &
+      ClassOfIdentificationTemplate(valSecondNumber, u3)) .
+
+% ThreeDimensionalNumberDefinition %
+
+ThreeDimensionalNumberDefinition(hasDefined, valFirstNumber, valSecondNumber, valThirdNumber) <->
+MultidimensionalNumber(hasDefined) &
+ClassOfExpressInformationRepresentation(valFirstNumber) &
+ClassOfExpressInformationRepresentation(valSecondNumber) &
+ClassOfExpressInformationRepresentation(valThirdNumber) &
+exists u1 exists u2 exists u3 exists u4(
+      rdl_RDS2229340(u1) ;
+      ClassificationTemplate(hasDefined, u1) &
+      ArithmeticNumber(u2) &
+      ArithmeticNumber(u3) &
+      ArithmeticNumber(u4) &
+      hasElement1(hasDefined, u2) &
+      hasElement2(hasDefined, u3) &
+      hasElement3(hasDefined, u4) &
+      ClassOfIdentificationTemplate(valFirstNumber, u2) &
+      ClassOfIdentificationTemplate(valSecondNumber, u3) &
+      ClassOfIdentificationTemplate(valThirdNumber, u4)) .
+
+% NumberRangeDefinition %
+
+NumberRangeDefinition(hasDefined, valLowerBound, valUpperBound) <->
+NumberRange(hasDefined) &
+ClassOfExpressInformationRepresentation(valLowerBound) &
+ClassOfExpressInformationRepresentation(valUpperBound) &
+exists u1 exists u2(
+       ArithmeticNumber(u1) &
+       LowerBoundOfNumberRangeTemplate(u1, hasDefined) &
+       ClassOfIdentificationTemplate(valLowerBound, u1) &
+       ArithmeticNumber(u2) &
+       UpperBoundOfNumberRangeTemplate(u2, hasDefined) &
+       ClassOfIdentificationTemplate(valUpperBound, u2)) .
+
+% NumberSpaceWithBoundingNumberSpace %
+
+NumberSpaceWithBoundingNumberSpace(hasNumberSpace, hasBoundingSpace) <->
+NumberSpace(hasNumberSpace) &
+NumberSpace(hasBoundingSpace) &
+BoundaryOfNumberSpaceTemplate(hasBoundingSpace, hasNumberSpace) .
+
+%
+% TEMPLATES ABOUT CLASS - RELATIONSHIP-OTHER
+%
+
+% ClassOfOtherRelationshipWithDualParticipation %
+
+ClassOfOtherRelationshipWithDualParticipation(hasDefined, hasActivityType, hasParticipantType1, hasRoleOfParticipant1, hasCardinalityOfParticipant1, hasParticipantType2, hasRoleOfParticipant2, hasCardinalityOfParticipant2) <->
+ClassOfActivity(hasActivityType) &
+ClassOfIndividual(hasParticipantType1) &
+Role(hasRoleOfParticipant1) &
+Cardinality(hasCardinalityOfParticipant1) &
+ClassOfIndividual(hasParticipantType2) &
+Role(hasRoleOfParticipant2) &
+Cardinality(hasCardinalityOfParticipant2) &
+exists u1 exists u2 exists u3(
+       ClassOfRelationshipWithSignatureTriple(hasDefined, u2, u3) &
+          hasEnd2Cardinality(hasDefined, hasCardinalityOfParticipant1) &
+          hasEnd1Cardinality(hasDefined, hasCardinalityOfParticipant2) &
+       ClassOfActivity(u1) &
+       SpecializationTemplate(u1, hasActivityType) &
+       ClassOfParticipationTemplate(u2, u1) &
+       ParticipatingRoleAndDomain(u2) &
+       SpecializationByDomainTemplate(u2, hasParticipantType1) &
+       SpecializationByRoleTemplate(u2, hasRoleOfParticipant1) &
+       ClassOfParticipationTemplate(u3, u1) &
+       ParticipatingRoleAndDomain(u3) &
+       SpecializationByDomainTemplate(u3, hasParticipantType2) &
+       SpecializationByRoleTemplate(u3, hasRoleOfParticipant2)) .
+
+% ClassOfOtherRelationshipWithParticipationAndInvolvementByReference %
+
+ClassOfOtherRelationshipWithParticipationAndInvolvementByReference(hasDefined, hasActivityType, hasParticipantType, hasRoleOfParticipant, hasCardinalityOfParticipant, hasReferenceType, hasRoleOfReference, hasCardinalityOfReference) <->
+ClassOfActivity(hasActivityType) &
+ClassOfIndividual(hasParticipantType) &
+Role(hasRoleOfParticipant) &
+Cardinality(hasCardinalityOfParticipant) &
+ClassOfIndividual(hasReferenceType) &
+Role(hasRoleOfReference) &
+Cardinality(hasCardinalityOfParticipant2) &
+exists u1 exists u2 exists u3(
+       ClassOfRelationshipWithSignatureTriple(hasDefined, u2, u3) &
+	hasEnd2Cardinality(hasDefined, hasCardinalityOfParticipant) &
+	hasEnd1Cardinality(hasDefined, hasCardinalityOfReference) &
+       ClassOfActivity(u1) &
+       SpecializationTemplate(u1, hasActivityType) &
+       ClassOfParticipationTemplate(u2, u1) &
+       ParticipatingRoleAndDomain(u2) &
+       SpecializationByDomainTemplate(u2, hasParticipantType) &
+       SpecializationByRoleTemplate(u2, hasRoleOfParticipant) &
+       ClassOfParticipationTemplate(u3, u1) &
+       ParticipatingRoleAndDomain(u3) &
+       SpecializationByDomainTemplate(u3, hasReferenceType) &
+       SpecializationByRoleTemplate(u3, hasRoleOfReference)) .
+
+%
+% TEMPLATES ABOUT CLASS - PROPERTY AND STATUS
+%
+
+% ClassOfIndividualHasStatus %
+
+ClassOfIndividualHasStatus(hasPossessorType, hasStatus) <->
+ClassOfIndividual(hasPossessorType) &
+Status(hasStatus) &
+exists u(
+      ClassOfIndividual(u) &
+      ClassOfTemporalWholePartTemplate(u, hasPossessorType) &
+      SpecializationTemplate(u, hasStatus) .
+
+% ClassOfIndividualHasStatusBeforeClassOfEvent %
+
+ClassOfIndividualHasStatusBeforeClassOfEvent(hasPossessorType, hasStatus, hasEventType) <->
+ClassOfIndividual(hasPossessorType) &
+Status(hasStatus) &
+ClassOfEvent(hasEventType) &
+exists u(
+      ClassOfIndividual(u) &
+      ClassOfTemporalWholePartTemplate(u, hasPossessorType) &
+      SpecializationTemplate(u, hasStatus) &
+      ClassOfTemporalSequenceTemplate(u, hasEventType)) .
+
+% ClassOfIndividualHasPropertyWithValue %
+
+ClassOfIndividualHasPropertyWithValue(hasPossessorType, hasPropertyType, valPropertyValue, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfProperty(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4(
+       ClassOfIndividual(u1) &
+       ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+       SpecializationTemplate(u1, u2) &
+       Property(u2) &
+       ClassificationTemplate(u2, hasPropertyType) &
+       PropertyQuantificationTriple(u3, u2, u4) &
+       ClassificationTemplate(u3, hasScale) &
+       ArithmeticNumber(u4) &
+       ClassOfIdentificationTemplate(valPropertyValue, u4)) .
+
+% ClassOfIndividualHasMonetaryValue %
+
+ClassOfIndividualHasMonetaryValue(hasPossessorType, hasMonetaryValueType, valMonetaryValue, hasCurrency) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfIndirectProperty(hasMonetaryValueType) &
+ExpressReal(valMonetaryValue) &
+Scale(hasCurrency) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndividual(u1) &
+      SpecializationTemplate(u2, hasMonetaryValueType) &
+      ClassOfIndirectPropertyTriple(u2, hasPossessorType, u4) &
+      SpecializationTemplate(u3, u2) &
+      ClassOfRelationshipWithRelatedEnd2Triple(u3, u1, u5) &
+      SinglePropertyDimension(u4) &
+      ClassificationTemplate(u5, u4) &
+      Property(u5) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      ClassificationTemplate(u6, hasCurrency) &
+      RealNumber(u7) &
+      ClassOfIdentificationTemplate(valMonetaryValue, u7)) .
+
+% ClassOfIndividualHasPropertyWithVariance %
+
+ClassOfIndividualHasPropertyWithVariance(hasPossessorType, hasPropertyType, valPropertyValue, hasScale, valPositiveVariance, valNegativeVariance, hasVarianceScale) <->
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+ClassOfExpressInformationRepresentation(valPositiveVariance) &
+ClassOfExpressInformationRepresentation(valNegativeVariance) &
+Scale(hasVarianceScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists v1 exists v2 exists v3 exists v4 exists v5 exists v6 exists v7 exists v8 exists v9 exists w1 exists w2 exists w3 exists w4 exists w5 exists w6 exists w7 exists w8 exists w9(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfClassificationTriple(u2, u1, u4) &
+      rdl_RDS222625(u3) &
+         end1Cardinality(u2, u3) &
+      SpecializationTemplate(u4, hasPropertyType) &
+      Property(u5) &
+      ClassificationTemplate(u5, u4) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      ClassificationTemplate(u6, hasScale) &
+      ArithmeticNumber(u7) &
+      ClassOfIdentificationTemplate(valPropertyValue, u7) &
+      Property(v1) &
+      ClassificationTemplate(v1, hasPropertyType) &
+      PropertyQuantificationTriple(v2, v1, v3) &
+      ClassificationTemplate(v2, hasVarianceScale) &
+      ArithmeticNumber(v3) &
+      ClassOfIdentificationTemplate(valPositiveVariance, v3) &
+      Property(v7) &
+      UpperBoundOfPropertyRangeTemplate(v7, u4) &
+      PropertyQuantificationTriple(v8, v7, v9) &
+      ClassificationTemplate(v8, hasScale) &
+      ArithmeticNumber(v9) &      
+      MultidimensionalNumber(v4) &
+         hasElement1(v4, u7) &
+         hasElement2(v4, v3) &
+      FunctionalMappingTriple(v5, v4, v9) &
+      rdl_RDS2220043(v6) &
+      ClassificationTemplate(v5, v6) &
+      Property(w1) &
+      ClassificationTemplate(w1, hasScale) &
+      PropertyQuantificationTriple(w2, w1, w3) &
+      ClassificationTemplate(w2, hasVarianceScale) &
+      ArithmeticNumber(w3) &
+      ClassOfIdentificationTemplate(valNegativeVariance, w3) &
+      Property(w7) &
+      UpperBoundOfPropertyRangeTemplate(w7, u4) &
+      PropertyQuantificationTriple(w8, w7, w9) &
+      ClassificationTemplate(w8, hasScale) &
+      ArithmeticNumber(w9) &      
+      MultidimensionalNumber(w4) &
+         hasElement1(w4, u7) &
+         hasElement2(w4, w3) &
+      FunctionalMappingTriple(w5, w4, w9) &
+      rdl_RDS2220042(w6) &
+      ClassificationTemplate(w5, w6)) .
+
+% ClassOfIndividualHasPropertyWithPercentageVariance %
+
+ClassOfIndividualHasPropertyWithPercentageVariance(hasPossessorType, hasPropertyType, valPropertyValue, hasScale, valPositiveVariance, valNegativeVariance) <->
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+ClassOfExpressInformationRepresentation(valPositiveVariance) &
+ClassOfExpressInformationRepresentation(valNegativeVariance) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists v1 exists v2 exists v3 exists v4 exists v5 exists v6 exists v7 exists v8 exists v9 exists w1 exists w2 exists w3 exists w4 exists w5 exists w6 exists w7 exists w8 exists w9(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfClassificationTriple(u2, u1, u4) &
+      rdl_RDS222625(u3) &
+         end1Cardinality(u2, u3) &
+      SpecializationTemplate(u4, hasPropertyType) &
+      Property(u5) &
+      ClassificationTemplate(u5, u4) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      ClassificationTemplate(u6, hasScale) &
+      ArithmeticNumber(u7) &
+      ClassOfIdentificationTemplate(valPropertyValue, u7) &
+      rdl_RDS1317959(u8) &
+      Property(v1) &
+      ClassificationTemplate(v1, hasPropertyType) &
+      PropertyQuantificationTriple(v2, v1, v3) &
+      ClassificationTemplate(v2, u6) &
+      ArithmeticNumber(v3) &
+      ClassOfIdentificationTemplate(valPositiveVariance, v3) &
+      Property(v7) &
+      UpperBoundOfPropertyRangeTemplate(v7, u2) &
+      PropertyQuantificationTriple(v8, v7, v9) &
+      ClassificationTemplate(v8, valPositiveVariance) &
+      ArithmeticNumber(v9) &      
+      MultidimensionalNumber(v4) &
+      hasElement1(v4, u5) &
+      hasElement2(v4, v3) &
+      FunctionalMappingTriple(v5, v4, v9) &
+      rdl_RDS2220043(v6) &
+      ClassificationTemplate(v5, v6) &
+      Property(w1) &
+      ClassificationTemplate(w1, hasPropertyType) &
+      PropertyQuantificationTriple(w2, w1, w3) &
+      ClassificationTemplate(w2, u6) &
+      ArithmeticNumber(w3) &
+      ClassOfIdentificationTemplate(valNegativeVariance, w3) &
+      Property(w7) &
+      UpperBoundOfPropertyRangeTemplate(w7, u2) &
+      PropertyQuantificationTriple(w8, w7, w9) &
+      ClassificationTemplate(w8, valPositiveVariance) &
+      ArithmeticNumber(w9) &      
+      MultidimensionalNumber(w4) &
+      hasElement1(w4, u5) &
+      hasElement2(w4, w3) &
+      FunctionalMappingTriple(w5, w4, w9) &
+      rdl_RDS2220042(w6) &
+      ClassificationTemplate(w5, w6)) .
+
+% ClassOfIndividualHasConditionalPropertyWithValue %
+
+ClassOfIndividualHasConditionalPropertyWithValue(hasMultidimensionalPropertyType, hasPossessorType, hasPropertyType, valPropertyValue, hasScale, hasConditionPossessorType, hasConditionPropertyType, valConditionPropertyValue, hasConditionScale) <->
+MultidimensionalProperty(hasMultidimensionalPropertyType) &
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+ClassOfIndividual(hasConditionPossessorType) &
+SinglePropertyDimension(hasConditionPropertyType) &
+ClassOfExpressInformationRepresentation(valConditionPropertyValue) &
+Scale(hasConditionScale) &
+exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10 exists u11 exists u12(
+      ClassificationTemplate(u1, hasMultidimensionalPropertyType) &
+      element1(hasMultidimensionalPropertyType, u5) &
+      element2(hasMultidimensionalPropertyType, u10) &
+      ClassOfTemporalWholePartTemplate(u3, hasPossessorType) &
+      ClassOfIndividual(u3) &
+      ClassOfClassificationTriple(u4, u3, u5) &
+      rdl_RDS222625(u2) &
+         end1Cardinality(u4, u2) &
+      ClassificationTemplate(u5, hasPropertyType) &
+      Property(u5) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      ClassificationTemplate(u6, hasScale) &
+      ArithmeticNumber(u7) &
+      ClassOfIdentificationTemplate(valPropertyValue, u7) &
+      ClassOfTemporalWholePartTemplate(u8, hasConditionPossessorType) &
+      ClassOfIndividual(u8) &
+      ClassOfClassificationTriple(u9, u8, u10) &
+         end1Cardinality(u9, u2) &
+      ClassificationTemplate(u10, hasConditionPropertyType) &
+      Property(u10) &
+      PropertyQuantificationTriple(u11, u10, u12) &
+      ClassificationTemplate(u11, hasConditionScale) &
+      ArithmeticNumber(u12) &
+      ClassOfIdentificationTemplate(valConditionPropertyValue, u12)) .
+
+% ClassOfIndividualHasTwoDimensionalPropertyWithValues %
+
+ClassOfIndividualHasTwoDimensionalPropertyWithValues(hasMultidimensionalPropertyType, hasPossessorType,  hasPropertyType1, valPropertyValue1, hasScale1, hasPropertyType2, valPropertyValue2, hasScale2) <->
+MultidimensionalProperty(hasMultidimensionalPropertyType) &
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType1) &
+ClassOfExpressInformationRepresentation(valPropertyValue1) &
+Scale(hasScale1) &
+SinglePropertyDimension(hasPropertyType2) &
+ClassOfExpressInformationRepresentation(valPropertyValue2) &
+Scale(hasScale2) &
+exists u1 exists u3  exists u4  exists u5  exists u6  exists u7 exists u8(
+       ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+       ClassOfIndividual(u1) &       
+       ClassOfClassificationTemplate(u1, ) &
+       element1(hasMultidimensionalPropertyType, u3) &
+       element2(hasMultidimensionalPropertyType, u6) &
+       Property(u3) &
+       ClassificationTemplate(u3, hasPropertyType1) &
+       ClassificationTemplate(u4, hasScale1) &
+       PropertyQuantificationTriple(u4, u3, u5) &
+       ArithmeticNumber(u5) &
+       ClassOfIdentificationTemplate(valPropertyValue1, u5) &
+       Property(u6) &
+       ClassificationTemplate(u6, hasPropertyType2) &
+       ClassificationTemplate(u7, hasScale2) &
+       PropertyQuantificationTriple(u7, u6, u8) &
+       ArithmeticNumber(u8) &
+       ClassOfIdentificationTemplate(valPropertyValue2, u8)) .
+
+% ClassOfIndividualHasPropertyRatio %
+
+ClassOfIndividualHasPropertyRatio(hasMultidimensionalPropertyType, hasPossessorType, hasPropertyType, valPropertyValue1, valPropertyValue2, valPropertyRatio, hasScale) <->
+MultidimensionalProperty(hasMultidimensionalPropertyType) &
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue1) &
+ClassOfExpressInformationRepresentation(valPropertyValue2) &
+ClassOfExpressInformationRepresentation(valPropertyRatio) &
+Scale(hasScale) &
+exists u1 exists u3  exists u4  exists u5  exists u6  exists u7 exists u8 exists u9 exists u10 exists u11 exists u12(
+       ClassOfIndividual(u1) &
+       ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+       ClassOfClassificationTemplate(u1, hasMultidimensionalPropertyType) &
+       element1(hasMultidimensionalPropertyType, u3) &
+       element2(hasMultidimensionalPropertyType, u6) &
+       ClassificationTemplate(u2, hasMultidimensionalPropertyType) &
+       Property(u3) &
+       ClassificationTemplate(u3, hasPropertyType) &
+       PropertyQuantificationTriple(u4, u3, u5) &
+       ClassificationTemplate(u4, hasScale) &
+       ArithmeticNumber(u5) &
+       ClassOfIdentificationTemplate(valPropertyValue1, u5) &
+       Property(u6) &
+       ClassificationTemplate(u6, hasPropertyType) &
+       PropertyQuantificationTriple(u7, u6, u8) &
+       ClassificationTemplate(u7, hasScale) &
+       ArithmeticNumber(u8) &
+       ClassOfIdentificationTemplate(valPropertyValue2, u8) &
+       MultidimensionalNumber(u9) &
+          element1(u9, u5) &
+          element2(u9, u8) & 
+       FunctionalMappingTriple(u10, u9, u12) &
+       ClassificationTemplate(u10, u11) &
+       rdl_RDS11566410(u11) &
+       ArithmeticNumberr(u12) &
+       ClassOfIdentificationTemplate(valPropertyRatio, u12)) .
+
+% PropertyRangeDefinition %
+
+PropertyRangeDefinition(hasDefined, valLowerBound, valUpperBound, hasScale) <->
+PropertyRange(hasDefined) &
+ClassOfExpressInformationRepresentation(valLowerBound) &
+ClassOfExpressInformationRepresentation(valUpperBound) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3(
+      LowerBoundOfPropertyRangeTemplate(u1, hasDefined) &
+      Property(u1) &
+      ClassificationTemplate(u2, hasScale) &
+      PropertyQuantificationTriple(u2, u1, u3) &
+      ArithmeticNumber(u3) &
+      ClassOfIdentificationTemplate(valLowerBound, u3)) &
+exists v1 exists v2 exists v3(
+      UpperBoundOfPropertyRangeTemplate(v1, hasDefined) &
+      Property(v1) &
+      ClassificationTemplate(v2, hasScale) &
+      PropertyQuantificationTriple(v2, v1, v3) &
+      ArithmeticNumber(v3) &
+      ClassOfIdentificationTemplate(valUpperBound, v3)) .
+
+% ClassOfIndividualHasDirectPropertyRange %
+
+ClassOfIndividualHasDirectPropertyRange(hasPossessorType, hasPropertyType, valLowerBound, valUpperBound, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valLowerBound) &
+ClassOfExpressInformationRepresentation(valUpperBound) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfClassificationTemplate(u1, u2) &
+      PropertyRange(u2) &
+      ClassificationTemplate(u2, hasPropertyType) &
+      LowerBoundOfPropertyRangeTemplate(u3, u2) &
+      Property(u3) &
+      PropertyQuantificationTriple(u4, u3, u5) &
+      ClassificationTemplate(u4, hasScale) &
+      ArithmeticNumber(u5) &
+      ClassOfIdentificationTemplate(valLowerBound, u5) &
+      UpperBoundOfPropertyRangeTemplate(u6, u2) &
+      Property(u6) &
+      PropertyQuantificationTriple(u7, u6, u8) &
+      ClassificationTemplate(u7, hasScale) &
+      ArithmeticNumber(u8) &
+      ClassOfIdentificationTemplate(valUpperBound, u8)) .
+
+% PropertyDefinition %
+
+PropertyDefinition(hasDefined, hasPropertyType, valPropertyValue, hasScale) <->
+Property(hasDefined) &
+ClassOfProperty(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+ClassificationTemplate(hasProperty, hasPropertyType) &
+exists u1 exists u2(
+      PropertyQuantificationTriple(u1, hasDefined, u2) &
+      ClassificationTemplate(u1, Defined) &
+      ArithmeticNumber(u2) &
+      ClassOfIdentificationTemplate(valPropertyValue, u2)) .
+
+%
+% TEMPLATES ABOUT CLASS - SET OPERATIONS
+%
+
+% DifferenceOf2Classes %
+
+DifferenceOf2Classes(hasClass1, hasClass2, hasClassDifference) <-> 
+Class(hasClass1) &
+Class(hasClass2) &
+Class(hasClassDifference) &
+exists u1(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      DifferenceOfSetOfClassTemplate(u1, hasClassDifference)) .
+
+% EquivalentClasses %
+
+EquivalentClasses(hasClass1, hasClass2) <-> 
+Class(hasClass1) &
+Class(hasClass2) &
+exists u1 exists u2(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      DifferenceOfSetOfClassTemplate(u1, u2) &
+      EmptyClass(u2)) .
+
+% DisjointnessOf2Classes %
+
+DisjointnessOf2Classes(hasClass1, hasClass2) <->
+Class(hasClass1) &
+Class(hasClass2) &
+exists u1 exists u2(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      IntersectionOfSetOfClassTemplate(u1, u3) &
+      EmptyClass(u2)) .
+
+% IntersectionOf2Classes %
+
+IntersectionOf2Classes(hasClass1, hasClass2, hasClassIntersection) <->
+Class(hasClass1) &
+Class(hasClass2) &
+Class(hasClassIntersection) &
+exists u1(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      IntersectionOfSetOfClassTemplate(u1, hasClassIntersection)) .
+
+% RelativeComplementOf2Classes %
+
+RelativeComplementOf2Classes(hasClass1, hasClass2, hasRelativeComplement) <->
+Class(hasClass1) &
+Class(hasClass2) &
+Class(hasRelativeComplement) &
+exists u1 exists u2 exists u3(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      DifferenceOfSetOfClassTemplate(u1, u2) &
+      Class(u2) &
+      EnumeratedSetOfClass(u3) &
+      ClassificationTemplate(hasClass1, u3) &
+      ClassificationTemplate(u2, u3) &
+      IntersectionOfSetOfClassTemplate(u3, hasRelativeComplement)) .
+
+% UnionOf2Classes %
+
+UnionOf2Classes(hasClass1, hasClass2, hasClassUnion) <->
+Class(hasClass1) &
+Class(hasClass2) &
+Class(hasClassUnion) &
+exists u1(
+      EnumeratedSetOfClass(u1) &
+      ClassificationTemplate(hasClass1, u1) &
+      ClassificationTemplate(hasClass2, u1) &
+      UnionOfSetOfClassTemplate(u1, hasClassUnion)) .
+
+% EnumerationOfClass %
+
+EnumerationOfClass(hasSet, hasMember) <->
+EnumeratedSetOfClass(hasSet) &
+Class(hasMember) &
+ClassificationTemplate(hasMember, hasSet) .
+
+% UnionOfEnumeratedSetOfClass %
+
+UnionOfEnumeratedSetOfClass(hasInput, hasResult) <->
+EnumeratedSetOfClass(hasInput) &
+Class(hasResult) &
+UnionOfSetOfClassTemplate(hasInput, hasResult)) .
+
+%
+% TEMPLATES ABOUT CLASS - SHAPE
+%
+
+% ClassOfShapeDimensionPropertySpace %
+
+ClassOfShapeDimensionDefinition(hasShapeType, hasShapeDimension, hasPropertySpace) <->
+ClassOfShape(hasShapeType) &
+ClassOfShapeDimension(hasShapeDimension) &
+PropertySpace(hasPropertySpace) &
+PropertySpaceForClassOfShapeDimensionTemplate(hasShapeType, hasPropertySpace) &
+exists u1(
+      ClassOfTemporalWholePartTemplate(u1, hasShapeType) &
+      ClassOfIndividual(u1) &
+      ClassOfDimensionForShapeTemplate(hasShapeDimension, u1)) .
+
+% ShapeDimensionOfClassOfShapeWithReferenceProperty %
+
+ShapeDimensionOfClassOfShapeWithReferenceProperty(hasPossessorType, hasShapeType, hasShapeDimension, hasProperty) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfShape(hasShapeType) &
+ShapeDimension(hasShapeDimension) &
+Property(hasProperty) &
+exists u1 exists u2(
+      ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+      ClassOfIndividual(u1) &
+      SpecializationTemplate(u1, u2) &
+      Shape(u2) &
+      ClassificationTemplate(u2, hasShapeType) &
+      DimensionOfShapeTemplate(hasShapeDimension, u2) &
+      PropertyForShapeDimensionTemplate(hasProperty, hasShapeDimension)) .
+
+% DefinitionOfShapeRepresentation %
+
+DefinitionOfShapeRepresentation(hasShape, hasRepresentation) <->
+Shape(hasShape) &
+ClassOfExpressInformationRepresentation(hasRepresentation) &
+exists u1(
+      ClassOfTemporalWholePartTemplate(u1, hasShape) &
+      Shape(u1) &
+      ClassOfDefinitionTemplate(hasRepresentation, u1)) .
+
+% ClassOfIndividualHasDimensionedShapeWithValue %
+
+ClassOfIndividualHasDimensionedShapeWithValue(hasPossessorType, hasShapeType, hasDimensionType, valPropertyValue, hasScale) <->
+ClassOfIndividual(hasPossessorType) &
+ClassOfShape(hasShapeType) &
+ClassOfShapeDimension(hasDimensionType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+       ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+       ClassOfIndividual(u1) &
+       SpecializationTemplate(u1, u2) &
+       ClassificationTemplate(u2, hasShapeType) &
+       Shape(u2) &
+       DimensionOfShapeTemplate(u3, u2) &
+       ClassificationTemplate(u3, hasDimensionType) &
+       ShapeDimension((u3) 
+       PropertyForShapeDimension(u6, u3) &
+       Property(u6) &
+       PropertyQuantificationTriple(u5, u6, u4) &
+       ClassificationTemplate(u5, hasScale) &
+       ArithmeticNumber(u4) &
+       ClassOfIdentificationTemplate(valPropertyValue, u4)) .
+
+%
+% TEMPLATES ABOUT CLASS - SPECIALIZATION
+%
+
+% SpecializationOfClassOfIndividual %
+
+SpecializationOfClassOfIndividual(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfIndividual(hasSuperClass) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasSubClass) &
+      ClassOfIndividual(u) &
+      SpecializationTemplate(u, hasSuperClass)) .
+
+% SpecializationOfClassOfIndividualNotApplicable %
+
+SpecializationOfClassOfIndividualNotApplicable(hasSubClass, hasSuperClass) <->
+ClassOfIndividual(hasSubClass) &
+ClassOfIndividual(hasSuperClass) &
+exists u1 exists u2(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasSubClass) &
+      SpecializationTriple(u2, u1, hasSuperClass) &
+      rdl:RDS2221035(u3) ;
+      ClassificationTemplate(u2, u3)) .
+
+%
+% TEMPLATES ABOUT CLASS - STRUCTURE
+%
+
+% ClassOfCompositionDefinition %
+
+ClassOfCompositionDefinition(hasClassOfWhole, hasClassOfPart, hasDefined, hasCardinalityOfWhole, hasCardinalityOfPart) <->
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+ClassOfCompositionOfIndividualTriple(hasDefined, u2, u1) &
+Cardinality(hasCardinalityOfWhole) &
+Cardinality(hasCardinalityOfPart) &
+exists u1 exists u2(
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfWhole) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfPart) &
+      ClassOfIndividual(u2) &
+      end1Cardinality(hasDefined, hasCardinalityOfWhole) &
+      end2Cardinality(hasDefined, hasCardinalityOfPart)) .
+
+% ClassOfCompositionPartPercentage %
+
+ClassOfCompositionPartPercentage(hasClassOFWhole, hasClassOfPart, hasPercentageType, valPartPercentageValue) <->
+ClassOfCompound(hasClassOFWhole) &
+ClassOfCompound(hasClassOfPart) &
+SinglePropertyDimension(hasPercentageType) &
+ExpressReal(valPartPercentageValue) &
+exists u1 , exists u2 ,exists u3 ,exists u4 ,exists u5 ,exists u6 ,exists u7 ,exists u8 ,exists u9, exists u10 (
+	SpecializationTemplate(u1, hasClassOfWhole) &
+	ClassOfCompound(u1) &
+	SpecializationTemplate(u1, u2) &	
+	Property(u2) &
+	ClassificationTemplate(u2, hasPercentageType) &
+	PropertyQuantificationTriple(u3, u2, u4) &
+	RealNumber(u4) &
+	ClassOfIdentificationTemplate(u5, u4) &
+	"100"^^xsd_decimal(u5) &
+	ClassificationTemplate(u3, u10) &
+	ClassOfCompositionOfIndividualTemplate(u6, u1) &
+	Scale(u10) &
+	SpecializationTemplate(u6, hasClassOfPart) &
+	ClassOfCompound(u6) &
+	SpecializationTemplate(u6, u7) &	
+	Property(u7) &
+	ClassificationTemplate(u7, hasPercentageType) &
+	PropertyQuantificationTriple(u8, u7, u9) &
+	RealNumber(u9) &
+	ClassOfIdentificationTemplate(u5, u9) &
+	ClassificationTemplate(valPartPercentageValue, u10)) .
+
+% ClassOfCompositionPartPercentageByRange %
+
+ClassOfCompositionPartPercentageByRange(hasClassOFWhole, hasClassOfPart, hasPercentageType, hasPartPercentageRange) <->
+ClassOfCompound(hasClassOFWhole) &
+ClassOfCompound(hasClassOfPart) &
+SinglePropertyDimension(hasPercentageType) &
+PropertyRange(hasPartPercentageRange) &
+exists u1 , exists u2 ,exists u3 ,exists u4 ,exists u5 ,exists u6 ,exists u7 ,exists u8 (
+	SpecializationTemplate(u1, hasClassOfWhole) &
+	ClassOfCompound(u1) &
+	SpecializationTemplate(u1, u2) &	
+	Property(u2) &
+	ClassificationTemplate(u2, hasPercentageType) &
+	PropertyQuantificationTriple(u3, u2, u4) &
+	RealNumber(u4) &
+	ClassOfIdentificationTemplate(u5, u4) &
+	"100"^^xsd_decimal(u5) &
+	ClassificationTemplate(u3, u10) &
+	Scale(u10) &
+	ClassOfCompositionOfIndividualTemplate(u6, u1) &
+	SpecializationTemplate(u6, hasClassOfPart) &
+	ClassOfCompound(u6) &
+	SpecializationTemplate(u6, u7) &	
+	Property(u7) &
+	ClassificationTemplate(u7, hasPercentageType) &
+	SpecializationTemplate(u7, hasPartPercentageRange)) .
+
+% ClassOfArrangementDefinition %
+
+ClassOfArrangementDefinition(hasClassOfWhole, hasClassOfPart, hasDefined, hasCardinalityOfWhole, hasCardinalityOfPart) <->
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+Cardinality(hasCardinalityOfWhole) &
+Cardinality(hasCardinalityOfPart) &
+exists u1 exists u2(
+      ClassOfArrangementOfIndividualTriple(hasDefined, u2, u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfWhole) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfPart) &
+      ClassOfIndividual(u2) &
+      end1Cardinality(hasDefined, hasCardinalityOfWhole) &
+      end2Cardinality(hasDefined, hasCardinalityOfPart)) .
+
+% ClassOfAssemblyDefinition %
+
+ClassOfAssemblyDefinition(hasClassOfWhole, hasClassOfPart, hasDefined, hasCardinalityOfWhole, hasCardinalityOfPart) <->
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+ClassOfAssemblyOfIndividualTriple(hasDefined, u2, u1) &
+Cardinality(hasCardinalityOfWhole) &
+Cardinality(hasCardinalityOfPart) &
+exists u1 exists u2(
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfWhole) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfPart) &
+      ClassOfIndividual(u2) &
+      end1Cardinality(hasDefined, hasCardinalityOfWhole) &
+      end2Cardinality(hasDefined, hasCardinalityOfPart)) .
+
+% PartInClassOfAssemblyApplicableYesNo %
+
+PartInClassOfAssemblyApplicableYesNo(hasClassOfWhole, hasClassOfPart, hasApplicableYesNo) <->
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfWhole) &
+      ClassOfAssemblyOfIndividualTriple(u2, u3, u1) &
+      SpecializationTemplate(u2, hasApplicableYesNo) &
+      ClassOfIndividual(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasClassOfPart)) .
+
+
+% ClassOfFeatureWholePartDefinition %
+
+ClassOfFeatureWholePartDefinition(hasClassOfWhole, hasClassOfPart, hasDefined, hasCardinalityOfWhole, hasCardinalityOfPart) <->
+ClassOfArrangedIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+Cardinality(hasCardinalityOfWhole) &
+Cardinality(hasCardinalityOfPart) &
+exists u1 exists u2(
+      ClassOfArrangedIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfWhole) &
+      ClassOfIndividual(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfPart) &
+      ClassOfFeatureWholePartOfTriple(hasDefined, u2, u1) &
+      end1Cardinality(hasDefined, hasCardinalityOfWhole) &
+      end2Cardinality(hasDefined, hasCardinalityOfPart)) .
+
+% ClassOfDirectConnectionDefinition %
+
+ClassOfDirectConnectionDefinition(hasClassOfSide1, hasClassOfSide2, hasConnectionType, hasDefined, hasCardinalityOfSide1, hasCardinalityOfSide2) <->
+ClassOfIndividual(hasClassOfSide1) &
+ClassOfIndividual(hasClassOfSide2) &
+ClassOfDirectConnection(hasConnectionType) &
+Cardinality(hasCardinalityOfSide1) &
+Cardinality(hasCardinalityOfSide2) &
+exists u1 exists u2(
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfSide1) &
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfSide2) &
+      ClassOfIndividual(u2) &
+      ClassOfDirectConnectionTriple(hasDefined, u1, u2) &
+      end1Cardinality(hasDefined, hasCardinalityOfSide2) &
+      end2Cardinality(hasDefined, hasCardinalityOfSide1) &
+      SpecializationTemplate(hasDefined, hasConnectionType)) .
+
+% ClassOfIndirectConnectionDefinition %
+
+ClassOfIndirectConnectionDefinition(hasClassOfSide1, hasClassOfSide2, hasConnectionType, hasDefined, hasCardinalityOfSide1, hasCardinalityOfSide2) <->
+ClassOfIndividual(hasClassOfSide1) &
+ClassOfIndividual(hasClassOfSide2) &
+ClassOfIndirectConnection(hasConnectionType) &
+Cardinality(hasCardinalityOfSide1) &
+Cardinality(hasCardinalityOfSide2) &
+exists u1 exists u2(
+      ClassOfIndividual(u1) &
+      ClassOfTemporalWholePartTemplate(u1, hasClassOfSide1) &
+      ClassOfIndirectConnectionTriple(hasDefined, u1, u2) &
+      end1Cardinality(hasDefined, hasCardinalityOfSide2) &
+      end2Cardinality(hasDefined, hasCardinalityOfSide1) &
+      ClassOfIndividual(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfSide2) &
+      SpecializationTemplate(hasDefined, hasConnectionType)) .
+
+% ClassOfIndividualUsedInDirectConnectionDefinition %
+
+ClassOfIndividualUsedInDirectConnectionDefinition(hasClassOfUsed, hasConnection, hasDefined, hasCardinalityOfUsed, hasCardinalityOfConnection) <->
+ClassOfIndividual(hasClassOfUsed) &
+ClassOfDirectConnection(hasConnection) &
+Cardinality(hasCardinalityOfUsed) &
+Cardinality(hasCardinalityOfConnection) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasClassOfUsed) &
+      ClassOfIndividual(u) &
+      ClassOfIndividualUsedInConnectionTriple(hasDefined, hasConnection, u) &
+      end1Cardinality(hasDefined, hasCardinalityOfConnection) &
+      end2Cardinality(hasDefined, hasCardinalityOfUsed)) .
+
+% ClassOfIndividualUsedInIndirectConnectionDefinition %
+
+ClassOfIndividualUsedInIndirectConnectionDefinition(hasClassOfUsed, hasConnection, hasDefined, hasCardinalityOfUsed, hasCardinalityOfConnection) <->
+ClassOfIndividual(hasClassOfUsed) &
+ClassOfIndirectConnection(hasConnection) &
+Cardinality(hasCardinalityOfUsed) &
+Cardinality(hasCardinalityOfConnection) &
+exists u(
+      ClassOfTemporalWholePartTemplate(u, hasClassOfUsed) &
+      ClassOfIndividual(u) &
+      ClassOfIndividualUsedInConnectionTriple(hasDefined, hasConnection, u) &
+      end1Cardinality(hasDefined, hasCardinalityOfConnection) &
+      end2Cardinality(hasDefined, hasCardinalityOfUsed)) .
+
+% NumberOfMembersOfClassOfIndividual %
+
+NumberOfMembersOfClassOfIndividual(hasAggregateType, hasCollectorType, hasObjectType, hasAggregateCount) <->
+ClassOfIndividual(hasAggregateType) &
+ClassOfIndividual(hasCollectorType) &
+ClassOfIndividual(hasObjectType) &
+ExpressInteger(hasAggregateCount) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+       ClassOfIndividual(u1) &
+       ClassOfTemporalWholePartTemplate(u1, hasAggregateType) &
+       SpecializationTemplate(u2, hasCollectorType) &
+       ClassOfParticulateMaterial(u2) &
+       SpecializationTemplate(u1, u2) &
+       ClassOfContainmentOfIndividualTriple(u3, hasObjectType, u2) &
+          end1Cardinality(u3, u4) &
+          end2Cardinality(u3, u5) &
+       Cardinality(u4) &
+          minimumCardinality(u4, hasAggregateCount) &
+          maximumCardinality(u4, hasAggregateCount) &
+       rdl_RDS222625(u5)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - ACTIVITY
+%
+
+% BegunParticipationOfIndividualInActivity %
+
+BegunParticipationOfIndividualInActivity(hasActivity, hasParticipant, hasParticipantRole, valStartDate) <->
+Activity(hasActivity) &
+PhysicalObject(hasParticipant) &
+Role(hasParticipantRole) &
+RepresentationOfGregorianDateAndUtcTime(valStartDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+       SpecializationByRoleTemplate(u5, hasParticipantRole) &
+       RoleAndDomain(u5) &
+       classOfPart(u6, u5) &
+       ClassOfParticipation(u6) &
+       ClassificationTemplate(u2, u6) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ParticipationTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, hasParticipant) &
+       PhysicalObject(u3) &
+       BeginningTemplate(u4, u1) &
+       BeginningTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(valStartDate, u4)) .
+
+% EndedParticipationOfIndividualInActivity %
+
+EndedParticipationOfIndividualInActivity(hasActivity, hasParticipant, hasParticipantRole, valEndDate) <->
+Activity(hasActivity) &
+PhysicalObject(hasParticipant) &
+Role(hasParticipantRole) &
+RepresentationOfGregorianDateAndUtcTime(valEndDate)
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       SpecializationByRoleTemplate(u6, hasParticipantRole) &
+       RoleAndDomain(u6) &
+       classOfPart(u7, u6) &
+       ClassOfParticipation(u7) &
+       ClassificationTemplate(u2, u7) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ParticipationTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, hasParticipant) &
+       PhysicalObject(u3) &
+       EndingTemplate(u4, u1) &
+       EndingTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(valEndDate, u4)) .
+
+% BegunParticipationOfClassInActivity %
+
+BegunParticipationOfClassInActivity(hasActivity, hasParticipantType, hasParticipantRole, valStartDate) <->
+Activity(hasActivity) &
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+RepresentationOfGregorianDateAndUtcTime(valStartDate)) .
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       SpecializationByRoleTemplate(u5, hasParticipantRole) &
+       SpecializationByDomainTemplate(u5, hasParticipantType) &
+       RoleAndDomain(u5) &
+       classOfPart(u6, u5) &
+       ClassOfParticipation(u6) &
+       ClassificationTemplate(u2, u6) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ParticipationTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, u4) &
+       PhysicalObject(u3) &
+       PhysicalObject(u4) &
+       ClassificationTemplate(u4, hasParticipantType) &
+       BeginningTemplate(u7, u1) &
+       BeginningTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(valStartDate, u7)) .
+       
+
+% EndednParticipationOfClassInActivity %
+
+EndedParticipationOfClassInActivity(hasActivity, hasParticipantType, hasParticipantRole, valEndDate) <->
+Activity(hasActivity) &
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+RepresentationOfGregorianDateAndUtcTime(valEndDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+       SpecializationByRoleTemplate(u5, hasParticipantRole) &
+       SpecializationByDomainTemplate(u5, hasParticipantType) &
+       RoleAndDomain(u5) &
+       classOfPart(u6, u5) &
+       ClassOfParticipation(u6) &
+       ClassificationTemplate(u2, u6) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ParticipationTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, u4) &
+       PhysicalObject(u3) &
+       PhysicalObject(u4) &
+       ClassificationTemplate(u4, hasParticipantType) &
+       EndingTemplate(u7, u1) &
+       EndingTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(valEndDate, u7)) .
+
+% ParticipationOfClassInActivityYesNo %
+
+ParticipationOfClassInActivityYesNo(hasActivity, hasParticipantType, hasParticipantRole, hasApplicableYesNo) <->
+Activity(hasActivity) &
+ClassOfPhysicalObject(hasParticipantType) &
+Role(hasParticipantRole) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+       ClassificationTemplate(u2, hasApplicableYesNo) &
+       SpecializationByRoleTemplate(u5, hasParticipantRole) &
+       SpecializationByDomainTemplate(u5, hasParticipantType) &
+       RoleAndDomain(u5) &
+       classOfPart(u6, u5) &
+       ClassOfParticipation(u6) &
+       ClassificationTemplate(u2, u6) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ParticipationTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, u4) &
+       PhysicalObject(u3) &
+       PhysicalObject(u4) &
+       ClassificationTemplate(u4, hasParticipantType) &
+       BeginningTemplate(u7, u1) &
+       BeginningTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(u8, u7) &
+       RepresentationOfGregorianDateAndUtcTime(u8)) .
+
+% BegunParticipationOfIndividualInActivityType %
+
+BegunParticipationOfIndividualInActivityType(hasActivityType, hasParticipant, hasParticipantRole, valStartDate) <->
+ClassOfActivity(hasActivityType) &
+PhysicalObject(hasParticipant) &
+Role(hasParticipantRole) &
+RepresentationOfGregorianDateAndUtcTime(valStartDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exusts u7(
+       ClassificationTemplate(u1, hasActivityType) &
+       Activity(u1) &
+       TemporalWholePartTemplate(u2, u1) &
+       Activity(u2) &
+       TemporalWholePartTemplate(u3, hasParticipant) &
+       PhysicalObject(u3) &
+       ParticipationTriple(u4, u3, u2) &
+       ClassificationTemplate(u4, u5) &
+       ClassOfParticipationTriple(u5, u6, hasActivityType) &
+       ParticipatingRoleAndDomain(u6) &
+       SpecializationByRoleTemplate(u6, hasParticipantRole) &
+       BeginningTemplate(u7, u2) &
+       BeginningTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(valStartDate, u7)) .
+
+
+% EndedParticipationOfIndividualInActivityType %
+
+EndedParticipationOfIndividualInActivityType(hasActivityType, hasParticipant, hasParticipantRole, valEndDate) <->
+ClassOfActivity(hasActivityType) &
+PhysicalObject(hasParticipant) &
+Role(hasParticipantRole)
+RepresentationOfGregorianDateAndUtcTime(valEndDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exusts u7(
+       ClassificationTemplate(u1, hasActivityType) &
+       Activity(u1) &
+       TemporalWholePartTemplate(u2, u1) &
+       Activity(u2) &
+       TemporalWholePartTemplate(u3, hasParticipant) &
+       PhysicalObject(u3) &
+       ParticipationTriple(u4, u3, u2) &
+       ClassificationTemplate(u4, u5) &
+       ClassOfParticipationTriple(u5, u6, hasActivityType) &
+       ParticipatingRoleAndDomain(u6) &
+       SpecializationByRoleTemplate(u6, hasParticipantRole) &
+       BeginningTemplate(u7, u2) &
+       BeginningTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(valEndDate, u7)) .       
+
+% ParticipationOfIndividualInActivityTypeYesNo %
+
+ParticipationOfIndividualInActivityTypeYesNo(hasActivityType, hasParticipant, hasParticipantRole, hasApplicableYesNo) <->
+ClassOfActivity(hasActivityType) &
+PhysicalObject(hasParticipant) &
+Role(hasParticipantRole) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exusts u7, exists u8(
+       ClassificationTemplate(u2, hasApplicableYesNo) &
+       ClassificationTemplate(u1, hasActivityType) &
+       Activity(u1) &
+       TemporalWholePartTemplate(u2, u1) &
+       Activity(u2) &
+       TemporalWholePartTemplate(u3, hasParticipant) &
+       PhysicalObject(u3) &
+       ParticipationTriple(u4, u3, u2) &
+       ClassificationTemplate(u4, u5) &
+       ClassOfParticipationTriple(u5, u6, hasActivityType) &
+       ParticipatingRoleAndDomain(u6) &
+       SpecializationByDomainTemplate(u6, u7) &
+       BeginningTemplate(u7, u2) &
+       BeginningTemplate(u7, u3) &
+       PointInTime(u7) &
+       ClassOfIdentificationTemplate(u8, u7) &
+       RepresentationOfGregorianDateAndUtcTime(u8)) .
+
+% EndingOfParticipationOfTwoIndividualsInSameActivity %
+
+EndingOfParticipationOfTwoIndividualsInSameActivity(hasActivity, hasParticipant1, hasParticipantRole1, hasParticipant2, hasParticipantRole2) <->
+Activity(hasActivity) &
+PhysicalObject(hasParticipant1) &
+Role(hasParticipantRole1) &
+PhysicalObject(hasParticipant2) &
+Role(hasParticipantRole2) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10 exists u11(
+       Activity(u1) &
+       ParticipatingRoleAndDomain(u2) &
+       ClassOfParticipationTemplate(u3, u2, %) &
+       ParticipationTriple(u4, u5, u1) &
+       PhysicalObject(u5) &
+       ParticipatingRoleAndDomain(u6) &
+       ClassOfParticipationTemplate(u7, u6, %) &
+       ParticipationTriple(u8, u9, u1) &
+       PhysicalObject(u9) &
+       PointInTime(u10) &
+       RepresentationOfGregorianDateAndUtcTime(u11) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       SpecializationByRoleTemplate(u2, hasParticipantRole1) &
+       ClassificationTemplate(u4, u3) &
+       TemporalWholePartTemplate(u5, hasParticipant1) &
+       SpecializationByRoleTemplate(u6, hasParticipantRole2) &
+       ClassificationTemplate(u8, u7) &
+       TemporalWholePartTemplate(u9, hasParticipant2) &
+       EndingTemplate(u10, u1) &
+       EndingTemplate(u10, u5) &
+       EndingTemplate(u10, u9) &
+       ClassOfIdentificationTemplate(u11, u10)) .
+
+% InvolvementByReferenceOfIndividualInActivity %
+
+InvolvementByReferenceOfIndividualInActivity(hasActivity, hasInvolved, hasInvolvementRole) <->
+Activity(hasActivity) &
+PossibleIndividual(hasInvolved) &
+Role(hasInvolvementRole) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       SpecializationByRoleTemplate(u6, hasInvolvementRole) &
+       RoleAndDomain(u6) &
+       ClassOfInvolvementByReference(u7) &
+       classOfInvolved(u7, u6) &
+       ClassificationTemplate(u2, u7) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       InvolvementByReferenceTriple(u2, u3, u1) &
+       TemporalWholePartTemplate(u3, hasInvolved) &
+       PossibleIndividual(u3) &
+       BeginningTemplate(u4, u1) &
+       BeginningTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(u5, u4) &
+       RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% InvolvementByReferenceOfClassInActivity %
+
+InvolvementByReferenceOfClassInActivity(hasActivity, hasInvolved, hasInvolvementRole) <->
+Activity(hasActivity) &
+Class(hasInvolved) &
+Role(hasInvolvementRole) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ClassOfTemporalWholePartTemplate(u2, hasInvolved) &
+       Class(u2) &
+       InvolvementByReferenceTriple(u3, u2, u1) &
+       ClassificationTemplate(u3,u4) &
+       ClassOfInvolvementByReference(u4) &
+       classOfPart(u4, u5) &
+       ParticipatingRoleAndDomain(u5) &
+       SpecializationByRoleTemplate(u5, hasInvolvementRole) &
+       BeginningTemplate(u6, u1) &
+       PointInTime(u6) &
+       ClassOfIdentificationTemplate(u7, u6) &
+       RepresentationOfGregorianDateAndUtcTime(u7)) .
+
+% InvolvementByReferenceOfClassInActivityYesNo %
+
+InvolvementByReferenceOfClassInActivityYesNo(hasActivity, hasInvolved, hasInvolvementRole, hasApplicableYesNo) <->
+Activity(hasActivity) &
+Class(hasInvolved) &
+Role(hasInvolvementRole) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       ClassificationTemplate(u3, hasApplicableYesNo) &
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       ClassOfTemporalWholePartTemplate(u2, hasInvolved) &
+       Class(u2) &
+       InvolvementByReferenceTriple(u3, u2, u1) &
+       ClassificationTemplate(u3,u4) &
+       ClassOfInvolvementByReference(u4) &
+       ParticipatingRoleAndDomain(u5) &
+       SpecializationByRoleTemplate(u5, hasInvolvementRole) &
+       BeginningTemplate(u6, u1) &
+       PointInTime(u6) &
+       ClassOfIdentificationTemplate(u7, u6) &
+       RepresentationOfGregorianDateAndUtcTime(u7)) .
+
+% RecognitionOfInformation %
+
+RecognitionOfInformation(hasActivity, hasRecognized, hasRecognitionType) <->
+Activity(hasActivity) &
+Template(hasRecognized) &
+ClassOfRecognition(hasRecognitionType) &
+exists u1 exists u2 exists u3 exists u4(
+       TemporalWholePartTemplate(u1, hasActivity) &
+       Activity(u1) &
+       RecognitionTriple(u2, hasRecognized, u1) &
+       ClassificationTemplate(u2, hasRecognitionType) &
+       BeginningTemplate(u3, u1) &
+       PointInTime(u3) &
+       ClassOfIdentificationTemplate(u4, u3) &
+       RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% ActivityCausesBegunIndividual %
+
+ActivityCausesBegunIndividual(hasActivity, hasBegunIndividual) <->
+Activity(hasActivity) &
+PossibleIndividual(hasBegunIndividual) &
+exists u1 exists u2 exists u3(
+      CauseOfEventTemplatee(u1, hasActivity) &
+      Event(u1) &
+      BeginningTemplate(u1, hasBegunIndividual) &
+      BeginningTemplate(u2, hasBegunIndividual) &
+      CompositionOfIndividualTemplate(u2, u1) &
+      PointInTime(u2) &
+      ClassOfIdentificationTemplate(u3, u2) &
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+% ActivityCausesEndedIndividual %
+
+ActivityCausesEndedIndividual(hasActivity, hasEndedIndividual) <->
+Activity(hasActivity) &
+PossibleIndividual(hasEndedIndividual) &
+exists u1 exists u2 exists u3(
+      CauseOfEventTemplatee(u1, hasActivity) &
+      Event(u1) &
+      EndingTemplate(u1, hasEndedIndividual) &
+      EndingTemplate(u2, hasEndedIndividual) &
+      CompositionOfIndividualTemplate(u2, u1) &
+      PointInTime(u2) &
+      ClassOfIdentificationTemplate(u3, u2) &
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+% MeasuringOfTimeSeriesOfProperty %
+
+MeasuringPropertyOfIndividualOverAPeriodInTime(hasPossessor, hasPropertyType, valTimeSeries, hasScale, valStartTime, valEndTime) <->
+PhysicalObject(hasPossessor) &
+MultidimensionalPropertySpace(hasPropertyType) &
+ClassOfInformationRepresentation(valTimeSeries) &
+MultidimensionalScale(hasScale) &
+RepresentationOfGregorianDateAndUtcTime(valStartTime) &
+RepresentationOfGregorianDateAndUtcTime(valEndTime) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10(
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      PhysicalObject(u1) &
+      ClassificationTriple(u2, u4, u1) &
+      MultidimensionalPropertySpace(u4) &
+      ClassificationTemplate(u2, u3) &
+      ClassOfClassification(u3) &
+            classOfClassifier(u3, hasPropertyType) &
+      SpecializationTemplate(u4, hasPropertyType) &
+      PropertyQuantificationTriple(u5, u4, u6) & 
+      MultidimensionalNumberSpace(u6) &
+      ClassificationTemplate(u5, hasScale) &
+      ClassOfRepresentationOfThingTemplate(valTimeSeries, u6) &
+      RecognitionTemplate(u2, u7) &
+      Activity(u7) &
+      ClassificationTemplate(u7, u8) &
+      rdl_RDS9661922(u8) &
+      BeginningTemplate(u9, u7) &
+      BeginningTemplate(u9, u1) &
+      PointInTime(u9) &
+      ClassOfIdentificationTemplate(valStartTime, u9) &
+      EndingTemplate(u10, u7) &
+      EndingTemplate(u10, u1) &
+      PointInTime(u10) &
+      ClassOfIdentificationTemplate(valEndTime, u10)) .
+
+% ApprovalWithStatusOfRelationshipInTemplate %
+
+ApprovalWithStatusOfRelationshipInTemplate(hasApprover, hasStatus, hasRepresentingTemplate) <->
+PhysicalObject(hasApprover) &
+ClassOfApprovalByStatus(hasStatus) &
+Template(hasRepresentingTemplate) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasApprover) &
+      ApprovalTriple(u2, u3, u1) &
+      ClassificationTemplate(u2, hasStatus) &
+      Relationship(u3) &
+      RepresentationOfThingTemplate(u3, hasRepresentingTemplate) &
+      BeginningTemplate(u4, u1) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% InstallingPhysicalObjectInFunctionalLocation %
+
+InstallingPhysicalObjectInFunctionalLocation(hasInstallationActivity, hasDesignedObject, hasActualObject, hasInstalledObject) <->
+Activity(hasInstallationActivity) &
+PhysicalObject(hasDesignedObject) &
+PhysicalObject(hasActualObject) &
+PhysicalObject(hasInstalledObject) &
+TemporalWholePartTemplate(hasInstalledObject, hasActualObject) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      Activity(u1) &
+      TemporalWholePartTemplate(u1, hasInstallationActivity) &
+      CauseOfEventTemplate(u2, u1) &
+      Event(u2) &
+      BeginningTemplate(u2, hasInstalledObject) &
+      ImplementationTemplate(u3, x4) &
+      PhysicalObject(u3) &
+      TemporalWholePartTemplate(u3, hasDesignedObject) &
+      BeginningTemplate(u4, u3) &
+      CompositionOfIndividualTemplate(u2, u4) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% UninstallingPhysicalObjectInFunctionPlace %
+
+UninstallingPhysicalObjectInFunctionalLocation(hasUninstallationActivity, hasDesignedObject, hasActualObject, hasInstalledObject) <->
+Activity(hasUninstallationActivity) &
+PhysicalObject(hasDesignedObject) &
+PhysicalObject(hasActualObject) &
+PhysicalObject(hasInstalledObject) &
+TemporalWholePartTemplate(hasInstalledObject, hasActualObject) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      Activity(u1) &
+      TemporalWholePartTemplate(u1, hasUninstallationActivity) &
+      CauseOfEventTemplate(u2, u1) &
+      Event(u2) &
+      BeginningTemplate(u2, hasInstalledObject) &
+      ImplementationTemplate(u3, x4) &
+      PhysicalObject(u3) &
+      TemporalWholePartTemplate(u3, hasDesignedObject) &
+      BeginningTemplate(u4, u3) &
+      CompositionOfIndividualTemplate(u2, u4) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - CLASSIFICATION
+%
+
+% ClassificationOfIndividual %
+
+ClassificationOfIndividual(hasClassified, hasClassifier) <->
+PossibleIndividual(hasClassified) &
+ClassOfIndividual(hasClassifier) &
+exists u1 exists u2 exists u3(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasClassified) &
+      ClassificationTemplate(u1, hasClassifier) &
+      PointInTime(u2) &
+      BeginningTemplate(u2, u1) &
+      RepresentationOfGregorianDateAndUtcTime(u3) &
+      ClassOfIdentificationTemplate(u3, u2)) .
+
+% NonComplianceWithClassOfIndividual %
+
+NoncomplianceWithClassOfIndividual(hasNonComplier, hasTargetClass) <->
+PossibleIndividual(hasNonComplier) &
+ClassOfIndividual(hasTargetClass) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasNonComplier) &
+      rdl_RDS2221036(u2) &
+      ClassificationTemplate(u3, u2) &
+      ClassificationTriple(u1, u1, hasTargetClass) &
+      BeginningTemplate(u4, u1) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4)&
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% IndividualIsMemberOfClassOfIndividualYesNo %
+
+IndividualIsMemberOfClassOfIndividualYesNo(hasIndividual, hasMemberYesNo, hasClass) <->
+PossibleIndividual(hasIndividual) &
+ClassOfAssertion(hasMemberYesNo) &
+ClassOfIndividual(hasClass) &
+exists u1 exists u2 exists u3 exists u4(
+      PossibleIndividual(u2) &
+      TemporalWholePartTemplate(u2, hasIndividual) &
+      ClassificationTemplate(u1, u2) &
+      ClassificationTriple(u1, u2, hasClass) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3)&
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - DESCRIPTION
+%
+
+% ClassifiedDescriptionOfIndividual %
+
+ClassifiedDescriptionOfIndividual(hasDescribed, hasDescriptor, hasDescriptionType) <->
+PossibleIndividual(hasDescribed) &
+ClassOfInformationRepresentation(hasDescriptor) &
+ClassOfClassOfDescription(hasDescriptionType) &
+exists u1 exists u2 exists u3 exists u4(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasDescribed) &
+      ClassOfDescriptionTriple(u2, hasDescriptor, u1) &
+      ClassificationTemplate(u2, hasDescriptionType) &
+      PointInTime(u3) &
+      BeginningTemplate(u3, u1) &
+      ClassOfIdentificationTemplate(u4, u3)&
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% DescriptionOfIndividualWithClassifiedSign %
+
+DescriptionOfIndividualWithClassifiedSign(hasDescribed, hasSign, hasSignType) <->
+PossibleIndividual(hasDescribed) &
+PossibleIndividual(hasSign) &
+ClassOfInformationObject(hasSignType) &
+ClassificationTemplate(hasSign, hasSignType) &
+exists u1 exists u2 exists u3(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasDescribed) &
+      DescriptionTemplate(hasSign, u1) &
+      PointInTime(u2) &
+      BeginningTemplate(u2, u1) &
+      ClassOfIdentificationTemplate(u3, u2)&
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - DOCUMENT
+%
+
+% DocumentInitiation %
+
+DocumentInitiation(hasInitiatedDocument, hasActivity, valInitiationDate) <->
+ClassOfInformationObject(hasInitiatedDocument) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valInitiationDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9(
+      ClassOfTemporalWholePartTemplate(u1, hasInitiatedDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationByDomainTemplate(u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, u2) &
+      rdl_RDS13652847(u2) &
+      ClassOfParticipationTriple(u4, u3, u6) &
+      ClassOfActivity(u6) &
+      SpecializationTemplate(u6, u5) &
+      rdl_RDS2225302(u5) &
+      ClassificationTemplate(hasActivity, u6) &
+      ParticipationTriple(u7, u8, hasActivity) &
+      ClassificationTemplate(u7, u4) &
+      PhysicalObject(u8) &
+      ClassificationTemplate(u8, u3) &
+      EndingTemplate(u9, hasActivity) &
+      PointInTime(u9) &
+      ClassOfIdentificationTemplate(valInitiationDate, u9)) .
+
+% DocumentCreation %
+
+DocumentCreation(hasCreatedDocument, hasMember, hasActivity, valCreationDate) <->
+ClassOfInformationObject(hasCreatedDocument) &
+PhysicalObject(hasMember) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valCreationDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      ClassOfTemporalWholePartTemplate(u1, hasCreatedDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationByDomainTemplate(u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, u2) &
+      rdl_RDS13652847(u2) &
+      ClassOfParticipationTriple(u4, u3, u6) &
+      ClassOfActivity(u6) &
+      SpecializationTemplate(u6, u5) &
+      rdl_RDS2225303(u5) &
+      ClassificationTemplate(hasActivity, u6) &
+      ParticipationTriple(u7, hasMember, hasActivity) &
+      ClassificationTemplate(u7, u4) &
+      ClassificationTemplate(hasMember, u3) &
+      EndingTemplate(u8, hasActivity) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valCreationDate, u8)) .
+
+% DocumentReview %
+
+DocumentReview(hasReviewedDocument, hasmember, hasStatus, hasActivity, valReviewDate) <->
+ClassOfInformationObject(hasReviewedDocument) &
+InformationObject(hasmember) &
+Status(hasStatus) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valReviewDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      SpecializationByDomainTemplate(u2, hasReviewedDocument) &
+      ParticipatingRoleAndDomain(u2) &
+      SpecializationByRoleTemplate(u2, u1) &
+      rdl_RDS13652847(u1) &
+      ClassOfParticipationTriple(u3, u2, u5) &
+      ClassOfActivity(u5) &
+      SpecializationTemplate(u5, u4) &
+      rdl_RDS2228376(u4) &
+      ClassificationTemplate(hasActivity, u5) &
+      ParticipationTriple(u6, hasmember, hasActivity) &
+      ClassificationTemplate(hasmember, u2) &
+      ClassificationTemplate(hasmember, hasStatus) &
+      EndingTemplate(u7, hasActivity) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valReviewDate, u7)) .
+
+% DocumentApproval %
+
+DocumentApproval(hasApprovedDocument, hasMember, hasStatus, hasActivity, valApprovalDate) <->
+ClassOfInformationObject(hasApprovedDocument) &
+InformationObject(hasMember) &
+Status(hasStatus) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valApprovalDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      SpecializationByDomainTemplate(u2, hasApprovedDocument) &
+      ParticipatingRoleAndDomain(u2) &
+      SpecializationByRoleTemplate(u2, u1) &
+      rdl_RDS13652847(u1) &
+      ClassOfParticipationTriple(u3, u2, u5) &
+      ClassOfActivity(u5) &
+      SpecializationTemplate(u5, u4) &
+      rdl_RDS2225305(u4) &
+      ClassificationTemplate(hasActivity, u5) &
+      ParticipationTriple(u6, hasMember, hasActivity) &
+      ClassificationTemplate(hasMember, u2) &
+      ClassificationTemplate(hasMember, hasStatus) &
+      EndingTemplate(u7, hasActivity) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valApprovalDate, u7)) .
+
+% DocumentPublication %
+
+DocumentPublication(hasPublishedDocument, hasMember, hasStatus, hasActivity, valPublicationDate) <->
+ClassOfInformationObject(hasPublishedDocument) &
+InformationObject(hasMember) &
+Status(hasStatus) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valPublicationDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      SpecializationByDomainTemplate(u2, hasPublishedDocument) &
+      ParticipatingRoleAndDomain(u2) &
+      SpecializationByRoleTemplate(u2, u1) &
+      rdl_RDS13652847(u1) &
+      ClassOfParticipationTriple(u3, u2, u5) &
+      ClassOfActivity(u5) &
+      SpecializationTemplate(u5, u4) &
+      rdl_RDS2229212(u4) &
+      ClassificationTemplate(hasActivity, u5) &
+      ParticipationTriple(u6, hasMember, hasActivity) &
+      ClassificationTemplate(hasMember, u2) &
+      ClassificationTemplate(hasMember, hasStatus) &
+      EndingTemplate(u7, hasActivity) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valPublicationDate, u7) .
+
+% PlannedDocumentPublication %
+
+PlannedDocumentPublication(hasToBePublishedDocument, hasStatus, hasPlannedActivity,  valPlannedPublicationDate) <->
+ClassOfInformationObject(hasToBePublishedDocument) &
+Status(hasStatus) &
+Activity(hasPlannedActivity) &
+RepresentationOfGregorianDateAndUtcTime(valPlannedPublicationDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9(
+      SpecializationByDomainTemplate(u2, hasToBePublishedDocument) &
+      ParticipatingRoleAndDomain(u2) &
+      SpecializationByRoleTemplate(u2, u1) &
+      rdl_RDS13652847(u1) &
+      ClassOfParticipationTriple(u3, u2, u5) &
+      ClassOfActivity(u5) &
+      SpecializationTemplate(u5, u4) &
+      rdl_RDS2229212(u4) &
+      ClassificationTemplate(hasPlannedActivity, u5) &
+      NonActualIndividual(u9) &
+      rdf_type(u7, u8) &
+      rdf_type(hasPlannedActivity, u8)) &
+      InformationObject(u7) &
+      ParticipationTriple(u6, u7, hasPlannedActivity) &
+      ClassificationTemplate(u7, u2) &
+      ClassificationTemplate(u7, hasStatus) &
+      EndingTemplate(u9, hasPlannedActivity) &
+      PointInTime(u9) &
+      ClassOfIdentificationTemplate(valPlannedPublicationDate, u9)) .
+
+% DocumentReceipt %
+
+DocumentReceipt(hasReceivedDocument, hasMember, hasActivity, valReceivalDate) <->
+ClassOfInformationObject(hasreceivedDocument) &
+PhysicalObject(hasMember) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valReceivalDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      ClassOfTemporalWholePartTemplate(u1, hasreceivedDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationByDomainTemplate(u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, u2) &
+      rdl_RDS2229247(u2) &
+      ClassOfParticipationTriple(u4, u3, u6) &
+      ClassOfActivity(u6) &
+      SpecializationTemplate(u6, u5) &
+      rdl_RDS2229246(u5) &
+      ClassificationTemplate(hasActivity, u6) &
+      ParticipationTriple(u7, hasMember, hasActivity) &
+      ClassificationTemplate(u7, u4) &
+      ClassificationTemplate(hasMember, u3) &
+      EndingTemplate(u8, hasActivity) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valReceivalDate, u8)) .
+
+% DocumentPublishingWithResponsibleParty %
+
+DocumentPublishingWithResponsibleParty(hasPublishedDocument, hasMember, hasActivity, hasPublicationStatus, valPublishingDate, hasResponsibleParty, hasPartyType) <->
+ClassOfInformationObject(hasPublishedDocument) &
+PhysicalObject(hasMember) &
+Activity(hasActivity) &
+Status(hasPublicationStatus) &
+RepresentationOfGregorianDateAndUtcTime(valPublishingDate) &
+PhysicalObject(hasResponsibleParty) &
+ClassOfPhysicalObject(hasPartyType) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10 exists u11 exists u12(
+      rdl_RDS2229212(u6) &
+      SpecializationTemplate(u1, u6) &
+      ClassOfActivity(u1) &
+      ClassificationTemplate(hasActivity, u1) &
+      ClassOfParticipationTriple(u2, u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, u4) &
+      rdl_RDS13652847(u4) &
+      SpecializationByDomainTemplate(u3, hasPublishedDocument) &
+      ParticipationTriple(u5, hasMember, hasActivity) &
+      ClassificationTemplate(u5, u2) &
+      ClassificationTemplate(hasMember, u3) &
+      CauseOfEventTemplate(u7, hasActivity) &
+      Event(u7) &
+      BeginningTemplate(u7, u8) &
+      PhysicalObject(u8) &
+      TemporalWholePartTemplate(u8, hasMember) &
+      ClassificationTemplate(u8, x4) &
+      CompositionOfIndividualTemplate(u7, u9) &
+      PointInTime(u9) &
+      ClassOfIdentificationTemplate(x5, u9)) &
+      ParticipationTemplate(u10, hasActivity) &
+      PhysicalObject(u10) &
+      TemporalWholePartTemplate(u10, hasResponsibleParty) &
+      ClassificationTemplate(u10, u11) &
+      ParticipatingRoleAndDomain(u11) &
+      SpecializationByDomainTemplate(u11, hasPartyType) &
+      SpecializationByRoleTemplate(u11, u12) &
+      Role(u12) .
+
+% DocumentRevision %
+
+DocumentRevision(hasRevisedDocument, hasMember, hasActivity, valRevisionDate) <->
+ClassOfInformationObject(hasRevisedDocument) &
+PhysicalObject(hasMember) &
+Activity(hasActivity) &
+RepresentationOfGregorianDateAndUtcTime(valRevisionDate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      ClassOfTemporalWholePartTemplate(u1, hasRevisedDocument) &
+      ClassOfInformationObject(u1) &
+      SpecializationByDomainTemplate(u3, u1) &
+      ParticipatingRoleAndDomain(u3) &
+      SpecializationByRoleTemplate(u3, u2) &
+      rdl_RDS13652847(u2) &
+      ClassOfParticipationTriple(u4, u3, u6) &
+      ClassOfActivity(u6) &
+      SpecializationTemplate(u6, u5) &
+      rdl_RDS2225304(u5) &
+      ClassificationTemplate(hasMember, u6) &
+      ParticipationTriple(u7, hasActivity, hasMember) &
+      ClassificationTemplate(u7, u4) &
+      ClassificationTemplate(hasActivity, u3) &
+      EndingTemplate(u8, hasMember) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valRevisionDate, u8)) .
+
+% InformationOnIndividualDocument %
+
+InformationOnIndividualDocument(hasDocument, hasDocumentType, hasInformation) <->
+InformationObject(hasDocument) &
+ClassOfInformationObject(hasDocumentType) &
+ClassOfinformationRepresentation(hasInformation) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+     TemporalWholePartTemplate(u1, hasDocument) &
+     InformationObject(u1) &
+     ClassificationTemplate(u1, u2) &
+     ClassOfTemporalWholePartTemplate(u2, hasDocumentType) &
+     ClassOfInformationObject(u2) &
+     SpecializationTemplate(u2, u3) &
+     ClassOfTemporalWholePartTemplate(u3, hasInformation) &
+     ClassOfinformationRepresentation(u3) &
+     BeginningTemplate(u4, u1) &
+     PointInTime(u4) &
+     ClassOfIdentificationTemplate(u5, u4) &
+     RepresentationOfGregorianDateAndUtcTime(u5) .
+
+% ReferenceToIndividualOnDocument %
+
+ReferenceToIndividualOnDocument(hasReferred, hasDocument) <->
+PossibleIndividual(hasReferred) &
+ClassOfInformationObject(hasDocument) &
+exists u1 exists u2 exists u3(
+      TemporalWholePartTemplate(u1, hasReferred) &
+      PossibleIndividual(u1) &
+      ClassOfRepresentationofThingTemplate(u2, u1) &
+      ClassOfInformationRepresentation(u2) &
+      SpecializationTemplate(u3, u2) &
+      ClassOfInformationObject(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasDocument)) .
+
+% RepresentationOfIndividual %
+
+RepresentationOfIndividual(hasRepresented, hasRepresentation) <->
+PossibleIndividual(hasRepresented) &
+ClassOfInformationRepresentation(hasRepresentation) &
+exists u1(
+      TemporalWholePartTemplate(u1, hasRepresented) &
+      PossibleIndividual(u1) &
+      ClassOfRepresentationOfThingTemplate(hasRepresentation, u1)) .
+
+% RepresentationOfIndividualOnDocument %
+
+RepresentationOfIndividualOnDocument(hasRepresented, hasRepresentation, hasDocument) <->
+PossibleIndividual(hasRepresented) &
+ClassOfInformationRepresentation(hasRepresentation) &
+ClassOfInformationObject(hasDocument) &
+exists u1 exists u2(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasRepresented) &
+      ClassOfRepresentationofThingTemplate(hasRepresentation, u1) &
+      ClassOfInformationObject(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasDocument) &
+      SpecializationTemplate(u2, hasRepresentation)) .
+
+% RepresentationOfIndividualOnDocumentWithTemplateSet %
+
+RepresentationOfIndividualOnDocumentWithTemplateSet(hasRepresented, hasDocument, hasTemplateSet, hasRepresentation) <->
+PossibleIndividual(hasRepresented) &
+ClassOfInformationObject(hasDocument) &
+EnumeratedSetOfClass(hasTemplateSet) &
+ClassOfInformationRepresentation(hasRepresentation) &
+exists u1 exists u2(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasRepresented) &
+      ClassOfRepresentationOfThingTemplate(hasRepresentation, u1) &
+      ClassOfInformationObject(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasDocument) &
+      SpecializationTemplate(u2, hasRepresentation) &
+      UnionOfSetOfClassTemplate(hasTemplateSet, hasRepresentation)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - EXISTENCE
+%
+
+% IndividualHasTemporalPart %
+
+IndividualHasTemporalPart(hasTemporalWhole, hasTemporalPart) <->
+PossibleIndividual(hasTemporalWhole) &
+PossibleIndividual(hasTemporalPart) &
+TemporalWholePartTemplate(hasTemporalPart, hasTemporalWhole).
+
+% BeginningOfIndividualAtEvent %
+
+BeginningOfIndividualAtClassifiedEvent(hasBegunIndividual, hasEvent) <->
+PossibleIndividual(hasBegunIndividual) &
+Event(hasEvent) &
+exists u1 exists u2(
+       BeginningTemplate(hasEvent, hasBegunIndividual) &
+       BeginningTemplate(u1, hasBegunIndividual) &
+       CompositionOfIndividualTemplate(u1, hasEvent) &
+       PointInTime(u1) &
+       ClassOfidentificationTemplate(u2, u1) &
+       RepresentationOfGregorianDateAndUtcTime(u2)) .
+
+% EndingOfIndividualAtEvent %
+
+EndingOfIndividualAtClassifiedEvent(hasEndedIndividual, hasEvent) <->
+PossibleIndividual(hasEndedIndividual) &
+Event(hasEvent) &
+exists u1 exists u2(
+       EndingTemplate(hasEvent, hasEndedIndividual) &
+       CompositionOfIndividualTemplate(u1, hasEvent) &
+       EndingTemplate(u1, hasEndedIndividual) &
+       PointInTime(u1) &
+       ClassOfidentificationTemplate(u2, u1) &
+       RepresentationOfGregorianDateAndUtcTime(u2)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - FUNCTION
+%
+
+% SkillOfAPerson %
+
+SkillOfAPerson(hasPerson, hasSkill) <->
+erson(hasPerson) &
+ClassOfRelationshipWithSignature(hasSkill) &
+exists u1 exists u2 exists u3 exists u4(
+       Person(u1) &
+       TemporalWholePartTemplate(u1, hasPerson) &
+       SpecializationTemplate(u2, hasSkill) &
+       ClassOfRelationshipWithRelatedEnd1(u2) &
+           related(u2, u1) &
+       BeginningTemplate(u3, u1) &
+       PointInTime(u3) &
+       ClassOfIdentificationTemplate(u4, u3) &
+       RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - IDENTIFICATION
+%
+
+% IdentificationOfIndividual %
+
+ClassifiedIdentificationOfIndividual(hasIdentified, hasIdentifier, hasIdentificationType) <->
+PossibleIndividual(hasIdentified) &
+ClassOfInformationRepreseentation(hasIdentifier) &
+ClassOfClassOfIdentification(hasIdentificationType) &
+exists u1 exists u2 exists u3 exists u4(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasIdentified) &
+      ClassOfIdentificationTriple(u2, hasIdentifier, u1) &
+      ClassificationTemplate(u2, hasIdentificationType) &
+      PointInTime(u3) &
+      BeginningTemplate(u3, u1) &
+      ClassOfidentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% LabelChangeOfIndividual %
+
+LabelChangeOfIndividual(hasIdentified, valOldIdentifier, valNewIdentifier) <->
+PossibleIndividual(hasIdentified) &
+ExpressString(valOldIdentifier) &
+ExpressString(valNewIdentifier) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasIdentified) &
+      ClassOfIdentificationTriple(u2, valOldIdentifier, u1) &
+      ClassificationTemplate(u2, u5) &
+      EndingTemplate(u6, u1) &
+      PossibleIndividual(u3) &
+      TemporalWholePartTemplate(u3, hasIdentified) &
+      ClassOfIdentificationTriple(u4, valNewIdentifier, u3) &
+      ClassificationTemplate(u4, u5 &
+      BeginmingTemplate(u3, u5) &
+      PointInTime(u6) &
+      ClassOfIdentificationTemplate(u7, u6) &
+      RepresentationOfGregorianDateAndUtcTime(u7);
+
+% IdentificationOfIndividualWithClassifiedSign %
+
+IdentificationOfIndividualWithClassifiedSign(hasIdentified, hasSign, hasSignType) <->
+PossibleIndividual(hasIdentified) &
+PossibleIndividual(hasSign) &
+ClassOfInformationObject(hasSignType) &
+ClassificationTemplate(hasSign, hasSignType) &
+exists u1 exists u2 exists u3(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasIdentified) &
+      IdentificationTemplate(hasSign, u1) &
+      PointInTime(u2) &
+      BeginningTemplate(u2, u1) &
+      ClassOfIdentificationTemplate(u3, u2)&
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - PROPERTY-INDIRECT
+%
+
+% IndividualHasIndirectPropertyRange %
+
+IndividualHasIndirectPropertyRange(hasPossessor, hasIndirectPropertyType, valLowerBound, valUpperBound, hasScale) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ExpressReal(valLowerBound) &
+ExpressReal(valUpperBound) &
+Scale(hasScale) &
+exists u1 exists u2 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9 exists u10 exists u11(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasIndirectPropertyType) &
+      PropertyRange(u3) &
+      LowerBoundOfPropertyRangeTemplate(u4, u3) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      RealNumber(u6) &
+      ClassOfIdentificationTemplate(valLowerBound, u6) &
+      UpperBoundOfPropertyRangeTemplate(u7, u3) &
+      Property(u4) &
+      PropertyQuantificationTriple(u8, u7, u9) &
+      ClassificationTemplate(u8, hasScale) &
+      RealNumber(u9) &
+      ClassOfIdentificationTemplate(valUpperBound, u9) &
+      BeginningTemplate(u10, u1) &
+      PointInTime(u10) &
+      ClassOfIdentifcationTemplate(u11, u10)&
+      RepresentationOfGregorianDateAndUtcTime(u11)) .
+
+
+
+
+
+% IndividualHasIndirectPropertyWithValue %
+
+IndividualHasIndirectPropertyWithValue(hasPossessor, hasIndirectPropertyType, valPropertyValue, hasScale) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ExpressReal(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      Property(u3) &
+      PropertyQuantificationTriple(u4, u3, u5) &
+      RealNumber(u5) &
+      PointInTime(u6) &
+      RepresentationOfGregorianDateAndUtcTime(u7) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      ClassificationTemplate(u2, hasIndirectPropertyType) &
+      ClassificationTemplate(u4, hasScale) &
+      ClassOfIdentificationTemplate(valPropertyValue, u5) &
+      BeginningTemplate(u6, u1) &
+      ClassOfIdentificationTemplate(u7, u6)) .
+
+% IndividualHasIndirectPropertyWithMaximumValueInPeriodInTime %
+
+IndividualHasIndirectPropertyWithMaximumValueInPeriodInTime(hasPossessor, hasIndirectPropertyType, valMaximumValue, hasScale, valStartTime, valEndTime) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ExpressReal(valMaximumValue) &
+Scale(hasScale) &
+RepresentationOfGregorianDateAndUtcTime(valStartTime) &
+RepresentationOfGregorianDateAndUtcTime(valEndTime) &
+exists u1 exists u2 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasIndirectPropertyType) &
+      PropertyRange(u3) &
+      FunctionalMappingTriple(u9, u4, u3) &
+      ClassificationTemplate(u9, u10) &
+      rdl_RDS11565060(u10) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      RealNumber(u6) &
+      ClassOfIdentificationTemplate(valMaximumValue, u6) &
+      BeginningTemplate(u7, u1) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valStartTime, u7) &
+      EndingTemplate(u8, u1) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valEndTime, u8)) .
+
+% IndividualHasIndirectPropertyWithAverageValueInPeriodInTime %
+
+IndividualHasIndirectPropertyWithAverageValueInPeriodInTime(hasPossessor, hasIndirectPropertyType, valAverageValue, hasScale, valStartTime, valEndTime) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ExpressReal(valAverageValue) &
+Scale(hasScale) &
+RepresentationOfGregorianDateAndUtcTime(valStartTime) &
+RepresentationOfGregorianDateAndUtcTime(valEndTime) &
+exists u1 exists u2 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasIndirectPropertyType) &
+      PropertySpace(u3) &
+      FunctionalMappingTriple (u9, u3, u4) &
+      ClassificationTemplate(u9, u10) &
+      rdl_RDS11567220(u10) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      RealNumber(u6) &
+      ClassOfIdentificationTemplate(valAverageValue, u6) &
+      BeginningTemplate(u7 , u1) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valStartTime, u7) &
+      EndingTemplate(u8, u1) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valEndTime, u8)) .
+
+% IndividualHasIndirectPropertyWithMinimumValueInPeriodInTime %
+
+IndividualHasIndirectPropertyWithMinimumValueInPeriodInTime(hasPossessor, hasIndirectPropertyType, valMinximumValue, hasScale, valStartTime, valEndTime) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasIndirectPropertyType) &
+ExpressReal(valMinimumValue) &
+Scale(hasScale) &
+RepresentationOfGregorianDateAndUtcTime(valStartTime) &
+RepresentationOfGregorianDateAndUtcTime(valEndTime) &
+exists u1 exists u2 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasIndirectPropertyType) &
+      PropertyRange(u3) &
+      FunctionalMappingTriple(u9, u4, u3) &
+      ClassificationTemplate(u9, u10) &
+      rdl_RDS11565105(u10) &
+      Property(u4) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      RealNumber(u6) &
+      ClassOfIdentificationTemplate(valMinimumValue, u6) &
+      BeginningTemplate(u7, u1) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(valStartTime, u7) &
+      EndingTemplate(u8, u1) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(valEndTime, u8)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - LOCATION
+%
+
+% ContainmentOfAnIndividual %
+
+ContainmentOfAnIndividual(hasContainer, hasContained) <->
+PossibleIndividual(hasContainer) &
+PossibleIndividual(hasContained) &
+exists u1 exists u2 exists u3 exists u4(
+       TemporalWholePartTemplate(u1, hasContainer) &
+       PossibleIndividual(u1) &
+       ContainmentOfIndividualTemplate(u2,u1) &
+       TemporalWholePartTemplate(u2, hasContained) &
+       PossibleIndividual(u2) &
+       BeginningTemplate(u3, u1) &
+       BeginningTemplate(u3, u2) &
+       PointInTime(u3) &
+       ClassOfIdentificationTemplate(u4, u3) &
+       RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% RelativeLocationOfIndividual %
+
+RelativeLocationOfIndividual(hasLocated, hasLocator, hasRelativeLocationType) <->
+PossibleIndividual(hasLocated) &
+PossibleIndividual(hasLocator) &
+ClassOfRelativeLocation(hasRelativeLocationType) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+       TemporalWholePartTemplate(u1, hasLocated) &
+       PossibleIndividual(u1) &
+       RelativeLocationTriple(u2, u1, u3) &
+       ClassificationTemplate(u2, hasRelativeLocationType) &
+       PossibleIndividual(u3) &
+       TemporalWholePartTemplate(u3, hasLocator) &
+       BeginningTemplate(u4, u1) &
+       BeginningTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(u5, u4) &
+       RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% RelativeLocationOfIndividualWithDistance %
+
+RelativeLocationOfIndividualWithDistance(hasLocated, hasLocator, hasRelativeLocationType, hasPath, hasDistanceValue, hasScale)<->
+PossibleIndividual(hasLocated) &
+PossibleIndividual(hasLocator) &
+ClassOfRelativeLocation(hasRelativeLocationType) &
+PossibleIndividual(hasPath) &
+ExpressReal(hasDistanceValue) &
+Scale(hasScale) &
+exists u1, exists u2, exists u3, exists u4, exists u5, exists u6, exists u7, exists u8, exists u9, exists u10, exists u11, exists u12, exists u13, exists u14, exists u15, exists u16, exists u17, exists u18, exists u19, exists u20(
+	PossibleIndividual(u7) &
+	TemporalWholePartTemplate(u7, hasLocated) &
+	PossibleIndividual(u8) &
+	TemporalWholePartTemplate(u8, hasLocator) &
+	RelativeLocationTriple(u1, u7, u8) &
+	ClassificationTemplate(u1, hasRelativeLocationType) &
+	ConnectionOfIndividualTriple(u3, u8, u7) &
+	ClassificationTemplate(u3, u2) &
+	rdl:RDS2229348(u2) &
+	rdl:RDS2229349(u4) &
+	ClassificationTemplate(u5, u4) &
+	IndividualUsedInConnectionTriple(u5, u3, u6) &
+	PossibleIndividual(u6) &
+	TemporalWholePartTemplate(u6, hasPath) &
+	PointInTime(u9) &
+	BeginningTemplate(u9, u6) &
+	BeginningTemplate(u9, u7) &
+	BeginningTemplate(u9, u8) &
+	BeginningTemplate(u9, u12) &
+	ClassOfIdentificationTemplate(u10, u9) &
+	RepresentationOfGregorianDateAndUtcTime(u10) &
+	rdl:RDS22201948(u11) &
+	ClassificationTemplate(hasPath, u11) &
+	TemporalWholePartTemplate(u12, hasPath) &
+	PossibleIndividual(u12) &
+	ClassificationTemplate(u12, u14) &
+	Shape(u14) &
+	ClassificationTemplate(u14, u13) &
+	rdl:RDS2225759(u13) &
+	ShapeDimension(u16) &
+	DimensionOfShapeTemplate(u16, u14) &
+	ClassificationTemplate(u16, u15) &
+	PropertyForShapeDimensionTemplate(u18, u16) &
+	Property(u18) &
+	rdl:RDS373094(u17) &
+	ClassificationTemplate(u18, u17) &
+	PropertyQuantificationTriple(u19, u18, u20) &
+	ClassificationTemplate(u19, hasScale) &
+	RealNumber(u20) &
+	ClassOfIdentificationTemplate(valDistanceValue, u20) ) .
+
+% PositionOfIndividualIn2DCoordinateSystem %
+
+PositionOfAnIndividualIn2DCoordinateSystem(hasPositioned, hasCoordinateSystem, valCoordinate1, valCoordinate2) <->
+SpatialLocation(hasPositioned) &
+CoordinateSystem(hasCoordinateSystem) &
+ExpressReal(valCoordinate1) &
+ExpressReal(valCoordinate2) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      SpatialLocation(u1) &
+      TemporalWholePartTemplate(u1, hasPositioned) &
+      ClassificationTemplate(u1, u2) &
+      MultidimensionalProperty(u2) &
+      PropertyQuantificationTriple(u3, u4, u5) &
+      ClassificationTemplate(u3, hasCoordinateSystem) &
+      MultidimensionalNumber(u4) &
+            hasElement1(u4, u5) &
+            hasElement2(u4, u6) &
+      ClassOfIdentificationTemplate(valCoordinate1, u5) &
+      ClassOfIdentificationTemplate(valCoordinate2, u6) &
+      BeginningTemplate(u7, u1) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(u8, u7) &
+      RepresentationOfGregorianDateAndUtcTime(u8)) .
+
+% PositionOfIndividualIn3DCoordinateSystem %
+
+PositionOfAnIndividualIn3DCoordinateSystem(hasPositioned, hasCoordinateSystem, valXCoordinate, valYCoordinate, valZCoordinate) <->
+SpatialLocation(hasPositioned) &
+CoordinateSystem(hasCoordinateSystem) &
+ExpressReal(valXCoordinate) &
+ExpressReal(valYCoordinate) &
+ExpressReal(valZCoordinate) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8 exists u9(
+      SpatialLocation(u1) &
+      TemporalWholePartTemplate(u1, hasPositioned) &
+      ClassificationTemplate(u7, u1) &
+      dm:MultidimensionalProperty(u2) &
+      PropertyQuantificationTriple(u3, u2, u4) &
+      ClassificationTemplate(u3, hasCoordinateSystem) &
+      MultidimensionalNumber(u4) &
+            hasElement1(u4, u5) &
+            hasElement2(u4, u6) &
+            hasElement3(u4, u7) &
+      ClassOfIdentificationTemplate(valXCoordinate, u5) &
+      ClassOfIdentificationTemplate(valYCoordinate, u6) &
+      ClassOfIdentificationTemplate(valZCoordinate, u7) &
+      BeginningTemplate(u8, u1) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(u9, u8) &
+      RepresentationOfGregorianDateAndUtcTime(u9)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - MATERIAL
+%
+
+% ClassificationOfIndividualWithClassOfMatter %
+
+ClassificationOfIndividualWithCompoundType(hasClassified, hasClassifier) <->
+PhysicalObject(hasClassified) &
+ClassOfMatter(hasClassifier) &
+exists u1 exists u2 exists u3(
+      PhysicalObject(u1) &
+      TemporalWholePartTemplate(u1, hasClassified) &
+      ClassificationTemplate(u1, hasClassifier) &
+      BeginningTemplate(u2, u1) &
+      PointInTime(u2) &
+      ClassOfIdentificationTemplate(u3, u2) &
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+% ClassificationOfIndividualWithPhase %
+
+ClassificationOfIndividualWithPhase(hasClassified, hasClassifier) <->
+PhysicalObject(hasClassified) &
+Phase(hasClassifier) &
+exists u1 exists u2 exists u3(
+      PhysicalObject(u1) &
+      TemporalWholepartTemplate(u1, hasClassified) &
+      ClassificationTemplate(u1, hasClassifier) &
+      BeginningTemplate(u2, u1) &
+      PointInTime(u2) &
+      ClassOfIdentificationTemplate(u3, u2) &
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - 
+%
+
+% CounterpartRelationship %
+
+BeginningOfTemporalPart(x1, x2) <->
+PossibleIndividual(x1) &
+PossibleIndividual(x2) &
+TemporalWholePartTemplate(x2, x1) &
+exists u1 exists u2(
+       PointInTime(u1) &
+       BeginningTemplate(u1, x2) &
+       RepresentationOfGregorianDateAndUtcTime(u2) &
+       ClassOfIdentificationTemplate(u2, u1)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - RELATIONSHIP-OTHER
+%
+
+% RelationshipBetweenTwoIndividuals %
+
+IndividualIsDeliverableOfIndividual(hasIndividualSubject, hasIndividualObject, hasRelationshipType) <->
+PossibeIndividual(hasIndividualSubject) &
+PossibeIndividual(hasIndividualObject) &
+ClassOfRelationshipWithSignature(hasRelationshipType) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+       TemporalWholePartTemplate(u1, hasIndividualSubject) &
+       PossibeIndividual(u1) &
+       ClassificationTemplate(u2, hasRelationshipType) &
+       OtherRelationshipTriple(u2, u1, u3) &
+       TemporalWholePartTemplate(u3, hasIndividualObject) &
+       PossibleIndividual(u3) &
+       BeginningTemplate(u4, u1) &
+       BeginningTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(u5, u4) &
+       RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% RelationshipBetweenIndividualAndClassOfIndividual %
+
+RelationshipBetweenIndividualAndClassOfIndividual(hasIndividualSubject, hasClassObject, hasRelationshipType) <->
+PossibleIndividual(hasIndividualSubject) &
+ClassOfIndividual(hasClassObject) &
+ClassOfRelationshipWithSignature(hasRelationshipType) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+       PossibleIndividual(u1) &
+       TemporalWholePartTemplate(u1, hasIndividualSubject) &
+       ClassOfIndividual(u3) &
+       ClassOfTemporalWholePartTemplate(u3, hasClassObject) &
+       ClassOfRelationshipWithRelatedEnd1Triple(u2, u1, u3) &
+       ClassificationTemplate(u2, hasRelationshipType) &
+       BeginningTemplate(u4, u1) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(u5, u4) &
+       RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% ImplementationOfIndividualByIndividual %
+
+ImplementationOfIndividualByIndividual(hasImplementer, hasImplemented) <->
+PossibleIndividual(hasImplementer) &
+PossibleIndividual(hasImplemented) &
+exixts u1 exists u2(
+	PossibleIndividual(u1) &
+	TemporalWholePartTemplate(u1, hasImplementer) &
+	PossibleIndividual(u2) &
+	TemporalWholePartTemplate(u2, hasImplemented) &
+	ImplementationTemplate(u2, u1)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - PROPERTY AND STATUS
+%
+
+% IndividualHasPropertyWithValue %
+
+IndividualHasPropertyWithValue(hasPropertyPossessor, hasPropertyType, valPropertyValue, hasScale) <->
+PossibleIndividual(hasPropertyPossessor) &
+ClassOfProperty(hasPropertyType) &
+ClassOfExpressInformationRepresentation(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPropertyPossessor) &
+      Property(u2) &
+      ClassificationTemplate(u1, u2 &
+      ClassificationTemplate(u2, hasPropertyType) &
+      PropertyQuantificationTriple(u3, u2, u4) &
+      ClassificationTemplate(u3, hasScale) &
+      ArithmeticNumber(u4) &
+      ClassOfIdentificationTemplate(valPropertyValue, u4) &
+      PointInTime(u5) &
+      BeginningTemplate(u5, u1) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% IndividualHasMonetaryValue %
+
+IndividualHasMonetaryValue(hasPossessor, hasCostType, valMonetaryValue, hasCurrency) <->
+PossibleIndividual(hasPossessor) &
+ClassOfIndirectProperty(hasCostType) &
+ExpressReal(valMonetaryValue) &
+Scale(hasCurrency) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      IndirectPropertyTriple(u2, u1, u3) &
+      ClassificationTemplate(u2, hasCostType) &
+      Property(u3) &
+      PropertyQuantificationTriple(u4, u3, u5) &
+      ClassificationTemplate(u4, hasCurrency) &
+      RealNumber(u5) &
+      ClassOfIdentificationTemplate(valMonetaryValue, u5) &
+      PointInTime(u6) &
+      BeginningTemplate(u6, u1) &
+      RepresentationOfGregorianDateAndUtcTime(u7) &
+      ClassOfIdentificationTemplate(u7, u6)) .
+
+% ClassOfIndividualHasPropertyWithValueAndStatus %
+
+ClassOfIndividualHasPropertyWithValueAndStatus(hasPossessorType, hasPropertyType, valPropertyValue, hasScale, hasPropertyStatus) <->
+ClassOfIndividual(hasPossessorType) &
+SinglePropertyDimension(hasPropertyType) &
+ExpressReal(valPropertyValue) &
+Scale(hasScale) &
+Status(hasPropertyStatus) &
+exists u1 exists u2 exists u3 exists u4(
+       ClassOfIndividual(u1) &
+       ClassOfTemporalWholePartTemplate(u1, hasPossessorType) &
+       SpecializationTemplate(u1, u2) &
+       Property(u2) &
+       ClassificationTemplate(u2, hasPropertyType) &
+       SpecializationTemplate(u2, hasPropertyStatus) &
+       PropertyQuantificationTriple(u3, u2, u4) &
+       ClassificationTemplate(u3, hasScale) &
+       RealNumber(u4) &
+       ClassOfIdentificationTemplate(valPropertyValue, u4)) .
+
+% IndividualHasTwoDimensionalPropertyWithValues %
+
+IndividualHasTwoDimensionalPropertyWithValues(hasPropertyType, hasPossessor, hasPropertyType1, valPropertyValue1, hasScale1, hasPropertyType2, valPropertyValue2, hasScale2) <->
+ClassOfMultidimensionalObject(hasPropertyType) &
+PossibleIndividual(hasPossessor) &
+SinglePropertyDimension(hasPropertyType1) &
+ExpressReal(valPropertyValue1) &
+Scale(hasScale1) &
+SinglePropertyDimension(hasPropertyType2) &
+ExpressReal(valPropertyValue2) &
+Scale(hasScale2) &
+exists u1  exists u2  exists u3  exists u4  exists u5  exists u6  exists u7 exists u8 exists u9 exists u10(
+      TemporalWholePartTemplate(u1, hasPropertyType) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u1, hasPropertyType1) &
+      ClassificationTemplate(u2, hasPropertyType1) &
+      Property(u2) &
+      ClassificationTemplate(u3, hasScale1) &
+      PropertyQuantificationTriple(u3, u2, u4) &
+      RealNumber(u4) &
+      ClassOfIdentificationTemplate(valPropertyValue1, u4) &
+      ClassificationTemplate(u1, hasPropertyType2) &
+      ClassificationTemplate(u5, hasPropertyType2) &
+      Property(u5) &
+      ClassificationTemplate(u6, hasScale2) &
+      PropertyQuantificationTriple(u6, u5, u7) &
+      RealNumber(u7) &
+      ClassOfIdentificationTemplate(valPropertyValue2, u7) &
+      ClassificationTemplate(u8, hasPropertyType) &
+      MultidimensionalProperty(u8) &
+          element1(u8, u2) &
+          element2(u8, u5) &
+      BeginningTemplate(u9, u1) &
+      PointInTine(u9) &
+      ClassOfIdentificationTemplate(u10, u9) &
+      RepresentationOfGregorianDateAndUtcTime(u10)) .
+
+% IndividualHas2MappedProperties %
+
+IndividualHas2MappedProperties(hasPossessor, hasMultidimensionalPropertyType, hasCommonPropertyType, valPropertyValue1, valPropertyValue2, hasCommonScale, hasMappingType, valMappingResult) <->
+PossibleIndividual(hasPossessor) &
+ClassOfMultidimensionalObject(hasMultidimensionalPropertyType) &
+SinglePropertyDimension(hasCommonPropertyType) &
+ExpressReal(valPropertyValue1) &
+ExpressReal(valPropertyValue2) &
+Scale(hasCommonScale) &
+ClassOfFunctionalMapping(hasMappingType) &
+ExpressReal(valMappingResult) &
+exists u1  exists u2  exists u3  exists u4  exists u5  exists u6  exists u7 exists u8 exists u9 exists u10 exists u11 exists u12 exists u13(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      MultidimensionalProperty(u2) &
+         element1(u2, u3) &
+         element2(u2, u6) &
+      ClassificationTemplate(u2, hasMultidimensionalPropertyType) &
+      Property(u3) &
+      ClassificationTemplate(u3, hasCommonPropertyType) &
+      PropertyQuantificationTriple(u4, u3, u5) &
+      ClassificationTemplate(u4, hasCommonScale) &
+      RealNumber(u5) &
+      ClassOfIdentificationTemplate(valPropertyValue1, u5) &
+      Property(u6) &
+      ClassificationTemplate(u6, hasCommonPropertyType) &
+      PropertyQuantificationTriple(u7, u6, u8) &
+      ClassificationTemplate(u7, hasCommonScale) &
+      RealNumber(u8) &
+      ClassOfIdentificationTemplate(valPropertyValue2, u8) &
+      MultidimensionalNumber(u9) &
+      FunctionalMappingTriple(u10, u9, u11) &
+      ClassificationTemplate(u10, hasMappingType) &
+      RealNumber(u11) &
+      ClassOfIdentificationTemplate(valMappingResult, u11) &
+      BeginningTemplate(u12, u1) &
+      PointInTime(u12) &
+      ClassOfIdentificationTemplate(u13, u12) &
+      RepresentationOfGregorianDateAndUtcTime(u13)) .
+
+% IndividualHasPropertyWithValueAndStatus %
+
+IndividualHasPropertyWithValueAndStatus(hasPossessor, hasPropertyType, valPropertyValue, hasScale, hasStatus) <->
+PossibleIndividual(hasPropertyPossessor) &
+ClassOfProperty(hasPropertyType) &
+ExpressReal(valPropertyValue) &
+Scale(hasScale) &
+Status(hasStatus) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPropertyPossessor) &
+      Property(u2) &
+      ClassificationTemplate(u1, u2 &
+      ClassificationTemplate(u2, hasPropertyType) &
+      PropertyQuantificationTriple(u3, u2, u4) &
+      ClassificationTemplate(u3, hasScale) &
+      RealNumber(u4) &
+      ClassOfIdentificationTemplate(valPropertyValue, u4) &
+      SpecializationTemplate(u2, hasStatus) &
+      PointInTime(u5) &
+      BeginningTemplate(u5, u1) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% IndividualHasStatus %
+
+IndividualHasStatus(hasPossessor, hasStatus) <->
+PossibleIndividual(hasPossessor) &
+Status(hasStatus) &
+exists u1 exists u2 exists u3(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      ClassificationTemplate(u1, hasStatus) &
+      PointInTime(u2) &
+      BeginningTemplate(u2, u1) &
+      RepresentationOfGregorianDateAndUtcTime(u3) &
+      ClassOfIdentificationTemplate(u3, u2)) .
+
+% IndividualHasNotGivenStatus %
+
+IndividualHasNotGivenStatus(hasPossessor, hasNotStatus) <->
+PossibleIndividual(hasPossessor) &
+Status(hasNotStatus) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      ClassificationTriple(u2, u1, hasNotStatus) &
+      ClassificationTemplate(u2, u5) &
+      rdl_RDS2221035(u5)
+      BeginningTemplate(u3, u1) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+      ClassificationTemplate(u2, hasApplicableYesNo) &
+
+% EndingOfStatusOfIndividualAtEvent %
+
+EndingOfStatusOfIndividualAtEvent(hasPossessor, hasStatus, hasEvent, hasEndDate) <->
+PossibleIndividual(hasPossessor) &
+Status(hasStatus) &
+Event(hasEvent) &
+RepresentationOfGregorianDateAndUtcTime(hasEndDate) &
+exists u1 exists u2(
+      PoaaibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      ClassificationTemplate(u1, hasStatus) &
+      EndingTemplate(hasEvent, u1) &
+      CompositionOfIndividual(hasEvent, u2) &
+      PointInTime(u2) &
+      ClassOfIdentification(hasEndDate, u2)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - SHAPE
+%
+
+% ShapeOfIndividualWithReferenceProperty %
+
+ShapeOfIndividualWithReferenceProperty(hasPossessor, hasShapeType, hasDimensionType, hasProperty) <->
+PossibleIndividual(hasPossessor) &
+ClassOfShape(hasShapeType) &
+ClassOfShapeDimension(hasDimensionType) &
+Property(hasProperty) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u1, u2) &
+      Shape(u2) &
+      ClassificationTemplate(u2, hasShapeType) &
+      DimensionOfShapeTemplate(u3, u2) &
+      ShapeDimension(u3) &
+      ClassificationTemplate(u3, hasDimensionType) &
+      PropertyForShapeDimensionTemplate(hasProperty, u3) &
+      BeginningTemplate(u4, u1) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% ShapeOfIndividualWithDimension %
+
+ShapeOfIndividualWithDimension(hasPossessor, hasShapeType, hasDimensionType, hasPropertyType, valPropertyValue, hasScale) <->
+PossibleIndividual(hasPossessor) &
+ClassOfShape(hasShapeType) &
+ClassOfShapeDimension(hasDimensionType) &
+SinglePropertyDimension(hasPropertyType) &
+ExpressReal(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7 exists u8(
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u1, u2) &
+      Shape(u2) &
+      ClassificationTemplate(u2, hasShapeType) &
+      DimensionOfShapeTemplate(u3, u2) &
+      ShapeDimension(u3) &
+      ClassificationTemplate(u3, hasDimensionType) &
+      PropertyForShapeDimensionTemplate(u4, u3)&
+      Property(u4) &
+      ClassificationTemplate(u4, hasPropertyType) &
+      PropertyQuantificationTriple(u5, u4, u6) &
+      ClassificationTemplate(u5, hasScale) &
+      RealNumber(u6) &
+      ClassOfIdentificationTemplate(valPropertyValue, u6) &
+      BeginningTemplate(u7, u1) &
+      PointInTime(u7) &
+      ClassOfIdentificationTemplate(u8, u7) &
+      RepresentationOfGregorianDateAndUtcTime(u8)) .
+
+% DefinitionOfShapeOfIndividual %
+
+DefinitionOfShapeOfIndividual(hasPossessor, hasShapeType, hasShapeDefinition, hasRepresentationForm, hasGeometryDataSet) <->
+PossibleIndividual(hasPossessor) &
+ClassOfShape(hasShapeType) &
+ClassOfInformationRepresentation(hasShapeDefinition) &
+RepresentationForm(hasRepresentationForm) &
+EnumeratedSetOfClass(hasGeometryDataSet) &
+ClassificationTemplate(hasShapeDefinition, hasRepresentationForm) &
+UnionOfSetOfClassTemplate(hasGeometryDataSet, hasShapeDefinition) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1, hasPossessor) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u1, u2) &
+      Shape(u2) &
+      ClassificationTemplate(u2, hasShapeType) &
+      ClassOfDefinitionTemplate(hasShapeDefinition, u2) &
+      BeginningTemplate(u3, u1) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - STREAM
+%
+
+% StreamHasSource %
+
+StreamHasSource(hasStream, hasSource) <->
+Stream(hasStream) &
+PhysicalObject(hasSource) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      TemporalWholePartTemplate(u1, hasStream) &
+      Stream(u1) &
+      ClassificationTemplate(u2, u3) &
+      rdl_RDS2229028(u3) &
+      OtherRelationshipTriple(u2, u1, u3) &
+      TemporalWholePartTemplate(u3, hasSource) &
+      PhysicalObject(u3) &
+      BeginningTemplate(u4, u1) &
+      BeginningTemplate(u4, u3) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% StreamHasDestination %
+
+StreamHasDestination(hasStream, hasDestination) <->
+Stream(hasStream) &
+PhysicalObject(hasDestination) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      TemporalWholePartTemplate(u1, hasStream) &
+      Stream(u1) &
+      ClassificationTemplate(u2, u3) &
+      rdl_RDS2229029(u3) &
+      OtherRelationshipTriple(u2, u1, u3) &
+      TemporalWholePartTemplate(u3, hasDestination) &
+      PhysicalObject(u3) &
+      BeginningTemplate(u4, u1) &
+      BeginningTemplate(u4, u3) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% PropertyOfStreamAtLocation %
+
+PropertyOfStreamAtLocation(hasStream, hasLocator, hasPropertyType, valPropertyValue, hasScale) <->
+Stream(hasStream) &
+PhysicalObject(hasLocator) &
+SinglePropertyDimension(hasPropertyType) &
+ExpressReal(valPropertyValue) &
+Scale(hasScale) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+       TemporalWholePartTemplate(u1, hasStream) &
+       Stream(u1) &
+       TemporalWholePartTemplate(u2, hasLocator) &
+       PhysicalObject(u2) &
+       ContainmentOfIndividualTemplate(u1, u2) &
+       BeginningTemplate(u3, u1) &
+       PointInTime(u3) &
+       ClassOfIdentificationTemplate(u4, u3) &
+       RepresentationOfGregorianDateAndUtcTime(u4) &
+       ClassificationTemplate(u1, u5) &
+       ClassificationTemplate(u5, hasPropertyType) &   
+       Property(u5) &
+       PropertyQuantificationTriple(u6, u5, u7) &
+       ClassificationTemplate(u6, hasScale) &
+       RealNumber(u7) &
+       ClassOfIdentificationTemplate(valPropertyValue, u7)) .
+
+% ActualStreamCompliesWithProcessDesignStreamYesNo %
+
+ActualStreamCompliesWithProcessDesignStreamYesNo(hasStream, hasStreamType, hasComplianceYesNo)<->
+Stream(hasStream) &
+ClassOfStream(hasStreamType) &
+ClassOfAssertion(hasComplianceYesNo) &
+exists u1, exists u2, exists u3, exists u4(
+      Stream(u1) &
+      TemporalWholePartTemplate(u1, hasStream) &
+      ClassificationTriple(u2, u1, hasStreamType) &
+      ClassificationTemplate(u2, hasComplianceYesNo) &
+      BeginningTemplate(u8, u6) &
+      PointInTime(u8) &
+      ClassOfIdentificationTemplate(u9, u8) &
+      RepresentationOfGregorianDateAndUtcTime(u9) .
+
+%
+% TEMPLATES ABOUT POSSIBELINDIVIDUAL - STRUCTURE
+%
+
+% CompositionOfAnIndividual %
+
+CompositionOfAnIndividual(hasWhole, hasPart) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(x2) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1,hasWhole) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u2, hasPart) &
+      PossibleIndividual(u2) &
+      CompositionOfIndividualTemplate(u2, u1) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% IndividualHasCompositionPartPercentage %
+
+IndividualHasCompositionPartPercentage(hasWhole, hasPart, hasPercentageType, valPartPercentageValue, hasScale) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(hasPart) &
+SinglePropertyDimension(hasPercentageType) &
+ExpressReal(valPartPercentageValue) &
+Scale(hasScale) &
+exists u1 , exists u2 ,exists u3 ,exists u4 ,exists u5 ,exists u6 ,exists u7 ,exists u8 ,exists u9(
+      TemporalWholePartTemplate(u1, hasWhole) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u1, u2) &	
+      Property(u2) &
+      ClassificationTemplate(u2, hasPercentageType) &
+      PropertyQuantificationTriple(u3, u2, u4) &
+      RealNumber(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      rdl:RDS2229356(u5) &
+      ClassificationTemplate(u3, hasScale) &
+      CompositionOfIndividualTemplate(u6, u1) &
+      TemporalWholePartTemplate(u6, hasPart) &
+      PossibleIndividual(u6) &
+      ClassificationTemplate(u6, u7) &	
+      Property(u7) &
+      ClassificationTemplate(u7, hasPercentageType) &
+      PropertyQuantificationTriple(u8, u7, u9) &
+      RealNumber(u9) &
+      ClassOfIdentificationTemplate(valPartPercentageValue, u9) &
+      ClassificationTemplate(u8, hasScale) &
+      BeginningTemplate() &
+      BeginningTemplate() &
+      PointInTime() &
+      ClassOfIdentificationTemplate() &
+      RepresentationOfGregorianDateAndUtcTime()) .
+
+
+
+
+
+% IndirectPartakingOfNonActualObjectInActualRelationship %
+
+IndirectPartakingOfNonActualObjectInActualRelationship(hasNonActualRelatedObject, hasActualRelatedObject, hasRelationshipType) <->
+PhysicalObject(hasNonActualRelatedObject) &
+PhysicalObject(hasActualRelatedObject) &
+ClassOfRelationship(hasRelationshipType) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      TemporalWholePartTemplate(u1, hasNonActualRelatedObject) &
+      PhyicalObject(u1) &
+      ImplementationTemplate(u1, u2) &
+      PhysicalObject(u2) &
+      OtherRelationshipTriple(u3, u2, u4) &
+      PhysicalObject(u4) &
+      TemporalWholePartTemplate(u43, hasActualRelatedObject) &
+      BeginningTemplate(u5, u1) &
+      BeginningTemplate(u5, u4) &
+      PointInTime(u5) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% ArrangementOfAnIndividual %
+
+ArrangementOfAnIndividual(hasWhole, hasPart, hasArrangementType) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(hasPart) &
+ClassOfArrangementOfIndividual(hasArrangementType) &
+exists u1 exists u2 exists u3 exists u4 exiats u5(
+      TemporalWholePartTemplate(u1,hasWhole) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u2, hasPart) &
+      PossibleIndividual(u2) &
+      ClassificationTemplate(u5, hasArrangementType) &
+      ArrangementOfIndividualTriple(u5, u2, u1) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% EnumerationOfIndividual %
+
+EnumerationOfIndividual(hasMember, hasSet) <->
+PossibleIndividual(hasMember) &
+EnumeratedSetOfIndividual(hasSet) &
+exists u1 exists u2 exists u3 exists u4(
+      PossibleIndividual(u1) &
+      TemporalWholePart(u1, hasMember) &
+      ClassificationTemplate(u1, hasSet) &
+      BeginningTemplate(u2, u1) &
+      PointInTime(u2) &
+      ClassOfIdentificationTemplate(u3, u2) &
+      RepresentationOfGregorianDateAndUtcTime(u3)) .
+ 
+
+% AssemblyOfAnIndividual %
+
+AssemblyOfAnIndividual(hasWhole, hasPart) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(hasPart) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1,hasWhole) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u2, hasPart) &
+      PossibleIndividual(u2) &
+      AssemblyOfIndividualTemplate(u2, u1) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% ClassifiedAssemblyOfIndividual %
+
+ClassifiedAssemblyOfIndividual(hasWhole, hasPart, hasAssemblyType) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(hasPart) &
+ClassOfAssemblyOfIndividual(hasAssemblyType) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+      TemporalWholePartTemplate(u1,hasWhole) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u3, hasPart) &
+      PossibleIndividual(u3) &
+      ClassificationTemplate(u2, hasAssemblyType) &
+      AssemblyOfIndividualTriple(u2, u3, u1) &
+      BeginningTemplate(u4, u1) &
+      BeginningTemplate(u4, u3) &
+      PointInTime(u4) &
+      ClassOfIdentificationTemplate(u5, u4) &
+      RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% IndividualHasComponentCountByRange %
+
+IndividualHasComponentCountByRange(hasIndividual, hasClassOfWhole, hasComponentType, hasCountRange) <->
+Possibleindividual(hasIndividual) &
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasComponentType) &
+Cardinality(hasCountRange) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasIndividual) &
+      ClassificationTemplate(u1, u2) &
+      ClassOfIndividual(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfWhole) & 
+      ClassOfIndividual(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasComponentType) &
+      ClassOfAssemblyOfIndividualTriple(u4, u3, u2) &
+      end1Cardinality(u4, hasCountRange) &
+      end2Cardinality(u4, u7) &
+      rdl_RDS222625(u7) &
+      BeginningTemplate(u5, u1) &
+      PointInTime(u5) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% PartInAssemblyOfIndividualApplicableYesNo %
+
+PartInAssemblyOfIndividualApplicableYesNo(hasIndividual, hasClassOfWhole, hasClassOfPart, hasApplicableYesNo) <->
+Possibleindividual(hasIndividual) &
+ClassOfIndividual(hasClassOfWhole) &
+ClassOfIndividual(hasClassOfPart) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasIndividual) &
+      ClassOfIndividual(u2) &
+      ClassOfTemporalWholePartTemplate(u2, hasClassOfWhole) & 
+      ClassOfIndividual(u3) &
+      ClassOfTemporalWholePartTemplate(u3, hasClassOfPart) &
+      ClassOfAssemblyOfIndividualTriple(u4, u3, u2) &
+      ClassificationTemplate(u4, hasApplicableYesNo) &
+      BeginningTemplate(u5, u1) &
+      PointInTime(u5) &
+      ClassOfIdentificationTemplate(u6, u5) &
+      RepresentationOfGregorianDateAndUtcTime(u6)) .
+
+% FeatureOfIndividual %
+
+FeatureOfIndividual(hasWhole, hasPart) <->
+PossibleIndividual(hasWhole) &
+PossibleIndividual(hasPart) &
+exists u1 exists u2 exists u3 exists u4(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1,hasWhole) &
+      PossibleIndividual(u2) &
+      TemporalWholePartTemplate(u2, hasPart) &
+      FeatureWholePartTemplate(u2, u1) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% FeatureOfIndividualApplicableYesNo %
+
+FeatureOfIndividualApplicableYesNo(hasWhole, hasPartType, hasApplicableYesNo) <->
+PossibleIndividual(hasWhole) &
+ClassOfIndividual(hasPartType) &
+ClassOfAssertion(hasApplicableYesNo) &
+exists u1 exists u2 exists u3 exists u4 exists u5(
+       TemporalWholePartTemplate(u1, hasWhole) &
+       PossibleIndividual(u1) &
+       ClassificationTemplate(u2, hasApplicableYesNo) &
+       FeatureWholePartTriple(u2, u3, u1) &
+       ClassificationTemplate(u3, hasPartType) &
+       PossibleIndividual(u3) &
+       BeginningTemplate(u4, u1) &
+       BeginningTemplate(u4, u3) &
+       PointInTime(u4) &
+       ClassOfIdentificationTemplate(u5, u4) &
+       RepresentationOfGregorianDateAndUtcTime(u5)) .
+
+% ClassifiedDirectConnectionOfTwoIndividuals %
+
+ClassifiedDirectConnectionOfTwoIndividuals(hasSide1, hasSide2, hasDirectConnectionType, hasDirectConnection) <->
+PossibleIndividual(hasSide1) &
+PossibleIndividual(hasSide2) &
+ClassOfDirectConnection(hasDirectConnectionType) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1,hasSide1) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u2, hasSide2) &
+      PossibleIndividual(u2) &
+      ClassificationTemplate(hasDirectConnection, hasDirectConnectionType) &
+      DirectConnectionTriple(hasDirectConnection, u1, u2) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% ClassifiedIndirectConnectionOfTwoIndividuals %
+
+ClassifiedIndirectConnectionOfTwoIndividuals(hasSide1, hasSide2, hasIndirectConnectionType, hasIndirectConnection) <->
+PossibleIndividual(hasSide1) &
+PossibleIndividual(hasSide2) &
+ClassOfIndirectConnection(hasIndirectConnectionType) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1,hasSide1) &
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u2, hasSide2) &
+      PossibleIndividual(u2) &
+      ClassificationTemplate(hasIndirectConnection, hasIndirectConnectionType) &
+      IndirectConnectionTriple(hasIndirectConnection, u1, u2) &
+      BeginningTemplate(u3, u1) &
+      BeginningTemplate(u3, u2) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% IndividualTypeUsedInADirectConnection %
+
+IndividualTypeUsedInADirectConnection(hasUsedIndividualType, hasDirectConnection, hasUsageType) <->
+ClassOfIndividual(hasUsedIndividualType) &
+DirectConnection(hasDirectConnection) &
+ClassOfIndividualUsedInConnection(hasUsageType) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1, hasUsedIndividualType) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u2, hasUsageType) &
+      IndividualUsedInConnectionTriple(u2, hasDirectConnection, u1) & 
+      BeginningTemplate(u3, u1) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% IndividualUsedInAnIndirectConnection %
+
+IndividualUsedInAnIndirectConnection(hasUsedIndividual, hasIndirectConnection, hasUsageType) <->
+PossibleIndividual(hasUsedIndividual) &
+IndirectConnection(hasIndirectConnection) &
+ClassOfIndividualUsedInConnection(hasUsageType) &
+exists u1 exists u2 exists u3 exists u4(
+      TemporalWholePartTemplate(u1, hasUsedIndividual) &
+      PossibleIndividual(u1) &
+      ClassificationTemplate(u2, hasUsageType) &
+      IndividualUsedInConnectionTriple(u2, hasIndirectConnection, u1) & 
+      BeginningTemplate(u3, u1) &
+      PointInTime(u3) &
+      ClassOfIdentificationTemplate(u4, u3) &
+      RepresentationOfGregorianDateAndUtcTime(u4)) .
+
+% AggregateOfMonotypeIndividual %
+
+AggregateOfMonotypeIndividual(hasAggregate, hasCollectorType, hasObjectType, valAggregateCount) <->
+PossibleIndividual(hasAggregate) &
+ClassOfParticulateMaterial(hasCollectorType) &
+ClassOfPhysicalObject(hasObjectType) &
+ExpressInteger(valAggregateCount) &
+exists u1 exists u2 exists u3 exists u4 exists u5 exists u6 exists u7(
+      PossibleIndividual(u1) &
+      TemporalWholePartTemplate(u1, hasAggregate) &
+      SpecializationTemplate(u2, hasCollectorType) &
+      ClassOfParticulateMaterial(u2) &
+      SpecializationTemplate(u1, u2) &
+      ClassOfCompositionOfIndividualTriple(u3, hasObjectType, u2) &
+          end1Cardinality(u3, u4) &
+          end2Cardinality(u3, u5) &
+      Cardinality(u4) &
+          minimumCardinality(u4, valAggregateCount) &
+          maximumCardinality(u4, valAggregateCount) &
+      rdl_RDS222625(u5) &
+      BeginningTemplate(u6, u5) &
+      PointInTime(u6) &
+      ClassOfIdentificationTemplate(u7, u6) &
+      RepresentationOfGregorianDateAndUtcTime(u7)) .
+

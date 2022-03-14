@@ -74,7 +74,6 @@
   (setf (hunchentoot:content-type*) "text/plain")
   (format nil "Hey~@[ ~A~]!" name))
 
-
 ;;; 2022 commented out
 #+nil(defclass my-acceptor (tbnl:acceptor)
   ())
@@ -84,7 +83,6 @@
   "Check that the request doesn't have xss stuff in it (including query)"
   (unless (cl-ppcre:scan "(?i)<script>" (tbnl:url-decode (query-string tbnl:*request*)))
       (call-next-method)))
-
 
 (defvar *demo-mut* nil "Only way to associate mut to session?")
 
@@ -96,11 +94,21 @@
       (let ((pop (mofi:xmi2model-instance :file (lpath :models "ccw-sysml/DemoCHLSystem.mdxml")
 					  :clone-p nil :force t)))
 	  (change-class pop 'mofi:privileged-population)
-	  (setf *demo-mut* pop)))))
+	(setf *demo-mut* pop)))))
+
+(defun kill-hunchentoot ()
+  "At least in 2022, just stopping hunchntoot will leave the port open. Thus this."
+  (loop for p in (bt:all-threads)
+	for name = (bt:thread-name p)
+	when (and (> (length name) 20)
+		  (string-equal "hunchentoot-listener" (subseq name 0 20)))
+	  do (format t "Killing ~A" p)
+	     (bt:destroy-thread p)))
 
 (defun cre-stop ()
   (when *hunchentoot-server*
     (tbnl:stop *hunchentoot-server*)
+    (kill-hunchentoot)
     (setf *hunchentoot-server* nil)))
 
 (defun cre-default-handler ()
@@ -119,7 +127,7 @@
 (defun pod-load-lisp ()
   "Handler to load a fasl file. I hope I'm not going to regret this!"
   (app-page-wrapper :cre (:view "SysML / UML Validator"
-				:menu-pos '(:root :plugfest :sysml :tools :validator))
+				:menu-pos '(:root :cre))
     (:h1 "Diagnostic")
     (:form :method :post :enctype "multipart/form-data"
 	   (:table :border 0 :cellpadding 10 :cellspacing 0
@@ -160,7 +168,7 @@
 ;;; Homepages
 ;;;==================================================
 (defun cre-homepage ()
-  (app-page-wrapper :cre (:menu-pos '(:root :site-overview))
+  (app-page-wrapper :cre (:menu-pos '(:root))
     (with-open-file (s (lpath :src "http/static/homepage.html"))
       (loop for line = (read-line s nil nil)
 	    while line do (princ line) (terpri)))))
@@ -178,11 +186,10 @@
     freely provided that any derivative works bear some notice that they are derived from it,
     and any modified versions bear some notice that they have been modified."))
 
-
 (defmethod pod:div-header ((app (eql :cre)))
   "Emit html for the banner. "
   (with-html-output (*standard-output*)
-    (:img :src  "/cre/image/heading.gif" ; "/cre/image/NIST_ISO_159268_Validator.gif"
+    (:img :src  "/cre/image/header.png" ; 2022 "/cre/image/heading.gif"
 	  :width 903 :height 108 :border 0
 	  :usemap "#index_02_Map")
     (:map :name "#index_02_Map"
@@ -195,7 +202,11 @@
      (Validator, Class Browser, etc.)."
     (:h2 "Changes")
     (:ul
-     (:li (:strong "2022-03-12:") "Got the band back together! Compiled for SBCL.")
+     (:li (:strong "2022-03-12:")
+	  (:ul
+	   (:li "Compiled for SBCL")
+	   (:li "Using Open source Vampire")
+	   (:li "Using new MMT (Part 2) templates")))
      (:li (:strong "2013-08-15:")
 	  (:ul
 	   (:li "Template Instances: Added type checking for roles.")

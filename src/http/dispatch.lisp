@@ -9,7 +9,7 @@
    :root
    "<not used>"
    "<not used>"
-;2022 guessing  (mk-mnode :site-overview "Site Overview"     "/cre/index.html")
+   (mk-mnode :site-overview "Site Overview"     "/cre/index.html")
    (mk-mnode :validate "Template Validation"    "/cre/validate"
 	     (mk-mnode :upload "Upload a file"  "/cre/validate/upload")
 	     (mk-mnode :mmt "MMT Templates"     "/cre/validate/results/mmt")
@@ -91,23 +91,21 @@
 ;;; 2022 Added from SEI
 (defun cre-clear-session ()
   "Clear up stuff so that it looks like a new user."
-  (when (and (boundp 'tbnl:*session*) tbnl:*session*) 
+  (when (and (boundp 'tbnl:*session*) tbnl:*session*)
     (tbnl:remove-session tbnl:*session*))
   (tbnl:start-session)
   (setf (tbnl:session-value 'session-vo) ; 2011-07-27 setting 'session-vo is new!!!
-	(setf *spare-session-vo* 
+	(setf *spare-session-vo*
 	      (make-instance 'cre-session-vo
 			     :app-name :cre
 			     :tbnl-session tbnl:*session*)))
   (with-html-output-to-string (*standard-output*)
     (:html "Your session with Tools-15926 has been cleared.")))
 
-
 (defun tool-under-construction ()
   (app-page-wrapper :cre (:menu-pos '(:root))
     (:h1 "Tool under construction")
     "This tool is not yet completely implemented. Check back soon."))
-
 
 (defun make-apps ()
   "Create the apps from scratch."
