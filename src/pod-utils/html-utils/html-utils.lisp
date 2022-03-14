@@ -1,4 +1,3 @@
-
 ;;; Copyright 2004, Peter Denno
 
 ;;; Permission is hereby granted, free of charge, to any person
@@ -33,7 +32,7 @@
 (defclass menu-node ()
   ((name :initarg :name :reader name)
    (text :initarg :text :reader text)
-   (url  :initarg :url :reader url)   
+   (url  :initarg :url :reader url)
    (children :initarg :children :reader children :initform nil)))
 
 (defmethod print-object ((obj menu-node) stream)
@@ -46,23 +45,21 @@
    (make-instance 'menu-node :name name :text text :url url  :children children))
 ) ;eval-when
 
-
-
 (defmacro HVARS (&rest variables)
   `(cl-who:with-html-output (stream *standard-output*)
       (format stream "<br/>~A"
 	 (escape-string
-	  (format nil 
-           ,(loop with result = ""
-                  for var in variables
-                  do
-                  (setf result
-                        (if (and (consp var)
-                                 (eq (first var) 'quote))
-                            (concatenate 'string result " ~S ")
-                          (concatenate 'string result (string-downcase var) " = ~S ")))
-                  finally (return result))
-           ,@variables)))))
+	  (format nil
+	   ,(loop with result = ""
+		  for var in variables
+		  do
+		  (setf result
+			(if (and (consp var)
+				 (eq (first var) 'quote))
+			    (concatenate 'string result " ~S ")
+			  (concatenate 'string result (string-downcase var) " = ~S ")))
+		  finally (return result))
+	   ,@variables)))))
 
 (defmacro hformat (format-string &rest args)
   `(cl-who:with-html-output (stream *standard-output*)
@@ -76,31 +73,31 @@
 (defun xss-attack-p (str)
   "Returns t if the string looks like a cross-site scripting attempt."
   (when (stringp str)
-    (when (or (cl-ppcre:scan "(?i)<script>" str) 
+    (when (or (cl-ppcre:scan "(?i)<script>" str)
 	      (cl-ppcre:scan "[<,>]" str)
-              (cl-ppcre:scan "(?i)alert\\(\\s*\\d+\\\s*\\)" str))
+	      (cl-ppcre:scan "(?i)alert\\(\\s*\\d+\\\s*\\)" str))
       (tbnl:log-message* :warn "Cross-site scripting attempt from ~A" (tbnl:remote-addr tbnl:*request*))
       t)))
 
-;;; Perhaps this should just use escape-string. 
+;;; Perhaps this should just use escape-string.
 (defun safe-get-parameter (name &optional (request tbnl:*request*))
   "Call tbnl:get-parameter, checking for cross-site-scripting attempt."
   (when-bind (param (tbnl:get-parameter name request))
     (unless (xss-attack-p param) param)))
 
-;;; Perhaps this should just use escape-string. 
+;;; Perhaps this should just use escape-string.
 (defun safe-post-parameter (name &optional (request tbnl:*request*))
   "Call tbnl:post-parameter, checking for cross-site-scripting attempt."
   (when-bind (params (tbnl:post-parameter name request))
     (unless (some #'xss-attack-p params) params)))
 
 (defun safe-leaf (text)
-  "Return a list for sidebox-menu :leaf of for (uri-request text), 
+  "Return a list for sidebox-menu :leaf of for (uri-request text),
    or nil if uri-request contains XSS vulnerability characters."
   (let ((uri (tbnl:request-uri tbnl:*request*)))
     (unless (xss-attack-p uri) (list uri text))))
 
-;;; This session-specific object contains information generated as part of a validation. 
+;;; This session-specific object contains information generated as part of a validation.
 (defclass session-vo ()
   (;; This is set to a http-app.name (:moss, :sei, :et, etc) every time
    ;; an app-page-wrapper is encountered. The session-vo will be created if necessary.
@@ -109,9 +106,9 @@
    (session-models :accessor session-models :initarg :models :initform nil)
    ;; MUT = model-under-test A Model, the result of loading the file.
    (mut :accessor mut :initform nil) ; 2010-09-14 I'm regretting this already.
-   ;; A hash table indexed (typically) by a gensym'ed variable 
+   ;; A hash table indexed (typically) by a gensym'ed variable
    ;; (see object-key-fn in mof-browser.lisp) with a value being the object
-   ;; to present when the anchored text is selected. 
+   ;; to present when the anchored text is selected.
    (view-objects :accessor view-objects :initform (make-hash-table :test #'equal))
    ;; Good for debugging, bind to *session* object
    (tbnl-session :reader tbnl-session :initarg :tbnl-session :initform nil)
@@ -125,7 +122,7 @@
    than a page wrapped in app-page-wrapper."
     (cond ((and (boundp 'tbnl:*session*) (tbnl:session-value 'session-vo))
 	   (app-name (tbnl:session-value 'session-vo)))
-	  ;; POD Alternative implementation would search app-url-prefix 
+	  ;; POD Alternative implementation would search app-url-prefix
 	  ((boundp 'tbnl:*request*)
 	   (let ((uri (tbnl:request-uri tbnl:*request*)))
 	     (cond ((cl-ppcre:scan "^/se-interop" uri) :sei)
@@ -138,8 +135,8 @@
 		(app-name (first (http-apps)))))
 	  (t (error "Cannot determine application."))))
 
-(defparameter *spare-session-vo* (make-instance 'session-vo :app-name :sei) 
-  "Points to a session-vo even when tbnl:*session* in not bound 
+(defparameter *spare-session-vo* (make-instance 'session-vo :app-name :sei)
+  "Points to a session-vo even when tbnl:*session* in not bound
    (that's when running at toplevel for debugging).")
 
 (defmacro with-vo ((&rest slots) &body body)
@@ -169,10 +166,10 @@
    (app-url-key-fn :initarg :app-url-key-fn :reader app-url-key-fn)
    ;; Probably obsolete
    (app-authorization-fn :initarg :app-authorization-fn :reader app-authorization-fn
-			 :initform     #'(lambda (user pw) (declare (ignore user pw)) 
+			 :initform     #'(lambda (user pw) (declare (ignore user pw))
 						 (error "No authorization function provided."))))
 
-  (:documentation "A class to track all the presentation aspects of 
+  (:documentation "A class to track all the presentation aspects of
    an application. MOSS, Exports, and SEI separate applications."))
 
 (defmethod print-object ((obj http-app) stream)
@@ -192,7 +189,7 @@
 
 (defun app-epilogue ()
   (cl-who:with-html-output (*standard-output*)
-   "<br/><br/><br/><hr/><p/>Send questions or comments to 
+   "<br/><br/><br/><hr/><p/>Send questions or comments to
     <a href='mailto:xmi-interop@omg.org'>xmi-interop@omg.org</a>.<br/>"))
 
 (defun div-top ()
@@ -200,7 +197,7 @@
     (:div :id "top")))
 
 ; Each application may have its own graphic banner.
-(defgeneric div-header (app)) 
+(defgeneric div-header (app))
 
 (defun div-sideboxes (app menu-pos leaf)
   "Produce the stuff on the left, including the menu, opened to MENU-POS."
@@ -216,27 +213,27 @@
   (let ((result "") siblings-of-on-path)
     (depth-first-search ; calculate siblings-of-on-path
      (app-menu (find-http-app app))
-     #'fail 
-     #'(lambda (x) (when x (children x))) 
+     #'fail
+     #'(lambda (x) (when x (children x)))
      :tracking t
-     :do #'(lambda (n) 
+     :do #'(lambda (n)
 	     (unless (member (name n) menu-pos)
 	       (when (second (tree-search-path))
 		 (when (intersection menu-pos (mapcar #'name (children (second (tree-search-path)))))
 		   (push n siblings-of-on-path))))))
     (flet ((add (str) (setf result (strcat result str))))
-      (depth-first-search 
+      (depth-first-search
        (app-menu (find-http-app app))
        #'fail #'(lambda (x) (when x (children x))) :tracking t
        :do
        #'(lambda (n)
-	   (let ((spaces (case (length (tree-search-path)) 
-			   ((0 1 2) "") 
-			   (3 "&nbsp;&nbsp;&nbsp;") 
+	   (let ((spaces (case (length (tree-search-path))
+			   ((0 1 2) "")
+			   (3 "&nbsp;&nbsp;&nbsp;")
 			   (4 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 			   (5 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 			   (otherwise "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"))))
-	     (unless (eql :root (name n)) 
+	     (unless (eql :root (name n))
 	       (when (or (member (name n) menu-pos) ; the node is on path
 			 (member n siblings-of-on-path)
 			 (eql (last1 menu-pos) (name (second (tree-search-path))))) ; child of selected
@@ -244,7 +241,7 @@
 		      (progn
 			(add (format nil "~%<a href='~A'><strong>~A~A</strong></a>" (url n) spaces (text n)))
 			(when  (and (eql (name n) (last1 menu-pos)) leaf)
-			  (add (format nil "~%<a href='~A'><strong>~A&nbsp;&nbsp;&nbsp;~A</strong></a>" 
+			  (add (format nil "~%<a href='~A'><strong>~A&nbsp;&nbsp;&nbsp;~A</strong></a>"
 				  (car leaf) spaces (second leaf)))))
 		    (add (format nil "~%<a href='~A'>~A~A</a>" (url n) spaces (text n)))))))))
       result)))
@@ -252,32 +249,32 @@
 (defmacro basic-page-wrapper (app &body body)
   "A wrapper that associates a session object with the user, but doesn't involve responding with project-styled HTML."
   `(progn
-     ;; Creating a vo-object if there isn't one, set vo-object.app-name, 
+     ;; Creating a vo-object if there isn't one, set vo-object.app-name,
      (if (and (boundp 'tbnl:*session*) (tbnl:session-value 'session-vo))
 	 (with-slots (app-name) (tbnl:session-value 'session-vo) (setf app-name ,app))
-	 (progn 
+	 (progn
 	   (tbnl:start-session)
-	   (setf (tbnl:session-value 'session-vo) 
-		 (setf *spare-session-vo* 
+	   (setf (tbnl:session-value 'session-vo)
+		 (setf *spare-session-vo*
 		       (make-instance (session-vo-class (find-http-app ,app))
 				      :app-name ,app
 				      :tbnl-session tbnl:*session*)))))
      ,@body))
 
-(defmacro app-page-wrapper (app (&key (menu-pos ''(:root)) leaf disclaimer-p  view  ; auth-required 
+(defmacro app-page-wrapper (app (&key (menu-pos ''(:root)) leaf disclaimer-p  view  ; auth-required
 				      js-tree scripts force-new-session)
 			    &body body)
   "Wrap the raw html with the HTML header, title, css stylesheet reference and LHS menu.
    NYI: Run the body in a process and kill it if it takes too long. (probably TBNL does this!)"
   `(progn
-     ;; Creating a vo-object if there isn't one, set vo-object.app-name, 
+     ;; Creating a vo-object if there isn't one, set vo-object.app-name,
      (if (and (and (boundp 'tbnl:*session*) (tbnl:session-value 'session-vo))
 	      (not ,force-new-session))
 	 (with-slots (app-name) (tbnl:session-value 'session-vo) (setf app-name ,app))
-	 (progn 
+	 (progn
 	   (tbnl:start-session)
-	   (setf (tbnl:session-value 'session-vo) 
-		 (setf *spare-session-vo* 
+	   (setf (tbnl:session-value 'session-vo)
+		 (setf *spare-session-vo*
 		       (make-instance (session-vo-class (find-http-app ,app))
 				      :app-name ,app
 				      :tbnl-session tbnl:*session*)))))
@@ -290,8 +287,8 @@
       (:html
        (:head (:title (str ,(or view `(app-title (find-http-app ,app))))) ;; 2009-05-10 Should I use charset=utf8 ?
 	      (:meta :http-equiv "content-type" :content "text/html; charset=iso-8859-1")
-	      (:link :rel "stylesheet" 
-		     :type "text/css" 
+	      (:link :rel "stylesheet"
+		     :type "text/css"
 		     :href  (format nil "~A/static/style.css" (app-url-prefix (find-http-app ,app)))
 		     :title "Stylesheet")
 	      ,@(when scripts (list (include-scripts scripts)))
@@ -311,7 +308,7 @@
   `(str
      ,(if scripts
 	 (with-output-to-string (s)
-	   (loop for script in scripts do 
+	   (loop for script in scripts do
 		(dbind (fname &optional (args "")) script
 		  (if (pathnamep fname)
 		      (with-open-file (in fname :direction :input)
@@ -323,17 +320,17 @@
 		      (format s "~%<script type='text/javascript' src='~A' ~A></script>" fname args))))
 	 ""))))
 
-#+nil ; 2014-06-03 I'm trying to get rid of this. 
+#+nil ; 2014-06-03 I'm trying to get rid of this.
 (defun authorized? (&optional (request tbnl:*request*))
   "Call tbnl:authorization which will check the request headers for user/password.
-   Check against known users. If not there, send back headers to require authorization. 
+   Check against known users. If not there, send back headers to require authorization.
    (tbnl:require-authorization)."
     (mvb (user password) (tbnl:authorization request)
-      (unless (and 
-	       user 
+      (unless (and
+	       user
 	       password
 	       (funcall (app-authorization-fn (find-http-app (safe-app-name))) user password))
-	(tbnl:log-message* :info "Failed login attempt user ~A from IP address ~A" user 
+	(tbnl:log-message* :info "Failed login attempt user ~A from IP address ~A" user
 			  (tbnl:header-in "remote-ip-addr")) ; 2014-05-27 sbcl I #+nil until this is fixed; wants 2 args
 	(tbnl:require-authorization "Interoperability Project, members-only"))))
 
@@ -341,19 +338,19 @@
   "Javascript for a twistdown tree that I ought to be doing with my own code instead!"
   (with-output-to-string (out)
     (format out "~%<script language='JavaScript'>~%")
-    (format out    
+    (format out
 "  var openImg   = new Image();
    var closedImg = new Image();")
    (format out "~% openImg.src   = \"/~A/image/down-arrow.png\";" (case app (:moss "moss") (:sei "se-interop")))
    (format out "~% closedImg.src = \"/~A/image/right-arrow.png\";" (case app (:moss "moss") (:sei "se-interop")))
    (format out
-"   
+"
    function showBranch(branch) {
       var objBranch = document.getElementById(branch).style;
       if (objBranch.display==\"block\") objBranch.display=\"none\";
       else objBranch.display=\"block\";
    }
-   
+
    function swapFolder(img) {
       objImg = document.getElementById(img);
       if(objImg.src.indexOf(closedImg.src)>-1) objImg.src = openImg.src;
@@ -363,25 +360,25 @@
 
 
 
-;;; This one doesn't work! ... :href (str ....)) 
+;;; This one doesn't work! ... :href (str ....))
 (defmethod div-disclaimers ((app t))
   "Write disclaimers."
   (with-slots (app-url-prefix) (find-http-app app)
     (cl-who:with-html-output (*standard-output*)
-      (:div :class "disclaimer LHS" 
+      (:div :class "disclaimer LHS"
 	    (:a :href (str (format nil "~A/software-disclaimer" app-url-prefix)) "Software Disclaimer")))))
 
 (defun software-disclaimer ()
   (cl-who:with-html-output-to-string (s)
    (:h2 "Disclaimer")
-   "This software was developed at the National Institute of Standards and Technology by 
-    employees of the Federal Government in the course of their official duties. Pursuant 
-    to title 17 Section 105 of the United States Code this software is not subject to copyright 
-    protection and is in the public domain. It is an experimental system. NIST assumes no 
-    responsibility whatsoever for its use by other parties, and makes no guarantees, expressed 
-    or implied, about its quality, reliability, or any other characteristic. We would appreciate 
-    acknowledgement if the software is used. This software can be redistributed and/or modified 
-    freely provided that any derivative works bear some notice that they are derived from it, 
+   "This software was developed at the National Institute of Standards and Technology by
+    employees of the Federal Government in the course of their official duties. Pursuant
+    to title 17 Section 105 of the United States Code this software is not subject to copyright
+    protection and is in the public domain. It is an experimental system. NIST assumes no
+    responsibility whatsoever for its use by other parties, and makes no guarantees, expressed
+    or implied, about its quality, reliability, or any other characteristic. We would appreciate
+    acknowledgement if the software is used. This software can be redistributed and/or modified
+    freely provided that any derivative works bear some notice that they are derived from it,
     and any modified versions bear some notice that they have been modified."))
 
 

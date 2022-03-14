@@ -4,7 +4,7 @@
 
 (defsystem :cre
     :serial t
-    :depends-on (:qvt :readers :cre-http #+injector :injector :vamp :turtle)
+    :depends-on (:cre-essential-models :qvt :readers :cre-http #+injector :injector :vamp :turtle)
     :components ())
 
 

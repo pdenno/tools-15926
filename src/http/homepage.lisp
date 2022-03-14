@@ -32,6 +32,9 @@
 
 (defun set-tbnl-vars ()
   "Set hunchentoot configuration, depending on whether running production or development."
+  (tbnl::def-http-return-code tbnl:+http-internal-server-error+ 
+    500 
+    "An error occurred in Tools-15926.<br/> You may email podenno@gmail.com to report the error.") 
   (setf tbnl:*tmp-directory* (namestring (lpath :tmp "hunchentoot/")))
   ;; Print the error in html. See hunchentoot/request.lisp
   (setf tbnl:*show-lisp-errors-p* (if (member :cre.exe *features*) t nil))
@@ -41,25 +44,43 @@
   (setf tbnl:*log-lisp-errors-p* t)
   (setf tbnl:*log-lisp-backtraces-p* t)) ; 2011-05-10 new
 
+(defun act-like-exe ()
+  "Allow error reporting like sei.exe (production compilation)."
+  (setf tbnl:*catch-errors-p* t)
+  (setf tbnl:*show-lisp-errors-p* t))
+
+(defun act-like-devel ()
+  "Allow error reporting like sei.exe (production compilation)."
+  (setf tbnl:*catch-errors-p* nil)
+  (setf tbnl:*show-lisp-errors-p* nil))
+
 ;;; POD Symbols to avoid are from both OCL and MOF, but I have not studied this
 ;;; in detail. Use of OCL in constraints might matter in the choices here.
-(defun cre-start ( &key (port 3002))
+(defun cre-start ( &key (port 3002)  (stream *standard-output*))
   "Called once, when the .exe starts. This is THE entry point."
   (system-clear-memoized-fns)
   (set-tbnl-vars)
   (make-apps)
-  ;(load-demo-sysml-file)
   (format t "~% Execution mode is ~A." (if (member :cre.exe *features*) "production" "development"))
   (format t "~% Application is ~A." (find-http-app :cre))
-  (format t "~%Done. (Now starting server.)~%")
+  (format t "~%Done. (Now starting server on port ~A.)~%" port)
   (when *hunchentoot-server* (cre-stop))
-  (tbnl:start (setf *hunchentoot-server* (make-instance 'my-acceptor :port port)))
+  ;;2022(tbnl:start (setf *hunchentoot-server* (make-instance 'my-acceptor :port port)))
+  (tbnl:start (make-instance 'tbnl:easy-acceptor :port port)) ; 2022 from xmi-validator
+  (format stream "~%Tools-15926 available at http://localhost:~A/cre/" port)
   (values))
 
-(defclass my-acceptor (tbnl:acceptor)
+(hunchentoot:define-easy-handler (say-yo :uri "/yo") (name)
+  (setf (hunchentoot:content-type*) "text/plain")
+  (format nil "Hey~@[ ~A~]!" name))
+
+
+;;; 2022 commented out
+#+nil(defclass my-acceptor (tbnl:acceptor)
   ())
 
-(defmethod handle-request ((tbnl:*acceptor* my-acceptor) (tbnl:*request* request))
+;;; 2022 commented out
+#+nil(defmethod handle-request ((tbnl:*acceptor* my-acceptor) (tbnl:*request* request))
   "Check that the request doesn't have xss stuff in it (including query)"
   (unless (cl-ppcre:scan "(?i)<script>" (tbnl:url-decode (query-string tbnl:*request*)))
       (call-next-method)))
@@ -174,6 +195,7 @@
      (Validator, Class Browser, etc.)."
     (:h2 "Changes")
     (:ul
+     (:li (:strong "2022-03-12:") "Got the band back together! Compiled for SBCL.")
      (:li (:strong "2013-08-15:")
 	  (:ul
 	   (:li "Template Instances: Added type checking for roles.")

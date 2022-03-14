@@ -48,7 +48,7 @@
  :model-class 'mofi:essential-compiled-model
  :depends-on-models '(:mmt-templates)
  :documentation "Created from tlogic generator 2013-04-17 using templates retrieved that day." 
- :classes-path (lpath :data "mmt-template-classes.lisp"))
+< :classes-path (lpath :data "mmt-template-classes.lisp"))
 
 ;;; 2022 commented out
 #+nil(mofi:ensure-model

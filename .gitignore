@@ -5,4 +5,4 @@ pod-notes.txt
 /data/not-needed
 /models/not-needed
 /src/pod-utils/uml-utils/qvt/examples
-*.sbcl-core
+*.sbcl

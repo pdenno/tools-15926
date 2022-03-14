@@ -58,3 +58,7 @@
 (load (lpath :lisplib "uml-utils/browser/packages.lisp"))
 
 (asdf:oos 'asdf:load-op :cre-essential-models)
+(format t "~%========================================================================")
+(format t "~%============== System cre-essential-models has loaded.  ================")
+(format t "~%========================================================================"))
+
