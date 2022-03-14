@@ -12,10 +12,10 @@ It uses the [Vampire](https://github.com/vprover/vampire) theorem prover for con
 It uses the OMG's Ontology Definition Metamodel (ODM) to map these to structures presented in the browser. 
 
 The implemenation is currently recovering from code rot.
- * It is Common Lisp code and is now compiled with [SBCL](http://www.sbcl.org/).
- * The revitalized code uses a new, apparently well-maintained, open source version of [Vampire](https://github.com/vprover/vampire).
+ * The (Common Lisp) code is now compiled with [SBCL](http://www.sbcl.org/).
+ * It uses a new, apparently well-maintained, open source version of [Vampire](https://github.com/vprover/vampire).
  * Owing to the fact that it has been about 9 years since this application has been used, parts of it are currently 
-   broken, (particularly parts pertaining to Parts 7 and 8). 
+   broken, (particularly parts pertaining to Parts 7 and 8). Correcting this is work-in-progress.
 
 # Usage
 
