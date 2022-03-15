@@ -198,7 +198,10 @@
 	  (model-name (mofi:of-model class)) ; 2012 mofi:
           (class-name class)))
 
-(defun clear-instantiated-types (schema)
+(defun clear-instantiated-types (schema) nil)
+
+2022
+#+nil(defun clear-instantiated-types (schema)
   "As much as posible, remove knowledge of all instances of instantiable-express-entity-type-mo."
   (setf (class-direct-subclasses (find-class 'entity-root-supertype)) nil)
   (loop for simple-entity-type being the hash-value of (entity-types schema)
@@ -207,7 +210,6 @@
 (defmethod validate-superclass ((class instantiable-express-entity-type-mo)
 				(superclass express-entity-type-mo))
   t)
-
 
 ;;;=============================================================================
 ;;; Slot Metaobjects...

@@ -3,6 +3,9 @@ cre.tgz
 pod-notes.txt
 *.fasl
 /data/not-needed
+/data/uml/uml24
+/data/uml/uml24
+/data/uml/uml25
 /models/not-needed
 /src/pod-utils/uml-utils/qvt/examples
 *.sbcl

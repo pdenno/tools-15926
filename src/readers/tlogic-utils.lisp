@@ -35,6 +35,8 @@
     (when success (svref vec 0))))
 
 (declaim (inline find-iclass))
+;;; (find-class 'part2:arranged_individual)
+;;; (find-iclass 'arranged_individual)
 (defun find-iclass (name)
   "Find the instantiable-express-entity-type corresponding to name."
   (when (find-class (intern (string name) :part2) nil)

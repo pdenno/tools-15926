@@ -618,11 +618,12 @@
 
 (defun p7-tmpl-inst-p (elem)
   "Returns the template class object if ELEM  represents a template."
+  (setf *zippy* elem)
   (let ((name (dom:local-name elem)))
     (and (dom:element-p elem)
-	 (string= "p7tpl" (dom:prefix name))
+	 (string= "p7tpl" (dom:prefix elem)) ; 2022 ToDo: This assumes a lot!
 	 ;; POD someday it won't be just mmt.
-	 (if-bind (class (find-class (intern (dom:local-name name) :mmtc) nil))
+	 (if-bind (class (find-class (intern name :mmtc) nil))
 		  class
 		  (warn 'instance-unknown-type :type-name name :xml elem)))))
 
@@ -678,8 +679,9 @@
   "Returns the class (ieet-mo) represented if ELEM is a dom:element-p representing a Part2 object."
   (let ((p2 (mofi:find-model :part2))
 	c)
+    (setf *zippy* elem)
     (when (and (dom:element-p elem)
-	       (string= "dm" (dom:prefix (dom:local-name elem)))
+	       (string= "dm" (dom::prefix elem))
 	       (setf c (find-iclass (p7name2p2name (dom:local-name elem))))
 	       (eql p2 (mofi:of-model c)))
       c)))

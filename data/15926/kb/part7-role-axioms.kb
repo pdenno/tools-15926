@@ -1,0 +1,16 @@
+
+
+(=> (and (Cardinality ?X) 
+	 (hasMaximumCardinality ?X ?Y))
+    (INTEGER ?Y))
+
+(=> (and (Cardinality ?X)
+	 (hasMaximumCardinality ?X ?Y)
+	 (hasMaximumCardinality ?X ?Z))
+    (= y z ))
+
+(=> (hasMinimumCardinality ?X ?Y)
+    (Cardinality ?X))
+
+
+((Cardinality(x) A hasMinimumCardinality(x, y) A hasMinimumCardinality(x, z) — y = z hasMinute(x, y) — (RepresentationOfGregorianDateAndUtcTime(x)) RepresentationOfGregorianDateAndUtcTime(x) A hasMinute(x, y) — INTEGER(y) RepresentationOfGregorianDateAndUtcTime(x) A hasMinute(x, y) A hasMinute(x, z) — y = z hasMonth(x, y) — (RepresentationOfGregorianDateAndUtcTime(x))

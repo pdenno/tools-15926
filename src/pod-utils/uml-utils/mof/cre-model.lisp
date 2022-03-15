@@ -28,7 +28,6 @@
 
 (defmethod mofi:load-model ((m template-population) &key)
   (let ((*model* m))
-    (setf *zippy* m)
     (with-slots (source-file model-name) m
       (if (eql model-name :em-templates)
 	  (emerson:toplevel-read-emerson :model m)
@@ -77,7 +76,7 @@
       ;; This is just to check that it works
     (loop for c across types do
 	 (let ((iclass (expo::find-programmatic-class (list (class-name c)) :allow-partial t)))
-	   (clos:class-slots iclass))))
+	   (class-slots iclass))))
   (when (eql m (find-model :part2)) ; yes, totally bogus -- but will I ever use this again?
     (export-dm-names)))
 

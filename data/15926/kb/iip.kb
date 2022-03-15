@@ -1,0 +1,137 @@
+
+;;; ?propertyType ?possessor ?value ?scale)
+;;; Hydro Test Pressure
+
+;;; OperatingPressure, from Part2 has superclass indirect_property and ISO15926-2 entity class_of_indirect_property.
+
+;;; I don't think the interpretation of TestPackage has been made. 
+;;; I'm starting with a P4 Package Specification - "A detailed description of features in 
+;;; the technical requirements, design or composition of a procurement package." 
+;;; (NOTE: Status is "incomplete"). 
+
+;;; What does P0017, Test Package intend to do? Typical value is T123. I'm guessing
+;;; that we are trying to say that the individual (in the logic sense) designated as 
+;;; "T123" identifies a "Test Package". I encoded Test Package as a P4 Specification
+;;;  used in the context of Testing (another P4 concept). Does that make sense? Thus:
+
+;;; In general
+;;; If T' specializes T, distinguished by R4 in T' specializing R1 in T
+;;; (=> T' T)            ; Not sure what is intended here. 
+;;; (=> (R4 ?x) (R1 ?x)) ; This would be said elsewhere.
+;;; (<=> (T' ?x ?y ?z) (and (T ?x ?y ?z) (R4 ?x)))
+
+
+;;;   Problems: (1) making up TestPackageIdentification
+;;;             (2) Don't know roles of TestPackageIdentification
+;;;             (3) Don't know what to do with ArrangementOfIndividual (What is the whole? What is the part?)
+;;;             (4) Don't know what to put into third role of ClassifiedIdentification 
+;;;                (It is a ClassOfClassOfIdentification) In RDS/WIP "Testing" is an activity.
+;;; P0017
+(<=> (TestPackageIdentification ?id ?someones_coco_id) ; I'm making this up.
+     (and
+      (exists ?tp
+       (TestPackage ?tp) ; You'd add this as a class to RDS/WIP - Subclass of specification.
+       (exists ?testing
+	       (Testing ?testing) ; UNFINISHED. I'd like to associate with coco_id, ("someone's coco_id)
+       (exists ?V
+	 (and (ArrangementOfIndividualTriple ?V ?whole ?part) ; ??? From Master TIPS, column "BaseTemplate" ???
+	      (ClassifiedIdentification ?tp ?id ?someones_coco_id))))) ; From Master TIPS, column "BaseTemplate"
+
+(<=> ; From initial set.
+     (ClassifiedIdentification ?X1 ?X2 ?X3)
+     (and (Thing ?X1)
+	  (ExpressString ?X2)
+	  (ClassOfClassOfIdentification ?X3)
+	  (exists ?U (and (ClassOfIdentificationTriple ?U ?X2 ?X1)
+			  (ClassificationTemplate ?U ?X3)))))
+
+;;; Part 2 entity triple.
+(<=> (ArrangementOfIndividualTriple ?Z ?X ?Y)
+     (and
+      (ArrangementOfIndividual ?Z)
+      (hasPart ?Z ?X)     ; a possible_individual
+      (hasWhole ?Z ?Y)))  ; an arranged_individual
+
+
+;;; Here is what I'd like to add to really nail down the type TestPackage in an ontology. 
+;;; However, it can't be done, because ClassOfInvolvementByReference needs a RoleAndDomain, 
+;;; not a Class like Specification (RoleAndDomain is a specialization of Class.) 
+(<=> (TestPackage ?tp)
+     (and (Specification ?tp) ;RDS/WIP:A definition of one or more aspects of one or more physical objects or activities
+	  (exists ?Testing
+		  (and  (Testing ?testing)  ; RDS/WIP, from Part2 class_of_activity_
+			(exists ?V
+				(ClassOfInvolvementByReferenceTriple ?V ?tp ?testing))))))
+
+(<=> (ClassOfInvolvementByReferenceTriple ?V ?class_of_involved ?class_of_involver)
+     (and (ClassOfInvolvementByReference ?V)
+	  (hasClassOfInvolved ?V ?class_of_involved)   ; was a RoleAndDomain -- now a Class!
+	  (hasClassOfInvolver ?V ?class_of_involver))) ; a ClassOfActivity
+
+;;; - Is a Specification a RoleAndDomain? No. It is a subtype of Class, and a big mistake in Part 2.
+;;; - Testing, however is a ClassOfActivity.
+
+
+;;; The above doesn't work! Testing, an Activity, can't be used in that role of ArrangementOfIndividual.
+
+;;; From initial Set
+(<=>
+     (ClassifiedIdentification ?X1 ?X2 ?X3)
+     (and (Thing ?X1)
+	  (ExpressString ?X2)
+	  (ClassOfClassOfIdentification ?X3)
+	  (exists ?U (and (ClassOfIdentificationTriple ?U ?X2 ?X1)
+			  (ClassificationTemplate ?U ?X3)))))
+
+(<=> 
+     (ClassOfIdentificationTriple ?U ?X2 ?X1)
+     (and 
+      
+
+;;; P0025
+(<=> (HydroTestPressure
+     (and
+      (ArrangementOfIndividual ?propertyType)
+      (ClassificationOfIndividual OperatingPressure 
+      (IndirectPropertyScaleReal ?propertyType ?possessor ?value ?scale)))
+
+
+  ENTITY indirect_property
+    SUBTYPE OF (relationship);
+      possessor : possible_individual;
+      property  : property;
+  END_ENTITY; -- indirect_property
+
+  ENTITY class_of_indirect_property
+    SUBTYPE OF (class_of_relationship);
+      class_of_possessor : class_of_individual;
+      property_space     : property_space;
+  END_ENTITY; -- class_of_indirect_property
+
+
+;;; Example
+(equal 
+       (P0025 HydroTestPresssure-1 Test21 200 PSI)
+
+spreadsheet gives "200PSI" as an example value, and says that the involved predicates are ArrangementOfIndividual (Part2) ClassificationOfIndividual (part 7) and IndirectPropertyScaleReal (part 7).
+
+The spreadsheet P0025 says (I guessing at how to interpret this):
+
+The ArrangementOfIndividual is a TestPackage  (another IIP template).
+The ClassificationOfIndividual is a TestMethod -- need to track that down.
+The IndirectPropertyScaleReal is a HydrostaticTestPressure (a Part 4 class with superclass TestPressure, using Initial Set IndirectPropertyScaleReal and grounding in Part2 class_of_indirect_property)
+
+What I'm trying to do is create an example sentence for exchanging an Hydro Test Pressure. Something like:
+
+"The Hydro Test Pressure for TestMethod2 of TestPackage42 is 200 PSI." -- As you can see there is more to this than "200 PSI" !!!
+
+
+;;; Hydro Test Pressure
+(<=> (P0025 ?testmethod ?testpackage ?propertytype ?value ?scale)
+     (and
+      (TestPackage ?testmethod ?testpackage)    ; follows pattern of an arrangement of individual, might need to find a part 4 class for test method.
+      (ClassificationOfIndividual ?propertyType HydrostaticTestpressure)  ;  uses the Part4 class as a constant
+      (IndirectPropertyScaleReal ?propertyType ?testmethod ?value ?scale))) ; This is where some intelligence is required -- used ?testmethod as ?possessor
+
+;;; Example using the sentence above ("The hydro test pressure of TestMethod2 of TestPackage42 is 200 PSI")
+(equal HydroTestPressure-1 (P0025 TestMethod2 TestPackage42 200 PSI)
