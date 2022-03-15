@@ -16,7 +16,7 @@
  :nicknames '(:part2-mexico)
  :model-class 'mexico-schema
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
- :source-file (lpath :models "cre/15926-2.exp"))
+ :source-file (lpath :data "15926/part2/15926-2.exp"))
 
 (ensure-model
  :part2
@@ -27,31 +27,25 @@
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
  :source-file (lpath :models "15926/part2/15926-2.lisp"))
 
-;;; 2022 commented out; model-class not known.
-#+nil(mofi:ensure-model 
+(mofi:ensure-model 
  :mmt-templates :force t :verbose t
  :features '(:cre)
  :model-class 'mofi:privileged-template-population
  :documentation "Created by parsing templates retrieved from 
                  <a href='http://15926.org/15926_template_specs.php?mode=owl'>
-                 http://15926.org/15926_template_specs.php?mode=owl</a> on 2013-07-25.
-                 2022: See readers/owl-templates.lisp"
- :source-file (lpath :data "cre/templates-2022-03-14.ttl" ; <============================================== NOPE!
-		     ;"data/mmt-templates-owl-2013-07-25.xml")) ; 2022 no such file
-					;"data/mmt-templates-owl-2013-04-17.xml"))
-		     ))
+                 http://15926.org/15926_template_specs.php?mode=owl</a> on 2013-07-25."
+ :source-file (lpath :data "15926/part7/mmt-templates-owl-2013-07-25.xml")) 
+	  		  ;"15926/part7/mmt-templates-owl-2013-04-17.xml"
 
-;;; 2022 commented out; cannot find the depends-on-model, mmt-templates. 
-#+nil(mofi:ensure-model 
+(mofi:ensure-model 
  :mmtc :force t :verbose t
  :features '(:cre)
  :nicknames '(:mmt-template-classes)
  :model-class 'mofi:essential-compiled-model
  :depends-on-models '(:mmt-templates)
  :documentation "Created from tlogic generator 2013-04-17 using templates retrieved that day." 
-< :classes-path (lpath :data "mmt-template-classes.lisp"))
+ :classes-path (lpath :models "15926/part7/mmt-template-classes.lisp"))
 
-;;; 2022 commented out
 #+nil(mofi:ensure-model
  :em-templates :force t :verbose t
  :features '(:cre)
@@ -72,8 +66,6 @@
 		  :path #P"/local/lisp/pod-utils/uml-utils/models/cre/15926-2.lisp"))
 
 |#
-
-
 
 #| 
 ;;; This reads the faulty XMI. The alternative is to expo:load the .exp

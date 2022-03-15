@@ -10,3 +10,5 @@ pod-notes.txt
 /src/pod-utils/uml-utils/qvt/examples
 *.sbcl
 /bin
+src/http/image/.~lock.2022-graphics.odp#
+src/pod-utils/uml-utils/mof/model-from-mac.lisp
