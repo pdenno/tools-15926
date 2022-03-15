@@ -4,7 +4,7 @@
 
 (defsystem :turtle
     :serial t
-    :depends-on (:mod-essential-models) ; Modelegator usage (pick up correct ODM). 
+    :depends-on (:mod-essential-models) ; Modelegator usage (pick up correct ODM).
     :components
     ((:file "packages")
      (:file "utils")
@@ -12,17 +12,3 @@
      (:file "turtle-token")
      (:file "turtle-parser")
      (:file "odmrdf2ttl")))
-
-
-
-
-
-
-
-
-
-
-
-
-
-

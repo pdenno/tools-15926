@@ -15,7 +15,7 @@
    (:file "conditions")
 ;;;(:file "express-axioms")
    (:file "emerson")
-;;;(:file "initial-set")
+;;;(:file "initial-set") ; 2022 I don't see why this is commented out. Compiles ok, I think.
    (:file "tlogic-utils")
    (:file "template-classes")
    (:file "owl-template")

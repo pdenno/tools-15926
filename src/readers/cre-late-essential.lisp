@@ -10,7 +10,7 @@
 #+injector(setf injector:*unresolved-attribute-refs* (make-array 1000 :adjustable t :fill-pointer 0))
 
 ;;; 2022 commented out; model-class not known.
-#+nil(ensure-model 
+(ensure-model 
  :part2-mexico :force t :verbose t
  :features '(:cre)
  :nicknames '(:part2-mexico)
@@ -18,18 +18,17 @@
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
  :source-file (lpath :models "cre/15926-2.exp"))
 
-;;; 2022 commented out; model-class not known.
-#+nil(ensure-model 
+(ensure-model 
  :part2
  :force t :verbose t
  :features '(:cre)
  :nicknames '(:part2)
  :model-class 'expresso-lisp
  :documentation "Created from pristine ISO 15926-2 EXPRESS."
- :source-file (lpath :lisplib "uml-utils/models/cre/15926-2.lisp"))
+ :source-file (lpath :models "cre/15926-2.lisp"))
 
 ;;; 2022 commented out; model-class not known.
-#+nil(mofi:ensure-model 
+(mofi:ensure-model 
  :mmt-templates :force t :verbose t
  :features '(:cre)
  :model-class 'mofi:privileged-template-population
@@ -37,8 +36,9 @@
                  <a href='http://15926.org/15926_template_specs.php?mode=owl'>
                  http://15926.org/15926_template_specs.php?mode=owl</a> on 2013-07-25.
                  2022: See readers/owl-templates.lisp"
- :source-file (lpath :data "data/mmt-templates-owl-2013-07-25.xml")) ; 2022 no such file
-		          ;"data/mmt-templates-owl-2013-04-17.xml"))
+ :source-file (lpath :data "cre/templates-2022-03-14.ttl"
+		     ;"data/mmt-templates-owl-2013-07-25.xml")) ; 2022 no such file
+		     ;"data/mmt-templates-owl-2013-04-17.xml"))
 
 ;;; 2022 commented out; cannot find the depends-on-model, mmt-templates. 
 #+nil(mofi:ensure-model 

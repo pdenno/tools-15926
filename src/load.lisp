@@ -44,8 +44,8 @@
 	     (:lisplib . ,(truename "./pod-utils"))
 	     (:testlib . ,(truename "./pod-utils"))
 	     (:mylib   . ,(truename "./pod-utils"))
-	     (:vampire . ,(truename ".")) ; 2022 ToDo
-	     (:tmp     . "/usr/local/tmp/")
+	     (:vampire . ,(truename "../bin"))
+	     (:tmp     . "/tmp/tools-15926/")
 	     (:data    . ,(truename "../data/"))
 	     (:models  . ,(truename "../models/")))
       do (setf (gethash key pod:*lpath-ht*) val))

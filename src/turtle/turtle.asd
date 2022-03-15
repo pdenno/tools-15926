@@ -2,7 +2,7 @@
 
 (in-package :user-system)
 
-(defsystem :turtle ; 2022 This was called :turtle-old 
+(defsystem :turtle ; 2022 This was called :turtle-old (probably owing to turtle in pod-utils/w3c-utils).
     :serial t
     :depends-on (:cre-essential-models
 		 :cre-http)
@@ -10,8 +10,7 @@
     ((:file "packages")
      (:file "conditions")
      (:file "turtle-token")
-     ;; 2022 commented out (need a few models, for their namespaces, at least.)
-     #+nil(:file "turtle-parser")))
+     (:file "turtle-parser")))
 
 
 

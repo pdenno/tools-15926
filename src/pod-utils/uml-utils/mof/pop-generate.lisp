@@ -332,7 +332,7 @@
     (if name-only-p
 	name
 	(let ((*package* (find-package tpkg)))
-	  (declare (special *package*))
+	  #-sbcl(declare (special *package*))
 	  (real-pprint version (make-pg-instance 'pg-ptype :name name :model tpkg :xmi-id (obj2xmiid ptype model)) stream)
 	  (format stream "~2%")))))
 
@@ -343,7 +343,7 @@
     (if name-only-p
 	name
 	(let ((*package* (find-package tpkg)))
-	  (declare (special *package*))
+	  #-sbcl(declare (special *package*))
 	  (real-pprint
 	   version
 	   (make-pg-instance 
@@ -369,7 +369,7 @@
       (if name-only-p
 	  name
 	  (let ((*package* (find-package tpkg)))
-	    (declare (special *package*))
+	    #-sbcl(declare (special *package*))
 	     (make-pg-instance 
 	      'pg-assoc
 	      :name name
@@ -491,7 +491,7 @@
 		       (find-package (format nil "~A-~A" tpkg 
 					     (cmfuncall "%NAME" (cmfuncall "%NAMESPACE" class))))
 		       (find-package tpkg))))
-    (declare (special *package*))
+    #-sbcl(declare (special *package*))
     (if name-only-p
 	name
 	;; Otherwise write to STREAM the class, its operations and constraints."
@@ -773,7 +773,7 @@
   (if name-only-p
       (intern (cmfuncall "%NAME" obj) tpkg)
       (let ((*package* (find-package tpkg)))
-	(declare (special *package*))
+	#-sbcl(declare (special *package*))
 	(format stream "~2%(def-meta-package ~S ~S ~S ~%   (~{~S~^~%    ~}) :xmi-id ~S)"
 		(intern (cmfuncall "%NAME" obj) tpkg)
 		;; owner, ownedElement will be resolved to a mm-type-object/mm-package-mo on model-load. 
@@ -857,7 +857,6 @@
 (defgeneric real-pprint (version obj stream &key &allow-other-keys))
 
 (defmethod real-pprint :around (version obj stream &key)
-  (setf *zippy* obj)
    (with-slots (name) obj
      (let ((*package* (if (typep obj 'pg-assoc-end) *package* (symbol-package name))))
        (call-next-method))))

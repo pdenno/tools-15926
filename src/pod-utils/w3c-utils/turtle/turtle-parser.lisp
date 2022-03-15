@@ -9,7 +9,6 @@
 ;;;      - check use of ODM literals (langtag, etc. ???)
 ;;;      - Reading literals like this: "That Seventies Show"^^xsd:string
 ;;; POSTPONED - use OCL collections
-;;; 
 
 (defvar *prefix-defs* nil "A list of prefix definitions.")
 (defvar *subject* nil "A list scoping the subject of expressions. Car is current context.")

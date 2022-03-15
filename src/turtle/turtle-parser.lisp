@@ -9,7 +9,6 @@
 ;;;      - check use of ODM literals (langtag, etc. ???)
 ;;;      - Reading literals like this: "That Seventies Show"^^xsd:string
 ;;; POSTPONED - use OCL collections
-;;; 
 
 (defvar *prefix-defs* nil "A list of prefix definitions.")
 (defvar *subject* nil "A list scoping the subject of expressions. Car is current context.")
@@ -17,15 +16,14 @@
 (defvar *nodes* (make-hash-table :test #'equal))
 (defvar *triples* nil "A list of triples created")
 
-(defmethod initialize-instance :after ((obj odb:|Triple|) &key)
+(defmethod initialize-instance :after ((obj |ODM-RDFConcepts|:|Triple|) &key)
   (when-debugging (:parser 5)
     (format t "~%*** Made Triple: ~A~%" obj))
   (push obj *triples*))
 
-(defmethod initialize-instance :after ((obj odm:|BlankNode|) &key)
+(defmethod initialize-instance :after ((obj |ODM-RDFConcepts|:|BlankNode|) &key)
   (when-debugging (:parser 5)
     (format t "~%+++ New BlankNode: ~A~%" obj)))
-
 
 (defclass turtle-stream (token-stream)
   ((read-fn :initform 'turtle-read)
@@ -101,8 +99,8 @@
   (loop until (eql :eof (peek-token stream)) do 
        (setf *subject* nil)
        (parse |statement|))
-  (with-instance (odm:|Graph|) 
-    (setf odm:|triple| *triples*) ; POD ocl:collection
+  (with-instance (|ODM-RDFConcepts|:|Graph|) 
+    (setf |ODM-RDFConcepts|:|triple| *triples*) ; POD ocl:collection
     (setf mofi:|source-elem| *prefix-defs*)))
 
 ;;; statement ::= directive | triples '.'
@@ -187,7 +185,7 @@
   ;pod2014(setf v (make-instance 'odm:|RDFProperty| :iri v))
   ;pod2014(when (typep o 'odm:IRI)
   ;pod2014  (setf o (ensure-node o)))
-  (make-instance 'odm:|Triple| :r-d-fsubject s :r-d-fpredicate v :r-d-fobject o))
+  (make-instance '|ODM-RDFConcepts|:|Triple| :r-d-fsubject s :r-d-fpredicate v :r-d-fobject o))
 
 ;;; predicateObjectList ::= verb objectList (';' predicateObjectList?)*
 (defparse |predicateObjectList| ()
@@ -347,23 +345,24 @@
 	     (strcat ns-name (pname--ln pname))
 	     (error 'turtle-parse-token-error :expect "a defined namespace prefix" :got ns))))
 
-;;; POD Not sure I want to uniquify uri-refs, but here goes...  
+;;; POD Not sure I want to uniquify uri-refs, but here goes...
+;;; 2022 I'm letting it happen again (once I find :odm:|IRI|).
 (defun ensure-uri-ref (str &key prefix)
   "Return an existing reference to the URIReference, or make a new one."
-;  (or
-;   (gethash str *uri-refs*)
-;   (setf (gethash str *uri-refs*)
-	 (make-instance 'odm:IRI
-			:iri-string str ;; hide prefix info for use in XML serialization.
-			:obj-id (assoc prefix *prefix-defs* :test #'string=)))
+  (or
+   (gethash str *uri-refs*)
+   (setf (gethash str *uri-refs*)
+    (make-instance '|ODM-RDFConcepts|:IRI
+		   :iri-string str ;; hide prefix info for use in XML serialization.
+		   :obj-id (assoc prefix *prefix-defs* :test #'string=)))))
 
 (defun ensure-node (iri)
   "Return an existing node, or make a new one."
   (break "POD not used now. Might not be right.")
-  (let ((iri-string (odm:%iri-string iri)))
+  (let ((iri-string (get-value iri '|ODM-RDFConcepts|:|iriString|))) ; 2022
     (or (gethash iri-string *nodes*)
 	(setf (gethash iri-string *nodes*)
-	      (make-instance 'odm:IRI :iri-string iri-string)))))
+	      (make-instance '|ODM-RDFConcepts|:IRI :iri-string iri-string)))))
   
 (defun ensure-blank-node (label)
   "Return an existing blank node, or make a new one. 
@@ -371,10 +370,10 @@
   (cond ((gethash label *nodes*))
 	((string= label "")
 	 (setf (gethash (gensym "anon") *nodes*)
-	       (make-instance 'odm:|BlankNode| :node-i-d :anon)))
+	       (make-instance '|ODM-RDFConcepts|:|BlankNode| :node-i-d :anon)))
 	(t
 	 (setf (gethash label *nodes*)
-	       (make-instance 'odm:|BlankNode| :node-i-d label)))))
+	       (make-instance '|ODM-RDFConcepts|:|BlankNode| :node-i-d label)))))
 
 
 #|

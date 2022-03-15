@@ -22,13 +22,13 @@
 (declaim (inline rdf-resource rdf-datatype))
 (defun rdf-resource (elem)
   "Get the rdf:resource attribute of xml element ELEM."
-  (string-trim '(#\Space) (xml-get-attr-value elem 'rdf:|resource|)))
+  (string-trim '(#\Space) (xml-utils:xml-get-attr-value elem 'rdf:|resource|)))
+
 (defun rdf-datatype (elem)
   "Get the rdf:resource attribute of xml element ELEM."
   (values
-   (xml-get-attr-value elem 'rdf:|datatype|)
+   (xml-utils:xml-get-attr-value elem 'rdf:|datatype|)
    (car (xml-utils:xml-children elem))))
-
 
 (defvar *owl-object-properties* nil)   ; POD collected but not used.
 (defvar *owl-datatype-properties* nil) ; POD collected but not used.
@@ -84,8 +84,8 @@
   "Return T if elem has an RDF:type with resource string= the (sym2rdf symbol)."
   (and
    (dom:element-p elem)
-   (when-bind (type-elem (find-if #'(lambda (x) (xml-typep-3 x 'rdf:|type|)) (xml-utils:xml-children elem)))
-     (when-bind (rdf-type (xml-get-attr-value type-elem 'rdf:|resource|))
+   (when-bind (type-elem (find-if #'(lambda (x) (xml-utils:xml-typep-3 x 'rdf:|type|)) (xml-utils:xml-children elem)))
+     (when-bind (rdf-type (xml-utils:xml-get-attr-value type-elem 'rdf:|resource|))
        (string= rdf-type (sym2rdf type))))))
 
 (defmacro def-parse! (method-name pass-downward (type &rest binds) &body body)
@@ -99,7 +99,7 @@
 	 (let* ((,sint? nil)
 		(,chilun (xml-utils:xml-children dself))
 		,@(loop for (vname aname) in attrs collect
-			`(,vname (xml-get-attr-value dself ,aname)))
+			`(,vname (xml-utils:xml-get-attr-value dself ,aname)))
 		,@aux)
 	   (declare (ignorable ,chilun ,sint?))
 	   ,@(loop for bod in body collect
@@ -114,7 +114,7 @@
 				 ((listp term) (first action/args) action/args (second action/args))
 				 (t (error "Unknown def-parse action: ~A" term)))
 			    `(loop for ,c in ,chilun
-				   when (xml-typep-3 ,c ,term) ,action
+				   when (xml-utils:xml-typep-3 ,c ,term) ,action
 				  (,method-name ,term ,c
 						,(kintern pass-downward) ,pass-downward ,@action/args)))))))))))
 
@@ -150,9 +150,9 @@
 	      (clrhash *templates*) ; used by ensure-
 	      (setf *owl-object-properties* nil)
 	      (setf *owl-datatype-properties* nil)
-	      (unless (find-namespace doc :p7tm)
-		(warn 'template-missing-namespace :ns :p7tm))
-	      (if (xml-typep-3 (xml-utils:xml-root doc) 'rdf::RDF)
+	      #+nil(unless (find-namespace doc :p7tm)
+		(warn 'template-missing-namespace :ns :p7tm)) ; 2022 Too slow!
+	      (if (xml-utils:xml-typep-3 (xml-utils:xml-root doc) 'rdf::RDF)
 		  (parse-tmpl 'rdf::RDF (xml-utils:xml-root doc) :model model)
 		  (warn "Root of document is not an RDF:RDF element"))
 	      (pp-owl-class model)
@@ -177,21 +177,27 @@
    #'xml-utils:xml-children
    :do #'(lambda (x)
 	   (when (and (dom:element-p x)
-		      (xml-typep-3 x 'owl:|Thing|))
-	     (when-bind (type (find-if #'(lambda (y) (xml-typep-3 y 'rdf:|type|)) (xml-utils:xml-children x)))
+		      (xml-utils:xml-typep-3 x 'owl:|Thing|))
+	     (when-bind (type (find-if #'(lambda (y) (xml-utils:xml-typep-3 y 'rdf:|type|)) (xml-utils:xml-children x)))
 	       (cond ((rdf-typep x 'p7tm:|TemplateDescription|)
 		      (setf (dom:local-name x) 'p7tm:|TemplateDescription|))
 		     ((rdf-typep x 'p7tm:|TemplateRoleDescription|)
 		      (setf (dom:local-name x) 'p7tm:|TemplateRoleDescription|)))
 	       (setf (xml-utils:xml-children x) (remove type (xml-utils:xml-children x))))))))
 
+;;; 2022 I'm not using this! Too slow!
 (defun find-namespace (elem ns)
   "Return the namespace NS, a symbol naming a package."
   (let ((pname (package-name (find-package ns))))
     (breadth-first-search
      elem
-     #'(lambda (x) (and (dom:element-p x)
-			(find pname (xml-utils:xml-namespaces x) :test #'string= :key #'rune-dom::value)))
+     #'(lambda (x)
+	 (setf *zippy* x)
+	 (and
+	  (dom:element-p x)
+	  (find pname (mapcar #'first (xml-utils:xml-namespaces x))
+		:test #'string=
+		:key #'rune-dom::value)))
      #'xml-utils:xml-children
      :on-fail nil)))
 
@@ -208,7 +214,7 @@
 
 (def-parse-tmpl ('owl:|Ontology|)
     (:self ; just set the documentation, if any...
-     (when-bind (comment (find-if #'(lambda (x) (xml-typep-3 x 'rdfs:|comment|))
+     (when-bind (comment (find-if #'(lambda (x) (xml-utils:xml-typep-3 x 'rdfs:|comment|))
 				  (xml-utils:xml-children dself)))
        (setf (slot-value model 'mofi::documentation)
 	     (car (xml-utils:xml-children comment))))))
@@ -398,7 +404,7 @@
     (loop for key being the hash-key of mofi:owl-classes using (hash-value class)
 	  for tmpl = (find key mofi:templates :test #'string= :key #'name) do
 	 (if tmpl
-	     (loop for sc in (remove-if-not #'(lambda (x) (xml-typep-3 x 'rdfs:|subClassOf|))
+	     (loop for sc in (remove-if-not #'(lambda (x) (xml-utils:xml-typep-3 x 'rdfs:|subClassOf|))
 					    (xml-utils:xml-children class)) do
 		  (setf *tmpl* tmpl)
 		  (parse-tmpl 'rdfs:|subClassOf| sc :model model :tmpl tmpl))
@@ -424,9 +430,9 @@
 		 (setf template-metatype uri))
 	       (warn 'tlogic-unknown-metatype :tmpl tmpl))))
        ;; ...it IS doing a property restriction...
-       (when-bind (class (find-if #'(lambda (x) (xml-typep-3 x 'owl:|Class|))
+       (when-bind (class (find-if #'(lambda (x) (xml-utils:xml-typep-3 x 'owl:|Class|))
 				  (xml-utils:xml-children dself)))
-	 (loop for insec in (remove-if-not #'(lambda (x) (xml-typep-3 x 'owl:|intersectionOf|))
+	 (loop for insec in (remove-if-not #'(lambda (x) (xml-utils:xml-typep-3 x 'owl:|intersectionOf|))
 					   (xml-utils:xml-children class))
 	    do (parse-tmpl 'owl:|intersectionOf| insec :model model :tmpl tmpl))))))
 
@@ -567,7 +573,7 @@
 
 (defun p7-parse-ti (elem class mut)
   "Create an template instance for the ELEM which is of TCLASS."
-  (when-bind (id (xml-get-attr-value elem 'rdf:id))
+  (when-bind (id (xml-utils:xml-get-attr-value elem 'rdf:id))
     (let ((obj (make-instance class :obj-id id)))
       (setf *inst* obj)
       (setf (gethash (add-frag id) (mofi:instances mut)) obj)
@@ -633,7 +639,7 @@
 ;;; ------------ Process DM Content --------------
 (defun dm-parse-obj (elem class mut)
   "Instantiate CLASS using data from element. Register in mut.instances."
-   (when-bind (id (xml-get-attr-value elem 'rdf:id))
+   (when-bind (id (xml-utils:xml-get-attr-value elem 'rdf:id))
     (let ((obj (make-instance class)))
       (setf (gethash (add-frag id) (mofi:instances mut)) obj)
       (loop for c in (xml-utils:xml-children elem)
@@ -679,10 +685,34 @@
       c)))
 
 ;;; ------------
+(defvar *zippy* nil)
 
-; p7tpl:hasIdentificationType
-; p7tpl:hasCardinalityOfPossessorType
+;;; p7tpl:hasIdentificationType
+;;; p7tpl:hasCardinalityOfPossessorType
+;;; 2022 I'm really not sure what this is trying to do. It got stuck
+;;;      on dom:local-name (a string, simple enough) but 
 (defun rdl-endpoints (mut)
+  "Return a list of the endpoints used."
+  (let ((paths nil))
+    (depth-first-search
+     (xml-utils:xml-root (mofi:user-doc mut))
+     #'fail
+     #'xml-utils:xml-children
+     :do #'(lambda (x)
+	     (and (dom:element-p x)
+		  (string-equal "p7tpl" (dom:local-name x))
+		  (when-bind (re (rdf-resource x))
+		    (when (or (cl-ppcre:scan "^http" re)
+			      (cl-ppcre:scan  ".*\\.com/" re))
+		      (let* ((uri (puri:parse-uri re))
+			     (host (puri:uri-host uri))
+			     (path (puri:uri-path uri))
+			     (host+path (and host path (strcat host path))))
+			(pushnew (or host+path host path) paths :test #'string=)))))))
+    paths))
+
+;;; 2022 Original (from a time I might have known what I was doing!) KEEP. 
+#+nil(defun rdl-endpoints (mut)
   "Return a list of the endpoints used."
   (let ((p (find-package :p7tpl))
 	(paths nil))
@@ -691,6 +721,7 @@
      #'fail
      #'xml-utils:xml-children
      :do #'(lambda (x)
+	     (setf *zippy* x)
 	     (and (dom:element-p x)
 		  (eql p (symbol-package (dom:local-name x)))
 		  (when-bind (re (rdf-resource x))
@@ -702,3 +733,4 @@
 			     (host+path (and host path (strcat host path))))
 			(pushnew (or host+path host path) paths :test #'string=)))))))
     paths))
+

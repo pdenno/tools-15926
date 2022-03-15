@@ -17,7 +17,6 @@
 (defmethod print-object ((obj easy-template) stream)
   (format stream "{Easy-Template ~A}" (name obj)))
 
-
 (defparameter *initial-set* nil "List of 19 initial templates for individuals and 26 initial templates
  for classes.")
 

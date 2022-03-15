@@ -13,19 +13,6 @@
   :components
   ((:file "package")
    (:file "model")
+   (:file "cre-model")
    (:file "mof")
    (:file "mof-types")))
-
-
-
-
-
-
-
-
-
-
-
-
-
-

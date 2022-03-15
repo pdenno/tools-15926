@@ -300,6 +300,7 @@
 (defun xml-siblings (node)
   (xml-children (xml-parent node)))
 
+;;; ToDo: This can be really slow!
 (defun xml-namespaces (elem)
   "Return an alist of the namespace-URIs of the namespaces found in elem and its descendants."
   (let ((attrs '()))
