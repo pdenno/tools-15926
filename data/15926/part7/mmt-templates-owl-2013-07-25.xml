@@ -36691,5 +36691,4 @@ exists u1 exists u2 exists u3 exists u4(
 	    <p7tm:hasRoleFillerType rdf:resource=""/>
 	    <p7tm:hasTemplate rdf:resource="#"/>
 	</owl:Thing>
-
 </rdf:RDF>

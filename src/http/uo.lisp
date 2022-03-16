@@ -1,5 +1,5 @@
 ;;; Author: Peter Denno
-;;; Purpose: Display Price's OWL upper ontology of ISO 15926-2 as ODM OWL etc. objects.
+;;; Purpose: Display Price's OWL upper ontology (UO) of ISO 15926-2 as ODM OWL etc. objects.
 
 (in-package :phttp)
 
@@ -66,11 +66,10 @@
 				:menu-pos '(:root :browse))
     (:h1 "Model Inventory")
     (:ul
-     (:li (:a :href "/cre/part2" "ISO15926-2"))
+     (:li (:a :href "/cre/part2"    "ISO15926-2"))
      (:li (:a :href "/cre/odm-tree" "ODM"))
-     (:li (:a :href "/cre/mexico" "EXPRESS Metamodel"))
-     (:li (:a :href "/cre/uo"     "OWL Ontology of ISO-15926-2")))))
-
+     (:li (:a :href "/cre/mexico"   "EXPRESS Metamodel"))
+     (:li (:a :href "/cre/uo"       "OWL Ontology of ISO-15926-2")))))
 
 (defun mexico-dsp ()
   "Display the classes of the EXPRESS metamodel (MEXICO)."
@@ -96,16 +95,12 @@
 ;;;/cre/odm-tree
 (defun odm-tree-dsp ()
   "Display JS package structure and (at bottom of page) lists of classes."
-  (flet ((string-of-classes (class-list)
-	   (loop for c across class-list with result = "" do
-	      (strcat* result (mofb:url-class-browser c) "<br/>")
-	      finally (return result))))
-    (app-page-wrapper :cre (:view "ODM Browser" :js-tree t
-				  :menu-pos '(:root :browse :odm))
-      (:h1 "Ontology Definition Metamodel (ODM) Browser")
-      (str
-       (build-package-hierarchy (find "org.omg.odm" (mofi:packages (mofi:find-model :odm))
-				      :key #'mofi:name :test #'string=))))))
+  (app-page-wrapper :cre (:view "ODM Browser" :js-tree t
+			  :menu-pos '(:root :browse :odm))
+    (:h1 "Ontology Definition Metamodel (ODM) Browser")
+    (cl-who:with-html-output (*standard-output*)
+     (build-package-hierarchy (find 'odm::odm (mofi:packages (mofi:find-model :odm))
+				    :key #'mofi:name)))))
 
 (defun build-package-hierarchy (pack)
   "Generate JS for package hierarchy. Not called for leaves"

@@ -1027,7 +1027,7 @@
 (defmethod pprint-prolog ((version (eql #.*cmpkg*)) stream tpkg model classes keep-pkg-info)
   "Write miscellaneous information."
   (format stream "~2%(in-package :mofi)~2%")
-  (let ((*package* :mofi))
+  (let ((*package* (find-package :mofi)))
     (format stream
 	    (strcat
 	     "~%(with-slots (abstract-classes ns-uri ns-prefix) *model*"

@@ -15,6 +15,12 @@
 ;;;  dom:remove-attribute
 ;;;  dom:remove-named-item
 ;;;  dom:clone-node
+;;;
+;;;  Here are some things that get used often:
+;;;    dom:node-name  - returns a string e.g. "rdf:RDF"
+;;;    dom:local-name - returns a string e.g. "RDF"
+;;;    dom:prefix     - returns a string e.g. "rdf"
+
 
 ;;; =================================== XMLP =================================
 (in-package :xml-utils)
@@ -330,11 +336,31 @@
        (find-if test (xml-attributes elem)))))
 
 #+nil(declaim (inline xml-get-attr-value))
-(defun xml-get-attr-value (elem name)
+;;; 2022 The following gets an error  on get-named-item when there is no attribute "name"
+#+nil(defun xml-get-attr-value (elem name)
   "Return the value of the attribute of elem identified by local-name.
    Return nil if no attribute found."
   (when-bind (attr (dom:get-named-item (dom:attributes elem) name))
-      (dom:value attr)))
+    (dom:value attr)))
+
+(defmethod xml-get-attr-value (elem (name string))
+  "Return the value of the attribute of elem identified by local-name.
+   Return nil if no attribute found."
+  (let ((attrs (dom:attributes elem)))
+    (when-bind (attr (find-if #'(lambda (x) (string= name (dom:name x)))
+			      (dom:items attrs)))
+      (dom:value attr))))
+
+(defmethod xml-get-attr-value (elem (name symbol))
+  "Return the value of the attribute of elem identified by local-name.
+   Return nil if no attribute found."
+  (let ((attrs (dom:attributes elem))
+	(sname (symbol-name name))
+	(spkg  (symbol-package name)))
+    (when-bind (attr (find-if #'(lambda (x) (and (string= sname (dom:local-name x))
+						 (find-package spkg))) ; ToDo: not quite!
+			      (dom:items attrs)))
+      (dom:value attr))))
 
 (defun xml-find-attrs (elem test)
   "Return a list of attributes of ELEM that pass TEST."
@@ -369,7 +395,9 @@
 
 (defun xml-typep-3 (elem type)
   (and (dom:element-p elem)
-       (eql (dom:node-name elem) type)))
+       (when-bind (pkg (find-package (dom:prefix elem)))
+	 (let ((sym (intern (dom:local-name elem) pkg)))
+	   (eql sym type)))))
 
 ;;; Inspired by Vasilis M.'s cells-gtk/widgets.lisp (in the sense that it has 'subtypes').
 (defmacro def-parse (method-name pass-downward (type &rest binds) &body body)

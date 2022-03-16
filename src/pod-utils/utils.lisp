@@ -1320,3 +1320,11 @@
 (defmacro defp (var val &optional doc)
   `(progn (defparameter ,var ,val ,doc)
 	  ,val))
+
+;;; 2022 Likewise I'm sick of the problems with sbcl's defpackage!
+;;; This will likely become more complex before sbcl stops complaining.
+;;; Among the problems with sbcl defpackage is that when you re-evaluate
+;;; defpackage x it says that "package x also uses package x"!
+(defmacro defpackage* (name &body body)
+  `(unless (find-package ,name)
+     (defpackage ~name ,@body)))

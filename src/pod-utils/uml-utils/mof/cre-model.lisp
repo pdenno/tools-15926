@@ -22,8 +22,7 @@
   ())
 
 (defclass user-template-population (template-population)
-   ;; Most errors are associated with the templates. These are associated
-   ;; with the file.
+   ;; Most errors are associated with the templates. These are associated with the file.
   ())
 
 (defmethod mofi:load-model ((m template-population) &key)
@@ -31,7 +30,17 @@
     (with-slots (source-file model-name) m
       (if (eql model-name :em-templates)
 	  (emerson:toplevel-read-emerson :model m)
-	  (let ((newer-path (lpath :tmp (format nil "~A-~A.xml" (pathname-name source-file) (pod-utils:new-uuid)))))
+	  (tlogic:read-owl :file (slot-value m 'mofi::source-file) :model m))))
+  m)
+
+
+;;; 2022 replaced with above
+#+nil(defmethod mofi:load-model ((m template-population) &key)
+  (let ((*model* m))
+    (with-slots (source-file model-name) m
+      (if (eql model-name :em-templates)
+	  (emerson:toplevel-read-emerson :model m)
+	  (let ((newer-path (lpath :tmp (format nil "~A-~A.xml" (pathname-name source-file) "np" #+nil(pod-utils:new-uuid)))))
  	    (tlogic:translate-legacy-ns source-file newer-path) ; POD maybe this belongs in owl-template/(read-owl)
 	    (tlogic:read-owl :file newer-path :model m)))))
   m)

@@ -4,7 +4,7 @@
 ;;;                        p7tm import p7tpl
 ;;; and the RDL will import template instances.
 
-(defpackage :dm
+(pod::defpackage* :dm
   (:nicknames "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/data-model#"
 	      :part2 :ISO15926-2 :p2)
   (:use :cl :pod :closer-mop :expo)
@@ -15,7 +15,7 @@
 ;;; was "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/template#"
 ;;; Part 8 says it is for: "Templates defined in ISO/TS 15926-7, proto-templates and 'initial set'
 ;;; core templates."
-(defpackage :p7tpl
+(pod::defpackage* :p7tpl
   (:nicknames "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tpl#")
   (:export
    #:|InitialSetTemplateStatement|
@@ -24,7 +24,7 @@
 
 ;;; was "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/template-model#"
 ;;; Part 8 says it is for: "Normative OWL declarations for templates and template roles "
-(defpackage :p7tm
+(pod::defpackage* :p7tm
   (:nicknames "http://standards.iso.org/iso/ts/15926/-8/ed-1/tech/reference-data/p7tm#")
   (:export
    #:|BaseTemplateStatement|
@@ -41,13 +41,13 @@
    #:|valRoleIndex|))
 
 ;;; I think the package :xsd is defined by Anderson.
-(defpackage :xml-xsd
+(pod::defpackage* :xml-xsd
   (:nicknames "http://www.w3.org/2001/XMLSchema#")
   (:export
    #:|DateTime|
    date-time-val))
 
-(defpackage "http://www.w3.org/2002/07/owl#"
+(pod::defpackage* "http://www.w3.org/2002/07/owl#"
   (:nicknames :owl "owl")
   (:export
    #:|allValuesFrom|
@@ -61,7 +61,7 @@
    #:|Restriction|
    #:|Thing|))
 
-(defpackage "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+(pod::defpackage* "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   (:nicknames :rdf :rdf-ns "rdf")
   (:export
    #:|about|
@@ -71,14 +71,14 @@
    #:|resource|
    #:|type|))
 
-(defpackage "http://www.w3.org/2000/01/rdf-schema#"
+(pod::defpackage* "http://www.w3.org/2000/01/rdf-schema#"
   (:nicknames :rdfs "rdfs")
   (:export
    #:|comment|
    #:|label|
    #:|subClassOf|))
 
-(defpackage :odm-cl
+(pod::defpackage* :odm-cl
   (:use :cl :mofi :ocl :ptypes :pod-utils)
   (:shadowing-import-from :ocl #:|body|)
   (:export
@@ -118,7 +118,7 @@
 	  odm-cl::|argument|)
 	:odm-cl)
 
-(defpackage :tlogic
+(pod::defpackage* :tlogic
   (:use :cl :pod :closer-mop :odm-cl)
   (:nicknames :tlog)
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
@@ -164,7 +164,7 @@
   t)
 
 
-(defpackage :p7
+(pod::defpackage* :p7
   (:use :cl :pod :tr :closer-mop :tlogic)
   (:nicknames :iso15926-7)
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
@@ -174,7 +174,7 @@
    #:template-formal))
 
 
-(defpackage :emerson
+(pod::defpackage* :emerson
   (:use :cl :pod :tr :closer-mop :tlogic)
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
 			  #:defgeneric #:standard-generic-function #:defclass #:defmethod)

@@ -84,9 +84,12 @@
   "Return T if elem has an RDF:type with resource string= the (sym2rdf symbol)."
   (and
    (dom:element-p elem)
-   (when-bind (type-elem (find-if #'(lambda (x) (xml-utils:xml-typep-3 x 'rdf:|type|)) (xml-utils:xml-children elem)))
+   (when-bind (type-elem (find-if #'(lambda (x) (xml-utils:xml-typep-3 x 'rdf:|type|))
+				  (xml-utils:xml-children elem)))
      (when-bind (rdf-type (xml-utils:xml-get-attr-value type-elem 'rdf:|resource|))
        (string= rdf-type (sym2rdf type))))))
+
+(defvar *ppp* nil "current entity for diagnostics")
 
 (defmacro def-parse! (method-name pass-downward (type &rest binds) &body body)
   (let* ((aux (cdr (member '&aux binds))) ; can't use dbind, not same idea.
@@ -96,6 +99,7 @@
     (with-gensyms (chilun c sint?)
       `(defmethod ,method-name ((elem-type (eql ,type)) dself &key ,pass-downward ,@keys)
 	 (declare (ignorable dself ,pass-downward))
+	 (format t "~% Parsing a ~A" elem-type)
 	 (let* ((,sint? nil)
 		(,chilun (xml-utils:xml-children dself))
 		,@(loop for (vname aname) in attrs collect
@@ -142,10 +146,11 @@
 						   (t (push c mofi:general-errors)))
 					     (muffle-warning))))
 	    (let ((doc (or mmm (xml-utils:xml-document-parser file))))
+	      (setf *zippy* doc)
 	      (with-slots (mofi:user-doc mofi:endpoints) model
 		(setf mofi:user-doc doc)
 		(setf mofi:endpoints (rdl-endpoints mut)))
-	      (transform-owl-thing doc)
+	      (transform-owl-thing doc) ; This reformats from owl:Thing
 	      (setf *mmm* doc) ; POD temporary!
 	      (clrhash *templates*) ; used by ensure-
 	      (setf *owl-object-properties* nil)
@@ -178,11 +183,14 @@
    :do #'(lambda (x)
 	   (when (and (dom:element-p x)
 		      (xml-utils:xml-typep-3 x 'owl:|Thing|))
-	     (when-bind (type (find-if #'(lambda (y) (xml-utils:xml-typep-3 y 'rdf:|type|)) (xml-utils:xml-children x)))
+	     (when-bind (type (find-if #'(lambda (y) (xml-utils:xml-typep-3 y 'rdf:|type|))
+				       (xml-utils:xml-children x)))
 	       (cond ((rdf-typep x 'p7tm:|TemplateDescription|)
-		      (setf (dom:local-name x) 'p7tm:|TemplateDescription|))
+		      (setf (dom:local-name x) "TemplateDescription")
+		      (setf (dom:prefix x) "p7tm"))
 		     ((rdf-typep x 'p7tm:|TemplateRoleDescription|)
-		      (setf (dom:local-name x) 'p7tm:|TemplateRoleDescription|)))
+		      (setf (dom:local-name x) "TemplateRoleDescription")
+		      (setf (dom:prefix x) "p7tm")))
 	       (setf (xml-utils:xml-children x) (remove type (xml-utils:xml-children x))))))))
 
 ;;; 2022 I'm not using this! Too slow!
@@ -201,8 +209,9 @@
      #'xml-utils:xml-children
      :on-fail nil)))
 
-;;; POD The use of def-parse macro-ology here isn't very effective.
+;;; The use of def-parse macro-ology here isn't very effective.
 ;;; That approach is more useful when the XML structure is deep (like XMI).
+;;; This macroexpands to a bunch of 
 (def-parse-tmpl ('rdf:RDF)
     ('owl:|Ontology|)
     ('owl:|ObjectProperty|)
@@ -403,12 +412,12 @@
   (with-slots (mofi:owl-classes mofi:templates) model
     (loop for key being the hash-key of mofi:owl-classes using (hash-value class)
 	  for tmpl = (find key mofi:templates :test #'string= :key #'name) do
-	 (if tmpl
-	     (loop for sc in (remove-if-not #'(lambda (x) (xml-utils:xml-typep-3 x 'rdfs:|subClassOf|))
-					    (xml-utils:xml-children class)) do
-		  (setf *tmpl* tmpl)
-		  (parse-tmpl 'rdfs:|subClassOf| sc :model model :tmpl tmpl))
-	     (warn "No tmpl: ~A" key)))))
+	    (if tmpl
+		(loop for sc in (remove-if-not #'(lambda (x) (xml-utils:xml-typep-3 x 'rdfs:|subClassOf|))
+					       (xml-utils:xml-children class)) do
+						 (setf *tmpl* tmpl)
+						 (parse-tmpl 'rdfs:|subClassOf| sc :model model :tmpl tmpl))
+		(warn "No tmpl: ~A" key)))))
 
 (def-parse-tmpl ('rdfs:|subClassOf|
 		       (resource 'rdf:|resource|)
@@ -598,7 +607,7 @@
 	       (if-bind (slot-name (p7-find-attr attr-name class))
 			(if-bind (val (rdf-resource celem))
 				 (setf (slot-value obj slot-name) val)
-				 (break "Couldn't find object reference in ~A" celem))
+				 (warn "Couldn't find object reference in ~A" celem))
 			(warn 'instance-role-name-failure :tmpl (class2tmpl-desc class) :inst obj :role-name attr-name)))
 	      ((cl-ppcre:scan "^ann\\w+" attr-name) ; annotation
 	       (if-bind (slot-name (p7-find-attr attr-name class))
@@ -606,7 +615,7 @@
 			  (declare (ignore type)) ; for now
 			  (if val
 			      (setf (slot-value obj slot-name) val)
-			      (break "Couldn't find annotation attribute ~A in ~A" attr-name class)))
+			      (warn "Couldn't find annotation attribute ~A in ~A" attr-name class)))
 			(unless (string= attr-name "annRecordCreated")
 			(warn 'instance-role-name-failure :tmpl class :inst obj :role-name attr-name)))))))))
 

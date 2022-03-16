@@ -24,17 +24,17 @@
 
 ;;; /cre/validate
 (defun validate-home-dsp ()
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate))
     (htm
      (:h1 "Templates")
      (:ul
-      (:li (:a :href "/cre/validate/emerson" "Emerson templates"))
+      (:li (:a :href "/cre/validate/emerson"     "Emerson templates"))
       (:li (:a :href "/cre/validate/results/mmt" "MMT templates"))))))
 
 ;;; /cre/validate/results/mmt
 (defun validate-show-mmt-list-dsp ()
   "Display the validation home page, listing templates and problems."
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate :mmt))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate :mmt))
     (when-bind (mut (mofi:find-model :mmt-templates))
       (when-bind (temps (mofi:templates mut)))
       (htm
@@ -49,7 +49,7 @@
 ;;; /cre/validate/results/mmt
 (defun validate-show-user-list-dsp ()
   "Display the validation home page, listing templates and problems."
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate :upload))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate :upload))
     (with-vo (mut)
        (with-slots ((sfile mofi:source-file) (errs mofi:general-errors) (eps mofi:endpoints)
 		    (temps mofi:templates) (insts mofi:instances)) mut
@@ -192,7 +192,7 @@
 ;;; /cre/validate/emerson
 (defun validate-em-dsp ()
   "Display the validation home page, listing templates and problems."
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate :em))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate :em))
     (when-bind (model (mofi:find-model :em-templates))
       (when-bind (temps (mofi:templates model))
 	(htm
@@ -209,11 +209,10 @@
 			    (format s "<li>~A</li>" (url-template tt))
 			    (format s "<li>~A ---  (~A)</li>" (url-template tt) (length tlog:conditions)))))))))))))
 
-
 ;;; /cre/validate/tpage
 (defun template-show-page-dsp ()
   "Display a page describing a single template."
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate))
     (when-bind (name (safe-get-parameter "name"))
       (when-bind (model-name (safe-get-parameter "model"))
 	(when-bind (model (or (mofi:find-model (kintern model-name) :error-p nil)
@@ -280,7 +279,7 @@
 ;;; /cre/validate/ipage
 (defun instance-show-page-dsp ()
   "Display a page describing a single template."
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate))
     (when-bind (name (safe-get-parameter "name"))
       (when-bind (model-name (safe-get-parameter "model"))
 	(when-bind (model (or (mofi:find-model (kintern model-name) :error-p nil)
@@ -404,7 +403,7 @@
 #|
 ;;;/cre/validate/rds/class?endpoint=jord&class=RDS418769
 (defun validate-show-rds-class-dsp ()
-  (app-page-wrapper :cre (:view "Template Validation" :menu-pos '(:root :validate))
+  (app-page-wrapper :cre (:view "Template Testing" :menu-pos '(:root :validate))
     (when-bind (ep (safe-get-parameter "endpoint"))
       (when-bind (rds-num (safe-get-parameter "class"))
 	(cond ((eql :jord (kintern ep)))

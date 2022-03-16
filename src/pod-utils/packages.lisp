@@ -4,7 +4,8 @@
 ;;; POD FIX THIS! Must re-evaluate ~/projects/moss/source/utils/project-utils.lisp
 ;;; after reloading this file!
 
-(defpackage pod-utils
+(unless (find-package :pod-utils)
+ (defpackage :pod-utils
   (:nicknames :pod)
   (:use :cl :cl-who)
   (:shadowing-import-from :cl-who #:str)
@@ -39,6 +40,7 @@
    #:defmemo!
    #:defmemo-equal
    #:defp
+   #:defpackage*
    #:defun-memoize 
    #:depth-first-search 
    #:depth-search-tracking
@@ -236,9 +238,10 @@
    #:sidebox-menu 
    #:view-objects
    #:with-html 
-   #:with-vo))
+   #:with-vo)))
 
-(defpackage xml-utils
+(unless (find-package :xml-utils)
+ (defpackage :xml-utils
   (:nicknames :xmlu)
   (:use :cl :pod-utils)
   ;; from xml/xml-utils.lisp
@@ -279,7 +282,7 @@
    #:xml-typep-2
    #:xml-typep-3
    #:xml-value
-   #:xml-write-node))
+   #:xml-write-node)))
 
 ;;; Because this file is used by many applications, it is not possible to use 
 ;;; #:+iface-http (a compile time thing) to specify the package use-list

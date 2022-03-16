@@ -1,22 +1,22 @@
 (in-package :cl-user)
 
-(defpackage ptypes
+(pod::defpackage* :ptypes
   (:use cl pod closer-mop)
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
 			  #:defgeneric #:standard-generic-function #:defclass #:defmethod
 			  #:ensure-class #:ensure-class-using-class)
   (:export
-    #:|Boolean|
-    #:|Integer|
-    #:|Ptype-type-proxy|
-    #:|Real|    ; for UML2.4 and later.
-    #:|String|
-    #:|UnlimitedNatural|))
+   #:|Boolean|
+   #:|Integer|
+   #:|Ptype-type-proxy|
+   #:|Real|    ; for UML2.4 and later.
+   #:|String|
+   #:|UnlimitedNatural|))
 
 
 ;;; Symbols exported by this package implement functions of the OCL Standard Library, generally.
 ;;; There are other symbol exported, defined in the mof:defmodel :ocl
-(defpackage ocl
+(pod::defpackage* :ocl
   (:use cl pod closer-mop)
   (:shadowing-import-from :closer-mop #:standard-class #:ensure-generic-function
 			  #:defgeneric #:standard-generic-function #:defclass #:defmethod
@@ -169,11 +169,11 @@
 ;;; POD 2007-11-13: I think the idea should be that oclu is a surrogate for the package where
 ;;;                 parsing is happening. In QVT at least, tracking actual package might be
 ;;;                 too much effort. oclp:constant-p handles this kind of approach OK.
-(defpackage oclu
+(pod::defpackage* :oclu
   (:use cl pod ocl)
   (:shadowing-import-from :ocl self))
 
-(defpackage oclp
+(pod::defpackage* :oclp
   (:use cl pod-utils ocl oclu)
   (:shadowing-import-from
    :ocl

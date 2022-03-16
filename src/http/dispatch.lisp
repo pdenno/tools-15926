@@ -10,10 +10,11 @@
    "<not used>"
    "<not used>"
    (mk-mnode :site-overview "Site Overview"     "/cre/index.html")
-   (mk-mnode :validate "Template Validation"    "/cre/validate"
+   (mk-mnode :validate "Template Testing"       "/cre/validate"
 	     (mk-mnode :upload "Upload a file"  "/cre/validate/upload")
-	     (mk-mnode :mmt "MMT Templates"     "/cre/validate/results/mmt")
-	     (mk-mnode :em "Emerson Templates"  "/cre/validate/emerson"))
+	     ;; Hans: Modelling, Methods and Technology, a defunct special interest group in Posc Caesar.
+	     (mk-mnode :mmt "Templates"         "/cre/validate/results/mmt") 
+	     #+nil(mk-mnode :em "Emerson Templates"  "/cre/validate/emerson"))
    (mk-mnode :browse        "Browse Models"     "/cre/model-list"
 	     (mk-mnode :part2  "ISO15926-2"     "/cre/part2")
 	     (mk-mnode :odm    "ODM"            "/cre/odm-tree")
@@ -84,8 +85,7 @@
 	 (create-prefix-dispatcher "/cre/index.html" 'cre-homepage)
 	 (create-prefix-dispatcher "/cre/software-disclaimer" 'cre-software-disclaimer)
 	 (create-regex-dispatcher  "/cre/$" 'cre-homepage)
-	 (create-regex-dispatcher  "/cre$"  'cre-homepage)
-	 'default-dispatcher)) ; tbnl function that returns *default-handler*
+	 (create-regex-dispatcher  "/cre$"  'cre-homepage)))
   (values))
 
 ;;; 2022 Added from SEI

@@ -100,16 +100,16 @@
   "At least in 2022, just stopping hunchntoot will leave the port open. Thus this."
   (loop for p in (bt:all-threads)
 	for name = (bt:thread-name p)
-	when (and (> (length name) 20)
-		  (string-equal "hunchentoot-listener" (subseq name 0 20)))
+	when (and (> (length name) 11)
+		  (string-equal "hunchentoot" (subseq name 0 11)))
 	  do (format t "Killing ~A" p)
 	     (bt:destroy-thread p)))
 
 (defun cre-stop ()
   (when *hunchentoot-server*
     (tbnl:stop *hunchentoot-server*)
-    (kill-hunchentoot)
-    (setf *hunchentoot-server* nil)))
+    (setf *hunchentoot-server* nil))
+  (kill-hunchentoot))
 
 (defun cre-default-handler ()
   "The handler that serves the request if no other handler is called."
@@ -206,7 +206,8 @@
 	  (:ul
 	   (:li "Compiled for SBCL")
 	   (:li "Using Open source Vampire")
-	   (:li "Using new MMT (Part 2) templates")))
+	   #|(:li "Using new MMT templates")|#
+	   ))
      (:li (:strong "2013-08-15:")
 	  (:ul
 	   (:li "Template Instances: Added type checking for roles.")
