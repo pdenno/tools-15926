@@ -198,8 +198,8 @@
 (defun xml-make-string-attr-node (prefix local-name value owner)
   "Replaces xqdm-ignore:make-string-attr-node"
   (let ((attr (make-instance 'rune-dom::attribute
-			     :name (strcat prefix ":" name)
-			     :local-name name
+			     :name (strcat prefix ":" local-name)
+			     :local-name local-name
 			     :prefix prefix
 			     :namespace-uri nil
 			     :owner-element owner
@@ -318,8 +318,6 @@
 	     (when-bind (more (xml-find-attrs x #'(lambda (y) (string= (dom:prefix y) "xmlns"))))
 		 (setf attrs (append attrs more)))))
     (mapcar #'(lambda (x) (cons (dom:local-name x) (dom:value x))) attrs)))
-
-
 
 (defun xml-prefix2uri (prefix namespaces)
   "Return the URI string associated with PREFIX. NAMESPACES is an alist such as produced by xml-namespaces."
